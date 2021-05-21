@@ -29,6 +29,11 @@ class Dense(Layer):
         self.biases_initialiser = biases_initialiser
 
         # State
+        self.weights = None
+        self.biases = None
+
+    def initialise(self):
+        # State
         self.weights = tf.Variable(
             initial_value=self.weights_initialiser(shape=self.shape)
         )
@@ -39,4 +44,8 @@ class Dense(Layer):
     @tf.function
     def __call__(self, features: tf.Tensor) -> tf.Tensor:
         net = features @ self.weights + self.biases
-        return net if self.activation is None else self.activation(features=features)
+
+        if self.activation is None:
+            return net
+
+        return self.activation(features=net)
