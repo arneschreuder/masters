@@ -8,24 +8,11 @@ SEED = 1
 LEAKY_RELU_ALPHA = 0.2
 MAX_EPOCHS = 10
 
-# Activations
-features = tf.constant([[-1.0, -1.0, -1.0, -1.0]])
+tf.random.set_seed(seed=SEED)
 
 # Initialiser
 glorot_uniform = fw.initialisers.GlorotUniform(seed=SEED)
 ones = fw.initialisers.Ones()
-x = [
-    [
-        tf.constant(ones([4, 5])),
-        tf.constant(ones([1, 5]))
-    ],
-    [
-        tf.constant(ones([5, 3])),
-        tf.constant(ones([1, 3]))
-    ],
-]
-
-x_flat = tf.constant(ones([43]))
 
 # Model
 model = fw.neural_networks.Feedforward(
@@ -42,34 +29,26 @@ model = fw.neural_networks.Feedforward(
 
 
 model.initialise()
-model.set_trainable_variables(x)
-temp = model.get_trainable_variables()
-tf.print(temp, summarize=-1)
-model.set_trainable_variables_flat(x_flat)
-temp = model.get_trainable_variables_flat()
-tf.print(temp, summarize=-1)
-params = model.get_trainable_variables_flat()
-dimensions = len(params)
-entity = fw.entities.Entity(shape=[dimensions])
+entity = fw.entities.Entity()
+entity.set_model(model)
 entity.initialise()
 tf.print(entity.position, summarize=-1)
 tf.print(entity.velocity, summarize=-1)
 
 
 # Experiment
+
+dataset = fw.datasets.Iris(seed=SEED)
+loss_fn = fw.losses.SparseCategorical()
+
+
 @tf.function
 def train():
     for e in tf.range(MAX_EPOCHS):
-        logits = model(features)
-        tf.print(logits)
+        for features, labels in dataset.training:
+            logits = entity(features)
+            loss = loss_fn(logits=logits, labels=labels)
+            tf.print(loss, summarize=-1)
 
 
 train()
-
-# ones = fw.initialisers.Ones()
-# model.load([[ones([4, 5]), ones([1, 5])], [ones([5, 3]), ones([1, 3])]])
-
-dataset = fw.datasets.Iris(seed=SEED)
-for features, labels in dataset.training:
-    tf.print(features)
-    tf.print(labels)
