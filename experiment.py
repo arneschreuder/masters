@@ -68,3 +68,8 @@ train()
 
 # ones = fw.initialisers.Ones()
 # model.load([[ones([4, 5]), ones([1, 5])], [ones([5, 3]), ones([1, 3])]])
+
+dataset = fw.datasets.Iris(seed=SEED)
+for features, labels in dataset.training:
+    tf.print(features)
+    tf.print(labels)
