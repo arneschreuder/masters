@@ -33,3 +33,28 @@ class NeuralNetwork:
     def set_trainable_variables(self, variables):
         for layer, v in zip(self.layers, variables):
             layer.set_trainable_variables(variables=v)
+
+    @tf.function
+    def get_trainable_variables_flat(self):
+        trainable_variables = []
+
+        for layer in self.layers:
+            variables = layer.get_trainable_variables_flat()
+            trainable_variables.append(variables)
+
+        return tf.concat(trainable_variables, axis=0)
+
+    @tf.function
+    def set_trainable_variables_flat(self, variables):
+        _variables = variables
+
+        for layer in self.layers:
+            input = layer.shape[0]
+            hidden = layer.shape[1]
+            segment = tf.slice(_variables, [0], [input*hidden + hidden])
+            layer.set_trainable_variables_flat(variables=segment)
+            _variables = tf.slice(
+                _variables,
+                begin=[input*hidden + hidden],
+                size=[len(_variables) - (input*hidden + hidden)]
+            )

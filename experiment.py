@@ -26,6 +26,8 @@ x = [
     ],
 ]
 
+x_flat = tf.constant(ones([43]))
+
 # Model
 model = fw.neural_networks.Feedforward(
     layers=[
@@ -44,7 +46,10 @@ def initialise():
     model.initialise()
     model.set_trainable_variables(x)
     temp = model.get_trainable_variables()
-    tf.print(temp)
+    tf.print(temp, summarize=-1)
+    model.set_trainable_variables_flat(x_flat)
+    temp = model.get_trainable_variables_flat()
+    tf.print(temp, summarize=-1)
 
 
 # Experiment
