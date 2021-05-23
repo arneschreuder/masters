@@ -2,6 +2,8 @@
 
 Training Feedforward Neural Networks using Bayesian Hyper-Heuristics.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Environments
 
 ## Activate Environment
