@@ -8,7 +8,7 @@
             "name": "Debug: Experiment",
             "type": "python",
             "request": "launch",
-            "program": "experiment.py",
+            "program": "main.py",
             "console": "integratedTerminal"
         }
     ]

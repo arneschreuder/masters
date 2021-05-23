@@ -1,9 +1,50 @@
+# The MIT License (MIT)
+# =====================
+
+# Copyright 2021 Arné Schreuder
+
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the “Software”), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+
 from typing import List
 
 import tensorflow as tf
 
 
 def flatten(parameters: List[List[tf.Tensor]]) -> tf.Tensor:
+    """
+    Flattens a model's parameters from it's layered representation
+    into a single, flat tensor.
+
+    Parameters
+    ----------
+    parameters: List[List[tf.Tensor]]
+        The model parameters to flatten
+
+
+    Returns
+    -------
+    tf.Tensor
+        The flattened parameters
+    """
     # Make temporary array for parameters
     parameters_flat = []
 
@@ -23,7 +64,25 @@ def flatten(parameters: List[List[tf.Tensor]]) -> tf.Tensor:
     return parameters_flat
 
 
-def reshape(parameters_flat: tf.Tensor, shapes: List[tf.TensorShape]) -> List[List[tf.Tensor]]:
+def reshape(
+        parameters_flat: tf.Tensor,
+        shapes: List[tf.TensorShape]) -> List[List[tf.Tensor]]:
+    """
+    Reshapes a flat representation back into a layered presentation.
+
+    Parameters
+    ----------
+    parameters_flat: tf.Tensor
+        The flattened parameters to reshape
+    shapes: List[tf.TensorShape]
+        The shapes to use for the reshape operation
+
+    Returns
+    -------
+    List[List[tf.Tensor]]
+        The layered representation of the parameters, shaped as per the
+        shapes dimensionality.
+    """
     # Create placeholders
     temp = parameters_flat
     parameters_reshaped = []
