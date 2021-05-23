@@ -9,6 +9,5 @@ class LeakyReLU(Activation):
         super(LeakyReLU, self).__init__()
         self.alpha = alpha
 
-    # @tf.function
     def __call__(self, features: tf.Tensor) -> tf.Tensor:
         return tf.nn.leaky_relu(features=features, alpha=self.alpha)

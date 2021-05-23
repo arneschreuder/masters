@@ -15,7 +15,6 @@ class NeuralNetwork:
         for layer in self.layers:
             layer.initialise()
 
-    # @tf.function
     def get_shapes(self):
         shapes = []
 
@@ -34,22 +33,18 @@ class NeuralNetwork:
 
         return parameters
 
-    # @tf.function
     def set_parameters(self, parameters):
         for layer, p in zip(self.layers, parameters):
             layer.set_parameters(parameters=p)
 
-    # @tf.function
     def get_parameters_flat(self):
         parameters = self.get_parameters()
         return flatten(parameters=parameters)
 
-    # @tf.function
     def set_parameters_flat(self, parameters_flat):
         shapes = self.get_shapes()
         parameters = reshape(parameters_flat=parameters_flat, shapes=shapes)
         self.set_parameters(parameters=parameters)
 
-    # @tf.function
     def __call__(self, features: tf.Tensor):
         pass

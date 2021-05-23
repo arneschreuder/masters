@@ -3,7 +3,6 @@ from typing import List
 import tensorflow as tf
 
 
-# @tf.function
 def flatten(parameters: List[List[tf.Tensor]]) -> tf.Tensor:
     # Make temporary array for parameters
     parameters_flat = []
@@ -24,7 +23,6 @@ def flatten(parameters: List[List[tf.Tensor]]) -> tf.Tensor:
     return parameters_flat
 
 
-# @tf.function
 def reshape(parameters_flat: tf.Tensor, shapes: List[tf.TensorShape]) -> List[List[tf.Tensor]]:
     # Create placeholders
     temp = parameters_flat

@@ -5,7 +5,7 @@ import framework as fw
 # Constants
 SEED = 1
 LEAKY_RELU_ALPHA = 0.2
-MAX_EPOCHS = 1000
+MAX_EPOCHS = 500
 
 tf.random.set_seed(seed=SEED)
 
@@ -35,7 +35,6 @@ optimiser.set_loss_fn(loss_fn=loss_fn)
 optimiser.initialise()
 
 
-# @tf.function
 def train():
     for e in tf.range(MAX_EPOCHS):
         for features, labels in dataset.training:

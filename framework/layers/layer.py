@@ -15,6 +15,5 @@ class Layer:
         self.weights.assign(parameters[0])
         self.biases.assign(parameters[1])
 
-    # @tf.function
     def __call__(self, features: tf.Tensor) -> tf.Tensor:
         pass

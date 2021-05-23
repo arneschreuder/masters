@@ -22,7 +22,6 @@ class Optimiser:
     def initialise(self) -> None:
         self.model.initialise()
 
-    # @tf.function
     def evaluate(self, features: tf.Tensor, labels: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         # Evaluate model
         logits = self.model(features=features)
@@ -34,6 +33,5 @@ class Optimiser:
         )
         return logits, loss
 
-    # @tf.function
     def __call__(self, features: tf.Tensor, labels: tf.Tensor):
         pass

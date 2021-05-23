@@ -28,7 +28,6 @@ class SGD(Optimiser):
         self.entity.map_model(model=self.model)
         self.entity.initialise()
 
-    # @tf.function
     def get_gradient(self, features: tf.Tensor, labels: tf.Tensor) -> List[List[tf.Tensor]]:
         with tf.GradientTape() as tape:
             parameters = self.model.get_parameters()
@@ -43,7 +42,6 @@ class SGD(Optimiser):
             )
             return gradient
 
-    # @tf.function
     def step(self, position: tf.Tensor, velocity: tf.Tensor, gradient: tf.Tensor) -> None:
         if self.momentum == 0.0:
             position.assign_add(-self.learning_rate*gradient)
@@ -59,7 +57,6 @@ class SGD(Optimiser):
             else:
                 position.assign_add(velocity)
 
-    # @tf.function
     def __call__(self, features: tf.Tensor, labels: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         # Load model with solution
         self.model.set_parameters_flat(parameters_flat=self.entity.position)
