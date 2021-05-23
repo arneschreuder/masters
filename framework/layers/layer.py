@@ -1,19 +1,54 @@
+# The MIT License (MIT)
+# =====================
+
+# Copyright 2021 Arné Schreuder
+
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the “Software”), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+
+from typing import List
+
 import tensorflow as tf
 
 
 class Layer:
-    def __init__(self):
-        pass
+    """
+    The base layer class that represents layers in a Neural Network.
+    """
 
-    def initialise(self):
-        pass
-
-    def get_parameters(self):
+    def get_parameters(self) -> List[tf.Variable]:
+        """
+        Returns
+        -------
+        List[tf.Variable]
+            List of parameters that essentially contains weights and biases
+        """
         return [self.weights, self.biases]
 
-    def set_parameters(self, parameters):
+    def set_parameters(self, parameters: List[tf.Tensor]) -> None:
+        """
+        Parameters
+        -------
+        parameters: List[tf.Tensor]
+            New weights and biases presented as index 0 and 1 in a list of params
+        """
         self.weights.assign(parameters[0])
         self.biases.assign(parameters[1])
-
-    def __call__(self, features: tf.Tensor) -> tf.Tensor:
-        pass
