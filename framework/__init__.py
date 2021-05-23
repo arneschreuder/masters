@@ -10,6 +10,7 @@ from .layers import *
 from .logger import *
 from .losses import *
 from .metrics import *
+from .models import *
 from .neural_networks import *
 from .optimisers import *
 from .utilities import *

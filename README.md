@@ -61,7 +61,6 @@ Computational Intelligence Research Group (CIRG)
 Associate Professor,<br>
 Dept. of Computer Science (CS),<br>
 School of Computer Science and Applied Mathematics,<br>
-Faculty of Engineering, Built Environment and IT (EBIT),<br>
 University of Witwatersrand, Johannesburg (WITS)
 
 ### Engelbrecht, A.P. (Co-Supervisor):
