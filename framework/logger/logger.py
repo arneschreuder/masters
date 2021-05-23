@@ -24,6 +24,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+from datetime import datetime
+
 import tensorflow as tf
 
 
@@ -50,5 +52,6 @@ class Logger:
             The path to the log directory where output must
             be written. Default = None
         """
-        self.log_dir = log_dir
+        current_time = datetime.now().strftime('%Y%m%d-%H%M%S')
+        self.log_dir = "{}/{}".format(log_dir, current_time)
         self.instance = tf.summary.create_file_writer(self.log_dir)

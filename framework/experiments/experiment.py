@@ -24,6 +24,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+
 from typing import Dict, List
 
 import tensorflow as tf
@@ -143,7 +144,7 @@ class Experiment:
             The predicted output of a Neural Network in logit format.
         """
         for metric in self.metrics:
-            metric.update(labels, logits)
+            metric(labels, logits)
 
     def log_metrics(self, epoch: int) -> Dict:
         """
@@ -172,7 +173,7 @@ class Experiment:
             metric.reset()
 
             # Write to log/events
-            with self.logger.summary.as_default():
+            with self.logger.instance.as_default():
                 tf.summary.scalar(
                     name,
                     result,
@@ -188,9 +189,14 @@ class Experiment:
         """
 
         for e in range(self.epochs):
+            # Train
             for features, labels in self.dataset.training:
                 logits, loss = self.optimiser(features, labels)
                 self.update_metrics(labels=labels, logits=logits)
 
             metrics_dict = self.log_metrics(epoch=e)
+
+            # TODO: Validate and Test?
+
+            # Update progress
             self.progress.add(1, metrics_dict)
