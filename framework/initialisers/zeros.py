@@ -1,6 +1,5 @@
 import tensorflow as tf
-
-from .initialiser import Initialiser
+from framework.initialisers.initialiser import Initialiser
 
 
 class Zeros(Initialiser):

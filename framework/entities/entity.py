@@ -1,7 +1,8 @@
 import tensorflow as tf
-
-from ..initialisers import GlorotUniform, Initialiser, Zeros
-from ..neural_networks import NeuralNetwork
+from framework.initialisers.glorot_uniform import GlorotUniform
+from framework.initialisers.initialiser import Initialiser
+from framework.initialisers.zeros import Zeros
+from framework.neural_networks.neural_network import NeuralNetwork
 
 
 class Entity:
@@ -10,7 +11,6 @@ class Entity:
     velocity_initialiser: Initialiser = None
     position: tf.Variable = None
     velocity: tf.Variable = None
-    model: NeuralNetwork = None
 
     def __init__(self,
                  position_initialiser: Initialiser = GlorotUniform(),
@@ -22,10 +22,10 @@ class Entity:
         self.velocity = None
         self.model = None
 
-    def set_model(self, model: NeuralNetwork):
+    def map_model(self, model: NeuralNetwork):
         self.model = model
-        params = model.get_trainable_variables_flat()
-        dimensions = len(params)
+        parameters = model.get_parameters_flat()
+        dimensions = len(parameters)
         self.shape = [dimensions]
 
     def initialise(self):
@@ -35,8 +35,3 @@ class Entity:
         self.velocity = tf.Variable(
             initial_value=self.velocity_initialiser(shape=self.shape)
         )
-
-    @tf.function
-    def __call__(self, features):
-        self.model.set_trainable_variables_flat(variables=self.position)
-        return self.model(features=features)

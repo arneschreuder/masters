@@ -1,8 +1,7 @@
 from re import L
 
 import tensorflow as tf
-
-from .loss import Loss
+from framework.losses.loss import Loss
 
 
 class SparseCategorical(Loss):
@@ -11,8 +10,10 @@ class SparseCategorical(Loss):
 
     @tf.function
     def __call__(self, logits: tf.Tensor, labels: tf.Tensor) -> tf.Tensor:
-        return tf.losses.sparse_categorical_crossentropy(
-            y_true=labels,
-            y_pred=logits,
-            from_logits=True
+        return tf.reduce_mean(
+            tf.losses.sparse_categorical_crossentropy(
+                y_true=labels,
+                y_pred=logits,
+                from_logits=True
+            )
         )

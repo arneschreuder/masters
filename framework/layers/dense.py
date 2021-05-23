@@ -1,8 +1,8 @@
 import tensorflow as tf
-
-from ..activations import Activation
-from ..initialisers import GlorotUniform, Initialiser
-from .layer import Layer
+from framework.activations.activation import Activation
+from framework.initialisers.glorot_uniform import GlorotUniform
+from framework.initialisers.initialiser import Initialiser
+from framework.layers.layer import Layer
 
 
 class Dense(Layer):

@@ -1,7 +1,6 @@
 import tensorflow as tf
 
 import framework as fw
-from framework.initialisers import glorot_uniform
 
 # Constants
 SEED = 1
@@ -30,14 +29,10 @@ model = fw.neural_networks.Feedforward(
 
 model.initialise()
 entity = fw.entities.Entity()
-entity.set_model(model)
+entity.map_model(model=model)
 entity.initialise()
-tf.print(entity.position, summarize=-1)
-tf.print(entity.velocity, summarize=-1)
-
 
 # Experiment
-
 dataset = fw.datasets.Iris(seed=SEED)
 loss_fn = fw.losses.SparseCategorical()
 
@@ -46,7 +41,7 @@ loss_fn = fw.losses.SparseCategorical()
 def train():
     for e in tf.range(MAX_EPOCHS):
         for features, labels in dataset.training:
-            logits = entity(features)
+            logits = model(features)
             loss = loss_fn(logits=logits, labels=labels)
             tf.print(loss, summarize=-1)
 

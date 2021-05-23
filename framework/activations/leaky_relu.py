@@ -1,6 +1,5 @@
 import tensorflow as tf
-
-from .activation import Activation
+from framework.activations.activation import Activation
 
 
 class LeakyReLU(Activation):

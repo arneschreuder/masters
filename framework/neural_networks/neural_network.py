@@ -1,8 +1,8 @@
 from typing import List
 
 import tensorflow as tf
-
-from ..layers import Layer
+from framework.layers.layer import Layer
+from framework.utilities.utilities import flatten, reshape
 
 
 class NeuralNetwork:
@@ -20,41 +20,36 @@ class NeuralNetwork:
         pass
 
     @tf.function
-    def get_trainable_variables(self):
-        trainable_variables = []
+    def get_shapes(self):
+        shapes = []
 
         for layer in self.layers:
-            variables = layer.get_trainable_variables()
-            trainable_variables.append(variables)
+            shape = layer.shape
+            shapes.append(shape)
 
-        return trainable_variables
-
-    @tf.function
-    def set_trainable_variables(self, variables):
-        for layer, v in zip(self.layers, variables):
-            layer.set_trainable_variables(variables=v)
+        return shapes
 
     @tf.function
-    def get_trainable_variables_flat(self):
-        trainable_variables = []
+    def get_parameters(self):
+        parameters = []
 
         for layer in self.layers:
-            variables = layer.get_trainable_variables_flat()
-            trainable_variables.append(variables)
+            p = layer.get_parameters()
+            parameters.append(p)
 
-        return tf.concat(trainable_variables, axis=0)
+        return parameters
 
     @tf.function
-    def set_trainable_variables_flat(self, variables):
-        _variables = variables
+    def set_parameters(self, parameters):
+        for layer, p in zip(self.layers, parameters):
+            layer.set_parameters(parameters=p)
 
-        for layer in self.layers:
-            input = layer.shape[0]
-            hidden = layer.shape[1]
-            segment = tf.slice(_variables, [0], [input*hidden + hidden])
-            layer.set_trainable_variables_flat(variables=segment)
-            _variables = tf.slice(
-                _variables,
-                begin=[input*hidden + hidden],
-                size=[len(_variables) - (input*hidden + hidden)]
-            )
+    @tf.function
+    def get_parameters_flat(self):
+        parameters = self.get_parameters()
+        return flatten(parameters=parameters)
+
+    @tf.function
+    def set_parameters_flat(self, parameters_flat):
+        parameters = reshape(parameters_flat=parameters_flat, model=self)
+        self.set_parameters(parameters=parameters)

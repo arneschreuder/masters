@@ -3,8 +3,7 @@ import os
 import pandas as pd
 import tensorflow as tf
 import tensorflow_datasets as tfds
-
-from ..dataset import Dataset
+from framework.datasets.dataset import Dataset
 
 
 class Iris(Dataset):

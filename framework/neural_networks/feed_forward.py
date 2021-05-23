@@ -1,9 +1,8 @@
 from typing import List
 
 import tensorflow as tf
-
-from ..layers import Layer
-from .neural_network import NeuralNetwork
+from framework.layers.layer import Layer
+from framework.neural_networks.neural_network import NeuralNetwork
 
 
 class Feedforward(NeuralNetwork):

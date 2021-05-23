@@ -7,4 +7,4 @@ class Loss:
 
     @tf.function
     def __call__(self, logits: tf.Tensor, labels: tf.Tensor) -> tf.Tensor:
-        return labels - logits
+        return tf.reduce_mean(labels - logits)
