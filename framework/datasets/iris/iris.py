@@ -41,8 +41,8 @@ class Iris(Dataset):
             Random seed value. Default = None
         """
         super(Iris, self).__init__(seed=seed)
-        self.classes = ["setosa", "versicolor", "virginica"]
-        self.columns = self.features + [self.label]
+
+        # Set attribute values
         self.features = [
             "sepal_length",
             "sepal_width",
@@ -50,21 +50,27 @@ class Iris(Dataset):
             "petal_width"
         ]
         self.label = "species"
-        self.batch_size = 30
+        self.classes = ["setosa", "versicolor", "virginica"]
+        self.columns = self.features + [self.label]
         self.shuffle_size = 150
+        self.batch_size = 30
 
+        # Load data from file
         directory = os.path.dirname(os.path.abspath(__file__))
         file = "iris.csv"
         path = os.path.join(directory, file)
         data = pd.read_csv(path)
 
-        # Float64 -> Float32
+        # Preparing for environment, runtime preprocessing
         for feature in self.features:
             data[feature] = data[feature].astype("float32")
 
         data[self.label] = data[self.label].astype("category")
 
+        # Split features and labels
         target = data.pop('species')
+
+        # Set training dataset
         self.training = tf.data.Dataset.from_tensor_slices(
             (data.values, target.values))
         self.training = self.training.shuffle(
