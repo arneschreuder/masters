@@ -82,6 +82,8 @@ class Experiment:
                  epochs: int,
                  seed=None):
         """
+        Parameters
+        ----------
         dataset: Dataset
             The dataset to use. Default = None
         model: NeuralNetwork
