@@ -46,7 +46,8 @@ class Entity:
     velocity_initialiser: Initialiser
         The initialiser used for the entity's velocity. Default = None
     position: tf.Variable
-        The entity's position. This is often referred to as a candidate solution. Default = None
+        The entity's position. This is often referred to as a candidate solution.
+        Default = None
     velocity: tf.Variable
         The entity's velocity. Default = None
     """
@@ -85,9 +86,12 @@ class Entity:
             The model to map.
         """
         self.model = model
+
+        # Set the dimensionality of the entity equal
+        # to that of the models parameters as it is presented
+        # as a flat tensor.
         parameters = model.get_parameters_flat()
-        dimensions = len(parameters)
-        self.shape = [dimensions]
+        self.shape = parameters.shape
 
     def initialise(self):
         """

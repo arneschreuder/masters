@@ -17,9 +17,9 @@ class SGD(Optimiser):
                  momentum: float = 0.9,
                  nesterov: bool = True):
         super(SGD, self).__init__()
-        self.learning_rate: float = 0.01,
-        self.momentum: float = 0.9,
-        self.nesterov: bool = True
+        self.learning_rate: float = learning_rate,
+        self.momentum: float = momentum,
+        self.nesterov: bool = nesterov
         self.entity: Entity = None
 
     def initialise(self) -> None:
