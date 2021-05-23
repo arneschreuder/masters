@@ -41,7 +41,7 @@ class Dense(Layer):
             initial_value=self.weights_initialiser(shape=[1, self.shape[1]])
         )
 
-    @tf.function
+    # @tf.function
     def __call__(self, features: tf.Tensor) -> tf.Tensor:
         net = features @ self.weights + self.biases
 

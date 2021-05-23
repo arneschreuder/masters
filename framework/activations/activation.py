@@ -5,6 +5,6 @@ class Activation:
     def __init__(self):
         pass
 
-    @tf.function
+    # @tf.function
     def __call__(self, features: tf.Tensor) -> tf.Tensor:
-        return features
+        pass

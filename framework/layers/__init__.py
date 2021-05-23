@@ -1,2 +1,2 @@
-from .dense import *
-from .layer import *
+from .dense import Dense
+from .layer import Layer

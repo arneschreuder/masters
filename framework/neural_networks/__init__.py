@@ -1,2 +1,2 @@
-from .feed_forward import *
-from .neural_network import *
+from .feed_forward import Feedforward
+from .neural_network import NeuralNetwork

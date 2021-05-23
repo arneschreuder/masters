@@ -1,2 +1,2 @@
-from .loss import *
-from .sparse_categorical import *
+from .loss import Loss
+from .sparse_categorical import SparseCategorical

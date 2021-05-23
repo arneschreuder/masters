@@ -1,2 +1,2 @@
-from .dataset import *
-from .iris import *
+from .dataset import Dataset
+from .iris import Iris

@@ -3,7 +3,7 @@ from typing import List
 import tensorflow as tf
 
 
-@tf.function
+# @tf.function
 def flatten(parameters: List[List[tf.Tensor]]) -> tf.Tensor:
     # Make temporary array for parameters
     parameters_flat = []
@@ -24,7 +24,7 @@ def flatten(parameters: List[List[tf.Tensor]]) -> tf.Tensor:
     return parameters_flat
 
 
-@tf.function
+# @tf.function
 def reshape(parameters_flat: tf.Tensor, shapes: List[tf.TensorShape]) -> List[List[tf.Tensor]]:
     # Create placeholders
     temp = parameters_flat
@@ -49,11 +49,11 @@ def reshape(parameters_flat: tf.Tensor, shapes: List[tf.TensorShape]) -> List[Li
             biases
         ])
 
-        # Slice of the segment that has already been reshaped
+        # Move on to remaining slice
         temp = tf.slice(
             temp,
             begin=[input*hidden + hidden],
-            size=[len(temp) - (input*hidden + hidden)]
+            size=[-1]
         )
 
     # Return the reshaped parameters

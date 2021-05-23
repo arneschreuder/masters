@@ -8,15 +8,13 @@ class Layer:
     def initialise(self):
         pass
 
-    @tf.function
-    def __call__(self, features: tf.Tensor) -> tf.Tensor:
-        pass
-
-    @tf.function
     def get_parameters(self):
         return [self.weights, self.biases]
 
-    @tf.function
-    def set_parameters(self, variables):
-        self.weights.assign(variables[0])
-        self.biases.assign(variables[1])
+    def set_parameters(self, parameters):
+        self.weights.assign(parameters[0])
+        self.biases.assign(parameters[1])
+
+    # @tf.function
+    def __call__(self, features: tf.Tensor) -> tf.Tensor:
+        pass

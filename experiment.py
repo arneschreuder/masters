@@ -5,7 +5,7 @@ import framework as fw
 # Constants
 SEED = 1
 LEAKY_RELU_ALPHA = 0.2
-MAX_EPOCHS = 10
+MAX_EPOCHS = 1000
 
 tf.random.set_seed(seed=SEED)
 
@@ -26,23 +26,20 @@ model = fw.neural_networks.Feedforward(
     ]
 )
 
-
-model.initialise()
-entity = fw.entities.Entity()
-entity.map_model(model=model)
-entity.initialise()
-
 # Experiment
 dataset = fw.datasets.Iris(seed=SEED)
 loss_fn = fw.losses.SparseCategorical()
+optimiser = fw.optimisers.SGD()
+optimiser.set_model(model=model)
+optimiser.set_loss_fn(loss_fn=loss_fn)
+optimiser.initialise()
 
 
-@tf.function
+# @tf.function
 def train():
     for e in tf.range(MAX_EPOCHS):
         for features, labels in dataset.training:
-            logits = model(features)
-            loss = loss_fn(logits=logits, labels=labels)
+            logits, loss = optimiser(features=features, labels=labels)
             tf.print(loss, summarize=-1)
 
 

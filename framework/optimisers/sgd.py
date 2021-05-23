@@ -1,10 +1,12 @@
+from typing import List, Tuple
+
 import tensorflow as tf
 from framework.entities.entity import Entity
-from framework.heuristics.heuristic import Heuristic
+from framework.optimisers.optimiser import Optimiser
 from framework.utilities.utilities import flatten, reshape
 
 
-class SGD(Heuristic):
+class SGD(Optimiser):
     learning_rate: float = None,
     momentum: float = None,
     nesterov: bool = None
@@ -20,28 +22,29 @@ class SGD(Heuristic):
         self.nesterov: bool = True
         self.entity: Entity = None
 
-    def initialise(self):
+    def initialise(self) -> None:
+        super(SGD, self).initialise()
         self.entity = Entity()
+        self.entity.map_model(model=self.model)
         self.entity.initialise()
 
-    @tf.function
-    def get_gradient(self, features, labels):
+    # @tf.function
+    def get_gradient(self, features: tf.Tensor, labels: tf.Tensor) -> List[List[tf.Tensor]]:
         with tf.GradientTape() as tape:
             parameters = self.model.get_parameters()
+            tape.watch(parameters)
             logits = self.model(features=features)
-            loss = tf.reduce_mean(
-                self.loss_fn(
-                    labels=labels,
-                    logits=logits
-                )
+            loss = self.loss_fn(
+                labels=labels,
+                logits=logits
             )
             gradient = tape.gradient(
                 target=loss, sources=parameters
             )
             return gradient
 
-    @tf.function
-    def step(self, position, velocity, gradient):
+    # @tf.function
+    def step(self, position: tf.Tensor, velocity: tf.Tensor, gradient: tf.Tensor) -> None:
         if self.momentum == 0.0:
             position.assign_add(-self.learning_rate*gradient)
         else:
@@ -56,24 +59,11 @@ class SGD(Heuristic):
             else:
                 position.assign_add(velocity)
 
-    @tf.function
-    def evaluate(self, features, labels):
-        # Evaluate model
-        logits = self.model(features=features)
-        loss = tf.reduce_mean(
-            self.loss_fn(
-                target=labels,
-                output=logits
-            )
-        )
-        return logits, loss
-
-    @tf.function
-    def __call__(self, features, labels):
+    # @tf.function
+    def __call__(self, features: tf.Tensor, labels: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         # Load model with solution
-        self.model.set_parameters_flat(parameters=self.entity.position)
+        self.model.set_parameters_flat(parameters_flat=self.entity.position)
 
-        # Calculate gradients
         gradient = self.get_gradient(features=features, labels=labels)
         gradient_flat = flatten(parameters=gradient)
 
@@ -85,6 +75,6 @@ class SGD(Heuristic):
         )
 
         # Evaluate current position
-        self.model.set_parameters_flat(parameters=self.entity.position)
+        self.model.set_parameters_flat(parameters_flat=self.entity.position)
         logits, loss = self.evaluate(features=features, labels=labels)
         return logits, loss

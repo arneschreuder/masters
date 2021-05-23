@@ -1,1 +1,1 @@
-from .entity import *
+from .entity import Entity
