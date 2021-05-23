@@ -1,6 +1,7 @@
 
 from .activations import *
 from .datasets import *
+from .distributions import *
 from .entities import *
 from .heuristics import *
 from .initialisers import *
