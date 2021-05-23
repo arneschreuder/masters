@@ -1,2 +1,2 @@
 from .loss import Loss
-from .sparse_categorical import SparseCategorical
+from .sparse_categorical import SparseCategoricalCrossentropy

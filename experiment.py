@@ -28,7 +28,7 @@ model = fw.neural_networks.Feedforward(
 
 # Experiment
 dataset = fw.datasets.Iris(seed=SEED)
-loss_fn = fw.losses.SparseCategorical()
+loss_fn = fw.losses.SparseCategoricalCrossentropy()
 optimiser = fw.optimisers.SGD()
 optimiser.set_model(model=model)
 optimiser.set_loss_fn(loss_fn=loss_fn)
