@@ -25,38 +25,20 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 import tensorflow as tf
-from framework.losses.loss import Loss
+from framework.metrics.metric import Metric
 
 
-class SparseCategoricalCrossentropy(Loss):
+class SparseCategoricalCrossentropy(Metric):
     """
-    The Sparse Categorical concrete implementation of the loss function class.
-    The required labels as follows: [1 2 3 2 2 1 3]. 
+    The Sparse Categorical Crossentropy loss metric.
+    Calculates the loss between logits and labels using 
+    a sparse representation of the labels as such: [1 3 2 1 2 1 3 2 3 3 1]
     """
 
     def __init__(self):
-        super(SparseCategoricalCrossentropy, self).__init__()
-
-    def __call__(self, labels: tf.Tensor, logits: tf.Tensor) -> tf.Tensor:
-        """
-        Calculates the loss between logits and labels.
-
-        Parameters
-        ----------
-        labels: tf.Tensor
-            The target values to be predicted
-        logits: tf.Tensor
-            The predicted output of a Neural Network in logit format.
-
-        Returns
-        -------
-        tf.Tensor
-            The loss tensor.
-        """
-        return tf.reduce_mean(
-            tf.losses.sparse_categorical_crossentropy(
-                y_true=labels,
-                y_pred=logits,
+        super().__init__(
+            metric=tf.keras.metrics.SparseCategoricalCrossentropy(
                 from_logits=True
-            )
+            ),
+            name="loss"
         )

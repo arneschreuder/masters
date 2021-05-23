@@ -25,21 +25,31 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 import tensorflow as tf
-from framework.losses.loss import Loss
 
 
-class SparseCategoricalCrossentropy(Loss):
+class Metric:
     """
-    The Sparse Categorical concrete implementation of the loss function class.
-    The required labels as follows: [1 2 3 2 2 1 3]. 
+    The base class for metrics. 
     """
 
-    def __init__(self):
-        super(SparseCategoricalCrossentropy, self).__init__()
-
-    def __call__(self, labels: tf.Tensor, logits: tf.Tensor) -> tf.Tensor:
+    def __init__(self,
+                 instance: tf.keras.metrics.Metric,
+                 name: str):
         """
-        Calculates the loss between logits and labels.
+        Parameters
+        ----------
+        instance: tf.keras.metrics.Metric
+            The metric instance
+        name: str
+            The name to give the metric.
+            This is stored in the event logs as metric title.
+        """
+        self.instance = instance
+        self.name = name
+
+    def __call__(self, labels: tf.Tensor, logits: tf.Tensor) -> None:
+        """
+        Updates the state of the metric instance.
 
         Parameters
         ----------
@@ -47,16 +57,25 @@ class SparseCategoricalCrossentropy(Loss):
             The target values to be predicted
         logits: tf.Tensor
             The predicted output of a Neural Network in logit format.
-
-        Returns
-        -------
-        tf.Tensor
-            The loss tensor.
         """
-        return tf.reduce_mean(
-            tf.losses.sparse_categorical_crossentropy(
-                y_true=labels,
-                y_pred=logits,
-                from_logits=True
-            )
+        self.instance.update_state(
+            y_true=labels,
+            y_pred=logits
         )
+
+    def result(self) -> float:
+        """
+        Gets the metric result
+
+        Params
+        ------
+        float
+            The metric result
+        """
+        return self.instance.result().numpy()
+
+    def reset(self) -> None:
+        """
+        Resets the metric instance state
+        """
+        self.instance.reset_states()
