@@ -28,6 +28,7 @@ from typing import List, Tuple
 
 import tensorflow as tf
 from framework.entities.entity import Entity
+from framework.heuristics import SGD as SGDHeuristic
 from framework.optimisers.optimiser import Optimiser
 from framework.utilities.utilities import flatten, reshape
 
@@ -55,7 +56,7 @@ class SGD(Optimiser):
     entity: Entity = None
 
     def __init__(self,
-                 learning_rate: float = 0.01,
+                 learning_rate: float = 0.1,
                  momentum: float = 0.9,
                  nesterov: bool = True):
         """
@@ -68,10 +69,13 @@ class SGD(Optimiser):
         nesterov: bool
             Flag to use nesterov update rule. Default = None
         """
-        super(SGD, self).__init__()
-        self.learning_rate: float = learning_rate,
-        self.momentum: float = momentum,
-        self.nesterov: bool = nesterov
+        super(SGD, self).__init__(
+            heuristic=SGDHeuristic(
+                learning_rate=learning_rate,
+                momentum=momentum,
+                nesterov=nesterov
+            )
+        )
         self.entity: Entity = None
 
     def initialise(self) -> None:
@@ -171,8 +175,8 @@ class SGD(Optimiser):
         gradient = self.get_gradient(features=features, labels=labels)
         gradient_flat = flatten(parameters=gradient)
 
-        # Step and update position and velocity
-        self.step(
+        # Step and update position and velocity using heuristic
+        self.heuristic(
             position=self.entity.position,
             velocity=self.entity.velocity,
             gradient=gradient_flat

@@ -27,6 +27,7 @@
 from typing import Tuple
 
 import tensorflow as tf
+from framework.heuristics.heuristic import Heuristic
 from framework.losses.loss import Loss
 from framework.neural_networks.neural_network import NeuralNetwork
 
@@ -39,15 +40,19 @@ class Optimiser:
 
     Attributes
     ----------
+    heuristic: Heuristic
+        The heuristic or search guide to use. Default = None
     loss_fn: Loss
         The loss function to use. Default = None
     model: NeuralNetwork
         The model to be trained. Default = None
     """
+    heuristic: Heuristic = None
     loss_fn: Loss = None
     model: NeuralNetwork = None
 
-    def __init__(self):
+    def __init__(self, heuristic: Heuristic):
+        self.heuristic = heuristic
         self.loss_fn = None
         self.model = None
 
