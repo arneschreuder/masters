@@ -120,36 +120,6 @@ class SGD(Optimiser):
             )
             return gradient
 
-    def step(self,
-             position: tf.Tensor,
-             velocity: tf.Tensor,
-             gradient: tf.Tensor) -> None:
-        """
-        The heuristic step operation.
-
-        Parameters
-        ----------
-        position: tf.Tensor
-            The entity's position which is the candidate solution to the model
-        velocity: tf.Tensor
-            The entity's velocity
-        gradient: tf.Tensor
-            The gradient to apply
-        """
-        if self.momentum == 0.0:
-            position.assign_add(-self.learning_rate*gradient)
-        else:
-            velocity.assign(
-                self.learning_rate*velocity - self.learning_rate*gradient
-            )
-
-            if self.nesterov:
-                position.assign_add(
-                    self.momentum*velocity - self.learning_rate*gradient
-                )
-            else:
-                position.assign_add(velocity)
-
     def __call__(self,
                  features: tf.Tensor,
                  labels: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
