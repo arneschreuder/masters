@@ -36,7 +36,7 @@ class SparseCategoricalAccuracy(Metric):
     """
 
     def __init__(self):
-        super().__init__(
+        super(SparseCategoricalAccuracy, self).__init__(
             instance=tf.keras.metrics.SparseCategoricalAccuracy(),
             name="accuracy"
         )

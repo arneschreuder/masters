@@ -123,8 +123,6 @@ class Experiment:
         self.optimiser.set_model(model=self.model)
         self.optimiser.initialise()
 
-        params = self.optimiser.model.get_weights()
-
         # Track all metric names
         stateful_metrics = []
         for metric in self.metrics:
@@ -192,10 +190,16 @@ class Experiment:
         under specified configuration.
         """
 
+        step = 0
         for e in range(self.epochs):
             # Train
             for features, labels in self.dataset.training:
-                logits, loss = self.optimiser(features, labels)
+                step += 1
+                logits, _ = self.optimiser(
+                    features=features,
+                    labels=labels,
+                    step=step
+                )
                 self.update_metrics(labels=labels, logits=logits)
 
             metrics_dict = self.log_metrics(epoch=e+1)

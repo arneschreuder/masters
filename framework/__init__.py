@@ -1,5 +1,5 @@
-
 from .activations import *
+from .credit import *
 from .datasets import *
 from .distributions import *
 from .entities import *
@@ -13,4 +13,5 @@ from .metrics import *
 from .models import *
 from .neural_networks import *
 from .optimisers import *
+from .performance_log import *
 from .utilities import *

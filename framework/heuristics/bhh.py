@@ -25,25 +25,12 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 import tensorflow as tf
-import tensorflow_probability as tfp
-from framework.distributions.distribution import Distribution
+from framework.heuristics.heuristic import Heuristic
 
 
-class Categorical(Distribution):
-    """
-    The Categorical probability distribution.
-    """
+class BHH(Heuristic):
+    def __init__(self):
+        super(BHH, self).__init__()
 
-    def __init__(self, probabilities: tf.Tensor):
-        """
-        Parameters
-        ----------
-        probabilities: tf.Tensor
-            The underlying probabilities for each category.
-        """
-
-        super(Categorical, self).__init__(
-            instance=tfp.distributions.Categorical(
-                probs=probabilities
-            )
-        )
+    def __call__(self) -> None:
+        pass

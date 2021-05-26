@@ -51,7 +51,7 @@ class Iris(Experiment):
         seed: int
             Random seed. Default = None
         """
-        super().__init__(
+        super(Iris, self).__init__(
             dataset=IrisDataset(seed=seed),
             model=IrisModel(),
             loss_fn=SparseCategoricalCrossentropy(),

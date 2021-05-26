@@ -43,8 +43,8 @@ class Dirichlet(Distribution):
             represented by the Dirichlet probability distribution.
         """
 
-        super().__init__(
-            intance=tfp.distributions.Dirichlet(
+        super(Dirichlet, self).__init__(
+            instance=tfp.distributions.Dirichlet(
                 concentration=concentration
             )
         )

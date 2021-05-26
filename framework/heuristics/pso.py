@@ -77,7 +77,7 @@ class PSO(Heuristic):
         velocity_clip_max: float
             The velocity maximum bound. Default = 1.0
         """
-        super().__init__()
+        super(PSO, self).__init__()
         self.inertia_weight = inertia_weight
         self.cognitive_control = cognitive_control
         self.social_control = social_control

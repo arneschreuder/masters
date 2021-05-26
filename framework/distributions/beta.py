@@ -45,7 +45,7 @@ class Beta(Distribution):
         concentration0: tf.Tensor
             The failed event concentration.
         """
-        super().__init__(
+        super(Beta, self).__init__(
             instance=tfp.distributions.Beta(
                 concentration1=concentration1,
                 concentration0=concentration0

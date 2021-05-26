@@ -43,7 +43,7 @@ class Iris(Feedforward):
     """
 
     def __init__(self):
-        super().__init__(
+        super(Iris, self).__init__(
             layers=[
                 Dense(
                     shape=[4, 5],

@@ -93,7 +93,7 @@ class SGD(Optimiser):
                      features: tf.Tensor,
                      labels: tf.Tensor) -> List[List[tf.Tensor]]:
         """
-        Calculates the gradient of the model parameters based on loss function.
+        Calculates the gradient of the model weights based on loss function.
 
         Parameters
         ----------
@@ -108,21 +108,22 @@ class SGD(Optimiser):
             The gradient as a list of list of tensors
         """
         with tf.GradientTape() as tape:
-            parameters = self.model.get_weights()
-            tape.watch(parameters)
+            weights = self.model.get_weights()
+            tape.watch(weights)
             logits = self.model(features=features)
             loss = self.loss_fn(
                 labels=labels,
                 logits=logits
             )
             gradient = tape.gradient(
-                target=loss, sources=parameters
+                target=loss, sources=weights
             )
             return gradient
 
     def __call__(self,
                  features: tf.Tensor,
-                 labels: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
+                 labels: tf.Tensor,
+                 step: int) -> Tuple[tf.Tensor, tf.Tensor]:
         """
         A single execution of the optimiser's step.
 

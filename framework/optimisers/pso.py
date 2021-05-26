@@ -25,7 +25,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 from copy import deepcopy
-from typing import List
+from typing import List, Tuple
 
 import tensorflow as tf
 from framework.entities.entity import Entity
@@ -40,7 +40,7 @@ class PSO(Optimiser):
 
     Attributes
     ----------
-    population_size: int
+    population: int
         The swarm size. Default = None
     entities: List[Entity]
         Entities in population. Default = None
@@ -50,13 +50,13 @@ class PSO(Optimiser):
         Global best position. Default = None
 
     """
-    population_size: int = None
+    population: int = None
     entities: List[Entity] = None
     pbests: List[tf.Variable] = None
     gbest: tf.Variable = None
 
     def __init__(self,
-                 population_size: int = 30,
+                 population: int = 30,
                  inertia_weight: float = 0.729844,
                  social_control: float = 1.496180,
                  cognitive_control: float = 1.496180,
@@ -66,7 +66,7 @@ class PSO(Optimiser):
         """
         Parameters
         ----------
-        population_size: int
+        population: int
             Population/swarm size. Default = 30
         inertia_weight: float
             The inertia weight (w). Default = 0.729844
@@ -81,7 +81,7 @@ class PSO(Optimiser):
         velocity_clip_max: float
             The velocity maximum bound. Default = 1.0
         """
-        super().__init__(
+        super(PSO, self).__init__(
             heuristic=PSOHeuristic(
                 inertia_weight=inertia_weight,
                 social_control=social_control,
@@ -91,7 +91,7 @@ class PSO(Optimiser):
                 velocity_clip_max=velocity_clip_max
             )
         )
-        self.population_size = population_size
+        self.population = population
         self.entities = None
         self.pbests = None
         self.gbest = None
@@ -108,7 +108,7 @@ class PSO(Optimiser):
         self.pbests = []
 
         # Personal bests
-        for i in range(self.population_size):
+        for i in range(self.population):
             entity = Entity()
             # This is required to determine the dimensionality of the model.
             entity.map_model(self.model)
@@ -123,8 +123,36 @@ class PSO(Optimiser):
         weights = self.model.get_weights_flat()
         self.gbest = tf.Variable(initial_value=weights)
 
-    def __call__(self, features, labels):
+    def update_bests(self,
+                     features: tf.Tensor,
+                     labels: tf.Tensor,
+                     entity: Entity,
+                     pbest: tf.Tensor
+                     ):
+        # Evaluate entity
+        self.model.set_weights_flat(weights_flat=entity.position)
+        _, loss = self.evaluate(features=features, labels=labels)
+
+        # Evaluate pbest
+        self.model.set_weights_flat(weights_flat=pbest)
+        _, pbest_loss = self.evaluate(features=features, labels=labels)
+
+        if loss < pbest_loss:
+            pbest.assign(entity.position)
+
+        # Evaluate gbest
+        self.model.set_weights_flat(weights_flat=self.gbest)
+        _, gbest_loss = self.evaluate(features=features, labels=labels)
+
+        if loss < gbest_loss:
+            self.gbest.assign(entity.position)
+
+    def __call__(self,
+                 features: tf.Tensor,
+                 labels: tf.Tensor,
+                 step: int) -> Tuple[tf.Tensor, tf.Tensor]:
         for entity, pbest in zip(self.entities, self.pbests):
+            # Step
             self.heuristic(
                 position=entity.position,
                 velocity=entity.velocity,
@@ -132,30 +160,13 @@ class PSO(Optimiser):
                 gbest=self.gbest
             )
 
-            # TODO:
-            # Assume asynchronous, so first run through all, get losses
-            # Then only check and update pbest and gbest
-
-            # TODO:
-            # Evaluation must take in a solution, make it more generic
-
-            # Evaluate entity
-            self.model.set_weights_flat(weights_flat=entity.position)
-            _, loss = self.evaluate(features=features, labels=labels)
-
-            # Evaluate pbest
-            self.model.set_weights_flat(weights_flat=pbest)
-            _, pbest_loss = self.evaluate(features=features, labels=labels)
-
-            # Evaluate pbest
-            self.model.set_weights_flat(weights_flat=self.gbest)
-            _, gbest_loss = self.evaluate(features=features, labels=labels)
-
-            if loss < pbest_loss:
-                pbest.assign(entity.position)
-
-            if loss < gbest_loss:
-                self.gbest.assign(entity.position)
+            # Update pbest and gbest
+            self.update_bests(
+                features=features,
+                labels=labels,
+                entity=entity,
+                pbest=pbest
+            )
 
         # Evaluate current position
         self.model.set_weights_flat(weights_flat=self.gbest)
