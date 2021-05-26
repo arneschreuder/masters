@@ -54,11 +54,11 @@ class SGD(Heuristic):
         Parameters
         ----------
         learning_rate: float
-            The step size. Default = None
+            The step size. Default = 0.1
         momentum: float
-            Momentum hyper-heuristic. Default = None
+            Momentum hyper-heuristic. Default = 0.9
         nesterov: bool
-            Flag to use nesterov update rule. Default = None
+            Flag to use nesterov update rule. Default = True
         """
         super(SGD, self).__init__()
         self.learning_rate: float = learning_rate,

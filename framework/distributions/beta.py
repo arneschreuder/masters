@@ -34,10 +34,9 @@ class Beta(Distribution):
     The Beta probability distribution.
     """
 
-    def __init__(
-            self,
-            concentration1: tf.Tensor,
-            concentration0: tf.Tensor):
+    def __init__(self,
+                 concentration1: tf.Tensor,
+                 concentration0: tf.Tensor):
         """
         Parameters
         ----------

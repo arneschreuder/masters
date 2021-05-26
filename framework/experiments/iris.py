@@ -26,7 +26,8 @@
 
 from framework.datasets.iris import Iris as IrisDataset
 from framework.experiments.experiment import Experiment
-from framework.losses.sparse_categorical import SparseCategoricalCrossentropy
+from framework.losses.sparse_categorical_crossentropy import \
+    SparseCategoricalCrossentropy
 from framework.metrics.sparse_categorical_accuracy import \
     SparseCategoricalAccuracy as SparseCategoricalAccuracyMetric
 from framework.metrics.sparse_categorical_crossentropy import \

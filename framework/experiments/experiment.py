@@ -123,6 +123,11 @@ class Experiment:
         self.optimiser.set_model(model=self.model)
         self.optimiser.initialise()
 
+        params = self.optimiser.model.get_parameters()
+        tf.print(params)
+        tf.print(type(params), summarize=-1)
+        tf.print(type(params[0]), summarize=-1)
+
         # Track all metric names
         stateful_metrics = []
         for metric in self.metrics:
@@ -196,7 +201,7 @@ class Experiment:
                 logits, loss = self.optimiser(features, labels)
                 self.update_metrics(labels=labels, logits=logits)
 
-            metrics_dict = self.log_metrics(epoch=e)
+            metrics_dict = self.log_metrics(epoch=e+1)
 
             # TODO: Validate and Test?
 
