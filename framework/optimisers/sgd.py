@@ -108,7 +108,7 @@ class SGD(Optimiser):
             The gradient as a list of list of tensors
         """
         with tf.GradientTape() as tape:
-            parameters = self.model.get_parameters()
+            parameters = self.model.get_weights()
             tape.watch(parameters)
             logits = self.model(features=features)
             loss = self.loss_fn(
@@ -139,11 +139,11 @@ class SGD(Optimiser):
             Consists out of (logits, loss)
         """
         # Load model with solution
-        self.model.set_parameters_flat(parameters_flat=self.entity.position)
+        self.model.set_weights_flat(weights_flat=self.entity.position)
 
         # Get gradients
         gradient = self.get_gradient(features=features, labels=labels)
-        gradient_flat = flatten(parameters=gradient)
+        gradient_flat = flatten(x=gradient)
 
         # Step and update position and velocity using heuristic
         self.heuristic(
@@ -153,6 +153,6 @@ class SGD(Optimiser):
         )
 
         # Evaluate current position
-        self.model.set_parameters_flat(parameters_flat=self.entity.position)
+        self.model.set_weights_flat(weights_flat=self.entity.position)
         logits, loss = self.evaluate(features=features, labels=labels)
         return logits, loss

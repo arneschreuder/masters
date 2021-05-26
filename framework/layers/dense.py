@@ -24,10 +24,13 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+from typing import List
+
 import tensorflow as tf
 from framework.activations.activation import Activation
 from framework.initialisers.glorot_uniform import GlorotUniform
 from framework.initialisers.initialiser import Initialiser
+from framework.initialisers.zeros import Zeros
 from framework.layers.layer import Layer
 
 
@@ -42,27 +45,27 @@ class Dense(Layer):
         The dimensionality of the layer. Default = None
     activation: Activation
         The activation function to use. Default = None
-    weights_initialiser: Initialiser
-        The initialiser used to initialise the weights variable. Default = None
+    kernel_initialiser: Initialiser
+        The initialiser used to initialise the kernel variable. Default = None
     biases_initialiser: Initialiser
         The initialiser used to initialise the biases variable. Default = None
-    weights: tf.Variable
-        The kernel weights. Default = None
+    kernel: tf.Variable
+        The kernel kernel. Default = None
     biases: tf.Variable
         The kernel biases. Default = None
     """
     shape: tf.TensorShape = None
     activation: Activation = None
-    weights_initialiser: Initialiser = None
+    kernel_initialiser: Initialiser = None
     biases_initialiser: Initialiser = None
-    weights: tf.Variable = None
+    kernel: tf.Variable = None
     biases: tf.Variable = None
 
     def __init__(self,
                  shape: tf.TensorShape,
                  activation: Activation = None,
-                 weights_initialiser: Initialiser = GlorotUniform(),
-                 biases_initialiser: Initialiser = GlorotUniform()):
+                 kernel_initialiser: Initialiser = GlorotUniform(),
+                 biases_initialiser: Initialiser = Zeros()):
         """
         Parameters
         ----------
@@ -70,8 +73,8 @@ class Dense(Layer):
             The dimensionality of the layer. Default = None
         activation: Activation
             The activation function to use. Default = None
-        weights_initialiser: Initialiser
-            The initialiser used to initialise the weights variable. Default = None
+        kernel_initialiser: Initialiser
+            The initialiser used to initialise the kernel variable. Default = None
         biases_initialiser: Initialiser
             The initialiser used to initialise the biases variable. Default = None
         """
@@ -82,23 +85,42 @@ class Dense(Layer):
         self.activation = activation
 
         # Initialisers
-        self.weights_initialiser = weights_initialiser
+        self.kernel_initialiser = kernel_initialiser
         self.biases_initialiser = biases_initialiser
 
         # State
-        self.weights = None
+        self.kernel = None
         self.biases = None
+
+    def get_weights(self) -> List[tf.Variable]:
+        """
+        Returns
+        -------
+        List[tf.Variable]
+            List of weights that essentially contains kernel and biases
+        """
+        return [self.kernel, self.biases]
+
+    def set_weights(self, weights: List[tf.Tensor]) -> None:
+        """
+        Parameters
+        -------
+        weights: List[tf.Tensor]
+            New weights and biases presented as index 0 and 1 in a list of params
+        """
+        self.kernel.assign(weights[0])
+        self.biases.assign(weights[1])
 
     def initialise(self):
         """
         Initialisation function. Initialises weight and biases.
         """
         # State
-        self.weights = tf.Variable(
-            initial_value=self.weights_initialiser(shape=self.shape)
+        self.kernel = tf.Variable(
+            initial_value=self.kernel_initialiser(shape=self.shape)
         )
         self.biases = tf.Variable(
-            initial_value=self.weights_initialiser(shape=[1, self.shape[1]])
+            initial_value=self.kernel_initialiser(shape=[1, self.shape[1]])
         )
 
     def __call__(self, features: tf.Tensor) -> tf.Tensor:
@@ -116,7 +138,7 @@ class Dense(Layer):
             Output data.  
         """
 
-        net = features @ self.weights + self.biases
+        net = features @ self.kernel + self.biases
 
         # Activation can be optional.
         # Consider where softmax is used as prediction layer.

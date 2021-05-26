@@ -24,8 +24,6 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-from typing import List
-
 import tensorflow as tf
 
 
@@ -33,22 +31,3 @@ class Layer:
     """
     The base layer class that represents layers in a Neural Network.
     """
-
-    def get_parameters(self) -> List[tf.Variable]:
-        """
-        Returns
-        -------
-        List[tf.Variable]
-            List of parameters that essentially contains weights and biases
-        """
-        return [self.weights, self.biases]
-
-    def set_parameters(self, parameters: List[tf.Tensor]) -> None:
-        """
-        Parameters
-        -------
-        parameters: List[tf.Tensor]
-            New weights and biases presented as index 0 and 1 in a list of params
-        """
-        self.weights.assign(parameters[0])
-        self.biases.assign(parameters[1])

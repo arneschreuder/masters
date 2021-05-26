@@ -120,8 +120,8 @@ class PSO(Optimiser):
             self.pbests.append(pbest)
 
         # Here we just initialise the gbest value to some random value
-        parameters = self.model.get_parameters_flat()
-        self.gbest = tf.Variable(initial_value=parameters)
+        weights = self.model.get_weights_flat()
+        self.gbest = tf.Variable(initial_value=weights)
 
     def __call__(self, features, labels):
         for entity, pbest in zip(self.entities, self.pbests):
@@ -140,15 +140,15 @@ class PSO(Optimiser):
             # Evaluation must take in a solution, make it more generic
 
             # Evaluate entity
-            self.model.set_parameters_flat(parameters_flat=entity.position)
+            self.model.set_weights_flat(weights_flat=entity.position)
             _, loss = self.evaluate(features=features, labels=labels)
 
             # Evaluate pbest
-            self.model.set_parameters_flat(parameters_flat=pbest)
+            self.model.set_weights_flat(weights_flat=pbest)
             _, pbest_loss = self.evaluate(features=features, labels=labels)
 
             # Evaluate pbest
-            self.model.set_parameters_flat(parameters_flat=self.gbest)
+            self.model.set_weights_flat(weights_flat=self.gbest)
             _, gbest_loss = self.evaluate(features=features, labels=labels)
 
             if loss < pbest_loss:
@@ -158,6 +158,6 @@ class PSO(Optimiser):
                 self.gbest.assign(entity.position)
 
         # Evaluate current position
-        self.model.set_parameters_flat(parameters_flat=self.gbest)
+        self.model.set_weights_flat(weights_flat=self.gbest)
         logits, loss = self.evaluate(features=features, labels=labels)
         return logits, loss

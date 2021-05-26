@@ -90,7 +90,7 @@ class Entity:
         # Set the dimensionality of the entity equal
         # to that of the models parameters as it is presented
         # as a flat tensor.
-        parameters = model.get_parameters_flat()
+        parameters = model.get_weights_flat()
         self.shape = parameters.shape
 
     def initialise(self):

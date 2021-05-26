@@ -123,10 +123,7 @@ class Experiment:
         self.optimiser.set_model(model=self.model)
         self.optimiser.initialise()
 
-        params = self.optimiser.model.get_parameters()
-        tf.print(params)
-        tf.print(type(params), summarize=-1)
-        tf.print(type(params[0]), summarize=-1)
+        params = self.optimiser.model.get_weights()
 
         # Track all metric names
         stateful_metrics = []

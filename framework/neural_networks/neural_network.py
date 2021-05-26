@@ -39,7 +39,7 @@ class NeuralNetwork:
     ----------
     layers: List[Layer]
         The layers of the Neural Network.
-        Can contain trainable variables and hyper-parameters.
+        Can contain trainable variables and hyper-weights.
         Can also contain an optional activation function.
         Default = None.
     """
@@ -79,7 +79,7 @@ class NeuralNetwork:
 
         return shapes
 
-    def get_parameters(self) -> List[List[tf.Variable]]:
+    def get_weights(self) -> List[tf.Variable]:
         """
         Gets model trainable variables.
 
@@ -88,27 +88,27 @@ class NeuralNetwork:
         List[List[tf.Variable]]
             The model's trainable variables in a list.
         """
-        parameters = []
+        weights = []
 
         for layer in self.layers:
-            p = layer.get_parameters()
-            parameters.append(p)
+            p = layer.get_weights()
+            weights.append(p)
 
-        return parameters
+        return weights
 
-    def set_parameters(self, parameters: List[List[tf.Variable]]) -> None:
+    def set_weights(self, weights: List[List[tf.Variable]]) -> None:
         """
         Sets the model's trainable variables.
 
         Parameters
         ----------
-        parameters: List[List[tf.Variable]]
-            The parameters to use for the model's trainable variables
+        weights: List[List[tf.Variable]]
+            The weights to use for the model's trainable variables
         """
-        for layer, p in zip(self.layers, parameters):
-            layer.set_parameters(parameters=p)
+        for layer, w in zip(self.layers, weights):
+            layer.set_weights(weights=w)
 
-    def get_parameters_flat(self) -> tf.Tensor:
+    def get_weights_flat(self) -> tf.Tensor:
         """
         Gets the model's trainable variables in a single flat tensor.
 
@@ -118,19 +118,19 @@ class NeuralNetwork:
             The resulting 1-D tensor containing the
             flattened model trainable variables.
         """
-        parameters = self.get_parameters()
-        return flatten(parameters=parameters)
+        weights = self.get_weights()
+        return flatten(x=weights)
 
-    def set_parameters_flat(self, parameters_flat: tf.Tensor) -> None:
+    def set_weights_flat(self, weights_flat: tf.Tensor) -> None:
         """
         Sets the model's trainable variables by means of a single flat tensor.
 
         Parameters
         -------
-       parameters_flat: tf.Tensor
+       weights_flat: tf.Tensor
             The 1-D tensor containing the
             flattened model trainable variables to be assigned.
         """
         shapes = self.get_shapes()
-        parameters = reshape(parameters_flat=parameters_flat, shapes=shapes)
-        self.set_parameters(parameters=parameters)
+        weights = reshape(x_flat=weights_flat, shapes=shapes)
+        self.set_weights(weights=weights)
