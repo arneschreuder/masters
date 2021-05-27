@@ -25,6 +25,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 from copy import deepcopy
+from logging import log
 from typing import List, Tuple
 
 import tensorflow as tf
@@ -52,7 +53,7 @@ class BHH(Optimiser):
     burn_in: int = None
     replay: int = None
     reselection: int = None
-    reevaluation: int = None
+    reanalysis: int = None
     credit: List[Credit] = None
 
     alpha_initialiser: Initialiser = None
@@ -97,9 +98,9 @@ class BHH(Optimiser):
     def __init__(self,
                  population: int = 30,
                  burn_in: int = 10,
-                 replay: int = 10,
+                 replay: int = 3,
                  reselection: int = 1,
-                 reevaluation: int = 1,
+                 reanalysis: int = 1,
                  credit: List[Credit] = [
                      IBest()
                  ],
@@ -111,14 +112,14 @@ class BHH(Optimiser):
                  beta_initialiser: Initialiser = Ones(),
                  gamma_initialiser: Initialiser = Ones()):
         super(BHH, self).__init__(
-            heuristic=BHHHeuristic()
+            heuristic=BHHHeuristic(credit=credit)
         )
         # Setting hyper-parameters
         self.population = population
         self.burn_in = burn_in
         self.replay = replay
         self.reselection = reselection
-        self.reevaluation = reevaluation
+        self.reanalysis = reanalysis
         self.credit = credit
 
         self.alpha_initialiser = alpha_initialiser
@@ -193,17 +194,25 @@ class BHH(Optimiser):
 
     def initialise_probability_distributions(self):
         # Concentrations
-        self.alpha = self.alpha_initialiser(shape=[self.K])
-        self.beta = self.beta_initialiser(shape=[self.J, self.K])
-        self.gamma1 = self.gamma_initialiser(shape=[self.K])
-        self.gamma0 = self.gamma_initialiser(shape=[self.K])
+        self.alpha = tf.Variable(
+            initial_value=self.alpha_initialiser(shape=[self.K])
+        )
+        self.beta = tf.Variable(
+            initial_value=self.beta_initialiser(shape=[self.J, self.K])
+        )
+        self.gamma1 = tf.Variable(
+            initial_value=self.gamma_initialiser(shape=[self.K])
+        )
+        self.gamma0 = tf.Variable(
+            initial_value=self.gamma_initialiser(shape=[self.K])
+        )
 
-    def select(self):
         # Probability distributions
         self.theta = Dirichlet(concentration=self.alpha)
         self.phi = Dirichlet(concentration=self.beta)
         self.psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
 
+    def select(self):
         # Probabilities
         self.p_H = self.theta()
         self.p_EgH = self.phi()
@@ -298,6 +307,7 @@ class BHH(Optimiser):
 
         if loss < pbest_loss:
             pbest.assign(entity.position)
+            pbest_loss = loss
 
         # Evaluate ibest
         self.model.set_weights_flat(weights_flat=self.ibest)
@@ -305,6 +315,7 @@ class BHH(Optimiser):
 
         if loss < ibest_loss:
             self.ibest.assign(entity.position)
+            ibest_loss = loss
 
         # Evaluate gbest
         self.model.set_weights_flat(weights_flat=self.gbest)
@@ -312,6 +323,7 @@ class BHH(Optimiser):
 
         if loss < gbest_loss:
             self.gbest.assign(entity.position)
+            gbest_loss = loss
 
         return loss, pbest_loss, ibest_loss, gbest_loss
 
@@ -320,10 +332,6 @@ class BHH(Optimiser):
                  labels: tf.Tensor,
                  step: int) -> Tuple[tf.Tensor, tf.Tensor]:
         for j, (entity, pbest) in enumerate(zip(self.entities, self.pbests)):
-            # Set ibest to initial entity on new iteration
-            if j == 0:
-                self.ibest.assign(entity.position)
-
             # Get the selected heuristic
             k, heuristic = self.get_heuristic(j)
 
@@ -340,6 +348,10 @@ class BHH(Optimiser):
                 pbest=pbest
             )
 
+            # Set ibest to initial entity on new iteration
+            if j == 0:
+                self.ibest.assign(entity.position)
+
             # Update pbest and gbest
             loss, pbest_loss, ibest_loss, gbest_loss = self.update_bests(
                 features=features,
@@ -349,7 +361,7 @@ class BHH(Optimiser):
             )
 
             # Log performance
-            self.log.log(
+            self.log.append(
                 step=step,
                 entity=j,
                 heuristic=k,
@@ -359,20 +371,30 @@ class BHH(Optimiser):
                 gbest_loss=gbest_loss.numpy()
             )
 
-        # # Forget factor
-        # if step >= self.replay:
-        #     self.performance_log.forget()
-
+        # Update
         # Check if burn in is complete
-        if step > self.burn_in:
-            # # Check for re-evaluation
-            # if step % self.reevaluation == 0:
-            #     self._evaluate()
+        if step <= self.burn_in:
+            self.initialise_probability_distributions()
+            self.select()
+        else:
+            # Check for re-analysis
+            if step % self.reanalysis == 0:
+                self.heuristic(
+                    alpha=self.alpha,
+                    beta=self.beta,
+                    gamma1=self.gamma1,
+                    gamma0=self.gamma0,
+                    log=self.log
+                )
 
             # Check for reselection
             if step % self.reselection == 0:
                 self.initialise_probability_distributions()
                 self.select()
+
+            # Forget factor
+            if step > self.replay:
+                self.log.prune(step=step - self.replay)
 
         # Evaluate current position
         self.model.set_weights_flat(weights_flat=self.gbest)

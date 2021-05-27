@@ -24,13 +24,28 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+from typing import List
+
 import tensorflow as tf
+from framework.credit.credit import Credit
 from framework.heuristics.heuristic import Heuristic
+from framework.performance_log.performance_log import PerformanceLog
 
 
 class BHH(Heuristic):
-    def __init__(self):
-        super(BHH, self).__init__()
+    credit: List[Credit] = None
 
-    def __call__(self) -> None:
-        pass
+    def __init__(self, credit: List[Credit],):
+        super(BHH, self).__init__()
+        self.credit = credit
+
+    def __call__(self,
+                 alpha: tf.Variable,
+                 beta: tf.Variable,
+                 gamma1: tf.Variable,
+                 gamma0: tf.Variable,
+                 log: PerformanceLog) -> None:
+        for c in self.credit:
+            tf.print(log.log)
+            credit = c(log=log)
+            tf.print(credit)

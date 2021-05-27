@@ -194,15 +194,15 @@ class Experiment:
         for e in range(self.epochs):
             # Train
             for features, labels in self.dataset.training:
-                step += 1
                 logits, _ = self.optimiser(
                     features=features,
                     labels=labels,
                     step=step
                 )
                 self.update_metrics(labels=labels, logits=logits)
+                step += 1
 
-            metrics_dict = self.log_metrics(epoch=e+1)
+            metrics_dict = self.log_metrics(epoch=e)
 
             # TODO: Validate and Test?
 
