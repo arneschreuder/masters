@@ -54,6 +54,7 @@ class BHH(Optimiser):
     replay: int = None
     reselection: int = None
     reanalysis: int = None
+    normalise: bool = None  # TODO: STILL NEED TO DO THIS
     credit: List[Credit] = None
 
     alpha_initialiser: Initialiser = None
@@ -97,8 +98,8 @@ class BHH(Optimiser):
 
     def __init__(self,
                  population: int = 30,
-                 burn_in: int = 10,
-                 replay: int = 3,
+                 burn_in: int = 30,
+                 replay: int = 30,
                  reselection: int = 1,
                  reanalysis: int = 1,
                  credit: List[Credit] = [
@@ -207,12 +208,12 @@ class BHH(Optimiser):
             initial_value=self.gamma_initialiser(shape=[self.K])
         )
 
+    def select(self):
         # Probability distributions
         self.theta = Dirichlet(concentration=self.alpha)
         self.phi = Dirichlet(concentration=self.beta)
         self.psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
 
-    def select(self):
         # Probabilities
         self.p_H = self.theta()
         self.p_EgH = self.phi()
@@ -373,8 +374,7 @@ class BHH(Optimiser):
 
         # Update
         # Check if burn in is complete
-        if step <= self.burn_in:
-            self.initialise_probability_distributions()
+        if step < self.burn_in:
             self.select()
         else:
             # Check for re-analysis
@@ -389,7 +389,6 @@ class BHH(Optimiser):
 
             # Check for reselection
             if step % self.reselection == 0:
-                self.initialise_probability_distributions()
                 self.select()
 
             # Forget factor

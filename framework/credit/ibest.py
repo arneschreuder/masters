@@ -8,7 +8,7 @@ class IBest(Credit):
         credit = pd.DataFrame(columns=self.columns)
         credit = credit.astype(self.dtypes)
 
-        for index, row in log.log.iterrows():
+        for _, row in log.log.iterrows():
             step = row["step"]
             entity = row["entity"]
             heuristic = row["heuristic"]

@@ -26,6 +26,7 @@
 
 from typing import List
 
+import numpy as np
 import tensorflow as tf
 from framework.credit.credit import Credit
 from framework.heuristics.heuristic import Heuristic
@@ -35,7 +36,7 @@ from framework.performance_log.performance_log import PerformanceLog
 class BHH(Heuristic):
     credit: List[Credit] = None
 
-    def __init__(self, credit: List[Credit],):
+    def __init__(self, credit: List[Credit]):
         super(BHH, self).__init__()
         self.credit = credit
 
@@ -45,7 +46,43 @@ class BHH(Heuristic):
                  gamma1: tf.Variable,
                  gamma0: tf.Variable,
                  log: PerformanceLog) -> None:
+
+        # Get dimensionality
+        J = beta.shape[0]
+        K = alpha.shape[0]
+
+        # Initialize counts to zeros
+        # Total occurrences of heuristic k
+        N_k = np.ones([K], dtype=np.float32)
+
+        # Total occurrences of entity j and heuristic k
+        N_jk = np.ones([J, K], dtype=np.float32)
+
+        # Total occurences of successfully meeting performance criteria by heuristic k
+        N_1k = np.ones([K], dtype=np.float32)
+
+        # Total occurences of failing to meet performance criteria by heuristic k
+        N_0k = np.ones([K], dtype=np.float32)
+
         for c in self.credit:
-            tf.print(log.log)
             credit = c(log=log)
-            tf.print(credit)
+
+            for _, row in credit.iterrows():
+                j = row['entity'].astype(int)
+                k = row['heuristic'].astype(int)
+                l = row['credit'].astype(int)
+
+                N_k[k] += 1
+                N_jk[j][k] += l
+                N_1k[k] += l
+                N_0k[k] += 1-l
+
+        _alpha = tf.constant(N_k)
+        _beta = tf.constant(N_jk)
+        _gamma1 = tf.constant(N_1k)
+        _gamma0 = tf.constant(N_0k)
+
+        alpha.assign(_alpha)
+        beta.assign(_beta)
+        gamma1.assign(_gamma1)
+        gamma0.assign(_gamma0)
