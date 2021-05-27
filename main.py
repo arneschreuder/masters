@@ -4,9 +4,7 @@ import datetime
 import framework as fw
 
 experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.BHH(
-        population=30
-    ),
+    optimiser=fw.optimisers.SGD(),
     log_dir="logs",
     seed=1
 )
