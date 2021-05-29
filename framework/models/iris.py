@@ -52,3 +52,4 @@ class Iris(Feedforward):
                 Dense(shape=[5, 3])
             ]
         )
+        

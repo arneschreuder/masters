@@ -1,9 +1,12 @@
 import pandas as pd
-from framework.credit.credit import Credit
+from framework.credits.credit import Credit
 from framework.performance_log.performance_log import PerformanceLog
 
 
 class IBest(Credit):
+    def __init__(self, discounted_rewards=True):
+        super(IBest, self).__init__(discounted_rewards=discounted_rewards)
+
     def __call__(self, log: PerformanceLog):
         credit = pd.DataFrame(columns=self.columns)
         credit = credit.astype(self.dtypes)
@@ -12,13 +15,19 @@ class IBest(Credit):
             step = row["step"]
             entity = row["entity"]
             heuristic = row["heuristic"]
-            c = 1 if row["loss"] <= row["ibest_loss"] else 0
+            loss = row["loss"]
+            ibest_loss = row["ibest_loss"]
+            reward = self.get_reward(
+                output=loss,
+                target=ibest_loss,
+                step=step
+            )
 
             dict = {
                 "step": step,
                 "entity": entity,
                 "heuristic": heuristic,
-                "credit": c,
+                "credit": reward
             }
             credit = credit.append(dict, ignore_index=True).astype(self.dtypes)
 

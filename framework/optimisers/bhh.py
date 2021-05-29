@@ -30,8 +30,8 @@ from typing import List, Tuple
 
 import tensorflow as tf
 import tensorflow_probability as tfp
-from framework.credit.credit import Credit
-from framework.credit.ibest import IBest
+from framework.credits.credit import Credit
+from framework.credits.ibest import IBest
 from framework.distributions.beta import Beta
 from framework.distributions.categorical import Categorical
 from framework.distributions.dirichlet import Dirichlet
@@ -46,6 +46,8 @@ from framework.initialisers.ones import Ones
 from framework.optimisers.optimiser import Optimiser
 from framework.performance_log.performance_log import PerformanceLog
 from framework.utilities.utilities import flatten
+
+# TODO: STILL NEED TO COMMENT THIS FILE
 
 
 class BHH(Optimiser):
@@ -386,6 +388,8 @@ class BHH(Optimiser):
                     gamma0=self.gamma0,
                     log=self.log
                 )
+
+                tf.print(self.HgEC)
 
             # Check for reselection
             if step % self.reselection == 0:

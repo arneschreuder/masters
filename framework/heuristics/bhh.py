@@ -24,15 +24,17 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+
 from typing import List
 
 import numpy as np
 import tensorflow as tf
-from framework.credit.credit import Credit
+from framework.credits.credit import Credit
 from framework.heuristics.heuristic import Heuristic
 from framework.performance_log.performance_log import PerformanceLog
 
 
+# TODO: STILL NEED TO COMMENT THIS FILE
 class BHH(Heuristic):
     credit: List[Credit] = None
 
@@ -70,10 +72,10 @@ class BHH(Heuristic):
             for _, row in credit.iterrows():
                 j = row['entity'].astype(int)
                 k = row['heuristic'].astype(int)
-                l = row['credit'].astype(int)
+                l = row['credit'].astype(float)
 
                 N_k[k] += 1
-                N_jk[j][k] += l
+                N_jk[j][k] += 1
                 N_1k[k] += l
                 N_0k[k] += 1-l
 

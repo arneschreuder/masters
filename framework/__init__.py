@@ -1,5 +1,5 @@
 from .activations import *
-from .credit import *
+from .credits import *
 from .datasets import *
 from .distributions import *
 from .entities import *
