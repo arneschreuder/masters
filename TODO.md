@@ -1,0 +1,26 @@
+## TODO
+
+- [ ] there is a mistake with discounted rewards, since step 0 is furthest back. Thus, we need to take len - step
+- [x] fw.credits.PBest
+- [ ] fw.credits.GBest
+- [ ] fw.credits.RBest
+- [ ] multiple credits together -> sum (bhh)
+- [ ] tensorboard selection probabilities
+- [ ] tensorboard selections
+- [ ] fw.credits.Random
+- [ ] log-sum-exp
+- [ ] loss change average to sum
+- [ ] more datasets
+- [ ] more heuristics
+- [ ] optimisation
+- [ ] training, test, validation
+- [ ] main + experiment -> cli
+- [ ] ensure all heuristics are always selected, despite model
+- [ ] ensure all heuristics prerequisite data are met
+- [ ] prepare experiments
+- [ ] test scripts
+- [ ] access hpc
+- [ ] run experiments
+- [ ] gather data
+- [ ] do statistical analysis
+- [ ] prepare results
