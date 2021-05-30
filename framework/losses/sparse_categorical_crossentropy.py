@@ -54,7 +54,7 @@ class SparseCategoricalCrossentropy(Loss):
             The loss tensor.
         """
         return tf.reduce_mean(
-            tf.losses.sparse_categorical_crossentropy(
+            input_tensor=tf.losses.sparse_categorical_crossentropy(
                 y_true=labels,
                 y_pred=logits,
                 from_logits=True

@@ -1,5 +1,4 @@
 import pandas as pd
-import tensorflow as tf
 from framework.credits.credit import Credit
 from framework.performance_log.performance_log import PerformanceLog
 
@@ -36,5 +35,4 @@ class RBest(Credit):
             }
             credit = credit.append(dict, ignore_index=True).astype(self.dtypes)
 
-        tf.print(credit, summarize=-1)
         return credit

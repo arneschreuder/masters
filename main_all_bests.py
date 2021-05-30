@@ -3,7 +3,7 @@ import framework as fw
 
 experiment = fw.experiments.Iris(
     optimiser=fw.optimisers.BHH(
-        population=5,
+        population=10,
         burn_in=10,
         replay=30,
         reselection=1,
@@ -30,7 +30,7 @@ experiment = fw.experiments.Iris(
             ),
         ]
     ),
-    log_dir="logs/bhh-all",
+    log_dir="logs/bhh-all-bests-dr",
     seed=1
 )
 

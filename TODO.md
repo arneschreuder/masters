@@ -1,15 +1,19 @@
 ## TODO
 
-- [ ] there is a mistake with discounted rewards, since step 0 is furthest back. Thus, we need to take len - step
+- [x] there is a mistake with discounted rewards, since step 0 is furthest back. Thus, we need to take len - step
 - [x] fw.credits.PBest
 - [x] fw.credits.GBest
 - [x] fw.credits.RBest
-- [ ] multiple credits together -> sum (bhh)
+- [x] multiple credits together -> sum (bhh)
+- [x] there is a mistake with multiple credits, should not recount observations of heuristics and entities, only sum credit.
+- [?] loss change average to sum -> This is a problem with SGD
+- [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
+- [ ] Comment credit source files
+- [ ] Comment bhh source files
 - [ ] tensorboard selection probabilities
 - [ ] tensorboard selections
 - [ ] fw.credits.Random
 - [ ] log-sum-exp
-- [ ] loss change average to sum
 - [ ] more datasets
 - [ ] more heuristics
 - [ ] optimisation

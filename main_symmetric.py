@@ -3,16 +3,13 @@ import framework as fw
 
 experiment = fw.experiments.Iris(
     optimiser=fw.optimisers.BHH(
-        population=5,
+        population=10,
         burn_in=10,
         replay=30,
         reselection=1,
         reanalysis=1,
         credit=[
-            fw.credits.PBest(discounted_rewards=True),
-            fw.credits.IBest(discounted_rewards=True),
-            fw.credits.GBest(discounted_rewards=True),
-            fw.credits.RBest(discounted_rewards=True)
+            fw.credits.Symmetric(discounted_rewards=True)
         ],
         heuristics=[
             fw.heuristics.SGD(
@@ -30,7 +27,7 @@ experiment = fw.experiments.Iris(
             ),
         ]
     ),
-    log_dir="logs/bhh-all",
+    log_dir="logs/bhh-symmetric-dr",
     seed=1
 )
 
