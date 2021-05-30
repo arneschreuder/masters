@@ -23,11 +23,12 @@ class Credit:
             "credit": float,
         }
 
-    def get_reward(self, output, target, step):
+    def get_reward(self, output, target, step, max_step):
         reward = 1 if output <= target else 0
+        offset = max_step-step
 
         if self.discounted_rewards:
             # Logarithmically decrease on how far back reward is in memory.
-            reward *= (0.5**step)
+            reward *= (0.5**offset)
 
         return reward

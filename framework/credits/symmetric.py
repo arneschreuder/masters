@@ -1,5 +1,4 @@
 import pandas as pd
-import tensorflow as tf
 from framework.credits.credit import Credit
 from framework.performance_log.performance_log import PerformanceLog
 
@@ -11,6 +10,7 @@ class Symmetric(Credit):
     def __call__(self, log: PerformanceLog):
         credit = pd.DataFrame(columns=self.columns)
         credit = credit.astype(self.dtypes)
+        max_step = log.log["step"].max()
 
         for _, row in log.log.iterrows():
             step = row["step"]
@@ -24,7 +24,8 @@ class Symmetric(Credit):
             reward = self.get_reward(
                 output=loss,
                 target=loss,
-                step=step
+                step=step,
+                max_step=max_step
             )
 
             dict = {
@@ -34,7 +35,5 @@ class Symmetric(Credit):
                 "credit": reward
             }
             credit = credit.append(dict, ignore_index=True).astype(self.dtypes)
-
-        tf.print(credit, summarize=-1)
 
         return credit

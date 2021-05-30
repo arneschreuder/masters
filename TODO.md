@@ -2,8 +2,8 @@
 
 - [ ] there is a mistake with discounted rewards, since step 0 is furthest back. Thus, we need to take len - step
 - [x] fw.credits.PBest
-- [ ] fw.credits.GBest
-- [ ] fw.credits.RBest
+- [x] fw.credits.GBest
+- [x] fw.credits.RBest
 - [ ] multiple credits together -> sum (bhh)
 - [ ] tensorboard selection probabilities
 - [ ] tensorboard selections

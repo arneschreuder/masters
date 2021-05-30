@@ -11,6 +11,7 @@ class RBest(Credit):
     def __call__(self, log: PerformanceLog):
         credit = pd.DataFrame(columns=self.columns)
         credit = credit.astype(self.dtypes)
+        max_step = log.log["step"].max()
 
         # Get replay buffer minimum loss
         rbest_loss = log.log["loss"].min()
@@ -23,7 +24,8 @@ class RBest(Credit):
             reward = self.get_reward(
                 output=loss,
                 target=rbest_loss,
-                step=step
+                step=step,
+                max_step=max_step
             )
 
             dict = {
@@ -35,5 +37,4 @@ class RBest(Credit):
             credit = credit.append(dict, ignore_index=True).astype(self.dtypes)
 
         tf.print(credit, summarize=-1)
-
         return credit

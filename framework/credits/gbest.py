@@ -10,6 +10,7 @@ class GBest(Credit):
     def __call__(self, log: PerformanceLog):
         credit = pd.DataFrame(columns=self.columns)
         credit = credit.astype(self.dtypes)
+        max_step = log.log["step"].max()
 
         for _, row in log.log.iterrows():
             step = row["step"]
@@ -20,7 +21,8 @@ class GBest(Credit):
             reward = self.get_reward(
                 output=loss,
                 target=gbest_loss,
-                step=step
+                step=step,
+                max_step=max_step
             )
 
             dict = {

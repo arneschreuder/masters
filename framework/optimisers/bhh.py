@@ -389,8 +389,6 @@ class BHH(Optimiser):
                     log=self.log
                 )
 
-                tf.print(self.HgEC)
-
             # Check for reselection
             if step % self.reselection == 0:
                 self.select()

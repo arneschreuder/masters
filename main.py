@@ -9,7 +9,6 @@ experiment = fw.experiments.Iris(
         reselection=1,
         reanalysis=1,
         credit=[
-            # fw.credits.IBest(discounted_rewards=False)
             fw.credits.Symmetric(discounted_rewards=True)
         ],
         heuristics=[
@@ -26,12 +25,9 @@ experiment = fw.experiments.Iris(
                 velocity_clip_min=-1.0,
                 velocity_clip_max=1.0
             ),
-        ],
-        alpha_initialiser=fw.initialisers.Ones(),
-        beta_initialiser=fw.initialisers.Ones(),
-        gamma_initialiser=fw.initialisers.Ones()
+        ]
     ),
-    log_dir="logs/bhh-symmetric-credit",
+    log_dir="logs/bhh-symmetric",
     seed=1
 )
 
