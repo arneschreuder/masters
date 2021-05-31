@@ -56,7 +56,7 @@ class PSO(Optimiser):
     gbest: tf.Variable = None
 
     def __init__(self,
-                 population: int = 30,
+                 population: int = 10,
                  inertia_weight: float = 0.729844,
                  social_control: float = 1.496180,
                  cognitive_control: float = 1.496180,

@@ -85,7 +85,7 @@ class SGD(Heuristic):
             position.assign_add(-self.learning_rate*gradient)
         else:
             velocity.assign(
-                self.learning_rate*velocity - self.learning_rate*gradient
+                self.momentum*velocity - self.learning_rate*gradient
             )
 
             if self.nesterov:
