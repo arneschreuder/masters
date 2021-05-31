@@ -2,7 +2,7 @@
 import framework as fw
 
 experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.BHH(),
+    optimiser=fw.optimisers.PSO(),
     log_dir="logs/pso",
     seed=None
 )
