@@ -9,10 +9,7 @@ experiment = fw.experiments.Iris(
         reselection=1,
         reanalysis=1,
         credit=[
-            fw.credits.PBest(discounted_rewards=True),
-            fw.credits.IBest(discounted_rewards=True),
-            fw.credits.GBest(discounted_rewards=True),
-            fw.credits.RBest(discounted_rewards=True)
+            fw.credits.IBest(discounted_rewards=True)
         ],
         heuristics=[
             fw.heuristics.SGD(
@@ -30,7 +27,7 @@ experiment = fw.experiments.Iris(
             ),
         ]
     ),
-    log_dir="logs/bhh-all",
+    log_dir="logs/bhh",
     seed=1
 )
 
