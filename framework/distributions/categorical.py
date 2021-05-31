@@ -34,16 +34,22 @@ class Categorical(Distribution):
     The Categorical probability distribution.
     """
 
-    def __init__(self, probabilities: tf.Tensor):
+    def __init__(self, probabilities: tf.Tensor = None, logits: tf.Tensor = None):
         """
         Parameters
         ----------
         probabilities: tf.Tensor
             The underlying probabilities for each category.
         """
+        instance = None
 
-        super(Categorical, self).__init__(
-            instance=tfp.distributions.Categorical(
+        if probabilities:
+            instance = tfp.distributions.Categorical(
                 probs=probabilities
             )
-        )
+        else:
+            instance = tfp.distributions.Categorical(
+                logits=logits
+            )
+
+        super(Categorical, self).__init__(instance=instance)

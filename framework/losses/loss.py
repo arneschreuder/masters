@@ -30,5 +30,40 @@ import tensorflow as tf
 class Loss:
     """
     Base loss class used for loss functions.
+
+    Attributes
+    ----------
+    instance: tf.keras.losses.Loss
+        The loss instance. Default = None
     """
-    pass
+    instance: tf.keras.losses.Loss = None
+
+    def __init__(self, instance: tf.keras.losses.Loss = None):
+        """
+        Parameters
+        ----------
+        instance: tf.keras.losses.Loss
+            The loss instance. Default = None
+        """
+        self.instance = instance
+
+    def __call__(self, labels: tf.Tensor, logits: tf.Tensor) -> tf.Tensor:
+        """
+        Calculates the loss between logits and labels.
+
+        Parameters
+        ----------
+        labels: tf.Tensor
+            The target values to be predicted
+        logits: tf.Tensor
+            The predicted output of a Neural Network in logit format.
+
+        Returns
+        ----------
+        tf.Tensor
+            The initialised tensor
+        """
+        return self.instance(
+            y_true=labels,
+            y_pred=logits
+        )

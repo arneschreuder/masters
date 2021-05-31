@@ -35,28 +35,8 @@ class SparseCategoricalCrossentropy(Loss):
     """
 
     def __init__(self):
-        super(SparseCategoricalCrossentropy, self).__init__()
-
-    def __call__(self, labels: tf.Tensor, logits: tf.Tensor) -> tf.Tensor:
-        """
-        Calculates the loss between logits and labels.
-
-        Parameters
-        ----------
-        labels: tf.Tensor
-            The target values to be predicted
-        logits: tf.Tensor
-            The predicted output of a Neural Network in logit format.
-
-        Returns
-        -------
-        tf.Tensor
-            The loss tensor.
-        """
-        return tf.reduce_mean(
-            input_tensor=tf.losses.sparse_categorical_crossentropy(
-                y_true=labels,
-                y_pred=logits,
+        super(SparseCategoricalCrossentropy, self).__init__(
+            instance=tf.keras.losses.SparseCategoricalCrossentropy(
                 from_logits=True
             )
         )

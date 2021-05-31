@@ -7,13 +7,16 @@
 - [x] multiple credits together -> sum (bhh)
 - [x] fw.credits.Symmetric
 - [x] there is a mistake with multiple credits, should not recount observations of heuristics and entities, only sum credit.
-- [!!!!!!!!!] loss change average to sum -> This is a problem with SGD
-- [ ] log-sum-exp
+- [x] loss change average to sum -> This is a problem with SGD -> Fixed, reduction was wrong.
+- [x] log-sum-exp -> Fixed by using log, no need for log-sum-exp
+- [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at ln(1/classes) then.
 - [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
 - [ ] Comment credit source files
 - [ ] Comment bhh source files
 - [ ] tensorboard selection probabilities
 - [ ] tensorboard selections
+- [ ] credits from performance log is extremely inefficient
+- [ ] flatten and reshape of model params is extremely inefficient
 - [ ] bhh hyper-params on schedule? -> do after Adam with LR decay
 - [ ] more datasets
 - [ ] more heuristics
