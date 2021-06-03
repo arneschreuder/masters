@@ -40,8 +40,6 @@ class PSO(Heuristic):
         The cognative control (c1). Default = None
     social_control: float
         The social control (c2). Default = None
-    learning_rate: float
-        The step size. Default = None
     velocity_clip_min: float
         The velocity minimum bound. Default = None
     velocity_clip_max: float
@@ -50,7 +48,6 @@ class PSO(Heuristic):
     inertia_weight: float = None
     cognitive_control: float = None
     social_control: float = None
-    learning_rate: float = None
     velocity_clip_min: float = None
     velocity_clip_max: float = None
 
@@ -58,7 +55,6 @@ class PSO(Heuristic):
                  inertia_weight: float = 0.729844,
                  cognitive_control: float = 1.496180,
                  social_control: float = 1.496180,
-                 learning_rate: float = 1.0,
                  velocity_clip_min: float = -1.0,
                  velocity_clip_max: float = 1.0):
         """
@@ -70,8 +66,6 @@ class PSO(Heuristic):
             The cognative control (c1). Default = 1.496180
         social_control: float
             The social control (c2). Default = 1.496180
-        learning_rate: float
-            The step size. Default = 1.0
         velocity_clip_min: float
             The velocity minimum bound. Default = -1.0
         velocity_clip_max: float
@@ -81,7 +75,6 @@ class PSO(Heuristic):
         self.inertia_weight = inertia_weight
         self.cognitive_control = cognitive_control
         self.social_control = social_control
-        self.learning_rate = learning_rate
         self.velocity_clip_min = velocity_clip_min
         self.velocity_clip_max = velocity_clip_max
 
@@ -122,4 +115,4 @@ class PSO(Heuristic):
         ))
 
         # Update position
-        position.assign_add(self.learning_rate*velocity)
+        position.assign_add(velocity)

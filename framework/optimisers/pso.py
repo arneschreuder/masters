@@ -60,7 +60,6 @@ class PSO(Optimiser):
                  inertia_weight: float = 0.729844,
                  social_control: float = 1.496180,
                  cognitive_control: float = 1.496180,
-                 learning_rate: float = 1.0,
                  velocity_clip_min: float = -1.0,
                  velocity_clip_max: float = 1.0):
         """
@@ -74,8 +73,6 @@ class PSO(Optimiser):
             The cognative control (c1). Default = 1.496180
         social_control: float
             The social control (c2). Default = 1.496180
-        learning_rate: float
-            The step size. Default = 1.0
         velocity_clip_min: float
             The velocity minimum bound. Default = -1.0
         velocity_clip_max: float
@@ -86,7 +83,6 @@ class PSO(Optimiser):
                 inertia_weight=inertia_weight,
                 social_control=social_control,
                 cognitive_control=cognitive_control,
-                learning_rate=learning_rate,
                 velocity_clip_min=velocity_clip_min,
                 velocity_clip_max=velocity_clip_max
             )

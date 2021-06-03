@@ -28,38 +28,57 @@ from typing import List, Tuple
 
 import tensorflow as tf
 from framework.entities.entity import Entity
-from framework.heuristics.sgd import SGD as SGDHeuristic
+from framework.heuristics.nag import NAG as NAGHeuristic
 from framework.optimisers.optimiser import Optimiser
 from framework.utilities.utilities import flatten
 
 
-class SGD(Optimiser):
+class NAG(Optimiser):
     """
-    The Stochastic Gradient Descent concrete optimiser.
+    The Nesterov Adaptive Gradients concrete optimiser.
 
     Attributes
     ----------
     learning_rate: float
         The step size. Default = None
+    momentum: float
+        Momentum hyper-heuristic. Default = None
+    nesterov: bool
+        Flag to use nesterov update rule. Default = None
     entity: Entity
         The entity that represents the candidate solution to the model.
         Default = None
 
     """
     learning_rate: float = None
+    momentum: float = None
+    nesterov: bool = None
     entity: Entity = None
 
-    def __init__(self, learning_rate: float = 0.1):
+    def __init__(self,
+                 learning_rate: float = 0.1,
+                 momentum: float = 0.9,
+                 nesterov: bool = True):
         """
         Parameters
         ----------
         learning_rate: float
             The step size. Default = None
+        momentum: float
+            Momentum hyper-heuristic. Default = None
+        nesterov: bool
+            Flag to use nesterov update rule. Default = None
         """
-        super(SGD, self).__init__(
-            heuristic=SGDHeuristic(learning_rate=learning_rate)
+        super(NAG, self).__init__(
+            heuristic=NAGHeuristic(
+                learning_rate=learning_rate,
+                momentum=momentum,
+                nesterov=nesterov
+            )
         )
         self.learning_rate = learning_rate
+        self.momentum = momentum
+        self.nesterov = nesterov
         self.entity = None
 
     def initialise(self) -> None:
@@ -67,7 +86,7 @@ class SGD(Optimiser):
         Initialiser function.
         Creates the entity, maps the model and initialises the entity.
         """
-        super(SGD, self).initialise()
+        super(NAG, self).initialise()
         self.entity = Entity()
         # This is required to determine the dimensionality of the model.
         self.entity.map_model(model=self.model)
@@ -133,6 +152,7 @@ class SGD(Optimiser):
         # Step and update position and velocity using heuristic
         self.heuristic(
             position=self.entity.position,
+            velocity=self.entity.velocity,
             gradient=gradient_flat
         )
 

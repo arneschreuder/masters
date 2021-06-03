@@ -58,7 +58,7 @@ class Adagrad(Heuristic):
             Small error value. Default = 1e-7
         """
         super(Adagrad, self).__init__()
-        self.learning_rate = learning_rate,
+        self.learning_rate = learning_rate
         self.epsilon = epsilon
 
     def __call__(self,

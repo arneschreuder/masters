@@ -52,8 +52,8 @@ class Adagrad(Optimiser):
         Default = None
     """
     learning_rate: float = None
-    state: tf.Variable = None
     state_initialiser: Initialiser = None
+    state: tf.Variable = None
     entity: Entity = None
 
     def __init__(self,
@@ -79,6 +79,7 @@ class Adagrad(Optimiser):
         self.learning_rate = learning_rate,
         self.epsilon = epsilon
         self.state_initialiser = state_initialiser
+        self.state = None
         self.entity = None
 
     def initialise(self) -> None:

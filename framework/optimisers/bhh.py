@@ -37,12 +37,16 @@ from framework.distributions.categorical import Categorical
 from framework.distributions.dirichlet import Dirichlet
 from framework.distributions.distribution import Distribution
 from framework.entities.entity import Entity
+from framework.heuristics.adagrad import Adagrad
 from framework.heuristics.bhh import BHH as BHHHeuristic
 from framework.heuristics.heuristic import Heuristic
+from framework.heuristics.momentum import Momentum
+from framework.heuristics.nag import NAG
 from framework.heuristics.pso import PSO
 from framework.heuristics.sgd import SGD
 from framework.initialisers.initialiser import Initialiser
 from framework.initialisers.ones import Ones
+from framework.initialisers.zeros import Zeros
 from framework.optimisers.optimiser import Optimiser
 from framework.performance_log.performance_log import PerformanceLog
 from framework.utilities.utilities import flatten
@@ -62,6 +66,7 @@ class BHH(Optimiser):
     alpha_initialiser: Initialiser = None
     beta_initialiser: Initialiser = None
     gamma_initialiser: Initialiser = None
+    state_initialiser: Initialiser = None
 
     K: int = None
     J: int = None
@@ -94,6 +99,7 @@ class BHH(Optimiser):
     pbests: List[tf.Variable] = None
     ibest: tf.Variable = None
     gbest: tf.Variable = None
+    state: tf.Variable = None
 
     # Performance Log
     log: PerformanceLog = None
@@ -113,7 +119,8 @@ class BHH(Optimiser):
                  ],
                  alpha_initialiser: Initialiser = Ones(),
                  beta_initialiser: Initialiser = Ones(),
-                 gamma_initialiser: Initialiser = Ones()):
+                 gamma_initialiser: Initialiser = Ones(),
+                 state_initialiser: Initialiser = Zeros()):
         super(BHH, self).__init__(
             heuristic=BHHHeuristic(credit=credit)
         )
@@ -128,6 +135,7 @@ class BHH(Optimiser):
         self.alpha_initialiser = alpha_initialiser
         self.beta_initialiser = beta_initialiser
         self.gamma_initialiser = gamma_initialiser
+        self.state_initialiser = state_initialiser
 
         self.J = self.population
         self.L = 1  # Binomial/Binary on credit
@@ -160,6 +168,7 @@ class BHH(Optimiser):
         self.pbests = None
         self.ibest = None
         self.gbest = None
+        self.state = None
 
         # Performance Log
         self.log = PerformanceLog()
@@ -191,6 +200,10 @@ class BHH(Optimiser):
         weights = self.model.get_weights_flat()
         self.ibest = tf.Variable(initial_value=weights)
         self.gbest = tf.Variable(initial_value=weights)
+
+        # Initialise state
+        state = self.state_initialiser(shape=weights.shape)
+        self.state = tf.Variable(initial_value=state)
 
         self.initialise_probability_distributions()
         self.select()
@@ -283,12 +296,32 @@ class BHH(Optimiser):
                         heuristic: Heuristic,
                         position: tf.Variable,
                         velocity: tf.Variable,
+                        state: tf.Variable,
                         gradient: tf.Tensor,
                         pbest: tf.Variable):
+        # TODO: Take note, SGD does not have a velocity update.
         if isinstance(heuristic, SGD):
             heuristic(
                 position=position,
+                gradient=gradient
+            )
+        elif isinstance(heuristic, Momentum):
+            heuristic(
+                position=position,
                 velocity=velocity,
+                gradient=gradient
+            )
+        elif isinstance(heuristic, NAG):
+            heuristic(
+                position=position,
+                velocity=velocity,
+                gradient=gradient
+            )
+        # TODO: Take note, Adagrad does not have a velocity update.
+        elif isinstance(heuristic, Adagrad):
+            heuristic(
+                position=position,
+                state=state,
                 gradient=gradient
             )
         elif isinstance(heuristic, PSO):
@@ -298,7 +331,6 @@ class BHH(Optimiser):
                 pbest=pbest,
                 gbest=self.gbest
             )
-        # TODO: Take note, Adagrad does not have a velocity update.
 
     def update_bests(self,
                      features: tf.Tensor,
@@ -353,6 +385,7 @@ class BHH(Optimiser):
                 heuristic=heuristic,
                 position=entity.position,
                 velocity=entity.velocity,
+                state=self.state,
                 gradient=gradient_flat,
                 pbest=pbest
             )

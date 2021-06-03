@@ -29,11 +29,9 @@ import tensorflow as tf
 from framework.heuristics.heuristic import Heuristic
 
 
-class Momentum(Heuristic):
+class NAG(Heuristic):
     """
-    The Momentum Stochastic Gradient Descent concrete heuristic.
-    Momentum is a varient of SGD, whereby the
-    gradient steps are smoothed out by adding a momentum term.
+    The Nesterov Adaptive Gradients concrete heuristic.
 
     Attributes
     ----------
@@ -41,13 +39,17 @@ class Momentum(Heuristic):
         The step size. Default = None
     momentum: float
         Momentum hyper-heuristic. Default = None
+    nesterov: bool
+        Flag to use nesterov update rule. Default = None
     """
     learning_rate: float = None
     momentum: float = None
+    nesterov: bool = None
 
     def __init__(self,
                  learning_rate: float = 0.1,
-                 momentum: float = 0.9):
+                 momentum: float = 0.9,
+                 nesterov: bool = True):
         """
         Parameters
         ----------
@@ -55,10 +57,13 @@ class Momentum(Heuristic):
             The step size. Default = 0.1
         momentum: float
             Momentum hyper-heuristic. Default = 0.9
+        nesterov: bool
+            Flag to use nesterov update rule. Default = True
         """
-        super(Momentum, self).__init__()
+        super(NAG, self).__init__()
         self.learning_rate = learning_rate
         self.momentum = momentum
+        self.nesterov = nesterov
 
     def __call__(self,
                  position: tf.Tensor,
@@ -82,4 +87,10 @@ class Momentum(Heuristic):
             velocity.assign(
                 self.momentum*velocity - self.learning_rate*gradient
             )
-            position.assign_add(velocity)
+
+            if self.nesterov:
+                position.assign_add(
+                    self.momentum*velocity - self.learning_rate*gradient
+                )
+            else:
+                position.assign_add(velocity)

@@ -37,37 +37,21 @@ class SGD(Heuristic):
     ----------
     learning_rate: float
         The step size. Default = None
-    momentum: float
-        Momentum hyper-heuristic. Default = None
-    nesterov: bool
-        Flag to use nesterov update rule. Default = None
     """
     learning_rate: float = None
-    momentum: float = None
-    nesterov: bool = None
 
-    def __init__(self,
-                 learning_rate: float = 0.1,
-                 momentum: float = 0.9,
-                 nesterov: bool = True):
+    def __init__(self, learning_rate: float = 0.1):
         """
         Parameters
         ----------
         learning_rate: float
             The step size. Default = 0.1
-        momentum: float
-            Momentum hyper-heuristic. Default = 0.9
-        nesterov: bool
-            Flag to use nesterov update rule. Default = True
         """
         super(SGD, self).__init__()
-        self.learning_rate: float = learning_rate,
-        self.momentum: float = momentum,
-        self.nesterov: bool = nesterov
+        self.learning_rate = learning_rate
 
     def __call__(self,
                  position: tf.Tensor,
-                 velocity: tf.Tensor,
                  gradient: tf.Tensor) -> None:
         """
         The heuristic step operation.
@@ -76,21 +60,7 @@ class SGD(Heuristic):
         ----------
         position: tf.Tensor
             The entity's position which is the candidate solution to the model
-        velocity: tf.Tensor
-            The entity's velocity
         gradient: tf.Tensor
             The gradient to apply
         """
-        if self.momentum == 0.0:
-            position.assign_add(-self.learning_rate*gradient)
-        else:
-            velocity.assign(
-                self.momentum*velocity - self.learning_rate*gradient
-            )
-
-            if self.nesterov:
-                position.assign_add(
-                    self.momentum*velocity - self.learning_rate*gradient
-                )
-            else:
-                position.assign_add(velocity)
+        position.assign_add(-self.learning_rate*gradient)

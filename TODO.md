@@ -9,17 +9,21 @@
 - [x] there is a mistake with multiple credits, should not recount observations of heuristics and entities, only sum credit.
 - [x] loss change average to sum -> This is a problem with SGD -> Fixed, reduction was wrong.
 - [x] log-sum-exp -> Fixed by using log, no need for log-sum-exp
-- [ ] SGD: with LR, Momentum 0 or > 0, Nesterov = True | False, #
-- [ ] ADAGRAD -> Same as SGD, but with
+- [x] split sgd, momentum and nag
+- [ ] learning rate schedules
+- [x] SGD
+- [x] Momentum
+- [x] NAG
+- [x] ADAGRAD
 - [ ] ADADELTA
-- [ ] ADAM
 - [ ] ADAMAX
-- [ ] NADAM
 - [ ] RMRPROP
+- [ ] ADAM
+- [ ] NADAM
 - [ ] GA
 - [ ] DE
 - [ ] CMA-ES
-- [ ] PSO
+- [x] PSO
 - [ ] QuantumPSO or Heterogeneous PSO?
 - [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at ln(1/classes) then.
 - [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
