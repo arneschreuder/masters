@@ -37,14 +37,14 @@ import framework as fw
 #         learning_rate=1.0,
 #         epsilon=1e-07
 #     ),
-#     log_dir="logs/sgd-lr-1.0-eps-1e-07",
+#     log_dir="logs/adagrad-lr-1.0-eps-1e-07",
 #     seed=None
 # )
 
 # PSO - Particle Swarm Optimisation
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.PSO(
-#         population=10,
+#         population=5,
 #         inertia_weight=0.729844,
 #         social_control=1.496180,
 #         cognitive_control=1.496180,
@@ -59,21 +59,21 @@ import framework as fw
 experiment = fw.experiments.Iris(
     optimiser=fw.optimisers.BHH(
         population=10,
-        burn_in=5,
-        replay=10,
+        burn_in=0,
+        replay=1,
         reselection=1,
         reanalysis=1,
         credit=[
-            fw.credits.RBest(discounted_rewards=True)
+            fw.credits.IBest(discounted_rewards=True)
         ],
         heuristics=[
-            fw.heuristics.SGD(
-                learning_rate=0.1
-            ),
-            fw.heuristics.Momentum(
-                learning_rate=0.1,
-                momentum=0.9
-            ),
+            # fw.heuristics.SGD(
+            #     learning_rate=0.1
+            # ),
+            # fw.heuristics.Momentum(
+            #     learning_rate=0.1,
+            #     momentum=0.9
+            # ),
             fw.heuristics.NAG(
                 learning_rate=0.1,
                 momentum=0.9,
@@ -92,7 +92,7 @@ experiment = fw.experiments.Iris(
             ),
         ],
     ),
-    log_dir="logs/bhh",
+    log_dir="logs/bhh3",
     seed=None
 )
 

@@ -17,7 +17,7 @@
 - [x] ADAGRAD
 - [ ] ADADELTA
 - [ ] ADAMAX
-- [ ] RMRPROP
+- [ ] RMSPROP
 - [ ] ADAM
 - [ ] NADAM
 - [ ] GA
@@ -29,13 +29,13 @@
 - [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
 - [ ] Comment credit source files
 - [ ] Comment bhh source files
+- [ ] change steps/epochs -> proportion of training time
 - [ ] tensorboard selection probabilities
 - [ ] tensorboard selections
 - [ ] credits from performance log is extremely inefficient
 - [ ] flatten and reshape of model params is extremely inefficient
 - [ ] bhh hyper-params on schedule? -> do after Adam with LR decay See: tf.keras.optimizers.schedules.LearningRateSchedule
 - [ ] more datasets
-- [ ] more heuristics
 - [ ] optimisation
 - [ ] training, test, validation
 - [ ] main + experiment -> cli
