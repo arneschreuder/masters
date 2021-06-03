@@ -298,6 +298,7 @@ class BHH(Optimiser):
                 pbest=pbest,
                 gbest=self.gbest
             )
+        # TODO: Take note, Adagrad does not have a velocity update.
 
     def update_bests(self,
                      features: tf.Tensor,

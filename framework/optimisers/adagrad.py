@@ -28,12 +28,14 @@ from typing import List, Tuple
 
 import tensorflow as tf
 from framework.entities.entity import Entity
-from framework.heuristics.sgd import SGD as SGDHeuristic
+from framework.heuristics.adagrad import Adagrad as AdagradHeuristic
+from framework.initialisers.initialiser import Initialiser
+from framework.initialisers.zeros import Zeros
 from framework.optimisers.optimiser import Optimiser
 from framework.utilities.utilities import flatten
 
 
-class SGD(Optimiser):
+class Adagrad(Optimiser):
     """
     The Stochastic Gradient Descent concrete optimiser.
 
@@ -41,44 +43,42 @@ class SGD(Optimiser):
     ----------
     learning_rate: float
         The step size. Default = None
-    momentum: float
-        Momentum hyper-heuristic. Default = None
-    nesterov: bool
-        Flag to use nesterov update rule. Default = None
+    state: tf.Variable
+        The state of the gradient accumulator. Default = None
+    state_initialiser: Initialiser
+            The initialiser used to initialise the state. Default = None
     entity: Entity
         The entity that represents the candidate solution to the model.
         Default = None
-
     """
     learning_rate: float = None
-    momentum: float = None
-    nesterov: bool = None
+    state: tf.Variable = None
+    state_initialiser: Initialiser = None
     entity: Entity = None
 
     def __init__(self,
                  learning_rate: float = 0.1,
-                 momentum: float = 0.9,
-                 nesterov: bool = True):
+                 epsilon: float = 1e-7,
+                 state_initialiser: Initialiser = Zeros()):
         """
         Parameters
         ----------
         learning_rate: float
-            The step size. Default = None
-        momentum: float
-            Momentum hyper-heuristic. Default = None
-        nesterov: bool
-            Flag to use nesterov update rule. Default = None
+            The step size. Default = 0.1
+        epsilon: float
+            Small error value. Default = 1e-7
+        state_initialiser: Initialiser
+            The initialiser used to initialise the state. Default = Zeros()
         """
-        super(SGD, self).__init__(
-            heuristic=SGDHeuristic(
+        super(Adagrad, self).__init__(
+            heuristic=AdagradHeuristic(
                 learning_rate=learning_rate,
-                momentum=momentum,
-                nesterov=nesterov
+                epsilon=epsilon
             )
         )
-        self.learning_rate = learning_rate
-        self.momentum = momentum
-        self.nesterov = nesterov
+        self.learning_rate = learning_rate,
+        self.epsilon = epsilon
+        self.state_initialiser = state_initialiser
         self.entity = None
 
     def initialise(self) -> None:
@@ -86,11 +86,15 @@ class SGD(Optimiser):
         Initialiser function.
         Creates the entity, maps the model and initialises the entity.
         """
-        super(SGD, self).initialise()
+        super(Adagrad, self).initialise()
         self.entity = Entity()
         # This is required to determine the dimensionality of the model.
         self.entity.map_model(model=self.model)
         self.entity.initialise()
+
+        # Initialise state
+        state = self.state_initialiser(shape=self.entity.position.shape)
+        self.state = tf.Variable(initial_value=state)
 
     def get_gradient(self,
                      features: tf.Tensor,
@@ -152,7 +156,7 @@ class SGD(Optimiser):
         # Step and update position and velocity using heuristic
         self.heuristic(
             position=self.entity.position,
-            velocity=self.entity.velocity,
+            state=self.state,
             gradient=gradient_flat
         )
 
