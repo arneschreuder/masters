@@ -30,6 +30,7 @@ import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.nag import NAG as NAGHeuristic
 from framework.optimisers.optimiser import Optimiser
+from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
@@ -39,35 +40,26 @@ class NAG(Optimiser):
 
     Attributes
     ----------
-    learning_rate: float
-        The step size. Default = None
-    momentum: float
-        Momentum hyper-heuristic. Default = None
-    nesterov: bool
-        Flag to use nesterov update rule. Default = None
     entity: Entity
         The entity that represents the candidate solution to the model.
         Default = None
 
     """
-    learning_rate: float = None
-    momentum: float = None
-    nesterov: bool = None
     entity: Entity = None
 
     def __init__(self,
-                 learning_rate: float = 0.1,
+                 learning_rate: float or Schedule = 0.1,
                  momentum: float = 0.9,
                  nesterov: bool = True):
         """
         Parameters
         ----------
-        learning_rate: float
-            The step size. Default = None
+        learning_rate: float or Schedule
+            The step size. Default = 0.1
         momentum: float
-            Momentum hyper-heuristic. Default = None
+            Momentum hyper-heuristic. Default = 0.9
         nesterov: bool
-            Flag to use nesterov update rule. Default = None
+            Flag to use nesterov update rule. Default = True
         """
         super(NAG, self).__init__(
             heuristic=NAGHeuristic(
@@ -76,9 +68,6 @@ class NAG(Optimiser):
                 nesterov=nesterov
             )
         )
-        self.learning_rate = learning_rate
-        self.momentum = momentum
-        self.nesterov = nesterov
         self.entity = None
 
     def initialise(self) -> None:
@@ -153,7 +142,8 @@ class NAG(Optimiser):
         self.heuristic(
             position=self.entity.position,
             velocity=self.entity.velocity,
-            gradient=gradient_flat
+            gradient=gradient_flat,
+            step=step
         )
 
         # Evaluate current position

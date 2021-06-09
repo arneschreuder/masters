@@ -310,7 +310,8 @@ class BHH(Optimiser):
             heuristic(
                 position=position,
                 velocity=velocity,
-                gradient=gradient
+                gradient=gradient,
+                step=step
             )
         # TODO: Take note, Adagrad does not have a velocity update.
         elif isinstance(heuristic, Adagrad):
