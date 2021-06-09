@@ -326,7 +326,8 @@ class BHH(Optimiser):
                 position=position,
                 velocity=velocity,
                 pbest=pbest,
-                gbest=gbest
+                gbest=gbest,
+                step=step
             )
 
     def update_bests(self,

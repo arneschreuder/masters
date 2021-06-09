@@ -31,6 +31,7 @@ import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.pso import PSO as PSOHeuristic
 from framework.optimisers.optimiser import Optimiser
+from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten, reshape
 
 
@@ -60,6 +61,7 @@ class PSO(Optimiser):
                  inertia_weight: float = 0.729844,
                  social_control: float = 1.496180,
                  cognitive_control: float = 1.496180,
+                 learning_rate: float or Schedule = 1.0,
                  velocity_clip_min: float = -1.0,
                  velocity_clip_max: float = 1.0):
         """
@@ -73,6 +75,8 @@ class PSO(Optimiser):
             The cognative control (c1). Default = 1.496180
         social_control: float
             The social control (c2). Default = 1.496180
+        learning_rate: float or Schedule
+            The step size. Default = 1.0
         velocity_clip_min: float
             The velocity minimum bound. Default = -1.0
         velocity_clip_max: float
@@ -83,6 +87,7 @@ class PSO(Optimiser):
                 inertia_weight=inertia_weight,
                 social_control=social_control,
                 cognitive_control=cognitive_control,
+                learning_rate=learning_rate,
                 velocity_clip_min=velocity_clip_min,
                 velocity_clip_max=velocity_clip_max
             )
@@ -123,8 +128,7 @@ class PSO(Optimiser):
                      features: tf.Tensor,
                      labels: tf.Tensor,
                      entity: Entity,
-                     pbest: tf.Tensor
-                     ):
+                     pbest: tf.Variable):
         # Evaluate entity
         self.model.set_weights_flat(weights_flat=entity.position)
         _, loss = self.evaluate(features=features, labels=labels)
@@ -153,7 +157,8 @@ class PSO(Optimiser):
                 position=entity.position,
                 velocity=entity.velocity,
                 pbest=pbest,
-                gbest=self.gbest
+                gbest=self.gbest,
+                step=step
             )
 
             # Update pbest and gbest
