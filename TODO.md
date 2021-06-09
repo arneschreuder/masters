@@ -10,8 +10,9 @@
 - [x] loss change average to sum -> This is a problem with SGD -> Fixed, reduction was wrong.
 - [x] log-sum-exp -> Fixed by using log, no need for log-sum-exp
 - [x] split sgd, momentum and nag
-- [ ] learning rate schedules
-- [ ] readd learning rate for PSO
+- [x] learning rate schedules
+- [x] readd learning rate for PSO
+- [ ] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
 - [x] SGD
 - [x] Momentum
 - [x] NAG
