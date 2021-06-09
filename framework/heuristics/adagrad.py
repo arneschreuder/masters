@@ -27,6 +27,7 @@
 
 import tensorflow as tf
 from framework.heuristics.heuristic import Heuristic
+from framework.schedules.schedule import Schedule
 
 
 class Adagrad(Heuristic):
@@ -38,16 +39,16 @@ class Adagrad(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float
+    learning_rate: float or Schedule
         The step size. Default = None
     epsilon: float
         Small error value. Default = None
     """
-    learning_rate: float = None
+    learning_rate: float or Schedule = None
     epsilon: float = None
 
     def __init__(self,
-                 learning_rate: float = 0.1,
+                 learning_rate: float or Schedule = 0.1,
                  epsilon: float = 1e-7):
         """
         Parameters
@@ -64,7 +65,8 @@ class Adagrad(Heuristic):
     def __call__(self,
                  position: tf.Variable,
                  state: tf.Variable,
-                 gradient: tf.Tensor) -> None:
+                 gradient: tf.Tensor,
+                 step: int) -> None:
         """
         The heuristic step operation.
 
@@ -75,8 +77,19 @@ class Adagrad(Heuristic):
         state: tf.Tensor
             The state of the gradient accumulator
         gradient: tf.Tensor
-            The gradient to apply
+            The gradient to apply,
+        step: int
+            The iteration step number
         """
+        # Get learning rate
+        lr = self.learning_rate
+
+        if type(self.learning_rate) is not float:
+            lr = self.learning_rate(step=step)
+
+        # Update state
         state.assign_add(tf.math.pow(gradient, 2))
-        G = self.learning_rate/tf.math.sqrt(state + self.epsilon)
+
+        # Update position
+        G = lr/tf.math.sqrt(state + self.epsilon)
         position.assign_add(-G*gradient)

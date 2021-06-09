@@ -32,6 +32,7 @@ from framework.heuristics.adagrad import Adagrad as AdagradHeuristic
 from framework.initialisers.initialiser import Initialiser
 from framework.initialisers.zeros import Zeros
 from framework.optimisers.optimiser import Optimiser
+from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
@@ -41,8 +42,6 @@ class Adagrad(Optimiser):
 
     Attributes
     ----------
-    learning_rate: float
-        The step size. Default = None
     entity: Entity
         The entity that represents the candidate solution to the model.
         Default = None
@@ -51,12 +50,12 @@ class Adagrad(Optimiser):
     entity: Entity = None
 
     def __init__(self,
-                 learning_rate: float = 0.1,
+                 learning_rate: float or Schedule = 0.1,
                  epsilon: float = 1e-7):
         """
         Parameters
         ----------
-        learning_rate: float
+        learning_rate: float or Schedule
             The step size. Default = 0.1
         epsilon: float
             Small error value. Default = 1e-7
@@ -67,7 +66,6 @@ class Adagrad(Optimiser):
                 epsilon=epsilon
             )
         )
-        self.learning_rate = learning_rate,
         self.epsilon = epsilon
         self.entity = None
 
@@ -143,7 +141,8 @@ class Adagrad(Optimiser):
         self.heuristic(
             position=self.entity.position,
             state=self.entity.state,
-            gradient=gradient_flat
+            gradient=gradient_flat,
+            step=step
         )
 
         # Evaluate current position

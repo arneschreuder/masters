@@ -73,4 +73,5 @@ class SGD(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
+        # Update position
         position.assign_add(-lr*gradient)

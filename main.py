@@ -31,30 +31,35 @@ import framework as fw
 # )
 
 # NAG - Nesterov Adaptive Gradients
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.NAG(
+#         learning_rate=fw.schedules.Exponential(
+#             initial=1.0,
+#             steps=10,
+#             rate=0.99,
+#             staircase=True
+#         ),
+#         momentum=0.9,
+#         nesterov=True
+#     ),
+#     log_dir="logs/nag-lrs-mom-0.9-nest-true",
+#     seed=None
+# )
+
+# Adagrad - Adaptive Gradients
 experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.NAG(
+    optimiser=fw.optimisers.Adagrad(
         learning_rate=fw.schedules.Exponential(
             initial=1.0,
             steps=10,
             rate=0.99,
             staircase=True
         ),
-        momentum=0.9,
-        nesterov=True
+        epsilon=1e-07
     ),
-    log_dir="logs/nag-lr-0.1-mom-0.9-nest-true",
+    log_dir="logs/adagrad-lrs-eps-1e-07",
     seed=None
 )
-
-# Adagrad - Adaptive Gradients
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Adagrad(
-#         learning_rate=0.1,
-#         epsilon=1e-07
-#     ),
-#     log_dir="logs/adagrad-lr-0.1-eps-1e-07",
-#     seed=None
-# )
 
 # PSO - Particle Swarm Optimisation
 # experiment = fw.experiments.Iris(

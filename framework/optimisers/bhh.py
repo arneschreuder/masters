@@ -318,7 +318,8 @@ class BHH(Optimiser):
             heuristic(
                 position=position,
                 state=state,
-                gradient=gradient
+                gradient=gradient,
+                step=step
             )
         elif isinstance(heuristic, PSO):
             heuristic(
