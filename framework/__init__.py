@@ -14,4 +14,5 @@ from .models import *
 from .neural_networks import *
 from .optimisers import *
 from .performance_log import *
+from .schedules import *
 from .utilities import *
