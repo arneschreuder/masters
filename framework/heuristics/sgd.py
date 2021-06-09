@@ -39,7 +39,7 @@ class SGD(Heuristic):
     learning_rate: float or Schedule
         The step size. Default = None
     """
-    learning_rate: float = None
+    learning_rate: float or Schedule = None
 
     def __init__(self, learning_rate: float or Schedule = 0.1):
         """

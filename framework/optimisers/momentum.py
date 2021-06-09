@@ -39,17 +39,11 @@ class Momentum(Optimiser):
 
     Attributes
     ----------
-    learning_rate: float
-        The step size. Default = None
-    momentum: float
-        Momentum hyper-heuristic. Default = None
     entity: Entity
         The entity that represents the candidate solution to the model.
         Default = None
 
     """
-    learning_rate: float = None
-    momentum: float = None
     entity: Entity = None
 
     def __init__(self,
@@ -69,8 +63,6 @@ class Momentum(Optimiser):
                 momentum=momentum
             )
         )
-        self.learning_rate = learning_rate
-        self.momentum = momentum
         self.entity = None
 
     def initialise(self) -> None:
@@ -145,7 +137,8 @@ class Momentum(Optimiser):
         self.heuristic(
             position=self.entity.position,
             velocity=self.entity.velocity,
-            gradient=gradient_flat
+            gradient=gradient_flat,
+            step=step
         )
 
         # Evaluate current position

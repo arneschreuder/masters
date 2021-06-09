@@ -27,6 +27,7 @@
 
 import tensorflow as tf
 from framework.heuristics.heuristic import Heuristic
+from framework.schedules.schedule import Schedule
 
 
 class Momentum(Heuristic):
@@ -37,21 +38,21 @@ class Momentum(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float
+    learning_rate: float or Schedule
         The step size. Default = None
     momentum: float
         Momentum hyper-heuristic. Default = None
     """
-    learning_rate: float = None
+    learning_rate: float or Schedule = None
     momentum: float = None
 
     def __init__(self,
-                 learning_rate: float = 0.1,
+                 learning_rate: float or Schedule = 0.1,
                  momentum: float = 0.9):
         """
         Parameters
         ----------
-        learning_rate: float
+        learning_rate: float or Schedule
             The step size. Default = 0.1
         momentum: float
             Momentum hyper-heuristic. Default = 0.9
@@ -63,7 +64,8 @@ class Momentum(Heuristic):
     def __call__(self,
                  position: tf.Variable,
                  velocity: tf.Variable,
-                 gradient: tf.Tensor) -> None:
+                 gradient: tf.Tensor,
+                 step: int) -> None:
         """
         The heuristic step operation.
 
@@ -75,11 +77,20 @@ class Momentum(Heuristic):
             The entity's velocity
         gradient: tf.Tensor
             The gradient to apply
+        step: int
+            The iteration step number
         """
+        # Get learning rate
+        lr = self.learning_rate
+
+        if type(self.learning_rate) is not float:
+            lr = self.learning_rate(step=step)
+
+        # Update position and velocity
         if self.momentum == 0.0:
-            position.assign_add(-self.learning_rate*gradient)
+            position.assign_add(-lr*gradient)
         else:
             velocity.assign(
-                self.momentum*velocity - self.learning_rate*gradient
+                self.momentum*velocity - lr*gradient
             )
             position.assign_add(velocity)

@@ -303,7 +303,8 @@ class BHH(Optimiser):
             heuristic(
                 position=position,
                 velocity=velocity,
-                gradient=gradient
+                gradient=gradient,
+                step=step
             )
         elif isinstance(heuristic, NAG):
             heuristic(

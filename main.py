@@ -2,28 +2,33 @@
 import framework as fw
 
 # SGD
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.SGD(
+#         learning_rate=fw.schedules.Exponential(
+#             initial=1.0,
+#             steps=10,
+#             rate=0.99,
+#             staircase=True
+#         )
+#     ),
+#     log_dir="logs/sgd-lrs",
+#     seed=None
+# )
+
+# Momentum
 experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.SGD(
+    optimiser=fw.optimisers.Momentum(
         learning_rate=fw.schedules.Exponential(
             initial=1.0,
             steps=10,
             rate=0.99,
             staircase=True
-        )
+        ),
+        momentum=0.9
     ),
-    log_dir="logs/sgd-lrs",
+    log_dir="logs/momentum-lrs-mom-0.9",
     seed=None
 )
-
-# Momentum
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Momentum(
-#         learning_rate=0.1,
-#         momentum=0.9
-#     ),
-#     log_dir="logs/momentum-lr-0.1-mom-0.9",
-#     seed=None
-# )
 
 # NAG - Nesterov Adaptive Gradients
 # experiment = fw.experiments.Iris(
