@@ -27,6 +27,7 @@
 
 import tensorflow as tf
 from framework.heuristics.heuristic import Heuristic
+from framework.schedules.schedule import Schedule
 
 
 class SGD(Heuristic):
@@ -35,16 +36,16 @@ class SGD(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float
+    learning_rate: float or Schedule
         The step size. Default = None
     """
     learning_rate: float = None
 
-    def __init__(self, learning_rate: float = 0.1):
+    def __init__(self, learning_rate: float or Schedule = 0.1):
         """
         Parameters
         ----------
-        learning_rate: float
+        learning_rate: float or Schedule
             The step size. Default = 0.1
         """
         super(SGD, self).__init__()
@@ -52,7 +53,8 @@ class SGD(Heuristic):
 
     def __call__(self,
                  position: tf.Variable,
-                 gradient: tf.Tensor) -> None:
+                 gradient: tf.Tensor,
+                 step: int) -> None:
         """
         The heuristic step operation.
 
@@ -62,5 +64,13 @@ class SGD(Heuristic):
             The entity's position which is the candidate solution to the model
         gradient: tf.Tensor
             The gradient to apply
+        step: int
+            The iteration step number
         """
-        position.assign_add(-self.learning_rate*gradient)
+        # Get learning rate
+        lr = self.learning_rate
+
+        if type(self.learning_rate) is not float:
+            lr = self.learning_rate(step=step)
+
+        position.assign_add(-lr*gradient)

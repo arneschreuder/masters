@@ -30,6 +30,7 @@ import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.sgd import SGD as SGDHeuristic
 from framework.optimisers.optimiser import Optimiser
+from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
@@ -39,27 +40,23 @@ class SGD(Optimiser):
 
     Attributes
     ----------
-    learning_rate: float
-        The step size. Default = None
     entity: Entity
         The entity that represents the candidate solution to the model.
         Default = None
 
     """
-    learning_rate: float = None
     entity: Entity = None
 
-    def __init__(self, learning_rate: float = 0.1):
+    def __init__(self, learning_rate: float or Schedule = 0.1):
         """
         Parameters
         ----------
-        learning_rate: float
+        learning_rate: float or Schedule
             The step size. Default = None
         """
         super(SGD, self).__init__(
             heuristic=SGDHeuristic(learning_rate=learning_rate)
         )
-        self.learning_rate = learning_rate
         self.entity = None
 
     def initialise(self) -> None:
@@ -133,7 +130,8 @@ class SGD(Optimiser):
         # Step and update position and velocity using heuristic
         self.heuristic(
             position=self.entity.position,
-            gradient=gradient_flat
+            gradient=gradient_flat,
+            step=step
         )
 
         # Evaluate current position

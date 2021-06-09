@@ -290,12 +290,14 @@ class BHH(Optimiser):
                         state: tf.Variable,
                         gradient: tf.Tensor,
                         pbest: tf.Variable,
-                        gbest: tf.Variable):
+                        gbest: tf.Variable,
+                        step: int):
         # TODO: Take note, SGD does not have a velocity update.
         if isinstance(heuristic, SGD):
             heuristic(
                 position=position,
-                gradient=gradient
+                gradient=gradient,
+                step=step
             )
         elif isinstance(heuristic, Momentum):
             heuristic(
@@ -380,7 +382,8 @@ class BHH(Optimiser):
                 state=entity.state,
                 gradient=gradient_flat,
                 pbest=pbest,
-                gbest=self.gbest
+                gbest=self.gbest,
+                step=step
             )
 
             # Set ibest to initial entity on new iteration

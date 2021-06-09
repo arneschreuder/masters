@@ -2,13 +2,18 @@
 import framework as fw
 
 # SGD
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.SGD(
-#         learning_rate=0.1
-#     ),
-#     log_dir="logs/sgd-lr-0.1",
-#     seed=None
-# )
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.SGD(
+        learning_rate=fw.schedules.Exponential(
+            initial=1.0,
+            steps=10,
+            rate=0.99,
+            staircase=True
+        )
+    ),
+    log_dir="logs/sgd-lrs",
+    seed=None
+)
 
 # Momentum
 # experiment = fw.experiments.Iris(
@@ -56,45 +61,45 @@ import framework as fw
 # )
 
 # BHH
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.BHH(
-        population=10,
-        burn_in=10,
-        replay=30,
-        reselection=1,
-        reanalysis=1,
-        credit=[
-            fw.credits.PBest(discounted_rewards=True)
-        ],
-        heuristics=[
-            # fw.heuristics.SGD(
-            #     learning_rate=0.1
-            # ),
-            # fw.heuristics.Momentum(
-            #     learning_rate=0.1,
-            #     momentum=0.9
-            # ),
-            fw.heuristics.NAG(
-                learning_rate=0.1,
-                momentum=0.9,
-                nesterov=True
-            ),
-            fw.heuristics.Adagrad(
-                learning_rate=0.1,
-                epsilon=1e-07
-            ),
-            fw.heuristics.PSO(
-                inertia_weight=0.729844,
-                social_control=1.496180,
-                cognitive_control=1.496180,
-                velocity_clip_min=-1.0,
-                velocity_clip_max=1.0
-            ),
-        ],
-    ),
-    log_dir="logs/bhh-w-ada",
-    seed=None
-)
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.BHH(
+#         population=10,
+#         burn_in=10,
+#         replay=30,
+#         reselection=1,
+#         reanalysis=1,
+#         credit=[
+#             fw.credits.PBest(discounted_rewards=True)
+#         ],
+#         heuristics=[
+#             # fw.heuristics.SGD(
+#             #     learning_rate=0.1
+#             # ),
+#             # fw.heuristics.Momentum(
+#             #     learning_rate=0.1,
+#             #     momentum=0.9
+#             # ),
+#             fw.heuristics.NAG(
+#                 learning_rate=0.1,
+#                 momentum=0.9,
+#                 nesterov=True
+#             ),
+#             fw.heuristics.Adagrad(
+#                 learning_rate=0.1,
+#                 epsilon=1e-07
+#             ),
+#             fw.heuristics.PSO(
+#                 inertia_weight=0.729844,
+#                 social_control=1.496180,
+#                 cognitive_control=1.496180,
+#                 velocity_clip_min=-1.0,
+#                 velocity_clip_max=1.0
+#             ),
+#         ],
+#     ),
+#     log_dir="logs/bhh-w-ada",
+#     seed=None
+# )
 
 if __name__ == "__main__":
     experiment.initialise()
