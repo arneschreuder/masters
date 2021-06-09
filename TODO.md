@@ -13,6 +13,7 @@
 - [x] learning rate schedules
 - [x] readd learning rate for PSO
 - [ ] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
+- [ ] bhh doesnt work if only 2 heurisics, but of same -> I suspect this has to do with lrs that is not set right
 - [x] SGD
 - [x] Momentum
 - [x] NAG
@@ -27,6 +28,7 @@
 - [ ] CMA-ES
 - [x] PSO
 - [ ] QuantumPSO or Heterogeneous PSO?
+- [ ] Early stop?
 - [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at ln(1/classes) then.
 - [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
 - [ ] Comment credit source files

@@ -6,7 +6,7 @@ import framework as fw
 #     optimiser=fw.optimisers.SGD(
 #         learning_rate=fw.schedules.Exponential(
 #             initial=1.0,
-#             steps=10,
+#             steps=20,
 #             rate=0.99,
 #             staircase=True
 #         )
@@ -20,7 +20,7 @@ import framework as fw
 #     optimiser=fw.optimisers.Momentum(
 #         learning_rate=fw.schedules.Exponential(
 #             initial=1.0,
-#             steps=10,
+#             steps=20,
 #             rate=0.99,
 #             staircase=True
 #         ),
@@ -31,27 +31,27 @@ import framework as fw
 # )
 
 # NAG - Nesterov Adaptive Gradients
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.NAG(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=1.0,
-#             steps=10,
-#             rate=0.99,
-#             staircase=True
-#         ),
-#         momentum=0.9,
-#         nesterov=True
-#     ),
-#     log_dir="logs/nag-lrs-mom-0.9-nest-true",
-#     seed=None
-# )
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.NAG(
+        learning_rate=fw.schedules.Exponential(
+            initial=0.1,
+            steps=100,
+            rate=0.99,
+            staircase=True
+        ),
+        momentum=0.9,
+        nesterov=True
+    ),
+    log_dir="logs/nag-lrs-mom-0.9-nest-true",
+    seed=None
+)
 
 # Adagrad - Adaptive Gradients
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.Adagrad(
 #         learning_rate=fw.schedules.Exponential(
 #             initial=1.0,
-#             steps=10,
+#             steps=20,
 #             rate=0.99,
 #             staircase=True
 #         ),
@@ -70,7 +70,7 @@ import framework as fw
 #         cognitive_control=1.496180,
 #         learning_rate=fw.schedules.Exponential(
 #             initial=1.0,
-#             steps=10,
+#             steps=20,
 #             rate=0.99,
 #             staircase=True
 #         ),
@@ -82,71 +82,76 @@ import framework as fw
 # )
 
 # BHH
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.BHH(
-        population=10,
-        burn_in=50,
-        replay=100,
-        reselection=1,
-        reanalysis=1,
-        credit=[
-            fw.credits.IBest(discounted_rewards=True)
-        ],
-        heuristics=[
-            # fw.heuristics.SGD(
-            #     learning_rate=fw.schedules.Exponential(
-            #         initial=1.0,
-            #         steps=10,
-            #         rate=0.99,
-            #         staircase=True
-            #     )
-            # ),
-            # fw.heuristics.Momentum(
-            #     learning_rate=fw.schedules.Exponential(
-            #         initial=1.0,
-            #         steps=10,
-            #         rate=0.99,
-            #         staircase=True
-            #     ),
-            #     momentum=0.9
-            # ),
-            fw.heuristics.NAG(
-                learning_rate=fw.schedules.Exponential(
-                    initial=1.0,
-                    steps=10,
-                    rate=0.99,
-                    staircase=True
-                ),
-                momentum=0.9,
-                nesterov=True
-            ),
-            # fw.heuristics.Adagrad(
-            #     learning_rate=fw.schedules.Exponential(
-            #         initial=1.0,
-            #         steps=10,
-            #         rate=0.99,
-            #         staircase=True
-            #     ),
-            #     epsilon=1e-07
-            # ),
-            fw.heuristics.PSO(
-                inertia_weight=0.729844,
-                social_control=1.496180,
-                cognitive_control=1.496180,
-                learning_rate=fw.schedules.Exponential(
-                    initial=1.0,
-                    steps=10,
-                    rate=0.99,
-                    staircase=True
-                ),
-                velocity_clip_min=-1.0,
-                velocity_clip_max=1.0
-            ),
-        ],
-    ),
-    log_dir="logs/bhh-w-ada",
-    seed=None
-)
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.BHH(
+#         population=3,
+#         burn_in=10,
+#         replay=10,
+#         reselection=10,
+#         reanalysis=10,
+#         credit=[
+#             fw.credits.RBest(discounted_rewards=True)
+#         ],
+#         heuristics=[
+#             # fw.heuristics.SGD(
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=1.0,
+#             #         steps=20,
+#             #         rate=0.99,
+#             #         staircase=True
+#             #     )
+#             # ),
+#             # fw.heuristics.Momentum(
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=1.0,
+#             #         steps=20,
+#             #         rate=0.99,
+#             #         staircase=True
+#             #     ),
+#             #     momentum=0.9
+#             # ),
+#             fw.heuristics.NAG(
+#                 learning_rate=0.1,
+#                 momentum=0.9,
+#                 nesterov=True
+#             ),
+#             fw.heuristics.NAG(
+#                 learning_rate=0.1,
+#                 momentum=0.9,
+#                 nesterov=True
+#             ),
+#             fw.heuristics.NAG(
+#                 learning_rate=0.1,
+#                 momentum=0.9,
+#                 nesterov=True
+#             ),
+#             # fw.heuristics.Adagrad(
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=1.0,
+#             #         steps=20,
+#             #         rate=0.99,
+#             #         staircase=True
+#             #     ),
+#             #     epsilon=1e-07
+#             # ),
+#             # fw.heuristics.PSO(
+#             #     inertia_weight=0.729844,
+#             #     social_control=1.496180,
+#             #     cognitive_control=1.496180,
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=1.0,
+#             #         steps=20,
+#             #         rate=0.99,
+#             #         staircase=True
+#             #     ),
+#             #     velocity_clip_min=-1.0,
+#             #     velocity_clip_max=1.0
+#             # ),
+#         ],
+#     ),
+#     log_dir="logs/bhh",
+#     seed=None
+# )
 
 if __name__ == "__main__":
     experiment.initialise()

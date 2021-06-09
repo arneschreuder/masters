@@ -57,7 +57,7 @@ class Iris(Dataset):
         self.classes = ["setosa", "versicolor", "virginica"]
         self.columns = self.features + [self.label]
         self.shuffle_size = 150
-        self.batch_size = 30
+        self.batch_size = 50
 
         # Load data from file
         directory = os.path.dirname(os.path.abspath(__file__))
