@@ -61,6 +61,6 @@ class Iris(Experiment):
                 SparseCategoricalAccuracyMetric()
             ],
             log_dir=log_dir,
-            epochs=500,
+            epochs=200,
             seed=seed
         )

@@ -11,6 +11,7 @@
 - [x] log-sum-exp -> Fixed by using log, no need for log-sum-exp
 - [x] split sgd, momentum and nag
 - [ ] learning rate schedules
+- [ ] readd learning rate for PSO
 - [x] SGD
 - [x] Momentum
 - [x] NAG
