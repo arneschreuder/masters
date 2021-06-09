@@ -61,17 +61,17 @@ class Momentum(Heuristic):
         self.momentum = momentum
 
     def __call__(self,
-                 position: tf.Tensor,
-                 velocity: tf.Tensor,
+                 position: tf.Variable,
+                 velocity: tf.Variable,
                  gradient: tf.Tensor) -> None:
         """
         The heuristic step operation.
 
         Parameters
         ----------
-        position: tf.Tensor
+        position: tf.Variable
             The entity's position which is the candidate solution to the model
-        velocity: tf.Tensor
+        velocity: tf.Variable
             The entity's velocity
         gradient: tf.Tensor
             The gradient to apply

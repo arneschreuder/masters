@@ -51,14 +51,14 @@ class SGD(Heuristic):
         self.learning_rate = learning_rate
 
     def __call__(self,
-                 position: tf.Tensor,
+                 position: tf.Variable,
                  gradient: tf.Tensor) -> None:
         """
         The heuristic step operation.
 
         Parameters
         ----------
-        position: tf.Tensor
+        position: tf.Variable
             The entity's position which is the candidate solution to the model
         gradient: tf.Tensor
             The gradient to apply

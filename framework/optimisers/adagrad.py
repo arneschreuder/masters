@@ -43,23 +43,16 @@ class Adagrad(Optimiser):
     ----------
     learning_rate: float
         The step size. Default = None
-    state: tf.Variable
-        The state of the gradient accumulator. Default = None
-    state_initialiser: Initialiser
-            The initialiser used to initialise the state. Default = None
     entity: Entity
         The entity that represents the candidate solution to the model.
         Default = None
     """
     learning_rate: float = None
-    state_initialiser: Initialiser = None
-    state: tf.Variable = None
     entity: Entity = None
 
     def __init__(self,
                  learning_rate: float = 0.1,
-                 epsilon: float = 1e-7,
-                 state_initialiser: Initialiser = Zeros()):
+                 epsilon: float = 1e-7):
         """
         Parameters
         ----------
@@ -67,8 +60,6 @@ class Adagrad(Optimiser):
             The step size. Default = 0.1
         epsilon: float
             Small error value. Default = 1e-7
-        state_initialiser: Initialiser
-            The initialiser used to initialise the state. Default = Zeros()
         """
         super(Adagrad, self).__init__(
             heuristic=AdagradHeuristic(
@@ -78,8 +69,6 @@ class Adagrad(Optimiser):
         )
         self.learning_rate = learning_rate,
         self.epsilon = epsilon
-        self.state_initialiser = state_initialiser
-        self.state = None
         self.entity = None
 
     def initialise(self) -> None:
@@ -92,10 +81,6 @@ class Adagrad(Optimiser):
         # This is required to determine the dimensionality of the model.
         self.entity.map_model(model=self.model)
         self.entity.initialise()
-
-        # Initialise state
-        state = self.state_initialiser(shape=self.entity.position.shape)
-        self.state = tf.Variable(initial_value=state)
 
     def get_gradient(self,
                      features: tf.Tensor,
@@ -157,7 +142,7 @@ class Adagrad(Optimiser):
         # Step and update position and velocity using heuristic
         self.heuristic(
             position=self.entity.position,
-            state=self.state,
+            state=self.entity.state,
             gradient=gradient_flat
         )
 

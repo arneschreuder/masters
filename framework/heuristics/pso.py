@@ -81,20 +81,20 @@ class PSO(Heuristic):
     def __call__(self,
                  position: tf.Variable,
                  velocity: tf.Variable,
-                 pbest: tf.Tensor,
-                 gbest: tf.Tensor) -> None:
+                 pbest: tf.Variable,
+                 gbest: tf.Variable) -> None:
         """
         Invocation function.
 
         Parameters
         ----------
-        position: tf.Tensor
+        position: tf.Variable
             Entity position
-        velocity: tf.Tensor
+        velocity: tf.Variable
             Entity velocity
-        pbest: tf.Tensor
+        pbest: tf.Variable
             Personal best position
-        gbest: tf.Tensor
+        gbest: tf.Variable
             Global best position
         """
         random1 = tf.random.uniform(shape=position.shape)

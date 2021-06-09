@@ -62,8 +62,8 @@ class Adagrad(Heuristic):
         self.epsilon = epsilon
 
     def __call__(self,
-                 position: tf.Tensor,
-                 state: tf.Tensor,
+                 position: tf.Variable,
+                 state: tf.Variable,
                  gradient: tf.Tensor) -> None:
         """
         The heuristic step operation.
