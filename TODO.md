@@ -18,7 +18,7 @@
 - [x] Momentum
 - [x] NAG
 - [x] ADAGRAD
-- [ ] ADADELTA
+- [x] ADADELTA
 - [ ] ADAMAX
 - [ ] RMSPROP
 - [ ] ADAM
@@ -27,6 +27,7 @@
 - [ ] DE
 - [ ] CMA-ES
 - [x] PSO
+- [x] Take note, adagrad and adadelta in bhh is currently incompatible, since the state update is different - fixed: was not included in bhh update step
 - [ ] QuantumPSO or Heterogeneous PSO?
 - [ ] Early stop?
 - [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at ln(1/classes) then.

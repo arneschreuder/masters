@@ -136,11 +136,11 @@ experiment = fw.experiments.Iris(
             #     momentum=0.9,
             #     nesterov=True
             # ),
-            fw.heuristics.NAG(
-                learning_rate=0.1,
-                momentum=0.9,
-                nesterov=True
-            ),
+            # fw.heuristics.NAG(
+            #     learning_rate=0.1,
+            #     momentum=0.9,
+            #     nesterov=True
+            # ),
             # fw.heuristics.Adagrad(
             #     learning_rate=fw.schedules.Exponential(
             #         initial=0.1,
@@ -150,15 +150,15 @@ experiment = fw.experiments.Iris(
             #     ),
             #     epsilon=1e-08
             # ),
-            # fw.heuristics.Adagrad(
-            #     learning_rate=fw.schedules.Exponential(
-            #         initial=0.1,
-            #         steps=20,
-            #         rate=0.98,
-            #         staircase=True
-            #     ),
-            #     epsilon=1e-08
-            # ),
+            fw.heuristics.Adagrad(
+                learning_rate=fw.schedules.Exponential(
+                    initial=0.1,
+                    steps=20,
+                    rate=0.95,
+                    staircase=True
+                ),
+                epsilon=1e-08
+            ),
             fw.heuristics.Adadelta(
                 learning_rate=fw.schedules.Exponential(
                     initial=0.01,
@@ -179,22 +179,22 @@ experiment = fw.experiments.Iris(
             #     rho=0.95,
             #     epsilon=1e-08
             # ),
-            fw.heuristics.PSO(
-                inertia_weight=0.729844,
-                social_control=1.496180,
-                cognitive_control=1.496180,
-                learning_rate=fw.schedules.Exponential(
-                    initial=1.0,
-                    steps=20,
-                    rate=0.99,
-                    staircase=True
-                ),
-                velocity_clip_min=-1.0,
-                velocity_clip_max=1.0
-            ),
+            # fw.heuristics.PSO(
+            #     inertia_weight=0.729844,
+            #     social_control=1.496180,
+            #     cognitive_control=1.496180,
+            #     learning_rate=fw.schedules.Exponential(
+            #         initial=1.0,
+            #         steps=20,
+            #         rate=0.99,
+            #         staircase=True
+            #     ),
+            #     velocity_clip_min=-1.0,
+            #     velocity_clip_max=1.0
+            # ),
         ],
     ),
-    log_dir="logs/bhh",
+    log_dir="logs/bhh-adas",
     seed=None
 )
 
