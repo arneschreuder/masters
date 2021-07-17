@@ -31,35 +31,51 @@ import framework as fw
 # )
 
 # NAG - Nesterov Adaptive Gradients
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.NAG(
-        learning_rate=fw.schedules.Exponential(
-            initial=0.1,
-            steps=100,
-            rate=0.99,
-            staircase=True
-        ),
-        momentum=0.9,
-        nesterov=True
-    ),
-    log_dir="logs/nag-lrs-mom-0.9-nest-true",
-    seed=None
-)
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.NAG(
+#         learning_rate=fw.schedules.Exponential(
+#             initial=0.1,
+#             steps=100,
+#             rate=0.99,
+#             staircase=True
+#         ),
+#         momentum=0.9,
+#         nesterov=True
+#     ),
+#     log_dir="logs/nag-lrs-mom-0.9-nest-true",
+#     seed=None
+# )
 
 # Adagrad - Adaptive Gradients
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.Adagrad(
 #         learning_rate=fw.schedules.Exponential(
-#             initial=1.0,
-#             steps=20,
-#             rate=0.99,
+#             initial=0.1,
+#             steps=100,
+#             rate=0.95,
 #             staircase=True
 #         ),
-#         epsilon=1e-07
+#         epsilon=1e-08
 #     ),
-#     log_dir="logs/adagrad-lrs-eps-1e-07",
+#     log_dir="logs/adagrad-lrs-eps-1e-08",
 #     seed=None
 # )
+
+# Adadelta - Adadelta Gradients
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.Adadelta(
+        learning_rate=fw.schedules.Exponential(
+            initial=0.01,
+            steps=100,
+            rate=0.95,
+            staircase=True
+        ),
+        rho=0.95,
+        epsilon=1e-08
+    ),
+    log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-08",
+    seed=None
+)
 
 # PSO - Particle Swarm Optimisation
 # experiment = fw.experiments.Iris(

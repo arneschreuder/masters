@@ -1,3 +1,4 @@
+from .adadelta import Adadelta
 from .adagrad import Adagrad
 from .bhh import BHH
 from .momentum import Momentum

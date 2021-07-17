@@ -30,43 +30,50 @@ from framework.heuristics.heuristic import Heuristic
 from framework.schedules.schedule import Schedule
 
 
-class Adagrad(Heuristic):
+class Adadelta(Heuristic):
     """
-    The Adaptive Gradients concrete heuristic.
-    Adagrad is a varient of SGD, where each feature dimension
-    has its own learning rate and this learning rate is updated
+    The Adaptive Gradients (Delta) concrete heuristic.
+    Adadelta is a varient of Adade where the decay of the learning rate is 
+                controlled by only the last few gradients and not the entire gradient history.
     over time.
 
-    See: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/adagrad.py
+    See: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/adadelta.py
 
     References:
-    Adaptive Subgradient Methods for Online Learning and Stochastic Optimization
-      :[Duchi et al., 2011](http://jmlr.org/papers/v12/duchi11a.html)
-      ([pdf](http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf))
+    ADADELTA - An Adaptive Learning Rate Method:
+      [Zeiler, 2012](http://arxiv.org/abs/1212.5701)
+      ([pdf](http://arxiv.org/pdf/1212.5701v1.pdf))
 
     Attributes
     ----------
     learning_rate: float or Schedule
         The step size. Default = None
+    rho: float
+        Decay rate. Default = None
     epsilon: float
         Small error value. Default = None
     """
     learning_rate: float or Schedule = None
+    rho: float = None
     epsilon: float = None
 
     def __init__(self,
                  learning_rate: float or Schedule = 0.1,
+                 rho: float = 0.95,
                  epsilon: float = 1e-8):
         """
         Parameters
         ----------
         learning_rate: float
             The step size. Default = 0.1
+        rho: float
+            Decay rate. Default = 0.95
         epsilon: float
             Small error value. Default = 1e-8
         """
-        super(Adagrad, self).__init__()
+        super(Adadelta, self).__init__()
         self.learning_rate = learning_rate
+        self.rho = rho
         self.epsilon = epsilon
 
     def __call__(self,
@@ -95,7 +102,11 @@ class Adagrad(Heuristic):
             lr = self.learning_rate(step=step)
 
         # Update state
-        state.assign_add(tf.math.pow(gradient, 2))
+        # state.assign_add(tf.math.pow(gradient, 2))
+        state.assign(
+            self.rho*state +
+            (1.0 - self.rho) * tf.math.pow(gradient, 2)
+        )
 
         # Update position
         G = lr/tf.math.sqrt(state + self.epsilon)

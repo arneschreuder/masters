@@ -13,7 +13,7 @@
 - [x] learning rate schedules
 - [x] readd learning rate for PSO
 - [ ] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
-- [ ] bhh doesnt work if only 2 heurisics, but of same -> I suspect this has to do with lrs that is not set right
+- [x] bhh doesnt work if only 2 heurisics, but of same -> I suspect this has to do with lrs that is not set right
 - [x] SGD
 - [x] Momentum
 - [x] NAG
@@ -36,9 +36,9 @@
 - [ ] change steps/epochs -> proportion of training time
 - [ ] tensorboard selection probabilities
 - [ ] tensorboard selections
-- [ ] credits from performance log is extremely inefficient
-- [ ] flatten and reshape of model params is extremely inefficient
-- [ ] bhh hyper-params on schedule? -> do after Adam with LR decay See: tf.keras.optimizers.schedules.LearningRateSchedule
+- [x] credits from performance log is extremely inefficient
+- [x] flatten and reshape of model params is extremely inefficient
+- [x] bhh hyper-params on schedule? -> do after Adam with LR decay See: tf.keras.optimizers.schedules.LearningRateSchedule
 - [ ] more datasets
 - [ ] optimisation
 - [ ] training, test, validation

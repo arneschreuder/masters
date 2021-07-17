@@ -28,22 +28,22 @@ from typing import List, Tuple
 
 import tensorflow as tf
 from framework.entities.entity import Entity
-from framework.heuristics.adagrad import Adagrad as AdagradHeuristic
+from framework.heuristics.adadelta import Adadelta as AdadeltaHeuristic
 from framework.optimisers.optimiser import Optimiser
 from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
-class Adagrad(Optimiser):
+class Adadelta(Optimiser):
     """
-    The Adagrad concrete optimiser.
+    The Adadelta concrete optimiser.
 
-    See: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/adagrad.py
+    See: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/adadelta.py
 
     References:
-    Adaptive Subgradient Methods for Online Learning and Stochastic Optimization
-      :[Duchi et al., 2011](http://jmlr.org/papers/v12/duchi11a.html)
-      ([pdf](http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf))
+    ADADELTA - An Adaptive Learning Rate Method:
+      [Zeiler, 2012](http://arxiv.org/abs/1212.5701)
+      ([pdf](http://arxiv.org/pdf/1212.5701v1.pdf))
 
     Attributes
     ----------
@@ -56,18 +56,22 @@ class Adagrad(Optimiser):
 
     def __init__(self,
                  learning_rate: float or Schedule = 0.1,
+                 rho: float = 0.95,
                  epsilon: float = 1e-8):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
             The step size. Default = 0.1
+        rho: float
+            Decay rate. Default = 0.95
         epsilon: float
             Small error value. Default = 1e-8
         """
-        super(Adagrad, self).__init__(
-            heuristic=AdagradHeuristic(
+        super(Adadelta, self).__init__(
+            heuristic=AdadeltaHeuristic(
                 learning_rate=learning_rate,
+                rho=rho,
                 epsilon=epsilon
             )
         )
@@ -79,7 +83,7 @@ class Adagrad(Optimiser):
         Initialiser function.
         Creates the entity, maps the model and initialises the entity.
         """
-        super(Adagrad, self).initialise()
+        super(Adadelta, self).initialise()
         self.entity = Entity()
         # This is required to determine the dimensionality of the model.
         self.entity.map_model(model=self.model)
