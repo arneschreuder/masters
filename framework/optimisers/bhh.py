@@ -38,6 +38,7 @@ from framework.distributions.dirichlet import Dirichlet
 from framework.distributions.distribution import Distribution
 from framework.entities.entity import Entity
 from framework.heuristics.adagrad import Adagrad
+from framework.heuristics.adadelta import Adadelta
 from framework.heuristics.bhh import BHH as BHHHeuristic
 from framework.heuristics.heuristic import Heuristic
 from framework.heuristics.momentum import Momentum
@@ -315,6 +316,14 @@ class BHH(Optimiser):
             )
         # TODO: Take note, Adagrad does not have a velocity update.
         elif isinstance(heuristic, Adagrad):
+            heuristic(
+                position=position,
+                state=state,
+                gradient=gradient,
+                step=step
+            )
+        # TODO: Take note, Adadelta does not have a velocity update.
+        elif isinstance(heuristic, Adadelta):
             heuristic(
                 position=position,
                 state=state,
