@@ -19,6 +19,8 @@
 - [x] NAG
 - [x] ADAGRAD
 - [x] ADADELTA
+- [ ] You dont need a "state" with these optimisers, just a timestep in memory is enough.
+- [ ] Store gradient in entity, it make it easier to use.
 - [ ] RMSPROP
 - [ ] ADAM
 - [ ] ADAMAX

@@ -86,11 +86,11 @@ class Momentum(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        # Update position and velocity
-        if self.momentum == 0.0:
-            position.assign_add(-lr*gradient)
-        else:
-            velocity.assign(
-                self.momentum*velocity - lr*gradient
-            )
-            position.assign_add(velocity)
+        # Update velocity
+        velocity.assign(
+            self.momentum*velocity -
+            (1 - self.momentum)*lr*gradient
+        )
+
+        # Update position
+        position.assign_add(velocity)

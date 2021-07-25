@@ -130,6 +130,7 @@ class SGD(Optimiser):
         # Step and update position and velocity using heuristic
         self.heuristic(
             position=self.entity.position,
+            velocity=self.entity.velocity,
             gradient=gradient_flat,
             step=step
         )

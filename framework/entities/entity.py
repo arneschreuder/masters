@@ -65,6 +65,8 @@ class Entity:
     velocity: tf.Variable = None
     state: tf.Variable = None
 
+    model: NeuralNetwork = None
+
     def __init__(self,
                  position_initialiser: Initialiser = GlorotUniform(),
                  velocity_initialiser: Initialiser = Zeros(),

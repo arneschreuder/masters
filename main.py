@@ -2,33 +2,33 @@
 import framework as fw
 
 # SGD
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.SGD(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=1.0,
-#             steps=20,
-#             rate=0.99,
-#             staircase=True
-#         )
-#     ),
-#     log_dir="logs/sgd-lrs",
-#     seed=None
-# )
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.SGD(
+        learning_rate=fw.schedules.Exponential(
+            initial=0.999,
+            steps=600,
+            rate=0.01,
+            staircase=False
+        )
+    ),
+    log_dir="logs/sgd-lrs",
+    seed=None
+)
 
 # Momentum
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Momentum(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=1.0,
-#             steps=20,
-#             rate=0.99,
-#             staircase=True
-#         ),
-#         momentum=0.9
-#     ),
-#     log_dir="logs/momentum-lrs-mom-0.9",
-#     seed=None
-# )
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.Momentum(
+        learning_rate=fw.schedules.Exponential(
+            initial=0.999,
+            steps=600,
+            rate=0.1,
+            staircase=False
+        ),
+        momentum=0.9
+    ),
+    log_dir="logs/momentum-lrs-mom-0.9",
+    seed=None
+)
 
 # NAG - Nesterov Adaptive Gradients
 # experiment = fw.experiments.Iris(
@@ -74,24 +74,24 @@ import framework as fw
 #         epsilon=1e-08
 #     ),
 #     log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-08",
-#     seed=1
+#     seed=None
 # )
 
 # Adadelta - Adadelta Gradients
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.Adadelta(
-        learning_rate=fw.schedules.Exponential(
-            initial=0.01,
-            steps=100,
-            rate=0.95,
-            staircase=True
-        ),
-        rho=0.95,
-        epsilon=1e-08
-    ),
-    log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-08",
-    seed=1
-)
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.Adadelta(
+#         learning_rate=fw.schedules.Exponential(
+#             initial=0.01,
+#             steps=100,
+#             rate=0.95,
+#             staircase=True
+#         ),
+#         rho=0.95,
+#         epsilon=1e-08
+#     ),
+#     log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-08",
+#     seed=None
+# )
 
 # PSO - Particle Swarm Optimisation
 # experiment = fw.experiments.Iris(
@@ -125,89 +125,89 @@ experiment = fw.experiments.Iris(
 #             fw.credits.RBest(discounted_rewards=True)
 #         ],
 #         heuristics=[
-# fw.heuristics.SGD(
-#     learning_rate=fw.schedules.Exponential(
-#         initial=1.0,
-#         steps=20,
-#         rate=0.99,
-#         staircase=True
-#     )
-# ),
-# fw.heuristics.Momentum(
-#     learning_rate=fw.schedules.Exponential(
-#         initial=1.0,
-#         steps=20,
-#         rate=0.99,
-#         staircase=True
-#     ),
-#     momentum=0.9
-# ),
-# fw.heuristics.NAG(
-#     learning_rate=0.1,
-#     momentum=0.9,
-#     nesterov=True
-# ),
-# fw.heuristics.NAG(
-#     learning_rate=0.1,
-#     momentum=0.9,
-#     nesterov=True
-# ),
-# fw.heuristics.NAG(
-#     learning_rate=0.1,
-#     momentum=0.9,
-#     nesterov=True
-# ),
-# fw.heuristics.Adagrad(
-#     learning_rate=fw.schedules.Exponential(
-#         initial=0.1,
-#         steps=20,
-#         rate=0.95,
-#         staircase=True
-#     ),
-#     epsilon=1e-08
-# ),
-# fw.heuristics.Adagrad(
-#     learning_rate=fw.schedules.Exponential(
-#         initial=0.1,
-#         steps=20,
-#         rate=0.95,
-#         staircase=True
-#     ),
-#     epsilon=1e-08
-# ),
-# fw.heuristics.Adadelta(
-#     learning_rate=fw.schedules.Exponential(
-#         initial=0.01,
-#         steps=100,
-#         rate=0.95,
-#         staircase=True
-#     ),
-#     rho=0.95,
-#     epsilon=1e-08
-# ),
-# fw.heuristics.Adadelta(
-#     learning_rate=fw.schedules.Exponential(
-#         initial=0.001,
-#         steps=100,
-#         rate=0.95,
-#         staircase=True
-#     ),
-#     rho=0.95,
-#     epsilon=1e-08
-# ),
-# fw.heuristics.PSO(
-#     inertia_weight=0.729844,
-#     social_control=1.496180,
-#     cognitive_control=1.496180,
-#     learning_rate=fw.schedules.Exponential(
-#         initial=1.0,
-#         steps=20,
-#         rate=0.99,
-#         staircase=True
-#     ),
-#     velocity_clip_min=-1.0,
-#     velocity_clip_max=1.0
-# ),
+#             fw.heuristics.SGD(
+#                 learning_rate=fw.schedules.Exponential(
+#                     initial=1.0,
+#                     steps=20,
+#                     rate=0.99,
+#                     staircase=True
+#                 )
+#             ),
+#             # fw.heuristics.Momentum(
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=1.0,
+#             #         steps=20,
+#             #         rate=0.99,
+#             #         staircase=True
+#             #     ),
+#             #     momentum=0.9
+#             # ),
+#             # fw.heuristics.NAG(
+#             #     learning_rate=0.1,
+#             #     momentum=0.9,
+#             #     nesterov=True
+#             # ),
+#             # fw.heuristics.NAG(
+#             #     learning_rate=0.1,
+#             #     momentum=0.9,
+#             #     nesterov=True
+#             # ),
+#             # fw.heuristics.NAG(
+#             #     learning_rate=0.1,
+#             #     momentum=0.9,
+#             #     nesterov=True
+#             # ),
+#             # fw.heuristics.Adagrad(
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=0.1,
+#             #         steps=20,
+#             #         rate=0.95,
+#             #         staircase=True
+#             #     ),
+#             #     epsilon=1e-08
+#             # ),
+#             # fw.heuristics.Adagrad(
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=0.1,
+#             #         steps=20,
+#             #         rate=0.95,
+#             #         staircase=True
+#             #     ),
+#             #     epsilon=1e-08
+#             # ),
+#             # fw.heuristics.Adadelta(
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=0.01,
+#             #         steps=100,
+#             #         rate=0.95,
+#             #         staircase=True
+#             #     ),
+#             #     rho=0.95,
+#             #     epsilon=1e-08
+#             # ),
+#             # fw.heuristics.Adadelta(
+#             #     learning_rate=fw.schedules.Exponential(
+#             #         initial=0.001,
+#             #         steps=100,
+#             #         rate=0.95,
+#             #         staircase=True
+#             #     ),
+#             #     rho=0.95,
+#             #     epsilon=1e-08
+#             # ),
+#             fw.heuristics.PSO(
+#                 inertia_weight=0.729844,
+#                 social_control=1.496180,
+#                 cognitive_control=1.496180,
+#                 learning_rate=fw.schedules.Exponential(
+#                     initial=1.0,
+#                     steps=20,
+#                     rate=0.99,
+#                     staircase=True
+#                 ),
+#                 velocity_clip_min=-1.0,
+#                 velocity_clip_max=1.0
+#             ),
 #         ],
 #     ),
 #     log_dir="logs/bhh-adas",

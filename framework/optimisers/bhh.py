@@ -294,10 +294,10 @@ class BHH(Optimiser):
                         pbest: tf.Variable,
                         gbest: tf.Variable,
                         step: int):
-        # TODO: Take note, SGD does not have a velocity update.
         if isinstance(heuristic, SGD):
             heuristic(
                 position=position,
+                velocity=velocity,
                 gradient=gradient,
                 step=step
             )
@@ -432,7 +432,7 @@ class BHH(Optimiser):
             )
 
         # Update
-        # Check if burn in is complete
+        # Check if burn-in is complete
         if step < self.burn_in:
             self.select()
         else:
