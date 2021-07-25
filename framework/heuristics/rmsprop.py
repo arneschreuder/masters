@@ -30,19 +30,20 @@ from framework.heuristics.heuristic import Heuristic
 from framework.schedules.schedule import Schedule
 
 
-class Adadelta(Heuristic):
+class RMSProp(Heuristic):
     """
-    The Adaptive Gradients (Delta) concrete heuristic.
-    Adadelta is a varient of Adade where the decay of the learning rate is 
-                controlled by only the last few gradients and not the entire gradient history.
-    over time.
+    The Root Mean Squared Propogation concrete heuristic.
+    The gist of RMSprop is to:
+                - Maintain a moving (discounted) average of the square of gradients
+                - Divide the gradient by the root of this average
+                This implementation of RMSprop uses plain momentum, not Nesterov momentum.
 
-    See: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/adadelta.py
 
-    References:
-    ADADELTA - An Adaptive Learning Rate Method:
-      [Zeiler, 2012](http://arxiv.org/abs/1212.5701)
-      ([pdf](http://arxiv.org/pdf/1212.5701v1.pdf))
+    See: https://github.com/tensorflow/tensorflow/blob/v2.5.0/tensorflow/python/keras/optimizer_v2/rmsprop.py#L32-L296
+
+    Reference:
+    - [Hinton, 2012](
+      http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf)
 
     Attributes
     ----------
@@ -71,7 +72,7 @@ class Adadelta(Heuristic):
         epsilon: float
             Small error value. Default = 1e-8
         """
-        super(Adadelta, self).__init__()
+        super(RMSProp, self).__init__()
         self.learning_rate = learning_rate
         self.rho = rho
         self.epsilon = epsilon

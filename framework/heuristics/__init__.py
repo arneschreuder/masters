@@ -5,4 +5,5 @@ from .heuristic import Heuristic
 from .momentum import Momentum
 from .nag import NAG
 from .pso import PSO
+from .rmsprop import RMSProp
 from .sgd import SGD

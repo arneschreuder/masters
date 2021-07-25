@@ -19,9 +19,9 @@
 - [x] NAG
 - [x] ADAGRAD
 - [x] ADADELTA
-- [ ] ADAMAX
 - [ ] RMSPROP
 - [ ] ADAM
+- [ ] ADAMAX
 - [ ] NADAM
 - [ ] GA
 - [ ] DE
@@ -37,6 +37,7 @@
 - [ ] change steps/epochs -> proportion of training time
 - [ ] tensorboard selection probabilities
 - [ ] tensorboard selections
+- [ ] cookie cutter datascience
 - [x] credits from performance log is extremely inefficient
 - [x] flatten and reshape of model params is extremely inefficient
 - [x] bhh hyper-params on schedule? -> do after Adam with LR decay See: tf.keras.optimizers.schedules.LearningRateSchedule

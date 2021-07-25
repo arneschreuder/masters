@@ -37,13 +37,14 @@ from framework.distributions.categorical import Categorical
 from framework.distributions.dirichlet import Dirichlet
 from framework.distributions.distribution import Distribution
 from framework.entities.entity import Entity
-from framework.heuristics.adagrad import Adagrad
 from framework.heuristics.adadelta import Adadelta
+from framework.heuristics.adagrad import Adagrad
 from framework.heuristics.bhh import BHH as BHHHeuristic
 from framework.heuristics.heuristic import Heuristic
 from framework.heuristics.momentum import Momentum
 from framework.heuristics.nag import NAG
 from framework.heuristics.pso import PSO
+from framework.heuristics.rmsprop import RMSProp
 from framework.heuristics.sgd import SGD
 from framework.initialisers.initialiser import Initialiser
 from framework.initialisers.ones import Ones
@@ -316,6 +317,14 @@ class BHH(Optimiser):
             )
         # TODO: Take note, Adagrad does not have a velocity update.
         elif isinstance(heuristic, Adagrad):
+            heuristic(
+                position=position,
+                state=state,
+                gradient=gradient,
+                step=step
+            )
+        # TODO: Take note, RMSProp does not have a velocity update.
+        elif isinstance(heuristic, RMSProp):
             heuristic(
                 position=position,
                 state=state,

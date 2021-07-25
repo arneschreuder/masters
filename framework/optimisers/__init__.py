@@ -5,4 +5,5 @@ from .momentum import Momentum
 from .nag import NAG
 from .optimiser import Optimiser
 from .pso import PSO
+from .rmsprop import RMSProp
 from .sgd import SGD
