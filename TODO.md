@@ -12,6 +12,7 @@
 - [x] split sgd, momentum and nag
 - [x] learning rate schedules
 - [x] readd learning rate for PSO
+- [ ] entity states
 - [ ] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
 - [x] bhh doesnt work if only 2 heurisics, but of same -> I suspect this has to do with lrs that is not set right
 - [x] SGD

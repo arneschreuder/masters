@@ -43,51 +43,71 @@ class Entity:
         The dimensionality of the entity. Default = None
     position_initialiser: Initialiser
         The initialiser used for the entity's position. Default = None
-    velocity_initialiser: Initialiser
-        The initialiser used for the entity's velocity. Default = None
-    state_initialiser: Initialiser
-            The initialiser used to initialise the state. Default = None
     position: tf.Variable
         The entity's position. This is often referred to as a candidate solution.
         Default = None
+    pbest: tf.Variable
+        The entity's pbest position. Default = None
+    loss: tf.Variable
+        The entity's loss. Default = None
+    pbest_loss: tf.Variable
+        The entity's pbest loss. Default = None
     velocity: tf.Variable
         The entity's velocity. Default = None
-    state: tf.Variable
-        The state of the gradient accumulator. Default = None
+    gradient: tf.Variable
+        The entity's gradient. Default = Non
+    model: NeuralNetwork
+        The model. Default = None
     """
     shape: tf.TensorShape = None
 
+    # Initialisers
     position_initialiser: Initialiser = None
-    velocity_initialiser: Initialiser = None
-    state_initialiser: Initialiser = None
 
-    position: tf.Variable = None
-    velocity: tf.Variable = None
-    state: tf.Variable = None
+    # Positions
+    position: tf.Variable = None  # Tensor
+    pbest: tf.Variable = None  # Tensor
 
+    # Losses
+    loss: tf.Variable = None  # Scalar
+    pbest_loss: tf.Variable = None  # Scalar
+
+    # Physics
+    velocity: tf.Variable = None  # Tensor
+
+    # Analytics
+    gradient: tf.Variable = None  # Tensor
+
+    # Model
     model: NeuralNetwork = None
 
-    def __init__(self,
-                 position_initialiser: Initialiser = GlorotUniform(),
-                 velocity_initialiser: Initialiser = Zeros(),
-                 state_initialiser: Initialiser = Zeros()):
+    def __init__(self, position_initialiser: Initialiser = GlorotUniform()):
         """
         Parameters
         ----------
         position_initialiser: Initialiser
             The initialiser used for the entity's position. Default = GlorotUniform
-        velocity_initialiser: Initialiser
-            The initialiser used for the entity's velocity. Default = Zeros
-        state_initialiser: Initialiser
-            The initialiser used to initialise the state. Default = Zeros()
         """
-        self.shape = None
+        shape = None
+
+        # Initialisers
         self.position_initialiser = position_initialiser
-        self.velocity_initialiser = velocity_initialiser
-        self.state_initialiser = state_initialiser
+
+        # Positions
         self.position = None
+        self.pbest = None
+
+        # Losses
+        self.loss = None
+        self.pbest_loss = None
+
+        # Physics
         self.velocity = None
-        self.state = None
+
+        # Analytics
+        self.gradient = None
+
+        # Model
         self.model = None
 
     def map_model(self, model: NeuralNetwork) -> None:
@@ -113,14 +133,26 @@ class Entity:
         This function actually initialises values for the entity's
         properties.
         """
-        # Position, velocity and state are tf.Variables because their values
-        # will be changed by other functions.
+
+        # Zeros Initialiser
+        zeros_initialiser = Zeros()
+
+        # Positions
         self.position = tf.Variable(
             initial_value=self.position_initialiser(shape=self.shape)
         )
+        self.pbest = tf.Variable(initial_value=self.position)
+
+        # Losses
+        self.loss = tf.Variable(initial_value=float('inf'))
+        self.pbest_loss = tf.Variable(initial_value=float('inf'))
+
+        # Physics
         self.velocity = tf.Variable(
-            initial_value=self.velocity_initialiser(shape=self.shape)
+            initial_value=zeros_initialiser(shape=self.shape)
         )
-        self.state = tf.Variable(
-            initial_value=self.state_initialiser(shape=self.shape)
+
+        # Analytics
+        self.gradient = tf.Variable(
+            initial_value=zeros_initialiser(shape=self.shape)
         )

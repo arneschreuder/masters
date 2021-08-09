@@ -74,6 +74,8 @@ class SGD(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
+        tf.print(lr)
+
         # Update velocity
         velocity.assign(-lr*gradient)
 

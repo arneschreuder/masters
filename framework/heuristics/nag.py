@@ -40,17 +40,13 @@ class NAG(Heuristic):
         The step size. Default = None
     momentum: float
         Momentum hyper-heuristic. Default = None
-    nesterov: bool
-        Flag to use nesterov update rule. Default = None
     """
     learning_rate: float or Schedule = None
     momentum: float = None
-    nesterov: bool = None
 
     def __init__(self,
                  learning_rate: float or Schedule = 0.1,
-                 momentum: float = 0.9,
-                 nesterov: bool = True):
+                 momentum: float = 0.9):
         """
         Parameters
         ----------
@@ -58,13 +54,10 @@ class NAG(Heuristic):
             The step size. Default = 0.1
         momentum: float
             Momentum hyper-heuristic. Default = 0.9
-        nesterov: bool
-            Flag to use nesterov update rule. Default = True
         """
         super(NAG, self).__init__()
         self.learning_rate = learning_rate
         self.momentum = momentum
-        self.nesterov = nesterov
 
     def __call__(self,
                  position: tf.Variable,
@@ -92,16 +85,9 @@ class NAG(Heuristic):
             lr = self.learning_rate(step=step)
 
         # Update position and velocity
-        if self.momentum == 0.0:
-            position.assign_add(-lr*gradient)
-        else:
-            velocity.assign(
-                self.momentum*velocity - lr*gradient
-            )
-
-            if self.nesterov:
-                position.assign_add(
-                    self.momentum*velocity - lr*gradient
-                )
-            else:
-                position.assign_add(velocity)
+        velocity.assign(
+            self.momentum*velocity - lr*gradient
+        )
+        position.assign_add(
+            self.momentum*velocity - lr*gradient
+        )

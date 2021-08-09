@@ -127,11 +127,14 @@ class SGD(Optimiser):
         gradient = self.get_gradient(features=features, labels=labels)
         gradient_flat = flatten(x=gradient)
 
+        # Set gradient
+        self.entity.gradient = gradient_flat
+
         # Step and update position and velocity using heuristic
         self.heuristic(
             position=self.entity.position,
             velocity=self.entity.velocity,
-            gradient=gradient_flat,
+            gradient=self.entity.gradient,
             step=step
         )
 

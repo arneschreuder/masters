@@ -49,8 +49,7 @@ class NAG(Optimiser):
 
     def __init__(self,
                  learning_rate: float or Schedule = 0.1,
-                 momentum: float = 0.9,
-                 nesterov: bool = True):
+                 momentum: float = 0.9):
         """
         Parameters
         ----------
@@ -58,14 +57,11 @@ class NAG(Optimiser):
             The step size. Default = 0.1
         momentum: float
             Momentum hyper-heuristic. Default = 0.9
-        nesterov: bool
-            Flag to use nesterov update rule. Default = True
         """
         super(NAG, self).__init__(
             heuristic=NAGHeuristic(
                 learning_rate=learning_rate,
-                momentum=momentum,
-                nesterov=nesterov
+                momentum=momentum
             )
         )
         self.entity = None
@@ -138,11 +134,14 @@ class NAG(Optimiser):
         gradient = self.get_gradient(features=features, labels=labels)
         gradient_flat = flatten(x=gradient)
 
+        # Set gradient
+        self.entity.gradient = gradient_flat
+
         # Step and update position and velocity using heuristic
         self.heuristic(
             position=self.entity.position,
             velocity=self.entity.velocity,
-            gradient=gradient_flat,
+            gradient=self.entity.gradient,
             step=step
         )
 

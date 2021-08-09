@@ -396,13 +396,16 @@ class BHH(Optimiser):
             gradient = self.get_gradient(features=features, labels=labels)
             gradient_flat = flatten(x=gradient)
 
+            # Set gradient
+            entity.gradient = gradient_flat
+
             # Apply heuristics to available data
             self.apply_heuristic(
                 heuristic=heuristic,
                 position=entity.position,
                 velocity=entity.velocity,
                 state=entity.state,
-                gradient=gradient_flat,
+                gradient=entity.gradient,
                 pbest=pbest,
                 gbest=self.gbest,
                 step=step
