@@ -16,23 +16,8 @@ import framework as fw
 # )
 
 # Momentum
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.Momentum(
-        learning_rate=fw.schedules.Exponential(
-            initial=0.999,
-            steps=600,
-            rate=0.1,
-            staircase=False
-        ),
-        momentum=0.9
-    ),
-    log_dir="logs/momentum-lrs-mom-0.9",
-    seed=None
-)
-
-# NAG - Nesterov Adaptive Gradients
 # experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.NAG(
+#     optimiser=fw.optimisers.Momentum(
 #         learning_rate=fw.schedules.Exponential(
 #             initial=0.999,
 #             steps=600,
@@ -41,9 +26,24 @@ experiment = fw.experiments.Iris(
 #         ),
 #         momentum=0.9
 #     ),
-#     log_dir="logs/nag-lrs-mom-0.9",
+#     log_dir="logs/momentum-lrs-mom-0.9",
 #     seed=None
 # )
+
+# NAG - Nesterov Adaptive Gradients
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.NAG(
+        learning_rate=fw.schedules.Exponential(
+            initial=0.999,
+            steps=600,
+            rate=0.1,
+            staircase=False
+        ),
+        momentum=0.9
+    ),
+    log_dir="logs/nag-lrs-mom-0.9",
+    seed=None
+)
 
 # Adagrad - Adaptive Gradients
 # experiment = fw.experiments.Iris(

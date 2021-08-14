@@ -25,7 +25,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 
-import tensorflow as tf
+from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.schedules.schedule import Schedule
 
@@ -60,9 +60,7 @@ class NAG(Heuristic):
         self.momentum = momentum
 
     def __call__(self,
-                 position: tf.Variable,
-                 velocity: tf.Variable,
-                 gradient: tf.Tensor,
+                 entity: Entity,
                  step: int) -> None:
         """
         The heuristic step operation.
@@ -84,10 +82,29 @@ class NAG(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        # Update position and velocity
-        velocity.assign(
-            self.momentum*velocity - lr*gradient
+        # # Update position and velocity
+        # velocity.assign(
+        #     self.momentum*velocity - lr*gradient
+        # )
+        # position.assign_add(
+        #     self.momentum*velocity - lr*gradient
+        # )
+
+        # Update acceleration
+        entity.state.acceleration.assign(
+            -lr*entity.state.gradient)
+
+        # Update velocity
+        entity.state.velocity.assign(
+            self.momentum*entity.state.velocity +
+            entity.state.acceleration
         )
-        position.assign_add(
-            self.momentum*velocity - lr*gradient
+
+        # Update delta position
+        entity.state.delta_position.assign(
+            self.momentum*entity.state.velocity +
+            entity.state.acceleration
         )
+
+        # Update position
+        entity.state.position.assign_add(entity.state.delta_position)

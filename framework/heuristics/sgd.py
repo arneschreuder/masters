@@ -73,13 +73,13 @@ class SGD(Heuristic):
             lr = self.learning_rate(step=step)
 
         # Update acceleration
-        entity.state.acceleration.assign(entity.state.gradient)
+        entity.state.acceleration.assign(-lr*entity.state.gradient)
 
         # Update velocity
         entity.state.velocity.assign(entity.state.acceleration)
 
         # Update delta position
-        entity.state.delta_position = -lr*entity.state.velocity
+        entity.state.delta_position = entity.state.velocity
 
         # Update position
         entity.state.position.assign_add(entity.state.delta_position)

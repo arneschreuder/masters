@@ -93,9 +93,9 @@ class Momentum(Heuristic):
         # # Update position
         # position.assign_add(velocity)
 
-         # Update acceleration
+        # Update acceleration
         entity.state.acceleration.assign(
-            (1-self.momentum)*entity.state.gradient)
+            -lr*entity.state.gradient)
 
         # Update velocity
         entity.state.velocity.assign(
@@ -104,7 +104,7 @@ class Momentum(Heuristic):
         )
 
         # Update delta position
-        entity.state.delta_position = -lr*entity.state.velocity
+        entity.state.delta_position = entity.state.velocity
 
         # Update position
         entity.state.position.assign_add(entity.state.delta_position)

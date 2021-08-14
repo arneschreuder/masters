@@ -268,8 +268,9 @@ class Entity:
     position: tf.Variable = None
     velocity: tf.Variable = None
     acceleration: tf.Variable = None
-    delta_position: tf.Variable = None
     gradient: tf.Variable = None
+    delta_position: tf.Variable = None
+    sum_gradients_squared: tf.Variable = None
     loss: tf.Variable = None
 
     # Initialisers
@@ -277,6 +278,7 @@ class Entity:
     velocity_initialiser: Initialiser = None
     acceleration_initialiser: Initialiser = None
     delta_position_initialiser: Initialiser = None
+    sum_gradients_squared_initialiser: Initialiser = None
 
     # pbest_position: tf.Variable = None  # Sorted
 
@@ -306,13 +308,15 @@ class Entity:
         self.position = None
         self.velocity = None
         self.acceleration = None
-        self.delta_position = None
         self.gradient = None
+        self.delta_position = None
+        self.sum_gradients_squared = None
         self.loss = None
         self.position_initialiser = position_initialiser
         self.velocity_initialiser = Zeros()
         self.acceleration_initialiser = Zeros()
         self.delta_position_initialiser = Zeros()
+        self.sum_gradients_squared_initialiser = Zeros()
 
     def initialise(self):
         self.position = tf.Variable(
@@ -326,4 +330,8 @@ class Entity:
         )
         self.delta_position = tf.Variable(
             initial_value=self.delta_position_initialiser(shape=self.shape)
+        )
+        self.sum_gradients_squared = tf.Variable(
+            initial_value=self.sum_gradients_squared_initialiser(
+                shape=self.shape)
         )

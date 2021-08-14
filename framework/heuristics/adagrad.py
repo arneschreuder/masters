@@ -26,6 +26,7 @@
 
 
 import tensorflow as tf
+from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.schedules.schedule import Schedule
 
@@ -70,9 +71,7 @@ class Adagrad(Heuristic):
         self.epsilon = epsilon
 
     def __call__(self,
-                 position: tf.Variable,
-                 state: tf.Variable,
-                 gradient: tf.Tensor,
+                 entity: Entity,
                  step: int) -> None:
         """
         The heuristic step operation.
@@ -94,9 +93,22 @@ class Adagrad(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        # Update state
-        state.assign_add(tf.math.pow(gradient, 2))
+        # Update sum gradients squared
+        entity.state.sum_gradients_squared.assign_add(
+            tf.math.pow(entity.state.gradient, 2)
+        )
 
         # Update position
-        G = lr/tf.math.sqrt(state + self.epsilon)
-        position.assign_add(-G*gradient)
+        G = lr/tf.math.sqrt(entity.state.sum_gradients_squared + self.epsilon)
+
+        # Update acceleration
+        entity.state.acceleration.assign(-G*entity.state.gradient)
+
+        # Update velocity
+        entity.state.velocity.assign(entity.state.acceleration)
+
+        # Update delta position
+        entity.state.delta_position = entity.state.velocity
+
+        # Update position
+        entity.state.position.assign_add(entity.state.delta_position)
