@@ -25,7 +25,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 
-import tensorflow as tf
+from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.schedules.schedule import Schedule
 
@@ -62,9 +62,7 @@ class Momentum(Heuristic):
         self.momentum = momentum
 
     def __call__(self,
-                 position: tf.Variable,
-                 velocity: tf.Variable,
-                 gradient: tf.Tensor,
+                 entity: Entity,
                  step: int) -> None:
         """
         The heuristic step operation.
@@ -86,11 +84,27 @@ class Momentum(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
+        # # Update velocity
+        # velocity.assign(
+        #     self.momentum*velocity -
+        #     (1 - self.momentum)*lr*gradient
+        # )
+
+        # # Update position
+        # position.assign_add(velocity)
+
+         # Update acceleration
+        entity.state.acceleration.assign(
+            (1-self.momentum)*entity.state.gradient)
+
         # Update velocity
-        velocity.assign(
-            self.momentum*velocity -
-            (1 - self.momentum)*lr*gradient
+        entity.state.velocity.assign(
+            self.momentum*entity.state.velocity +
+            entity.state.acceleration
         )
 
+        # Update delta position
+        entity.state.delta_position = -lr*entity.state.velocity
+
         # Update position
-        position.assign_add(velocity)
+        entity.state.position.assign_add(entity.state.delta_position)

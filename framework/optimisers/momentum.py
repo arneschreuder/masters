@@ -127,24 +127,24 @@ class Momentum(Optimiser):
             Consists out of (logits, loss)
         """
         # Load model with solution
-        self.model.set_weights_flat(weights_flat=self.entity.position)
+        self.model.set_weights_flat(weights_flat=self.entity.state.position)
 
         # Get gradients
         gradient = self.get_gradient(features=features, labels=labels)
         gradient_flat = flatten(x=gradient)
 
         # Set gradient
-        self.entity.gradient = gradient_flat
+        self.entity.state.gradient = gradient_flat
 
         # Step and update position and velocity using heuristic
         self.heuristic(
-            position=self.entity.position,
-            velocity=self.entity.velocity,
-            gradient=self.entity.gradient,
+            entity=self.entity,
             step=step
         )
 
         # Evaluate current position
-        self.model.set_weights_flat(weights_flat=self.entity.position)
+        self.model.set_weights_flat(weights_flat=self.entity.state.position)
         logits, loss = self.evaluate(features=features, labels=labels)
+        self.entity.state.loss = loss
+
         return logits, loss

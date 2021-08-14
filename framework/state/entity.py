@@ -268,6 +268,7 @@ class Entity:
     position: tf.Variable = None
     velocity: tf.Variable = None
     acceleration: tf.Variable = None
+    delta_position: tf.Variable = None
     gradient: tf.Variable = None
     loss: tf.Variable = None
 
@@ -275,6 +276,7 @@ class Entity:
     position_initialiser: Initialiser = None
     velocity_initialiser: Initialiser = None
     acceleration_initialiser: Initialiser = None
+    delta_position_initialiser: Initialiser = None
 
     # pbest_position: tf.Variable = None  # Sorted
 
@@ -302,11 +304,15 @@ class Entity:
     def __init__(self, position_initialiser: Initialiser = GlorotUniform()):
         self.shape = None
         self.position = None
+        self.velocity = None
+        self.acceleration = None
+        self.delta_position = None
         self.gradient = None
         self.loss = None
         self.position_initialiser = position_initialiser
         self.velocity_initialiser = Zeros()
         self.acceleration_initialiser = Zeros()
+        self.delta_position_initialiser = Zeros()
 
     def initialise(self):
         self.position = tf.Variable(
@@ -317,4 +323,7 @@ class Entity:
         )
         self.acceleration = tf.Variable(
             initial_value=self.acceleration_initialiser(shape=self.shape)
+        )
+        self.delta_position = tf.Variable(
+            initial_value=self.delta_position_initialiser(shape=self.shape)
         )

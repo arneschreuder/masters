@@ -25,7 +25,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 
-import tensorflow as tf
+from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.schedules.schedule import Schedule
 
@@ -52,10 +52,7 @@ class SGD(Heuristic):
         self.learning_rate = learning_rate
 
     def __call__(self,
-                 position: tf.Variable,
-                 velocity: tf.Variable,
-                 acceleration: tf.Variable,
-                 gradient: tf.Tensor,
+                 entity: Entity,
                  step: int) -> None:
         """
         The heuristic step operation.
@@ -76,10 +73,13 @@ class SGD(Heuristic):
             lr = self.learning_rate(step=step)
 
         # Update acceleration
-        acceleration.assign(-lr*gradient)
+        entity.state.acceleration.assign(entity.state.gradient)
 
         # Update velocity
-        velocity.assign(acceleration)
+        entity.state.velocity.assign(entity.state.acceleration)
+
+        # Update delta position
+        entity.state.delta_position = -lr*entity.state.velocity
 
         # Update position
-        position.assign_add(velocity)
+        entity.state.position.assign_add(entity.state.delta_position)

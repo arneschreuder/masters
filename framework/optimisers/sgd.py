@@ -132,14 +132,13 @@ class SGD(Optimiser):
 
         # Step and update position and velocity using heuristic
         self.heuristic(
-            position=self.entity.state.position,
-            velocity=self.entity.state.velocity,
-            acceleration=self.entity.state.acceleration,
-            gradient=self.entity.state.gradient,
+            entity=self.entity,
             step=step
         )
 
         # Evaluate current position
         self.model.set_weights_flat(weights_flat=self.entity.state.position)
         logits, loss = self.evaluate(features=features, labels=labels)
+        self.entity.state.loss = loss
+
         return logits, loss
