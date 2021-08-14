@@ -12,32 +12,29 @@
 - [x] split sgd, momentum and nag
 - [x] learning rate schedules
 - [x] readd learning rate for PSO
-- [ ] entity states
-- [ ] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
+- [+] entity states
+- [+] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
 - [x] bhh doesnt work if only 2 heurisics, but of same -> I suspect this has to do with lrs that is not set right
 - [x] SGD
 - [x] Momentum
 - [x] NAG
 - [x] ADAGRAD
 - [x] ADADELTA
-- [ ] You dont need a "state" with these optimisers, just a timestep in memory is enough.
-- [ ] Store gradient in entity, it make it easier to use.
-- [ ] RMSPROP
-- [ ] ADAM
-- [ ] ADAMAX
-- [ ] NADAM
+- [+] Store gradient in entity, it make it easier to use.
+- [+] RMSPROP
+- [+] ADAM
 - [ ] GA
 - [ ] DE
 - [ ] CMA-ES
 - [x] PSO
 - [x] Take note, adagrad and adadelta in bhh is currently incompatible, since the state update is different - fixed: was not included in bhh update step
-- [ ] QuantumPSO or Heterogeneous PSO?
-- [ ] Early stop?
+- [-] QuantumPSO or Heterogeneous PSO?
+- [-] Early stop?
 - [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at ln(1/classes) then.
 - [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
 - [ ] Comment credit source files
 - [ ] Comment bhh source files
-- [ ] change steps/epochs -> proportion of training time
+- [-] change steps/epochs -> proportion of training time
 - [ ] tensorboard selection probabilities
 - [ ] tensorboard selections
 - [ ] cookie cutter datascience
@@ -45,11 +42,11 @@
 - [x] flatten and reshape of model params is extremely inefficient
 - [x] bhh hyper-params on schedule? -> do after Adam with LR decay See: tf.keras.optimizers.schedules.LearningRateSchedule
 - [ ] more datasets
-- [ ] optimisation
+- [-] optimisation
 - [ ] training, test, validation
 - [ ] main + experiment -> cli
-- [ ] ensure all heuristics are always selected, despite model
-- [ ] ensure all heuristics prerequisite data are met
+- [-] ensure all heuristics are always selected, despite model
+- [+] ensure all heuristics prerequisite data are met
 - [ ] prepare experiments
 - [ ] test scripts
 - [ ] access hpc

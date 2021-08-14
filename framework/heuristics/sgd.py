@@ -54,6 +54,7 @@ class SGD(Heuristic):
     def __call__(self,
                  position: tf.Variable,
                  velocity: tf.Variable,
+                 acceleration: tf.Variable,
                  gradient: tf.Tensor,
                  step: int) -> None:
         """
@@ -74,10 +75,11 @@ class SGD(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        tf.print(lr)
+        # Update acceleration
+        acceleration.assign(-lr*gradient)
 
         # Update velocity
-        velocity.assign(-lr*gradient)
+        velocity.assign(acceleration)
 
         # Update position
         position.assign_add(velocity)
