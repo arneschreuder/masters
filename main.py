@@ -31,19 +31,19 @@ import framework as fw
 # )
 
 # NAG - Nesterov Adaptive Gradients
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.NAG(
-        learning_rate=fw.schedules.Exponential(
-            initial=0.999,
-            steps=600,
-            rate=0.1,
-            staircase=False
-        ),
-        momentum=0.9
-    ),
-    log_dir="logs/nag-lrs-mom-0.9",
-    seed=None
-)
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.NAG(
+#         learning_rate=fw.schedules.Exponential(
+#             initial=0.999,
+#             steps=600,
+#             rate=0.1,
+#             staircase=False
+#         ),
+#         momentum=0.9
+#     ),
+#     log_dir="logs/nag-lrs-mom-0.9",
+#     seed=None
+# )
 
 # Adagrad - Adaptive Gradients
 # experiment = fw.experiments.Iris(
@@ -61,20 +61,20 @@ experiment = fw.experiments.Iris(
 # )
 
 # RMSProp - Root Mean Squared Propagation
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.RMSProp(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=0.01,
-#             steps=100,
-#             rate=0.95,
-#             staircase=True
-#         ),
-#         rho=0.95,
-#         epsilon=1e-08
-#     ),
-#     log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-08",
-#     seed=None
-# )
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.RMSProp(
+        learning_rate=fw.schedules.Exponential(
+            initial=0.01,
+            steps=100,
+            rate=0.95,
+            staircase=True
+        ),
+        rho=0.95,
+        epsilon=1e-08
+    ),
+    log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-08",
+    seed=None
+)
 
 # Adadelta - Adadelta Gradients
 # experiment = fw.experiments.Iris(
