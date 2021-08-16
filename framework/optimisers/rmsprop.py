@@ -54,18 +54,18 @@ class RMSProp(Optimiser):
     entity: Entity = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
-                 rho: float = 0.95,
-                 epsilon: float = 1e-8):
+                 learning_rate: float or Schedule = 0.001,
+                 rho: float = 0.9,
+                 epsilon: float = 1e-7):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
-            The step size. Default = 0.1
+            The step size. Default = 0.001
         rho: float
-            Decay rate. Default = 0.95
+            Decay rate. Default = 0.9
         epsilon: float
-            Small error value. Default = 1e-8
+            Small error value. Default = 1e-7
         """
         super(RMSProp, self).__init__(
             heuristic=RMSPropHeuristic(

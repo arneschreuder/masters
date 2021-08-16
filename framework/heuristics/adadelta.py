@@ -26,6 +26,7 @@
 
 
 import tensorflow as tf
+from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.schedules.schedule import Schedule
 
@@ -47,7 +48,7 @@ class Adadelta(Heuristic):
     Attributes
     ----------
     learning_rate: float or Schedule
-        The step size. Default = None
+        The step size. Default = 1.0
     rho: float
         Decay rate. Default = None
     epsilon: float
@@ -58,18 +59,16 @@ class Adadelta(Heuristic):
     epsilon: float = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
+                 learning_rate: float or Schedule = 1.0,
                  rho: float = 0.95,
-                 epsilon: float = 1e-8):
+                 epsilon: float = 1e-7):
         """
         Parameters
         ----------
-        learning_rate: float
-            The step size. Default = 0.1
         rho: float
             Decay rate. Default = 0.95
         epsilon: float
-            Small error value. Default = 1e-8
+            Small error value. Default = 1e-7
         """
         super(Adadelta, self).__init__()
         self.learning_rate = learning_rate
@@ -77,9 +76,7 @@ class Adadelta(Heuristic):
         self.epsilon = epsilon
 
     def __call__(self,
-                 position: tf.Variable,
-                 state: tf.Variable,
-                 gradient: tf.Tensor,
+                 entity: Entity,
                  step: int) -> None:
         """
         The heuristic step operation.
@@ -101,12 +98,35 @@ class Adadelta(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        # Update state
-        state.assign(
-            self.rho*state +
-            (1.0 - self.rho) * tf.math.pow(gradient, 2)
+        # Update E_gradient_variance
+        entity.state.E_gradient_variance.assign(
+            self.rho*entity.state.E_gradient_variance +
+            (1-self.rho)*tf.math.pow(entity.state.gradient, 2)
         )
 
+        # Update E_position_delta_variance
+        entity.state.E_position_delta_variance.assign(
+            self.rho*entity.state.E_position_delta_variance +
+            (1-self.rho)*tf.math.pow(entity.state.position_delta, 2)
+        )
+
+        # Update position_delta
+        entity.state.position_delta.assign(
+            -lr*(
+                tf.math.sqrt(
+                    entity.state.E_position_delta_variance +
+                    self.epsilon
+                ) /
+                tf.math.sqrt(
+                    entity.state.E_gradient_variance +
+                    self.epsilon
+                )
+            ) *
+            entity.state.gradient
+        )
+
+        # Update velocity
+        entity.state.velocity.assign(entity.state.position_delta)
+
         # Update position
-        G = lr/tf.math.sqrt(state + self.epsilon)
-        position.assign_add(-G*gradient)
+        entity.state.position.assign_add(entity.state.velocity)

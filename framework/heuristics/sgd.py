@@ -41,12 +41,12 @@ class SGD(Heuristic):
     """
     learning_rate: float or Schedule = None
 
-    def __init__(self, learning_rate: float or Schedule = 0.1):
+    def __init__(self, learning_rate: float or Schedule = 0.01):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
-            The step size. Default = 0.1
+            The step size. Default = 0.01
         """
         super(SGD, self).__init__()
         self.learning_rate = learning_rate
@@ -72,14 +72,11 @@ class SGD(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        # Update acceleration
-        entity.state.acceleration.assign(-lr*entity.state.gradient)
+        # Update position_delta
+        entity.state.position_delta = -lr*entity.state.gradient
 
         # Update velocity
-        entity.state.velocity.assign(entity.state.acceleration)
-
-        # Update delta position
-        entity.state.delta_position.assign(entity.state.velocity)
+        entity.state.velocity.assign(entity.state.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.delta_position)
+        entity.state.position.assign_add(entity.state.velocity)

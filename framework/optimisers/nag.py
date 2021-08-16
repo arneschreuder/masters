@@ -48,13 +48,13 @@ class NAG(Optimiser):
     entity: Entity = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
+                 learning_rate: float or Schedule = 0.01,
                  momentum: float = 0.9):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
-            The step size. Default = 0.1
+            The step size. Default = 0.01
         momentum: float
             Momentum hyper-heuristic. Default = 0.9
         """

@@ -55,18 +55,18 @@ class Adadelta(Optimiser):
     entity: Entity = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
+                 learning_rate: float or Schedule = 1.0,
                  rho: float = 0.95,
-                 epsilon: float = 1e-8):
+                 epsilon: float = 1e-7):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
-            The step size. Default = 0.1
+            The step size. Default = 1.0
         rho: float
             Decay rate. Default = 0.95
         epsilon: float
-            Small error value. Default = 1e-8
+            Small error value. Default = 1e-7
         """
         super(Adadelta, self).__init__(
             heuristic=AdadeltaHeuristic(
@@ -140,24 +140,24 @@ class Adadelta(Optimiser):
             Consists out of (logits, loss)
         """
         # Load model with solution
-        self.model.set_weights_flat(weights_flat=self.entity.position)
+        self.model.set_weights_flat(weights_flat=self.entity.state.position)
 
         # Get gradients
         gradient = self.get_gradient(features=features, labels=labels)
         gradient_flat = flatten(x=gradient)
 
         # Set gradient
-        self.entity.gradient = gradient_flat
+        self.entity.state.gradient = gradient_flat
 
         # Step and update position and velocity using heuristic
         self.heuristic(
-            position=self.entity.position,
-            state=self.entity.state,
-            gradient=self.entity.gradient,
+            entity=self.entity,
             step=step
         )
 
         # Evaluate current position
-        self.model.set_weights_flat(weights_flat=self.entity.position)
+        self.model.set_weights_flat(weights_flat=self.entity.state.position)
         logits, loss = self.evaluate(features=features, labels=labels)
+        self.entity.state.loss = loss
+
         return logits, loss

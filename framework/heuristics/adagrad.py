@@ -56,15 +56,15 @@ class Adagrad(Heuristic):
     epsilon: float = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
-                 epsilon: float = 1e-8):
+                 learning_rate: float or Schedule = 0.001,
+                 epsilon: float = 1e-7):
         """
         Parameters
         ----------
         learning_rate: float
-            The step size. Default = 0.1
+            The step size. Default = 0.001
         epsilon: float
-            Small error value. Default = 1e-8
+            Small error value. Default = 1e-7
         """
         super(Adagrad, self).__init__()
         self.learning_rate = learning_rate
@@ -94,21 +94,24 @@ class Adagrad(Heuristic):
             lr = self.learning_rate(step=step)
 
         # Update sum gradients squared
-        entity.state.sum_gradients_squared.assign_add(
+        entity.state.sum_gradient_squared.assign_add(
             tf.math.pow(entity.state.gradient, 2)
         )
 
-        # Update position
-        G = lr/tf.math.sqrt(entity.state.sum_gradients_squared + self.epsilon)
-
-        # Update acceleration
-        entity.state.acceleration.assign(-G*entity.state.gradient)
+        # Update position_delta
+        entity.state.position_delta.assign(
+            -lr*(
+                1 /
+                tf.math.sqrt(
+                    entity.state.sum_gradient_squared +
+                    self.epsilon
+                )
+            ) *
+            entity.state.gradient
+        )
 
         # Update velocity
-        entity.state.velocity.assign(entity.state.acceleration)
-
-        # Update delta position
-        entity.state.delta_position.assign(entity.state.velocity)
+        entity.state.velocity.assign(entity.state.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.delta_position)
+        entity.state.position.assign_add(entity.state.velocity)

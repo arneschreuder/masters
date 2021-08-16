@@ -45,13 +45,13 @@ class NAG(Heuristic):
     momentum: float = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
+                 learning_rate: float or Schedule = 0.01,
                  momentum: float = 0.9):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
-            The step size. Default = 0.1
+            The step size. Default = 0.01
         momentum: float
             Momentum hyper-heuristic. Default = 0.9
         """
@@ -82,29 +82,23 @@ class NAG(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        # # Update position and velocity
-        # velocity.assign(
-        #     self.momentum*velocity - lr*gradient
-        # )
-        # position.assign_add(
-        #     self.momentum*velocity - lr*gradient
-        # )
+        # Update E_gradient_mean
+        entity.state.E_gradient_mean.assign(
+            (
+                self.momentum*entity.state.E_gradient_mean +
+                (1-self.momentum)*entity.state.gradient
+            )
+        )
 
-        # Update acceleration
-        entity.state.acceleration.assign(
-            -lr*entity.state.gradient)
+        # Update position_delta
+        entity.state.position_delta.assign(-lr*(
+            self.momentum*entity.state.E_gradient_mean +
+            (1-self.momentum)*entity.state.gradient
+        )
+        )
 
         # Update velocity
-        entity.state.velocity.assign(
-            self.momentum*entity.state.velocity +
-            entity.state.acceleration
-        )
-
-        # Update delta position
-        entity.state.delta_position.assign(
-            self.momentum*entity.state.velocity +
-            entity.state.acceleration
-        )
+        entity.state.velocity.assign(entity.state.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.delta_position)
+        entity.state.position.assign_add(entity.state.velocity)

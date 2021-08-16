@@ -47,13 +47,13 @@ class Momentum(Heuristic):
     momentum: float = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
+                 learning_rate: float or Schedule = 0.01,
                  momentum: float = 0.9):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
-            The step size. Default = 0.1
+            The step size. Default = 0.01
         momentum: float
             Momentum hyper-heuristic. Default = 0.9
         """
@@ -84,27 +84,19 @@ class Momentum(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        # # Update velocity
-        # velocity.assign(
-        #     self.momentum*velocity -
-        #     (1 - self.momentum)*lr*gradient
-        # )
-
-        # # Update position
-        # position.assign_add(velocity)
-
-        # Update acceleration
-        entity.state.acceleration.assign(
-            -lr*entity.state.gradient)
-
-        # Update velocity
-        entity.state.velocity.assign(
-            self.momentum*entity.state.velocity +
-            entity.state.acceleration
+        # Update E_gradient_mean
+        entity.state.E_gradient_mean.assign(
+            (
+                self.momentum*entity.state.E_gradient_mean +
+                (1-self.momentum)*entity.state.gradient
+            )
         )
 
-        # Update delta position
-        entity.state.delta_position.assign(entity.state.velocity)
+        # Update position_delta
+        entity.state.position_delta = -lr*entity.state.E_gradient_mean
+
+        # Update velocity
+        entity.state.velocity.assign(entity.state.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.delta_position)
+        entity.state.position.assign_add(entity.state.velocity)

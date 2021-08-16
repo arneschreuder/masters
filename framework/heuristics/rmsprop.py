@@ -60,18 +60,18 @@ class RMSProp(Heuristic):
     epsilon: float = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
-                 rho: float = 0.95,
-                 epsilon: float = 1e-8):
+                 learning_rate: float or Schedule = 0.001,
+                 rho: float = 0.9,
+                 epsilon: float = 1e-7):
         """
         Parameters
         ----------
         learning_rate: float
-            The step size. Default = 0.1
+            The step size. Default = 0.001
         rho: float
-            Decay rate. Default = 0.95
+            Decay rate. Default = 0.9
         epsilon: float
-            Small error value. Default = 1e-8
+            Small error value. Default = 1e-7
         """
         super(RMSProp, self).__init__()
         self.learning_rate = learning_rate
@@ -101,33 +101,26 @@ class RMSProp(Heuristic):
         if type(self.learning_rate) is not float:
             lr = self.learning_rate(step=step)
 
-        # # Update state
-        # state.assign(
-        #     self.rho*state +
-        #     (1.0 - self.rho) * tf.math.pow(gradient, 2)
-        # )
-
-        # # Update position
-        # G = lr/tf.math.sqrt(state + self.epsilon)
-        # position.assign_add(-G*gradient)
-
-        # Update sum gradients squared
-        entity.state.E_gradients_squared.assign(
-            self.rho*entity.state.E_gradients_squared +
+        # Update E_gradient_variance
+        entity.state.E_gradient_variance.assign(
+            self.rho*entity.state.E_gradient_variance +
             (1-self.rho)*tf.math.pow(entity.state.gradient, 2)
         )
 
-        # Update position
-        G = lr/tf.math.sqrt(entity.state.E_gradients_squared + self.epsilon)
-
-        # Update acceleration
-        entity.state.acceleration.assign(-G*entity.state.gradient)
+        # Update position_delta
+        entity.state.position_delta.assign(
+            -lr*(
+                1 /
+                tf.math.sqrt(
+                    entity.state.E_gradient_variance +
+                    self.epsilon
+                )
+            ) *
+            entity.state.gradient
+        )
 
         # Update velocity
-        entity.state.velocity.assign(entity.state.acceleration)
-
-        # Update delta position
-        entity.state.delta_position.assign(entity.state.velocity)
+        entity.state.velocity.assign(entity.state.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.delta_position)
+        entity.state.position.assign_add(entity.state.velocity)

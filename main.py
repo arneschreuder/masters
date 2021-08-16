@@ -5,9 +5,9 @@ import framework as fw
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.SGD(
 #         learning_rate=fw.schedules.Exponential(
-#             initial=0.999,
+#             initial=1.0,
 #             steps=600,
-#             rate=0.01,
+#             rate=0.1,
 #             staircase=False
 #         )
 #     ),
@@ -19,7 +19,7 @@ import framework as fw
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.Momentum(
 #         learning_rate=fw.schedules.Exponential(
-#             initial=0.999,
+#             initial=1.0,
 #             steps=600,
 #             rate=0.1,
 #             staircase=False
@@ -34,7 +34,7 @@ import framework as fw
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.NAG(
 #         learning_rate=fw.schedules.Exponential(
-#             initial=0.999,
+#             initial=1.0,
 #             steps=600,
 #             rate=0.1,
 #             staircase=False
@@ -49,48 +49,48 @@ import framework as fw
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.Adagrad(
 #         learning_rate=fw.schedules.Exponential(
-#             initial=0.1,
-#             steps=100,
-#             rate=0.95,
-#             staircase=True
+#             initial=1.0,
+#             steps=600,
+#             rate=0.1,
+#             staircase=False
 #         ),
-#         epsilon=1e-08
+#         epsilon=1e-07
 #     ),
-#     log_dir="logs/adagrad-lrs-eps-1e-08",
+#     log_dir="logs/adagrad-lrs-eps-1e-07",
 #     seed=None
 # )
 
 # RMSProp - Root Mean Squared Propagation
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.RMSProp(
-        learning_rate=fw.schedules.Exponential(
-            initial=0.01,
-            steps=100,
-            rate=0.95,
-            staircase=True
-        ),
-        rho=0.95,
-        epsilon=1e-08
-    ),
-    log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-08",
-    seed=None
-)
-
-# Adadelta - Adadelta Gradients
 # experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Adadelta(
+#     optimiser=fw.optimisers.RMSProp(
 #         learning_rate=fw.schedules.Exponential(
-#             initial=0.01,
-#             steps=100,
-#             rate=0.95,
-#             staircase=True
+#             initial=0.1,
+#             steps=600,
+#             rate=0.01,
+#             staircase=False
 #         ),
 #         rho=0.95,
-#         epsilon=1e-08
+#         epsilon=1e-07
 #     ),
-#     log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-08",
+#     log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-07",
 #     seed=None
 # )
+
+# Adadelta - Adadelta Gradients
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.Adadelta(
+        learning_rate=fw.schedules.Exponential(
+            initial=1.0,
+            steps=600,
+            rate=0.95,
+            staircase=False
+        ),
+        rho=0.95,
+        epsilon=1e-07
+    ),
+    log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-07",
+    seed=None
+)
 
 # PSO - Particle Swarm Optimisation
 # experiment = fw.experiments.Iris(

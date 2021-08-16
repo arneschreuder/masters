@@ -55,15 +55,15 @@ class Adagrad(Optimiser):
     entity: Entity = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.1,
-                 epsilon: float = 1e-8):
+                 learning_rate: float or Schedule = 0.001,
+                 epsilon: float = 1e-7):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
             The step size. Default = 0.1
         epsilon: float
-            Small error value. Default = 1e-8
+            Small error value. Default = 1e-7
         """
         super(Adagrad, self).__init__(
             heuristic=AdagradHeuristic(

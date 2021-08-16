@@ -47,7 +47,7 @@ class SGD(Optimiser):
     """
     entity: Entity = None
 
-    def __init__(self, learning_rate: float or Schedule = 0.1):
+    def __init__(self, learning_rate: float or Schedule = 0.01):
         """
         Parameters
         ----------
