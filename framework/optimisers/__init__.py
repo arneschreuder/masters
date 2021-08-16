@@ -1,5 +1,6 @@
 from .adadelta import Adadelta
 from .adagrad import Adagrad
+from .adam import Adam
 from .bhh import BHH
 from .momentum import Momentum
 from .nag import NAG

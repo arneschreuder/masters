@@ -77,18 +77,35 @@ import framework as fw
 # )
 
 # Adadelta - Adadelta Gradients
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.Adadelta(
+#         learning_rate=fw.schedules.Exponential(
+#             initial=1.0,
+#             steps=600,
+#             rate=0.95,
+#             staircase=False
+#         ),
+#         rho=0.95,
+#         epsilon=1e-07
+#     ),
+#     log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-07",
+#     seed=None
+# )
+
+# Adam - Adaptive Moments
 experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.Adadelta(
+    optimiser=fw.optimisers.Adam(
         learning_rate=fw.schedules.Exponential(
-            initial=1.0,
+            initial=0.1,
             steps=600,
-            rate=0.95,
+            rate=0.01,
             staircase=False
         ),
-        rho=0.95,
+        beta1=0.9,
+        beta2=0.999,
         epsilon=1e-07
     ),
-    log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-07",
+    log_dir="logs/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
     seed=None
 )
 

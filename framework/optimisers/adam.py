@@ -28,21 +28,22 @@ from typing import List, Tuple
 
 import tensorflow as tf
 from framework.entities.entity import Entity
-from framework.heuristics.rmsprop import RMSProp as RMSPropHeuristic
+from framework.heuristics.adam import Adam as AdamHeuristic
 from framework.optimisers.optimiser import Optimiser
 from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
-class RMSProp(Optimiser):
+class Adam(Optimiser):
     """
-    The Root Mean Squared Propagation concrete optimiser.
+    The Adaptive Moments concrete optimiser.
 
-    See: https://github.com/tensorflow/tensorflow/blob/v2.5.0/tensorflow/python/keras/optimizer_v2/rmsprop.py#L32-L296
+    See: https://github.com/keras-team/keras/blob/master/keras/optimizer_v2/adam.py#L24-L243
 
     Reference:
-    - [Hinton, 2012](
-      http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf)
+    - [Kingma et al., 2014](http://arxiv.org/abs/1412.6980)
+    - [Reddi et al., 2018](
+        https://openreview.net/pdf?id=ryQu7f-RZ) for `amsgrad`.
 
     Attributes
     ----------
@@ -55,22 +56,26 @@ class RMSProp(Optimiser):
 
     def __init__(self,
                  learning_rate: float or Schedule = 0.001,
-                 rho: float = 0.9,
+                 beta1: float = 0.9,
+                 beta2: float = 0.999,
                  epsilon: float = 1e-7):
         """
         Parameters
         ----------
         learning_rate: float or Schedule
             The step size. Default = 0.001
-        rho: float
-            Decay rate. Default = 0.9
+        beta1: float
+            Decay rate for first moment. Default = 0.9
+                                beta2: float
+            Decay rate for second moment. Default = 0.999
         epsilon: float
             Small error value. Default = 1e-7
         """
-        super(RMSProp, self).__init__(
-            heuristic=RMSPropHeuristic(
+        super(Adam, self).__init__(
+            heuristic=AdamHeuristic(
                 learning_rate=learning_rate,
-                rho=rho,
+                beta1=beta1,
+                beta2=beta2,
                 epsilon=epsilon
             )
         )
@@ -81,7 +86,7 @@ class RMSProp(Optimiser):
         Initialiser function.
         Creates the entity, maps the model and initialises the entity.
         """
-        super(RMSProp, self).initialise()
+        super(Adam, self).initialise()
         self.entity = Entity()
         # This is required to determine the dimensionality of the model.
         self.entity.map_model(model=self.model)

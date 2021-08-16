@@ -1,5 +1,6 @@
 from .adadelta import Adadelta
 from .adagrad import Adagrad
+from .adam import Adam
 from .bhh import BHH
 from .heuristic import Heuristic
 from .momentum import Momentum
