@@ -25,8 +25,9 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 import tensorflow as tf
+from framework.entities import Entity
 from framework.heuristics.heuristic import Heuristic
-from framework.schedules.schedule import Schedule
+from framework.population import Population
 
 
 class PSO(Heuristic):
@@ -41,8 +42,6 @@ class PSO(Heuristic):
         The cognative control (c1). Default = None
     social_control: float
         The social control (c2). Default = None
-    learning_rate: float or Schedule
-        The step size. Default = None
     velocity_clip_min: float
         The velocity minimum bound. Default = None
     velocity_clip_max: float
@@ -51,7 +50,6 @@ class PSO(Heuristic):
     inertia_weight: float = None
     cognitive_control: float = None
     social_control: float = None
-    learning_rate: float or Schedule = None
     velocity_clip_min: float = None
     velocity_clip_max: float = None
 
@@ -59,7 +57,6 @@ class PSO(Heuristic):
                  inertia_weight: float = 0.729844,
                  cognitive_control: float = 1.496180,
                  social_control: float = 1.496180,
-                 learning_rate: float or Schedule = 1.0,
                  velocity_clip_min: float = -1.0,
                  velocity_clip_max: float = 1.0):
         """
@@ -71,8 +68,6 @@ class PSO(Heuristic):
             The cognative control (c1). Default = 1.496180
         social_control: float
             The social control (c2). Default = 1.496180
-        learning_rate: float or Schedule
-            The step size. Default = 1.0
         velocity_clip_min: float
             The velocity minimum bound. Default = -1.0
         velocity_clip_max: float
@@ -82,53 +77,41 @@ class PSO(Heuristic):
         self.inertia_weight = inertia_weight
         self.cognitive_control = cognitive_control
         self.social_control = social_control
-        self.learning_rate = learning_rate
         self.velocity_clip_min = velocity_clip_min
         self.velocity_clip_max = velocity_clip_max
 
     def __call__(self,
-                 position: tf.Variable,
-                 velocity: tf.Variable,
-                 pbest: tf.Variable,
-                 gbest: tf.Variable,
+                 entity: Entity,
+                 population: Population,
                  step: int) -> None:
         """
         Invocation function.
 
         Parameters
         ----------
-        position: tf.Variable
-            Entity position
-        velocity: tf.Variable
-            Entity velocity
-        pbest: tf.Variable
-            Personal best position
-        gbest: tf.Variable
-            Global best position
+        entity: EntityState
+            Entity state
+        population: PopulationState
+            Population state
         """
-        # Get learning rate
-        lr = self.learning_rate
-
-        if type(self.learning_rate) is not float:
-            lr = self.learning_rate(step=step)
-
         # Get random params
-        random1 = tf.random.uniform(shape=position.shape)
-        random2 = tf.random.uniform(shape=position.shape)
+        random1 = tf.random.uniform(shape=entity.position.shape)
+        random2 = tf.random.uniform(shape=entity.position.shape)
 
         # Update velocity
-        velocity.assign(
-            self.inertia_weight*velocity +
-            self.cognitive_control*random1*(pbest - position) +
-            self.social_control*random2*(gbest - position)
+        entity.velocity.assign(
+            self.inertia_weight*entity.velocity +
+            self.cognitive_control*random1*(entity.pbest - entity.position) +
+            self.social_control*random2 *
+            (population.gbest - entity.position)
         )
 
         # Velocity clipping
-        velocity.assign(tf.clip_by_value(
-            t=velocity,
+        entity.velocity.assign(tf.clip_by_value(
+            t=entity.velocity,
             clip_value_min=self.velocity_clip_min,
             clip_value_max=self.velocity_clip_max,
         ))
 
         # Update position
-        position.assign_add(lr*velocity)
+        entity.position.assign_add(entity.velocity)

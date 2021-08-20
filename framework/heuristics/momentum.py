@@ -85,18 +85,18 @@ class Momentum(Heuristic):
             lr = self.learning_rate(step=step)
 
         # Update E_gradient_mean
-        entity.state.E_gradient_mean.assign(
+        entity.E_gradient_mean.assign(
             (
-                self.momentum*entity.state.E_gradient_mean +
-                (1-self.momentum)*entity.state.gradient
+                self.momentum*entity.E_gradient_mean +
+                (1-self.momentum)*entity.gradient
             )
         )
 
         # Update position_delta
-        entity.state.position_delta = -lr*entity.state.E_gradient_mean
+        entity.position_delta = -lr*entity.E_gradient_mean
 
         # Update velocity
-        entity.state.velocity.assign(entity.state.position_delta)
+        entity.velocity.assign(entity.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.velocity)
+        entity.position.assign_add(entity.velocity)

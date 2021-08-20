@@ -24,15 +24,14 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-from copy import deepcopy
-from typing import List, Tuple
+from typing import Tuple
 
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.pso import PSO as PSOHeuristic
+from framework.neural_networks.neural_network import NeuralNetwork
 from framework.optimisers.optimiser import Optimiser
-from framework.schedules.schedule import Schedule
-from framework.utilities.utilities import flatten, reshape
+from framework.population import Population
 
 
 class PSO(Optimiser):
@@ -41,33 +40,25 @@ class PSO(Optimiser):
 
     Attributes
     ----------
-    population: int
-        The swarm size. Default = None
-    entities: List[Entity]
-        Entities in population. Default = None
-    pbests: List[tf.Tensor]
-        Personal best positions. Default = None
-    gbest: tf.Tensor
-        Global best position. Default = None
-
+    population_size: int
+        The population_size. Default = None
+    population: Population
+        The population. Default = None
     """
-    population: int = None
-    entities: List[Entity] = None
-    pbests: List[tf.Variable] = None
-    gbest: tf.Variable = None
+    population_size: int = None
+    population: Population = None
 
     def __init__(self,
-                 population: int = 10,
+                 population_size: int = 10,
                  inertia_weight: float = 0.729844,
                  social_control: float = 1.496180,
                  cognitive_control: float = 1.496180,
-                 learning_rate: float or Schedule = 1.0,
                  velocity_clip_min: float = -1.0,
                  velocity_clip_max: float = 1.0):
         """
         Parameters
         ----------
-        population: int
+        population_size: int
             Population/swarm size. Default = 30
         inertia_weight: float
             The inertia weight (w). Default = 0.729844
@@ -75,8 +66,6 @@ class PSO(Optimiser):
             The cognative control (c1). Default = 1.496180
         social_control: float
             The social control (c2). Default = 1.496180
-        learning_rate: float or Schedule
-            The step size. Default = 1.0
         velocity_clip_min: float
             The velocity minimum bound. Default = -1.0
         velocity_clip_max: float
@@ -87,15 +76,12 @@ class PSO(Optimiser):
                 inertia_weight=inertia_weight,
                 social_control=social_control,
                 cognitive_control=cognitive_control,
-                learning_rate=learning_rate,
                 velocity_clip_min=velocity_clip_min,
                 velocity_clip_max=velocity_clip_max
             )
         )
-        self.population = population
-        self.entities = None
-        self.pbests = None
-        self.gbest = None
+        self.population_size = population_size
+        self.population = Population(population_size=self.population_size)
 
     def initialise(self):
         """
@@ -105,24 +91,9 @@ class PSO(Optimiser):
         PBest and GBest values are also created.
         """
         super(PSO, self).initialise()
-        self.entities = []
-        self.pbests = []
 
-        # Personal bests
-        for i in range(self.population):
-            entity = Entity()
-            # This is required to determine the dimensionality of the model.
-            entity.map_model(self.model)
-            entity.initialise()
-            self.entities.append(entity)
-
-            # Set pbest to initial position
-            pbest = tf.Variable(initial_value=entity.position)
-            self.pbests.append(pbest)
-
-        # Here we just initialise the gbest value to some random value
-        weights = self.model.get_weights_flat()
-        self.gbest = tf.Variable(initial_value=weights)
+        # Initialise population
+        self.population.initialise(model=self.model)
 
     def update_bests(self,
                      features: tf.Tensor,
@@ -131,33 +102,31 @@ class PSO(Optimiser):
                      pbest: tf.Variable):
         # Evaluate entity
         self.model.set_weights_flat(weights_flat=entity.position)
-        _, loss = self.evaluate(features=features, labels=labels)
+        _, entity.loss = self.evaluate(features=features, labels=labels)
 
         # Evaluate pbest
         self.model.set_weights_flat(weights_flat=pbest)
         _, pbest_loss = self.evaluate(features=features, labels=labels)
 
-        if loss < pbest_loss:
-            pbest.assign(entity.position)
+        if entity.loss < pbest_loss:
+            entity.pbest.assign(entity.position)
 
         # Evaluate gbest
-        self.model.set_weights_flat(weights_flat=self.gbest)
+        self.model.set_weights_flat(weights_flat=self.population.gbest)
         _, gbest_loss = self.evaluate(features=features, labels=labels)
 
-        if loss < gbest_loss:
-            self.gbest.assign(entity.position)
+        if entity.loss < gbest_loss:
+            self.population.gbest.assign(entity.position)
 
     def __call__(self,
                  features: tf.Tensor,
                  labels: tf.Tensor,
                  step: int) -> Tuple[tf.Tensor, tf.Tensor]:
-        for entity, pbest in zip(self.entities, self.pbests):
+        for entity in self.population.entities:
             # Step
             self.heuristic(
-                position=entity.position,
-                velocity=entity.velocity,
-                pbest=pbest,
-                gbest=self.gbest,
+                entity=entity,
+                population=self.population,
                 step=step
             )
 
@@ -166,10 +135,12 @@ class PSO(Optimiser):
                 features=features,
                 labels=labels,
                 entity=entity,
-                pbest=pbest
+                pbest=entity.pbest
             )
 
         # Evaluate current position
-        self.model.set_weights_flat(weights_flat=self.gbest)
+        self.model.set_weights_flat(weights_flat=self.population.gbest)
         logits, loss = self.evaluate(features=features, labels=labels)
+        self.loss = loss
+
         return logits, loss

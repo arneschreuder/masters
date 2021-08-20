@@ -93,41 +93,35 @@ import framework as fw
 # )
 
 # Adam - Adaptive Moments
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.Adam(
-        learning_rate=fw.schedules.Exponential(
-            initial=0.1,
-            steps=600,
-            rate=0.01,
-            staircase=False
-        ),
-        beta1=0.9,
-        beta2=0.999,
-        epsilon=1e-07
-    ),
-    log_dir="logs/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-    seed=None
-)
-
-# PSO - Particle Swarm Optimisation
 # experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.PSO(
-#         population=10,
-#         inertia_weight=0.729844,
-#         social_control=1.496180,
-#         cognitive_control=1.496180,
+#     optimiser=fw.optimisers.Adam(
 #         learning_rate=fw.schedules.Exponential(
-#             initial=1.0,
-#             steps=20,
-#             rate=0.99,
-#             staircase=True
+#             initial=0.1,
+#             steps=600,
+#             rate=0.01,
+#             staircase=False
 #         ),
-#         velocity_clip_min=-1.0,
-#         velocity_clip_max=1.0
+#         beta1=0.9,
+#         beta2=0.999,
+#         epsilon=1e-07
 #     ),
-#     log_dir="logs/pso-pop-10-w-0.7-c1-1.49-c2-1.49-lrs-vclip-1.0",
+#     log_dir="logs/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
 #     seed=None
 # )
+
+# PSO - Particle Swarm Optimisation
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.PSO(
+        population_size=10,
+        inertia_weight=0.729844,
+        social_control=1.496180,
+        cognitive_control=1.496180,
+        velocity_clip_min=-1.0,
+        velocity_clip_max=1.0
+    ),
+    log_dir="logs/pso-pop-10-w-0.7-c1-1.49-c2-1.49-vclip-1.0",
+    seed=None
+)
 
 # BHH
 # experiment = fw.experiments.Iris(

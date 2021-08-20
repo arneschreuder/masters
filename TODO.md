@@ -12,17 +12,17 @@
 - [x] split sgd, momentum and nag
 - [x] learning rate schedules
 - [x] readd learning rate for PSO
-- [+] entity states
-- [+] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
+- [x] entity states
+- [x] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
 - [x] bhh doesnt work if only 2 heurisics, but of same -> I suspect this has to do with lrs that is not set right
 - [x] SGD
 - [x] Momentum
 - [x] NAG
 - [x] ADAGRAD
 - [x] ADADELTA
-- [+] Store gradient in entity, it make it easier to use.
-- [+] RMSPROP
-- [+] ADAM
+- [x] Store gradient in entity, it make it easier to use.
+- [x] RMSPROP
+- [x] ADAM
 - [ ] GA
 - [ ] DE
 - [ ] CMA-ES
@@ -30,7 +30,7 @@
 - [x] Take note, adagrad and adadelta in bhh is currently incompatible, since the state update is different - fixed: was not included in bhh update step
 - [-] QuantumPSO or Heterogeneous PSO?
 - [-] Early stop?
-- [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at ln(1/classes) then.
+- [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at -ln(1/classes) then.
 - [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
 - [ ] Comment credit source files
 - [ ] Comment bhh source files

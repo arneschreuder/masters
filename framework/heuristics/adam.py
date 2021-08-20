@@ -110,27 +110,27 @@ class Adam(Heuristic):
             lr = self.learning_rate(step=step)
 
             # Update E_gradient_mean
-        entity.state.E_gradient_mean.assign(
-            self.beta1*entity.state.E_gradient_mean +
-            (1-self.beta1)*entity.state.gradient
+        entity.E_gradient_mean.assign(
+            self.beta1*entity.E_gradient_mean +
+            (1-self.beta1)*entity.gradient
         )
 
         # Update E_gradient_variance
-        entity.state.E_gradient_variance.assign(
-            self.beta2*entity.state.E_gradient_variance +
-            (1-self.beta2)*tf.math.pow(entity.state.gradient, 2)
+        entity.E_gradient_variance.assign(
+            self.beta2*entity.E_gradient_variance +
+            (1-self.beta2)*tf.math.pow(entity.gradient, 2)
         )
 
         # Bias correct gradient_mean
-        bias_corrected_E_gradient_mean = entity.state.E_gradient_mean / \
+        bias_corrected_E_gradient_mean = entity.E_gradient_mean / \
             (1-self.beta1)
 
         # Bias correct gradient_variance
-        bias_corrected_E_gradient_variance = entity.state.E_gradient_variance / \
+        bias_corrected_E_gradient_variance = entity.E_gradient_variance / \
             (1-self.beta2)
 
         # Update position_delta
-        entity.state.position_delta.assign(
+        entity.position_delta.assign(
             -lr*(
                 1 /
                 tf.math.sqrt(
@@ -142,7 +142,7 @@ class Adam(Heuristic):
         )
 
         # Update velocity
-        entity.state.velocity.assign(entity.state.position_delta)
+        entity.velocity.assign(entity.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.velocity)
+        entity.position.assign_add(entity.velocity)

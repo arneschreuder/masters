@@ -404,7 +404,7 @@ class BHH(Optimiser):
                 heuristic=heuristic,
                 position=entity.position,
                 velocity=entity.velocity,
-                state=entity.state,
+                state=entity,
                 gradient=entity.gradient,
                 pbest=pbest,
                 gbest=self.gbest,

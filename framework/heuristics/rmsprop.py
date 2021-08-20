@@ -102,25 +102,25 @@ class RMSProp(Heuristic):
             lr = self.learning_rate(step=step)
 
         # Update E_gradient_variance
-        entity.state.E_gradient_variance.assign(
-            self.rho*entity.state.E_gradient_variance +
-            (1-self.rho)*tf.math.pow(entity.state.gradient, 2)
+        entity.E_gradient_variance.assign(
+            self.rho*entity.E_gradient_variance +
+            (1-self.rho)*tf.math.pow(entity.gradient, 2)
         )
 
         # Update position_delta
-        entity.state.position_delta.assign(
+        entity.position_delta.assign(
             -lr*(
                 1 /
                 tf.math.sqrt(
-                    entity.state.E_gradient_variance +
+                    entity.E_gradient_variance +
                     self.epsilon
                 )
             ) *
-            entity.state.gradient
+            entity.gradient
         )
 
         # Update velocity
-        entity.state.velocity.assign(entity.state.position_delta)
+        entity.velocity.assign(entity.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.velocity)
+        entity.position.assign_add(entity.velocity)

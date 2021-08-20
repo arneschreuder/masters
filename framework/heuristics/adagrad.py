@@ -94,24 +94,24 @@ class Adagrad(Heuristic):
             lr = self.learning_rate(step=step)
 
         # Update sum gradients squared
-        entity.state.sum_gradient_squared.assign_add(
-            tf.math.pow(entity.state.gradient, 2)
+        entity.sum_gradient_squared.assign_add(
+            tf.math.pow(entity.gradient, 2)
         )
 
         # Update position_delta
-        entity.state.position_delta.assign(
+        entity.position_delta.assign(
             -lr*(
                 1 /
                 tf.math.sqrt(
-                    entity.state.sum_gradient_squared +
+                    entity.sum_gradient_squared +
                     self.epsilon
                 )
             ) *
-            entity.state.gradient
+            entity.gradient
         )
 
         # Update velocity
-        entity.state.velocity.assign(entity.state.position_delta)
+        entity.velocity.assign(entity.position_delta)
 
         # Update position
-        entity.state.position.assign_add(entity.state.velocity)
+        entity.position.assign_add(entity.velocity)
