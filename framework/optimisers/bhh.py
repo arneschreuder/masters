@@ -24,12 +24,9 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-from copy import deepcopy
-from logging import log
 from typing import List, Tuple
 
 import tensorflow as tf
-import tensorflow_probability as tfp
 from framework.credits.credit import Credit
 from framework.credits.ibest import IBest
 from framework.distributions.beta import Beta
@@ -51,23 +48,27 @@ from framework.initialisers.ones import Ones
 from framework.initialisers.zeros import Zeros
 from framework.optimisers.optimiser import Optimiser
 from framework.performance_log.performance_log import PerformanceLog
+from framework.population import Population
 from framework.utilities.utilities import flatten
 
 # TODO: STILL NEED TO COMMENT THIS FILE
 
 
 class BHH(Optimiser):
-    population: int = None
+    population_size: int = None
     burn_in: int = None
     replay: int = None
     reselection: int = None
     reanalysis: int = None
-    normalise: bool = None  # TODO: STILL NEED TO DO THIS
     credit: List[Credit] = None
+
+    # TODO: DO we need to keep these as properties?
 
     alpha_initialiser: Initialiser = None
     beta_initialiser: Initialiser = None
     gamma_initialiser: Initialiser = None
+
+    # TODO: DO we need to keep these as properties?
 
     K: int = None
     J: int = None
@@ -79,10 +80,14 @@ class BHH(Optimiser):
     gamma1: tf.Tensor = None
     gamma0: tf.Tensor = None
 
+    # TODO: DO we need to keep these as properties?
+
     # Probability Distributions
     theta: Distribution = None
     phi: Distribution = None
     psi: Distribution = None
+
+    # TODO: DO we need to keep these as properties?
 
     # Selection probabilities
     p_H: tf.Tensor = None  # Prior
@@ -90,14 +95,16 @@ class BHH(Optimiser):
     p_CgH: tf.Tensor = None
     p_HgEC: tf.Tensor = None  # Posterior
 
+    # TODO: DO we need to keep these as properties?
+
     # Selections
     l_HgEC: tf.Tensor = None
     HgEC: tf.Tensor = None
 
     # Instances
+    population: Population = None
     heuristics: List[Heuristic] = None
-    entities: List[Entity] = None
-    pbests: List[tf.Variable] = None
+
     ibest: tf.Variable = None
     gbest: tf.Variable = None
 
@@ -105,7 +112,7 @@ class BHH(Optimiser):
     log: PerformanceLog = None
 
     def __init__(self,
-                 population: int = 10,
+                 population_size: int = 10,
                  burn_in: int = 30,
                  replay: int = 30,
                  reselection: int = 1,
@@ -124,7 +131,7 @@ class BHH(Optimiser):
             heuristic=BHHHeuristic(credit=credit)
         )
         # Setting hyper-parameters
-        self.population = population
+        self.population_size = population_size
         self.burn_in = burn_in
         self.replay = replay
         self.reselection = reselection
@@ -135,7 +142,7 @@ class BHH(Optimiser):
         self.beta_initialiser = beta_initialiser
         self.gamma_initialiser = gamma_initialiser
 
-        self.J = self.population
+        self.J = self.population_size
         self.L = 1  # Binomial/Binary on credit
         self.K = len(heuristics)
 
@@ -162,8 +169,7 @@ class BHH(Optimiser):
 
         # Instances
         self.heuristics = heuristics
-        self.entities = None
-        self.pbests = None
+        self.population = Population(population_size=self.population_size)
         self.ibest = None
         self.gbest = None
 
@@ -178,30 +184,10 @@ class BHH(Optimiser):
         PBest and GBest values are also created.
         """
         super(BHH, self).initialise()
-        self.entities = []
-        self.pbests = []
 
-        # Personal bests
-        for i in range(self.population):
-            entity = Entity()
-            # This is required to determine the dimensionality of the model.
-            entity.map_model(self.model)
-            entity.initialise()
-            self.entities.append(entity)
+        # Initialise population
+        self.population.initialise(model=self.model)
 
-            # Set pbest to initial position
-            pbest = tf.Variable(initial_value=entity.position)
-            self.pbests.append(pbest)
-
-        # Here we just initialise the ibest and gbest value to some random value
-        weights = self.model.get_weights_flat()
-        self.ibest = tf.Variable(initial_value=weights)
-        self.gbest = tf.Variable(initial_value=weights)
-
-        self.initialise_probability_distributions()
-        self.select()
-
-    def initialise_probability_distributions(self):
         # Concentrations
         self.alpha = tf.Variable(
             initial_value=self.alpha_initialiser(shape=[self.K])
@@ -216,6 +202,9 @@ class BHH(Optimiser):
             initial_value=self.gamma_initialiser(shape=[self.K])
         )
 
+        self.select()
+
+    # TODO: Shouldn't this be in the heuristic of BHH?
     def select(self):
         # Probability distributions
         self.theta = Dirichlet(concentration=self.alpha)
@@ -249,11 +238,13 @@ class BHH(Optimiser):
         # Sampling
         self.HgEC = self.l_HgEC()
 
+    # TODO: Shouldn't this be in the heuristic of the BHH?
     def get_heuristic(self, j):
         selections = self.HgEC.numpy()
         k = selections[j]
         return k, self.heuristics[k]
 
+    # TODO: Shared code?
     def get_gradient(self,
                      features: tf.Tensor,
                      labels: tf.Tensor) -> List[List[tf.Tensor]]:
@@ -285,110 +276,86 @@ class BHH(Optimiser):
             )
             return gradient
 
+    # TODO: Shouldnt this be in heuristic of BHH?
     def apply_heuristic(self,
                         heuristic: Heuristic,
-                        position: tf.Variable,
-                        velocity: tf.Variable,
-                        state: tf.Variable,
-                        gradient: tf.Tensor,
-                        pbest: tf.Variable,
-                        gbest: tf.Variable,
+                        entity: Entity,
+                        population: Population,
                         step: int):
         if isinstance(heuristic, SGD):
             heuristic(
-                position=position,
-                velocity=velocity,
-                gradient=gradient,
+                entity=entity,
                 step=step
             )
         elif isinstance(heuristic, Momentum):
             heuristic(
-                position=position,
-                velocity=velocity,
-                gradient=gradient,
+                entity=entity,
                 step=step
             )
         elif isinstance(heuristic, NAG):
             heuristic(
-                position=position,
-                velocity=velocity,
-                gradient=gradient,
+                entity=entity,
                 step=step
             )
-        # TODO: Take note, Adagrad does not have a velocity update.
         elif isinstance(heuristic, Adagrad):
             heuristic(
-                position=position,
-                state=state,
-                gradient=gradient,
+                entity=entity,
                 step=step
             )
-        # TODO: Take note, RMSProp does not have a velocity update.
         elif isinstance(heuristic, RMSProp):
             heuristic(
-                position=position,
-                state=state,
-                gradient=gradient,
+                entity=entity,
                 step=step
             )
-        # TODO: Take note, Adadelta does not have a velocity update.
         elif isinstance(heuristic, Adadelta):
             heuristic(
-                position=position,
-                state=state,
-                gradient=gradient,
+                entity=entity,
                 step=step
             )
         elif isinstance(heuristic, PSO):
             heuristic(
-                position=position,
-                velocity=velocity,
-                pbest=pbest,
-                gbest=gbest,
+                entity=entity,
+                population=population,
                 step=step
             )
 
+    # TODO: Shared code? Move to population?
     def update_bests(self,
                      features: tf.Tensor,
                      labels: tf.Tensor,
-                     entity: Entity,
-                     pbest: tf.Tensor
-                     ):
+                     entity: Entity):
         # Evaluate entity
         self.model.set_weights_flat(weights_flat=entity.position)
-        _, loss = self.evaluate(features=features, labels=labels)
+        _, entity.loss = self.evaluate(features=features, labels=labels)
 
         # Evaluate pbest
-        self.model.set_weights_flat(weights_flat=pbest)
+        self.model.set_weights_flat(weights_flat=entity.pbest)
         _, pbest_loss = self.evaluate(features=features, labels=labels)
 
-        if loss < pbest_loss:
-            pbest.assign(entity.position)
-            pbest_loss = loss
+        if entity.loss < pbest_loss:
+            entity.pbest.assign(entity.position)
 
         # Evaluate ibest
-        self.model.set_weights_flat(weights_flat=self.ibest)
+        self.model.set_weights_flat(weights_flat=self.population.ibest)
         _, ibest_loss = self.evaluate(features=features, labels=labels)
 
-        if loss < ibest_loss:
-            self.ibest.assign(entity.position)
-            ibest_loss = loss
+        if entity.loss < ibest_loss:
+            self.population.ibest.assign(entity.position)
 
         # Evaluate gbest
-        self.model.set_weights_flat(weights_flat=self.gbest)
+        self.model.set_weights_flat(weights_flat=self.population.gbest)
         _, gbest_loss = self.evaluate(features=features, labels=labels)
 
-        if loss < gbest_loss:
-            self.gbest.assign(entity.position)
-            gbest_loss = loss
+        if entity.loss < gbest_loss:
+            self.population.gbest.assign(entity.position)
 
-        return loss, pbest_loss, ibest_loss, gbest_loss
+        return entity.loss, entity.pbest_loss, self.population.ibest_loss, self.population.loss
 
     def __call__(self,
                  features: tf.Tensor,
                  labels: tf.Tensor,
                  step: int) -> Tuple[tf.Tensor, tf.Tensor]:
-        for j, (entity, pbest) in enumerate(zip(self.entities, self.pbests)):
+        for j, entity in enumerate(self.population.entities):
             # Get the selected heuristic
             k, heuristic = self.get_heuristic(j)
 
@@ -402,16 +369,13 @@ class BHH(Optimiser):
             # Apply heuristics to available data
             self.apply_heuristic(
                 heuristic=heuristic,
-                position=entity.position,
-                velocity=entity.velocity,
-                state=entity,
-                gradient=entity.gradient,
-                pbest=pbest,
-                gbest=self.gbest,
+                entity=entity,
+                population=self.population,
                 step=step
             )
 
             # Set ibest to initial entity on new iteration
+            # TODO: Is this code still needed?
             if j == 0:
                 self.ibest.assign(entity.position)
 
@@ -419,8 +383,7 @@ class BHH(Optimiser):
             loss, pbest_loss, ibest_loss, gbest_loss = self.update_bests(
                 features=features,
                 labels=labels,
-                entity=entity,
-                pbest=pbest
+                entity=entity
             )
 
             # Log performance
@@ -434,6 +397,7 @@ class BHH(Optimiser):
                 gbest_loss=gbest_loss.numpy()
             )
 
+        # TODO: Move to heuristic?
         # Update
         # Check if burn-in is complete
         if step < self.burn_in:
@@ -460,4 +424,6 @@ class BHH(Optimiser):
         # Evaluate current position
         self.model.set_weights_flat(weights_flat=self.gbest)
         logits, loss = self.evaluate(features=features, labels=labels)
+        self.population.loss = loss
+
         return logits, loss

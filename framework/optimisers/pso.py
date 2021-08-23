@@ -27,6 +27,7 @@
 from typing import Tuple
 
 import tensorflow as tf
+from framework import population
 from framework.entities.entity import Entity
 from framework.heuristics.pso import PSO as PSOHeuristic
 from framework.neural_networks.neural_network import NeuralNetwork
@@ -40,16 +41,14 @@ class PSO(Optimiser):
 
     Attributes
     ----------
-    population_size: int
-        The population_size. Default = None
     population: Population
         The population. Default = None
     """
-    population_size: int = None
     population: Population = None
 
     def __init__(self,
                  population_size: int = 10,
+                 learning_rate: float = 1.0,
                  inertia_weight: float = 0.729844,
                  social_control: float = 1.496180,
                  cognitive_control: float = 1.496180,
@@ -60,6 +59,8 @@ class PSO(Optimiser):
         ----------
         population_size: int
             Population/swarm size. Default = 30
+        learning_rate: float
+            The step size. Default = 1.0
         inertia_weight: float
             The inertia weight (w). Default = 0.729844
         cognitive_control: float
@@ -73,6 +74,7 @@ class PSO(Optimiser):
         """
         super(PSO, self).__init__(
             heuristic=PSOHeuristic(
+                learning_rate=learning_rate,
                 inertia_weight=inertia_weight,
                 social_control=social_control,
                 cognitive_control=cognitive_control,
@@ -80,8 +82,7 @@ class PSO(Optimiser):
                 velocity_clip_max=velocity_clip_max
             )
         )
-        self.population_size = population_size
-        self.population = Population(population_size=self.population_size)
+        self.population = Population(population_size=population_size)
 
     def initialise(self):
         """
@@ -95,21 +96,28 @@ class PSO(Optimiser):
         # Initialise population
         self.population.initialise(model=self.model)
 
+    # TODO: Shared code? Move to population?
     def update_bests(self,
                      features: tf.Tensor,
                      labels: tf.Tensor,
-                     entity: Entity,
-                     pbest: tf.Variable):
+                     entity: Entity):
         # Evaluate entity
         self.model.set_weights_flat(weights_flat=entity.position)
         _, entity.loss = self.evaluate(features=features, labels=labels)
 
         # Evaluate pbest
-        self.model.set_weights_flat(weights_flat=pbest)
+        self.model.set_weights_flat(weights_flat=entity.pbest)
         _, pbest_loss = self.evaluate(features=features, labels=labels)
 
         if entity.loss < pbest_loss:
             entity.pbest.assign(entity.position)
+
+        # Evaluate ibest
+        self.model.set_weights_flat(weights_flat=self.population.ibest)
+        _, ibest_loss = self.evaluate(features=features, labels=labels)
+
+        if entity.loss < ibest_loss:
+            self.population.ibest.assign(entity.position)
 
         # Evaluate gbest
         self.model.set_weights_flat(weights_flat=self.population.gbest)
@@ -134,13 +142,12 @@ class PSO(Optimiser):
             self.update_bests(
                 features=features,
                 labels=labels,
-                entity=entity,
-                pbest=entity.pbest
+                entity=entity
             )
 
         # Evaluate current position
         self.model.set_weights_flat(weights_flat=self.population.gbest)
         logits, loss = self.evaluate(features=features, labels=labels)
-        self.loss = loss
+        self.population.loss = loss
 
         return logits, loss

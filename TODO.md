@@ -28,21 +28,19 @@
 - [ ] CMA-ES
 - [x] PSO
 - [x] Take note, adagrad and adadelta in bhh is currently incompatible, since the state update is different - fixed: was not included in bhh update step
-- [-] QuantumPSO or Heterogeneous PSO?
-- [-] Early stop?
 - [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at -ln(1/classes) then.
 - [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
-- [ ] Comment credit source files
-- [ ] Comment bhh source files
-- [-] change steps/epochs -> proportion of training time
+- [ ] Change check for LR instance to isinstance(lr, Exponential)
+- [ ] Comment all files
 - [ ] tensorboard selection probabilities
 - [ ] tensorboard selections
+- [ ] Normalise counts to perhaps cater for mode collapse?
+- [ ] Move heuristic code for BHH from optimiser to heuristic
 - [ ] cookie cutter datascience
 - [x] credits from performance log is extremely inefficient
 - [x] flatten and reshape of model params is extremely inefficient
 - [x] bhh hyper-params on schedule? -> do after Adam with LR decay See: tf.keras.optimizers.schedules.LearningRateSchedule
 - [ ] more datasets
-- [-] optimisation
 - [ ] training, test, validation
 - [ ] main + experiment -> cli
 - [-] ensure all heuristics are always selected, despite model

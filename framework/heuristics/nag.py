@@ -84,17 +84,16 @@ class NAG(Heuristic):
 
         # Update E_gradient_mean
         entity.E_gradient_mean.assign(
-            (
-                self.momentum*entity.E_gradient_mean +
-                (1-self.momentum)*entity.gradient
-            )
-        )
-
-        # Update position_delta
-        entity.position_delta.assign(-lr*(
             self.momentum*entity.E_gradient_mean +
             (1-self.momentum)*entity.gradient
         )
+
+        # Update position_delta
+        entity.position_delta.assign(
+            -lr*(
+                self.momentum*entity.E_gradient_mean +
+                (1-self.momentum)*entity.gradient
+            )
         )
 
         # Update velocity

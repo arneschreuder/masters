@@ -110,18 +110,24 @@ import framework as fw
 # )
 
 # PSO - Particle Swarm Optimisation
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.PSO(
-        population_size=10,
-        inertia_weight=0.729844,
-        social_control=1.496180,
-        cognitive_control=1.496180,
-        velocity_clip_min=-1.0,
-        velocity_clip_max=1.0
-    ),
-    log_dir="logs/pso-pop-10-w-0.7-c1-1.49-c2-1.49-vclip-1.0",
-    seed=None
-)
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.PSO(
+#         population_size=5,
+#         learning_rate=fw.schedules.Exponential(
+#             initial=1.0,
+#             steps=600,
+#             rate=0.9,
+#             staircase=False
+#         ),
+#         inertia_weight=0.729844,
+#         social_control=1.496180,
+#         cognitive_control=1.496180,
+#         velocity_clip_min=-1.0,
+#         velocity_clip_max=1.0
+#     ),
+#     log_dir="logs/pso-pop-5-lrs-w-0.7-c1-1.49-c2-1.49-vclip-1.0",
+#     seed=None
+# )
 
 # BHH
 # experiment = fw.experiments.Iris(

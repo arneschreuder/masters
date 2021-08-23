@@ -39,9 +39,11 @@ class Population:
     entities: List[Entity] = None
 
     # Bests
+    ibest: tf.Variable = None
     gbest: tf.Variable = None
 
     # Performance
+    ibest_loss: tf.Variable = None
     loss: tf.Variable = None
 
     def __init__(self, population_size: int = 10):
@@ -52,9 +54,11 @@ class Population:
         self.entities = None
 
         # Bests
+        self.ibest = None
         self.gbest = None
 
         # Performance
+        self.ibest_loss = None
         self.loss = None
 
     def initialise(self, model: NeuralNetwork):
@@ -76,4 +80,5 @@ class Population:
 
         # Here we just initialise the gbest value to some random value
         weights = model.get_weights_flat()
+        self.ibest = tf.Variable(initial_value=weights)
         self.gbest = tf.Variable(initial_value=weights)
