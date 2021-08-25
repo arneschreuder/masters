@@ -127,7 +127,7 @@ class PSO(Heuristic):
         ))
 
         # Update position_delta
-        entity.position_delta = lr*entity.E_gradient_mean
+        entity.position_delta.assign(lr*entity.E_gradient_mean)
 
         # Update velocity
         entity.velocity.assign(entity.position_delta)

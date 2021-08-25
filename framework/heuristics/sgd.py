@@ -27,6 +27,7 @@
 
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
+from framework.hyper_parameters.sgd import SGD as SGDParameters
 from framework.schedules.schedule import Schedule
 
 
@@ -36,20 +37,29 @@ class SGD(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float or Schedule
-        The step size. Default = None
+    params: SGDParameters
+        Hyper Parameters. Default = None
     """
-    learning_rate: float or Schedule = None
+    params: SGDParameters = None
 
-    def __init__(self, learning_rate: float or Schedule = 0.01):
+    def __init__(self, params: SGDParameters = SGDParameters(learning_rate=0.01)):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 0.01
+        params: SGDParameters
+        Hyper Parameters. Default = SGDParameters(learning_rate=0.01)
         """
         super(SGD, self).__init__()
-        self.learning_rate = learning_rate
+        self.params = params
+
+    def prerequisites(self, step: int) -> float or Schedule:
+        # Get learning rate
+        lr = self.params.learning_rate
+
+        if type(self.params.learning_rate) is not float:
+            lr = self.params.learning_rate(step=step)
+
+        return lr
 
     def __call__(self,
                  entity: Entity,
@@ -66,14 +76,10 @@ class SGD(Heuristic):
         step: int
             The iteration step number
         """
-        # Get learning rate
-        lr = self.learning_rate
-
-        if type(self.learning_rate) is not float:
-            lr = self.learning_rate(step=step)
+        lr = self.prerequisites(step=step)
 
         # Update position_delta
-        entity.position_delta = -lr*entity.gradient
+        entity.position_delta.assign(-lr*entity.gradient)
 
         # Update velocity
         entity.velocity.assign(entity.position_delta)

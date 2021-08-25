@@ -36,6 +36,7 @@ from framework.distributions.distribution import Distribution
 from framework.entities.entity import Entity
 from framework.heuristics.adadelta import Adadelta
 from framework.heuristics.adagrad import Adagrad
+from framework.heuristics.adam import Adam
 from framework.heuristics.bhh import BHH as BHHHeuristic
 from framework.heuristics.heuristic import Heuristic
 from framework.heuristics.momentum import Momentum
@@ -55,7 +56,6 @@ from framework.utilities.utilities import flatten
 
 
 class BHH(Optimiser):
-    population_size: int = None
     burn_in: int = None
     replay: int = None
     reselection: int = None
@@ -63,13 +63,11 @@ class BHH(Optimiser):
     credit: List[Credit] = None
 
     # TODO: DO we need to keep these as properties?
-
     alpha_initialiser: Initialiser = None
     beta_initialiser: Initialiser = None
     gamma_initialiser: Initialiser = None
 
     # TODO: DO we need to keep these as properties?
-
     K: int = None
     J: int = None
     L: int = None
@@ -81,14 +79,12 @@ class BHH(Optimiser):
     gamma0: tf.Tensor = None
 
     # TODO: DO we need to keep these as properties?
-
     # Probability Distributions
     theta: Distribution = None
     phi: Distribution = None
     psi: Distribution = None
 
     # TODO: DO we need to keep these as properties?
-
     # Selection probabilities
     p_H: tf.Tensor = None  # Prior
     p_EgH: tf.Tensor = None
@@ -96,7 +92,6 @@ class BHH(Optimiser):
     p_HgEC: tf.Tensor = None  # Posterior
 
     # TODO: DO we need to keep these as properties?
-
     # Selections
     l_HgEC: tf.Tensor = None
     HgEC: tf.Tensor = None
@@ -104,9 +99,6 @@ class BHH(Optimiser):
     # Instances
     population: Population = None
     heuristics: List[Heuristic] = None
-
-    ibest: tf.Variable = None
-    gbest: tf.Variable = None
 
     # Performance Log
     log: PerformanceLog = None
@@ -131,7 +123,6 @@ class BHH(Optimiser):
             heuristic=BHHHeuristic(credit=credit)
         )
         # Setting hyper-parameters
-        self.population_size = population_size
         self.burn_in = burn_in
         self.replay = replay
         self.reselection = reselection
@@ -142,7 +133,7 @@ class BHH(Optimiser):
         self.beta_initialiser = beta_initialiser
         self.gamma_initialiser = gamma_initialiser
 
-        self.J = self.population_size
+        self.J = population_size
         self.L = 1  # Binomial/Binary on credit
         self.K = len(heuristics)
 
@@ -169,9 +160,7 @@ class BHH(Optimiser):
 
         # Instances
         self.heuristics = heuristics
-        self.population = Population(population_size=self.population_size)
-        self.ibest = None
-        self.gbest = None
+        self.population = Population(population_size=population_size)
 
         # Performance Log
         self.log = PerformanceLog()
@@ -237,6 +226,7 @@ class BHH(Optimiser):
 
         # Sampling
         self.HgEC = self.l_HgEC()
+        # print(self.alpha)
 
     # TODO: Shouldn't this be in the heuristic of the BHH?
     def get_heuristic(self, j):
@@ -280,7 +270,6 @@ class BHH(Optimiser):
     def apply_heuristic(self,
                         heuristic: Heuristic,
                         entity: Entity,
-                        population: Population,
                         step: int):
         if isinstance(heuristic, SGD):
             heuristic(
@@ -312,14 +301,18 @@ class BHH(Optimiser):
                 entity=entity,
                 step=step
             )
+        elif isinstance(heuristic, Adam):
+            heuristic(
+                entity=entity,
+                step=step
+            )
         elif isinstance(heuristic, PSO):
             heuristic(
                 entity=entity,
-                population=population,
+                population=self.population,
                 step=step
             )
 
-    # TODO: Shared code? Move to population?
     def update_bests(self,
                      features: tf.Tensor,
                      labels: tf.Tensor,
@@ -330,24 +323,29 @@ class BHH(Optimiser):
 
         # Evaluate pbest
         self.model.set_weights_flat(weights_flat=entity.pbest)
-        _, pbest_loss = self.evaluate(features=features, labels=labels)
+        _, entity.pbest_loss = self.evaluate(features=features, labels=labels)
 
-        if entity.loss < pbest_loss:
+        if entity.loss < entity.pbest_loss:
             entity.pbest.assign(entity.position)
+            entity.pbest_loss = entity.loss
 
         # Evaluate ibest
         self.model.set_weights_flat(weights_flat=self.population.ibest)
-        _, ibest_loss = self.evaluate(features=features, labels=labels)
+        _, self.population.ibest_loss = self.evaluate(
+            features=features, labels=labels)
 
-        if entity.loss < ibest_loss:
+        if entity.loss < self.population.ibest_loss:
             self.population.ibest.assign(entity.position)
+            self.population.ibest_loss = entity.loss
 
         # Evaluate gbest
         self.model.set_weights_flat(weights_flat=self.population.gbest)
-        _, gbest_loss = self.evaluate(features=features, labels=labels)
+        _, self.population.loss = self.evaluate(
+            features=features, labels=labels)
 
-        if entity.loss < gbest_loss:
+        if entity.loss < self.population.loss:
             self.population.gbest.assign(entity.position)
+            self.population.loss = entity.loss
 
         return entity.loss, entity.pbest_loss, self.population.ibest_loss, self.population.loss
 
@@ -360,6 +358,7 @@ class BHH(Optimiser):
             k, heuristic = self.get_heuristic(j)
 
             # Prerequisite for analytical methods like SGD
+            self.model.set_weights_flat(weights_flat=entity.position)
             gradient = self.get_gradient(features=features, labels=labels)
             gradient_flat = flatten(x=gradient)
 
@@ -370,14 +369,8 @@ class BHH(Optimiser):
             self.apply_heuristic(
                 heuristic=heuristic,
                 entity=entity,
-                population=self.population,
                 step=step
             )
-
-            # Set ibest to initial entity on new iteration
-            # TODO: Is this code still needed?
-            if j == 0:
-                self.ibest.assign(entity.position)
 
             # Update pbest and gbest
             loss, pbest_loss, ibest_loss, gbest_loss = self.update_bests(
@@ -396,6 +389,13 @@ class BHH(Optimiser):
                 ibest_loss=ibest_loss.numpy(),
                 gbest_loss=gbest_loss.numpy()
             )
+
+            print("Loss: {}, PBest Loss: {}, IBest Loss: {}, GBest Loss: {}".format(
+                loss.numpy(),
+                pbest_loss.numpy(),
+                ibest_loss.numpy(),
+                gbest_loss.numpy()
+            ))
 
         # TODO: Move to heuristic?
         # Update
@@ -422,7 +422,7 @@ class BHH(Optimiser):
                 self.log.prune(step=step - self.replay)
 
         # Evaluate current position
-        self.model.set_weights_flat(weights_flat=self.gbest)
+        self.model.set_weights_flat(weights_flat=self.population.gbest)
         logits, loss = self.evaluate(features=features, labels=labels)
         self.population.loss = loss
 

@@ -39,6 +39,7 @@ from framework.optimisers.optimiser import Optimiser
 class Iris(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
+                 epochs: int,
                  log_dir: str,
                  seed: int = None):
         """
@@ -61,6 +62,6 @@ class Iris(Experiment):
                 SparseCategoricalAccuracyMetric()
             ],
             log_dir=log_dir,
-            epochs=200,
+            epochs=epochs,
             seed=seed
         )

@@ -5,6 +5,7 @@ from .distributions import *
 from .entities import *
 from .experiments import *
 from .heuristics import *
+from .hyper_parameters import *
 from .initialisers import *
 from .layers import *
 from .logger import *

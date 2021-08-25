@@ -29,8 +29,8 @@ from typing import List, Tuple
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.sgd import SGD as SGDHeuristic
+from framework.hyper_parameters.sgd import SGD as SGDHyperParameters
 from framework.optimisers.optimiser import Optimiser
-from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
@@ -47,7 +47,7 @@ class SGD(Optimiser):
     """
     entity: Entity = None
 
-    def __init__(self, learning_rate: float or Schedule = 0.01):
+    def __init__(self, params: SGDHyperParameters = SGDHyperParameters(learning_rate=0.01)):
         """
         Parameters
         ----------
@@ -55,7 +55,7 @@ class SGD(Optimiser):
             The step size. Default = None
         """
         super(SGD, self).__init__(
-            heuristic=SGDHeuristic(learning_rate=learning_rate)
+            heuristic=SGDHeuristic(params=params)
         )
         self.entity = None
 

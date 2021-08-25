@@ -96,7 +96,6 @@ class PSO(Optimiser):
         # Initialise population
         self.population.initialise(model=self.model)
 
-    # TODO: Shared code? Move to population?
     def update_bests(self,
                      features: tf.Tensor,
                      labels: tf.Tensor,
@@ -107,24 +106,31 @@ class PSO(Optimiser):
 
         # Evaluate pbest
         self.model.set_weights_flat(weights_flat=entity.pbest)
-        _, pbest_loss = self.evaluate(features=features, labels=labels)
+        _, entity.pbest_loss = self.evaluate(features=features, labels=labels)
 
-        if entity.loss < pbest_loss:
+        if entity.loss < entity.pbest_loss:
             entity.pbest.assign(entity.position)
+            entity.pbest_loss = entity.loss
 
         # Evaluate ibest
         self.model.set_weights_flat(weights_flat=self.population.ibest)
-        _, ibest_loss = self.evaluate(features=features, labels=labels)
+        _, self.population.ibest_loss = self.evaluate(
+            features=features, labels=labels)
 
-        if entity.loss < ibest_loss:
+        if entity.loss < self.population.ibest_loss:
             self.population.ibest.assign(entity.position)
+            self.population.ibest_loss = entity.loss
 
         # Evaluate gbest
         self.model.set_weights_flat(weights_flat=self.population.gbest)
-        _, gbest_loss = self.evaluate(features=features, labels=labels)
+        _, self.population.loss = self.evaluate(
+            features=features, labels=labels)
 
-        if entity.loss < gbest_loss:
+        if entity.loss < self.population.loss:
             self.population.gbest.assign(entity.position)
+            self.population.loss = entity.loss
+
+        return entity.loss, entity.pbest_loss, self.population.ibest_loss, self.population.loss
 
     def __call__(self,
                  features: tf.Tensor,
