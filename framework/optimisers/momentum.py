@@ -47,12 +47,12 @@ class Momentum(Optimiser):
     """
     entity: Entity = None
 
-    def __init__(self, params: MomentumParameters = MomentumParameters(learning_rate=0.01)):
+    def __init__(self, params: MomentumParameters = MomentumParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = None
+        params: MomentumParameters
+            The step size. Default = MomentumParameters()
         """
         super(Momentum, self).__init__(
             heuristic=MomentumHeuristic(params=params)

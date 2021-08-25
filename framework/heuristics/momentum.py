@@ -28,7 +28,6 @@
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.hyper_parameters.momentum import Momentum as MomentumParameters
-from framework.schedules.schedule import Schedule
 
 
 class Momentum(Heuristic):

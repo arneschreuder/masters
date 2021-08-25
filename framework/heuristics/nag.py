@@ -27,7 +27,7 @@
 
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
-from framework.schedules.schedule import Schedule
+from framework.hyper_parameters.nag import NAG as NAGParameters
 
 
 class NAG(Heuristic):
@@ -36,28 +36,59 @@ class NAG(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float or Schedule
-        The step size. Default = None
-    momentum: float
-        Momentum hyper-heuristic. Default = None
+    params: NAGParameters
+        Hyper Parameters. Default = None
     """
-    learning_rate: float or Schedule = None
-    momentum: float = None
+    params: NAGParameters = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.01,
-                 momentum: float = 0.9):
+                 params: NAGParameters = NAGParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 0.01
-        momentum: float
-            Momentum hyper-heuristic. Default = 0.9
+        params: NAGParameters
+            Hyper parameters. Default = NAGParameters()
         """
         super(NAG, self).__init__()
-        self.learning_rate = learning_rate
-        self.momentum = momentum
+        self.params = params
+
+    @staticmethod
+    def get_learning_rate(params: NAGParameters, step: int) -> float:
+        # Get learning rate
+        lr = params.learning_rate
+
+        if type(params.learning_rate) is not float:
+            lr = params.learning_rate(step=step)
+
+        return lr
+
+    @staticmethod
+    def calculate_E_gradient_mean(params: NAGParameters, entity: Entity):
+        # Update E_gradient_mean
+        entity.E_gradient_mean.assign(
+            params.momentum*entity.E_gradient_mean +
+            (1-params.momentum)*entity.gradient
+        )
+
+    @staticmethod
+    def calculate_position_delta(lr: float, params: NAGParameters, entity: Entity):
+        # Update position_delta
+        entity.position_delta.assign(
+            -lr*(
+                params.momentum*entity.E_gradient_mean +
+                (1-params.momentum)*entity.gradient
+            )
+        )
+
+    @staticmethod
+    def calculate_velocity(entity: Entity):
+        # Update velocity
+        entity.velocity.assign(entity.position_delta)
+
+    @staticmethod
+    def calculate_position(entity: Entity):
+        # Update position
+        entity.position.assign_add(entity.velocity)
 
     def __call__(self,
                  entity: Entity,
@@ -67,37 +98,29 @@ class NAG(Heuristic):
 
         Parameters
         ----------
-        position: tf.Variable
-            The entity's position which is the candidate solution to the model
-        velocity: tf.Variable
-            The entity's velocity
-        gradient: tf.Tensor
-            The gradient to apply
+        entity: Entity
+            The entity which contains the candidate solution to the model
         step: int
             The iteration step number
         """
         # Get learning rate
-        lr = self.learning_rate
+        lr = NAG.get_learning_rate(params=self.params, step=step)
 
-        if type(self.learning_rate) is not float:
-            lr = self.learning_rate(step=step)
-
-        # Update E_gradient_mean
-        entity.E_gradient_mean.assign(
-            self.momentum*entity.E_gradient_mean +
-            (1-self.momentum)*entity.gradient
+        # Calculate E_gradient_mean
+        NAG.calculate_E_gradient_mean(
+            params=self.params,
+            entity=entity
         )
 
         # Update position_delta
-        entity.position_delta.assign(
-            -lr*(
-                self.momentum*entity.E_gradient_mean +
-                (1-self.momentum)*entity.gradient
-            )
+        NAG.calculate_position_delta(
+            lr=lr,
+            params=self.params,
+            entity=entity
         )
 
         # Update velocity
-        entity.velocity.assign(entity.position_delta)
+        NAG.calculate_velocity(entity=entity)
 
         # Update position
-        entity.position.assign_add(entity.velocity)
+        NAG.calculate_position(entity=entity)

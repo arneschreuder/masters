@@ -29,8 +29,8 @@ from typing import List, Tuple
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.nag import NAG as NAGHeuristic
+from framework.hyper_parameters.nag import NAG as NAGParameters
 from framework.optimisers.optimiser import Optimiser
-from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
@@ -47,22 +47,15 @@ class NAG(Optimiser):
     """
     entity: Entity = None
 
-    def __init__(self,
-                 learning_rate: float or Schedule = 0.01,
-                 momentum: float = 0.9):
+    def __init__(self, params: NAGParameters = NAGParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 0.01
-        momentum: float
-            Momentum hyper-heuristic. Default = 0.9
+        params: NAGParameters
+            The step size. Default = NAGParameters()
         """
         super(NAG, self).__init__(
-            heuristic=NAGHeuristic(
-                learning_rate=learning_rate,
-                momentum=momentum
-            )
+            heuristic=NAGHeuristic(params=params)
         )
         self.entity = None
 

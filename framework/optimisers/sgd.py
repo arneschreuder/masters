@@ -47,12 +47,12 @@ class SGD(Optimiser):
     """
     entity: Entity = None
 
-    def __init__(self, params: SGDParameters = SGDParameters(learning_rate=0.01)):
+    def __init__(self, params: SGDParameters = SGDParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = None
+        params: SGDParameters
+            The step size. Default = SGDParameters()
         """
         super(SGD, self).__init__(
             heuristic=SGDHeuristic(params=params)

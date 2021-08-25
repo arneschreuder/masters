@@ -28,7 +28,6 @@
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.hyper_parameters.sgd import SGD as SGDParameters
-from framework.schedules.schedule import Schedule
 
 
 class SGD(Heuristic):
@@ -53,7 +52,7 @@ class SGD(Heuristic):
         self.params = params
 
     @staticmethod
-    def get_learning_rate(params: SGDParameters, step: int) -> float or Schedule:
+    def get_learning_rate(params: SGDParameters, step: int) -> float:
         # Get learning rate
         lr = params.learning_rate
 
