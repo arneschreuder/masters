@@ -53,7 +53,7 @@ class SGD(Heuristic):
         self.params = params
 
     @staticmethod
-    def prerequisites(params: SGDParameters, step: int) -> float or Schedule:
+    def get_learning_rate(params: SGDParameters, step: int) -> float or Schedule:
         # Get learning rate
         lr = params.learning_rate
 
@@ -61,6 +61,21 @@ class SGD(Heuristic):
             lr = params.learning_rate(step=step)
 
         return lr
+
+    @staticmethod
+    def calculate_position_delta(lr: float, entity: Entity):
+        # Update position_delta
+        entity.position_delta.assign(-lr*entity.gradient)
+
+    @staticmethod
+    def calculate_velocity(entity: Entity):
+        # Update velocity
+        entity.velocity.assign(entity.position_delta)
+
+    @staticmethod
+    def calculate_position(entity: Entity):
+        # Update position
+        entity.position.assign_add(entity.velocity)
 
     def __call__(self,
                  entity: Entity,
@@ -75,14 +90,17 @@ class SGD(Heuristic):
         step: int
             The iteration step number
         """
-        # Get prerequisites
-        lr = SGD.prerequisites(params=self.params, step=step)
+        # Get learning rate
+        lr = SGD.get_learning_rate(params=self.params, step=step)
 
         # Update position_delta
-        entity.position_delta.assign(-lr*entity.gradient)
+        SGD.calculate_position_delta(
+            lr=lr,
+            entity=entity
+        )
 
         # Update velocity
-        entity.velocity.assign(entity.position_delta)
+        SGD.calculate_velocity(entity=entity)
 
         # Update position
-        entity.position.assign_add(entity.velocity)
+        SGD.calculate_position(entity=entity)

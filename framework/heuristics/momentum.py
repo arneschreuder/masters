@@ -56,20 +56,37 @@ class Momentum(Heuristic):
         self.params = params
 
     @staticmethod
-    def prerequisites(params: MomentumParameters, entity: Entity, step: int) -> float or Schedule:
+    def get_learning_rate(params: MomentumParameters, step: int) -> float:
         # Get learning rate
         lr = params.learning_rate
 
         if type(params.learning_rate) is not float:
             lr = params.learning_rate(step=step)
 
+        return lr
+
+    @staticmethod
+    def calculate_E_gradient_mean(params: MomentumParameters, entity: Entity):
         # Update E_gradient_mean
         entity.E_gradient_mean.assign(
             params.momentum*entity.E_gradient_mean +
             (1-params.momentum)*entity.gradient
         )
 
-        return lr, entity
+    @staticmethod
+    def calculate_position_delta(lr: float, entity: Entity):
+        # Update position_delta
+        entity.position_delta.assign(-lr*entity.E_gradient_mean)
+
+    @staticmethod
+    def calculate_velocity(entity: Entity):
+        # Update velocity
+        entity.velocity.assign(entity.position_delta)
+
+    @staticmethod
+    def calculate_position(entity: Entity):
+        # Update position
+        entity.position.assign_add(entity.velocity)
 
     def __call__(self,
                  entity: Entity,
@@ -84,18 +101,23 @@ class Momentum(Heuristic):
         step: int
             The iteration step number
         """
-       # Get prerequisites
-        lr, entity = Momentum.prerequisites(
+        # Get learning rate
+        lr = Momentum.get_learning_rate(params=self.params, step=step)
+
+        # Calculate E_gradient_mean
+        Momentum.calculate_E_gradient_mean(
             params=self.params,
-            entity=entity,
-            step=step
+            entity=entity
         )
 
         # Update position_delta
-        entity.position_delta.assign(-lr*entity.E_gradient_mean)
+        Momentum.calculate_position_delta(
+            lr=lr,
+            entity=entity
+        )
 
         # Update velocity
-        entity.velocity.assign(entity.position_delta)
+        Momentum.calculate_velocity(entity=entity)
 
         # Update position
-        entity.position.assign_add(entity.velocity)
+        Momentum.calculate_position(entity=entity)
