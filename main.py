@@ -14,24 +14,29 @@ import framework as fw
 #         )
 #     ),
 #     epochs=200,
+#     batch_size=50,
 #     log_dir="logs/sgd-lrs",
 #     seed=None
 # )
 
 # Momentum
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Momentum(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=1.0,
-#             steps=600,
-#             rate=0.1,
-#             staircase=False
-#         ),
-#         momentum=0.9
-#     ),
-#     log_dir="logs/momentum-lrs-mom-0.9",
-#     seed=None
-# )
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.Momentum(
+        params=fw.hyper_parameters.Momentum(
+            learning_rate=fw.schedules.Exponential(
+                initial=1.0,
+                steps=600,
+                rate=0.1,
+                staircase=False
+            ),
+            momentum=0.9
+        )
+    ),
+    epochs=200,
+    batch_size=50,
+    log_dir="logs/momentum-lrs-mom-0.9",
+    seed=None
+)
 
 # NAG - Nesterov Adaptive Gradients
 # experiment = fw.experiments.Iris(

@@ -27,6 +27,7 @@
 
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
+from framework.hyper_parameters.momentum import Momentum as MomentumParameters
 from framework.schedules.schedule import Schedule
 
 
@@ -38,28 +39,37 @@ class Momentum(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float or Schedule
-        The step size. Default = None
-    momentum: float
-        Momentum hyper-heuristic. Default = None
+    params: MomentumParameters
+        Hyper Parameters. Default = None
     """
-    learning_rate: float or Schedule = None
-    momentum: float = None
+    params: MomentumParameters = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.01,
-                 momentum: float = 0.9):
+                 params: MomentumParameters = MomentumParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 0.01
-        momentum: float
-            Momentum hyper-heuristic. Default = 0.9
+        params: MomentumParameters
+            Hyper parameters. Default = MomentumParameters()
         """
         super(Momentum, self).__init__()
-        self.learning_rate = learning_rate
-        self.momentum = momentum
+        self.params = params
+
+    @staticmethod
+    def prerequisites(params: MomentumParameters, entity: Entity, step: int) -> float or Schedule:
+        # Get learning rate
+        lr = params.learning_rate
+
+        if type(params.learning_rate) is not float:
+            lr = params.learning_rate(step=step)
+
+        # Update E_gradient_mean
+        entity.E_gradient_mean.assign(
+            params.momentum*entity.E_gradient_mean +
+            (1-params.momentum)*entity.gradient
+        )
+
+        return lr, entity
 
     def __call__(self,
                  entity: Entity,
@@ -69,25 +79,16 @@ class Momentum(Heuristic):
 
         Parameters
         ----------
-        position: tf.Variable
-            The entity's position which is the candidate solution to the model
-        velocity: tf.Variable
-            The entity's velocity
-        gradient: tf.Tensor
-            The gradient to apply
+        entity: Entity
+            The entity which contains the candidate solution to the model
         step: int
             The iteration step number
         """
-        # Get learning rate
-        lr = self.learning_rate
-
-        if type(self.learning_rate) is not float:
-            lr = self.learning_rate(step=step)
-
-        # Update E_gradient_mean
-        entity.E_gradient_mean.assign(
-            self.momentum*entity.E_gradient_mean +
-            (1-self.momentum)*entity.gradient
+       # Get prerequisites
+        lr, entity = Momentum.prerequisites(
+            params=self.params,
+            entity=entity,
+            step=step
         )
 
         # Update position_delta

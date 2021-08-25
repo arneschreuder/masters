@@ -37,7 +37,7 @@ class Iris(Dataset):
     The implementation of the Iris dataset
     """
 
-    def __init__(self, seed: int = None):
+    def __init__(self, batch_size: int = 150, seed: int = None):
         """
         Params
         ------
@@ -57,7 +57,7 @@ class Iris(Dataset):
         self.classes = ["setosa", "versicolor", "virginica"]
         self.columns = self.features + [self.label]
         self.shuffle_size = 150
-        self.batch_size = 50
+        self.batch_size = batch_size
 
         # Load data from file
         directory = os.path.dirname(os.path.abspath(__file__))

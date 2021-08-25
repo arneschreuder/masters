@@ -40,6 +40,7 @@ class Iris(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
                  epochs: int,
+                 batch_size: int,
                  log_dir: str,
                  seed: int = None):
         """
@@ -53,7 +54,7 @@ class Iris(Experiment):
             Random seed. Default = None
         """
         super(Iris, self).__init__(
-            dataset=IrisDataset(seed=seed),
+            dataset=IrisDataset(seed=seed, batch_size=batch_size),
             model=IrisModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,

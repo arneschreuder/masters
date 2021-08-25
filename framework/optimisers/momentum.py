@@ -29,6 +29,7 @@ from typing import List, Tuple
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.momentum import Momentum as MomentumHeuristic
+from framework.hyper_parameters.momentum import Momentum as MomentumParameters
 from framework.optimisers.optimiser import Optimiser
 from framework.utilities.utilities import flatten
 
@@ -46,22 +47,15 @@ class Momentum(Optimiser):
     """
     entity: Entity = None
 
-    def __init__(self,
-                 learning_rate: float = 0.01,
-                 momentum: float = 0.9):
+    def __init__(self, params: MomentumParameters = MomentumParameters(learning_rate=0.01)):
         """
         Parameters
         ----------
-        learning_rate: float
-            The step size. Default = 0.01
-        momentum: float
-            Momentum hyper-heuristic. Default = 0.9
+        learning_rate: float or Schedule
+            The step size. Default = None
         """
         super(Momentum, self).__init__(
-            heuristic=MomentumHeuristic(
-                learning_rate=learning_rate,
-                momentum=momentum
-            )
+            heuristic=MomentumHeuristic(params=params)
         )
         self.entity = None
 

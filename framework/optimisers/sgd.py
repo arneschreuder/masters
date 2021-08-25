@@ -29,7 +29,7 @@ from typing import List, Tuple
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.sgd import SGD as SGDHeuristic
-from framework.hyper_parameters.sgd import SGD as SGDHyperParameters
+from framework.hyper_parameters.sgd import SGD as SGDParameters
 from framework.optimisers.optimiser import Optimiser
 from framework.utilities.utilities import flatten
 
@@ -47,7 +47,7 @@ class SGD(Optimiser):
     """
     entity: Entity = None
 
-    def __init__(self, params: SGDHyperParameters = SGDHyperParameters(learning_rate=0.01)):
+    def __init__(self, params: SGDParameters = SGDParameters(learning_rate=0.01)):
         """
         Parameters
         ----------

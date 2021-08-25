@@ -42,22 +42,23 @@ class SGD(Heuristic):
     """
     params: SGDParameters = None
 
-    def __init__(self, params: SGDParameters = SGDParameters(learning_rate=0.01)):
+    def __init__(self, params: SGDParameters = SGDParameters()):
         """
         Parameters
         ----------
         params: SGDParameters
-        Hyper Parameters. Default = SGDParameters(learning_rate=0.01)
+            Hyper parameters. Default = SGDParameters()
         """
         super(SGD, self).__init__()
         self.params = params
 
-    def prerequisites(self, step: int) -> float or Schedule:
+    @staticmethod
+    def prerequisites(params: SGDParameters, step: int) -> float or Schedule:
         # Get learning rate
-        lr = self.params.learning_rate
+        lr = params.learning_rate
 
-        if type(self.params.learning_rate) is not float:
-            lr = self.params.learning_rate(step=step)
+        if type(params.learning_rate) is not float:
+            lr = params.learning_rate(step=step)
 
         return lr
 
@@ -69,14 +70,13 @@ class SGD(Heuristic):
 
         Parameters
         ----------
-        position: tf.Variable
-            The entity's position which is the candidate solution to the model
-        gradient: tf.Tensor
-            The gradient to apply
+        entity: Entity
+            The entity which contains the candidate solution to the model
         step: int
             The iteration step number
         """
-        lr = self.prerequisites(step=step)
+        # Get prerequisites
+        lr = SGD.prerequisites(params=self.params, step=step)
 
         # Update position_delta
         entity.position_delta.assign(-lr*entity.gradient)
