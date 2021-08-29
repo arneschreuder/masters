@@ -31,7 +31,6 @@ from framework.entities.entity import Entity
 from framework.heuristics.adam import Adam as AdamHeuristic
 from framework.hyper_parameters.adam import Adam as AdamParameters
 from framework.optimisers.optimiser import Optimiser
-from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 

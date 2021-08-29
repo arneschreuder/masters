@@ -27,10 +27,9 @@
 from typing import Tuple
 
 import tensorflow as tf
-from framework import population
 from framework.entities.entity import Entity
 from framework.heuristics.pso import PSO as PSOHeuristic
-from framework.neural_networks.neural_network import NeuralNetwork
+from framework.hyper_parameters.pso import PSO as PSOParameters
 from framework.optimisers.optimiser import Optimiser
 from framework.population import Population
 
@@ -41,48 +40,24 @@ class PSO(Optimiser):
 
     Attributes
     ----------
-    population: Population
-        The population. Default = None
+    entity: Entity
+        The entity that represents the candidate solution to the model.
+        Default = None
     """
-    population: Population = None
+    # learning_rate: float = None
+    entity: Entity = None
 
-    def __init__(self,
-                 population_size: int = 10,
-                 learning_rate: float = 1.0,
-                 inertia_weight: float = 0.729844,
-                 social_control: float = 1.496180,
-                 cognitive_control: float = 1.496180,
-                 velocity_clip_min: float = -1.0,
-                 velocity_clip_max: float = 1.0):
+    def __init__(self, params: PSOParameters = PSOParameters()):
         """
         Parameters
         ----------
-        population_size: int
-            Population/swarm size. Default = 30
-        learning_rate: float
-            The step size. Default = 1.0
-        inertia_weight: float
-            The inertia weight (w). Default = 0.729844
-        cognitive_control: float
-            The cognative control (c1). Default = 1.496180
-        social_control: float
-            The social control (c2). Default = 1.496180
-        velocity_clip_min: float
-            The velocity minimum bound. Default = -1.0
-        velocity_clip_max: float
-            The velocity maximum bound. Default = 1.0
+        params: PSOParameters
+            The step size. Default = PSOParameters()
         """
         super(PSO, self).__init__(
-            heuristic=PSOHeuristic(
-                learning_rate=learning_rate,
-                inertia_weight=inertia_weight,
-                social_control=social_control,
-                cognitive_control=cognitive_control,
-                velocity_clip_min=velocity_clip_min,
-                velocity_clip_max=velocity_clip_max
-            )
+            heuristic=PSOHeuristic(params=params)
         )
-        self.population = Population(population_size=population_size)
+        self.population = Population(population_size=params.population_size)
 
     def initialise(self):
         """

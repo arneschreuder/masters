@@ -4,5 +4,6 @@ from .adam import Adam
 from .momentum import Momentum
 from .nag import NAG
 from .parameters import Parameters
+from .pso import PSO
 from .rmsprop import RMSProp
 from .sgd import SGD

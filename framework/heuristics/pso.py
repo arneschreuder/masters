@@ -27,8 +27,8 @@
 import tensorflow as tf
 from framework.entities import Entity
 from framework.heuristics.heuristic import Heuristic
+from framework.hyper_parameters.pso import PSO as PSOParameters
 from framework.population import Population
-from framework.schedules.schedule import Schedule
 
 
 class PSO(Heuristic):
@@ -37,56 +37,73 @@ class PSO(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float or Schedule
-        The step size. Default = None
-    inertia_weight: float
-        The inertia weight (w). Default = None
-    cognitive_control: float
-        The cognative control (c1). Default = None
-    social_control: float
-        The social control (c2). Default = None
-    velocity_clip_min: float
-        The velocity minimum bound. Default = None
-    velocity_clip_max: float
-        The velocity maximum bound. Default = None
+    params: PSOParameters
+        Hyper Parameters. Default = None
     """
-    learning_rate: float or Schedule = None
-    inertia_weight: float = None
-    cognitive_control: float = None
-    social_control: float = None
-    velocity_clip_min: float = None
-    velocity_clip_max: float = None
+    params: PSOParameters = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.01,
-                 inertia_weight: float = 0.729844,
-                 cognitive_control: float = 1.496180,
-                 social_control: float = 1.496180,
-                 velocity_clip_min: float = -1.0,
-                 velocity_clip_max: float = 1.0):
+                 params: PSOParameters = PSOParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 1.0
-        inertia_weight: float
-            The inertia weight (w). Default = 0.729844
-        cognitive_control: float
-            The cognative control (c1). Default = 1.496180
-        social_control: float
-            The social control (c2). Default = 1.496180
-        velocity_clip_min: float
-            The velocity minimum bound. Default = -1.0
-        velocity_clip_max: float
-            The velocity maximum bound. Default = 1.0
+        params: PSOParameters
+            Hyper parameters. Default = PSOParameters()
         """
         super(PSO, self).__init__()
-        self.learning_rate = learning_rate
-        self.inertia_weight = inertia_weight
-        self.cognitive_control = cognitive_control
-        self.social_control = social_control
-        self.velocity_clip_min = velocity_clip_min
-        self.velocity_clip_max = velocity_clip_max
+        self.params = params
+
+    @staticmethod
+    def get_learning_rate(params: PSOParameters, step: int) -> float:
+        # Get learning rate
+        lr = params.learning_rate
+
+        if type(params.learning_rate) is not float:
+            lr = params.learning_rate(step=step)
+
+        return lr
+
+    @staticmethod
+    def get_random(entity: Entity) -> float:
+        return tf.random.uniform(shape=entity.position.shape)
+
+    @staticmethod
+    def calculate_E_gradient_mean(random1: tf.Tensor,
+                                  random2: tf.Tensor,
+                                  params: PSOParameters,
+                                  entity: Entity,
+                                  population: Population):
+        # Update E_gradient_mean
+        entity.E_gradient_mean.assign(
+            params.inertia_weight*entity.velocity +
+            params.cognitive_control*random1*(entity.pbest - entity.position) +
+            params.social_control*random2 *
+            (population.gbest - entity.position)
+        )
+
+    @staticmethod
+    def calculate_clipped_E_gradient_mean(params: PSOParameters, entity: Entity):
+        # Clipping gradient mean
+        entity.E_gradient_mean.assign(tf.clip_by_value(
+            t=entity.E_gradient_mean,
+            clip_value_min=params.velocity_clip_min,
+            clip_value_max=params.velocity_clip_max,
+        ))
+
+    @staticmethod
+    def calculate_position_delta(lr: float, entity: Entity):
+        # Update position_delta
+        entity.position_delta.assign(lr*entity.E_gradient_mean)
+
+    @staticmethod
+    def calculate_velocity(entity: Entity):
+        # Update velocity
+        entity.velocity.assign(entity.position_delta)
+
+    @staticmethod
+    def calculate_position(entity: Entity):
+        # Update position
+        entity.position.assign_add(entity.velocity)
 
     def __call__(self,
                  entity: Entity,
@@ -102,35 +119,36 @@ class PSO(Heuristic):
         population: PopulationState
             Population state
         """
-        lr = self.learning_rate
-
-        if type(self.learning_rate) is not float:
-            lr = self.learning_rate(step=step)
+        # Get learning rate
+        lr = PSO.get_learning_rate(params=self.params, step=step)
 
         # Get random params
-        random1 = tf.random.uniform(shape=entity.position.shape)
-        random2 = tf.random.uniform(shape=entity.position.shape)
+        random1 = PSO.get_random(entity=entity)
+        random2 = PSO.get_random(entity=entity)
 
         # Update E_gradient_mean
-        entity.E_gradient_mean.assign(
-            self.inertia_weight*entity.velocity +
-            self.cognitive_control*random1*(entity.pbest - entity.position) +
-            self.social_control*random2 *
-            (population.gbest - entity.position)
+        PSO.calculate_E_gradient_mean(
+            random1=random1,
+            random2=random2,
+            params=self.params,
+            population=population,
+            entity=entity
         )
 
         # Clipping gradient mean
-        entity.E_gradient_mean.assign(tf.clip_by_value(
-            t=entity.E_gradient_mean,
-            clip_value_min=self.velocity_clip_min,
-            clip_value_max=self.velocity_clip_max,
-        ))
+        PSO.calculate_clipped_E_gradient_mean(
+            params=self.params,
+            entity=entity
+        )
 
         # Update position_delta
-        entity.position_delta.assign(lr*entity.E_gradient_mean)
+        PSO.calculate_position_delta(
+            lr=lr,
+            entity=entity
+        )
 
         # Update velocity
-        entity.velocity.assign(entity.position_delta)
+        PSO.calculate_velocity(entity=entity)
 
         # Update position
-        entity.position.assign_add(entity.velocity)
+        PSO.calculate_position(entity=entity)
