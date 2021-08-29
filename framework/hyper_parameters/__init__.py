@@ -1,3 +1,4 @@
+from .adagrad import Adagrad
 from .momentum import Momentum
 from .nag import NAG
 from .parameters import Parameters

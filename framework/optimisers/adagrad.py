@@ -29,6 +29,7 @@ from typing import List, Tuple
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.adagrad import Adagrad as AdagradHeuristic
+from framework.hyper_parameters.adagrad import Adagrad as AdagradParameters
 from framework.optimisers.optimiser import Optimiser
 from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
@@ -54,24 +55,16 @@ class Adagrad(Optimiser):
     # learning_rate: float = None
     entity: Entity = None
 
-    def __init__(self,
-                 learning_rate: float or Schedule = 0.001,
-                 epsilon: float = 1e-7):
+    def __init__(self, params: AdagradParameters = AdagradParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 0.1
-        epsilon: float
-            Small error value. Default = 1e-7
+        params: AdagradParameters
+            The step size. Default = AdagradParameters()
         """
         super(Adagrad, self).__init__(
-            heuristic=AdagradHeuristic(
-                learning_rate=learning_rate,
-                epsilon=epsilon
-            )
+            heuristic=AdagradHeuristic(params=params)
         )
-        self.epsilon = epsilon
         self.entity = None
 
     def initialise(self) -> None:

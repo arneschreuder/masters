@@ -1,6 +1,7 @@
 
 import framework as fw
 from framework import hyper_parameters
+from framework.heuristics.adagrad import Adagrad
 
 # SGD
 # experiment = fw.experiments.Iris(
@@ -40,38 +41,42 @@ from framework import hyper_parameters
 # )
 
 # NAG - Nesterov Adaptive Gradients
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.NAG(
+#         params=fw.hyper_parameters.NAG(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=1.0,
+#                 steps=600,
+#                 rate=0.1,
+#                 staircase=False
+#             ),
+#             momentum=0.9
+#         )
+#     ),
+#     epochs=200,
+#     batch_size=50,
+#     log_dir="logs/nag-lrs-mom-0.9",
+#     seed=None
+# )
+
+# Adagrad - Adaptive Gradients
 experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.NAG(
-        params=fw.hyper_parameters.NAG(
+    optimiser=fw.optimisers.Adagrad(
+        params=fw.hyper_parameters.Adagrad(
             learning_rate=fw.schedules.Exponential(
                 initial=1.0,
                 steps=600,
                 rate=0.1,
                 staircase=False
             ),
-            momentum=0.9
+            epsilon=1e-07
         )
     ),
     epochs=200,
     batch_size=50,
-    log_dir="logs/nag-lrs-mom-0.9",
+    log_dir="logs/adagrad-lrs-eps-1e-07",
     seed=None
 )
-
-# Adagrad - Adaptive Gradients
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Adagrad(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=1.0,
-#             steps=600,
-#             rate=0.1,
-#             staircase=False
-#         ),
-#         epsilon=1e-07
-#     ),
-#     log_dir="logs/adagrad-lrs-eps-1e-07",
-#     seed=None
-# )
 
 # RMSProp - Root Mean Squared Propagation
 # experiment = fw.experiments.Iris(
