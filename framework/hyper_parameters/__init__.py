@@ -1,3 +1,4 @@
+from .adadelta import Adadelta
 from .adagrad import Adagrad
 from .momentum import Momentum
 from .nag import NAG

@@ -28,7 +28,7 @@
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
-from framework.schedules.schedule import Schedule
+from framework.hyper_parameters.adadelta import Adadelta as AdadeltaParameters
 
 
 class Adadelta(Heuristic):
@@ -47,33 +47,74 @@ class Adadelta(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float or Schedule
-        The step size. Default = 1.0
-    rho: float
-        Decay rate. Default = None
-    epsilon: float
-        Small error value. Default = None
+    params: AdadeltaParameters
+        Hyper Parameters. Default = None
     """
-    learning_rate: float or Schedule = None
-    rho: float = None
-    epsilon: float = None
+    params: AdadeltaParameters = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 1.0,
-                 rho: float = 0.95,
-                 epsilon: float = 1e-7):
+                 params: AdadeltaParameters = AdadeltaParameters()):
         """
         Parameters
         ----------
-        rho: float
-            Decay rate. Default = 0.95
-        epsilon: float
-            Small error value. Default = 1e-7
+        params: AdadeltaParameters
+            Hyper parameters. Default = AdadeltaParameters()
         """
         super(Adadelta, self).__init__()
-        self.learning_rate = learning_rate
-        self.rho = rho
-        self.epsilon = epsilon
+        self.params = params
+
+    @staticmethod
+    def get_learning_rate(params: AdadeltaParameters, step: int) -> float:
+        # Get learning rate
+        lr = params.learning_rate
+
+        if type(params.learning_rate) is not float:
+            lr = params.learning_rate(step=step)
+
+        return lr
+
+    @staticmethod
+    def calculate_E_gradient_variance(params: AdadeltaParameters, entity: Entity):
+        # Update E_gradient_variance
+        entity.E_gradient_variance.assign(
+            params.rho*entity.E_gradient_variance +
+            (1-params.rho)*tf.math.pow(entity.gradient, 2)
+        )
+
+    @staticmethod
+    def calculate_E_position_delta_variance(params: AdadeltaParameters, entity: Entity):
+        # Update E_position_delta_variance
+        entity.E_position_delta_variance.assign(
+            params.rho*entity.E_position_delta_variance +
+            (1-params.rho)*tf.math.pow(entity.position_delta, 2)
+        )
+
+    @staticmethod
+    def calculate_position_delta(lr: float, params: AdadeltaParameters, entity: Entity):
+        # Update position_delta
+        entity.position_delta.assign(
+            -lr*(
+                tf.math.sqrt(
+                    entity.E_position_delta_variance +
+                    params.epsilon
+                ) /
+                tf.math.sqrt(
+                    entity.E_gradient_variance +
+                    params.epsilon
+                )
+            ) *
+            entity.gradient
+        )
+
+    @staticmethod
+    def calculate_velocity(entity: Entity):
+        # Update velocity
+        entity.velocity.assign(entity.position_delta)
+
+    @staticmethod
+    def calculate_position(entity: Entity):
+        # Update position
+        entity.position.assign_add(entity.velocity)
 
     def __call__(self,
                  entity: Entity,
@@ -83,50 +124,35 @@ class Adadelta(Heuristic):
 
         Parameters
         ----------
-        position: tf.Tensor
-            The entity's position which is the candidate solution to the model
-        state: tf.Tensor
-            The state of the gradient accumulator
-        gradient: tf.Tensor
-            The gradient to apply,
+        entity: Entity
+            The entity which contains the candidate solution to the model
         step: int
             The iteration step number
         """
         # Get learning rate
-        lr = self.learning_rate
-
-        if type(self.learning_rate) is not float:
-            lr = self.learning_rate(step=step)
+        lr = Adadelta.get_learning_rate(params=self.params, step=step)
 
         # Update E_gradient_variance
-        entity.E_gradient_variance.assign(
-            self.rho*entity.E_gradient_variance +
-            (1-self.rho)*tf.math.pow(entity.gradient, 2)
+        Adadelta.calculate_E_gradient_variance(
+            params=self.params,
+            entity=entity
         )
 
         # Update E_position_delta_variance
-        entity.E_position_delta_variance.assign(
-            self.rho*entity.E_position_delta_variance +
-            (1-self.rho)*tf.math.pow(entity.position_delta, 2)
+        Adadelta.calculate_E_position_delta_variance(
+            params=self.params,
+            entity=entity
         )
 
         # Update position_delta
-        entity.position_delta.assign(
-            -lr*(
-                tf.math.sqrt(
-                    entity.E_position_delta_variance +
-                    self.epsilon
-                ) /
-                tf.math.sqrt(
-                    entity.E_gradient_variance +
-                    self.epsilon
-                )
-            ) *
-            entity.gradient
+        Adadelta.calculate_position_delta(
+            lr=lr,
+            params=self.params,
+            entity=entity
         )
 
         # Update velocity
-        entity.velocity.assign(entity.position_delta)
+        Adadelta.calculate_velocity(entity=entity)
 
         # Update position
-        entity.position.assign_add(entity.velocity)
+        Adadelta.calculate_position(entity=entity)

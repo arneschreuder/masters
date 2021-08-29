@@ -29,8 +29,8 @@ from typing import List, Tuple
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.adadelta import Adadelta as AdadeltaHeuristic
+from framework.hyper_parameters.adadelta import Adadelta as AdadeltaParameters
 from framework.optimisers.optimiser import Optimiser
-from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
@@ -54,28 +54,16 @@ class Adadelta(Optimiser):
     # learning_rate: float = None
     entity: Entity = None
 
-    def __init__(self,
-                 learning_rate: float or Schedule = 1.0,
-                 rho: float = 0.95,
-                 epsilon: float = 1e-7):
+    def __init__(self, params: AdadeltaParameters = AdadeltaParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 1.0
-        rho: float
-            Decay rate. Default = 0.95
-        epsilon: float
-            Small error value. Default = 1e-7
+        params: AdadeltaParameters
+            The step size. Default = AdadeltaParameters()
         """
         super(Adadelta, self).__init__(
-            heuristic=AdadeltaHeuristic(
-                learning_rate=learning_rate,
-                rho=rho,
-                epsilon=epsilon
-            )
+            heuristic=AdadeltaHeuristic(params=params)
         )
-        self.epsilon = epsilon
         self.entity = None
 
     def initialise(self) -> None:

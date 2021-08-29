@@ -114,12 +114,8 @@ class RMSProp(Heuristic):
 
         Parameters
         ----------
-        position: tf.Tensor
-            The entity's position which is the candidate solution to the model
-        state: tf.Tensor
-            The state of the gradient accumulator
-        gradient: tf.Tensor
-            The gradient to apply,
+        entity: Entity
+            The entity which contains the candidate solution to the model
         step: int
             The iteration step number
         """

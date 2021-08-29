@@ -1,6 +1,7 @@
 
 import framework as fw
 from framework import hyper_parameters
+from framework.heuristics.adadelta import Adadelta
 from framework.heuristics.adagrad import Adagrad
 from framework.heuristics.rmsprop import RMSProp
 
@@ -80,37 +81,41 @@ from framework.heuristics.rmsprop import RMSProp
 # )
 
 # RMSProp - Root Mean Squared Propagation
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.RMSProp(
-        params=fw.hyper_parameters.RMSProp(
-            learning_rate=fw.schedules.Exponential(
-                initial=0.1,
-                steps=600,
-                rate=0.01,
-                staircase=False
-            ),
-            rho=0.95,
-            epsilon=1e-07
-        )
-    ),
-    epochs=200,
-    batch_size=50,
-    log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-07",
-    seed=None
-)
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.RMSProp(
+#         params=fw.hyper_parameters.RMSProp(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=0.1,
+#                 steps=600,
+#                 rate=0.01,
+#                 staircase=False
+#             ),
+#             rho=0.95,
+#             epsilon=1e-07
+#         )
+#     ),
+#     epochs=200,
+#     batch_size=50,
+#     log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-07",
+#     seed=None
+# )
 
 # Adadelta - Adadelta Gradients
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.Adadelta(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=1.0,
-#             steps=600,
-#             rate=0.95,
-#             staircase=False
-#         ),
-#         rho=0.95,
-#         epsilon=1e-07
+#         params=fw.hyper_parameters.Adadelta(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=1.0,
+#                 steps=1800,
+#                 rate=0.98,
+#                 staircase=False
+#             ),
+#             rho=0.95,
+#             epsilon=1e-07
+#         )
 #     ),
+#     epochs=600,
+#     batch_size=50,
 #     log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-07",
 #     seed=None
 # )
