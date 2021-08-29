@@ -28,7 +28,7 @@
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
-from framework.schedules.schedule import Schedule
+from framework.hyper_parameters.rmsprop import RMSProp as RMSPropParameters
 
 
 class RMSProp(Heuristic):
@@ -48,35 +48,63 @@ class RMSProp(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float or Schedule
-        The step size. Default = None
-    rho: float
-        Decay rate. Default = None
-    epsilon: float
-        Small error value. Default = None
+    params: RMSPropParameters
+        Hyper Parameters. Default = None
     """
-    learning_rate: float or Schedule = None
-    rho: float = None
-    epsilon: float = None
+    params: RMSPropParameters = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.001,
-                 rho: float = 0.9,
-                 epsilon: float = 1e-7):
+                 params: RMSPropParameters = RMSPropParameters()):
         """
         Parameters
         ----------
-        learning_rate: float
-            The step size. Default = 0.001
-        rho: float
-            Decay rate. Default = 0.9
-        epsilon: float
-            Small error value. Default = 1e-7
+        params: RMSPropParameters
+            Hyper parameters. Default = RMSPropParameters()
         """
         super(RMSProp, self).__init__()
-        self.learning_rate = learning_rate
-        self.rho = rho
-        self.epsilon = epsilon
+        self.params = params
+
+    @staticmethod
+    def get_learning_rate(params: RMSPropParameters, step: int) -> float:
+        # Get learning rate
+        lr = params.learning_rate
+
+        if type(params.learning_rate) is not float:
+            lr = params.learning_rate(step=step)
+
+        return lr
+
+    @staticmethod
+    def calculate_E_gradient_variance(params: RMSPropParameters, entity: Entity):
+        # Update E_gradient_variance
+        entity.E_gradient_variance.assign(
+            params.rho*entity.E_gradient_variance +
+            (1-params.rho)*tf.math.pow(entity.gradient, 2)
+        )
+
+    @staticmethod
+    def calculate_position_delta(lr: float, params: RMSPropParameters, entity: Entity):
+        # Update position_delta
+        entity.position_delta.assign(
+            -lr*(
+                1 /
+                tf.math.sqrt(
+                    entity.E_gradient_variance +
+                    params.epsilon
+                )
+            ) *
+            entity.gradient
+        )
+
+    @staticmethod
+    def calculate_velocity(entity: Entity):
+        # Update velocity
+        entity.velocity.assign(entity.position_delta)
+
+    @staticmethod
+    def calculate_position(entity: Entity):
+        # Update position
+        entity.position.assign_add(entity.velocity)
 
     def __call__(self,
                  entity: Entity,
@@ -96,31 +124,23 @@ class RMSProp(Heuristic):
             The iteration step number
         """
         # Get learning rate
-        lr = self.learning_rate
-
-        if type(self.learning_rate) is not float:
-            lr = self.learning_rate(step=step)
+        lr = RMSProp.get_learning_rate(params=self.params, step=step)
 
         # Update E_gradient_variance
-        entity.E_gradient_variance.assign(
-            self.rho*entity.E_gradient_variance +
-            (1-self.rho)*tf.math.pow(entity.gradient, 2)
+        RMSProp.calculate_E_gradient_variance(
+            params=self.params,
+            entity=entity
         )
 
         # Update position_delta
-        entity.position_delta.assign(
-            -lr*(
-                1 /
-                tf.math.sqrt(
-                    entity.E_gradient_variance +
-                    self.epsilon
-                )
-            ) *
-            entity.gradient
+        RMSProp.calculate_position_delta(
+            lr=lr,
+            params=self.params,
+            entity=entity
         )
 
         # Update velocity
-        entity.velocity.assign(entity.position_delta)
+        RMSProp.calculate_velocity(entity=entity)
 
         # Update position
-        entity.position.assign_add(entity.velocity)
+        RMSProp.calculate_position(entity=entity)

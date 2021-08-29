@@ -2,6 +2,7 @@
 import framework as fw
 from framework import hyper_parameters
 from framework.heuristics.adagrad import Adagrad
+from framework.heuristics.rmsprop import RMSProp
 
 # SGD
 # experiment = fw.experiments.Iris(
@@ -60,39 +61,43 @@ from framework.heuristics.adagrad import Adagrad
 # )
 
 # Adagrad - Adaptive Gradients
+# experiment = fw.experiments.Iris(
+#     optimiser=fw.optimisers.Adagrad(
+#         params=fw.hyper_parameters.Adagrad(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=1.0,
+#                 steps=600,
+#                 rate=0.1,
+#                 staircase=False
+#             ),
+#             epsilon=1e-07
+#         )
+#     ),
+#     epochs=200,
+#     batch_size=50,
+#     log_dir="logs/adagrad-lrs-eps-1e-07",
+#     seed=None
+# )
+
+# RMSProp - Root Mean Squared Propagation
 experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.Adagrad(
-        params=fw.hyper_parameters.Adagrad(
+    optimiser=fw.optimisers.RMSProp(
+        params=fw.hyper_parameters.RMSProp(
             learning_rate=fw.schedules.Exponential(
-                initial=1.0,
+                initial=0.1,
                 steps=600,
-                rate=0.1,
+                rate=0.01,
                 staircase=False
             ),
+            rho=0.95,
             epsilon=1e-07
         )
     ),
     epochs=200,
     batch_size=50,
-    log_dir="logs/adagrad-lrs-eps-1e-07",
+    log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-07",
     seed=None
 )
-
-# RMSProp - Root Mean Squared Propagation
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.RMSProp(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=0.1,
-#             steps=600,
-#             rate=0.01,
-#             staircase=False
-#         ),
-#         rho=0.95,
-#         epsilon=1e-07
-#     ),
-#     log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-07",
-#     seed=None
-# )
 
 # Adadelta - Adadelta Gradients
 # experiment = fw.experiments.Iris(

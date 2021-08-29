@@ -31,7 +31,6 @@ from framework.entities.entity import Entity
 from framework.heuristics.adagrad import Adagrad as AdagradHeuristic
 from framework.hyper_parameters.adagrad import Adagrad as AdagradParameters
 from framework.optimisers.optimiser import Optimiser
-from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 

@@ -29,7 +29,6 @@ import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.hyper_parameters.adagrad import Adagrad as AdagradParameters
-from framework.schedules.schedule import Schedule
 
 
 class Adagrad(Heuristic):
@@ -48,7 +47,7 @@ class Adagrad(Heuristic):
 
     Attributes
     ----------
-    params: NAGParameters
+    params: AdagradParameters
         Hyper Parameters. Default = None
     """
     params: AdagradParameters = None
@@ -121,7 +120,7 @@ class Adagrad(Heuristic):
         # Get learning rate
         lr = Adagrad.get_learning_rate(params=self.params, step=step)
 
-        # Update sum_gradients_squared
+        # Update sum_gradient_squared
         Adagrad.calculate_sum_gradient_squared(
             entity=entity
         )

@@ -29,8 +29,8 @@ from typing import List, Tuple
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.rmsprop import RMSProp as RMSPropHeuristic
+from framework.hyper_parameters.rmsprop import RMSProp as RMSPropParameters
 from framework.optimisers.optimiser import Optimiser
-from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
 
 
@@ -53,26 +53,15 @@ class RMSProp(Optimiser):
     # learning_rate: float = None
     entity: Entity = None
 
-    def __init__(self,
-                 learning_rate: float or Schedule = 0.001,
-                 rho: float = 0.9,
-                 epsilon: float = 1e-7):
+    def __init__(self, params: RMSPropParameters = RMSPropParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 0.001
-        rho: float
-            Decay rate. Default = 0.9
-        epsilon: float
-            Small error value. Default = 1e-7
+        params: RMSPropParameters
+            The step size. Default = RMSPropParameters()
         """
         super(RMSProp, self).__init__(
-            heuristic=RMSPropHeuristic(
-                learning_rate=learning_rate,
-                rho=rho,
-                epsilon=epsilon
-            )
+            heuristic=RMSPropHeuristic(params=params)
         )
         self.entity = None
 
