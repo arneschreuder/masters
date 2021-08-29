@@ -121,21 +121,25 @@ from framework.heuristics.rmsprop import RMSProp
 # )
 
 # Adam - Adaptive Moments
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Adam(
-#         learning_rate=fw.schedules.Exponential(
-#             initial=0.1,
-#             steps=600,
-#             rate=0.01,
-#             staircase=False
-#         ),
-#         beta1=0.9,
-#         beta2=0.999,
-#         epsilon=1e-07
-#     ),
-#     log_dir="logs/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=None
-# )
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.Adam(
+        params=fw.hyper_parameters.Adam(
+            learning_rate=fw.schedules.Exponential(
+                initial=0.1,
+                steps=600,
+                rate=0.01,
+                staircase=False
+            ),
+            beta1=0.9,
+            beta2=0.999,
+            epsilon=1e-07
+        )
+    ),
+    epochs=200,
+    batch_size=50,
+    log_dir="logs/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+    seed=None
+)
 
 # PSO - Particle Swarm Optimisation
 # experiment = fw.experiments.Iris(

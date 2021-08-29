@@ -28,7 +28,7 @@
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.heuristic import Heuristic
-from framework.schedules.schedule import Schedule
+from framework.hyper_parameters.adam import Adam as AdamParameters
 
 
 class Adam(Heuristic):
@@ -49,42 +49,91 @@ class Adam(Heuristic):
 
     Attributes
     ----------
-    learning_rate: float or Schedule
-        The step size. Default = None
-    beta1: float
-        Decay rate for the first moment. Default = None
-    beta2: float
-        Decay rate for the second moment. Default = None
-    epsilon: float
-        Small error value. Default = None
+    params: AdamParameters
+        Hyper Parameters. Default = None
     """
-    learning_rate: float or Schedule = None
-    beta1: float = None
-    beta2: float = None
-    epsilon: float = None
+    params: AdamParameters = None
 
     def __init__(self,
-                 learning_rate: float or Schedule = 0.001,
-                 beta1: float = 0.9,
-                 beta2: float = 0.9,
-                 epsilon: float = 1e-7):
+                 params: AdamParameters = AdamParameters()):
         """
         Parameters
         ----------
-        learning_rate: float
-            The step size. Default = 0.001
-        beta1: float
-        Decay rate for the first moment. Default = 0.9
-    beta2: float
-        Decay rate for the second moment. Default = 0.999
-        epsilon: float
-            Small error value. Default = 1e-7
+        params: AdamParameters
+            Hyper parameters. Default = AdamParameters()
         """
         super(Adam, self).__init__()
-        self.learning_rate = learning_rate
-        self.beta1 = beta1
-        self.beta2 = beta2
-        self.epsilon = epsilon
+        self.params = params
+
+    @staticmethod
+    def get_learning_rate(params: AdamParameters, step: int) -> float:
+        # Get learning rate
+        lr = params.learning_rate
+
+        if type(params.learning_rate) is not float:
+            lr = params.learning_rate(step=step)
+
+        return lr
+
+    @staticmethod
+    def calculate_E_gradient_mean(params: AdamParameters, entity: Entity):
+        # Update E_gradient_mean
+        entity.E_gradient_mean.assign(
+            params.beta1*entity.E_gradient_mean +
+            (1-params.beta1)*entity.gradient
+        )
+
+    @staticmethod
+    def calculate_E_gradient_variance(params: AdamParameters, entity: Entity):
+        # Update E_gradient_variance
+        entity.E_gradient_variance.assign(
+            params.beta2*entity.E_gradient_variance +
+            (1-params.beta2)*tf.math.pow(entity.gradient, 2)
+        )
+
+    @staticmethod
+    def calculate_bias_corrected_E_gradient_mean(params: AdamParameters, entity: Entity) -> tf.Tensor:
+        # Bias correct gradient_mean
+        bias_corrected_E_gradient_mean = entity.E_gradient_mean / \
+            (1-params.beta1)
+
+        return bias_corrected_E_gradient_mean
+
+    @staticmethod
+    def calculate_bias_corrected_E_gradient_variance(params: AdamParameters, entity: Entity) -> tf.Tensor:
+        # Bias correct gradient_variance
+        bias_corrected_E_gradient_variance = entity.E_gradient_variance / \
+            (1-params.beta2)
+
+        return bias_corrected_E_gradient_variance
+
+    @staticmethod
+    def calculate_position_delta(lr: float,
+                                 bias_corrected_E_gradient_variance: tf.Tensor,
+                                 bias_corrected_E_gradient_mean: tf.Tensor,
+                                 params: AdamParameters,
+                                 entity: Entity):
+        # Update position_delta
+        entity.position_delta.assign(
+            -lr*(
+                1 /
+                tf.math.sqrt(
+                    bias_corrected_E_gradient_variance +
+                    params.epsilon
+                )
+            ) *
+            bias_corrected_E_gradient_mean
+        )
+
+    @staticmethod
+    def calculate_velocity(entity: Entity):
+        # Update velocity
+        entity.velocity.assign(entity.position_delta)
+
+    @staticmethod
+    def calculate_position(entity: Entity):
+        # Update position
+        entity.position.assign_add(entity.velocity)
 
     def __call__(self,
                  entity: Entity,
@@ -94,55 +143,49 @@ class Adam(Heuristic):
 
         Parameters
         ----------
-        position: tf.Tensor
-            The entity's position which is the candidate solution to the model
-        state: tf.Tensor
-            The state of the gradient accumulator
-        gradient: tf.Tensor
-            The gradient to apply,
+        entity: Entity
+            The entity which contains the candidate solution to the model
         step: int
             The iteration step number
         """
         # Get learning rate
-        lr = self.learning_rate
+        lr = Adam.get_learning_rate(params=self.params, step=step)
 
-        if type(self.learning_rate) is not float:
-            lr = self.learning_rate(step=step)
-
-            # Update E_gradient_mean
-        entity.E_gradient_mean.assign(
-            self.beta1*entity.E_gradient_mean +
-            (1-self.beta1)*entity.gradient
+        # Update E_gradient_mean
+        Adam.calculate_E_gradient_mean(
+            params=self.params,
+            entity=entity
         )
 
         # Update E_gradient_variance
-        entity.E_gradient_variance.assign(
-            self.beta2*entity.E_gradient_variance +
-            (1-self.beta2)*tf.math.pow(entity.gradient, 2)
+        Adam.calculate_E_gradient_variance(
+            params=self.params,
+            entity=entity
         )
 
         # Bias correct gradient_mean
-        bias_corrected_E_gradient_mean = entity.E_gradient_mean / \
-            (1-self.beta1)
+        bias_corrected_E_gradient_mean = Adam.calculate_bias_corrected_E_gradient_mean(
+            params=self.params,
+            entity=entity
+        )
 
         # Bias correct gradient_variance
-        bias_corrected_E_gradient_variance = entity.E_gradient_variance / \
-            (1-self.beta2)
+        bias_corrected_E_gradient_variance = Adam.calculate_bias_corrected_E_gradient_variance(
+            params=self.params,
+            entity=entity
+        )
 
         # Update position_delta
-        entity.position_delta.assign(
-            -lr*(
-                1 /
-                tf.math.sqrt(
-                    bias_corrected_E_gradient_variance +
-                    self.epsilon
-                )
-            ) *
-            bias_corrected_E_gradient_mean
+        Adam.calculate_position_delta(
+            lr=lr,
+            bias_corrected_E_gradient_variance=bias_corrected_E_gradient_variance,
+            bias_corrected_E_gradient_mean=bias_corrected_E_gradient_mean,
+            params=self.params,
+            entity=entity
         )
 
         # Update velocity
-        entity.velocity.assign(entity.position_delta)
+        Adam.calculate_velocity(entity=entity)
 
         # Update position
-        entity.position.assign_add(entity.velocity)
+        Adam.calculate_position(entity=entity)

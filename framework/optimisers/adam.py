@@ -29,6 +29,7 @@ from typing import List, Tuple
 import tensorflow as tf
 from framework.entities.entity import Entity
 from framework.heuristics.adam import Adam as AdamHeuristic
+from framework.hyper_parameters.adam import Adam as AdamParameters
 from framework.optimisers.optimiser import Optimiser
 from framework.schedules.schedule import Schedule
 from framework.utilities.utilities import flatten
@@ -54,30 +55,15 @@ class Adam(Optimiser):
     # learning_rate: float = None
     entity: Entity = None
 
-    def __init__(self,
-                 learning_rate: float or Schedule = 0.001,
-                 beta1: float = 0.9,
-                 beta2: float = 0.999,
-                 epsilon: float = 1e-7):
+    def __init__(self, params: AdamParameters = AdamParameters()):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-            The step size. Default = 0.001
-        beta1: float
-            Decay rate for first moment. Default = 0.9
-                                beta2: float
-            Decay rate for second moment. Default = 0.999
-        epsilon: float
-            Small error value. Default = 1e-7
+        params: AdamParameters
+            The step size. Default = AdamParameters()
         """
         super(Adam, self).__init__(
-            heuristic=AdamHeuristic(
-                learning_rate=learning_rate,
-                beta1=beta1,
-                beta2=beta2,
-                epsilon=epsilon
-            )
+            heuristic=AdamHeuristic(params=params)
         )
         self.entity = None
 
