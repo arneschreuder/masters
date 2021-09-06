@@ -44,6 +44,7 @@ from framework.heuristics.nag import NAG
 from framework.heuristics.pso import PSO
 from framework.heuristics.rmsprop import RMSProp
 from framework.heuristics.sgd import SGD
+from framework.hyper_parameters.bhh import BHH as BHHParameters
 from framework.initialisers.initialiser import Initialiser
 from framework.initialisers.ones import Ones
 from framework.initialisers.zeros import Zeros
@@ -56,16 +57,7 @@ from framework.utilities.utilities import flatten
 
 
 class BHH(Optimiser):
-    burn_in: int = None
-    replay: int = None
-    reselection: int = None
-    reanalysis: int = None
-    credit: List[Credit] = None
-
-    # TODO: DO we need to keep these as properties?
-    alpha_initialiser: Initialiser = None
-    beta_initialiser: Initialiser = None
-    gamma_initialiser: Initialiser = None
+    # TODO: Normalisation?
 
     # TODO: DO we need to keep these as properties?
     K: int = None
@@ -98,44 +90,17 @@ class BHH(Optimiser):
 
     # Instances
     population: Population = None
-    heuristics: List[Heuristic] = None
 
     # Performance Log
     log: PerformanceLog = None
 
-    def __init__(self,
-                 population_size: int = 10,
-                 burn_in: int = 30,
-                 replay: int = 30,
-                 reselection: int = 1,
-                 reanalysis: int = 1,
-                 credit: List[Credit] = [
-                     IBest(discounted_rewards=True)
-                 ],
-                 heuristics: List[Heuristic] = [
-                     SGD(),
-                     PSO(),
-                 ],
-                 alpha_initialiser: Initialiser = Ones(),
-                 beta_initialiser: Initialiser = Ones(),
-                 gamma_initialiser: Initialiser = Ones()):
+    def __init__(self, params: BHHParameters = BHHParameters()):
         super(BHH, self).__init__(
-            heuristic=BHHHeuristic(credit=credit)
+            heuristic=BHHHeuristic(params=params)
         )
-        # Setting hyper-parameters
-        self.burn_in = burn_in
-        self.replay = replay
-        self.reselection = reselection
-        self.reanalysis = reanalysis
-        self.credit = credit
-
-        self.alpha_initialiser = alpha_initialiser
-        self.beta_initialiser = beta_initialiser
-        self.gamma_initialiser = gamma_initialiser
-
-        self.J = population_size
+        self.J = params.population_size
         self.L = 1  # Binomial/Binary on credit
-        self.K = len(heuristics)
+        self.K = len(params.heuristics)
 
         # Concentrations
         self.alpha = None
@@ -159,8 +124,7 @@ class BHH(Optimiser):
         self.HgEC = None
 
         # Instances
-        self.heuristics = heuristics
-        self.population = Population(population_size=population_size)
+        self.population = Population(population_size=params.population_size)
 
         # Performance Log
         self.log = PerformanceLog()
@@ -178,17 +142,19 @@ class BHH(Optimiser):
         self.population.initialise(model=self.model)
 
         # Concentrations
+        ones_initialiser = Ones()  # Uniform/Symmetrical
+
         self.alpha = tf.Variable(
-            initial_value=self.alpha_initialiser(shape=[self.K])
+            initial_value=ones_initialiser(shape=[self.K])
         )
         self.beta = tf.Variable(
-            initial_value=self.beta_initialiser(shape=[self.J, self.K])
+            initial_value=ones_initialiser(shape=[self.J, self.K])
         )
         self.gamma1 = tf.Variable(
-            initial_value=self.gamma_initialiser(shape=[self.K])
+            initial_value=ones_initialiser(shape=[self.K])
         )
         self.gamma0 = tf.Variable(
-            initial_value=self.gamma_initialiser(shape=[self.K])
+            initial_value=ones_initialiser(shape=[self.K])
         )
 
         self.select()
@@ -232,7 +198,7 @@ class BHH(Optimiser):
     def get_heuristic(self, j):
         selections = self.HgEC.numpy()
         k = selections[j]
-        return k, self.heuristics[k]
+        return k, self.heuristic.params.heuristics[k]
 
     # TODO: Shared code?
     def get_gradient(self,
@@ -400,11 +366,11 @@ class BHH(Optimiser):
         # TODO: Move to heuristic?
         # Update
         # Check if burn-in is complete
-        if step < self.burn_in:
+        if step < self.heuristic.params.burn_in:
             self.select()
         else:
             # Check for re-analysis
-            if step % self.reanalysis == 0:
+            if step % self.heuristic.params.reanalysis == 0:
                 self.heuristic(
                     alpha=self.alpha,
                     beta=self.beta,
@@ -414,12 +380,12 @@ class BHH(Optimiser):
                 )
 
             # Check for reselection
-            if step % self.reselection == 0:
+            if step % self.heuristic.params.reselection == 0:
                 self.select()
 
             # Forget factor
-            if step > self.replay:
-                self.log.prune(step=step - self.replay)
+            if step > self.heuristic.params.replay:
+                self.log.prune(step=step - self.heuristic.params.replay)
 
         # Evaluate current position
         self.model.set_weights_flat(weights_flat=self.population.gbest)

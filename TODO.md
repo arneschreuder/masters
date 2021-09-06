@@ -1,33 +1,8 @@
 ## TODO
 
-- [x] there is a mistake with discounted rewards, since step 0 is furthest back. Thus, we need to take len - step
-- [x] fw.credits.PBest
-- [x] fw.credits.GBest
-- [x] fw.credits.RBest
-- [x] multiple credits together -> sum (bhh)
-- [x] fw.credits.Symmetric
-- [x] there is a mistake with multiple credits, should not recount observations of heuristics and entities, only sum credit.
-- [x] loss change average to sum -> This is a problem with SGD -> Fixed, reduction was wrong.
-- [x] log-sum-exp -> Fixed by using log, no need for log-sum-exp
-- [x] split sgd, momentum and nag
-- [x] learning rate schedules
-- [x] readd learning rate for PSO
-- [x] entity states
-- [x] adagrad, sgd, momentum do not all update all params. Need to find way to update missing
-- [x] bhh doesnt work if only 2 heurisics, but of same -> I suspect this has to do with lrs that is not set right
-- [x] SGD
-- [x] Momentum
-- [x] NAG
-- [x] ADAGRAD
-- [x] ADADELTA
-- [x] Store gradient in entity, it make it easier to use.
-- [x] RMSPROP
-- [x] ADAM
 - [ ] GA
 - [ ] DE
 - [ ] CMA-ES
-- [x] PSO
-- [x] Take note, adagrad and adadelta in bhh is currently incompatible, since the state update is different - fixed: was not included in bhh update step
 - [ ] evaluate all at step 0, allowing an evaluation, before any steps. All losses should start at -ln(1/classes) then.
 - [ ] counts -> should start with alpha, priors parameters -> initialisers, see bhh l.58
 - [ ] Change check for LR instance to isinstance(lr, Exponential)
@@ -37,14 +12,9 @@
 - [ ] Normalise counts to perhaps cater for mode collapse?
 - [ ] Move heuristic code for BHH from optimiser to heuristic
 - [ ] cookie cutter datascience
-- [x] credits from performance log is extremely inefficient
-- [x] flatten and reshape of model params is extremely inefficient
-- [x] bhh hyper-params on schedule? -> do after Adam with LR decay See: tf.keras.optimizers.schedules.LearningRateSchedule
 - [ ] more datasets
 - [ ] training, test, validation
 - [ ] main + experiment -> cli
-- [-] ensure all heuristics are always selected, despite model
-- [+] ensure all heuristics prerequisite data are met
 - [ ] prepare experiments
 - [ ] test scripts
 - [ ] access hpc
@@ -52,3 +22,7 @@
 - [ ] gather data
 - [ ] do statistical analysis
 - [ ] prepare results
+
+BHH Hyper-Params:
+All todo with selection (concentrations, prob dists, counts)
+All todo with when selection happens

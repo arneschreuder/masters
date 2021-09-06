@@ -43,9 +43,12 @@ class PSO(Optimiser):
     entity: Entity
         The entity that represents the candidate solution to the model.
         Default = None
+    population: Population
+        The population of entities that make up the swarm. Default = None.
     """
     # learning_rate: float = None
     entity: Entity = None
+    population: Population = None
 
     def __init__(self, params: PSOParameters = PSOParameters()):
         """

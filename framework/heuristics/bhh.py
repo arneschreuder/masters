@@ -31,16 +31,25 @@ import numpy as np
 import tensorflow as tf
 from framework.credits.credit import Credit
 from framework.heuristics.heuristic import Heuristic
+from framework.hyper_parameters.bhh import BHH as BHHParameters
 from framework.performance_log.performance_log import PerformanceLog
 
 
 # TODO: STILL NEED TO COMMENT THIS FILE
 class BHH(Heuristic):
-    credit: List[Credit] = None
+    """
+    The Particle Swarm Optimiser concrete heuristic.
 
-    def __init__(self, credit: List[Credit]):
+    Attributes
+    ----------
+    params: PSOParameters
+        Hyper Parameters. Default = None
+    """
+    params: BHHParameters = None
+
+    def __init__(self, params: BHHParameters = BHHParameters()):
         super(BHH, self).__init__()
-        self.credit = credit
+        self.params = params
 
     def __call__(self,
                  alpha: tf.Variable,
@@ -74,7 +83,7 @@ class BHH(Heuristic):
             N_jk[j][k] += 1
 
         # Then count credit
-        for c in self.credit:
+        for c in self.params.credit:
             credit = c(log=log)
 
             for _, row in credit.iterrows():

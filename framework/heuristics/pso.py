@@ -33,7 +33,7 @@ from framework.population import Population
 
 class PSO(Heuristic):
     """
-    The Stochastic Gradient Descent concrete heuristic.
+    The Particle Swarm Optimiser concrete heuristic.
 
     Attributes
     ----------
@@ -42,8 +42,7 @@ class PSO(Heuristic):
     """
     params: PSOParameters = None
 
-    def __init__(self,
-                 params: PSOParameters = PSOParameters()):
+    def __init__(self, params: PSOParameters = PSOParameters()):
         """
         Parameters
         ----------
