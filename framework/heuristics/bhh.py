@@ -30,6 +30,10 @@ from typing import List
 import numpy as np
 import tensorflow as tf
 from framework.credits.credit import Credit
+from framework.distributions.beta import Beta
+from framework.distributions.categorical import Categorical
+from framework.distributions.dirichlet import Dirichlet
+from framework.distributions.distribution import Distribution
 from framework.heuristics.heuristic import Heuristic
 from framework.hyper_parameters.bhh import BHH as BHHParameters
 from framework.performance_log.performance_log import PerformanceLog
@@ -51,13 +55,60 @@ class BHH(Heuristic):
         super(BHH, self).__init__()
         self.params = params
 
-    def __call__(self,
-                 alpha: tf.Variable,
-                 beta: tf.Variable,
-                 gamma1: tf.Variable,
-                 gamma0: tf.Variable,
-                 log: PerformanceLog) -> None:
+    @staticmethod
+    def select(alpha: tf.Variable,
+               beta: tf.Variable,
+               gamma1: tf.Variable,
+               gamma0: tf.Variable,
+               theta: Distribution,
+               phi: Distribution,
+               psi: Distribution,
+               p_H: tf.Variable,
+               p_EgH: tf.Variable,
+               p_CgH: tf.Variable,
+               p_HgEC: tf.Variable,
+               l_HgEC: Distribution,
+               HgEC: tf.Variable):
+        # Probability distributions
+        theta = Dirichlet(concentration=alpha)
+        phi = Dirichlet(concentration=beta)
+        psi = Beta(concentration1=gamma1, concentration0=gamma0)
 
+        # Probabilities
+        p_H.assign(theta())
+        p_EgH.assign(phi())
+        p_CgH.assign(psi())
+        """
+        PERFORMANCE BIAS:
+
+        - Calculate the probability of  P(H|E,C) \propto P(E|H)*P(C|H)*(P(H)
+        - Create a categorical distribution with the probabilities from above
+        - Then pick the combination of entity and heuristic by sampling from
+        - a categorical distribution with the learnt probabilities
+        - probabilities
+        """
+        # To avoid underflow here, we use the log.
+        # This is sufficient since we are using Maximum-a-priori (MAP) updates of model.
+        # Yielding that we always calculate p_HgEC from model params.
+        # The alternative to this is to use Maximum-likelihood-estimate (MLE) update of model.
+        # In that case, we will assign p_H_t_plus_1 = p_HgEC_t = p_EgH_t* p_CgH_t * p_H_t
+        # See: https://stats.stackexchange.com/questions/105602/example-of-how-the-log-sum-exp-trick-works-in-naive-bayes
+        p_HgEC.assign(tf.math.log(p_EgH * p_CgH * p_H))
+
+        # Likelihoods
+        l_HgEC = Categorical(logits=p_HgEC)
+
+        # Sampling
+        HgEC.assign(l_HgEC())
+        # print(self.alpha)
+
+    @staticmethod
+    def bayesian_analysis(params: BHHParameters,
+                          alpha: tf.Variable,
+                          beta: tf.Variable,
+                          gamma1: tf.Variable,
+                          gamma0: tf.Variable,
+                          log: PerformanceLog):
         # Get dimensionality
         J = beta.shape[0]
         K = alpha.shape[0]
@@ -83,7 +134,7 @@ class BHH(Heuristic):
             N_jk[j][k] += 1
 
         # Then count credit
-        for c in self.params.credit:
+        for c in params.credit:
             credit = c(log=log)
 
             for _, row in credit.iterrows():
@@ -102,3 +153,72 @@ class BHH(Heuristic):
         beta.assign(_beta)
         gamma1.assign(_gamma1)
         gamma0.assign(_gamma0)
+
+    def __call__(self,
+                 alpha: tf.Variable,
+                 beta: tf.Variable,
+                 gamma1: tf.Variable,
+                 gamma0: tf.Variable,
+                 theta: Distribution,
+                 phi: Distribution,
+                 psi: Distribution,
+                 p_H: tf.Variable,
+                 p_EgH: tf.Variable,
+                 p_CgH: tf.Variable,
+                 p_HgEC: tf.Variable,
+                 l_HgEC: Distribution,
+                 HgEC: tf.Variable,
+                 log: PerformanceLog,
+                 step: int) -> None:
+        # Check if burn-in is complete
+        if step < self.params.burn_in:
+            BHH.select(
+                alpha=alpha,
+                beta=beta,
+                gamma1=gamma1,
+                gamma0=gamma0,
+                theta=theta,
+                phi=phi,
+                psi=psi,
+                p_H=p_H,
+                p_EgH=p_EgH,
+                p_CgH=p_CgH,
+                p_HgEC=p_HgEC,
+                l_HgEC=l_HgEC,
+                HgEC=HgEC
+            )
+        else:
+            # Check for re-analysis
+            if step % self.params.reanalysis == 0:
+                # Bayesian analysis
+                BHH.bayesian_analysis(
+                    alpha=alpha,
+                    beta=beta,
+                    gamma1=gamma1,
+                    gamma0=gamma0,
+                    log=log,
+                    params=self.params
+                )
+
+            # Check for reselection
+            if step % self.params.reselection == 0:
+                BHH.select(
+                    alpha=alpha,
+                    beta=beta,
+                    gamma1=gamma1,
+                    gamma0=gamma0,
+                    theta=theta,
+                    phi=phi,
+                    psi=psi,
+                    p_H=p_H,
+                    p_EgH=p_EgH,
+                    p_CgH=p_CgH,
+                    p_HgEC=p_HgEC,
+                    l_HgEC=l_HgEC,
+                    HgEC=HgEC
+                )
+
+            # Forget factor
+            if step > self.params.replay:
+                log.prune(step=step - self.params.replay)
+                print(len(log.log))

@@ -58,35 +58,30 @@ from framework.utilities.utilities import flatten
 
 class BHH(Optimiser):
     # TODO: Normalisation?
-
-    # TODO: DO we need to keep these as properties?
     K: int = None
     J: int = None
     L: int = None
 
     # Concentrations
-    alpha: tf.Tensor = None
-    beta: tf.Tensor = None
-    gamma1: tf.Tensor = None
-    gamma0: tf.Tensor = None
+    alpha: tf.Variable = None
+    beta: tf.Variable = None
+    gamma1: tf.Variable = None
+    gamma0: tf.Variable = None
 
-    # TODO: DO we need to keep these as properties?
     # Probability Distributions
     theta: Distribution = None
     phi: Distribution = None
     psi: Distribution = None
 
-    # TODO: DO we need to keep these as properties?
     # Selection probabilities
-    p_H: tf.Tensor = None  # Prior
-    p_EgH: tf.Tensor = None
-    p_CgH: tf.Tensor = None
-    p_HgEC: tf.Tensor = None  # Posterior
+    p_H: tf.Variable = None  # Prior
+    p_EgH: tf.Variable = None
+    p_CgH: tf.Variable = None
+    p_HgEC: tf.Variable = None  # Posterior
 
-    # TODO: DO we need to keep these as properties?
     # Selections
-    l_HgEC: tf.Tensor = None
-    HgEC: tf.Tensor = None
+    l_HgEC: Distribution = None
+    HgEC: tf.Variable = None
 
     # Instances
     population: Population = None
@@ -143,6 +138,7 @@ class BHH(Optimiser):
 
         # Concentrations
         ones_initialiser = Ones()  # Uniform/Symmetrical
+        zeros_initialiser = Zeros()
 
         self.alpha = tf.Variable(
             initial_value=ones_initialiser(shape=[self.K])
@@ -156,51 +152,46 @@ class BHH(Optimiser):
         self.gamma0 = tf.Variable(
             initial_value=ones_initialiser(shape=[self.K])
         )
+        self.p_H = tf.Variable(
+            initial_value=zeros_initialiser(shape=[self.K])
+        )
+        self.p_EgH = tf.Variable(
+            initial_value=zeros_initialiser(shape=[self.J, self.K])
+        )
+        self.p_CgH = tf.Variable(
+            initial_value=zeros_initialiser(shape=[self.K])
+        )
+        self.p_HgEC = tf.Variable(
+            initial_value=zeros_initialiser(shape=[self.J, self.K])
+        )
+        self.l_HgEC = tf.Variable(
+            initial_value=zeros_initialiser(shape=[self.K])
+        )
+        self.HgEC = tf.Variable(
+            initial_value=tf.cast(zeros_initialiser(shape=[self.J]), tf.int32)
+        )
 
-        self.select()
+        BHHHeuristic.select(
+            alpha=self.alpha,
+            beta=self.beta,
+            gamma1=self.gamma1,
+            gamma0=self.gamma0,
+            theta=self.theta,
+            phi=self.phi,
+            psi=self.psi,
+            p_H=self.p_H,
+            p_EgH=self.p_EgH,
+            p_CgH=self.p_CgH,
+            p_HgEC=self.p_HgEC,
+            l_HgEC=self.l_HgEC,
+            HgEC=self.HgEC
+        )
 
-    # TODO: Shouldn't this be in the heuristic of BHH?
-    def select(self):
-        # Probability distributions
-        self.theta = Dirichlet(concentration=self.alpha)
-        self.phi = Dirichlet(concentration=self.beta)
-        self.psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
-
-        # Probabilities
-        self.p_H = self.theta()
-        self.p_EgH = self.phi()
-        self.p_CgH = self.psi()
-        """
-        PERFORMANCE BIAS:
-
-        - Calculate the probability of  P(H|E,C) \propto P(E|H)*P(C|H)*(P(H)
-        - Create a categorical distribution with the probabilities from above
-        - Then pick the combination of entity and heuristic by sampling from
-        - a categorical distribution with the learnt probabilities
-        - probabilities
-        """
-        # To avoid underflow here, we use the log.
-        # This is sufficient since we are using Maximum-a-priori (MAP) updates of model.
-        # Yielding that we always calculate self.p_HgEC from model params.
-        # The alternative to this is to use Maximum-likelihood-estimate (MLE) update of model.
-        # In that case, we will assign p_H_t_plus_1 = p_HgEC_t = p_EgH_t* p_CgH_t * p_H_t
-        # See: https://stats.stackexchange.com/questions/105602/example-of-how-the-log-sum-exp-trick-works-in-naive-bayes
-        self.p_HgEC = tf.math.log(self.p_EgH * self.p_CgH * self.p_H)
-
-        # Likelihoods
-        self.l_HgEC = Categorical(logits=self.p_HgEC)
-
-        # Sampling
-        self.HgEC = self.l_HgEC()
-        # print(self.alpha)
-
-    # TODO: Shouldn't this be in the heuristic of the BHH?
     def get_heuristic(self, j):
         selections = self.HgEC.numpy()
         k = selections[j]
         return k, self.heuristic.params.heuristics[k]
 
-    # TODO: Shared code?
     def get_gradient(self,
                      features: tf.Tensor,
                      labels: tf.Tensor) -> List[List[tf.Tensor]]:
@@ -232,7 +223,6 @@ class BHH(Optimiser):
             )
             return gradient
 
-    # TODO: Shouldnt this be in heuristic of BHH?
     def apply_heuristic(self,
                         heuristic: Heuristic,
                         entity: Entity,
@@ -356,36 +346,31 @@ class BHH(Optimiser):
                 gbest_loss=gbest_loss.numpy()
             )
 
-            print("Loss: {}, PBest Loss: {}, IBest Loss: {}, GBest Loss: {}".format(
-                loss.numpy(),
-                pbest_loss.numpy(),
-                ibest_loss.numpy(),
-                gbest_loss.numpy()
-            ))
+            # print("Loss: {}, PBest Loss: {}, IBest Loss: {}, GBest Loss: {}".format(
+            #     loss.numpy(),
+            #     pbest_loss.numpy(),
+            #     ibest_loss.numpy(),
+            #     gbest_loss.numpy()
+            # ))
 
-        # TODO: Move to heuristic?
-        # Update
-        # Check if burn-in is complete
-        if step < self.heuristic.params.burn_in:
-            self.select()
-        else:
-            # Check for re-analysis
-            if step % self.heuristic.params.reanalysis == 0:
-                self.heuristic(
-                    alpha=self.alpha,
-                    beta=self.beta,
-                    gamma1=self.gamma1,
-                    gamma0=self.gamma0,
-                    log=self.log
-                )
-
-            # Check for reselection
-            if step % self.heuristic.params.reselection == 0:
-                self.select()
-
-            # Forget factor
-            if step > self.heuristic.params.replay:
-                self.log.prune(step=step - self.heuristic.params.replay)
+        # Apply heuristic
+        self.heuristic(
+            alpha=self.alpha,
+            beta=self.beta,
+            gamma1=self.gamma1,
+            gamma0=self.gamma0,
+            theta=self.theta,
+            phi=self.phi,
+            psi=self.psi,
+            p_H=self.p_H,
+            p_EgH=self.p_EgH,
+            p_CgH=self.p_CgH,
+            p_HgEC=self.p_HgEC,
+            l_HgEC=self.l_HgEC,
+            HgEC=self.HgEC,
+            log=self.log,
+            step=step
+        )
 
         # Evaluate current position
         self.model.set_weights_flat(weights_flat=self.population.gbest)
