@@ -68,6 +68,7 @@ class NAG(Optimiser):
         self.entity = Entity()
         # This is required to determine the dimensionality of the model.
         self.entity.map_model(model=self.model)
+        self.entity.set_logger(logger=self.logger)
         self.entity.initialise()
 
     def get_gradient(self,
@@ -140,5 +141,6 @@ class NAG(Optimiser):
         self.model.set_weights_flat(weights_flat=self.entity.position)
         logits, loss = self.evaluate(features=features, labels=labels)
         self.entity.loss = loss
+        self.entity.log_state(step=step)
 
         return logits, loss

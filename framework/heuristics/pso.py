@@ -135,10 +135,12 @@ class PSO(Heuristic):
         )
 
         # Clipping gradient mean
-        PSO.calculate_clipped_E_gradient_mean(
-            params=self.params,
-            entity=entity
-        )
+        # Only clip if clipping has been set
+        if (self.params.velocity_clip_min is not None) and (self.params.velocity_clip_max is not None):
+            PSO.calculate_clipped_E_gradient_mean(
+                params=self.params,
+                entity=entity
+            )
 
         # Update position_delta
         PSO.calculate_position_delta(

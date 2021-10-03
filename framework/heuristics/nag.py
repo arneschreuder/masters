@@ -63,21 +63,19 @@ class NAG(Heuristic):
         return lr
 
     @staticmethod
-    def calculate_E_gradient_mean(params: NAGParameters, entity: Entity):
+    def calculate_E_gradient_mean(lr: float, params: NAGParameters, entity: Entity):
         # Update E_gradient_mean
         entity.E_gradient_mean.assign(
-            params.momentum*entity.E_gradient_mean +
-            (1-params.momentum)*entity.gradient
+            params.momentum*entity.E_gradient_mean -
+            lr*entity.gradient
         )
 
     @staticmethod
     def calculate_position_delta(lr: float, params: NAGParameters, entity: Entity):
         # Update position_delta
         entity.position_delta.assign(
-            -lr*(
-                params.momentum*entity.E_gradient_mean +
-                (1-params.momentum)*entity.gradient
-            )
+            params.momentum*entity.E_gradient_mean -
+            lr*entity.gradient
         )
 
     @staticmethod
@@ -108,6 +106,7 @@ class NAG(Heuristic):
 
         # Calculate E_gradient_mean
         NAG.calculate_E_gradient_mean(
+            lr=lr,
             params=self.params,
             entity=entity
         )

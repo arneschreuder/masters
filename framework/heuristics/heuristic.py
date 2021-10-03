@@ -24,9 +24,18 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+from framework.logger.logger import Logger
+
+
 class Heuristic:
     """
     The base class for all implementations of a heuristic.
     Heuristics are search guides.
     """
-    pass
+    logger: Logger = None
+
+    def __init__(self):
+        self.logger = None
+
+    def set_logger(self, logger: Logger) -> None:
+        self.logger = logger

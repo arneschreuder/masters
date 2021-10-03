@@ -30,6 +30,7 @@ import pandas as pd
 import tensorflow as tf
 import tensorflow_datasets as tfds
 from framework.datasets.dataset import Dataset
+from sklearn.model_selection import train_test_split
 
 
 class Iris(Dataset):
@@ -74,11 +75,23 @@ class Iris(Dataset):
         # Split features and labels
         target = data.pop('species')
 
+        train_x, test_x, train_y, test_y = train_test_split(
+            data, target, test_size=0.1, train_size=0.9, shuffle=True)
+
         # Set training dataset
         self.training = tf.data.Dataset.from_tensor_slices(
-            (data.values, target.values))
+            (train_x.values, train_y.values))
         self.training = self.training.shuffle(
             self.shuffle_size,
             seed=self.seed
         )
         self.training = self.training.batch(self.batch_size)
+
+        # Set testing dataset
+        self.test = tf.data.Dataset.from_tensor_slices(
+            (test_x.values, test_y.values))
+        self.test = self.test.shuffle(
+            self.shuffle_size,
+            seed=self.seed
+        )
+        self.test = self.test.batch(self.batch_size)

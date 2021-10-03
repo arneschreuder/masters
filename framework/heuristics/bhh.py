@@ -87,20 +87,21 @@ class BHH(Heuristic):
         - a categorical distribution with the learnt probabilities
         - probabilities
         """
-        # To avoid underflow here, we use the log.
+        # To avoid underflow here, we use the log-sum-exp trick
         # This is sufficient since we are using Maximum-a-priori (MAP) updates of model.
         # Yielding that we always calculate p_HgEC from model params.
         # The alternative to this is to use Maximum-likelihood-estimate (MLE) update of model.
         # In that case, we will assign p_H_t_plus_1 = p_HgEC_t = p_EgH_t* p_CgH_t * p_H_t
+        # and with log-sum-exp this yields: p_H_t_plus_1 = p_HgEC_t = exp(log(p_EgH_t) + log(p_CgH_t) + log(p_H_t))
         # See: https://stats.stackexchange.com/questions/105602/example-of-how-the-log-sum-exp-trick-works-in-naive-bayes
-        p_HgEC.assign(tf.math.log(p_EgH * p_CgH * p_H))
+        p_HgEC.assign(tf.math.exp(tf.math.log(p_EgH) +
+                      tf.math.log(p_CgH) + tf.math.log(p_H)))
 
         # Likelihoods
         l_HgEC = Categorical(logits=p_HgEC)
 
         # Sampling
         HgEC.assign(l_HgEC())
-        # print(self.alpha)
 
     @staticmethod
     def bayesian_analysis(params: BHHParameters,
@@ -109,6 +110,7 @@ class BHH(Heuristic):
                           gamma1: tf.Variable,
                           gamma0: tf.Variable,
                           log: PerformanceLog):
+        # print(log.log)
         # Get dimensionality
         J = beta.shape[0]
         K = alpha.shape[0]
@@ -221,4 +223,3 @@ class BHH(Heuristic):
             # Forget factor
             if step > self.params.replay:
                 log.prune(step=step - self.params.replay)
-                print(len(log.log))

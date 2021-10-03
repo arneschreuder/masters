@@ -58,9 +58,13 @@ class Iris(Experiment):
             model=IrisModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
-            metrics=[
-                SparseCategoricalCrossentropyMetric(),
-                SparseCategoricalAccuracyMetric()
+            training_metrics=[
+                SparseCategoricalCrossentropyMetric(name="train_loss"),
+                SparseCategoricalAccuracyMetric(name="train_accuracy")
+            ],
+            testing_metrics=[
+                SparseCategoricalCrossentropyMetric(name="test_loss"),
+                SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
             epochs=epochs,

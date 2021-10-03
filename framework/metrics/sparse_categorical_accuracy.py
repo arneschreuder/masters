@@ -34,9 +34,11 @@ class SparseCategoricalAccuracy(Metric):
     Calculates the accuracy between logits and labels using 
     a sparse representation of the labels as such: [1 3 2 1 2 1 3 2 3 3 1]
     """
+    name: str = None
 
-    def __init__(self):
+    def __init__(self, name: str):
         super(SparseCategoricalAccuracy, self).__init__(
             instance=tf.keras.metrics.SparseCategoricalAccuracy(),
-            name="accuracy"
+            name=name
         )
+        self.name = name

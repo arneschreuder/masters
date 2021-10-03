@@ -46,8 +46,6 @@ class PSO(Optimiser):
     population: Population
         The population of entities that make up the swarm. Default = None.
     """
-    # learning_rate: float = None
-    entity: Entity = None
     population: Population = None
 
     def __init__(self, params: PSOParameters = PSOParameters()):
@@ -72,6 +70,7 @@ class PSO(Optimiser):
         super(PSO, self).initialise()
 
         # Initialise population
+        self.population.set_logger(logger=self.logger)
         self.population.initialise(model=self.model)
 
     def update_bests(self,
@@ -128,10 +127,12 @@ class PSO(Optimiser):
                 labels=labels,
                 entity=entity
             )
+            entity.log_state(step=step)
 
         # Evaluate current position
         self.model.set_weights_flat(weights_flat=self.population.gbest)
         logits, loss = self.evaluate(features=features, labels=labels)
         self.population.loss = loss
+        self.population.log_state(step=step)
 
         return logits, loss

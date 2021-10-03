@@ -24,13 +24,11 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+import os
 from typing import List, Tuple
 
 import tensorflow as tf
-from framework.credits.credit import Credit
-from framework.credits.ibest import IBest
 from framework.distributions.beta import Beta
-from framework.distributions.categorical import Categorical
 from framework.distributions.dirichlet import Dirichlet
 from framework.distributions.distribution import Distribution
 from framework.entities.entity import Entity
@@ -44,13 +42,15 @@ from framework.heuristics.nag import NAG
 from framework.heuristics.pso import PSO
 from framework.heuristics.rmsprop import RMSProp
 from framework.heuristics.sgd import SGD
+from framework.hyper_parameters.adadelta import Adadelta as AdadeltaParameters
+from framework.hyper_parameters.adam import Adam as AdamParameters
 from framework.hyper_parameters.bhh import BHH as BHHParameters
-from framework.initialisers.initialiser import Initialiser
 from framework.initialisers.ones import Ones
 from framework.initialisers.zeros import Zeros
 from framework.optimisers.optimiser import Optimiser
 from framework.performance_log.performance_log import PerformanceLog
 from framework.population import Population
+from framework.schedules.exponential import Exponential
 from framework.utilities.utilities import flatten
 
 # TODO: STILL NEED TO COMMENT THIS FILE
@@ -134,6 +134,7 @@ class BHH(Optimiser):
         super(BHH, self).initialise()
 
         # Initialise population
+        self.population.set_logger(logger=self.logger)
         self.population.initialise(model=self.model)
 
         # Concentrations
@@ -163,9 +164,6 @@ class BHH(Optimiser):
         )
         self.p_HgEC = tf.Variable(
             initial_value=zeros_initialiser(shape=[self.J, self.K])
-        )
-        self.l_HgEC = tf.Variable(
-            initial_value=zeros_initialiser(shape=[self.K])
         )
         self.HgEC = tf.Variable(
             initial_value=tf.cast(zeros_initialiser(shape=[self.J]), tf.int32)
@@ -227,42 +225,165 @@ class BHH(Optimiser):
                         heuristic: Heuristic,
                         entity: Entity,
                         step: int):
+        adagrad_defaults = None
+        adadelta_defaults = AdadeltaParameters(
+            learning_rate=Exponential(
+                initial=1.0,
+                steps=600,
+                rate=0.95,
+                staircase=False
+            ),
+            rho=0.95,
+            epsilon=1e-07
+        )
+        adam_defaults = AdamParameters(
+            learning_rate=Exponential(
+                initial=0.1,
+                steps=600,
+                rate=0.01,
+                staircase=False
+            ),
+            beta1=0.9,
+            beta2=0.999,
+            epsilon=1e-07
+        )
+
         if isinstance(heuristic, SGD):
+            """
+            Missing Prerequisites:
+            --------------
+            * sum_gradient_squared (proxy from Adagrad)
+            * E_position_delta_variance (proxy from Adadelta)
+            * E_gradient_mean (proxy from Adam)
+            * E_gradient_variance (proxy from Adam)
+            """
+            Adagrad.calculate_sum_gradient_squared(entity=entity)
+            Adadelta.calculate_E_position_delta_variance(
+                params=adadelta_defaults, entity=entity)
+            Adam.calculate_E_gradient_mean(params=adam_defaults, entity=entity)
+            Adam.calculate_E_gradient_variance(
+                params=adam_defaults, entity=entity)
+
             heuristic(
                 entity=entity,
                 step=step
             )
         elif isinstance(heuristic, Momentum):
+            """
+            Missing Prerequisites:
+            --------------
+            * sum_gradient_squared (proxy from Adagrad)
+            * E_position_delta_variance (proxy from Adadelta)
+            * E_gradient_variance (proxy from Adam)
+            """
+            Adagrad.calculate_sum_gradient_squared(entity=entity)
+            Adadelta.calculate_E_position_delta_variance(
+                params=adadelta_defaults, entity=entity)
+            Adam.calculate_E_gradient_variance(
+                params=adam_defaults, entity=entity)
+
             heuristic(
                 entity=entity,
                 step=step
             )
         elif isinstance(heuristic, NAG):
+            """
+            Missing Prerequisites:
+            --------------
+            * sum_gradient_squared (proxy from Adagrad)
+            * E_position_delta_variance (proxy from Adadelta)
+            * E_gradient_variance (proxy from Adam)
+            """
+            Adagrad.calculate_sum_gradient_squared(entity=entity)
+            Adadelta.calculate_E_position_delta_variance(
+                params=adadelta_defaults, entity=entity)
+            Adam.calculate_E_gradient_variance(
+                params=adam_defaults, entity=entity)
+
             heuristic(
                 entity=entity,
                 step=step
             )
         elif isinstance(heuristic, Adagrad):
+            """
+            Missing Prerequisites:
+            --------------
+            * E_position_delta_variance (proxy from Adadelta)
+            * E_gradient_mean (proxy from Adam)
+            * E_gradient_variance (proxy from Adam)
+            """
+            Adadelta.calculate_E_position_delta_variance(
+                params=adadelta_defaults, entity=entity)
+            Adam.calculate_E_gradient_mean(params=adam_defaults, entity=entity)
+            Adam.calculate_E_gradient_variance(
+                params=adam_defaults, entity=entity)
+
             heuristic(
                 entity=entity,
                 step=step
             )
         elif isinstance(heuristic, RMSProp):
+            """
+            Missing Prerequisites:
+            --------------
+            * sum_gradient_squared (proxy from Adagrad)
+            * E_position_delta_variance (proxy from Adadelta)
+            * E_gradient_mean (proxy from Adam)
+            """
+            Adagrad.calculate_sum_gradient_squared(entity=entity)
+            Adadelta.calculate_E_position_delta_variance(
+                params=adadelta_defaults, entity=entity)
+            Adam.calculate_E_gradient_mean(params=adam_defaults, entity=entity)
+
             heuristic(
                 entity=entity,
                 step=step
             )
         elif isinstance(heuristic, Adadelta):
+            """
+            Missing Prerequisites:
+            --------------
+            * sum_gradient_squared (proxy from Adagrad)
+            * E_gradient_mean (proxy from Adam)
+            """
+            Adagrad.calculate_sum_gradient_squared(entity=entity)
+            Adam.calculate_E_gradient_mean(params=adam_defaults, entity=entity)
+
             heuristic(
                 entity=entity,
                 step=step
             )
         elif isinstance(heuristic, Adam):
+            """
+            Missing Prerequisites:
+            --------------
+            * sum_gradient_squared (proxy from Adagrad)
+            * E_position_delta_variance (proxy from Adadelta)
+            """
+            Adagrad.calculate_sum_gradient_squared(entity=entity)
+            Adadelta.calculate_E_position_delta_variance(
+                params=adadelta_defaults, entity=entity)
+
             heuristic(
                 entity=entity,
                 step=step
             )
         elif isinstance(heuristic, PSO):
+            """
+            Missing Prerequisites:
+            --------------
+            * sum_gradient_squared (proxy from Adagrad)
+            * E_position_delta_variance (proxy from Adadelta)
+            * E_gradient_mean (proxy from Adam)
+            * E_gradient_variance (proxy from Adam)
+            """
+            Adagrad.calculate_sum_gradient_squared(entity=entity)
+            Adadelta.calculate_E_position_delta_variance(
+                params=adadelta_defaults, entity=entity)
+            Adam.calculate_E_gradient_mean(params=adam_defaults, entity=entity)
+            Adam.calculate_E_gradient_variance(
+                params=adam_defaults, entity=entity)
+
             heuristic(
                 entity=entity,
                 population=self.population,
@@ -335,6 +456,9 @@ class BHH(Optimiser):
                 entity=entity
             )
 
+            entity.log_state(step=step)
+            self.log_state(j, k, step)
+
             # Log performance
             self.log.append(
                 step=step,
@@ -345,13 +469,6 @@ class BHH(Optimiser):
                 ibest_loss=ibest_loss.numpy(),
                 gbest_loss=gbest_loss.numpy()
             )
-
-            # print("Loss: {}, PBest Loss: {}, IBest Loss: {}, GBest Loss: {}".format(
-            #     loss.numpy(),
-            #     pbest_loss.numpy(),
-            #     ibest_loss.numpy(),
-            #     gbest_loss.numpy()
-            # ))
 
         # Apply heuristic
         self.heuristic(
@@ -376,5 +493,38 @@ class BHH(Optimiser):
         self.model.set_weights_flat(weights_flat=self.population.gbest)
         logits, loss = self.evaluate(features=features, labels=labels)
         self.population.loss = loss
+        self.population.log_state(step=step)
 
         return logits, loss
+
+    def log_state(self, j, k, step):
+        log_level = int(os.getenv('LOG_LEVEL')
+                        ) if os.getenv('LOG_LEVEL') is not None else 1
+
+        if self.logger and log_level == 2:
+            self.logger.log_distribution_results(
+                'alpha[{}]'.format(k), result=self.alpha[k], step=step)
+            self.logger.log_distribution_results(
+                'beta[{}][{}]'.format(j, k), result=self.beta[j][k], step=step)
+            self.logger.log_distribution_results(
+                'gamma1[{}]'.format(k), result=self.gamma1[k], step=step)
+            self.logger.log_distribution_results(
+                'gamma0[{}]'.format(k), result=self.gamma0[k], step=step)
+
+            theta = Dirichlet(concentration=self.alpha)
+            phi = Dirichlet(concentration=self.beta)
+            psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
+
+            self.logger.log_distribution_results(
+                'theta[{}]'.format(k), result=theta()[k], step=step)
+
+            self.logger.log_distribution_results(
+                'phi[{}][{}]'.format(j, k), result=phi()[j][k], step=step)
+
+            self.logger.log_distribution_results(
+                'psi[{}]'.format(k), result=psi()[k], step=step)
+
+            self.logger.log_distribution_results(
+                'p_HgEC[{}][{}]'.format(j, k), result=self.p_HgEC[j][k], step=step)
+            self.logger.log_distribution_results(
+                'HgEC[{}]'.format(j), result=self.HgEC[j], step=step)

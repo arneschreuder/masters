@@ -28,6 +28,7 @@ from typing import Tuple
 
 import tensorflow as tf
 from framework.heuristics.heuristic import Heuristic
+from framework.logger.logger import Logger
 from framework.losses.loss import Loss
 from framework.neural_networks.neural_network import NeuralNetwork
 
@@ -50,11 +51,13 @@ class Optimiser:
     heuristic: Heuristic = None
     loss_fn: Loss = None
     model: NeuralNetwork = None
+    logger: Logger = None
 
     def __init__(self, heuristic: Heuristic):
         self.heuristic = heuristic
         self.loss_fn = None
         self.model = None
+        self.logger = None
 
     def set_loss_fn(self, loss_fn: Loss) -> None:
         """
@@ -77,6 +80,10 @@ class Optimiser:
         The model to be trained. Default = None
         """
         self.model = model
+
+    def set_logger(self, logger: Logger) -> None:
+        self.logger = logger
+        self.heuristic.set_logger(logger=self.logger)
 
     def initialise(self) -> None:
         """

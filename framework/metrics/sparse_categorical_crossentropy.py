@@ -34,11 +34,13 @@ class SparseCategoricalCrossentropy(Metric):
     Calculates the loss between logits and labels using 
     a sparse representation of the labels as such: [1 3 2 1 2 1 3 2 3 3 1]
     """
+    name: str = None
 
-    def __init__(self):
+    def __init__(self, name: str):
         super(SparseCategoricalCrossentropy, self).__init__(
             instance=tf.keras.metrics.SparseCategoricalCrossentropy(
                 from_logits=True
             ),
-            name="loss"
+            name=name
         )
+        self.name = name

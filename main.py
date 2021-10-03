@@ -1,4 +1,3 @@
-
 import framework as fw
 from framework import hyper_parameters
 from framework.heuristics.adadelta import Adadelta
@@ -21,7 +20,7 @@ from framework.heuristics.rmsprop import RMSProp
 #     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/sgd-lrs",
-#     seed=None
+#     seed=1
 # )
 
 # Momentum
@@ -40,7 +39,7 @@ from framework.heuristics.rmsprop import RMSProp
 #     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/momentum-lrs-mom-0.9",
-#     seed=None
+#     seed=1
 # )
 
 # NAG - Nesterov Adaptive Gradients
@@ -59,7 +58,7 @@ from framework.heuristics.rmsprop import RMSProp
 #     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/nag-lrs-mom-0.9",
-#     seed=None
+#     seed=1
 # )
 
 # Adagrad - Adaptive Gradients
@@ -78,7 +77,7 @@ from framework.heuristics.rmsprop import RMSProp
 #     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/adagrad-lrs-eps-1e-07",
-#     seed=None
+#     seed=1
 # )
 
 # RMSProp - Root Mean Squared Propagation
@@ -98,7 +97,7 @@ from framework.heuristics.rmsprop import RMSProp
 #     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-07",
-#     seed=None
+#     seed=1
 # )
 
 # Adadelta - Adadelta Gradients
@@ -107,18 +106,18 @@ from framework.heuristics.rmsprop import RMSProp
 #         params=fw.hyper_parameters.Adadelta(
 #             learning_rate=fw.schedules.Exponential(
 #                 initial=1.0,
-#                 steps=1800,
-#                 rate=0.98,
+#                 steps=600,
+#                 rate=0.95,
 #                 staircase=False
 #             ),
 #             rho=0.95,
 #             epsilon=1e-07
 #         )
 #     ),
-#     epochs=600,
+#     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-07",
-#     seed=None
+#     seed=1
 # )
 
 # Adam - Adaptive Moments
@@ -139,7 +138,7 @@ from framework.heuristics.rmsprop import RMSProp
 #     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=None
+#     seed=1
 # )
 
 # PSO - Particle Swarm Optimisation
@@ -163,7 +162,7 @@ from framework.heuristics.rmsprop import RMSProp
 #     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/pso-pop-10-lrs-w-0.7-c1-1.49-c2-1.49-vclip-1.0",
-#     seed=None
+#     seed=1
 # )
 
 # BHH
@@ -172,11 +171,11 @@ experiment = fw.experiments.Iris(
         params=fw.hyper_parameters.BHH(
             population_size=10,
             burn_in=0,
-            replay=10,
-            reselection=10,
-            reanalysis=10,
+            replay=100,
+            reselection=5,
+            reanalysis=5,
             credit=[
-                fw.credits.RBest(discounted_rewards=True)
+                fw.credits.PBest(discounted_rewards=True)
             ],
             heuristics=[
                 fw.heuristics.SGD(
@@ -273,14 +272,29 @@ experiment = fw.experiments.Iris(
                         velocity_clip_min=-1.0,
                         velocity_clip_max=1.0
                     )
-                )
+                ),
+                # fw.heuristics.PSO(
+                #     params=fw.hyper_parameters.PSO(
+                #         learning_rate=fw.schedules.Exponential(
+                #             initial=1.0,
+                #             steps=600,
+                #             rate=0.9,
+                #             staircase=False
+                #         ),
+                #         inertia_weight=0.729844,
+                #         social_control=1.496180,
+                #         cognitive_control=1.496180,
+                #         # velocity_clip_min=-1.0,
+                #         # velocity_clip_max=1.0
+                #     )
+                # ),
             ]
         ),
     ),
     epochs=200,
     batch_size=50,
-    log_dir="logs/bhh+pso",
-    seed=None
+    log_dir="logs/bhh-all-pbest",
+    seed=1
 )
 
 if __name__ == "__main__":

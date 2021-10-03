@@ -24,10 +24,13 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+import os
+
 import tensorflow as tf
 from framework.initialisers.glorot_uniform import GlorotUniform
 from framework.initialisers.initialiser import Initialiser
 from framework.initialisers.zeros import Zeros
+from framework.logger.logger import Logger
 from framework.neural_networks.neural_network import NeuralNetwork
 
 
@@ -71,7 +74,13 @@ class Entity:
     # Initialisers
     position_initialiser: Initialiser = None
 
-    def __init__(self, position_initialiser: Initialiser = GlorotUniform()):
+    # Logger
+    logger: Logger = None
+
+    # Name
+    name: str = None
+
+    def __init__(self, position_initialiser: Initialiser = GlorotUniform(), name="entity"):
         """
         Parameters
         ----------
@@ -106,6 +115,10 @@ class Entity:
         # Initialisers
         self.position_initialiser = position_initialiser
 
+        # Logger
+        self.logger = None
+        self.name = name
+
     def map_model(self, model: NeuralNetwork) -> None:
         """
         This function maps the model parameters' and sets
@@ -123,6 +136,9 @@ class Entity:
         # as a flat tensor.
         parameters = model.get_weights_flat()
         self.shape = parameters.shape
+
+    def set_logger(self, logger: Logger) -> None:
+        self.logger = logger
 
     def initialise(self):
         """
@@ -162,3 +178,42 @@ class Entity:
         self.pbest = tf.Variable(initial_value=self.position)
 
         # No initialiser for loss or pbest_loss, since this is retrieved
+
+    def log_state(self, step):
+        log_level = int(os.getenv('LOG_LEVEL')
+                        ) if os.getenv('LOG_LEVEL') is not None else 1
+
+        if self.logger and log_level == 2:
+            if self.position is not None:
+                self.logger.log_distribution_results('{} position'.format(self.name),
+                                                     result=self.position.numpy(), step=step)
+            if self.velocity is not None:
+                self.logger.log_distribution_results('{} velocity'.format(self.name),
+                                                     result=self.velocity.numpy(), step=step)
+            if self.gradient is not None:
+                self.logger.log_distribution_results('{} gradient'.format(self.name),
+                                                     result=self.gradient.numpy(), step=step)
+            if self.position_delta is not None:
+                self.logger.log_distribution_results('{} position_delta'.format(self.name),
+                                                     result=self.position_delta.numpy(), step=step)
+            if self.sum_gradient_squared is not None:
+                self.logger.log_distribution_results('{} sum_gradient_squared'.format(self.name),
+                                                     result=self.sum_gradient_squared.numpy(), step=step)
+            if self.E_position_delta_variance is not None:
+                self.logger.log_distribution_results('{} E_position_delta_variance'.format(self.name),
+                                                     result=self.E_position_delta_variance.numpy(), step=step)
+            if self.E_gradient_mean is not None:
+                self.logger.log_distribution_results('{} E_gradient_mean'.format(self.name),
+                                                     result=self.E_gradient_mean.numpy(), step=step)
+            if self.E_gradient_variance is not None:
+                self.logger.log_distribution_results('{} E_gradient_variance'.format(self.name),
+                                                     result=self.E_gradient_variance.numpy(), step=step)
+            if self.pbest is not None:
+                self.logger.log_distribution_results('{} pbest'.format(self.name),
+                                                     result=self.pbest.numpy(), step=step)
+            if self.loss is not None:
+                self.logger.log_scalar_results('{} loss'.format(self.name),
+                                               result=self.loss.numpy(), step=step)
+            if self.pbest_loss is not None:
+                self.logger.log_scalar_results('{} pbest_loss'.format(self.name),
+                                               result=self.pbest_loss.numpy(), step=step)

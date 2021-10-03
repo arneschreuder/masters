@@ -37,8 +37,8 @@ class PSO(Parameters):
                  inertia_weight: float = 0.729844,
                  cognitive_control: float = 1.496180,
                  social_control: float = 1.496180,
-                 velocity_clip_min: float = -1.0,
-                 velocity_clip_max: float = 1.0):
+                 velocity_clip_min: float = None,
+                 velocity_clip_max: float = None):
         """
         Parameters
         ----------

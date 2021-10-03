@@ -66,7 +66,8 @@ class Experiment:
     model: NeuralNetwork = None
     loss_fn: Loss = None
     optimiser: Optimiser = None
-    metrics: List[Metric] = None
+    training_metrics: List[Metric] = None
+    testing_metrics: List[Metric] = None
     logger: Logger = None
     epochs: int = None
     seed: int = None
@@ -77,7 +78,8 @@ class Experiment:
                  model: NeuralNetwork,
                  loss_fn: Loss,
                  optimiser: Optimiser,
-                 metrics: List[Metric],
+                 training_metrics: List[Metric],
+                 testing_metrics: List[Metric],
                  log_dir: str,
                  epochs: int,
                  seed=None):
@@ -92,8 +94,10 @@ class Experiment:
             The loss function to use. Default = None
         optimiser: Optimiser
             The optimiser to user. Default = None
-        metrics: List[Metric]
-            The metrics to be tracked. Default = None
+        training_metrics: List[Metric]
+            The metrics to be tracked during training. Default = None
+        testing_metrics: List[Metric]
+            The metrics to be tracked during testing. Default = None
         log_dir: str
             The log output directory. Default = None
         epochs: int
@@ -105,7 +109,8 @@ class Experiment:
         self.model = model
         self.loss_fn = loss_fn
         self.optimiser = optimiser
-        self.metrics = metrics
+        self.training_metrics = training_metrics
+        self.testing_metrics = testing_metrics
         self.logger = Logger(log_dir)
         self.epochs = epochs
         self.seed = seed
@@ -121,11 +126,14 @@ class Experiment:
         # Setup, configure and initialise optimiser
         self.optimiser.set_loss_fn(loss_fn=self.loss_fn)
         self.optimiser.set_model(model=self.model)
+        self.optimiser.set_logger(logger=self.logger)
         self.optimiser.initialise()
 
         # Track all metric names
         stateful_metrics = []
-        for metric in self.metrics:
+        for metric in self.training_metrics:
+            stateful_metrics.append(metric.name)
+        for metric in self.testing_metrics:
             stateful_metrics.append(metric.name)
 
         # Create progressbar instance
@@ -134,9 +142,9 @@ class Experiment:
             stateful_metrics=stateful_metrics
         )
 
-    def update_metrics(self, labels: tf.Tensor, logits: tf.Tensor) -> None:
+    def update_training_metrics(self, labels: tf.Tensor, logits: tf.Tensor) -> None:
         """
-        Updates all metrics states.
+        Updates all training metrics states.
 
         Parameters
         ----------
@@ -145,7 +153,21 @@ class Experiment:
         logits: tf.Tensor
             The predicted output of a Neural Network in logit format.
         """
-        for metric in self.metrics:
+        for metric in self.training_metrics:
+            metric(labels, logits)
+
+    def update_testing_metrics(self, labels: tf.Tensor, logits: tf.Tensor) -> None:
+        """
+        Updates all testing metrics states.
+
+        Parameters
+        ----------
+        labels: tf.Tensor
+            The target values to be predicted
+        logits: tf.Tensor
+            The predicted output of a Neural Network in logit format.
+        """
+        for metric in self.testing_metrics:
             metric(labels, logits)
 
     def log_metrics(self, epoch: int) -> Dict:
@@ -155,7 +177,7 @@ class Experiment:
         Parameters
         ----------
         epoch: int
-            Training epoch number
+            Epoch number
 
         Returns
         -------
@@ -166,23 +188,43 @@ class Experiment:
         """
         metrict_dict = []
 
-        for metric in self.metrics:
+        # Training metrics
+        for metric in self.training_metrics:
             # Extract metric name and value
             name = metric.name
             result = metric.result()
 
             metrict_dict.append((name, result))
-            metric.reset()
 
             # Write to log/events
-            with self.logger.instance.as_default():
-                tf.summary.scalar(
-                    name,
-                    result,
-                    step=epoch+1
-                )
+            self.logger.log_scalar_results(
+                name=name, result=result, step=epoch+1)
+
+        # Testing metrics
+        for metric in self.testing_metrics:
+            # Extract metric name and value
+            name = metric.name
+            result = metric.result()
+
+            metrict_dict.append((name, result))
+
+            # Write to log/events
+            self.logger.log_scalar_results(
+                name=name, result=result, step=epoch+1)
 
         return metrict_dict
+
+    def reset_metrics(self) -> Dict:
+        """
+        Clears all the metrics
+        """
+        # Training Metrics
+        for metric in self.training_metrics:
+            metric.reset()
+
+        # Testing Metrics
+        for metric in self.testing_metrics:
+            metric.reset()
 
     def __call__(self) -> None:
         """
@@ -190,21 +232,49 @@ class Experiment:
         under specified configuration.
         """
 
-        step = 0
+        # Evaluate at timestep 0
+        # Training
+        for features, labels in self.dataset.training:
+            logits, _ = self.optimiser.evaluate(
+                features=features,
+                labels=labels
+            )
+            self.update_training_metrics(labels=labels, logits=logits)
+
+        # Testing
+        for features, labels in self.dataset.test:
+            logits, _ = self.optimiser.evaluate(
+                features=features,
+                labels=labels
+            )
+            self.update_testing_metrics(labels=labels, logits=logits)
+
+        metrics_dict = self.log_metrics(epoch=-1)
+
+        # Main training loop
+        step = 1
         for e in range(self.epochs):
-            # Train
+            self.reset_metrics()
+
+            # Training
             for features, labels in self.dataset.training:
                 logits, _ = self.optimiser(
                     features=features,
                     labels=labels,
                     step=step
                 )
-                self.update_metrics(labels=labels, logits=logits)
+                self.update_training_metrics(labels=labels, logits=logits)
                 step += 1
 
-            metrics_dict = self.log_metrics(epoch=e)
+            # Testing
+            for features, labels in self.dataset.test:
+                logits, _ = self.optimiser.evaluate(
+                    features=features,
+                    labels=labels
+                )
+                self.update_testing_metrics(labels=labels, logits=logits)
 
-            # TODO: Validate and Test?
+            metrics_dict = self.log_metrics(epoch=e)
 
             # Update progress
             self.progress.add(1, metrics_dict)

@@ -24,10 +24,12 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+import os
 from typing import List
 
 import tensorflow as tf
 from framework.entities.entity import Entity
+from framework.logger.logger import Logger
 from framework.neural_networks.neural_network import NeuralNetwork
 
 
@@ -46,6 +48,9 @@ class Population:
     ibest_loss: tf.Variable = None
     loss: tf.Variable = None
 
+    # Logger
+    logger: Logger = None
+
     def __init__(self, population_size: int = 10):
         # Population Size
         self.population_size = population_size
@@ -61,14 +66,21 @@ class Population:
         self.ibest_loss = None
         self.loss = None
 
+        # Logger
+        self.logger = None
+
+    def set_logger(self, logger: Logger) -> None:
+        self.logger = logger
+
     def initialise(self, model: NeuralNetwork):
         self.entities = []
 
         # Personal bests
         for i in range(self.population_size):
-            entity = Entity()
+            entity = Entity(name="entity#{}".format(i+1))
             # This is required to determine the dimensionality of the model.
             entity.map_model(model)
+            entity.set_logger(logger=self.logger)
             entity.initialise()
 
             # Set pbest to initial position
@@ -82,3 +94,18 @@ class Population:
         weights = model.get_weights_flat()
         self.ibest = tf.Variable(initial_value=weights)
         self.gbest = tf.Variable(initial_value=weights)
+
+    def log_state(self, step):
+        log_level = int(os.getenv('LOG_LEVEL')
+                        ) if os.getenv('LOG_LEVEL') is not None else 1
+
+        if self.logger and log_level == 2:
+            self.logger.log_distribution_results('population ibest',
+                                                 result=self.ibest.numpy(), step=step)
+            self.logger.log_distribution_results('population gbest',
+                                                 result=self.gbest.numpy(), step=step)
+
+            self.logger.log_scalar_results('population ibest_loss',
+                                           result=self.ibest_loss.numpy(), step=step)
+            self.logger.log_scalar_results('population loss',
+                                           result=self.loss.numpy(), step=step)
