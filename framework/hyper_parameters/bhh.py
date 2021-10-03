@@ -1,4 +1,4 @@
-from typing import List
+from typing import Dict, List
 
 from framework.credits.credit import Credit
 from framework.credits.ibest import IBest
@@ -22,8 +22,12 @@ class BHH(Parameters):
         The reselection interval. Default = None
     reanalysis: int
         The reanalysis interval. Default = None
+    normalise: bool
+        Flag to normalise pseudo counts. Default = None
     credit: List[Credit]
         The credit assignment strategy to use. Default = None
+    defaults: Dict[Parameters]
+        The default parameters for all lower level heuristics. Default = None
     heuristics: List[Heuristic]
         The lower-level heuristics in the heuristic pool. Default = None
     """
@@ -32,9 +36,9 @@ class BHH(Parameters):
     replay: int = None
     reselection: int = None
     reanalysis: int = None
+    normalise: bool = None
     credit: List[Credit] = None
-
-    # Heuristics in heuristic pool
+    defaults: Dict = None
     heuristics: List[Heuristic] = None
 
     def __init__(self,
@@ -43,9 +47,11 @@ class BHH(Parameters):
                  replay: int = 30,
                  reselection: int = 1,
                  reanalysis: int = 1,
+                 normalise: bool = False,
                  credit: List[Credit] = [
                      IBest(discounted_rewards=True)
                  ],
+                 defaults: Dict = None,
                  heuristics: List[Heuristic] = None):
         """
         Parameters
@@ -60,28 +66,22 @@ class BHH(Parameters):
             The reselection interval. Default = 1
         reanalysis: int
             The reanalysis interval. Default = 1
+        normalise: bool
+            Flag to normalise pseudo counts. Default = False
         credit: List[Credit]
             The credit assignment strategy to use. Default = IBest(discounted_rewards=True)
+        defaults: Dict
+            The default parameters for all lower level heuristics. Default = None
         heuristics: List[Heuristic]
-            The lower-level heuristics in the heuristic pool. Default = [
-                     SGD(),
-                     Momentum(),
-                     NAG(),
-                     Adagrad(),
-                     RMSProp(),
-                     Adadelta(),
-                     Adam(),
-                     PSO(),
-                 ]
+            The lower-level heuristics in the heuristic pool. Default = None
         """
         super(BHH, self).__init__()
-        # Setting hyper-parameters
         self.population_size = population_size
         self.burn_in = burn_in
         self.replay = replay
         self.reselection = reselection
         self.reanalysis = reanalysis
+        self.normalise = normalise
         self.credit = credit
-
-        # Setting heuristic pool
+        self.defaults = defaults
         self.heuristics = heuristics

@@ -174,9 +174,92 @@ experiment = fw.experiments.Iris(
             replay=100,
             reselection=5,
             reanalysis=5,
+            normalise=False,
             credit=[
                 fw.credits.PBest(discounted_rewards=True)
             ],
+            defaults={
+                "sgd": fw.hyper_parameters.SGD(
+                    learning_rate=fw.schedules.Exponential(
+                        initial=1.0,
+                        steps=600,
+                        rate=0.1,
+                        staircase=False
+                    )
+                ),
+                "momentum": fw.hyper_parameters.Momentum(
+                    learning_rate=fw.schedules.Exponential(
+                        initial=1.0,
+                        steps=600,
+                        rate=0.1,
+                        staircase=False
+                    ),
+                    momentum=0.9
+                ),
+                "nag": fw.hyper_parameters.NAG(
+                    learning_rate=fw.schedules.Exponential(
+                        initial=1.0,
+                        steps=600,
+                        rate=0.1,
+                        staircase=False
+                    ),
+                    momentum=0.9
+                ),
+                "adagrad": fw.hyper_parameters.Adagrad(
+                    learning_rate=fw.schedules.Exponential(
+                        initial=1.0,
+                        steps=600,
+                        rate=0.1,
+                        staircase=False
+                    ),
+                    epsilon=1e-07
+                ),
+                "rmsprop": fw.hyper_parameters.RMSProp(
+                    learning_rate=fw.schedules.Exponential(
+                        initial=0.1,
+                        steps=600,
+                        rate=0.01,
+                        staircase=False
+                    ),
+                    rho=0.95,
+                    epsilon=1e-07
+                ),
+                "adadelta": fw.hyper_parameters.Adadelta(
+                    learning_rate=fw.schedules.Exponential(
+                        initial=1.0,
+                        steps=600,
+                        rate=0.95,
+                        staircase=False
+                    ),
+                    rho=0.95,
+                    epsilon=1e-07
+                ),
+                "adam": fw.hyper_parameters.Adam(
+                    learning_rate=fw.schedules.Exponential(
+                        initial=0.1,
+                        steps=600,
+                        rate=0.01,
+                        staircase=False
+                    ),
+                    beta1=0.9,
+                    beta2=0.999,
+                    epsilon=1e-07
+                ),
+                "pso": fw.hyper_parameters.PSO(
+                    population_size=10,
+                    learning_rate=fw.schedules.Exponential(
+                        initial=1.0,
+                        steps=600,
+                        rate=0.9,
+                        staircase=False
+                    ),
+                    inertia_weight=0.729844,
+                    social_control=1.496180,
+                    cognitive_control=1.496180,
+                    velocity_clip_min=-1.0,
+                    velocity_clip_max=1.0
+                )
+            },
             heuristics=[
                 fw.heuristics.SGD(
                     params=fw.hyper_parameters.SGD(
@@ -293,7 +376,7 @@ experiment = fw.experiments.Iris(
     ),
     epochs=200,
     batch_size=50,
-    log_dir="logs/bhh-all-pbest",
+    log_dir="logs/bhh-norm-false",
     seed=1
 )
 

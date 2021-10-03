@@ -112,8 +112,8 @@ class BHH(Heuristic):
                           log: PerformanceLog):
         # print(log.log)
         # Get dimensionality
-        J = beta.shape[0]
         K = alpha.shape[0]
+        J = beta.shape[0]
 
         # Initialize counts to zeros
         # Total occurrences of heuristic k
@@ -155,6 +155,18 @@ class BHH(Heuristic):
         beta.assign(_beta)
         gamma1.assign(_gamma1)
         gamma0.assign(_gamma0)
+
+        if params.normalise:
+            alpha_norm = tf.keras.utils.normalize(alpha, axis=0)
+            beta_norm = tf.keras.utils.normalize(beta, axis=1)
+            gamma1_norm = tf.keras.utils.normalize(gamma1, axis=0)
+            gamma0_norm = tf.keras.utils.normalize(gamma0, axis=0)
+
+            # We add one so that the concentration has a lower bound of 1
+            alpha.assign(alpha_norm[0] + 1)
+            beta.assign(beta_norm + 1)
+            gamma1.assign(gamma1_norm[0] + 1)
+            gamma0.assign(gamma0_norm[0] + 1)
 
     def __call__(self,
                  alpha: tf.Variable,

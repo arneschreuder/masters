@@ -225,28 +225,8 @@ class BHH(Optimiser):
                         heuristic: Heuristic,
                         entity: Entity,
                         step: int):
-        adagrad_defaults = None
-        adadelta_defaults = AdadeltaParameters(
-            learning_rate=Exponential(
-                initial=1.0,
-                steps=600,
-                rate=0.95,
-                staircase=False
-            ),
-            rho=0.95,
-            epsilon=1e-07
-        )
-        adam_defaults = AdamParameters(
-            learning_rate=Exponential(
-                initial=0.1,
-                steps=600,
-                rate=0.01,
-                staircase=False
-            ),
-            beta1=0.9,
-            beta2=0.999,
-            epsilon=1e-07
-        )
+        adadelta_defaults = self.heuristic.params.defaults["adadelta"]
+        adam_defaults = self.heuristic.params.defaults["adam"]
 
         if isinstance(heuristic, SGD):
             """
@@ -502,29 +482,34 @@ class BHH(Optimiser):
                         ) if os.getenv('LOG_LEVEL') is not None else 1
 
         if self.logger and log_level == 2:
-            self.logger.log_distribution_results(
+            self.logger.log_scalar_results(
                 'alpha[{}]'.format(k), result=self.alpha[k], step=step)
-            self.logger.log_distribution_results(
+            self.logger.log_scalar_results(
                 'beta[{}][{}]'.format(j, k), result=self.beta[j][k], step=step)
-            self.logger.log_distribution_results(
+            self.logger.log_scalar_results(
                 'gamma1[{}]'.format(k), result=self.gamma1[k], step=step)
-            self.logger.log_distribution_results(
+            self.logger.log_scalar_results(
                 'gamma0[{}]'.format(k), result=self.gamma0[k], step=step)
 
             theta = Dirichlet(concentration=self.alpha)
             phi = Dirichlet(concentration=self.beta)
             psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
 
-            self.logger.log_distribution_results(
+            self.logger.log_scalar_results(
                 'theta[{}]'.format(k), result=theta()[k], step=step)
 
-            self.logger.log_distribution_results(
+            self.logger.log_scalar_results(
                 'phi[{}][{}]'.format(j, k), result=phi()[j][k], step=step)
 
-            self.logger.log_distribution_results(
+            self.logger.log_scalar_results(
                 'psi[{}]'.format(k), result=psi()[k], step=step)
 
-            self.logger.log_distribution_results(
+            self.logger.log_scalar_results(
                 'p_HgEC[{}][{}]'.format(j, k), result=self.p_HgEC[j][k], step=step)
             self.logger.log_distribution_results(
+                'p_HgEC[{}]'.format(j), result=self.p_HgEC[j], step=step)
+
+            self.logger.log_scalar_results(
                 'HgEC[{}]'.format(j), result=self.HgEC[j], step=step)
+            self.logger.log_distribution_results(
+                'HgEC', result=self.HgEC, step=step)
