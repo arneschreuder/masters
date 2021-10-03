@@ -48,6 +48,10 @@ class Iris(Experiment):
         ----------
         optimiser: Optimiser
             The optimiser to use
+        epochs: int
+            The number of epochs to train. Default = None
+        batch_size: int
+            The batch_size. Default = None
         log_dir: str
             The log output directory. Default = None
         seed: int

@@ -35,7 +35,7 @@ class Adadelta(Heuristic):
     """
     The Adaptive Gradients (Delta) concrete heuristic.
     Adadelta is a varient of Adade where the decay of the learning rate is 
-                controlled by only the last few gradients and not the entire gradient history.
+    controlled by only the last few gradients and not the entire gradient history.
     over time.
 
     See: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/adadelta.py
@@ -65,6 +65,22 @@ class Adadelta(Heuristic):
 
     @staticmethod
     def get_learning_rate(params: AdadeltaParameters, step: int) -> float:
+        """
+        Gets the learning rate.
+
+        Parameters
+        ----------
+        params: AdadeltaParameters
+            Hyper parameters. Default = AdadeltaParameters()
+        step: int
+            The step number.
+
+        Returns
+        -------
+        float:
+            The learning rate.
+        """
+
         # Get learning rate
         lr = params.learning_rate
 
@@ -75,6 +91,22 @@ class Adadelta(Heuristic):
 
     @staticmethod
     def calculate_E_gradient_variance(params: AdadeltaParameters, entity: Entity):
+        """
+        Calculates the expected (mean) gradient variance.
+
+        Parameters
+        ----------
+        params: AdadeltaParameters
+            Hyper parameters. Default = AdadeltaParameters()
+        entity: Entity
+            The entity containing the state.
+
+        Returns
+        -------
+        float:
+            The learning rate.
+        """
+
         # Update E_gradient_variance
         entity.E_gradient_variance.assign(
             params.rho*entity.E_gradient_variance +

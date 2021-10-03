@@ -44,7 +44,36 @@ class Entity:
     ----------
     model: NeuralNetwork
         The model. Default = None
-    @TODO
+    shape: tf.TensorShape
+        The shape of canidate solution. Default = None
+    position: tf.Variable
+        The container for the candidate solution. Default = None
+    velocity: tf.Variable
+        The entity's velocity. Default = None
+    gradient: tf.Variable
+        The entity's last gradient. Default = None
+    position_delta: tf.Variable
+        The entity's position delta. Default = None
+    sum_gradient_squared: tf.Variable = None
+        The sum of all the entity's gradients. Default = None
+    E_position_delta_variance: tf.Variable
+        The expected (mean) position delta variance. Default = None
+    E_gradient_mean: tf.Variable
+        The expected (mean) gradient mean. Default = None
+    E_gradient_variance: tf.Variable
+        The expected (mean) gradient variance. Default = None
+    pbest: tf.Variable
+        The entity's personal best position thus far. Default = None
+    loss: tf.Variable
+        The entity's loss thus far. Default = None
+    pbest_loss: tf.Variable
+        The entity's pbest loss thus far. Default = None
+    position_initialiser: Initialiser = None
+        The position initialisation strategy to use. Default = None
+    logger: Logger = None
+        The logger to use for logging metrics. Default = None
+    name: str = None
+        A unique identifier for the entity. Default = None
     """
     # Model
     model: NeuralNetwork = None
@@ -80,12 +109,14 @@ class Entity:
     # Name
     name: str = None
 
-    def __init__(self, position_initialiser: Initialiser = GlorotUniform(), name="entity"):
+    def __init__(self, position_initialiser: Initialiser = GlorotUniform(), name: str = "entity"):
         """
         Parameters
         ----------
         position_initialiser: Initialiser
             The initialiser used for the entity's position. Default = GlorotUniform
+        name: str
+            A unique identifier for the entity. Default = "entity"
         """
         # Model
         self.model = None
@@ -117,6 +148,8 @@ class Entity:
 
         # Logger
         self.logger = None
+
+        # Name
         self.name = name
 
     def map_model(self, model: NeuralNetwork) -> None:
@@ -138,6 +171,14 @@ class Entity:
         self.shape = parameters.shape
 
     def set_logger(self, logger: Logger) -> None:
+        """
+        This function sets the logger to use.
+
+        Parameters
+        ----------
+        logger: Logger
+            The logger to use.
+        """
         self.logger = logger
 
     def initialise(self):
@@ -179,10 +220,20 @@ class Entity:
 
         # No initialiser for loss or pbest_loss, since this is retrieved
 
-    def log_state(self, step):
+    def log_state(self, step: int):
+        """
+        This function logs the entity's state.
+
+        Parameters
+        ----------
+        step: int
+            The step number.
+        """
+        # Get log level
         log_level = int(os.getenv('LOG_LEVEL')
                         ) if os.getenv('LOG_LEVEL') is not None else 1
 
+        #  Only log when the log_level is 2
         if self.logger and log_level == 2:
             if self.position is not None:
                 self.logger.log_distribution_results('{} position'.format(self.name),

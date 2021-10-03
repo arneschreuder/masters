@@ -34,6 +34,26 @@ from framework.neural_networks.neural_network import NeuralNetwork
 
 
 class Population:
+    """
+    A class that represents the swarm in some population-based meta-heuristics.
+
+    Attributes
+    ----------
+    population_size: int
+        The size of the population/swarm.
+    entities: List[Entity]
+        The entities in the population.
+    ibest: tf.Variable
+        The iteration best entity.
+    gbest: tf.Variable
+        The global best entity.
+    ibest_loss: tf.Variable
+        The iteration best entity's loss.
+    loss: tf.Variable
+        The global best entity's loss.
+    logger: Logger
+        The logging instance to use.
+    """
     # Population Size
     population_size: int = None
 
@@ -52,6 +72,12 @@ class Population:
     logger: Logger = None
 
     def __init__(self, population_size: int = 10):
+        """
+        Parameters
+        ----------
+        population_size: int
+            The size of the population/swarm.
+        """
         # Population Size
         self.population_size = population_size
 
@@ -70,9 +96,26 @@ class Population:
         self.logger = None
 
     def set_logger(self, logger: Logger) -> None:
+        """
+        Sets the logger instance.
+
+        Parameters
+        ----------
+        logger: Logger
+            The logging instance to use.
+        """
         self.logger = logger
 
     def initialise(self, model: NeuralNetwork):
+        """
+        Initialises the population by randomly placing entities in the search space.
+        The search space is determined by the model's shape.
+
+        Parameters
+        ----------
+        model: NeuralNetwork
+            The model.
+        """
         self.entities = []
 
         # Personal bests
@@ -96,9 +139,19 @@ class Population:
         self.gbest = tf.Variable(initial_value=weights)
 
     def log_state(self, step):
+        """
+        Logs the population's state.
+
+        Parameters
+        ----------
+        step: int
+            The step number.
+        """
+
         log_level = int(os.getenv('LOG_LEVEL')
                         ) if os.getenv('LOG_LEVEL') is not None else 1
 
+        # Only log on log_level 2
         if self.logger and log_level == 2:
             self.logger.log_distribution_results('population ibest',
                                                  result=self.ibest.numpy(), step=step)

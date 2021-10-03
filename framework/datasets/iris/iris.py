@@ -42,6 +42,8 @@ class Iris(Dataset):
         """
         Params
         ------
+        batch_size: int
+            Batch size. Default = 150
         seed: int
             Random seed value. Default = None
         """
@@ -59,6 +61,7 @@ class Iris(Dataset):
         self.columns = self.features + [self.label]
         self.shuffle_size = 150
         self.batch_size = batch_size
+        self.test_set_size = 0.2
 
         # Load data from file
         directory = os.path.dirname(os.path.abspath(__file__))
@@ -75,8 +78,9 @@ class Iris(Dataset):
         # Split features and labels
         target = data.pop('species')
 
+        # Split train and test set
         train_x, test_x, train_y, test_y = train_test_split(
-            data, target, test_size=0.1, train_size=0.9, shuffle=True)
+            data, target, test_size=self.test_set_size, train_size=1.0-self.test_set_size, shuffle=True)
 
         # Set training dataset
         self.training = tf.data.Dataset.from_tensor_slices(

@@ -57,6 +57,19 @@ class Logger:
         self.instance = tf.summary.create_file_writer(self.log_dir)
 
     def log_scalar_results(self, name, result, step):
+        """
+        Logs scalar values.
+
+        Parameters
+        ----------
+        name: str
+            Metric name.
+        result: float
+            Metric value.
+        step: int
+            At which step number.
+        """
+
         with self.instance.as_default():
             tf.summary.scalar(
                 name,
@@ -65,6 +78,19 @@ class Logger:
             )
 
     def log_distribution_results(self, name, result, step):
+        """
+        Logs distribution values.
+
+        Parameters
+        ----------
+        name: str
+            Metric name.
+        result: float
+            Metric value.
+        step: int
+            At which step number.
+        """
+
         with self.instance.as_default():
             tf.summary.histogram(
                 name,

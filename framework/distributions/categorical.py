@@ -40,6 +40,8 @@ class Categorical(Distribution):
         ----------
         probabilities: tf.Tensor
             The underlying probabilities for each category.
+        logits: tf.Tensor
+            The raw activations for each category to determine probabilities from.
         """
         instance = None
 

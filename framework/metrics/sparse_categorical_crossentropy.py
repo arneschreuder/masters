@@ -37,6 +37,12 @@ class SparseCategoricalCrossentropy(Metric):
     name: str = None
 
     def __init__(self, name: str):
+        """
+        Parameters
+        ----------
+        name: str
+            The metric name.
+        """
         super(SparseCategoricalCrossentropy, self).__init__(
             instance=tf.keras.metrics.SparseCategoricalCrossentropy(
                 from_logits=True

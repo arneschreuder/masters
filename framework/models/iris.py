@@ -47,9 +47,8 @@ class Iris(Feedforward):
             layers=[
                 Dense(
                     shape=[4, 5],
-                    activation=LeakyReLU(alpha=0.2)
+                    activation=LeakyReLU(alpha=0.3)
                 ),
                 Dense(shape=[5, 3])
             ]
         )
-        

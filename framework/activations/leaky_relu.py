@@ -39,13 +39,13 @@ class LeakyReLU(Activation):
     """
     alpha: int = None
 
-    def __init__(self, alpha: int = 0.2):
+    def __init__(self, alpha: int = 0.3):
         """
         Parameters
         ----------
         alpha: int
             A hyper-parameter to control the slope for x < 0.
-            Default = 0.2
+            Default = 0.3
         """
         super(LeakyReLU, self).__init__()
         self.alpha = alpha

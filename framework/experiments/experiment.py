@@ -51,8 +51,10 @@ class Experiment:
         The loss function to use. Default = None
     optimiser: Optimiser
         The optimiser to user. Default = None
-    metrics: List[Metric]
-        The metrics to be tracked. Default = None
+    training_metrics: List[Metric]
+        The training metrics to be tracked. Default = None
+    testing_metrics: List[Metric]
+        The testing metrics to be tracked. Default = None
     logger: Logger
         The logger instance. Default = None
     epochs: int

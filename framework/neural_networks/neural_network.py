@@ -127,7 +127,7 @@ class NeuralNetwork:
 
         Parameters
         -------
-       weights_flat: tf.Tensor
+        weights_flat: tf.Tensor
             The 1-D tensor containing the
             flattened model trainable variables to be assigned.
         """

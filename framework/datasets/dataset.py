@@ -53,8 +53,6 @@ class Dataset:
         Contains the test dataset. Default = None
     training: tf.data.Dataset
         Contains the training dataset. Default = None
-    validation: tf.data.Dataset
-        Contains the validation dataset. Default = None
     """
     batch_size: int = None
     classes: List[str] = None
@@ -65,7 +63,7 @@ class Dataset:
     shuffle_size: int = None
     test: tf.data.Dataset = None
     training: tf.data.Dataset = None
-    validation: tf.data.Dataset = None
+    test_set_size: int = None
 
     def __init__(self, seed: int = None):
         """
@@ -83,4 +81,4 @@ class Dataset:
         self.shuffle_size = None
         self.test = None
         self.training = None
-        self.validation = None
+        self.test_set_size = None
