@@ -69,6 +69,38 @@ class BHH(Heuristic):
                p_HgEC: tf.Variable,
                l_HgEC: Distribution,
                HgEC: tf.Variable):
+        """
+        Runs the selection method.
+
+        Parameters
+        ----------
+        alpha: tf.Variable
+            The concentration parameters for each heuristic in K.
+        beta: tf.Variable
+            The concentration parameters for each entity in J and heuristic in K.
+        gamma1: tf.Variable
+            The concentration of the success event of a beta distribution.
+        gamma0: tf.Variable
+            The concentration of the failed event of a beta distribution.
+        theta: Distribution
+            The heuristic Dirichlet distribution instance.
+        phi: Distribution
+            The entity, heuristic Dirichlet distribution instance.
+        psi: Distribution
+            The performance criteria/credit assignment Beta distribution instance.
+        p_H: tf.Variable
+            The probability of heuristic h in H occuring.
+        p_EgH: tf.Variable
+            The probability of entity j in J occuring given heuristic k in K applied.
+        p_CgH: tf.Variable
+            The probability of performance metric c in C occuring given heuristic k in K applied.
+        p_HgEC: tf.Variable
+            The probability of heuristic h in H occuring, given entity j in J and performance criteria c in C.
+        l_HgEC: Distribution
+            The likelihood of heuristic k in K given entity j in J and performance criteria c in C.
+        HgEC: tf.Variable
+            The selection of heuristic k in K for entity j in J and performance criteria c in C.
+        """
         # Probability distributions
         theta = Dirichlet(concentration=alpha)
         phi = Dirichlet(concentration=beta)
@@ -78,22 +110,23 @@ class BHH(Heuristic):
         p_H.assign(theta())
         p_EgH.assign(phi())
         p_CgH.assign(psi())
+
         """
         PERFORMANCE BIAS:
 
         - Calculate the probability of  P(H|E,C) \propto P(E|H)*P(C|H)*(P(H)
         - Create a categorical distribution with the probabilities from above
         - Then pick the combination of entity and heuristic by sampling from
-        - a categorical distribution with the learnt probabilities
-        - probabilities
+        - a categorical distribution with the learnt probabilities probabilities.
+        - We use the log-sum-xp
+        - To avoid underflow here, we use the log-sum-exp trick
+        - This is sufficient since we are using Maximum-a-priori (MAP) updates of model.
+        - Yielding that we always calculate p_HgEC from model params.
+        - The alternative to this is to use Maximum-likelihood-estimate (MLE) update of model.
+        - In that case, we will assign p_H_t_plus_1 = p_HgEC_t = p_EgH_t* p_CgH_t * p_H_t
+        - and with log-sum-exp this yields: p_H_t_plus_1 = p_HgEC_t = exp(log(p_EgH_t) + log(p_CgH_t) + log(p_H_t))
+        - See: https://stats.stackexchange.com/questions/105602/example-of-how-the-log-sum-exp-trick-works-in-naive-bayes
         """
-        # To avoid underflow here, we use the log-sum-exp trick
-        # This is sufficient since we are using Maximum-a-priori (MAP) updates of model.
-        # Yielding that we always calculate p_HgEC from model params.
-        # The alternative to this is to use Maximum-likelihood-estimate (MLE) update of model.
-        # In that case, we will assign p_H_t_plus_1 = p_HgEC_t = p_EgH_t* p_CgH_t * p_H_t
-        # and with log-sum-exp this yields: p_H_t_plus_1 = p_HgEC_t = exp(log(p_EgH_t) + log(p_CgH_t) + log(p_H_t))
-        # See: https://stats.stackexchange.com/questions/105602/example-of-how-the-log-sum-exp-trick-works-in-naive-bayes
         p_HgEC.assign(tf.math.exp(tf.math.log(p_EgH) +
                       tf.math.log(p_CgH) + tf.math.log(p_H)))
 
@@ -110,6 +143,24 @@ class BHH(Heuristic):
                           gamma1: tf.Variable,
                           gamma0: tf.Variable,
                           log: PerformanceLog):
+        """
+        Performance the update step for model parameters for the Bayesian HH.
+
+        Parameters
+        ----------
+        params: BHHParameters
+            Hyper parameters.
+        alpha: tf.Variable
+            The concentration parameters for each heuristic in K.
+        beta: tf.Variable
+            The concentration parameters for each entity in J and heuristic in K.
+        gamma1: tf.Variable
+            The concentration of the success event of a beta distribution.
+        gamma0: tf.Variable
+            The concentration of the failed event of a beta distribution.
+        log: PerformanceLog
+            The performance log instance, keeps a ledger of performance thus far.
+        """
         # print(log.log)
         # Get dimensionality
         K = alpha.shape[0]
@@ -184,6 +235,43 @@ class BHH(Heuristic):
                  HgEC: tf.Variable,
                  log: PerformanceLog,
                  step: int) -> None:
+        """
+        The heuristic update step.
+
+        Parameters
+        ----------
+        alpha: tf.Variable
+            The concentration parameters for each heuristic in K.
+        beta: tf.Variable
+            The concentration parameters for each entity in J and heuristic in K.
+        gamma1: tf.Variable
+            The concentration of the success event of a beta distribution.
+        gamma0: tf.Variable
+            The concentration of the failed event of a beta distribution.
+        theta: Distribution
+            The heuristic Dirichlet distribution instance.
+        phi: Distribution
+            The entity, heuristic Dirichlet distribution instance.
+        psi: Distribution
+            The performance criteria/credit assignment Beta distribution instance.
+        p_H: tf.Variable
+            The probability of heuristic h in H occuring.
+        p_EgH: tf.Variable
+            The probability of entity j in J occuring given heuristic k in K applied.
+        p_CgH: tf.Variable
+            The probability of performance metric c in C occuring given heuristic k in K applied.
+        p_HgEC: tf.Variable
+            The probability of heuristic h in H occuring, given entity j in J and performance criteria c in C.
+        l_HgEC: Distribution
+            The likelihood of heuristic k in K given entity j in J and performance criteria c in C.
+        HgEC: tf.Variable
+            The selection of heuristic k in K for entity j in J and performance criteria c in C.
+        log: PerformanceLog
+            The performance log instance, keeps a ledger of performance thus far.
+        step: int
+            The step number.
+        """
+
         # Check if burn-in is complete
         if step < self.params.burn_in:
             BHH.select(

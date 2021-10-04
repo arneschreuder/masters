@@ -66,6 +66,21 @@ class RMSProp(Heuristic):
 
     @staticmethod
     def get_learning_rate(params: RMSPropParameters, step: int) -> float:
+        """
+        Gets the learning rate.
+
+        Parameters
+        ----------
+        params: RMSPropParameters
+            Hyper parameters.
+        step: int
+            The step number.
+
+        Returns
+        -------
+        float:
+            The learning rate.
+        """
         # Get learning rate
         lr = params.learning_rate
 
@@ -76,6 +91,16 @@ class RMSProp(Heuristic):
 
     @staticmethod
     def calculate_E_gradient_variance(params: RMSPropParameters, entity: Entity):
+        """
+        Calculates the expected (mean) gradient mean.
+
+        Parameters
+        ----------
+        params: RMSPropParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update E_gradient_variance
         entity.E_gradient_variance.assign(
             params.rho*entity.E_gradient_variance +
@@ -84,6 +109,18 @@ class RMSProp(Heuristic):
 
     @staticmethod
     def calculate_position_delta(lr: float, params: RMSPropParameters, entity: Entity):
+        """
+        Calculates the position delta.
+
+        Parameters
+        ----------
+        lr: float
+            The learning rate.
+        params: RMSPropParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position_delta
         entity.position_delta.assign(
             -lr*(
@@ -98,11 +135,27 @@ class RMSProp(Heuristic):
 
     @staticmethod
     def calculate_velocity(entity: Entity):
+        """
+        Calculates the velocity.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update velocity
         entity.velocity.assign(entity.position_delta)
 
     @staticmethod
     def calculate_position(entity: Entity):
+        """
+        Calculates the position.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position
         entity.position.assign_add(entity.velocity)
 

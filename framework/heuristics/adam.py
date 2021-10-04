@@ -67,6 +67,21 @@ class Adam(Heuristic):
 
     @staticmethod
     def get_learning_rate(params: AdamParameters, step: int) -> float:
+        """
+        Gets the learning rate.
+
+        Parameters
+        ----------
+        params: AdamParameters
+            Hyper parameters.
+        step: int
+            The step number.
+
+        Returns
+        -------
+        float:
+            The learning rate.
+        """
         # Get learning rate
         lr = params.learning_rate
 
@@ -77,6 +92,16 @@ class Adam(Heuristic):
 
     @staticmethod
     def calculate_E_gradient_mean(params: AdamParameters, entity: Entity):
+        """
+        Calculates the expected (mean) gradient mean.
+
+        Parameters
+        ----------
+        params: AdamParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update E_gradient_mean
         entity.E_gradient_mean.assign(
             params.beta1*entity.E_gradient_mean +
@@ -85,6 +110,16 @@ class Adam(Heuristic):
 
     @staticmethod
     def calculate_E_gradient_variance(params: AdamParameters, entity: Entity):
+        """
+        Calculates the expected (mean) gradient variance.
+
+        Parameters
+        ----------
+        params: AdamParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update E_gradient_variance
         entity.E_gradient_variance.assign(
             params.beta2*entity.E_gradient_variance +
@@ -93,6 +128,16 @@ class Adam(Heuristic):
 
     @staticmethod
     def calculate_bias_corrected_E_gradient_mean(params: AdamParameters, entity: Entity) -> tf.Tensor:
+        """
+        Applies bias correction to the expected (mean) gradient mean.
+
+        Parameters
+        ----------
+        params: AdamParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Bias correct gradient_mean
         bias_corrected_E_gradient_mean = entity.E_gradient_mean / \
             (1-params.beta1)
@@ -101,6 +146,16 @@ class Adam(Heuristic):
 
     @staticmethod
     def calculate_bias_corrected_E_gradient_variance(params: AdamParameters, entity: Entity) -> tf.Tensor:
+        """
+        Applies bias correction to the expected (mean) gradient variance.
+
+        Parameters
+        ----------
+        params: AdamParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Bias correct gradient_variance
         bias_corrected_E_gradient_variance = entity.E_gradient_variance / \
             (1-params.beta2)
@@ -113,6 +168,22 @@ class Adam(Heuristic):
                                  bias_corrected_E_gradient_mean: tf.Tensor,
                                  params: AdamParameters,
                                  entity: Entity):
+        """
+        Calculates the position delta.
+
+        Parameters
+        ----------
+        lr: float
+            The learning rate.
+        bias_corrected_E_gradient_variance: tf.Tensor
+            Bias corrected expected (mean) gradient variance.
+        bias_corrected_E_gradient_mean: tf.Tensor
+            Bias corrected expected (mean) gradient mean.
+        params: AdamParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position_delta
         entity.position_delta.assign(
             -lr*(
@@ -127,11 +198,27 @@ class Adam(Heuristic):
 
     @staticmethod
     def calculate_velocity(entity: Entity):
+        """
+        Calculates the velocity.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update velocity
         entity.velocity.assign(entity.position_delta)
 
     @staticmethod
     def calculate_position(entity: Entity):
+        """
+        Calculates the position.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position
         entity.position.assign_add(entity.velocity)
 

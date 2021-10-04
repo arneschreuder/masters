@@ -54,6 +54,21 @@ class PSO(Heuristic):
 
     @staticmethod
     def get_learning_rate(params: PSOParameters, step: int) -> float:
+        """
+        Gets the learning rate.
+
+        Parameters
+        ----------
+        params: PSOParameters
+            Hyper parameters.
+        step: int
+            The step number.
+
+        Returns
+        -------
+        float:
+            The learning rate.
+        """
         # Get learning rate
         lr = params.learning_rate
 
@@ -63,7 +78,20 @@ class PSO(Heuristic):
         return lr
 
     @staticmethod
-    def get_random(entity: Entity) -> float:
+    def get_random(entity: Entity) -> tf.Tensor:
+        """
+        Gets uniform random vector with the same shape as the candidate solution.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+
+        Returns
+        -------
+        tf.Tensor:
+            The uniform sampled vector.
+        """
         return tf.random.uniform(shape=entity.position.shape)
 
     @staticmethod
@@ -72,6 +100,22 @@ class PSO(Heuristic):
                                   params: PSOParameters,
                                   entity: Entity,
                                   population: Population):
+        """
+        Calculates the expected (mean) gradient mean.
+
+        Parameters
+        ----------
+        random1: tf.Tensor
+            Stochastic vector 1.
+        random2: tf.Tensor
+            Stochastic vector 2.
+        params: PSOParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        population: Population
+            The population of containing the swarm of entities.
+        """
         # Update E_gradient_mean
         entity.E_gradient_mean.assign(
             params.inertia_weight*entity.velocity +
@@ -82,6 +126,16 @@ class PSO(Heuristic):
 
     @staticmethod
     def calculate_clipped_E_gradient_mean(params: PSOParameters, entity: Entity):
+        """
+        Clips the expected (mean) gradient mean.
+
+        Parameters
+        ----------
+        params: PSOParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Clipping gradient mean
         entity.E_gradient_mean.assign(tf.clip_by_value(
             t=entity.E_gradient_mean,
@@ -91,16 +145,42 @@ class PSO(Heuristic):
 
     @staticmethod
     def calculate_position_delta(lr: float, entity: Entity):
+        """
+        Calculates the position delta.
+
+        Parameters
+        ----------
+        lr: float
+            The learning rate.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position_delta
         entity.position_delta.assign(lr*entity.E_gradient_mean)
 
     @staticmethod
     def calculate_velocity(entity: Entity):
+        """
+        Calculates the velocity.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update velocity
         entity.velocity.assign(entity.position_delta)
 
     @staticmethod
     def calculate_position(entity: Entity):
+        """
+        Calculates the position.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position
         entity.position.assign_add(entity.velocity)
 
@@ -109,7 +189,7 @@ class PSO(Heuristic):
                  population: Population,
                  step: int) -> None:
         """
-        Invocation function.
+        The heuristic step operation.
 
         Parameters
         ----------
@@ -117,6 +197,8 @@ class PSO(Heuristic):
             Entity state
         population: PopulationState
             Population state
+        step: int
+            The iteration step number
         """
         # Get learning rate
         lr = PSO.get_learning_rate(params=self.params, step=step)

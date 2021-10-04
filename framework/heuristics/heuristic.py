@@ -38,4 +38,12 @@ class Heuristic:
         self.logger = None
 
     def set_logger(self, logger: Logger) -> None:
+        """
+        Sets the logging instance.
+
+        Parameters
+        ----------
+        logger: Logger
+            The logging instance.
+        """
         self.logger = logger

@@ -58,7 +58,7 @@ class Adadelta(Heuristic):
         Parameters
         ----------
         params: AdadeltaParameters
-            Hyper parameters. Default = AdadeltaParameters()
+            Hyper parameters.
         """
         super(Adadelta, self).__init__()
         self.params = params
@@ -71,7 +71,7 @@ class Adadelta(Heuristic):
         Parameters
         ----------
         params: AdadeltaParameters
-            Hyper parameters. Default = AdadeltaParameters()
+            Hyper parameters.
         step: int
             The step number.
 
@@ -97,16 +97,10 @@ class Adadelta(Heuristic):
         Parameters
         ----------
         params: AdadeltaParameters
-            Hyper parameters. Default = AdadeltaParameters()
+            Hyper parameters.
         entity: Entity
             The entity containing the state.
-
-        Returns
-        -------
-        float:
-            The learning rate.
         """
-
         # Update E_gradient_variance
         entity.E_gradient_variance.assign(
             params.rho*entity.E_gradient_variance +
@@ -115,6 +109,16 @@ class Adadelta(Heuristic):
 
     @staticmethod
     def calculate_E_position_delta_variance(params: AdadeltaParameters, entity: Entity):
+        """
+        Calculates the expected (mean) positon delta variance.
+
+        Parameters
+        ----------
+        params: AdadeltaParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update E_position_delta_variance
         entity.E_position_delta_variance.assign(
             params.rho*entity.E_position_delta_variance +
@@ -123,6 +127,18 @@ class Adadelta(Heuristic):
 
     @staticmethod
     def calculate_position_delta(lr: float, params: AdadeltaParameters, entity: Entity):
+        """
+        Calculates the position delta.
+
+        Parameters
+        ----------
+        lr: float
+            The learning rate.
+        params: AdadeltaParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position_delta
         entity.position_delta.assign(
             -lr*(
@@ -140,11 +156,27 @@ class Adadelta(Heuristic):
 
     @staticmethod
     def calculate_velocity(entity: Entity):
+        """
+        Calculates the velocity.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update velocity
         entity.velocity.assign(entity.position_delta)
 
     @staticmethod
     def calculate_position(entity: Entity):
+        """
+        Calculates the position.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position
         entity.position.assign_add(entity.velocity)
 

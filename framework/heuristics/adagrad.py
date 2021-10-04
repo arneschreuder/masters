@@ -65,6 +65,21 @@ class Adagrad(Heuristic):
 
     @staticmethod
     def get_learning_rate(params: AdagradParameters, step: int) -> float:
+        """
+        Gets the learning rate.
+
+        Parameters
+        ----------
+        params: AdagradParameters
+            Hyper parameters.
+        step: int
+            The step number.
+
+        Returns
+        -------
+        float:
+            The learning rate.
+        """
         # Get learning rate
         lr = params.learning_rate
 
@@ -75,6 +90,14 @@ class Adagrad(Heuristic):
 
     @staticmethod
     def calculate_sum_gradient_squared(entity: Entity):
+        """
+        Calculates the sum of the gradients squared.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update sum gradients squared
         entity.sum_gradient_squared.assign_add(
             tf.math.pow(entity.gradient, 2)
@@ -82,6 +105,18 @@ class Adagrad(Heuristic):
 
     @staticmethod
     def calculate_position_delta(lr: float, params: AdagradParameters, entity: Entity):
+        """
+        Calculates the position delta.
+
+        Parameters
+        ----------
+        lr: float
+            The learning rate.
+        params: AdagradParameters
+            Hyper parameters.
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position_delta
         entity.position_delta.assign(
             -lr*(
@@ -96,11 +131,27 @@ class Adagrad(Heuristic):
 
     @staticmethod
     def calculate_velocity(entity: Entity):
+        """
+        Calculates the velocity.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update velocity
         entity.velocity.assign(entity.position_delta)
 
     @staticmethod
     def calculate_position(entity: Entity):
+        """
+        Calculates the position.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity containing the state.
+        """
         # Update position
         entity.position.assign_add(entity.velocity)
 
