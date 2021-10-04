@@ -52,7 +52,7 @@ class Momentum(Optimiser):
         Parameters
         ----------
         params: MomentumParameters
-            The step size. Default = MomentumParameters()
+            The hyper parameters. Default = MomentumParameters()
         """
         super(Momentum, self).__init__(
             heuristic=MomentumHeuristic(params=params)

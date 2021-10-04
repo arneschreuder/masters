@@ -58,7 +58,7 @@ class RMSProp(Optimiser):
         Parameters
         ----------
         params: RMSPropParameters
-            The step size. Default = RMSPropParameters()
+            The hyper parameters. Default = RMSPropParameters()
         """
         super(RMSProp, self).__init__(
             heuristic=RMSPropHeuristic(params=params)

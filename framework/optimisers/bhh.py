@@ -53,46 +53,69 @@ from framework.population import Population
 from framework.schedules.exponential import Exponential
 from framework.utilities.utilities import flatten
 
-# TODO: STILL NEED TO COMMENT THIS FILE
-
 
 class BHH(Optimiser):
-    # TODO: Normalisation?
+    # The number of heuristics in the heuristic pool.
     K: int = None
+
+    # The number of entities in the population/entity pool
     J: int = None
+
+    # The number of performance criteria outcomes. (In this case, binary)
     L: int = None
 
     # Concentrations
+    # The concentration parameters for each heuristic in K.
     alpha: tf.Variable = None
+    # The concentration parameters for each entity in J and heuristic in K.
     beta: tf.Variable = None
+    # The concentration of the success event of a beta distribution.
     gamma1: tf.Variable = None
+    # The concentration of the failed event of a beta distribution.
     gamma0: tf.Variable = None
 
     # Probability Distributions
+    # The heuristic Dirichlet distribution instance.
     theta: Distribution = None
+    # The entity, heuristic Dirichlet distribution instance.
     phi: Distribution = None
+    # The performance criteria/credit assignment Beta distribution instance.
     psi: Distribution = None
 
     # Selection probabilities
+    # The probability of heuristic h in H occuring.
     p_H: tf.Variable = None  # Prior
+    # The probability of entity j in J occuring given heuristic k in K applied.
     p_EgH: tf.Variable = None
+    # The probability of performance metric c in C occuring given heuristic k in K applied.
     p_CgH: tf.Variable = None
+    # The probability of heuristic h in H occuring, given entity j in J and performance criteria c in C.
     p_HgEC: tf.Variable = None  # Posterior
 
     # Selections
+    # The likelihood of heuristic k in K given entity j in J and performance criteria c in C.
     l_HgEC: Distribution = None
+    # The selection of heuristic k in K for entity j in J and performance criteria c in C.
     HgEC: tf.Variable = None
 
     # Instances
+    # The population/swarm of entities.
     population: Population = None
 
     # Performance Log
     log: PerformanceLog = None
 
     def __init__(self, params: BHHParameters = BHHParameters()):
+        """
+        Parameters
+        ----------
+        params: BHHParameters
+            The hyper parameters. Default = BHHParameters()
+        """
         super(BHH, self).__init__(
             heuristic=BHHHeuristic(params=params)
         )
+
         self.J = params.population_size
         self.L = 1  # Binomial/Binary on credit
         self.K = len(params.heuristics)
@@ -169,6 +192,7 @@ class BHH(Optimiser):
             initial_value=tf.cast(zeros_initialiser(shape=[self.J]), tf.int32)
         )
 
+        # Perform initial selection.
         BHHHeuristic.select(
             alpha=self.alpha,
             beta=self.beta,
@@ -186,6 +210,15 @@ class BHH(Optimiser):
         )
 
     def get_heuristic(self, j):
+        """
+        Gets the selection heuristic for entity j in J.
+
+        Returns
+        int:
+            The index of the selected heuristic.
+        Heuristic:
+            The selected heuristic.
+        """
         selections = self.HgEC.numpy()
         k = selections[j]
         return k, self.heuristic.params.heuristics[k]
@@ -225,6 +258,18 @@ class BHH(Optimiser):
                         heuristic: Heuristic,
                         entity: Entity,
                         step: int):
+        """
+        Delegates the application of the selected heuristic to the relevant entity.
+
+        Parameters
+        ----------
+        heuristic: Heuristic
+            The low level heuristic.
+        entity: Entity
+            The entity containing the state.
+        step: int
+            The step number.
+        """
         adadelta_defaults = self.heuristic.params.defaults["adadelta"]
         adam_defaults = self.heuristic.params.defaults["adam"]
 
@@ -374,6 +419,18 @@ class BHH(Optimiser):
                      features: tf.Tensor,
                      labels: tf.Tensor,
                      entity: Entity):
+        """
+        Updates the population best known positions.
+
+        Parameters
+        ----------
+        features: tf.Tensor
+            The input data
+        labels: tf.Tensor
+            The target data/labels
+        entity: Entity
+            The entity containing the state.
+        """
         # Evaluate entity
         self.model.set_weights_flat(weights_flat=entity.position)
         _, entity.loss = self.evaluate(features=features, labels=labels)
@@ -410,6 +467,21 @@ class BHH(Optimiser):
                  features: tf.Tensor,
                  labels: tf.Tensor,
                  step: int) -> Tuple[tf.Tensor, tf.Tensor]:
+        """
+        A single execution of the optimiser's step.
+
+        Parameters
+        ----------
+        features: tf.Tensor
+            The input data
+        labels: tf.Tensor
+            The target data/labels
+
+        Returns
+        -------
+        Tuple[tf.Tensor, tf.Tensor]
+            Consists out of (logits, loss)
+        """
         for j, entity in enumerate(self.population.entities):
             # Get the selected heuristic
             k, heuristic = self.get_heuristic(j)
@@ -450,7 +522,7 @@ class BHH(Optimiser):
                 gbest_loss=gbest_loss.numpy()
             )
 
-        # Apply heuristic
+        # Apply own bayesian heuristic
         self.heuristic(
             alpha=self.alpha,
             beta=self.beta,
@@ -478,9 +550,22 @@ class BHH(Optimiser):
         return logits, loss
 
     def log_state(self, j, k, step):
+        """
+        Logs the optimiser's metrics to Tensorboard.
+
+        Parameters
+        ----------
+        j: int
+            The j-th index representing the j-th entity.
+        k: int
+            The k-th index representing the k-th heuristic.
+        step: int
+            The step number.
+        """
         log_level = int(os.getenv('LOG_LEVEL')
                         ) if os.getenv('LOG_LEVEL') is not None else 1
 
+        # Only if the log level is 2
         if self.logger and log_level == 2:
             self.logger.log_scalar_results(
                 'alpha[{}]'.format(k), result=self.alpha[k], step=step)

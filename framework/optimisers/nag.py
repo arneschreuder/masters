@@ -52,7 +52,7 @@ class NAG(Optimiser):
         Parameters
         ----------
         params: NAGParameters
-            The step size. Default = NAGParameters()
+            The hyper parameters. Default = NAGParameters()
         """
         super(NAG, self).__init__(
             heuristic=NAGHeuristic(params=params)

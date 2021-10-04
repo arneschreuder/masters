@@ -53,7 +53,7 @@ class PSO(Optimiser):
         Parameters
         ----------
         params: PSOParameters
-            The step size. Default = PSOParameters()
+            The hyper parameters. Default = PSOParameters()
         """
         super(PSO, self).__init__(
             heuristic=PSOHeuristic(params=params)
@@ -77,6 +77,18 @@ class PSO(Optimiser):
                      features: tf.Tensor,
                      labels: tf.Tensor,
                      entity: Entity):
+        """
+        Updates the population best known positions.
+
+        Parameters
+        ----------
+        features: tf.Tensor
+            The input data
+        labels: tf.Tensor
+            The target data/labels
+        entity: Entity
+            The entity containing the state.
+        """
         # Evaluate entity
         self.model.set_weights_flat(weights_flat=entity.position)
         _, entity.loss = self.evaluate(features=features, labels=labels)
@@ -113,6 +125,21 @@ class PSO(Optimiser):
                  features: tf.Tensor,
                  labels: tf.Tensor,
                  step: int) -> Tuple[tf.Tensor, tf.Tensor]:
+        """
+        A single execution of the optimiser's step.
+
+        Parameters
+        ----------
+        features: tf.Tensor
+            The input data
+        labels: tf.Tensor
+            The target data/labels
+
+        Returns
+        -------
+        Tuple[tf.Tensor, tf.Tensor]
+            Consists out of (logits, loss)
+        """
         for entity in self.population.entities:
             # Step
             self.heuristic(

@@ -47,6 +47,8 @@ class Optimiser:
         The loss function to use. Default = None
     model: NeuralNetwork
         The model to be trained. Default = None
+    logger: Logger
+        The logging instance. Default = None
     """
     heuristic: Heuristic = None
     loss_fn: Loss = None
@@ -54,6 +56,12 @@ class Optimiser:
     logger: Logger = None
 
     def __init__(self, heuristic: Heuristic):
+        """
+        Parameters
+        ----------
+        heuristic: Heuristic
+            The heuristic or search guide to use.
+        """
         self.heuristic = heuristic
         self.loss_fn = None
         self.model = None
@@ -82,6 +90,14 @@ class Optimiser:
         self.model = model
 
     def set_logger(self, logger: Logger) -> None:
+        """
+        Sets the logging instance.
+
+        Parameters
+        ----------
+        logger: Logger
+            The logging instance. Default = None
+        """
         self.logger = logger
         self.heuristic.set_logger(logger=self.logger)
 

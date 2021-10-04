@@ -59,7 +59,7 @@ class Adagrad(Optimiser):
         Parameters
         ----------
         params: AdagradParameters
-            The step size. Default = AdagradParameters()
+            The hyper parameters. Default = AdagradParameters()
         """
         super(Adagrad, self).__init__(
             heuristic=AdagradHeuristic(params=params)

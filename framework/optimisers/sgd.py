@@ -52,7 +52,7 @@ class SGD(Optimiser):
         Parameters
         ----------
         params: SGDParameters
-            The step size. Default = SGDParameters()
+            The hyper parameters. Default = SGDParameters()
         """
         super(SGD, self).__init__(
             heuristic=SGDHeuristic(params=params)

@@ -59,7 +59,7 @@ class Adadelta(Optimiser):
         Parameters
         ----------
         params: AdadeltaParameters
-            The step size. Default = AdadeltaParameters()
+            The hyper parameters. Default = AdadeltaParameters()
         """
         super(Adadelta, self).__init__(
             heuristic=AdadeltaHeuristic(params=params)

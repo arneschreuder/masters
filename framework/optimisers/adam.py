@@ -59,7 +59,7 @@ class Adam(Optimiser):
         Parameters
         ----------
         params: AdamParameters
-            The step size. Default = AdamParameters()
+            The hyper parameters. Default = AdamParameters()
         """
         super(Adam, self).__init__(
             heuristic=AdamHeuristic(params=params)
