@@ -1,0 +1,1 @@
+from .winequality import WineQuality

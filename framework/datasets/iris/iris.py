@@ -25,6 +25,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 import os
+import random
 
 import pandas as pd
 import tensorflow as tf
@@ -49,10 +50,9 @@ class Iris(Dataset):
             Random seed value. Default = None
         """
         super(Iris, self).__init__(seed=seed)
-        self.train_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
-        self.test_url = None
-
         # Set attribute values
+        self.train_url = 'framework/datasets/iris/iris.data'
+        self.test_url = None
         self.features = [
             "sepal_length",
             "sepal_width",
@@ -61,40 +61,61 @@ class Iris(Dataset):
         ]
         self.label = "species"
         self.columns = self.features + [self.label]
+        self.dtype = {
+            "sepal_length": "float32",
+            "sepal_width": "float32",
+            "petal_length": "float32",
+            "petal_width": "float32",
+            "species": "category"
+        }
         self.batch_size = batch_size
-        self.shuffle_size = 30
+        self.shuffle_size = 150
         self.test_set_size = 0.2
 
-        # Load data from file
-        data = pd.read_csv(self.train_url, names=self.columns)
+        # Set random seed
+        tf.random.set_seed(self.seed)
+        random.seed(self.seed)
 
-        # Normalise features
+        # Load data from file
+        data = pd.read_csv(os.path.join(os.path.abspath(os.getcwd()), self.train_url),
+                           names=self.columns, dtype=self.dtype, index_col=False, skipinitialspace=True)
+
+        # Missing values
+        data = data.dropna()
+
+        # Normalise Features
         for feature in self.features:
-            if data[feature].dtype == "float64":
-                #         min_max_scaler = preprocessing.MinMaxScaler()
-                #         data[[feature]] = min_max_scaler.fit_transform(data[[feature]])
+            if data[feature].dtype == "float32":
+                # min_max_scaler = preprocessing.MinMaxScaler()
+                # data[[feature]] = min_max_scaler.fit_transform(data[[feature]])
                 standard_scaler = preprocessing.StandardScaler()
                 data[[feature]] = standard_scaler.fit_transform(
                     data[[feature]])
 
+        # Correct the data types
+        data = data.astype(dtype=self.dtype)
+
+        # Set categories
+        for feature in self.features:
+            if data[feature].dtype.name == "category":
+                categories = data[feature].unique()
+                data[feature] = data[feature].astype(
+                    pd.CategoricalDtype(categories=categories))
+
         # Label Encode
         labelencoder = preprocessing.LabelEncoder()
         data[self.label] = labelencoder.fit_transform(data[self.label])
+        data.head()
 
-        # Preparing for environment, runtime preprocessing
-        # Float64 -> Float32
-        for feature in self.features:
-            if data[feature].dtype == "float64":
-                data[feature] = data[feature].astype("float32")
-
-        data[self.label] = data[self.label].astype("category")
-
-        # Split features and labels
+        # Pop target
         target = data.pop(self.label)
 
-        # Split train and test set
+        # One-hot encode
+        data = pd.get_dummies(data, dtype="float32")
+
+        # Split train-test
         train_x, test_x, train_y, test_y = train_test_split(
-            data, target, test_size=self.test_set_size, train_size=1.0-self.test_set_size, shuffle=True)
+            data, target, test_size=self.test_set_size)
 
         # Set training dataset
         self.train = tf.data.Dataset.from_tensor_slices(

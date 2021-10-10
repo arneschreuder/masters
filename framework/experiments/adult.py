@@ -24,22 +24,18 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-from framework.datasets.abalone import Abalone as AbaloneDataset
-from framework.datasets.iris import Iris as IrisDataset
+from framework.datasets.adult import Adult as AdultDataset
 from framework.experiments.experiment import Experiment
-from framework.losses.mse import MSE
-from framework.losses.sparse_categorical_crossentropy import \
-    SparseCategoricalCrossentropy
-from framework.metrics.mse import MSE as MSEMetric
-from framework.metrics.sparse_categorical_accuracy import \
-    SparseCategoricalAccuracy as SparseCategoricalAccuracyMetric
-from framework.metrics.sparse_categorical_crossentropy import \
-    SparseCategoricalCrossentropy as SparseCategoricalCrossentropyMetric
-from framework.models.abalone import Abalone as AbaloneModel
+from framework.losses.binary_crossentropy import BinaryCrossentropy
+from framework.metrics.binary_accuracy import \
+    BinaryAccuracy as BinaryAccuracyMetric
+from framework.metrics.binary_crossentropy import \
+    BinaryCrossentropy as BinaryCrossentropyMetric
+from framework.models.adult import Adult as AdultModel
 from framework.optimisers.optimiser import Optimiser
 
 
-class Abalone(Experiment):
+class Adult(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
                  epochs: int,
@@ -60,18 +56,18 @@ class Abalone(Experiment):
         seed: int
             Random seed. Default = None
         """
-        super(Abalone, self).__init__(
-            dataset=AbaloneDataset(seed=seed, batch_size=batch_size),
-            model=AbaloneModel(),
-            loss_fn=SparseCategoricalCrossentropy(),
+        super(Adult, self).__init__(
+            dataset=AdultDataset(seed=seed, batch_size=batch_size),
+            model=AdultModel(),
+            loss_fn=BinaryCrossentropy(),
             optimiser=optimiser,
             train_metrics=[
-                SparseCategoricalCrossentropyMetric(name="train_loss"),
-                SparseCategoricalAccuracyMetric(name="train_accuracy")
+                BinaryCrossentropyMetric(name="train_loss"),
+                BinaryAccuracyMetric(name="train_accuracy")
             ],
             test_metrics=[
-                SparseCategoricalCrossentropyMetric(name="test_loss"),
-                SparseCategoricalAccuracyMetric(name="test_accuracy")
+                BinaryCrossentropyMetric(name="test_loss"),
+                BinaryAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
             epochs=epochs,

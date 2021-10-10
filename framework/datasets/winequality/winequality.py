@@ -35,9 +35,9 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 
 
-class Abalone(Dataset):
+class WineQuality(Dataset):
     """
-    The implementation of the Abalone dataset
+    The implementation of the WineQuality dataset
     """
 
     def __init__(self, batch_size: int = 30, seed: int = None):
@@ -49,32 +49,38 @@ class Abalone(Dataset):
         seed: int
             Random seed value. Default = None
         """
-        super(Abalone, self).__init__(seed=seed)
+        super(WineQuality, self).__init__(seed=seed)
         # Set attribute values
-        self.train_url = 'framework/datasets/abalone/abalone.data'
-        self.test_url = None
+        self.train_url_red = 'framework/datasets/winequality/winequality-red.csv'
+        self.train_url_white = 'framework/datasets/winequality/winequality-white.csv'
         self.features = [
-            "sex",
-            "length",
-            "diameter",
-            "height",
-            "whole_weight",
-            "shucked_weight",
-            "viscera_weight",
-            "shell_weight"
+            "fixed_acidity",
+            "volatile_acidity",
+            "citric_acid",
+            "residual_sugar",
+            "chlorides",
+            "free_sulfur_dioxide",
+            "total_sulfur_dioxide",
+            "density",
+            "pH",
+            "sulphates",
+            "alcohol"
         ]
-        self.label = "rings"
+        self.label = "quality"
         self.columns = self.features + [self.label]
         self.dtype = {
-            "sex": "category",
-            "length": "float32",
-            "diameter": "float32",
-            "height": "float32",
-            "whole_weight": "float32",
-            "shucked_weight": "float32",
-            "viscera_weight": "float32",
-            "shell_weight": "float32",
-            "rings": "category"
+            "fixed_acidity": "float32",
+            "volatile_acidity": "float32",
+            "citric_acid": "float32",
+            "residual_sugar": "float32",
+            "chlorides": "float32",
+            "free_sulfur_dioxide": "float32",
+            "total_sulfur_dioxide": "float32",
+            "density": "float32",
+            "pH": "float32",
+            "sulphates": "float32",
+            "alcohol": "float32",
+            "quality": "category"
         }
         self.batch_size = batch_size
         self.shuffle_size = 1024
@@ -85,8 +91,20 @@ class Abalone(Dataset):
         random.seed(self.seed)
 
         # Load data from file
-        data = pd.read_csv(os.path.join(os.path.abspath(os.getcwd()), self.train_url),
-                           names=self.columns, dtype=self.dtype, index_col=False, skipinitialspace=True)
+        red_data = pd.read_csv(os.path.join(os.path.abspath(os.getcwd()), self.train_url_red),
+                               names=self.columns, dtype=self.dtype, index_col=False, skipinitialspace=True, delimiter=';', skiprows=1)
+        white_data = pd.read_csv(os.path.join(os.path.abspath(os.getcwd()), self.train_url_white),
+                                 names=self.columns, dtype=self.dtype, index_col=False, skipinitialspace=True, delimiter=';', skiprows=1)
+        # Merge two datasets
+        self.features = self.features + ['type']
+        self.columns = self.columns + ['type']
+
+        red_data['type'] = 'red'
+        white_data['type'] = 'white'
+
+        data = red_data.append(white_data)
+        data['type'] = data['type'].astype("category")
+        data = data.reset_index(drop=True)
 
         # Missing values
         data = data.dropna()

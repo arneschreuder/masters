@@ -3,7 +3,6 @@
 - [ ] GA
 - [ ] DE
 - [ ] CMA-ES
-- [ ] Comment all files
 - [ ] more datasets
 - [ ] prepare experiments
 - [ ] test scripts
@@ -12,3 +11,7 @@
 - [ ] gather data
 - [ ] do statistical analysis
 - [ ] prepare results
+
+- [ ] class balancing
+- [ ] plot for each mini-batch vs epoch
+- [ ] max functions evaluations vs max epochs

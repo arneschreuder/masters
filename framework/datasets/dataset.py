@@ -24,7 +24,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-from typing import List
+from typing import Dict, List
 
 import tensorflow as tf
 
@@ -39,6 +39,8 @@ class Dataset:
         Specifies the mini-batch size. Default = None
     columns: List[str]
         A list of strings that contain the different column headings. Default = None
+    dtype: Dict
+        The dtypes for each column. Default = None.
     features: List[str]
         A list of strings that contain the different features' headings. Default = None
     label: str
@@ -58,6 +60,7 @@ class Dataset:
     """
     batch_size: int = None
     columns: List[str] = None
+    dtype: Dict = None
     features: List[str] = None
     label: str = None
     seed: int = None
@@ -77,6 +80,7 @@ class Dataset:
         """
         self.batch_size = None
         self.columns = None
+        self.dtype = None
         self.features = None
         self.label = None
         self.seed = seed

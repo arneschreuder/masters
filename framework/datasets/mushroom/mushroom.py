@@ -35,9 +35,9 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 
 
-class Abalone(Dataset):
+class Mushroom(Dataset):
     """
-    The implementation of the Abalone dataset
+    The implementation of the Mushroom dataset
     """
 
     def __init__(self, batch_size: int = 30, seed: int = None):
@@ -49,32 +49,60 @@ class Abalone(Dataset):
         seed: int
             Random seed value. Default = None
         """
-        super(Abalone, self).__init__(seed=seed)
+        super(Mushroom, self).__init__(seed=seed)
         # Set attribute values
-        self.train_url = 'framework/datasets/abalone/abalone.data'
+        self.train_url = 'framework/datasets/mushroom/mushroom.data'
         self.test_url = None
         self.features = [
-            "sex",
-            "length",
-            "diameter",
-            "height",
-            "whole_weight",
-            "shucked_weight",
-            "viscera_weight",
-            "shell_weight"
+            "cap_shape",
+            "cap_surface",
+            "cap_color",
+            "bruises",
+            "odor",
+            "gill_attachment",
+            "gill_spacing",
+            "gill_size",
+            "gill_color",
+            "stalk_shape",
+            "stalk_root",
+            "stalk_surface_above_ring",
+            "stalk_surface_below_ring",
+            "stalk_color_above_ring",
+            "stalk_color_below_ring",
+            "veil_type",
+            "veil_color",
+            "ring_number",
+            "ring_type",
+            "spore_print_color",
+            "population",
+            "habitat"
         ]
-        self.label = "rings"
-        self.columns = self.features + [self.label]
+        self.label = "edible"
+        self.columns = [self.label] + self.features
         self.dtype = {
-            "sex": "category",
-            "length": "float32",
-            "diameter": "float32",
-            "height": "float32",
-            "whole_weight": "float32",
-            "shucked_weight": "float32",
-            "viscera_weight": "float32",
-            "shell_weight": "float32",
-            "rings": "category"
+            "edible": "category",
+            "cap_shape": "category",
+            "cap_surface": "category",
+            "cap_color": "category",
+            "bruises": "category",
+            "odor": "category",
+            "gill_attachment": "category",
+            "gill_spacing": "category",
+            "gill_size": "category",
+            "gill_color": "category",
+            "stalk_shape": "category",
+            "stalk_root": "category",
+            "stalk_surface_above_ring": "category",
+            "stalk_surface_below_ring": "category",
+            "stalk_color_above_ring": "category",
+            "stalk_color_below_ring": "category",
+            "veil_type": "category",
+            "veil_color": "category",
+            "ring_number": "category",
+            "ring_type": "category",
+            "spore_print_color": "category",
+            "population": "category",
+            "habitat": "category"
         }
         self.batch_size = batch_size
         self.shuffle_size = 1024
@@ -91,14 +119,14 @@ class Abalone(Dataset):
         # Missing values
         data = data.dropna()
 
-        # Normalise Features
-        for feature in self.features:
-            if data[feature].dtype == "float32":
-                # min_max_scaler = preprocessing.MinMaxScaler()
-                # data[[feature]] = min_max_scaler.fit_transform(data[[feature]])
-                standard_scaler = preprocessing.StandardScaler()
-                data[[feature]] = standard_scaler.fit_transform(
-                    data[[feature]])
+        # # Normalise Features
+        # for feature in self.features:
+        #     if data[feature].dtype == "float32":
+        #         # min_max_scaler = preprocessing.MinMaxScaler()
+        #         # data[[feature]] = min_max_scaler.fit_transform(data[[feature]])
+        #         standard_scaler = preprocessing.StandardScaler()
+        #         data[[feature]] = standard_scaler.fit_transform(
+        #             data[[feature]])
 
         # Correct the data types
         data = data.astype(dtype=self.dtype)
