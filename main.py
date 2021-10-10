@@ -23,6 +23,23 @@ from framework.heuristics.rmsprop import RMSProp
 #     seed=1
 # )
 
+# experiment = fw.experiments.Abalone(
+#     optimiser=fw.optimisers.SGD(
+#         params=fw.hyper_parameters.SGD(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=1.0,
+#                 steps=600,
+#                 rate=0.1,
+#                 staircase=False
+#             )
+#         )
+#     ),
+#     epochs=200,
+#     batch_size=50,
+#     log_dir="logs/sgd-lrs-abalone",
+#     seed=1
+# )
+
 # Momentum
 # experiment = fw.experiments.Iris(
 #     optimiser=fw.optimisers.Momentum(
@@ -138,7 +155,7 @@ from framework.heuristics.rmsprop import RMSProp
 #     epochs=200,
 #     batch_size=50,
 #     log_dir="logs/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
+#     seed=3
 # )
 
 # PSO - Particle Swarm Optimisation
@@ -171,12 +188,12 @@ experiment = fw.experiments.Iris(
         params=fw.hyper_parameters.BHH(
             population_size=10,
             burn_in=0,
-            replay=100,
+            replay=50,
             reselection=5,
             reanalysis=5,
             normalise=False,
             credit=[
-                fw.credits.PBest(discounted_rewards=True)
+                fw.credits.Symmetric(discounted_rewards=True)
             ],
             defaults={
                 "sgd": fw.hyper_parameters.SGD(
@@ -376,8 +393,8 @@ experiment = fw.experiments.Iris(
     ),
     epochs=200,
     batch_size=50,
-    log_dir="logs/bhh-norm-false",
-    seed=1
+    log_dir="logs/bhh-all-symmetric",
+    seed=2
 )
 
 if __name__ == "__main__":

@@ -37,8 +37,6 @@ class Dataset:
     -----------
     batch_size: int
         Specifies the mini-batch size. Default = None
-    classes: List[str]
-        A list of strings that contain the different classes. Default = None
     columns: List[str]
         A list of strings that contain the different column headings. Default = None
     features: List[str]
@@ -49,20 +47,25 @@ class Dataset:
         Random seed value. Default = None
     shuffle_size: int
         Specifies the number of items to include in shuffle process. Default = None
+    train_url: str
+        The URL to the training set data. Default = None
+    train: tf.data.Dataset
+        Contains the training dataset. Default = None
+    test_url: str
+        The URL to the testing set data. Default = None
     test: tf.data.Dataset
         Contains the test dataset. Default = None
-    training: tf.data.Dataset
-        Contains the training dataset. Default = None
     """
     batch_size: int = None
-    classes: List[str] = None
     columns: List[str] = None
     features: List[str] = None
     label: str = None
     seed: int = None
     shuffle_size: int = None
+    train_url: str = None
+    train: tf.data.Dataset = None
+    test_url: str = None
     test: tf.data.Dataset = None
-    training: tf.data.Dataset = None
     test_set_size: int = None
 
     def __init__(self, seed: int = None):
@@ -73,12 +76,13 @@ class Dataset:
             Random seed value. Default = None
         """
         self.batch_size = None
-        self.classes = None
         self.columns = None
         self.features = None
         self.label = None
         self.seed = seed
         self.shuffle_size = None
+        self.train_url = None
+        self.train = None
+        self.test_url = None
         self.test = None
-        self.training = None
         self.test_set_size = None

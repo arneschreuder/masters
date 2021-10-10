@@ -34,9 +34,9 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 
 
-class Iris(Dataset):
+class Abalone(Dataset):
     """
-    The implementation of the Iris dataset
+    The implementation of the Abalone dataset
     """
 
     def __init__(self, batch_size: int = 30, seed: int = None):
@@ -48,31 +48,35 @@ class Iris(Dataset):
         seed: int
             Random seed value. Default = None
         """
-        super(Iris, self).__init__(seed=seed)
-        self.train_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+        super(Abalone, self).__init__(seed=seed)
+        self.train_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data'
         self.test_url = None
 
         # Set attribute values
         self.features = [
-            "sepal_length",
-            "sepal_width",
-            "petal_length",
-            "petal_width"
+            "sex",
+            "length",
+            "diameter",
+            "height",
+            "whole_weight",
+            "shucked_weight",
+            "viscera_weight",
+            "shell_weight"
         ]
-        self.label = "species"
+        self.label = "rings"
         self.columns = self.features + [self.label]
         self.batch_size = batch_size
-        self.shuffle_size = 30
-        self.test_set_size = 0.2
+        self.shuffle_size = 1024
+        self.test_set_size = 0.3
 
         # Load data from file
         data = pd.read_csv(self.train_url, names=self.columns)
 
-        # Normalise features
+        # Normalise Features
         for feature in self.features:
             if data[feature].dtype == "float64":
-                #         min_max_scaler = preprocessing.MinMaxScaler()
-                #         data[[feature]] = min_max_scaler.fit_transform(data[[feature]])
+                # min_max_scaler = preprocessing.MinMaxScaler()
+                # data[[feature]] = min_max_scaler.fit_transform(data[[feature]])
                 standard_scaler = preprocessing.StandardScaler()
                 data[[feature]] = standard_scaler.fit_transform(
                     data[[feature]])
@@ -87,10 +91,14 @@ class Iris(Dataset):
             if data[feature].dtype == "float64":
                 data[feature] = data[feature].astype("float32")
 
+        # Object -> Category
         data[self.label] = data[self.label].astype("category")
 
         # Split features and labels
         target = data.pop(self.label)
+
+        # Get dummies (one_hot encodings)
+        data = pd.get_dummies(data)
 
         # Split train and test set
         train_x, test_x, train_y, test_y = train_test_split(

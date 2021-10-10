@@ -24,19 +24,23 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+from framework.datasets.abalone import Abalone as AbaloneDataset
 from framework.datasets.iris import Iris as IrisDataset
 from framework.experiments.experiment import Experiment
+from framework.losses.mse import MSE
 from framework.losses.sparse_categorical_crossentropy import \
     SparseCategoricalCrossentropy
+from framework.metrics.mse import MSE as MSEMetric
 from framework.metrics.sparse_categorical_accuracy import \
     SparseCategoricalAccuracy as SparseCategoricalAccuracyMetric
 from framework.metrics.sparse_categorical_crossentropy import \
     SparseCategoricalCrossentropy as SparseCategoricalCrossentropyMetric
+from framework.models.abalone import Abalone as AbaloneModel
 from framework.models.iris import Iris as IrisModel
 from framework.optimisers.optimiser import Optimiser
 
 
-class Iris(Experiment):
+class Abalone(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
                  epochs: int,
@@ -57,9 +61,9 @@ class Iris(Experiment):
         seed: int
             Random seed. Default = None
         """
-        super(Iris, self).__init__(
-            dataset=IrisDataset(seed=seed, batch_size=batch_size),
-            model=IrisModel(),
+        super(Abalone, self).__init__(
+            dataset=AbaloneDataset(seed=seed, batch_size=batch_size),
+            model=AbaloneModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
             train_metrics=[

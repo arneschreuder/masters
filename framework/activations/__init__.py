@@ -1,2 +1,3 @@
 from .activation import Activation
 from .leaky_relu import LeakyReLU
+from .sigmoid import Sigmoid

@@ -118,7 +118,7 @@ class PSO(Heuristic):
         """
         # Update E_gradient_mean
         entity.E_gradient_mean.assign(
-            params.inertia_weight*entity.velocity +
+            params.inertia_weight*entity.E_gradient_mean +
             params.cognitive_control*random1*(entity.pbest - entity.position) +
             params.social_control*random2 *
             (population.gbest - entity.position)
