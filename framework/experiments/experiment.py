@@ -265,6 +265,8 @@ class Experiment:
                     labels=labels,
                     step=step
                 )
+                tf.print(labels, summarize=-1)
+                tf.print(logits, summarize=-1)
                 self.update_train_metrics(labels=labels, logits=logits)
                 step += 1
 

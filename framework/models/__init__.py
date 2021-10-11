@@ -2,6 +2,7 @@
 from .abalone import Abalone
 from .adult import Adult
 from .bank import Bank
+from .bike import Bike
 from .car import Car
 from .diabetic import Diabetic
 from .forest_fires import ForestFires

@@ -6,6 +6,23 @@ from framework.heuristics.momentum import Momentum
 from framework.heuristics.rmsprop import RMSProp
 
 # SGD
+# experiment = fw.experiments.Bike(
+#     optimiser=fw.optimisers.SGD(
+#         params=fw.hyper_parameters.SGD(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=1.0,
+#                 steps=512,
+#                 rate=0.1,
+#                 staircase=False
+#             )
+#         )
+#     ),
+#     epochs=50,
+#     batch_size=50,
+#     log_dir="logs/bike/sgd-lrs",
+#     seed=1
+# )
+
 # experiment = fw.experiments.ForestFires(
 #     optimiser=fw.optimisers.SGD(
 #         params=fw.hyper_parameters.SGD(
@@ -352,6 +369,26 @@ from framework.heuristics.rmsprop import RMSProp
 #     seed=1
 # )
 
+# experiment = fw.experiments.Bike(
+#     optimiser=fw.optimisers.Adam(
+#         params=fw.hyper_parameters.Adam(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=0.01,
+#                 steps=17400,
+#                 rate=0.001,
+#                 staircase=False
+#             ),
+#             beta1=0.9,
+#             beta2=0.999,
+#             epsilon=1e-07
+#         )
+#     ),
+#     epochs=50,
+#     batch_size=50,
+#     log_dir="logs/bike/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+#     seed=1
+# )
+
 
 # PSO - Particle Swarm Optimisation
 # experiment = fw.experiments.Iris(
@@ -393,44 +430,44 @@ experiment = fw.experiments.ForestFires(
             defaults={
                 "sgd": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
-                        initial=1.0,
-                        steps=512,
-                        rate=0.1,
+                        initial=0.01,
+                        steps=17400,
+                        rate=0.001,
                         staircase=False
                     )
                 ),
                 "momentum": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
-                        initial=1.0,
-                        steps=512,
-                        rate=0.1,
+                        initial=0.01,
+                        steps=17400,
+                        rate=0.001,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
                 "nag": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
-                        initial=1.0,
-                        steps=512,
-                        rate=0.1,
+                        initial=0.01,
+                        steps=17400,
+                        rate=0.001,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
                 "adagrad": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
-                        initial=1.0,
-                        steps=512,
-                        rate=0.1,
+                        initial=0.01,
+                        steps=17400,
+                        rate=0.001,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
                 "rmsprop": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
-                        initial=0.1,
-                        steps=512,
-                        rate=0.01,
+                        initial=0.01,
+                        steps=17400,
+                        rate=0.001,
                         staircase=False
                     ),
                     rho=0.95,
@@ -438,9 +475,9 @@ experiment = fw.experiments.ForestFires(
                 ),
                 "adadelta": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
-                        initial=1.0,
-                        steps=512,
-                        rate=0.95,
+                        initial=0.01,
+                        steps=17400,
+                        rate=0.001,
                         staircase=False
                     ),
                     rho=0.95,
@@ -449,8 +486,8 @@ experiment = fw.experiments.ForestFires(
                 "adam": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=512,
-                        rate=0.01,
+                        steps=17400,
+                        rate=0.001,
                         staircase=False
                     ),
                     beta1=0.9,
@@ -460,9 +497,9 @@ experiment = fw.experiments.ForestFires(
                 "pso": fw.hyper_parameters.PSO(
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
-                        initial=1.0,
-                        steps=512,
-                        rate=0.9,
+                        initial=0.01,
+                        steps=17400,
+                        rate=0.001,
                         staircase=False
                     ),
                     inertia_weight=0.729844,
@@ -476,9 +513,9 @@ experiment = fw.experiments.ForestFires(
                 fw.heuristics.SGD(
                     params=fw.hyper_parameters.SGD(
                         learning_rate=fw.schedules.Exponential(
-                            initial=1.0,
-                            steps=512,
-                            rate=0.1,
+                            initial=0.01,
+                            steps=17400,
+                            rate=0.001,
                             staircase=False
                         )
                     )
@@ -486,9 +523,9 @@ experiment = fw.experiments.ForestFires(
                 fw.heuristics.Momentum(
                     params=fw.hyper_parameters.Momentum(
                         learning_rate=fw.schedules.Exponential(
-                            initial=1.0,
-                            steps=512,
-                            rate=0.1,
+                            initial=0.01,
+                            steps=17400,
+                            rate=0.001,
                             staircase=False
                         ),
                         momentum=0.9
@@ -497,9 +534,9 @@ experiment = fw.experiments.ForestFires(
                 fw.heuristics.NAG(
                     params=fw.hyper_parameters.NAG(
                         learning_rate=fw.schedules.Exponential(
-                            initial=1.0,
-                            steps=512,
-                            rate=0.1,
+                            initial=0.01,
+                            steps=17400,
+                            rate=0.001,
                             staircase=False
                         ),
                         momentum=0.9
@@ -508,9 +545,9 @@ experiment = fw.experiments.ForestFires(
                 fw.heuristics.Adagrad(
                     params=fw.hyper_parameters.Adagrad(
                         learning_rate=fw.schedules.Exponential(
-                            initial=1.0,
-                            steps=512,
-                            rate=0.1,
+                            initial=0.01,
+                            steps=17400,
+                            rate=0.001,
                             staircase=False
                         ),
                         epsilon=1e-07
@@ -519,9 +556,9 @@ experiment = fw.experiments.ForestFires(
                 fw.heuristics.RMSProp(
                     params=fw.hyper_parameters.RMSProp(
                         learning_rate=fw.schedules.Exponential(
-                            initial=0.1,
-                            steps=512,
-                            rate=0.01,
+                            initial=0.01,
+                            steps=17400,
+                            rate=0.001,
                             staircase=False
                         ),
                         rho=0.95,
@@ -531,9 +568,9 @@ experiment = fw.experiments.ForestFires(
                 fw.heuristics.Adadelta(
                     params=fw.hyper_parameters.Adadelta(
                         learning_rate=fw.schedules.Exponential(
-                            initial=1.0,
-                            steps=512,
-                            rate=0.95,
+                            initial=0.01,
+                            steps=17400,
+                            rate=0.001,
                             staircase=False
                         ),
                         rho=0.95,
@@ -543,9 +580,9 @@ experiment = fw.experiments.ForestFires(
                 fw.heuristics.Adam(
                     params=fw.hyper_parameters.Adam(
                         learning_rate=fw.schedules.Exponential(
-                            initial=0.1,
-                            steps=512,
-                            rate=0.01,
+                            initial=0.01,
+                            steps=17400,
+                            rate=0.001,
                             staircase=False
                         ),
                         beta1=0.9,
@@ -556,16 +593,16 @@ experiment = fw.experiments.ForestFires(
                 fw.heuristics.PSO(
                     params=fw.hyper_parameters.PSO(
                         learning_rate=fw.schedules.Exponential(
-                            initial=1.0,
-                            steps=512,
-                            rate=0.9,
+                            initial=0.01,
+                            steps=17400,
+                            rate=0.001,
                             staircase=False
                         ),
                         inertia_weight=0.729844,
                         social_control=1.496180,
                         cognitive_control=1.496180,
-                        velocity_clip_min=-0.1,
-                        velocity_clip_max=0.1
+                        velocity_clip_min=-0.01,
+                        velocity_clip_max=0.01
                     )
                 ),
             ]
@@ -573,7 +610,7 @@ experiment = fw.experiments.ForestFires(
     ),
     epochs=50,
     batch_size=50,
-    log_dir="logs/forest_fires/bhh-all-gbest-normal",
+    log_dir="logs/bike/bhh-all-gbest-normal",
     seed=None
 )
 

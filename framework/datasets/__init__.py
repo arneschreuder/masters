@@ -1,6 +1,7 @@
 from .abalone import Abalone
 from .adult import Adult
 from .bank import Bank
+from .bike import Bike
 from .car import Car
 from .dataset import Dataset
 from .diabetic import Diabetic

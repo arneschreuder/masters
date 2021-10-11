@@ -2,7 +2,7 @@
 
 ## Toy Data
 
-- ![Iris](https://archive.ics.uci.edu/ml/datasets/Iris) (Classification, Multivariate, 4 attr, 3 classes, 150 instances) Note: Sparse Categorical Classification
+- [Done]![Iris](https://archive.ics.uci.edu/ml/datasets/Iris) (Classification, Multivariate, 4 attr, 3 classes, 150 instances) Note: Sparse Categorical Classification
 
 ## Classification
 
@@ -16,10 +16,10 @@
 
 ## Regression
 
-- ![Forest Fires](https://archive.ics.uci.edu/ml/datasets/Forest+Fires) (Regression, Multivariate, 13 attr, 517 instances)
-- ![Demand Forecasting](https://archive.ics.uci.edu/ml/datasets/Demand+Forecasting+for+a+store) (Regression, Multivariate, 8 attr, 28764 instances)
+- [Done]![Forest Fires](https://archive.ics.uci.edu/ml/datasets/Forest+Fires) (Regression, Multivariate, 13 attr, 517 instances)
 - ![Bike Sharing](https://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset) (Regression, Univariate, 16 attr, 17389 instances)
 - ![Parkinsons Telemonitoring](https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring) (Regression, Multivariate, 26 attr, 5875 instances)
 - ![QSAR Fish Toxicity](https://archive.ics.uci.edu/ml/datasets/QSAR+fish+toxicity) (Regression, Multivariate, 7 attr, 908 instances)
 - ![Carbon Nanotube](https://archive.ics.uci.edu/ml/datasets/Carbon+Nanotubes) (Regression, Univariate, 8 attr, 10721 instances)
 - ![Housing](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/) (Regression, Multivariate, ?, ?) Note: Does not appear in UCI Dataset list
+- ![Student Performance](https://archive.ics.uci.edu/ml/datasets/Student+Performance) (Regression, Multivariate, 33 aatributes, 649 intances)

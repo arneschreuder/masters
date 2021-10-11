@@ -1,6 +1,7 @@
 from .abalone import *
 from .adult import *
 from .bank import *
+from .bike import *
 from .car import *
 from .diabetic import *
 from .experiment import *
