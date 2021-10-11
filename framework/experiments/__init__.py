@@ -8,4 +8,5 @@ from .experiment import *
 from .forest_fires import *
 from .iris import *
 from .mushroom import *
+from .parkinsons import *
 from .winequality import *

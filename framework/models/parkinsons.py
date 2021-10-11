@@ -30,12 +30,12 @@ from framework.layers.dense import Dense
 from framework.neural_networks.feed_forward import Feedforward
 
 
-class Bike(Feedforward):
+class Parkinsons(Feedforward):
     """
-    Bike model. 
+    Parkinsons model. 
 
-    Input Units: 61
-    Hidden Units: 32
+    Input Units: 21
+    Hidden Units: 10
     Output Units: 1
 
     Consists out of 2 layers.
@@ -43,14 +43,14 @@ class Bike(Feedforward):
     """
 
     def __init__(self):
-        super(Bike, self).__init__(
+        super(Parkinsons, self).__init__(
             layers=[
                 Dense(
-                    shape=[61, 32],
+                    shape=[21, 10],
                     activation=LeakyReLU(alpha=0.3)
                 ),
                 Dense(
-                    shape=[32, 1],
+                    shape=[10, 1],
                     activation=Sigmoid()
                 )
             ]

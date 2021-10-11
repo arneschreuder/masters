@@ -17,7 +17,7 @@
 ## Regression
 
 - [Done]![Forest Fires](https://archive.ics.uci.edu/ml/datasets/Forest+Fires) (Regression, Multivariate, 13 attr, 517 instances)
-- ![Bike Sharing](https://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset) (Regression, Univariate, 16 attr, 17389 instances)
+- [Done]![Bike Sharing](https://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset) (Regression, Univariate, 16 attr, 17389 instances)
 - ![Parkinsons Telemonitoring](https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring) (Regression, Multivariate, 26 attr, 5875 instances)
 - ![QSAR Fish Toxicity](https://archive.ics.uci.edu/ml/datasets/QSAR+fish+toxicity) (Regression, Multivariate, 7 attr, 908 instances)
 - ![Carbon Nanotube](https://archive.ics.uci.edu/ml/datasets/Carbon+Nanotubes) (Regression, Univariate, 8 attr, 10721 instances)

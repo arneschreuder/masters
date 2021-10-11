@@ -8,4 +8,5 @@ from .diabetic import Diabetic
 from .forest_fires import ForestFires
 from .iris import Iris
 from .mushroom import Mushroom
+from .parkinsons import Parkinsons
 from .winequality import WineQuality
