@@ -15,3 +15,5 @@
 - [ ] class balancing
 - [ ] plot for each mini-batch vs epoch
 - [ ] max functions evaluations vs max epochs
+- [ ] missing values in dataset
+- [ ] BHH bayesian analysis scale update proportionate to probability to win.

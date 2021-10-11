@@ -121,17 +121,12 @@ class WineQuality(Dataset):
         # Correct the data types
         data = data.astype(dtype=self.dtype)
 
-        # Set categories
-        for feature in self.features:
-            if data[feature].dtype.name == "category":
-                categories = data[feature].unique()
-                data[feature] = data[feature].astype(
-                    pd.CategoricalDtype(categories=categories))
-
-        # Label Encode
-        labelencoder = preprocessing.LabelEncoder()
-        data[self.label] = labelencoder.fit_transform(data[self.label])
-        data.head()
+        for column in self.columns:
+            if data[column].dtype.name == "category":
+                labelencoder = preprocessing.LabelEncoder()
+                data[column] = labelencoder.fit_transform(data[column])
+                categories=data[column].unique()
+                data[column] = data[column].astype(pd.CategoricalDtype(categories=categories))
 
         # Pop target
         target = data.pop(self.label)

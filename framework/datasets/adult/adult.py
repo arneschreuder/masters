@@ -116,18 +116,18 @@ class Adult(Dataset):
                     train_data[[feature]])
 
         # Set categories
-        for feature in self.features:
-            if train_data[feature].dtype.name == "category":
-                categories = train_data[feature].unique()
-                train_data[feature] = train_data[feature].astype(
-                    pd.CategoricalDtype(categories=categories))
-                test_data[feature] = test_data[feature].astype(
-                    pd.CategoricalDtype(categories=categories))
+        for column in self.columns:
+            if train_data[column].dtype.name == "category":
+                labelencoder = preprocessing.LabelEncoder()
+                train_data[column] = labelencoder.fit_transform(train_data[column])
+                categories=train_data[column].unique()
+                train_data[column] = train_data[column].astype(pd.CategoricalDtype(categories=categories))
 
         # Correct the train_data types
         train_data = train_data.astype(dtype=self.dtype)
         train_data.dtypes
 
+        # Normalise Feature
         for feature in self.features:
             if test_data[feature].dtype == "float32":
                 # min_max_scaler = preprocessing.MinMaxScaler()
@@ -136,16 +136,16 @@ class Adult(Dataset):
                 test_data[[feature]] = standard_scaler.fit_transform(
                     test_data[[feature]])
 
+        # Set categories
+        for column in self.columns:
+            if test_data[column].dtype.name == "category":
+                labelencoder = preprocessing.LabelEncoder()
+                test_data[column] = labelencoder.fit_transform(test_data[column])
+                categories=train_data[column].unique() # Yes, use the train_data columns to get uniques
+                test_data[column] = test_data[column].astype(pd.CategoricalDtype(categories=categories))
+
         # Correct the test_data types
         test_data = test_data.astype(dtype=self.dtype)
-
-        # Label Encode
-        labelencoder = preprocessing.LabelEncoder()
-        train_data[self.label] = labelencoder.fit_transform(
-            train_data[self.label])
-        labelencoder = preprocessing.LabelEncoder()
-        test_data[self.label] = labelencoder.fit_transform(
-            test_data[self.label])
 
         # Pop target
         train_target = train_data.pop(self.label)

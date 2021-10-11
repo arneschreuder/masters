@@ -1,0 +1,1 @@
+from .diabetic import Diabetic
