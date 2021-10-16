@@ -17,3 +17,4 @@
 - [ ] max functions evaluations vs max epochs
 - [ ] missing values in dataset
 - [ ] BHH bayesian analysis scale update proportionate to probability to win.
+- [ ] Univariate vs Multivariate prediction?

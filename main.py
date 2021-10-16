@@ -409,7 +409,67 @@ from framework.heuristics.rmsprop import RMSProp
 #     seed=1
 # )
 
-experiment = fw.experiments.FishToxicity(
+# experiment = fw.experiments.FishToxicity(
+#     optimiser=fw.optimisers.Adam(
+#         params=fw.hyper_parameters.Adam(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=0.01,
+#                 steps=1000,
+#                 rate=0.001,
+#                 staircase=False
+#             ),
+#             beta1=0.9,
+#             beta2=0.999,
+#             epsilon=1e-07
+#         )
+#     ),
+#     epochs=50,
+#     batch_size=50,
+#     log_dir="logs/fish_toxicity/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+#     seed=1
+# )
+
+# experiment = fw.experiments.AirQuality(
+#     optimiser=fw.optimisers.Adam(
+#         params=fw.hyper_parameters.Adam(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=0.01,
+#                 steps=10000,
+#                 rate=0.001,
+#                 staircase=False
+#             ),
+#             beta1=0.9,
+#             beta2=0.999,
+#             epsilon=1e-07
+#         )
+#     ),
+#     epochs=50,
+#     batch_size=50,
+#     log_dir="logs/air_quality/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+#     seed=1
+# )
+
+# experiment = fw.experiments.Housing(
+#     optimiser=fw.optimisers.Adam(
+#         params=fw.hyper_parameters.Adam(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=0.01,
+#                 steps=500,
+#                 rate=0.001,
+#                 staircase=False
+#             ),
+#             beta1=0.9,
+#             beta2=0.999,
+#             epsilon=1e-07
+#         )
+#     ),
+#     epochs=50,
+#     batch_size=50,
+#     log_dir="logs/housing/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+#     seed=1
+# )
+
+experiment = fw.experiments.StudentPerformance(
     optimiser=fw.optimisers.Adam(
         params=fw.hyper_parameters.Adam(
             learning_rate=fw.schedules.Exponential(
@@ -425,7 +485,7 @@ experiment = fw.experiments.FishToxicity(
     ),
     epochs=50,
     batch_size=50,
-    log_dir="logs/fish_toxicity/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+    log_dir="logs/student_performance/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
     seed=1
 )
 

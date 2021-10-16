@@ -1,5 +1,6 @@
 from .abalone import *
 from .adult import *
+from .air_quality import *
 from .bank import *
 from .bike import *
 from .car import *
@@ -7,7 +8,9 @@ from .diabetic import *
 from .experiment import *
 from .fish_toxicity import *
 from .forest_fires import *
+from .housing import *
 from .iris import *
 from .mushroom import *
 from .parkinsons import *
+from .student_performance import *
 from .winequality import *
