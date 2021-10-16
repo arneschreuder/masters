@@ -389,12 +389,32 @@ from framework.heuristics.rmsprop import RMSProp
 #     seed=1
 # )
 
-experiment = fw.experiments.Parkinsons(
+# experiment = fw.experiments.Parkinsons(
+#     optimiser=fw.optimisers.Adam(
+#         params=fw.hyper_parameters.Adam(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=0.01,
+#                 steps=6000,
+#                 rate=0.001,
+#                 staircase=False
+#             ),
+#             beta1=0.9,
+#             beta2=0.999,
+#             epsilon=1e-07
+#         )
+#     ),
+#     epochs=50,
+#     batch_size=50,
+#     log_dir="logs/parkinsons/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+#     seed=1
+# )
+
+experiment = fw.experiments.FishToxicity(
     optimiser=fw.optimisers.Adam(
         params=fw.hyper_parameters.Adam(
             learning_rate=fw.schedules.Exponential(
                 initial=0.01,
-                steps=6000,
+                steps=1000,
                 rate=0.001,
                 staircase=False
             ),
@@ -405,7 +425,7 @@ experiment = fw.experiments.Parkinsons(
     ),
     epochs=50,
     batch_size=50,
-    log_dir="logs/parkinsons/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+    log_dir="logs/fish_toxicity/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
     seed=1
 )
 
