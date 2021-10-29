@@ -3,7 +3,7 @@
 - [ ] GA
 - [ ] DE
 - [ ] CMA-ES
-- [ ] more datasets
+- [x] more datasets
 - [ ] prepare experiments
 - [ ] test scripts
 - [ ] access hpc
@@ -15,6 +15,8 @@
 - [ ] class balancing
 - [ ] plot for each mini-batch vs epoch
 - [ ] max functions evaluations vs max epochs
-- [ ] missing values in dataset
+- [ ] missing values in datasets
 - [ ] BHH bayesian analysis scale update proportionate to probability to win.
 - [ ] Univariate vs Multivariate prediction?
+- [ ] Validation set vs test set
+- [ ] Check Log Sum Exp

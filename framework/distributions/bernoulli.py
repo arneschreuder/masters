@@ -24,28 +24,27 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+import tensorflow as tf
+import tensorflow_probability as tfp
+from framework.distributions.distribution import Distribution
 
-from framework.hyper_parameters.parameters import Parameters
-from framework.schedules.schedule import Schedule
 
-
-class SGD(Parameters):
+class Bernoulli(Distribution):
     """
-    Hyper Parameters for SGD
-
-    Attributes
-    ----------
-    learning_rate: float or Schedule
-        The step size. Default = None
+    The Bernoulli probability distribution.
     """
-    learning_rate: float or Schedule = None
 
-    def __init__(self, learning_rate: float or Schedule = 0.01):
+    def __init__(self,
+                 probs):
         """
         Parameters
         ----------
-        learning_rate: float or Schedule
-                        The step size. Default = 0.01
+        probs: tf.Tensor
+            The success event probability.
         """
-        super(SGD, self).__init__()
-        self.learning_rate = learning_rate
+        super(Bernoulli, self).__init__(
+            instance=tfp.distributions.Bernoulli(
+                probs=probs,
+                dtype=tf.float32
+            )
+        )

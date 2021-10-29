@@ -2,6 +2,7 @@ from .adadelta import Adadelta
 from .adagrad import Adagrad
 from .adam import Adam
 from .bhh import BHH
+from .de import DE
 from .momentum import Momentum
 from .nag import NAG
 from .optimiser import Optimiser

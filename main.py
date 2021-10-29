@@ -469,25 +469,25 @@ from framework.heuristics.rmsprop import RMSProp
 #     seed=1
 # )
 
-experiment = fw.experiments.StudentPerformance(
-    optimiser=fw.optimisers.Adam(
-        params=fw.hyper_parameters.Adam(
-            learning_rate=fw.schedules.Exponential(
-                initial=0.01,
-                steps=1000,
-                rate=0.001,
-                staircase=False
-            ),
-            beta1=0.9,
-            beta2=0.999,
-            epsilon=1e-07
-        )
-    ),
-    epochs=50,
-    batch_size=50,
-    log_dir="logs/student_performance/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-    seed=1
-)
+# experiment = fw.experiments.StudentPerformance(
+#     optimiser=fw.optimisers.Adam(
+#         params=fw.hyper_parameters.Adam(
+#             learning_rate=fw.schedules.Exponential(
+#                 initial=0.01,
+#                 steps=1000,
+#                 rate=0.001,
+#                 staircase=False
+#             ),
+#             beta1=0.9,
+#             beta2=0.999,
+#             epsilon=1e-07
+#         )
+#     ),
+#     epochs=50,
+#     batch_size=50,
+#     log_dir="logs/student_performance/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
+#     seed=1
+# )
 
 
 # PSO - Particle Swarm Optimisation
@@ -513,6 +513,33 @@ experiment = fw.experiments.StudentPerformance(
 #     log_dir="logs/pso-pop-10-lrs-w-0.7-c1-1.49-c2-1.49-vclip-1.0",
 #     seed=1
 # )
+
+# Differential Evolution
+experiment = fw.experiments.Iris(
+    optimiser=fw.optimisers.DE(
+        params=fw.hyper_parameters.DE(
+            population_size=10,
+            selection_strategy='best',
+            xo_strategy='exp',
+            recombination_probability=fw.schedules.Exponential(
+                initial=0.9,
+                steps=600,
+                rate=0.1,
+                staircase=False
+            ),
+            beta=fw.schedules.Exponential(
+                initial=2.0,
+                steps=600,
+                rate=0.001,
+                staircase=False
+            ),
+        )
+    ),
+    epochs=200,
+    batch_size=50,
+    log_dir="logs/de-pop-10-ss:best-xos:exp-rp:s-beta:s",
+    seed=None
+)
 
 # BHH
 # experiment = fw.experiments.ForestFires(

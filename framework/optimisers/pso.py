@@ -140,6 +140,13 @@ class PSO(Optimiser):
         Tuple[tf.Tensor, tf.Tensor]
             Consists out of (logits, loss)
         """
+        # Evaluate initial
+        if (step <= 1):
+            for entity in self.population.entities:
+                self.model.set_weights_flat(weights_flat=entity.position)
+                _, entity.loss = self.evaluate(
+                    features=features, labels=labels)
+
         for entity in self.population.entities:
             # Step
             self.heuristic(

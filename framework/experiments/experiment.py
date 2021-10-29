@@ -234,7 +234,7 @@ class Experiment:
         under specified configuration.
         """
 
-        # Evaluate at timestep 0
+        # Evaluate at step 0
         # Training
         for features, labels in self.dataset.train:
             logits, _ = self.optimiser.evaluate(
@@ -265,8 +265,8 @@ class Experiment:
                     labels=labels,
                     step=step
                 )
-                tf.print(labels, summarize=-1)
-                tf.print(logits, summarize=-1)
+                # tf.print(labels, summarize=-1)
+                # tf.print(logits, summarize=-1)
                 self.update_train_metrics(labels=labels, logits=logits)
                 step += 1
 
