@@ -29,11 +29,10 @@ from typing import List, Tuple
 
 import numpy as np
 import tensorflow as tf
-from framework.distributions.bernoulli import Bernoulli
 from framework.entities import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.hyper_parameters.de import DE as DEParameters
-from framework.losses import loss
+from framework.losses.loss import Loss
 from framework.population import Population
 
 
@@ -258,7 +257,7 @@ class DE(Heuristic):
         return y_masked + x_masked
 
     @staticmethod
-    def evaluate(features: tf.Tensor, labels: tf.Tensor, loss_fn: loss, entity: Entity, position: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
+    def evaluate(features: tf.Tensor, labels: tf.Tensor, loss_fn: Loss, entity: Entity, position: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         """
         Evaluates the canidate solution relative to the entity's model.
 
@@ -268,7 +267,7 @@ class DE(Heuristic):
             The input features.
         labels: tf.Tensor
             The labels.
-        loss_fn: loss
+        loss_fn: Loss
             The loss function.
         entity: Entity
             The entity that represents the candidate solution.
@@ -323,7 +322,7 @@ class DE(Heuristic):
     def __call__(self,
                  features: tf.Tensor,
                  labels: tf.Tensor,
-                 loss_fn: tf.Tensor,
+                 loss_fn: Loss,
                  entity: Entity,
                  j: int,
                  population: Population,
@@ -333,8 +332,16 @@ class DE(Heuristic):
 
         Parameters
         ----------
+        features: tf.Tensor
+            The input data
+        labels: tf.Tensor
+            The target data/labels
+        loss_fn: Loss
+            The loss function.
         entity: EntityState
             Entity state
+        j: int
+            The index of the entity
         population: PopulationState
             Population state
         step: int

@@ -36,21 +36,20 @@ from framework.heuristics.adadelta import Adadelta
 from framework.heuristics.adagrad import Adagrad
 from framework.heuristics.adam import Adam
 from framework.heuristics.bhh import BHH as BHHHeuristic
+from framework.heuristics.de import DE
 from framework.heuristics.heuristic import Heuristic
 from framework.heuristics.momentum import Momentum
 from framework.heuristics.nag import NAG
 from framework.heuristics.pso import PSO
 from framework.heuristics.rmsprop import RMSProp
 from framework.heuristics.sgd import SGD
-from framework.hyper_parameters.adadelta import Adadelta as AdadeltaParameters
-from framework.hyper_parameters.adam import Adam as AdamParameters
 from framework.hyper_parameters.bhh import BHH as BHHParameters
 from framework.initialisers.ones import Ones
 from framework.initialisers.zeros import Zeros
+from framework.losses.loss import Loss
 from framework.optimisers.optimiser import Optimiser
 from framework.performance_log.performance_log import PerformanceLog
 from framework.population import Population
-from framework.schedules.exponential import Exponential
 from framework.utilities.utilities import flatten
 
 
@@ -256,8 +255,13 @@ class BHH(Optimiser):
 
     def apply_heuristic(self,
                         heuristic: Heuristic,
+                        features: tf.Tensor,
+                        labels: tf.Tensor,
+                        loss_fn: Loss,
                         entity: Entity,
-                        step: int):
+                        j: int,
+                        population: Population,
+                        step: int) -> None:
         """
         Delegates the application of the selected heuristic to the relevant entity.
 
@@ -265,10 +269,20 @@ class BHH(Optimiser):
         ----------
         heuristic: Heuristic
             The low level heuristic.
-        entity: Entity
-            The entity containing the state.
+        features: tf.Tensor
+            The input data
+        labels: tf.Tensor
+            The target data/labels
+        loss_fn: Loss
+            The loss function.
+        entity: EntityState
+            Entity state
+        j: int
+            The index of the entity
+        population: PopulationState
+            Population state
         step: int
-            The step number.
+            The iteration step numbe
         """
         adadelta_defaults = self.heuristic.params.defaults["adadelta"]
         adam_defaults = self.heuristic.params.defaults["adam"]
@@ -414,6 +428,31 @@ class BHH(Optimiser):
                 population=self.population,
                 step=step
             )
+        # elif isinstance(heuristic, DE):
+        #     """
+        #     Missing Prerequisites:
+        #     --------------
+        #     * sum_gradient_squared (proxy from Adagrad)
+        #     * E_position_delta_variance (proxy from Adadelta)
+        #     * E_gradient_mean (proxy from Adam)
+        #     * E_gradient_variance (proxy from Adam)
+        #     """
+        #     Adagrad.calculate_sum_gradient_squared(entity=entity)
+        #     Adadelta.calculate_E_position_delta_variance(
+        #         params=adadelta_defaults, entity=entity)
+        #     Adam.calculate_E_gradient_mean(params=adam_defaults, entity=entity)
+        #     Adam.calculate_E_gradient_variance(
+        #         params=adam_defaults, entity=entity)
+
+        #     heuristic(
+        #         features=features,
+        #         labels=labels,
+        #         loss_fn=self.loss_fn,
+        #         entity=entity,
+        #         j=j,
+        #         population=self.population,
+        #         step=step
+        #     )
 
     def update_bests(self,
                      features: tf.Tensor,
@@ -497,7 +536,12 @@ class BHH(Optimiser):
             # Apply heuristics to available data
             self.apply_heuristic(
                 heuristic=heuristic,
+                features=features,
+                labels=labels,
+                loss_fn=self.loss_fn,
                 entity=entity,
+                j=j,
+                population=self.population,
                 step=step
             )
 
