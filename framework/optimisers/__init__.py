@@ -3,6 +3,7 @@ from .adagrad import Adagrad
 from .adam import Adam
 from .bhh import BHH
 from .de import DE
+from .ga import GA
 from .momentum import Momentum
 from .nag import NAG
 from .optimiser import Optimiser

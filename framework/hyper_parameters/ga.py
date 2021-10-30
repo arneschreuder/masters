@@ -28,9 +28,9 @@ from framework.hyper_parameters.parameters import Parameters
 from framework.schedules.schedule import Schedule
 
 
-class DE(Parameters):
+class GA(Parameters):
     """
-    Hyper Parameters for Differential Evolution
+    Hyper Parameters for Genetic Algorithm
 
     Attributes
     ----------
@@ -74,7 +74,7 @@ class DE(Parameters):
         beta: float
             The beta parameter. Default = 1.0
         """
-        super(DE, self).__init__()
+        super(GA, self).__init__()
         self.population_size = population_size
         self.selection_strategy = selection_strategy
         self.xo_strategy = xo_strategy
