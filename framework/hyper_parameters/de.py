@@ -48,7 +48,6 @@ class DE(Parameters):
     population_size: int = None
     selection_strategy: str = None
     xo_strategy: str = None
-    trial_vectors: int = None
     recombination_probability: float or Schedule = None
     beta: float or Schedule = None
 
@@ -64,11 +63,9 @@ class DE(Parameters):
         population_size: int
             The number of entities in the swarm. Default = 10
         selection_strategy: str
-            The selection strategy to use. Default = 'rand
+            The selection strategy to use. Default = 'rand'
         xo_strategy: str
             The cross-over strategy to use. Default = 'bin'
-        trial_vectors: int
-            The number of trial vectors to include. Default = 1
         recombination_probability: float
             The probability of a mutation in a gene. Default = 0.5
         beta: float

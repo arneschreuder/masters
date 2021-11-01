@@ -72,8 +72,10 @@ class Entity:
         The position initialisation strategy to use. Default = None
     logger: Logger = None
         The logger to use for logging metrics. Default = None
+    id: int = None
+        A unique numerical identifier for the entity. Default = None
     name: str = None
-        A unique identifier for the entity. Default = None
+        A unique string identifier for the entity. Default = None
     """
     # Model
     model: NeuralNetwork = None
@@ -106,15 +108,17 @@ class Entity:
     # Logger
     logger: Logger = None
 
-    # Name
+    # Identification
     name: str = None
 
-    def __init__(self, position_initialiser: Initialiser = GlorotUniform(), name: str = "entity"):
+    def __init__(self, position_initialiser: Initialiser = GlorotUniform(), id: int = 0, name: str = "entity"):
         """
         Parameters
         ----------
         position_initialiser: Initialiser
             The initialiser used for the entity's position. Default = GlorotUniform
+        id: int = None
+            A unique numerical identifier for the entity. Default = None
         name: str
             A unique identifier for the entity. Default = "entity"
         """
@@ -149,7 +153,8 @@ class Entity:
         # Logger
         self.logger = None
 
-        # Name
+        # Identification
+        self.id = id
         self.name = name
 
     def map_model(self, model: NeuralNetwork) -> None:

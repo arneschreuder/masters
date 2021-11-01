@@ -546,25 +546,19 @@ experiment = fw.experiments.Iris(
     optimiser=fw.optimisers.GA(
         params=fw.hyper_parameters.GA(
             population_size=10,
-            selection_strategy='best',
-            xo_strategy='exp',
-            recombination_probability=fw.schedules.Exponential(
-                initial=0.9,
+            selection_strategy='rand',
+            xo_strategy='bin',
+            mutation_rate=fw.schedules.Exponential(
+                initial=0.2,
                 steps=600,
-                rate=0.1,
-                staircase=False
-            ),
-            beta=fw.schedules.Exponential(
-                initial=2.0,
-                steps=600,
-                rate=0.001,
+                rate=0.01,
                 staircase=False
             ),
         )
     ),
     epochs=200,
     batch_size=50,
-    log_dir="logs/ga-pop-10-ss:best-xos:exp-rp:s-beta:s",
+    log_dir="logs/ga-pop-10-ss:rand-xos:bin-mr:s",
     seed=None
 )
 

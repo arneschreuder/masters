@@ -324,7 +324,6 @@ class DE(Heuristic):
                  labels: tf.Tensor,
                  loss_fn: Loss,
                  entity: Entity,
-                 j: int,
                  population: Population,
                  step: int) -> None:
         """
@@ -340,14 +339,12 @@ class DE(Heuristic):
             The loss function.
         entity: EntityState
             Entity state
-        j: int
-            The index of the entity
         population: PopulationState
             Population state
         step: int
             The iteration step number
         """
-        # Get learning rate
+        # Get hyper-params
         rp = DE.get_recombination_probability(params=self.params, step=step)
         beta = DE.get_beta(params=self.params, step=step)
 
@@ -356,37 +353,33 @@ class DE(Heuristic):
         b = None
         c = None
 
-        while True:
-            if self.params.selection_strategy == 'rand':
-                selection = DE.select_entities(
-                    entities=population.entities,
-                    selection_strategy=self.params.selection_strategy,
-                    count=3,
-                    exclude=[j]
-                )
-                a = selection[0]
-                b = selection[1]
-                c = selection[2]
-            elif self.params.selection_strategy == 'best':
-                selection = DE.select_entities(
-                    entities=population.entities,
-                    selection_strategy=self.params.selection_strategy,
-                    count=1,
-                    exclude=[j]
-                )
-                a = selection[0]
+        if self.params.selection_strategy == 'rand':
+            selection = DE.select_entities(
+                entities=population.entities,
+                selection_strategy=self.params.selection_strategy,
+                count=3,
+                exclude=[entity.id]
+            )
+            a = selection[0]
+            b = selection[1]
+            c = selection[2]
+        elif self.params.selection_strategy == 'best':
+            selection = DE.select_entities(
+                entities=population.entities,
+                selection_strategy=self.params.selection_strategy,
+                count=1,
+                exclude=[entity.id]
+            )
+            a = selection[0]
 
-                selection = DE.select_entities(
-                    entities=population.entities,
-                    selection_strategy='rand',
-                    count=2,
-                    exclude=[j]
-                )
-                b = selection[0]
-                c = selection[1]
-
-            if a != b and b != c and c != a:
-                break
+            selection = DE.select_entities(
+                entities=population.entities,
+                selection_strategy='rand',
+                count=2,
+                exclude=[a.id, entity.id]
+            )
+            b = selection[0]
+            c = selection[1]
 
         # Trial Vector
         y = DE.get_trial_vector(

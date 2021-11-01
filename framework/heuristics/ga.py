@@ -32,6 +32,7 @@ import tensorflow as tf
 from framework.entities import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.hyper_parameters.ga import GA as GAParameters
+from framework.initialisers.glorot_uniform import GlorotUniform
 from framework.losses.loss import Loss
 from framework.population import Population
 
@@ -58,9 +59,9 @@ class GA(Heuristic):
         self.params = params
 
     @staticmethod
-    def get_recombination_probability(params: GAParameters, step: int) -> float:
+    def get_mutation_rate(params: GAParameters, step: int) -> float:
         """
-        Gets the recombination probability.
+        Gets the mutation rate.
 
         Parameters
         ----------
@@ -72,56 +73,30 @@ class GA(Heuristic):
         Returns
         -------
         float:
-            The recombination probability.
+            The mutation rate.
         """
 
-        # Get recombination probability
-        rp = params.recombination_probability
+        # Get mutation rate
+        mr = params.mutation_rate
 
-        if type(params.recombination_probability) is not float:
-            rp = params.recombination_probability(step=step)
+        if type(params.mutation_rate) is not float:
+            mr = params.mutation_rate(step=step)
 
-        return rp
-
-    @staticmethod
-    def get_beta(params: GAParameters, step: int) -> float:
-        """
-        Gets the beta scaling factor.
-
-        Parameters
-        ----------
-        params: SGDParameters
-            Hyper parameters.
-        step: int
-            The step number.
-
-        Returns
-        -------
-        float:
-            The beta scaling factor
-        """
-
-        # Get beta
-        beta = params.beta
-
-        if type(params.beta) is not float:
-            beta = params.beta(step=step)
-
-        return beta
+        return mr
 
     @ staticmethod
-    def select_entities(entities: List[Entity],
-                        selection_strategy: str = 'rand',
-                        count: int = -1,
-                        exclude: List[int] = [],
-                        reversed: bool = False) -> List[Entity]:
+    def select(population: Population,
+               selection_strategy: str = 'rand',
+               count: int = -1,
+               exclude: List[int] = [],
+               reversed: bool = False) -> List[Entity]:
         """
         Selects a number of entities from the population based on selection criteria.
 
         Parameters
         ----------
-        entities: List[Entity]
-            The list of entities to choose from.
+        population: Population
+            The population that contains the collection of entities.
         selection_strategy: str
             The selection strategy to use. Default = 'rand'
         count: int
@@ -137,7 +112,7 @@ class GA(Heuristic):
             The selected list of entities.
         """
         # Make a copy of the list of entities first
-        selection = entities.copy()
+        selection = population.entities.copy()
 
         # Prep exclusion list
         exclude = list(dict.fromkeys(exclude))  # Remove duplicates
@@ -162,30 +137,7 @@ class GA(Heuristic):
         return selection[:count]
 
     @staticmethod
-    def get_trial_vector(a: Entity, b: Entity, c: Entity, beta: float) -> tf.Tensor:
-        """
-        Gets the trial vector from a selection of entities.
-
-        Parameters
-        ----------
-        a: tf.Tensor
-            The target entity.
-        b: tf.Tensor
-            The difference entity 1.
-        c: tf.Tensor
-            The difference entity 2.
-        params: GAParameters
-            The hyper-parameters. Default = 'rand'
-
-        Returns
-        -------
-        tf.Tensor
-            The trial vector.
-        """
-        return a.position + beta*(b.position - c.position)
-
-    @staticmethod
-    def get_xo_mask(entity: Entity, xo_strategy: str, recombination_probability: float) -> tf.Tensor:
+    def get_xo_mask(dimensions: int, xo_strategy: str) -> tf.Tensor:
         """
         Gets the cross-over mutation mask.
 
@@ -202,47 +154,46 @@ class GA(Heuristic):
             The cross-over mask.
         """
         xo_mask = []
-        N = entity.position.shape[0]
 
         if xo_strategy == 'bin':
             # BINOMIAL SELECTION
-            xo_mask = np.zeros(N)
+            xo_mask = np.zeros(dimensions)
 
-            i = random.randrange(N)
+            i = random.randrange(dimensions)
             xo_mask[i] = 1
 
-            for j in range(N):
+            for j in range(dimensions):
                 dice = random.random()
-                if dice < recombination_probability and j != i:
+                if dice < 0.5 and j != i:
                     xo_mask[j] = 1
         elif xo_strategy == 'exp':
             # EXPONENTIAL SELECTION
-            xo_mask = np.zeros(N)
+            xo_mask = np.zeros(dimensions)
 
-            i = random.randrange(N - 1)
+            i = random.randrange(dimensions - 1)
             counter = 0
 
             while True:
                 xo_mask[i+1 - 1] = 1
                 counter += 1
-                i = (i+1) % N
+                i = (i+1) % dimensions
                 dice = random.random()
 
-                if dice >= recombination_probability or counter == N:
+                if dice >= 0.5 or counter == dimensions:
                     break
 
         return tf.constant(xo_mask, dtype=tf.float32)
 
     @staticmethod
-    def get_offspring(x: tf.Tensor, y: tf.Tensor, xo_mask: tf.Tensor) -> tf.Tensor:
+    def crossover(parent1: tf.Tensor, parent2: tf.Tensor, xo_mask: tf.Tensor) -> tf.Tensor:
         """
-        Gets the target vector for cross-over.
+        Applies the crossover operator.
 
         Parameters
         ----------
-        x: tf.Tensor
+        parent1: tf.Tensor
             The original candidate solution.
-        y: tf.Tensor
+        parent2: tf.Tensor
             The target candidate solution.
         xo_mask: tf.Tensor
             The cross-over mask.
@@ -250,11 +201,61 @@ class GA(Heuristic):
         Returns
         -------
         tf.Tensor
-            The target vector.
+            The offspring.
         """
-        y_masked = y*xo_mask
-        x_masked = x*(1-xo_mask)
-        return y_masked + x_masked
+        parent2_masked = parent2*xo_mask
+        parent1_masked = parent1*(1-xo_mask)
+        return parent1_masked + parent2_masked
+
+    @staticmethod
+    def get_mutation_mask(dimensions: int, mutation_rate: float) -> tf.Tensor:
+        """
+        Gets the mutation mask.
+
+        Parameters
+        ----------
+        entity: Entity
+            The entity that defines the candidate solution.
+        params: GAParameters
+            The hyper-parameters. Default = 'rand'
+
+        Returns
+        -------
+        tf.Tensor
+            The mutation mask.
+        """
+        mutation_mask = []
+
+        # BINOMIAL SELECTION
+        mutation_mask = np.zeros(dimensions)
+
+        for j in range(dimensions):
+            dice = random.random()
+            if dice < mutation_rate:
+                mutation_mask[j] = 1
+
+        return tf.constant(mutation_mask, dtype=tf.float32)
+
+    @staticmethod
+    def mutate(offspring: tf.Tensor, mutation_mask: tf.Tensor) -> tf.Tensor:
+        """
+        Gets the target vector for cross-over.
+
+        Parameters
+        ----------
+        offspring: tf.Tensor
+            The original candidate solution.
+        mutation_mask: tf.Tensor
+            The cross-over mask.
+
+        Returns
+        -------
+        tf.Tensor
+            The mutated offspring.
+        """
+        initialiser = GlorotUniform()
+        mutation = initialiser(offspring.shape)
+        return offspring + (mutation*mutation_mask)
 
     @staticmethod
     def evaluate(features: tf.Tensor, labels: tf.Tensor, loss_fn: Loss, entity: Entity, position: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
@@ -290,41 +291,40 @@ class GA(Heuristic):
         return logits, loss
 
     @staticmethod
-    def calculate_position(
+    def survive(
             entity: Entity,
-            x: tf.Tensor,
-            x_loss: tf.Tensor,
+            current: tf.Tensor,
+            current_loss: tf.Tensor,
             offspring: tf.Tensor,
             offspring_loss: tf.Tensor):
         """
-        Calculates the entity's position based of the performance of the target vector.
+        Calculates the entity's position based of the performance of the offspring vector.
 
         Parameters
         ----------
         entity: Entity
             The entity that represents the candidate solution.
-        x: tf.Tensor
+        current: tf.Tensor
             The original candidate solution.
-        x_loss: tf.Tensor
+        current_loss: tf.Tensor
             The original candidate solution's loss.
         offspring: tf.Tensor
-            The target candidate solution.
+            The offspring candidate solution.
         offspring_loss: tf.Tensor
-            The target candidate solution's loss.
+            The offspring candidate solution's loss.
         """
         if (offspring_loss < entity.loss):
             entity.position.assign(offspring)
             entity.loss = offspring_loss
         else:
-            entity.position.assign(x)
-            entity.loss = x_loss
+            entity.position.assign(current)
+            entity.loss = current_loss
 
     def __call__(self,
                  features: tf.Tensor,
                  labels: tf.Tensor,
                  loss_fn: Loss,
                  entity: Entity,
-                 j: int,
                  population: Population,
                  step: int) -> None:
         """
@@ -340,75 +340,53 @@ class GA(Heuristic):
             The loss function.
         entity: EntityState
             Entity state
-        j: int
-            The index of the entity
         population: PopulationState
             Population state
         step: int
             The iteration step number
         """
-        # Get learning rate
-        rp = GA.get_recombination_probability(params=self.params, step=step)
-        beta = GA.get_beta(params=self.params, step=step)
 
-        # Selection
-        a = None
-        b = None
-        c = None
+        # Get hyper-params
+        mr = GA.get_mutation_rate(params=self.params, step=step)
 
-        while True:
-            if self.params.selection_strategy == 'rand':
-                selection = GA.select_entities(
-                    entities=population.entities,
-                    selection_strategy=self.params.selection_strategy,
-                    count=3,
-                    exclude=[j]
-                )
-                a = selection[0]
-                b = selection[1]
-                c = selection[2]
-            elif self.params.selection_strategy == 'best':
-                selection = GA.select_entities(
-                    entities=population.entities,
-                    selection_strategy=self.params.selection_strategy,
-                    count=1,
-                    exclude=[j]
-                )
-                a = selection[0]
+        # Select parent to crossover
+        parents = GA.select(
+            population=population,
+            selection_strategy=self.params.selection_strategy,
+            count=2,
+            exclude=[entity.id]
+        )
+        parent1 = parents[0].position
+        parent2 = parents[1].position
+        current = entity.position
 
-                selection = GA.select_entities(
-                    entities=population.entities,
-                    selection_strategy='rand',
-                    count=2,
-                    exclude=[j]
-                )
-                b = selection[0]
-                c = selection[1]
-
-            if a != b and b != c and c != a:
-                break
-
-        # Trial Vector
-        y = GA.get_trial_vector(
-            a, b, c, beta)
-        x = entity.position
-
-        # Get Cross-Over mask
+        # Make xo_mask
         xo_mask = GA.get_xo_mask(
-            entity,
+            dimensions=entity.shape[0],
             xo_strategy=self.params.xo_strategy,
-            recombination_probability=rp
         )
 
-        # Get Target Vector
-        offspring = GA.get_offspring(x, y, xo_mask)
+        # Apply crossover and get offspring
+        offspring = GA.crossover(parent1, parent2, xo_mask)
+
+        # Make mutation_mask
+        # Just start with binomial mutation
+        mutation_mask = GA.get_mutation_mask(
+            dimensions=entity.shape[0],
+            mutation_rate=mr
+        )
+
+        # Apply mutation to offspring
+        offspring = GA.mutate(offspring, mutation_mask)
 
         # Evaluate Original
-        _, x_loss = GA.evaluate(features, labels, loss_fn, entity, x)
+        _, current_loss = GA.evaluate(
+            features, labels, loss_fn, entity, current)
 
         # Evaluate Target Vector
         _, offspring_loss = GA.evaluate(
             features, labels, loss_fn, entity, offspring)
 
         # Apply best position
-        GA.calculate_position(entity, x, x_loss, offspring, offspring_loss)
+        GA.survive(entity, current,
+                   current_loss, offspring, offspring_loss)

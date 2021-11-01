@@ -154,7 +154,6 @@ class DE(Optimiser):
                 labels=labels,
                 loss_fn=self.loss_fn,
                 entity=entity,
-                j=j,
                 population=self.population,
                 step=step
             )

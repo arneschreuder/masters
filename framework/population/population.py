@@ -120,7 +120,7 @@ class Population:
 
         # Personal bests
         for i in range(self.population_size):
-            entity = Entity(name="entity#{}".format(i+1))
+            entity = Entity(id=i, name="entity#{}".format(i+1))
             # This is required to determine the dimensionality of the model.
             entity.map_model(model)
             entity.set_logger(logger=self.logger)
