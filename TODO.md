@@ -1,6 +1,6 @@
 ## TODO
 
-- [ ] GA
+- [x] GA
 - [x] DE
 - [ ] CMA-ES
 - [x] more datasets
@@ -11,9 +11,3 @@
 - [ ] gather data
 - [ ] do statistical analysis
 - [ ] prepare results
-
-- [ ] class balancing
-- [ ] plot for each mini-batch vs epoch
-- [ ] missing values in datasets
-- [ ] Univariate vs Multivariate prediction?
-- [ ] Validation set vs test set

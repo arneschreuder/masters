@@ -35,8 +35,6 @@ from framework.optimisers.optimiser import Optimiser
 class AirQuality(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
-                 epochs: int,
-                 batch_size: int,
                  log_dir: str,
                  seed: int = None):
         """
@@ -44,17 +42,13 @@ class AirQuality(Experiment):
         ----------
         optimiser: Optimiser
             The optimiser to use
-        epochs: int
-            The number of epochs to train. Default = None
-        batch_size: int
-            The batch_size. Default = None
         log_dir: str
             The log output directory. Default = None
         seed: int
             Random seed. Default = None
         """
         super(AirQuality, self).__init__(
-            dataset=AirQualityDataset(seed=seed, batch_size=batch_size),
+            dataset=AirQualityDataset(seed=seed, batch_size=30),
             model=AirQualityModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -65,6 +59,6 @@ class AirQuality(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=epochs,
+            epochs=200,
             seed=seed
         )

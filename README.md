@@ -1,5 +1,7 @@
 # Masters
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Title
 
 Training Feedforward Neural Networks with Bayesian Hyper-Heuristics
@@ -72,12 +74,6 @@ School of Information Technology (IT),<br>
 Faculty of Engineering,<br>
 Stellenbosch University (SUN)
 
-<hr>
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-<hr>
-
 ## Environments
 
 ### Activate Environment
@@ -93,16 +89,27 @@ source .env
 deactivate
 ```
 
-## How to use?
-
 ### Prerequisites
 
 ```sh
 pip install -r requirements.txt
 ```
 
-### Run
+## Quick Start
 
-```sh
-python main.py
+```
+usage: main.py [-h] --dataset {iris} --optimiser {sgd} --epochs
+               EPOCHS --batch-size BATCH_SIZE [--seed SEED]
+
+Training Feedforward Neural Networks using Bayesian Hyper-
+Heuristics
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset {iris}      The dataset to use
+  --optimiser {sgd}     The optimiser to use
+  --epochs EPOCHS       How many epochs to train
+  --batch-size BATCH_SIZE
+                        The batch size to user
+  --seed SEED           The seed to use
 ```

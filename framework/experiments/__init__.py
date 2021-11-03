@@ -13,4 +13,4 @@ from .iris import *
 from .mushroom import *
 from .parkinsons import *
 from .student_performance import *
-from .winequality import *
+from .wine_quality import *

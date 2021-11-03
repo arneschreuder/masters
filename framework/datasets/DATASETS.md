@@ -6,7 +6,8 @@
 
 ## Classification
 
-- [Adult](https://archive.ics.uci.edu/ml/datasets/Adult) - Classification, Multivariate, 14 attr, 48842 instances
+- [Abalone](https://archive.ics.uci.edu/ml/datasets/Abalone) - Classification, Multivariate, 8 attr, 28 classes, 4177 instances
+- [Adult](https://archive.ics.uci.edu/ml/datasets/Adult) - Classification, Multivariate, 14 attr, 2 classes, 48842 instances
 - [Wine Quality](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) - Classification or Regression, Multivariate, 12 attr, 4898 instances -> Rather regression?
 - [Mushroom](https://archive.ics.uci.edu/ml/datasets/Mushroom) - Classification, Multivariate, 22 attr, 8124 instances
 - [Bank Marketing](https://archive.ics.uci.edu/ml/datasets/Bank+Marketing) - Classifiction, Multivariate, 17 attributes, 45211 instances

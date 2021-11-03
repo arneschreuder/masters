@@ -39,8 +39,6 @@ from framework.optimisers.optimiser import Optimiser
 class Diabetic(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
-                 epochs: int,
-                 batch_size: int,
                  log_dir: str,
                  seed: int = None):
         """
@@ -58,7 +56,7 @@ class Diabetic(Experiment):
             Random seed. Default = None
         """
         super(Diabetic, self).__init__(
-            dataset=DiabeticDataset(seed=seed, batch_size=batch_size),
+            dataset=DiabeticDataset(seed=seed, batch_size=30),
             model=DiabeticModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
@@ -71,6 +69,6 @@ class Diabetic(Experiment):
                 SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=epochs,
+            epochs=200,
             seed=seed
         )

@@ -38,8 +38,6 @@ from framework.optimisers.optimiser import Optimiser
 class Mushroom(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
-                 epochs: int,
-                 batch_size: int,
                  log_dir: str,
                  seed: int = None):
         """
@@ -47,17 +45,13 @@ class Mushroom(Experiment):
         ----------
         optimiser: Optimiser
             The optimiser to use
-        epochs: int
-            The number of epochs to train. Default = None
-        batch_size: int
-            The batch_size. Default = None
         log_dir: str
             The log output directory. Default = None
         seed: int
             Random seed. Default = None
         """
         super(Mushroom, self).__init__(
-            dataset=MushroomDataset(seed=seed, batch_size=batch_size),
+            dataset=MushroomDataset(seed=seed, batch_size=30),
             model=MushroomModel(),
             loss_fn=BinaryCrossentropy(),
             optimiser=optimiser,
@@ -70,6 +64,6 @@ class Mushroom(Experiment):
                 BinaryAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=epochs,
+            epochs=200,
             seed=seed
         )

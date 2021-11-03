@@ -1,800 +1,255 @@
-import framework as fw
-from framework import hyper_parameters
-from framework.heuristics.adadelta import Adadelta
-from framework.heuristics.adagrad import Adagrad
-from framework.heuristics.momentum import Momentum
-from framework.heuristics.rmsprop import RMSProp
+# The MIT License (MIT)
+# =====================
 
-# SGD
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.SGD(
-#         params=fw.hyper_parameters.SGD(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=600,
-#                 rate=0.01,
-#                 staircase=False
-#             )
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/iris/sgd-lrs",
-#     seed=1
-# )
+# Copyright 2021 Arné Schreuder
 
-# experiment = fw.experiments.ForestFires(
-#     optimiser=fw.optimisers.SGD(
-#         params=fw.hyper_parameters.SGD(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=1.0,
-#                 steps=512,
-#                 rate=0.1,
-#                 staircase=False
-#             )
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/forest_fires/sgd-lrs",
-#     seed=1
-# )
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the “Software”), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
 
-# experiment = fw.experiments.Abalone(
-#     optimiser=fw.optimisers.SGD(
-#         params=fw.hyper_parameters.SGD(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=1.0,
-#                 steps=600,
-#                 rate=0.1,
-#                 staircase=False
-#             )
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/abalone/sgd-lrs",
-#     seed=1
-# )
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
 
-# experiment = fw.experiments.Abalone(
-#     optimiser=fw.optimisers.SGD(
-#         params=fw.hyper_parameters.SGD(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=1.0,
-#                 steps=600,
-#                 rate=0.1,
-#                 staircase=False
-#             )
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/sgd-lrs-abalone",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Adult(
-#     optimiser=fw.optimisers.SGD(
-#         params=fw.hyper_parameters.SGD(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=1.0,
-#                 steps=60000,
-#                 rate=0.1,
-#                 staircase=False
-#             )
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/adult/sgd-lrs",
-#     seed=1
-# )
-
-# Momentum
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Momentum(
-#         params=fw.hyper_parameters.Momentum(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=600,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             momentum=0.9
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/iris/momentum-lrs-mom-0.9",
-#     seed=1
-# )
-
-# NAG - Nesterov Adaptive Gradients
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.NAG(
-#         params=fw.hyper_parameters.NAG(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=1.0,
-#                 steps=600,
-#                 rate=0.1,
-#                 staircase=False
-#             ),
-#             momentum=0.9
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/nag-lrs-mom-0.9",
-#     seed=1
-# )
-
-# Adagrad - Adaptive Gradients
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Adagrad(
-#         params=fw.hyper_parameters.Adagrad(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=1.0,
-#                 steps=600,
-#                 rate=0.1,
-#                 staircase=False
-#             ),
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/adagrad-lrs-eps-1e-07",
-#     seed=1
-# )
-
-# RMSProp - Root Mean Squared Propagation
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.RMSProp(
-#         params=fw.hyper_parameters.RMSProp(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=600,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             rho=0.95,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/rmsprop-lrs-rho-0.95-eps-1e-07",
-#     seed=1
-# )
-
-# Adadelta - Adadelta Gradients
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Adadelta(
-#         params=fw.hyper_parameters.Adadelta(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=1.0,
-#                 steps=600,
-#                 rate=0.95,
-#                 staircase=False
-#             ),
-#             rho=0.95,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/adadelta-lrs-rho-0.95-eps-1e-07",
-#     seed=1
-# )
-
-# Adam - Adaptive Moments
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=600,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/iris/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Abalone(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=600,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/abalone/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Adult(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=60000,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/adult/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Mushroom(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=2000,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/mushroom/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.WineQuality(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=6500,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/winequality/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Bank(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=45000,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/bank/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Diabetic(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=110000,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/diabetic/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Car(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=170,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/car/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.ForestFires(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.1,
-#                 steps=1512,
-#                 rate=0.01,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=150,
-#     batch_size=50,
-#     log_dir="logs/forest_fires/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Bike(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.01,
-#                 steps=17400,
-#                 rate=0.001,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/bike/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Parkinsons(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.01,
-#                 steps=6000,
-#                 rate=0.001,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/parkinsons/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.FishToxicity(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.01,
-#                 steps=1000,
-#                 rate=0.001,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/fish_toxicity/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.AirQuality(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.01,
-#                 steps=10000,
-#                 rate=0.001,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/air_quality/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.Housing(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.01,
-#                 steps=500,
-#                 rate=0.001,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/housing/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
-
-# experiment = fw.experiments.StudentPerformance(
-#     optimiser=fw.optimisers.Adam(
-#         params=fw.hyper_parameters.Adam(
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=0.01,
-#                 steps=1000,
-#                 rate=0.001,
-#                 staircase=False
-#             ),
-#             beta1=0.9,
-#             beta2=0.999,
-#             epsilon=1e-07
-#         )
-#     ),
-#     epochs=50,
-#     batch_size=50,
-#     log_dir="logs/student_performance/adam-lrs-beta1-0.9-beta2-0.999-eps-1e-07",
-#     seed=1
-# )
+# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
 
 
-# PSO - Particle Swarm Optimisation
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.PSO(
-#         params=fw.hyper_parameters.PSO(
-#             population_size=10,
-#             learning_rate=fw.schedules.Exponential(
-#                 initial=1.0,
-#                 steps=600,
-#                 rate=0.9,
-#                 staircase=False
-#             ),
-#             inertia_weight=0.729844,
-#             social_control=1.496180,
-#             cognitive_control=1.496180,
-#             velocity_clip_min=-1.0,
-#             velocity_clip_max=1.0
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/pso-pop-10-lrs-w-0.7-c1-1.49-c2-1.49-vclip-1.0",
-#     seed=1
-# )
+import argparse
+import os
 
-# Differential Evolution
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.DE(
-#         params=fw.hyper_parameters.DE(
-#             population_size=10,
-#             selection_strategy='best',
-#             xo_strategy='exp',
-#             recombination_probability=fw.schedules.Exponential(
-#                 initial=0.9,
-#                 steps=600,
-#                 rate=0.1,
-#                 staircase=False
-#             ),
-#             beta=fw.schedules.Exponential(
-#                 initial=2.0,
-#                 steps=600,
-#                 rate=0.001,
-#                 staircase=False
-#             ),
-#         )
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/de-pop-10-ss:best-xos:exp-rp:s-beta:s",
-#     seed=None
-# )
+import defaults
 
-# Genetic Algorithm
-experiment = fw.experiments.Iris(
-    optimiser=fw.optimisers.GA(
-        params=fw.hyper_parameters.GA(
-            population_size=10,
-            selection_strategy='rand',
-            xo_strategy='bin',
-            mutation_rate=fw.schedules.Exponential(
-                initial=0.2,
-                steps=600,
-                rate=0.01,
-                staircase=False
-            ),
-        )
-    ),
-    epochs=200,
-    batch_size=50,
-    log_dir="logs/ga-pop-10-ss:rand-xos:bin-mr:s",
-    seed=None
-)
+# Globals
+DATASET = None
+OPTIMISER = None
+SEED = None
+LOG_LEVEL = None
+PARAMS = None
+LOG = None
 
-# BHH
-# experiment = fw.experiments.Iris(
-#     optimiser=fw.optimisers.BHH(
-#         params=fw.hyper_parameters.BHH(
-#             population_size=5,
-#             burn_in=0,
-#             replay=50,
-#             reselection=5,
-#             reanalysis=5,
-#             normalise=False,
-#             credit=[
-#                 fw.credits.GBest(discounted_rewards=True)
-#             ],
-#             defaults={
-#                 "sgd": fw.hyper_parameters.SGD(
-#                     learning_rate=fw.schedules.Exponential(
-#                         initial=0.1,
-#                         steps=600,
-#                         rate=0.01,
-#                         staircase=False
-#                     )
-#                 ),
-#                 "momentum": fw.hyper_parameters.Momentum(
-#                     learning_rate=fw.schedules.Exponential(
-#                         initial=0.1,
-#                         steps=600,
-#                         rate=0.01,
-#                         staircase=False
-#                     ),
-#                     momentum=0.9
-#                 ),
-#                 "nag": fw.hyper_parameters.NAG(
-#                     learning_rate=fw.schedules.Exponential(
-#                         initial=0.01,
-#                         steps=17400,
-#                         rate=0.001,
-#                         staircase=False
-#                     ),
-#                     momentum=0.9
-#                 ),
-#                 "adagrad": fw.hyper_parameters.Adagrad(
-#                     learning_rate=fw.schedules.Exponential(
-#                         initial=0.1,
-#                         steps=600,
-#                         rate=0.01,
-#                         staircase=False
-#                     ),
-#                     epsilon=1e-07
-#                 ),
-#                 "rmsprop": fw.hyper_parameters.RMSProp(
-#                     learning_rate=fw.schedules.Exponential(
-#                         initial=0.1,
-#                         steps=600,
-#                         rate=0.01,
-#                         staircase=False
-#                     ),
-#                     rho=0.95,
-#                     epsilon=1e-07
-#                 ),
-#                 "adadelta": fw.hyper_parameters.Adadelta(
-#                     learning_rate=fw.schedules.Exponential(
-#                         initial=0.1,
-#                         steps=600,
-#                         rate=0.01,
-#                         staircase=False
-#                     ),
-#                     rho=0.95,
-#                     epsilon=1e-07
-#                 ),
-#                 "adam": fw.hyper_parameters.Adam(
-#                     learning_rate=fw.schedules.Exponential(
-#                         initial=0.1,
-#                         steps=600,
-#                         rate=0.01,
-#                         staircase=False
-#                     ),
-#                     beta1=0.9,
-#                     beta2=0.999,
-#                     epsilon=1e-07
-#                 ),
-#                 "pso": fw.hyper_parameters.PSO(
-#                     learning_rate=fw.schedules.Exponential(
-#                         initial=0.1,
-#                         steps=600,
-#                         rate=0.01,
-#                         staircase=False
-#                     ),
-#                     inertia_weight=0.729844,
-#                     social_control=1.496180,
-#                     cognitive_control=1.496180,
-#                     velocity_clip_min=-1.0,
-#                     velocity_clip_max=1.0
-#                 ),
-#                 "de": fw.hyper_parameters.DE(
-#                     selection_strategy='best',
-#                     xo_strategy='exp',
-#                     recombination_probability=fw.schedules.Exponential(
-#                         initial=0.9,
-#                         steps=600,
-#                         rate=0.1,
-#                         staircase=False
-#                     ),
-#                     beta=fw.schedules.Exponential(
-#                         initial=0.9,
-#                         steps=600,
-#                         rate=0.01,
-#                         staircase=False
-#                     )
-#                 )
-#             },
-#             heuristics=[
-#                 fw.heuristics.SGD(
-#                     params=fw.hyper_parameters.SGD(
-#                         learning_rate=fw.schedules.Exponential(
-#                             initial=0.1,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         )
-#                     )
-#                 ),
-#                 fw.heuristics.Momentum(
-#                     params=fw.hyper_parameters.Momentum(
-#                         learning_rate=fw.schedules.Exponential(
-#                             initial=0.1,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         ),
-#                         momentum=0.9
-#                     )
-#                 ),
-#                 fw.heuristics.NAG(
-#                     params=fw.hyper_parameters.NAG(
-#                         learning_rate=fw.schedules.Exponential(
-#                             initial=0.1,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         ),
-#                         momentum=0.9
-#                     )
-#                 ),
-#                 fw.heuristics.Adagrad(
-#                     params=fw.hyper_parameters.Adagrad(
-#                         learning_rate=fw.schedules.Exponential(
-#                             initial=0.1,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         ),
-#                         epsilon=1e-07
-#                     )
-#                 ),
-#                 fw.heuristics.RMSProp(
-#                     params=fw.hyper_parameters.RMSProp(
-#                         learning_rate=fw.schedules.Exponential(
-#                             initial=0.1,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         ),
-#                         rho=0.95,
-#                         epsilon=1e-07
-#                     )
-#                 ),
-#                 fw.heuristics.Adadelta(
-#                     params=fw.hyper_parameters.Adadelta(
-#                         learning_rate=fw.schedules.Exponential(
-#                             initial=0.1,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         ),
-#                         rho=0.95,
-#                         epsilon=1e-07
-#                     )
-#                 ),
-#                 fw.heuristics.Adam(
-#                     params=fw.hyper_parameters.Adam(
-#                         learning_rate=fw.schedules.Exponential(
-#                             initial=0.1,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         ),
-#                         beta1=0.9,
-#                         beta2=0.999,
-#                         epsilon=1e-07
-#                     )
-#                 ),
-#                 fw.heuristics.PSO(
-#                     params=fw.hyper_parameters.PSO(
-#                         learning_rate=fw.schedules.Exponential(
-#                             initial=0.1,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         ),
-#                         inertia_weight=0.729844,
-#                         social_control=1.496180,
-#                         cognitive_control=1.496180,
-#                         velocity_clip_min=-0.01,
-#                         velocity_clip_max=0.01
-#                     )
-#                 ),
-#                 fw.optimisers.DE(
-#                     params=fw.hyper_parameters.DE(
-#                         selection_strategy='best',
-#                         xo_strategy='exp',
-#                         recombination_probability=fw.schedules.Exponential(
-#                             initial=0.9,
-#                             steps=600,
-#                             rate=0.1,
-#                             staircase=False
-#                         ),
-#                         beta=fw.schedules.Exponential(
-#                             initial=0.9,
-#                             steps=600,
-#                             rate=0.01,
-#                             staircase=False
-#                         ),
-#                     )
-#                 ),
-#             ]
-#         ),
-#     ),
-#     epochs=200,
-#     batch_size=50,
-#     log_dir="logs/iris/bhh-all-with-de",
-#     seed=None
-# )
+# Pragma
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
-if __name__ == "__main__":
+
+def parse_basic_arguments():
+    global DATASET
+    global OPTIMISER
+    global SEED
+    global LOG_LEVEL
+
+    # Parser
+    parser = argparse.ArgumentParser(
+        description="Training Feedforward Neural Networks using Bayesian Hyper-Heuristics"
+    )
+    parser.add_argument(
+        "--dataset",
+        type=str,
+        required=True,
+        choices=[
+            "abalone",
+            "adult",
+            "air_quality",
+            "bank",
+            "bike",
+            "car",
+            "iris",
+            "diabetic",
+            "fish_toxicity",
+            "forest_fires",
+            "housing",
+            "mushroom",
+            "parkinsons",
+            "student_performance",
+            "wine_quality",
+        ],
+        help="The dataset to use"
+    )
+    parser.add_argument(
+        "--optimiser",
+        type=str,
+        required=True,
+        choices=[
+            "sgd",
+            "momentum",
+            "nag",
+            "adagrad",
+            "rmsprop",
+            "adadelta",
+            "adam",
+            "pso",
+            "de",
+            "ga",
+            "bhh"
+        ],
+        help="The optimiser to use"
+    )
+    parser.add_argument("--seed", type=int, help="The seed to use")
+    parser.add_argument("--log-level", type=int, help="The log level to use")
+
+    # Arguments
+    args = parser.parse_args()
+    DATASET = args.dataset
+    OPTIMISER = args.optimiser
+    SEED = args.seed or None
+    LOG_LEVEL = args.log_level or 2
+
+
+def parse_bhh_arguments():
+    global CREDIT
+    global POPULATION_SIZE
+    global RESELECTION
+    global REANALYSIS
+    global REPLAY
+    global BURN_IN
+
+    # Parser
+    parser = argparse.ArgumentParser(
+        description="Training Feedforward Neural Networks using Bayesian Hyper-Heuristics"
+    )
+    parser.add_argument(
+        "--dataset",
+        type=str,
+        required=True,
+        choices=[
+            "abalone",
+            "adult",
+            "air_quality",
+            "bank",
+            "bike",
+            "car",
+            "iris",
+            "diabetic",
+            "fish_toxicity",
+            "forest_fires",
+            "housing",
+            "mushroom",
+            "parkinsons",
+            "student_performance",
+            "wine_quality",
+        ],
+        help="The dataset to use"
+    )
+    parser.add_argument(
+        "--optimiser",
+        type=str,
+        required=True,
+        choices=[
+            "sgd",
+            "momentum",
+            "nag",
+            "adagrad",
+            "rmsprop",
+            "adadelta",
+            "adam",
+            "pso",
+            "de",
+            "ga",
+            "bhh"
+        ],
+        help="The optimiser to use"
+    )
+    parser.add_argument("--seed", type=int, help="The seed to use")
+    parser.add_argument("--log-level", type=int, help="The log level to use")
+
+    # Arguments
+    args = parser.parse_args()
+    DATASET = args.dataset
+    OPTIMISER = args.optimiser
+    SEED = args.seed or None
+    LOG_LEVEL = args.log_level or 2
+
+
+def set_environment_variables():
+    global LOG_LEVEL
+
+    # Set the global log level
+    os.environ["LOG_LEVEL"] = "{}".format(LOG_LEVEL)
+
+
+def print_banner():
+    global DATASET
+    global OPTIMISER
+    global SEED
+    global LOG
+    global LOG_LEVEL
+
+    print("")
+    print("====================================================================")
+    print("Training Feedforward Neural Networks using Bayesian Hyper-Heuristics")
+    print("====================================================================")
+    print("Dataset: {}".format(DATASET))
+    print("Optimiser: {}".format(OPTIMISER))
+    print("Seed: {}".format(SEED))
+    print("Log: {}".format(LOG))
+    print("Log Level: {}".format(LOG_LEVEL))
+    print("====================================================================")
+    print("")
+
+
+def basic_optimisers():
+    global DATASET
+    global OPTIMISER
+
+    # Extract intances
+    Experiment = defaults.defaults[DATASET]["experiment"]
+    Optimiser = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["optimiser"]
+    PARAMS = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["params"]
+    LOG = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["log"]
+
+    experiment = Experiment(
+        optimiser=Optimiser(
+            params=PARAMS
+        ),
+        log_dir=LOG,
+        seed=SEED
+    )
+
     experiment.initialise()
     experiment()
+
+
+def bhh_optimiser():
+    global DATASET
+    global OPTIMISER
+
+    # Extract intances
+    Experiment = defaults.defaults[DATASET]["experiment"]
+    Optimiser = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["optimiser"]
+    PARAMS = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["params"]
+    LOG = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["log"]
+
+    experiment = Experiment(
+        optimiser=Optimiser(
+            params=PARAMS
+        ),
+        log_dir=LOG,
+        seed=SEED
+    )
+
+    experiment.initialise()
+    experiment()
+
+
+def main():
+    parse_basic_arguments()
+    set_environment_variables
+    print_banner()
+
+    if OPTIMISER != "bhh":
+        basic_optimisers()
+
+
+if __name__ == "__main__":
+    main()

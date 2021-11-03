@@ -35,8 +35,6 @@ from framework.optimisers.optimiser import Optimiser
 class Housing(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
-                 epochs: int,
-                 batch_size: int,
                  log_dir: str,
                  seed: int = None):
         """
@@ -44,17 +42,13 @@ class Housing(Experiment):
         ----------
         optimiser: Optimiser
             The optimiser to use
-        epochs: int
-            The number of epochs to train. Default = None
-        batch_size: int
-            The batch_size. Default = None
         log_dir: str
             The log output directory. Default = None
         seed: int
             Random seed. Default = None
         """
         super(Housing, self).__init__(
-            dataset=HousingDataset(seed=seed, batch_size=batch_size),
+            dataset=HousingDataset(seed=seed, batch_size=30),
             model=HousingModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -65,6 +59,6 @@ class Housing(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=epochs,
+            epochs=200,
             seed=seed
         )

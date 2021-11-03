@@ -24,7 +24,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-from framework.datasets.winequality import WineQuality as WineQualityDataset
+from framework.datasets.wine_quality import WineQuality as WineQualityDataset
 from framework.experiments.experiment import Experiment
 from framework.losses.sparse_categorical_crossentropy import \
     SparseCategoricalCrossentropy
@@ -32,15 +32,13 @@ from framework.metrics.sparse_categorical_accuracy import \
     SparseCategoricalAccuracy as SparseCategoricalAccuracyMetric
 from framework.metrics.sparse_categorical_crossentropy import \
     SparseCategoricalCrossentropy as SparseCategoricalCrossentropyMetric
-from framework.models.winequality import WineQuality as WineQualityModel
+from framework.models.wine_quality import WineQuality as WineQualityModel
 from framework.optimisers.optimiser import Optimiser
 
 
 class WineQuality(Experiment):
     def __init__(self,
                  optimiser: Optimiser,
-                 epochs: int,
-                 batch_size: int,
                  log_dir: str,
                  seed: int = None):
         """
@@ -58,7 +56,7 @@ class WineQuality(Experiment):
             Random seed. Default = None
         """
         super(WineQuality, self).__init__(
-            dataset=WineQualityDataset(seed=seed, batch_size=batch_size),
+            dataset=WineQualityDataset(seed=seed, batch_size=30),
             model=WineQualityModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
@@ -71,6 +69,6 @@ class WineQuality(Experiment):
                 SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=epochs,
+            epochs=200,
             seed=seed
         )

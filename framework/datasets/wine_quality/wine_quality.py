@@ -51,8 +51,8 @@ class WineQuality(Dataset):
         """
         super(WineQuality, self).__init__(seed=seed)
         # Set attribute values
-        self.train_url_red = 'framework/datasets/winequality/winequality-red.csv'
-        self.train_url_white = 'framework/datasets/winequality/winequality-white.csv'
+        self.train_url_red = 'framework/datasets/wine_quality/wine_quality-red.csv'
+        self.train_url_white = 'framework/datasets/wine_quality/wine_quality-white.csv'
         self.features = [
             "fixed_acidity",
             "volatile_acidity",
@@ -125,8 +125,9 @@ class WineQuality(Dataset):
             if data[column].dtype.name == "category":
                 labelencoder = preprocessing.LabelEncoder()
                 data[column] = labelencoder.fit_transform(data[column])
-                categories=data[column].unique()
-                data[column] = data[column].astype(pd.CategoricalDtype(categories=categories))
+                categories = data[column].unique()
+                data[column] = data[column].astype(
+                    pd.CategoricalDtype(categories=categories))
 
         # Pop target
         target = data.pop(self.label)

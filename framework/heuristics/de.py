@@ -110,11 +110,11 @@ class DE(Heuristic):
         return beta
 
     @ staticmethod
-    def select_entities(entities: List[Entity],
-                        selection_strategy: str = 'rand',
-                        count: int = -1,
-                        exclude: List[int] = [],
-                        reversed: bool = False) -> List[Entity]:
+    def select(entities: List[Entity],
+               selection_strategy: str = 'rand',
+               count: int = -1,
+               exclude: List[int] = [],
+               reversed: bool = False) -> List[Entity]:
         """
         Selects a number of entities from the population based on selection criteria.
 
@@ -162,13 +162,13 @@ class DE(Heuristic):
         return selection[:count]
 
     @staticmethod
-    def get_trial_vector(a: Entity, b: Entity, c: Entity, beta: float) -> tf.Tensor:
+    def mutate(parent1: tf.Tensor, parent2: tf.Tensor, parent3: tf.Tensor, beta: float) -> tf.Tensor:
         """
         Gets the trial vector from a selection of entities.
 
         Parameters
         ----------
-        a: tf.Tensor
+        parent1: tf.Tensor
             The target entity.
         b: tf.Tensor
             The difference entity 1.
@@ -182,7 +182,7 @@ class DE(Heuristic):
         tf.Tensor
             The trial vector.
         """
-        return a.position + beta*(b.position - c.position)
+        return parent1 + beta*(parent2 - parent3)
 
     @staticmethod
     def get_xo_mask(entity: Entity, xo_strategy: str, recombination_probability: float) -> tf.Tensor:
@@ -234,7 +234,7 @@ class DE(Heuristic):
         return tf.constant(xo_mask, dtype=tf.float32)
 
     @staticmethod
-    def get_offspring(x: tf.Tensor, y: tf.Tensor, xo_mask: tf.Tensor) -> tf.Tensor:
+    def crossover(x: tf.Tensor, y: tf.Tensor, xo_mask: tf.Tensor) -> tf.Tensor:
         """
         Gets the target vector for cross-over.
 
@@ -290,10 +290,10 @@ class DE(Heuristic):
         return logits, loss
 
     @staticmethod
-    def calculate_position(
+    def survive(
             entity: Entity,
-            x: tf.Tensor,
-            x_loss: tf.Tensor,
+            current: tf.Tensor,
+            current_loss: tf.Tensor,
             offspring: tf.Tensor,
             offspring_loss: tf.Tensor):
         """
@@ -303,9 +303,9 @@ class DE(Heuristic):
         ----------
         entity: Entity
             The entity that represents the candidate solution.
-        x: tf.Tensor
+        current: tf.Tensor
             The original candidate solution.
-        x_loss: tf.Tensor
+        current_loss: tf.Tensor
             The original candidate solution's loss.
         offspring: tf.Tensor
             The target candidate solution.
@@ -316,8 +316,8 @@ class DE(Heuristic):
             entity.position.assign(offspring)
             entity.loss = offspring_loss
         else:
-            entity.position.assign(x)
-            entity.loss = x_loss
+            entity.position.assign(current)
+            entity.loss = current_loss
 
     def __call__(self,
                  features: tf.Tensor,
@@ -349,42 +349,44 @@ class DE(Heuristic):
         beta = DE.get_beta(params=self.params, step=step)
 
         # Selection
-        a = None
-        b = None
-        c = None
+        parent1 = None
+        parent2 = None
+        parent3 = None
 
         if self.params.selection_strategy == 'rand':
-            selection = DE.select_entities(
+            selection = DE.select(
                 entities=population.entities,
                 selection_strategy=self.params.selection_strategy,
                 count=3,
                 exclude=[entity.id]
             )
-            a = selection[0]
-            b = selection[1]
-            c = selection[2]
+            parent1 = selection[0].position
+            parent2 = selection[1].position
+            parent3 = selection[2].position
+
         elif self.params.selection_strategy == 'best':
-            selection = DE.select_entities(
+            selection = DE.select(
                 entities=population.entities,
                 selection_strategy=self.params.selection_strategy,
                 count=1,
                 exclude=[entity.id]
             )
-            a = selection[0]
+            parent1 = selection[0]
 
-            selection = DE.select_entities(
+            selection = DE.select(
                 entities=population.entities,
                 selection_strategy='rand',
                 count=2,
-                exclude=[a.id, entity.id]
+                exclude=[parent1.id, entity.id]
             )
-            b = selection[0]
-            c = selection[1]
+            parent1 = parent1.position
+            parent2 = selection[0].position
+            parent3 = selection[1].position
 
         # Trial Vector
-        y = DE.get_trial_vector(
-            a, b, c, beta)
-        x = entity.position
+        offspring = DE.mutate(
+            parent1, parent2, parent3, beta)
+        current = entity.position
 
         # Get Cross-Over mask
         xo_mask = DE.get_xo_mask(
@@ -394,14 +396,15 @@ class DE(Heuristic):
         )
 
         # Get Target Vector
-        offspring = DE.get_offspring(x, y, xo_mask)
+        offspring = DE.crossover(current, offspring, xo_mask)
 
         # Evaluate Original
-        _, x_loss = DE.evaluate(features, labels, loss_fn, entity, x)
+        _, current_loss = DE.evaluate(
+            features, labels, loss_fn, entity, current)
 
         # Evaluate Target Vector
         _, offspring_loss = DE.evaluate(
             features, labels, loss_fn, entity, offspring)
 
         # Apply best position
-        DE.calculate_position(entity, x, x_loss, offspring, offspring_loss)
+        DE.survive(entity, current, current_loss, offspring, offspring_loss)

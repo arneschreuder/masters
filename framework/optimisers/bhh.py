@@ -37,6 +37,7 @@ from framework.heuristics.adagrad import Adagrad
 from framework.heuristics.adam import Adam
 from framework.heuristics.bhh import BHH as BHHHeuristic
 from framework.heuristics.de import DE
+from framework.heuristics.ga import GA
 from framework.heuristics.heuristic import Heuristic
 from framework.heuristics.momentum import Momentum
 from framework.heuristics.nag import NAG
@@ -452,6 +453,30 @@ class BHH(Optimiser):
                 population=self.population,
                 step=step
             )
+        elif isinstance(heuristic, GA):
+            """
+            Missing Prerequisites:
+            --------------
+            * sum_gradient_squared (proxy from Adagrad)
+            * E_position_delta_variance (proxy from Adadelta)
+            * E_gradient_mean (proxy from Adam)
+            * E_gradient_variance (proxy from Adam)
+            """
+            Adagrad.calculate_sum_gradient_squared(entity=entity)
+            Adadelta.calculate_E_position_delta_variance(
+                params=adadelta_defaults, entity=entity)
+            Adam.calculate_E_gradient_mean(params=adam_defaults, entity=entity)
+            Adam.calculate_E_gradient_variance(
+                params=adam_defaults, entity=entity)
+
+            heuristic(
+                features=features,
+                labels=labels,
+                loss_fn=self.loss_fn,
+                entity=entity,
+                population=self.population,
+                step=step
+            )
 
     def update_bests(self,
                      features: tf.Tensor,
@@ -520,6 +545,13 @@ class BHH(Optimiser):
         Tuple[tf.Tensor, tf.Tensor]
             Consists out of (logits, loss)
         """
+        # Evaluate initial
+        if (step <= 1):
+            for entity in self.population.entities:
+                self.model.set_weights_flat(weights_flat=entity.position)
+                _, entity.loss = self.evaluate(
+                    features=features, labels=labels)
+
         for j, entity in enumerate(self.population.entities):
             # Get the selected heuristic
             k, heuristic = self.get_heuristic(j)

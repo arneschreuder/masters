@@ -13,4 +13,4 @@ from .iris import Iris
 from .mushroom import Mushroom
 from .parkinsons import Parkinsons
 from .student_performance import StudentPerformance
-from .winequality import WineQuality
+from .wine_quality import WineQuality
