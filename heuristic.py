@@ -28,7 +28,7 @@
 import argparse
 import os
 
-import defaults
+import params
 
 # Globals
 DATASET = None
@@ -47,6 +47,8 @@ def parse_basic_arguments():
     global DATASET
     global OPTIMISER
     global SEED
+    global PARAMS
+    global LOG
     global LOG_LEVEL
 
     # Parser
@@ -103,71 +105,8 @@ def parse_basic_arguments():
     DATASET = args.dataset
     OPTIMISER = args.optimiser
     SEED = args.seed or None
-    LOG_LEVEL = args.log_level or 2
-
-
-def parse_bhh_arguments():
-    global CREDIT
-    global POPULATION_SIZE
-    global RESELECTION
-    global REANALYSIS
-    global REPLAY
-    global BURN_IN
-
-    # Parser
-    parser = argparse.ArgumentParser(
-        description="Training Feedforward Neural Networks using Bayesian Hyper-Heuristics"
-    )
-    parser.add_argument(
-        "--dataset",
-        type=str,
-        required=True,
-        choices=[
-            "abalone",
-            "adult",
-            "air_quality",
-            "bank",
-            "bike",
-            "car",
-            "iris",
-            "diabetic",
-            "fish_toxicity",
-            "forest_fires",
-            "housing",
-            "mushroom",
-            "parkinsons",
-            "student_performance",
-            "wine_quality",
-        ],
-        help="The dataset to use"
-    )
-    parser.add_argument(
-        "--optimiser",
-        type=str,
-        required=True,
-        choices=[
-            "sgd",
-            "momentum",
-            "nag",
-            "adagrad",
-            "rmsprop",
-            "adadelta",
-            "adam",
-            "pso",
-            "de",
-            "ga",
-            "bhh"
-        ],
-        help="The optimiser to use"
-    )
-    parser.add_argument("--seed", type=int, help="The seed to use")
-    parser.add_argument("--log-level", type=int, help="The log level to use")
-
-    # Arguments
-    args = parser.parse_args()
-    DATASET = args.dataset
-    OPTIMISER = args.optimiser
-    SEED = args.seed or None
+    PARAMS = params.params[DATASET]["optimisers"][OPTIMISER]["params"]
+    LOG = params.params[DATASET]["optimisers"][OPTIMISER]["log"].format(SEED)
     LOG_LEVEL = args.log_level or 2
 
 
@@ -178,7 +117,7 @@ def set_environment_variables():
     os.environ["LOG_LEVEL"] = "{}".format(LOG_LEVEL)
 
 
-def print_banner():
+def print_basic_banner():
     global DATASET
     global OPTIMISER
     global SEED
@@ -187,7 +126,7 @@ def print_banner():
 
     print("")
     print("====================================================================")
-    print("Training Feedforward Neural Networks using Bayesian Hyper-Heuristics")
+    print("Training Feedforward Neural Networks using Heuristics")
     print("====================================================================")
     print("Dataset: {}".format(DATASET))
     print("Optimiser: {}".format(OPTIMISER))
@@ -201,34 +140,13 @@ def print_banner():
 def basic_optimisers():
     global DATASET
     global OPTIMISER
+    global PARAMS
+    global LOG
+    global SEED
 
     # Extract intances
-    Experiment = defaults.defaults[DATASET]["experiment"]
-    Optimiser = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["optimiser"]
-    PARAMS = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["params"]
-    LOG = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["log"]
-
-    experiment = Experiment(
-        optimiser=Optimiser(
-            params=PARAMS
-        ),
-        log_dir=LOG,
-        seed=SEED
-    )
-
-    experiment.initialise()
-    experiment()
-
-
-def bhh_optimiser():
-    global DATASET
-    global OPTIMISER
-
-    # Extract intances
-    Experiment = defaults.defaults[DATASET]["experiment"]
-    Optimiser = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["optimiser"]
-    PARAMS = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["params"]
-    LOG = defaults.defaults[DATASET]["optimisers"][OPTIMISER]["log"]
+    Experiment = params.params[DATASET]["experiment"]
+    Optimiser = params.params[DATASET]["optimisers"][OPTIMISER]["optimiser"]
 
     experiment = Experiment(
         optimiser=Optimiser(
@@ -244,11 +162,9 @@ def bhh_optimiser():
 
 def main():
     parse_basic_arguments()
-    set_environment_variables
-    print_banner()
-
-    if OPTIMISER != "bhh":
-        basic_optimisers()
+    set_environment_variables()
+    print_basic_banner()
+    basic_optimisers()
 
 
 if __name__ == "__main__":

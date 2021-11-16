@@ -53,7 +53,8 @@ class Logger:
             be written. Default = None
         """
         current_time = datetime.now().strftime('%Y%m%d-%H%M%S')
-        self.log_dir = "{}/{}".format(log_dir, current_time)
+        # self.log_dir = "{}/{}".format(log_dir, current_time)
+        self.log_dir = "{}".format(log_dir)
         self.instance = tf.summary.create_file_writer(self.log_dir)
 
     def log_scalar_results(self, name, result, step):
