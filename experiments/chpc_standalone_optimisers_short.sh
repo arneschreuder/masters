@@ -1,9 +1,9 @@
 #!/bin/sh
 
 #PBS -N standalone_optimisers
-#PBS -q normal
+#PBS -q serial
 #PBS -P CSCI0886
-#PBS -l select=1:ncpus=64:mem=32gb:ngpus=0
+#PBS -l select=1:ncpus=24:mem=32gb:ngpus=0
 #PBS -l walltime=1:00:00
 #PBS -o /mnt/lustre/users/aschreuder/stdoutput.out
 #PBS -e /mnt/lustre/users/aschreuder/stderror.err
