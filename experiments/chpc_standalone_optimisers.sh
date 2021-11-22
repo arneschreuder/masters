@@ -1,12 +1,12 @@
 #!/bin/sh
 
-#PBS -N standalone_optimisers
+#PBS -N 10_standalone_optimisers
 #PBS -q serial
 #PBS -P CSCI0886
 #PBS -l select=1:ncpus=24:mem=32gb:ngpus=0
-#PBS -l walltime=12:00:00
-#PBS -o /mnt/lustre/users/aschreuder/stdoutput.out
-#PBS -e /mnt/lustre/users/aschreuder/stderror.err
+#PBS -l walltime=48:00:00
+#PBS -o /mnt/lustre/users/aschreuder/10_stdoutput.out
+#PBS -e /mnt/lustre/users/aschreuder/10_stderror.err
 #PBS -m abe -M arneschreuder@icloud.com
 
 ulimit -s unlimited

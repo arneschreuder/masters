@@ -23,3 +23,23 @@
 - [Air Quality UCI](https://archive.ics.uci.edu/ml/datasets/Air+Quality) - Regression, Multivariate, 15 attr, 10000 instances
 - [Housing](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/) - Regression, Multivariate, 13, 506 -> Note: Does not appear in UCI Dataset list
 - [Student Performance](https://archive.ics.uci.edu/ml/datasets/Student+Performance) - Regression, Multivariate, 33 aatributes, 649 intances
+
+### Dataset Sizes:
+
+| Rows   | Columns | Dataset             |
+| ------ | ------- | ------------------- |
+| 150    | 4       | iris                |
+| 908    | 6       | fish_toxicity       |
+| 417    | 10      | abalone             |
+| 9357   | 12      | air_quality         |
+| 506    | 13      | housing             |
+| 6497   | 13      | wine_quality        |
+| 1728   | 21      | car                 |
+| 5875   | 21      | parkinsons          |
+| 517    | 43      | forest_fires        |
+| 45211  | 51      | bank                |
+| 17379  | 61      | bike                |
+| 1044   | 99      | student_performance |
+| 16281  | 108     | adult               |
+| 8124   | 117     | mushroom            |
+| 101766 | 2369    | diabetic            |

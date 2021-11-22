@@ -1,12 +1,12 @@
 #!/bin/sh
 
-#PBS -N bhh_variant_burn_in
+#PBS -N 2_bhh_variant_burn_in
 #PBS -q serial
 #PBS -P CSCI0886
 #PBS -l select=1:ncpus=24:mem=32gb:ngpus=0
-#PBS -l walltime=12:00:00
-#PBS -o /mnt/lustre/users/aschreuder/stdoutput.out
-#PBS -e /mnt/lustre/users/aschreuder/stderror.err
+#PBS -l walltime=48:00:00
+#PBS -o /mnt/lustre/users/aschreuder/2_stdoutput.out
+#PBS -e /mnt/lustre/users/aschreuder/2_stderror.err
 #PBS -m abe -M arneschreuder@icloud.com
 
 ulimit -s unlimited
