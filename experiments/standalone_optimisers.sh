@@ -11,8 +11,18 @@ CUDA_VISIBLE_DEVICES=""
 RUNS=10
 LOG_LEVEL=0
 
+for ((RUN = 1; RUN <= RUNS; RUN++)); do
+	python \
+		heuristic.py \
+		--dataset=abalone \
+		--optimiser=ga \
+		--seed=$RUN \
+		--log-level=$LOG_LEVEL
+done
+
 # declare -a DATASETS=("abalone" "adult" "air_quality" "bank" "bike" "car" "iris" "diabetic" "fish_toxicity" "forest_fires" "housing" "mushroom" "parkinsons" "student_performance" "wine_quality")
-declare -a DATASETS=("iris" "fish_toxicity" "abalone" "air_quality" "housing" "wine_quality" "car" "parkinsons" "forest_fires" "bank" "bike" "student_performance" "adult" "mushroom" "diabetic")
+# declare -a DATASETS=("iris" "fish_toxicity" "abalone" "air_quality" "housing" "wine_quality" "car" "parkinsons" "forest_fires" "bank" "bike" "student_performance" "adult" "mushroom" "diabetic")
+declare -a DATASETS=("air_quality" "housing" "wine_quality" "car" "parkinsons" "forest_fires" "bank" "bike" "student_performance" "adult" "mushroom" "diabetic")
 declare -a OPTIMISERS=("sgd" "momentum" "nag" "adagrad" "rmsprop" "adadelta" "adam" "pso" "de" "ga")
 
 for DATASET in ${DATASETS[@]}; do
