@@ -7,9 +7,8 @@ set -ex
 
 TF_CPP_MIN_LOG_LEVEL=3
 CUDA_VISIBLE_DEVICES=""
-
-RUNS=10
 LOG_LEVEL=0
+RUNS=10
 
 # declare -a DATASETS=("abalone" "adult" "air_quality" "bank" "bike" "car" "iris" "diabetic" "fish_toxicity" "forest_fires" "housing" "mushroom" "parkinsons" "student_performance" "wine_quality")
 declare -a DATASETS=("iris" "fish_toxicity" "abalone" "air_quality" "housing" "wine_quality" "car" "parkinsons" "forest_fires" "bank" "bike" "student_performance" "adult" "mushroom" "diabetic")
@@ -31,6 +30,7 @@ for DATASET in ${DATASETS[@]}; do
 				--normalise=false \
 				--credit=gbest \
 				--discounted-rewards=true
+			echo "bhh_variant_reanalysis,${DATASET},${REANALYSIS},${RUN}" >>tracking_bhh_variant_reanalysis.txt
 		done
 	done
 done

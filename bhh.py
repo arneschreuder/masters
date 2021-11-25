@@ -47,10 +47,6 @@ NORMALISE = None
 CREDIT = None
 DISCOUNTED_REWARDS = None
 
-# Pragma
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-os.environ["CUDA_VISIBLE_DEVICES"] = ""
-
 
 def parse_bhh_arguments():
     global DATASET
@@ -173,7 +169,7 @@ def parse_bhh_arguments():
     )
     parser.add_argument(
         "--normalise",
-        type=bool,
+        type=lambda x: (str(x).lower() == 'true'),
         required=False,
         default=False,
         help="The normalisation flag"
@@ -226,13 +222,6 @@ def parse_bhh_arguments():
         CREDIT,
         DISCOUNTED_REWARDS,
     )
-
-
-def set_environment_variables():
-    global LOG_LEVEL
-
-    # Set the global log level
-    os.environ["LOG_LEVEL"] = "{}".format(LOG_LEVEL)
 
 
 def print_bhh_banner():
@@ -327,7 +316,6 @@ def bhh_optimiser():
 
 def main():
     parse_bhh_arguments()
-    set_environment_variables()
     print_bhh_banner()
     bhh_optimiser()
 
