@@ -1,12 +1,12 @@
 #!/bin/sh
 
-#PBS -N 5_bhh_variant_normalise
+#PBS -N 10_standalone_optimisers
 #PBS -q serial
 #PBS -P CSCI0886
 #PBS -l select=1:ncpus=24:mem=64gb:ngpus=0
 #PBS -l walltime=48:00:00
-#PBS -o /mnt/lustre/users/aschreuder/5_stdoutput.out
-#PBS -e /mnt/lustre/users/aschreuder/5_stderror.err
+#PBS -o /mnt/lustre/users/aschreuder/10_stdoutput.out
+#PBS -e /mnt/lustre/users/aschreuder/10_stderror.err
 #PBS -m abe -M arneschreuder@icloud.com
 
 ulimit -s unlimited
@@ -20,4 +20,4 @@ module load chpc/python/3.7.0
 
 # Run your script
 source .venv/bin/activate
-bash experiments/bhh_variant_normalise.sh
+bash experiments/scripts/scripts/standalone_optimisers_scripts_scripts.sh

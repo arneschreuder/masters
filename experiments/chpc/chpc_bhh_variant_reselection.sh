@@ -1,12 +1,12 @@
 #!/bin/sh
 
-#PBS -N 3_bhh_variant_credit
+#PBS -N 9_bhh_variant_reselection
 #PBS -q serial
 #PBS -P CSCI0886
 #PBS -l select=1:ncpus=24:mem=64gb:ngpus=0
 #PBS -l walltime=48:00:00
-#PBS -o /mnt/lustre/users/aschreuder/3_stdoutput.out
-#PBS -e /mnt/lustre/users/aschreuder/3_stderror.err
+#PBS -o /mnt/lustre/users/aschreuder/9_stdoutput.out
+#PBS -e /mnt/lustre/users/aschreuder/9_stderror.err
 #PBS -m abe -M arneschreuder@icloud.com
 
 ulimit -s unlimited
@@ -20,4 +20,4 @@ module load chpc/python/3.7.0
 
 # Run your script
 source .venv/bin/activate
-bash experiments/bhh_variant_credit.sh
+bash experiments/scripts/bhh_variant_reselection_scripts.sh
