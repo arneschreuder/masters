@@ -20,4 +20,4 @@ module load chpc/python/3.7.0
 
 # Run your script
 source .venv/bin/activate
-bash experiments/scripts/scripts/standalone_optimisers_scripts_scripts.sh
+bash experiments/scripts/standalone_optimisers_scripts.sh
