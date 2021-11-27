@@ -225,8 +225,8 @@ LOG_LEVEL=0
 # echo 'bhh_variant_discounted_rewards,wine_quality,false,1' >>tracking_bhh_variant_discounted_rewards.txt
 # python bhh.py --dataset=wine_quality --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_discounted_rewards,wine_quality,false,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=wine_quality --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,wine_quality,false,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=wine_quality --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,wine_quality,false,3' >>tracking_bhh_variant_discounted_rewards.txt
 python bhh.py --dataset=wine_quality --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_discounted_rewards,wine_quality,false,4' >>tracking_bhh_variant_discounted_rewards.txt
 python bhh.py --dataset=wine_quality --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

@@ -727,20 +727,20 @@ LOG_LEVEL=0
 # echo 'standalone,air_quality,adam,2' >> tracking_standalone.txt
 # python heuristic.py --dataset=air_quality --optimiser=adam --seed=3 --log-level=0
 # echo 'standalone,air_quality,adam,3' >> tracking_standalone.txt
-python heuristic.py --dataset=air_quality --optimiser=adam --seed=4 --log-level=0
-echo 'standalone,air_quality,adam,4' >>tracking_standalone.txt
-python heuristic.py --dataset=air_quality --optimiser=adam --seed=5 --log-level=0
-echo 'standalone,air_quality,adam,5' >>tracking_standalone.txt
-python heuristic.py --dataset=air_quality --optimiser=adam --seed=6 --log-level=0
-echo 'standalone,air_quality,adam,6' >>tracking_standalone.txt
-python heuristic.py --dataset=air_quality --optimiser=adam --seed=7 --log-level=0
-echo 'standalone,air_quality,adam,7' >>tracking_standalone.txt
-python heuristic.py --dataset=air_quality --optimiser=adam --seed=8 --log-level=0
-echo 'standalone,air_quality,adam,8' >>tracking_standalone.txt
-python heuristic.py --dataset=air_quality --optimiser=adam --seed=9 --log-level=0
-echo 'standalone,air_quality,adam,9' >>tracking_standalone.txt
-python heuristic.py --dataset=air_quality --optimiser=adam --seed=10 --log-level=0
-echo 'standalone,air_quality,adam,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=air_quality --optimiser=adam --seed=4 --log-level=0
+# echo 'standalone,air_quality,adam,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=air_quality --optimiser=adam --seed=5 --log-level=0
+# echo 'standalone,air_quality,adam,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=air_quality --optimiser=adam --seed=6 --log-level=0
+# echo 'standalone,air_quality,adam,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=air_quality --optimiser=adam --seed=7 --log-level=0
+# echo 'standalone,air_quality,adam,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=air_quality --optimiser=adam --seed=8 --log-level=0
+# echo 'standalone,air_quality,adam,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=air_quality --optimiser=adam --seed=9 --log-level=0
+# echo 'standalone,air_quality,adam,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=air_quality --optimiser=adam --seed=10 --log-level=0
+# echo 'standalone,air_quality,adam,10' >>tracking_standalone.txt
 python heuristic.py --dataset=air_quality --optimiser=pso --seed=1 --log-level=0
 echo 'standalone,air_quality,pso,1' >>tracking_standalone.txt
 python heuristic.py --dataset=air_quality --optimiser=pso --seed=2 --log-level=0

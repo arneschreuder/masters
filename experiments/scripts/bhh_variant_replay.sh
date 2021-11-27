@@ -251,8 +251,8 @@ LOG_LEVEL=0
 # echo 'bhh_variant_replay,abalone,50,4' >>tracking_bhh_variant_replay.txt
 # python bhh.py --dataset=abalone --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=50 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_replay,abalone,50,5' >>tracking_bhh_variant_replay.txt
-python bhh.py --dataset=abalone --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=50 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_replay,abalone,50,6' >>tracking_bhh_variant_replay.txt
+# python bhh.py --dataset=abalone --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=50 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_replay,abalone,50,6' >>tracking_bhh_variant_replay.txt
 python bhh.py --dataset=abalone --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=50 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_replay,abalone,50,7' >>tracking_bhh_variant_replay.txt
 python bhh.py --dataset=abalone --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=50 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
