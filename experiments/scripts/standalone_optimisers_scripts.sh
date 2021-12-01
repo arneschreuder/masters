@@ -1035,336 +1035,336 @@ LOG_LEVEL=0
 # echo 'standalone,wine_quality,momentum,6' >>tracking_standalone.txt
 # python heuristic.py --dataset=wine_quality --optimiser=momentum --seed=7 --log-level=0
 # echo 'standalone,wine_quality,momentum,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=momentum --seed=8 --log-level=0
-echo 'standalone,wine_quality,momentum,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=momentum --seed=9 --log-level=0
-echo 'standalone,wine_quality,momentum,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=momentum --seed=10 --log-level=0
-echo 'standalone,wine_quality,momentum,10' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=1 --log-level=0
-echo 'standalone,wine_quality,nag,1' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=2 --log-level=0
-echo 'standalone,wine_quality,nag,2' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=3 --log-level=0
-echo 'standalone,wine_quality,nag,3' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=4 --log-level=0
-echo 'standalone,wine_quality,nag,4' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=5 --log-level=0
-echo 'standalone,wine_quality,nag,5' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=6 --log-level=0
-echo 'standalone,wine_quality,nag,6' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=7 --log-level=0
-echo 'standalone,wine_quality,nag,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=8 --log-level=0
-echo 'standalone,wine_quality,nag,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=9 --log-level=0
-echo 'standalone,wine_quality,nag,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=nag --seed=10 --log-level=0
-echo 'standalone,wine_quality,nag,10' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=1 --log-level=0
-echo 'standalone,wine_quality,adagrad,1' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=2 --log-level=0
-echo 'standalone,wine_quality,adagrad,2' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=3 --log-level=0
-echo 'standalone,wine_quality,adagrad,3' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=4 --log-level=0
-echo 'standalone,wine_quality,adagrad,4' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=5 --log-level=0
-echo 'standalone,wine_quality,adagrad,5' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=6 --log-level=0
-echo 'standalone,wine_quality,adagrad,6' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=7 --log-level=0
-echo 'standalone,wine_quality,adagrad,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=8 --log-level=0
-echo 'standalone,wine_quality,adagrad,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=9 --log-level=0
-echo 'standalone,wine_quality,adagrad,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=10 --log-level=0
-echo 'standalone,wine_quality,adagrad,10' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=1 --log-level=0
-echo 'standalone,wine_quality,rmsprop,1' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=2 --log-level=0
-echo 'standalone,wine_quality,rmsprop,2' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=3 --log-level=0
-echo 'standalone,wine_quality,rmsprop,3' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=4 --log-level=0
-echo 'standalone,wine_quality,rmsprop,4' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=5 --log-level=0
-echo 'standalone,wine_quality,rmsprop,5' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=6 --log-level=0
-echo 'standalone,wine_quality,rmsprop,6' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=7 --log-level=0
-echo 'standalone,wine_quality,rmsprop,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=8 --log-level=0
-echo 'standalone,wine_quality,rmsprop,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=9 --log-level=0
-echo 'standalone,wine_quality,rmsprop,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=10 --log-level=0
-echo 'standalone,wine_quality,rmsprop,10' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=1 --log-level=0
-echo 'standalone,wine_quality,adadelta,1' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=2 --log-level=0
-echo 'standalone,wine_quality,adadelta,2' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=3 --log-level=0
-echo 'standalone,wine_quality,adadelta,3' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=4 --log-level=0
-echo 'standalone,wine_quality,adadelta,4' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=5 --log-level=0
-echo 'standalone,wine_quality,adadelta,5' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=6 --log-level=0
-echo 'standalone,wine_quality,adadelta,6' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=7 --log-level=0
-echo 'standalone,wine_quality,adadelta,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=8 --log-level=0
-echo 'standalone,wine_quality,adadelta,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=9 --log-level=0
-echo 'standalone,wine_quality,adadelta,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=10 --log-level=0
-echo 'standalone,wine_quality,adadelta,10' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=1 --log-level=0
-echo 'standalone,wine_quality,adam,1' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=2 --log-level=0
-echo 'standalone,wine_quality,adam,2' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=3 --log-level=0
-echo 'standalone,wine_quality,adam,3' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=4 --log-level=0
-echo 'standalone,wine_quality,adam,4' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=5 --log-level=0
-echo 'standalone,wine_quality,adam,5' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=6 --log-level=0
-echo 'standalone,wine_quality,adam,6' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=7 --log-level=0
-echo 'standalone,wine_quality,adam,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=8 --log-level=0
-echo 'standalone,wine_quality,adam,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=9 --log-level=0
-echo 'standalone,wine_quality,adam,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=adam --seed=10 --log-level=0
-echo 'standalone,wine_quality,adam,10' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=1 --log-level=0
-echo 'standalone,wine_quality,pso,1' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=2 --log-level=0
-echo 'standalone,wine_quality,pso,2' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=3 --log-level=0
-echo 'standalone,wine_quality,pso,3' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=4 --log-level=0
-echo 'standalone,wine_quality,pso,4' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=5 --log-level=0
-echo 'standalone,wine_quality,pso,5' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=6 --log-level=0
-echo 'standalone,wine_quality,pso,6' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=7 --log-level=0
-echo 'standalone,wine_quality,pso,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=8 --log-level=0
-echo 'standalone,wine_quality,pso,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=9 --log-level=0
-echo 'standalone,wine_quality,pso,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=pso --seed=10 --log-level=0
-echo 'standalone,wine_quality,pso,10' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=1 --log-level=0
-echo 'standalone,wine_quality,de,1' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=2 --log-level=0
-echo 'standalone,wine_quality,de,2' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=3 --log-level=0
-echo 'standalone,wine_quality,de,3' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=4 --log-level=0
-echo 'standalone,wine_quality,de,4' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=5 --log-level=0
-echo 'standalone,wine_quality,de,5' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=6 --log-level=0
-echo 'standalone,wine_quality,de,6' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=7 --log-level=0
-echo 'standalone,wine_quality,de,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=8 --log-level=0
-echo 'standalone,wine_quality,de,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=9 --log-level=0
-echo 'standalone,wine_quality,de,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=de --seed=10 --log-level=0
-echo 'standalone,wine_quality,de,10' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=1 --log-level=0
-echo 'standalone,wine_quality,ga,1' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=2 --log-level=0
-echo 'standalone,wine_quality,ga,2' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=3 --log-level=0
-echo 'standalone,wine_quality,ga,3' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=4 --log-level=0
-echo 'standalone,wine_quality,ga,4' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=5 --log-level=0
-echo 'standalone,wine_quality,ga,5' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=6 --log-level=0
-echo 'standalone,wine_quality,ga,6' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=7 --log-level=0
-echo 'standalone,wine_quality,ga,7' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=8 --log-level=0
-echo 'standalone,wine_quality,ga,8' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=9 --log-level=0
-echo 'standalone,wine_quality,ga,9' >>tracking_standalone.txt
-python heuristic.py --dataset=wine_quality --optimiser=ga --seed=10 --log-level=0
-echo 'standalone,wine_quality,ga,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=1 --log-level=0
-echo 'standalone,car,sgd,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=2 --log-level=0
-echo 'standalone,car,sgd,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=3 --log-level=0
-echo 'standalone,car,sgd,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=4 --log-level=0
-echo 'standalone,car,sgd,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=5 --log-level=0
-echo 'standalone,car,sgd,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=6 --log-level=0
-echo 'standalone,car,sgd,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=7 --log-level=0
-echo 'standalone,car,sgd,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=8 --log-level=0
-echo 'standalone,car,sgd,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=9 --log-level=0
-echo 'standalone,car,sgd,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=sgd --seed=10 --log-level=0
-echo 'standalone,car,sgd,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=1 --log-level=0
-echo 'standalone,car,momentum,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=2 --log-level=0
-echo 'standalone,car,momentum,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=3 --log-level=0
-echo 'standalone,car,momentum,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=4 --log-level=0
-echo 'standalone,car,momentum,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=5 --log-level=0
-echo 'standalone,car,momentum,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=6 --log-level=0
-echo 'standalone,car,momentum,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=7 --log-level=0
-echo 'standalone,car,momentum,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=8 --log-level=0
-echo 'standalone,car,momentum,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=9 --log-level=0
-echo 'standalone,car,momentum,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=momentum --seed=10 --log-level=0
-echo 'standalone,car,momentum,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=1 --log-level=0
-echo 'standalone,car,nag,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=2 --log-level=0
-echo 'standalone,car,nag,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=3 --log-level=0
-echo 'standalone,car,nag,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=4 --log-level=0
-echo 'standalone,car,nag,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=5 --log-level=0
-echo 'standalone,car,nag,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=6 --log-level=0
-echo 'standalone,car,nag,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=7 --log-level=0
-echo 'standalone,car,nag,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=8 --log-level=0
-echo 'standalone,car,nag,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=9 --log-level=0
-echo 'standalone,car,nag,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=nag --seed=10 --log-level=0
-echo 'standalone,car,nag,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=1 --log-level=0
-echo 'standalone,car,adagrad,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=2 --log-level=0
-echo 'standalone,car,adagrad,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=3 --log-level=0
-echo 'standalone,car,adagrad,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=4 --log-level=0
-echo 'standalone,car,adagrad,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=5 --log-level=0
-echo 'standalone,car,adagrad,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=6 --log-level=0
-echo 'standalone,car,adagrad,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=7 --log-level=0
-echo 'standalone,car,adagrad,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=8 --log-level=0
-echo 'standalone,car,adagrad,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=9 --log-level=0
-echo 'standalone,car,adagrad,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adagrad --seed=10 --log-level=0
-echo 'standalone,car,adagrad,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=1 --log-level=0
-echo 'standalone,car,rmsprop,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=2 --log-level=0
-echo 'standalone,car,rmsprop,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=3 --log-level=0
-echo 'standalone,car,rmsprop,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=4 --log-level=0
-echo 'standalone,car,rmsprop,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=5 --log-level=0
-echo 'standalone,car,rmsprop,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=6 --log-level=0
-echo 'standalone,car,rmsprop,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=7 --log-level=0
-echo 'standalone,car,rmsprop,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=8 --log-level=0
-echo 'standalone,car,rmsprop,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=9 --log-level=0
-echo 'standalone,car,rmsprop,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=rmsprop --seed=10 --log-level=0
-echo 'standalone,car,rmsprop,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=1 --log-level=0
-echo 'standalone,car,adadelta,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=2 --log-level=0
-echo 'standalone,car,adadelta,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=3 --log-level=0
-echo 'standalone,car,adadelta,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=4 --log-level=0
-echo 'standalone,car,adadelta,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=5 --log-level=0
-echo 'standalone,car,adadelta,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=6 --log-level=0
-echo 'standalone,car,adadelta,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=7 --log-level=0
-echo 'standalone,car,adadelta,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=8 --log-level=0
-echo 'standalone,car,adadelta,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=9 --log-level=0
-echo 'standalone,car,adadelta,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adadelta --seed=10 --log-level=0
-echo 'standalone,car,adadelta,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=1 --log-level=0
-echo 'standalone,car,adam,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=2 --log-level=0
-echo 'standalone,car,adam,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=3 --log-level=0
-echo 'standalone,car,adam,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=4 --log-level=0
-echo 'standalone,car,adam,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=5 --log-level=0
-echo 'standalone,car,adam,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=6 --log-level=0
-echo 'standalone,car,adam,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=7 --log-level=0
-echo 'standalone,car,adam,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=8 --log-level=0
-echo 'standalone,car,adam,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=9 --log-level=0
-echo 'standalone,car,adam,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=adam --seed=10 --log-level=0
-echo 'standalone,car,adam,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=1 --log-level=0
-echo 'standalone,car,pso,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=2 --log-level=0
-echo 'standalone,car,pso,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=3 --log-level=0
-echo 'standalone,car,pso,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=4 --log-level=0
-echo 'standalone,car,pso,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=5 --log-level=0
-echo 'standalone,car,pso,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=6 --log-level=0
-echo 'standalone,car,pso,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=7 --log-level=0
-echo 'standalone,car,pso,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=8 --log-level=0
-echo 'standalone,car,pso,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=9 --log-level=0
-echo 'standalone,car,pso,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=pso --seed=10 --log-level=0
-echo 'standalone,car,pso,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=1 --log-level=0
-echo 'standalone,car,de,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=2 --log-level=0
-echo 'standalone,car,de,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=momentum --seed=8 --log-level=0
+# echo 'standalone,wine_quality,momentum,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=momentum --seed=9 --log-level=0
+# echo 'standalone,wine_quality,momentum,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=momentum --seed=10 --log-level=0
+# echo 'standalone,wine_quality,momentum,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=1 --log-level=0
+# echo 'standalone,wine_quality,nag,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=2 --log-level=0
+# echo 'standalone,wine_quality,nag,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=3 --log-level=0
+# echo 'standalone,wine_quality,nag,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=4 --log-level=0
+# echo 'standalone,wine_quality,nag,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=5 --log-level=0
+# echo 'standalone,wine_quality,nag,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=6 --log-level=0
+# echo 'standalone,wine_quality,nag,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=7 --log-level=0
+# echo 'standalone,wine_quality,nag,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=8 --log-level=0
+# echo 'standalone,wine_quality,nag,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=9 --log-level=0
+# echo 'standalone,wine_quality,nag,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=nag --seed=10 --log-level=0
+# echo 'standalone,wine_quality,nag,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=1 --log-level=0
+# echo 'standalone,wine_quality,adagrad,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=2 --log-level=0
+# echo 'standalone,wine_quality,adagrad,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=3 --log-level=0
+# echo 'standalone,wine_quality,adagrad,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=4 --log-level=0
+# echo 'standalone,wine_quality,adagrad,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=5 --log-level=0
+# echo 'standalone,wine_quality,adagrad,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=6 --log-level=0
+# echo 'standalone,wine_quality,adagrad,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=7 --log-level=0
+# echo 'standalone,wine_quality,adagrad,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=8 --log-level=0
+# echo 'standalone,wine_quality,adagrad,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=9 --log-level=0
+# echo 'standalone,wine_quality,adagrad,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adagrad --seed=10 --log-level=0
+# echo 'standalone,wine_quality,adagrad,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=1 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=2 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=3 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=4 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=5 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=6 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=7 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=8 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=9 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=rmsprop --seed=10 --log-level=0
+# echo 'standalone,wine_quality,rmsprop,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=1 --log-level=0
+# echo 'standalone,wine_quality,adadelta,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=2 --log-level=0
+# echo 'standalone,wine_quality,adadelta,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=3 --log-level=0
+# echo 'standalone,wine_quality,adadelta,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=4 --log-level=0
+# echo 'standalone,wine_quality,adadelta,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=5 --log-level=0
+# echo 'standalone,wine_quality,adadelta,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=6 --log-level=0
+# echo 'standalone,wine_quality,adadelta,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=7 --log-level=0
+# echo 'standalone,wine_quality,adadelta,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=8 --log-level=0
+# echo 'standalone,wine_quality,adadelta,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=9 --log-level=0
+# echo 'standalone,wine_quality,adadelta,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adadelta --seed=10 --log-level=0
+# echo 'standalone,wine_quality,adadelta,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=1 --log-level=0
+# echo 'standalone,wine_quality,adam,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=2 --log-level=0
+# echo 'standalone,wine_quality,adam,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=3 --log-level=0
+# echo 'standalone,wine_quality,adam,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=4 --log-level=0
+# echo 'standalone,wine_quality,adam,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=5 --log-level=0
+# echo 'standalone,wine_quality,adam,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=6 --log-level=0
+# echo 'standalone,wine_quality,adam,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=7 --log-level=0
+# echo 'standalone,wine_quality,adam,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=8 --log-level=0
+# echo 'standalone,wine_quality,adam,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=9 --log-level=0
+# echo 'standalone,wine_quality,adam,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=adam --seed=10 --log-level=0
+# echo 'standalone,wine_quality,adam,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=1 --log-level=0
+# echo 'standalone,wine_quality,pso,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=2 --log-level=0
+# echo 'standalone,wine_quality,pso,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=3 --log-level=0
+# echo 'standalone,wine_quality,pso,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=4 --log-level=0
+# echo 'standalone,wine_quality,pso,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=5 --log-level=0
+# echo 'standalone,wine_quality,pso,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=6 --log-level=0
+# echo 'standalone,wine_quality,pso,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=7 --log-level=0
+# echo 'standalone,wine_quality,pso,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=8 --log-level=0
+# echo 'standalone,wine_quality,pso,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=9 --log-level=0
+# echo 'standalone,wine_quality,pso,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=pso --seed=10 --log-level=0
+# echo 'standalone,wine_quality,pso,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=1 --log-level=0
+# echo 'standalone,wine_quality,de,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=2 --log-level=0
+# echo 'standalone,wine_quality,de,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=3 --log-level=0
+# echo 'standalone,wine_quality,de,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=4 --log-level=0
+# echo 'standalone,wine_quality,de,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=5 --log-level=0
+# echo 'standalone,wine_quality,de,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=6 --log-level=0
+# echo 'standalone,wine_quality,de,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=7 --log-level=0
+# echo 'standalone,wine_quality,de,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=8 --log-level=0
+# echo 'standalone,wine_quality,de,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=9 --log-level=0
+# echo 'standalone,wine_quality,de,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=de --seed=10 --log-level=0
+# echo 'standalone,wine_quality,de,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=1 --log-level=0
+# echo 'standalone,wine_quality,ga,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=2 --log-level=0
+# echo 'standalone,wine_quality,ga,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=3 --log-level=0
+# echo 'standalone,wine_quality,ga,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=4 --log-level=0
+# echo 'standalone,wine_quality,ga,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=5 --log-level=0
+# echo 'standalone,wine_quality,ga,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=6 --log-level=0
+# echo 'standalone,wine_quality,ga,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=7 --log-level=0
+# echo 'standalone,wine_quality,ga,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=8 --log-level=0
+# echo 'standalone,wine_quality,ga,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=9 --log-level=0
+# echo 'standalone,wine_quality,ga,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=wine_quality --optimiser=ga --seed=10 --log-level=0
+# echo 'standalone,wine_quality,ga,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=1 --log-level=0
+# echo 'standalone,car,sgd,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=2 --log-level=0
+# echo 'standalone,car,sgd,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=3 --log-level=0
+# echo 'standalone,car,sgd,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=4 --log-level=0
+# echo 'standalone,car,sgd,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=5 --log-level=0
+# echo 'standalone,car,sgd,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=6 --log-level=0
+# echo 'standalone,car,sgd,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=7 --log-level=0
+# echo 'standalone,car,sgd,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=8 --log-level=0
+# echo 'standalone,car,sgd,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=9 --log-level=0
+# echo 'standalone,car,sgd,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=sgd --seed=10 --log-level=0
+# echo 'standalone,car,sgd,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=1 --log-level=0
+# echo 'standalone,car,momentum,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=2 --log-level=0
+# echo 'standalone,car,momentum,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=3 --log-level=0
+# echo 'standalone,car,momentum,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=4 --log-level=0
+# echo 'standalone,car,momentum,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=5 --log-level=0
+# echo 'standalone,car,momentum,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=6 --log-level=0
+# echo 'standalone,car,momentum,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=7 --log-level=0
+# echo 'standalone,car,momentum,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=8 --log-level=0
+# echo 'standalone,car,momentum,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=9 --log-level=0
+# echo 'standalone,car,momentum,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=momentum --seed=10 --log-level=0
+# echo 'standalone,car,momentum,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=1 --log-level=0
+# echo 'standalone,car,nag,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=2 --log-level=0
+# echo 'standalone,car,nag,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=3 --log-level=0
+# echo 'standalone,car,nag,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=4 --log-level=0
+# echo 'standalone,car,nag,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=5 --log-level=0
+# echo 'standalone,car,nag,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=6 --log-level=0
+# echo 'standalone,car,nag,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=7 --log-level=0
+# echo 'standalone,car,nag,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=8 --log-level=0
+# echo 'standalone,car,nag,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=9 --log-level=0
+# echo 'standalone,car,nag,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=nag --seed=10 --log-level=0
+# echo 'standalone,car,nag,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=1 --log-level=0
+# echo 'standalone,car,adagrad,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=2 --log-level=0
+# echo 'standalone,car,adagrad,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=3 --log-level=0
+# echo 'standalone,car,adagrad,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=4 --log-level=0
+# echo 'standalone,car,adagrad,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=5 --log-level=0
+# echo 'standalone,car,adagrad,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=6 --log-level=0
+# echo 'standalone,car,adagrad,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=7 --log-level=0
+# echo 'standalone,car,adagrad,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=8 --log-level=0
+# echo 'standalone,car,adagrad,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=9 --log-level=0
+# echo 'standalone,car,adagrad,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adagrad --seed=10 --log-level=0
+# echo 'standalone,car,adagrad,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=1 --log-level=0
+# echo 'standalone,car,rmsprop,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=2 --log-level=0
+# echo 'standalone,car,rmsprop,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=3 --log-level=0
+# echo 'standalone,car,rmsprop,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=4 --log-level=0
+# echo 'standalone,car,rmsprop,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=5 --log-level=0
+# echo 'standalone,car,rmsprop,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=6 --log-level=0
+# echo 'standalone,car,rmsprop,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=7 --log-level=0
+# echo 'standalone,car,rmsprop,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=8 --log-level=0
+# echo 'standalone,car,rmsprop,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=9 --log-level=0
+# echo 'standalone,car,rmsprop,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=rmsprop --seed=10 --log-level=0
+# echo 'standalone,car,rmsprop,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=1 --log-level=0
+# echo 'standalone,car,adadelta,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=2 --log-level=0
+# echo 'standalone,car,adadelta,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=3 --log-level=0
+# echo 'standalone,car,adadelta,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=4 --log-level=0
+# echo 'standalone,car,adadelta,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=5 --log-level=0
+# echo 'standalone,car,adadelta,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=6 --log-level=0
+# echo 'standalone,car,adadelta,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=7 --log-level=0
+# echo 'standalone,car,adadelta,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=8 --log-level=0
+# echo 'standalone,car,adadelta,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=9 --log-level=0
+# echo 'standalone,car,adadelta,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adadelta --seed=10 --log-level=0
+# echo 'standalone,car,adadelta,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=1 --log-level=0
+# echo 'standalone,car,adam,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=2 --log-level=0
+# echo 'standalone,car,adam,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=3 --log-level=0
+# echo 'standalone,car,adam,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=4 --log-level=0
+# echo 'standalone,car,adam,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=5 --log-level=0
+# echo 'standalone,car,adam,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=6 --log-level=0
+# echo 'standalone,car,adam,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=7 --log-level=0
+# echo 'standalone,car,adam,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=8 --log-level=0
+# echo 'standalone,car,adam,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=9 --log-level=0
+# echo 'standalone,car,adam,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=adam --seed=10 --log-level=0
+# echo 'standalone,car,adam,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=1 --log-level=0
+# echo 'standalone,car,pso,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=2 --log-level=0
+# echo 'standalone,car,pso,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=3 --log-level=0
+# echo 'standalone,car,pso,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=4 --log-level=0
+# echo 'standalone,car,pso,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=5 --log-level=0
+# echo 'standalone,car,pso,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=6 --log-level=0
+# echo 'standalone,car,pso,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=7 --log-level=0
+# echo 'standalone,car,pso,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=8 --log-level=0
+# echo 'standalone,car,pso,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=9 --log-level=0
+# echo 'standalone,car,pso,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=pso --seed=10 --log-level=0
+# echo 'standalone,car,pso,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=1 --log-level=0
+# echo 'standalone,car,de,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=2 --log-level=0
+# echo 'standalone,car,de,2' >>tracking_standalone.txt
 python heuristic.py --dataset=car --optimiser=de --seed=3 --log-level=0
 echo 'standalone,car,de,3' >>tracking_standalone.txt
 python heuristic.py --dataset=car --optimiser=de --seed=4 --log-level=0

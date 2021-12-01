@@ -221,52 +221,52 @@ LOG_LEVEL=0
 # echo 'bhh_variant_population,abalone,5,9' >>tracking_bhh_variant_population.txt
 # python bhh.py --dataset=abalone --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_population,abalone,5,10' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=1 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,1' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=2 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,2' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=3 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,3' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=4 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,4' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=5 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,5' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=6 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,6' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=7 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,7' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=8 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,8' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=9 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,9' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=10 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,10,10' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=1 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,1' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=2 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,2' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=3 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,3' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=4 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,4' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=5 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,5' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=6 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,6' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=7 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,7' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=8 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,8' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=9 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,9' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=10 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,20,10' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=1 --log-level=0 --population-size=50 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,50,1' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=2 --log-level=0 --population-size=50 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,50,2' >>tracking_bhh_variant_population.txt
-python bhh.py --dataset=abalone --seed=3 --log-level=0 --population-size=50 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_population,abalone,50,3' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=1 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,1' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=2 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,2' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=3 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,3' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=4 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,4' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=5 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,5' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=6 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,6' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=7 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,7' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=8 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,8' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=9 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,9' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=10 --log-level=0 --population-size=10 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,10,10' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=1 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,1' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=2 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,2' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=3 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,3' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=4 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,4' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=5 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,5' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=6 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,6' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=7 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,7' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=8 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,8' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=9 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,9' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=10 --log-level=0 --population-size=20 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,20,10' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=1 --log-level=0 --population-size=50 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,50,1' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=2 --log-level=0 --population-size=50 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,50,2' >>tracking_bhh_variant_population.txt
+# python bhh.py --dataset=abalone --seed=3 --log-level=0 --population-size=50 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_population,abalone,50,3' >>tracking_bhh_variant_population.txt
 python bhh.py --dataset=abalone --seed=4 --log-level=0 --population-size=50 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_population,abalone,50,4' >>tracking_bhh_variant_population.txt
 python bhh.py --dataset=abalone --seed=5 --log-level=0 --population-size=50 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

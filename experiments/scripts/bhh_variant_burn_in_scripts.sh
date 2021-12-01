@@ -325,190 +325,190 @@ LOG_LEVEL=0
 # echo 'bhh_variant_burn_in,air_quality,10,1' >>tracking_bhh_variant_burn_in.txt
 # python bhh.py --dataset=air_quality --seed=2 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_burn_in,air_quality,10,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,10,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=4 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,10,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,10,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,10,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,10,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,10,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,10,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,10,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=1 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=2 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=3 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=4 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,20,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=1 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=2 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=3 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=4 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,50,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=1 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=2 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=3 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=4 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,air_quality,100,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,0,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,10,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,20,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,50,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,housing,100,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=wine_quality --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,wine_quality,0,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=wine_quality --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,wine_quality,0,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=wine_quality --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,wine_quality,0,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=wine_quality --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,wine_quality,0,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,10,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=4 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,10,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,10,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,10,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,10,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,10,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,10,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,10,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=1 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=2 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=3 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=4 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,20,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=1 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=2 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=3 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=4 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,50,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=1 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=2 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=3 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=4 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,air_quality,100,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,0,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,10,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,20,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,50,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=1 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=2 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=3 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=4 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=5 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=6 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=7 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=8 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=9 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=housing --seed=10 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,housing,100,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=wine_quality --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,wine_quality,0,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=wine_quality --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,wine_quality,0,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=wine_quality --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,wine_quality,0,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=wine_quality --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,wine_quality,0,4' >>tracking_bhh_variant_burn_in.txt
 python bhh.py --dataset=wine_quality --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_burn_in,wine_quality,0,5' >>tracking_bhh_variant_burn_in.txt
 python bhh.py --dataset=wine_quality --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

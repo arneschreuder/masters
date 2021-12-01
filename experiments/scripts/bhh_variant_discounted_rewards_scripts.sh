@@ -227,148 +227,148 @@ LOG_LEVEL=0
 # echo 'bhh_variant_discounted_rewards,wine_quality,false,2' >>tracking_bhh_variant_discounted_rewards.txt
 # python bhh.py --dataset=wine_quality --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_discounted_rewards,wine_quality,false,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=wine_quality --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,wine_quality,false,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=wine_quality --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,wine_quality,false,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=wine_quality --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,wine_quality,false,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=wine_quality --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,wine_quality,false,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=wine_quality --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,wine_quality,false,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=wine_quality --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,wine_quality,false,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=wine_quality --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,wine_quality,false,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,true,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=car --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,car,false,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,true,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,parkinsons,false,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,true,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,forest_fires,false,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,bank,true,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=bank --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,bank,true,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=bank --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,bank,true,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=bank --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,bank,true,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=wine_quality --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,wine_quality,false,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=wine_quality --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,wine_quality,false,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=wine_quality --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,wine_quality,false,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=wine_quality --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,wine_quality,false,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=wine_quality --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,wine_quality,false,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=wine_quality --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,wine_quality,false,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=wine_quality --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,wine_quality,false,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,true,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=car --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,car,false,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,true,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,parkinsons,false,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,true,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,forest_fires,false,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,bank,true,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=bank --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,bank,true,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=bank --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,bank,true,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=bank --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,bank,true,4' >>tracking_bhh_variant_discounted_rewards.txt
 python bhh.py --dataset=bank --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_discounted_rewards,bank,true,5' >>tracking_bhh_variant_discounted_rewards.txt
 python bhh.py --dataset=bank --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

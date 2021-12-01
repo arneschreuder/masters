@@ -201,46 +201,46 @@ LOG_LEVEL=0
 # echo 'bhh_baseline,bank,9' >>tracking_bhh_baseline.txt
 # python bhh.py --dataset=bank --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_baseline,bank,10' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,1' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,2' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,3' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,4' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,5' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,6' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,7' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,8' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,9' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=bike --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,bike,10' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,1' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,2' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,3' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,4' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,5' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,6' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,7' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,8' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,9' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=student_performance --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,student_performance,10' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,1' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,2' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,3' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,4' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,5' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,6' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,7' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,8' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,9' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=bike --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,bike,10' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,1' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,2' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,3' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,4' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,5' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,6' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,7' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,8' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,9' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=student_performance --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,student_performance,10' >>tracking_bhh_baseline.txt
 python bhh.py --dataset=adult --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_baseline,adult,1' >>tracking_bhh_baseline.txt
 python bhh.py --dataset=adult --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
