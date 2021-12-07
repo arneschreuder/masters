@@ -1365,40 +1365,40 @@ LOG_LEVEL=0
 # echo 'standalone,car,de,1' >>tracking_standalone.txt
 # python heuristic.py --dataset=car --optimiser=de --seed=2 --log-level=0
 # echo 'standalone,car,de,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=3 --log-level=0
-echo 'standalone,car,de,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=4 --log-level=0
-echo 'standalone,car,de,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=5 --log-level=0
-echo 'standalone,car,de,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=6 --log-level=0
-echo 'standalone,car,de,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=7 --log-level=0
-echo 'standalone,car,de,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=8 --log-level=0
-echo 'standalone,car,de,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=9 --log-level=0
-echo 'standalone,car,de,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=de --seed=10 --log-level=0
-echo 'standalone,car,de,10' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=1 --log-level=0
-echo 'standalone,car,ga,1' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=2 --log-level=0
-echo 'standalone,car,ga,2' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=3 --log-level=0
-echo 'standalone,car,ga,3' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=4 --log-level=0
-echo 'standalone,car,ga,4' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=5 --log-level=0
-echo 'standalone,car,ga,5' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=6 --log-level=0
-echo 'standalone,car,ga,6' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=7 --log-level=0
-echo 'standalone,car,ga,7' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=8 --log-level=0
-echo 'standalone,car,ga,8' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=9 --log-level=0
-echo 'standalone,car,ga,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=3 --log-level=0
+# echo 'standalone,car,de,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=4 --log-level=0
+# echo 'standalone,car,de,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=5 --log-level=0
+# echo 'standalone,car,de,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=6 --log-level=0
+# echo 'standalone,car,de,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=7 --log-level=0
+# echo 'standalone,car,de,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=8 --log-level=0
+# echo 'standalone,car,de,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=9 --log-level=0
+# echo 'standalone,car,de,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=de --seed=10 --log-level=0
+# echo 'standalone,car,de,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=1 --log-level=0
+# echo 'standalone,car,ga,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=2 --log-level=0
+# echo 'standalone,car,ga,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=3 --log-level=0
+# echo 'standalone,car,ga,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=4 --log-level=0
+# echo 'standalone,car,ga,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=5 --log-level=0
+# echo 'standalone,car,ga,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=6 --log-level=0
+# echo 'standalone,car,ga,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=7 --log-level=0
+# echo 'standalone,car,ga,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=8 --log-level=0
+# echo 'standalone,car,ga,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=9 --log-level=0
+# echo 'standalone,car,ga,9' >>tracking_standalone.txt
 python heuristic.py --dataset=car --optimiser=ga --seed=10 --log-level=0
 echo 'standalone,car,ga,10' >>tracking_standalone.txt
 python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=1 --log-level=0
