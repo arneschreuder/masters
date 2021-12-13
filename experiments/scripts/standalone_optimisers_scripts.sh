@@ -1399,448 +1399,448 @@ LOG_LEVEL=0
 # echo 'standalone,car,ga,8' >>tracking_standalone.txt
 # python heuristic.py --dataset=car --optimiser=ga --seed=9 --log-level=0
 # echo 'standalone,car,ga,9' >>tracking_standalone.txt
-python heuristic.py --dataset=car --optimiser=ga --seed=10 --log-level=0
-echo 'standalone,car,ga,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=1 --log-level=0
-echo 'standalone,parkinsons,sgd,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=2 --log-level=0
-echo 'standalone,parkinsons,sgd,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=3 --log-level=0
-echo 'standalone,parkinsons,sgd,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=4 --log-level=0
-echo 'standalone,parkinsons,sgd,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=5 --log-level=0
-echo 'standalone,parkinsons,sgd,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=6 --log-level=0
-echo 'standalone,parkinsons,sgd,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=7 --log-level=0
-echo 'standalone,parkinsons,sgd,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=8 --log-level=0
-echo 'standalone,parkinsons,sgd,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=9 --log-level=0
-echo 'standalone,parkinsons,sgd,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=10 --log-level=0
-echo 'standalone,parkinsons,sgd,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=1 --log-level=0
-echo 'standalone,parkinsons,momentum,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=2 --log-level=0
-echo 'standalone,parkinsons,momentum,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=3 --log-level=0
-echo 'standalone,parkinsons,momentum,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=4 --log-level=0
-echo 'standalone,parkinsons,momentum,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=5 --log-level=0
-echo 'standalone,parkinsons,momentum,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=6 --log-level=0
-echo 'standalone,parkinsons,momentum,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=7 --log-level=0
-echo 'standalone,parkinsons,momentum,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=8 --log-level=0
-echo 'standalone,parkinsons,momentum,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=9 --log-level=0
-echo 'standalone,parkinsons,momentum,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=10 --log-level=0
-echo 'standalone,parkinsons,momentum,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=1 --log-level=0
-echo 'standalone,parkinsons,nag,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=2 --log-level=0
-echo 'standalone,parkinsons,nag,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=3 --log-level=0
-echo 'standalone,parkinsons,nag,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=4 --log-level=0
-echo 'standalone,parkinsons,nag,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=5 --log-level=0
-echo 'standalone,parkinsons,nag,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=6 --log-level=0
-echo 'standalone,parkinsons,nag,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=7 --log-level=0
-echo 'standalone,parkinsons,nag,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=8 --log-level=0
-echo 'standalone,parkinsons,nag,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=9 --log-level=0
-echo 'standalone,parkinsons,nag,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=nag --seed=10 --log-level=0
-echo 'standalone,parkinsons,nag,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=1 --log-level=0
-echo 'standalone,parkinsons,adagrad,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=2 --log-level=0
-echo 'standalone,parkinsons,adagrad,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=3 --log-level=0
-echo 'standalone,parkinsons,adagrad,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=4 --log-level=0
-echo 'standalone,parkinsons,adagrad,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=5 --log-level=0
-echo 'standalone,parkinsons,adagrad,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=6 --log-level=0
-echo 'standalone,parkinsons,adagrad,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=7 --log-level=0
-echo 'standalone,parkinsons,adagrad,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=8 --log-level=0
-echo 'standalone,parkinsons,adagrad,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=9 --log-level=0
-echo 'standalone,parkinsons,adagrad,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=10 --log-level=0
-echo 'standalone,parkinsons,adagrad,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=1 --log-level=0
-echo 'standalone,parkinsons,rmsprop,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=2 --log-level=0
-echo 'standalone,parkinsons,rmsprop,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=3 --log-level=0
-echo 'standalone,parkinsons,rmsprop,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=4 --log-level=0
-echo 'standalone,parkinsons,rmsprop,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=5 --log-level=0
-echo 'standalone,parkinsons,rmsprop,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=6 --log-level=0
-echo 'standalone,parkinsons,rmsprop,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=7 --log-level=0
-echo 'standalone,parkinsons,rmsprop,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=8 --log-level=0
-echo 'standalone,parkinsons,rmsprop,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=9 --log-level=0
-echo 'standalone,parkinsons,rmsprop,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=10 --log-level=0
-echo 'standalone,parkinsons,rmsprop,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=1 --log-level=0
-echo 'standalone,parkinsons,adadelta,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=2 --log-level=0
-echo 'standalone,parkinsons,adadelta,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=3 --log-level=0
-echo 'standalone,parkinsons,adadelta,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=4 --log-level=0
-echo 'standalone,parkinsons,adadelta,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=5 --log-level=0
-echo 'standalone,parkinsons,adadelta,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=6 --log-level=0
-echo 'standalone,parkinsons,adadelta,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=7 --log-level=0
-echo 'standalone,parkinsons,adadelta,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=8 --log-level=0
-echo 'standalone,parkinsons,adadelta,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=9 --log-level=0
-echo 'standalone,parkinsons,adadelta,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=10 --log-level=0
-echo 'standalone,parkinsons,adadelta,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=1 --log-level=0
-echo 'standalone,parkinsons,adam,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=2 --log-level=0
-echo 'standalone,parkinsons,adam,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=3 --log-level=0
-echo 'standalone,parkinsons,adam,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=4 --log-level=0
-echo 'standalone,parkinsons,adam,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=5 --log-level=0
-echo 'standalone,parkinsons,adam,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=6 --log-level=0
-echo 'standalone,parkinsons,adam,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=7 --log-level=0
-echo 'standalone,parkinsons,adam,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=8 --log-level=0
-echo 'standalone,parkinsons,adam,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=9 --log-level=0
-echo 'standalone,parkinsons,adam,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=adam --seed=10 --log-level=0
-echo 'standalone,parkinsons,adam,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=1 --log-level=0
-echo 'standalone,parkinsons,pso,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=2 --log-level=0
-echo 'standalone,parkinsons,pso,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=3 --log-level=0
-echo 'standalone,parkinsons,pso,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=4 --log-level=0
-echo 'standalone,parkinsons,pso,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=5 --log-level=0
-echo 'standalone,parkinsons,pso,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=6 --log-level=0
-echo 'standalone,parkinsons,pso,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=7 --log-level=0
-echo 'standalone,parkinsons,pso,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=8 --log-level=0
-echo 'standalone,parkinsons,pso,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=9 --log-level=0
-echo 'standalone,parkinsons,pso,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=pso --seed=10 --log-level=0
-echo 'standalone,parkinsons,pso,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=1 --log-level=0
-echo 'standalone,parkinsons,de,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=2 --log-level=0
-echo 'standalone,parkinsons,de,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=3 --log-level=0
-echo 'standalone,parkinsons,de,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=4 --log-level=0
-echo 'standalone,parkinsons,de,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=5 --log-level=0
-echo 'standalone,parkinsons,de,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=6 --log-level=0
-echo 'standalone,parkinsons,de,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=7 --log-level=0
-echo 'standalone,parkinsons,de,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=8 --log-level=0
-echo 'standalone,parkinsons,de,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=9 --log-level=0
-echo 'standalone,parkinsons,de,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=de --seed=10 --log-level=0
-echo 'standalone,parkinsons,de,10' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=1 --log-level=0
-echo 'standalone,parkinsons,ga,1' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=2 --log-level=0
-echo 'standalone,parkinsons,ga,2' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=3 --log-level=0
-echo 'standalone,parkinsons,ga,3' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=4 --log-level=0
-echo 'standalone,parkinsons,ga,4' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=5 --log-level=0
-echo 'standalone,parkinsons,ga,5' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=6 --log-level=0
-echo 'standalone,parkinsons,ga,6' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=7 --log-level=0
-echo 'standalone,parkinsons,ga,7' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=8 --log-level=0
-echo 'standalone,parkinsons,ga,8' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=9 --log-level=0
-echo 'standalone,parkinsons,ga,9' >>tracking_standalone.txt
-python heuristic.py --dataset=parkinsons --optimiser=ga --seed=10 --log-level=0
-echo 'standalone,parkinsons,ga,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=1 --log-level=0
-echo 'standalone,forest_fires,sgd,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=2 --log-level=0
-echo 'standalone,forest_fires,sgd,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=3 --log-level=0
-echo 'standalone,forest_fires,sgd,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=4 --log-level=0
-echo 'standalone,forest_fires,sgd,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=5 --log-level=0
-echo 'standalone,forest_fires,sgd,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=6 --log-level=0
-echo 'standalone,forest_fires,sgd,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=7 --log-level=0
-echo 'standalone,forest_fires,sgd,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=8 --log-level=0
-echo 'standalone,forest_fires,sgd,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=9 --log-level=0
-echo 'standalone,forest_fires,sgd,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=10 --log-level=0
-echo 'standalone,forest_fires,sgd,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=1 --log-level=0
-echo 'standalone,forest_fires,momentum,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=2 --log-level=0
-echo 'standalone,forest_fires,momentum,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=3 --log-level=0
-echo 'standalone,forest_fires,momentum,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=4 --log-level=0
-echo 'standalone,forest_fires,momentum,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=5 --log-level=0
-echo 'standalone,forest_fires,momentum,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=6 --log-level=0
-echo 'standalone,forest_fires,momentum,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=7 --log-level=0
-echo 'standalone,forest_fires,momentum,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=8 --log-level=0
-echo 'standalone,forest_fires,momentum,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=9 --log-level=0
-echo 'standalone,forest_fires,momentum,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=10 --log-level=0
-echo 'standalone,forest_fires,momentum,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=1 --log-level=0
-echo 'standalone,forest_fires,nag,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=2 --log-level=0
-echo 'standalone,forest_fires,nag,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=3 --log-level=0
-echo 'standalone,forest_fires,nag,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=4 --log-level=0
-echo 'standalone,forest_fires,nag,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=5 --log-level=0
-echo 'standalone,forest_fires,nag,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=6 --log-level=0
-echo 'standalone,forest_fires,nag,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=7 --log-level=0
-echo 'standalone,forest_fires,nag,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=8 --log-level=0
-echo 'standalone,forest_fires,nag,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=9 --log-level=0
-echo 'standalone,forest_fires,nag,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=nag --seed=10 --log-level=0
-echo 'standalone,forest_fires,nag,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=1 --log-level=0
-echo 'standalone,forest_fires,adagrad,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=2 --log-level=0
-echo 'standalone,forest_fires,adagrad,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=3 --log-level=0
-echo 'standalone,forest_fires,adagrad,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=4 --log-level=0
-echo 'standalone,forest_fires,adagrad,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=5 --log-level=0
-echo 'standalone,forest_fires,adagrad,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=6 --log-level=0
-echo 'standalone,forest_fires,adagrad,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=7 --log-level=0
-echo 'standalone,forest_fires,adagrad,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=8 --log-level=0
-echo 'standalone,forest_fires,adagrad,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=9 --log-level=0
-echo 'standalone,forest_fires,adagrad,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=10 --log-level=0
-echo 'standalone,forest_fires,adagrad,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=1 --log-level=0
-echo 'standalone,forest_fires,rmsprop,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=2 --log-level=0
-echo 'standalone,forest_fires,rmsprop,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=3 --log-level=0
-echo 'standalone,forest_fires,rmsprop,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=4 --log-level=0
-echo 'standalone,forest_fires,rmsprop,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=5 --log-level=0
-echo 'standalone,forest_fires,rmsprop,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=6 --log-level=0
-echo 'standalone,forest_fires,rmsprop,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=7 --log-level=0
-echo 'standalone,forest_fires,rmsprop,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=8 --log-level=0
-echo 'standalone,forest_fires,rmsprop,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=9 --log-level=0
-echo 'standalone,forest_fires,rmsprop,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=10 --log-level=0
-echo 'standalone,forest_fires,rmsprop,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=1 --log-level=0
-echo 'standalone,forest_fires,adadelta,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=2 --log-level=0
-echo 'standalone,forest_fires,adadelta,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=3 --log-level=0
-echo 'standalone,forest_fires,adadelta,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=4 --log-level=0
-echo 'standalone,forest_fires,adadelta,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=5 --log-level=0
-echo 'standalone,forest_fires,adadelta,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=6 --log-level=0
-echo 'standalone,forest_fires,adadelta,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=7 --log-level=0
-echo 'standalone,forest_fires,adadelta,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=8 --log-level=0
-echo 'standalone,forest_fires,adadelta,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=9 --log-level=0
-echo 'standalone,forest_fires,adadelta,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=10 --log-level=0
-echo 'standalone,forest_fires,adadelta,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=1 --log-level=0
-echo 'standalone,forest_fires,adam,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=2 --log-level=0
-echo 'standalone,forest_fires,adam,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=3 --log-level=0
-echo 'standalone,forest_fires,adam,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=4 --log-level=0
-echo 'standalone,forest_fires,adam,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=5 --log-level=0
-echo 'standalone,forest_fires,adam,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=6 --log-level=0
-echo 'standalone,forest_fires,adam,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=7 --log-level=0
-echo 'standalone,forest_fires,adam,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=8 --log-level=0
-echo 'standalone,forest_fires,adam,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=9 --log-level=0
-echo 'standalone,forest_fires,adam,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=adam --seed=10 --log-level=0
-echo 'standalone,forest_fires,adam,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=1 --log-level=0
-echo 'standalone,forest_fires,pso,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=2 --log-level=0
-echo 'standalone,forest_fires,pso,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=3 --log-level=0
-echo 'standalone,forest_fires,pso,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=4 --log-level=0
-echo 'standalone,forest_fires,pso,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=5 --log-level=0
-echo 'standalone,forest_fires,pso,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=6 --log-level=0
-echo 'standalone,forest_fires,pso,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=7 --log-level=0
-echo 'standalone,forest_fires,pso,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=8 --log-level=0
-echo 'standalone,forest_fires,pso,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=9 --log-level=0
-echo 'standalone,forest_fires,pso,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=pso --seed=10 --log-level=0
-echo 'standalone,forest_fires,pso,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=1 --log-level=0
-echo 'standalone,forest_fires,de,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=2 --log-level=0
-echo 'standalone,forest_fires,de,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=3 --log-level=0
-echo 'standalone,forest_fires,de,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=4 --log-level=0
-echo 'standalone,forest_fires,de,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=5 --log-level=0
-echo 'standalone,forest_fires,de,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=6 --log-level=0
-echo 'standalone,forest_fires,de,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=7 --log-level=0
-echo 'standalone,forest_fires,de,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=8 --log-level=0
-echo 'standalone,forest_fires,de,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=9 --log-level=0
-echo 'standalone,forest_fires,de,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=de --seed=10 --log-level=0
-echo 'standalone,forest_fires,de,10' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=1 --log-level=0
-echo 'standalone,forest_fires,ga,1' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=2 --log-level=0
-echo 'standalone,forest_fires,ga,2' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=3 --log-level=0
-echo 'standalone,forest_fires,ga,3' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=4 --log-level=0
-echo 'standalone,forest_fires,ga,4' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=5 --log-level=0
-echo 'standalone,forest_fires,ga,5' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=6 --log-level=0
-echo 'standalone,forest_fires,ga,6' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=7 --log-level=0
-echo 'standalone,forest_fires,ga,7' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=8 --log-level=0
-echo 'standalone,forest_fires,ga,8' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=9 --log-level=0
-echo 'standalone,forest_fires,ga,9' >>tracking_standalone.txt
-python heuristic.py --dataset=forest_fires --optimiser=ga --seed=10 --log-level=0
-echo 'standalone,forest_fires,ga,10' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=1 --log-level=0
-echo 'standalone,bank,sgd,1' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=2 --log-level=0
-echo 'standalone,bank,sgd,2' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=3 --log-level=0
-echo 'standalone,bank,sgd,3' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=4 --log-level=0
-echo 'standalone,bank,sgd,4' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=5 --log-level=0
-echo 'standalone,bank,sgd,5' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=6 --log-level=0
-echo 'standalone,bank,sgd,6' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=7 --log-level=0
-echo 'standalone,bank,sgd,7' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=8 --log-level=0
-echo 'standalone,bank,sgd,8' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=9 --log-level=0
-echo 'standalone,bank,sgd,9' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=sgd --seed=10 --log-level=0
-echo 'standalone,bank,sgd,10' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=1 --log-level=0
-echo 'standalone,bank,momentum,1' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=2 --log-level=0
-echo 'standalone,bank,momentum,2' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=3 --log-level=0
-echo 'standalone,bank,momentum,3' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=4 --log-level=0
-echo 'standalone,bank,momentum,4' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=5 --log-level=0
-echo 'standalone,bank,momentum,5' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=6 --log-level=0
-echo 'standalone,bank,momentum,6' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=7 --log-level=0
-echo 'standalone,bank,momentum,7' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=8 --log-level=0
-echo 'standalone,bank,momentum,8' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=9 --log-level=0
-echo 'standalone,bank,momentum,9' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=momentum --seed=10 --log-level=0
-echo 'standalone,bank,momentum,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=car --optimiser=ga --seed=10 --log-level=0
+# echo 'standalone,car,ga,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=1 --log-level=0
+# echo 'standalone,parkinsons,sgd,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=2 --log-level=0
+# echo 'standalone,parkinsons,sgd,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=3 --log-level=0
+# echo 'standalone,parkinsons,sgd,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=4 --log-level=0
+# echo 'standalone,parkinsons,sgd,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=5 --log-level=0
+# echo 'standalone,parkinsons,sgd,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=6 --log-level=0
+# echo 'standalone,parkinsons,sgd,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=7 --log-level=0
+# echo 'standalone,parkinsons,sgd,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=8 --log-level=0
+# echo 'standalone,parkinsons,sgd,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=9 --log-level=0
+# echo 'standalone,parkinsons,sgd,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=sgd --seed=10 --log-level=0
+# echo 'standalone,parkinsons,sgd,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=1 --log-level=0
+# echo 'standalone,parkinsons,momentum,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=2 --log-level=0
+# echo 'standalone,parkinsons,momentum,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=3 --log-level=0
+# echo 'standalone,parkinsons,momentum,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=4 --log-level=0
+# echo 'standalone,parkinsons,momentum,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=5 --log-level=0
+# echo 'standalone,parkinsons,momentum,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=6 --log-level=0
+# echo 'standalone,parkinsons,momentum,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=7 --log-level=0
+# echo 'standalone,parkinsons,momentum,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=8 --log-level=0
+# echo 'standalone,parkinsons,momentum,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=9 --log-level=0
+# echo 'standalone,parkinsons,momentum,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=momentum --seed=10 --log-level=0
+# echo 'standalone,parkinsons,momentum,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=1 --log-level=0
+# echo 'standalone,parkinsons,nag,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=2 --log-level=0
+# echo 'standalone,parkinsons,nag,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=3 --log-level=0
+# echo 'standalone,parkinsons,nag,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=4 --log-level=0
+# echo 'standalone,parkinsons,nag,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=5 --log-level=0
+# echo 'standalone,parkinsons,nag,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=6 --log-level=0
+# echo 'standalone,parkinsons,nag,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=7 --log-level=0
+# echo 'standalone,parkinsons,nag,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=8 --log-level=0
+# echo 'standalone,parkinsons,nag,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=9 --log-level=0
+# echo 'standalone,parkinsons,nag,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=nag --seed=10 --log-level=0
+# echo 'standalone,parkinsons,nag,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=1 --log-level=0
+# echo 'standalone,parkinsons,adagrad,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=2 --log-level=0
+# echo 'standalone,parkinsons,adagrad,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=3 --log-level=0
+# echo 'standalone,parkinsons,adagrad,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=4 --log-level=0
+# echo 'standalone,parkinsons,adagrad,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=5 --log-level=0
+# echo 'standalone,parkinsons,adagrad,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=6 --log-level=0
+# echo 'standalone,parkinsons,adagrad,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=7 --log-level=0
+# echo 'standalone,parkinsons,adagrad,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=8 --log-level=0
+# echo 'standalone,parkinsons,adagrad,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=9 --log-level=0
+# echo 'standalone,parkinsons,adagrad,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adagrad --seed=10 --log-level=0
+# echo 'standalone,parkinsons,adagrad,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=1 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=2 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=3 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=4 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=5 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=6 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=7 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=8 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=9 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=rmsprop --seed=10 --log-level=0
+# echo 'standalone,parkinsons,rmsprop,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=1 --log-level=0
+# echo 'standalone,parkinsons,adadelta,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=2 --log-level=0
+# echo 'standalone,parkinsons,adadelta,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=3 --log-level=0
+# echo 'standalone,parkinsons,adadelta,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=4 --log-level=0
+# echo 'standalone,parkinsons,adadelta,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=5 --log-level=0
+# echo 'standalone,parkinsons,adadelta,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=6 --log-level=0
+# echo 'standalone,parkinsons,adadelta,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=7 --log-level=0
+# echo 'standalone,parkinsons,adadelta,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=8 --log-level=0
+# echo 'standalone,parkinsons,adadelta,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=9 --log-level=0
+# echo 'standalone,parkinsons,adadelta,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adadelta --seed=10 --log-level=0
+# echo 'standalone,parkinsons,adadelta,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=1 --log-level=0
+# echo 'standalone,parkinsons,adam,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=2 --log-level=0
+# echo 'standalone,parkinsons,adam,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=3 --log-level=0
+# echo 'standalone,parkinsons,adam,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=4 --log-level=0
+# echo 'standalone,parkinsons,adam,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=5 --log-level=0
+# echo 'standalone,parkinsons,adam,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=6 --log-level=0
+# echo 'standalone,parkinsons,adam,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=7 --log-level=0
+# echo 'standalone,parkinsons,adam,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=8 --log-level=0
+# echo 'standalone,parkinsons,adam,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=9 --log-level=0
+# echo 'standalone,parkinsons,adam,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=adam --seed=10 --log-level=0
+# echo 'standalone,parkinsons,adam,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=1 --log-level=0
+# echo 'standalone,parkinsons,pso,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=2 --log-level=0
+# echo 'standalone,parkinsons,pso,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=3 --log-level=0
+# echo 'standalone,parkinsons,pso,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=4 --log-level=0
+# echo 'standalone,parkinsons,pso,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=5 --log-level=0
+# echo 'standalone,parkinsons,pso,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=6 --log-level=0
+# echo 'standalone,parkinsons,pso,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=7 --log-level=0
+# echo 'standalone,parkinsons,pso,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=8 --log-level=0
+# echo 'standalone,parkinsons,pso,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=9 --log-level=0
+# echo 'standalone,parkinsons,pso,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=pso --seed=10 --log-level=0
+# echo 'standalone,parkinsons,pso,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=1 --log-level=0
+# echo 'standalone,parkinsons,de,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=2 --log-level=0
+# echo 'standalone,parkinsons,de,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=3 --log-level=0
+# echo 'standalone,parkinsons,de,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=4 --log-level=0
+# echo 'standalone,parkinsons,de,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=5 --log-level=0
+# echo 'standalone,parkinsons,de,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=6 --log-level=0
+# echo 'standalone,parkinsons,de,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=7 --log-level=0
+# echo 'standalone,parkinsons,de,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=8 --log-level=0
+# echo 'standalone,parkinsons,de,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=9 --log-level=0
+# echo 'standalone,parkinsons,de,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=de --seed=10 --log-level=0
+# echo 'standalone,parkinsons,de,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=1 --log-level=0
+# echo 'standalone,parkinsons,ga,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=2 --log-level=0
+# echo 'standalone,parkinsons,ga,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=3 --log-level=0
+# echo 'standalone,parkinsons,ga,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=4 --log-level=0
+# echo 'standalone,parkinsons,ga,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=5 --log-level=0
+# echo 'standalone,parkinsons,ga,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=6 --log-level=0
+# echo 'standalone,parkinsons,ga,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=7 --log-level=0
+# echo 'standalone,parkinsons,ga,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=8 --log-level=0
+# echo 'standalone,parkinsons,ga,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=9 --log-level=0
+# echo 'standalone,parkinsons,ga,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=parkinsons --optimiser=ga --seed=10 --log-level=0
+# echo 'standalone,parkinsons,ga,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=1 --log-level=0
+# echo 'standalone,forest_fires,sgd,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=2 --log-level=0
+# echo 'standalone,forest_fires,sgd,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=3 --log-level=0
+# echo 'standalone,forest_fires,sgd,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=4 --log-level=0
+# echo 'standalone,forest_fires,sgd,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=5 --log-level=0
+# echo 'standalone,forest_fires,sgd,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=6 --log-level=0
+# echo 'standalone,forest_fires,sgd,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=7 --log-level=0
+# echo 'standalone,forest_fires,sgd,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=8 --log-level=0
+# echo 'standalone,forest_fires,sgd,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=9 --log-level=0
+# echo 'standalone,forest_fires,sgd,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=sgd --seed=10 --log-level=0
+# echo 'standalone,forest_fires,sgd,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=1 --log-level=0
+# echo 'standalone,forest_fires,momentum,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=2 --log-level=0
+# echo 'standalone,forest_fires,momentum,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=3 --log-level=0
+# echo 'standalone,forest_fires,momentum,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=4 --log-level=0
+# echo 'standalone,forest_fires,momentum,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=5 --log-level=0
+# echo 'standalone,forest_fires,momentum,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=6 --log-level=0
+# echo 'standalone,forest_fires,momentum,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=7 --log-level=0
+# echo 'standalone,forest_fires,momentum,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=8 --log-level=0
+# echo 'standalone,forest_fires,momentum,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=9 --log-level=0
+# echo 'standalone,forest_fires,momentum,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=momentum --seed=10 --log-level=0
+# echo 'standalone,forest_fires,momentum,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=1 --log-level=0
+# echo 'standalone,forest_fires,nag,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=2 --log-level=0
+# echo 'standalone,forest_fires,nag,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=3 --log-level=0
+# echo 'standalone,forest_fires,nag,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=4 --log-level=0
+# echo 'standalone,forest_fires,nag,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=5 --log-level=0
+# echo 'standalone,forest_fires,nag,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=6 --log-level=0
+# echo 'standalone,forest_fires,nag,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=7 --log-level=0
+# echo 'standalone,forest_fires,nag,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=8 --log-level=0
+# echo 'standalone,forest_fires,nag,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=9 --log-level=0
+# echo 'standalone,forest_fires,nag,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=nag --seed=10 --log-level=0
+# echo 'standalone,forest_fires,nag,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=1 --log-level=0
+# echo 'standalone,forest_fires,adagrad,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=2 --log-level=0
+# echo 'standalone,forest_fires,adagrad,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=3 --log-level=0
+# echo 'standalone,forest_fires,adagrad,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=4 --log-level=0
+# echo 'standalone,forest_fires,adagrad,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=5 --log-level=0
+# echo 'standalone,forest_fires,adagrad,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=6 --log-level=0
+# echo 'standalone,forest_fires,adagrad,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=7 --log-level=0
+# echo 'standalone,forest_fires,adagrad,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=8 --log-level=0
+# echo 'standalone,forest_fires,adagrad,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=9 --log-level=0
+# echo 'standalone,forest_fires,adagrad,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adagrad --seed=10 --log-level=0
+# echo 'standalone,forest_fires,adagrad,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=1 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=2 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=3 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=4 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=5 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=6 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=7 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=8 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=9 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=rmsprop --seed=10 --log-level=0
+# echo 'standalone,forest_fires,rmsprop,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=1 --log-level=0
+# echo 'standalone,forest_fires,adadelta,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=2 --log-level=0
+# echo 'standalone,forest_fires,adadelta,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=3 --log-level=0
+# echo 'standalone,forest_fires,adadelta,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=4 --log-level=0
+# echo 'standalone,forest_fires,adadelta,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=5 --log-level=0
+# echo 'standalone,forest_fires,adadelta,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=6 --log-level=0
+# echo 'standalone,forest_fires,adadelta,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=7 --log-level=0
+# echo 'standalone,forest_fires,adadelta,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=8 --log-level=0
+# echo 'standalone,forest_fires,adadelta,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=9 --log-level=0
+# echo 'standalone,forest_fires,adadelta,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adadelta --seed=10 --log-level=0
+# echo 'standalone,forest_fires,adadelta,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=1 --log-level=0
+# echo 'standalone,forest_fires,adam,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=2 --log-level=0
+# echo 'standalone,forest_fires,adam,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=3 --log-level=0
+# echo 'standalone,forest_fires,adam,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=4 --log-level=0
+# echo 'standalone,forest_fires,adam,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=5 --log-level=0
+# echo 'standalone,forest_fires,adam,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=6 --log-level=0
+# echo 'standalone,forest_fires,adam,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=7 --log-level=0
+# echo 'standalone,forest_fires,adam,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=8 --log-level=0
+# echo 'standalone,forest_fires,adam,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=9 --log-level=0
+# echo 'standalone,forest_fires,adam,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=adam --seed=10 --log-level=0
+# echo 'standalone,forest_fires,adam,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=1 --log-level=0
+# echo 'standalone,forest_fires,pso,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=2 --log-level=0
+# echo 'standalone,forest_fires,pso,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=3 --log-level=0
+# echo 'standalone,forest_fires,pso,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=4 --log-level=0
+# echo 'standalone,forest_fires,pso,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=5 --log-level=0
+# echo 'standalone,forest_fires,pso,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=6 --log-level=0
+# echo 'standalone,forest_fires,pso,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=7 --log-level=0
+# echo 'standalone,forest_fires,pso,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=8 --log-level=0
+# echo 'standalone,forest_fires,pso,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=9 --log-level=0
+# echo 'standalone,forest_fires,pso,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=pso --seed=10 --log-level=0
+# echo 'standalone,forest_fires,pso,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=1 --log-level=0
+# echo 'standalone,forest_fires,de,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=2 --log-level=0
+# echo 'standalone,forest_fires,de,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=3 --log-level=0
+# echo 'standalone,forest_fires,de,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=4 --log-level=0
+# echo 'standalone,forest_fires,de,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=5 --log-level=0
+# echo 'standalone,forest_fires,de,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=6 --log-level=0
+# echo 'standalone,forest_fires,de,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=7 --log-level=0
+# echo 'standalone,forest_fires,de,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=8 --log-level=0
+# echo 'standalone,forest_fires,de,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=9 --log-level=0
+# echo 'standalone,forest_fires,de,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=de --seed=10 --log-level=0
+# echo 'standalone,forest_fires,de,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=1 --log-level=0
+# echo 'standalone,forest_fires,ga,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=2 --log-level=0
+# echo 'standalone,forest_fires,ga,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=3 --log-level=0
+# echo 'standalone,forest_fires,ga,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=4 --log-level=0
+# echo 'standalone,forest_fires,ga,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=5 --log-level=0
+# echo 'standalone,forest_fires,ga,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=6 --log-level=0
+# echo 'standalone,forest_fires,ga,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=7 --log-level=0
+# echo 'standalone,forest_fires,ga,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=8 --log-level=0
+# echo 'standalone,forest_fires,ga,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=9 --log-level=0
+# echo 'standalone,forest_fires,ga,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=forest_fires --optimiser=ga --seed=10 --log-level=0
+# echo 'standalone,forest_fires,ga,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=1 --log-level=0
+# echo 'standalone,bank,sgd,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=2 --log-level=0
+# echo 'standalone,bank,sgd,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=3 --log-level=0
+# echo 'standalone,bank,sgd,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=4 --log-level=0
+# echo 'standalone,bank,sgd,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=5 --log-level=0
+# echo 'standalone,bank,sgd,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=6 --log-level=0
+# echo 'standalone,bank,sgd,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=7 --log-level=0
+# echo 'standalone,bank,sgd,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=8 --log-level=0
+# echo 'standalone,bank,sgd,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=9 --log-level=0
+# echo 'standalone,bank,sgd,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=sgd --seed=10 --log-level=0
+# echo 'standalone,bank,sgd,10' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=1 --log-level=0
+# echo 'standalone,bank,momentum,1' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=2 --log-level=0
+# echo 'standalone,bank,momentum,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=3 --log-level=0
+# echo 'standalone,bank,momentum,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=4 --log-level=0
+# echo 'standalone,bank,momentum,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=5 --log-level=0
+# echo 'standalone,bank,momentum,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=6 --log-level=0
+# echo 'standalone,bank,momentum,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=7 --log-level=0
+# echo 'standalone,bank,momentum,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=8 --log-level=0
+# echo 'standalone,bank,momentum,8' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=9 --log-level=0
+# echo 'standalone,bank,momentum,9' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=momentum --seed=10 --log-level=0
+# echo 'standalone,bank,momentum,10' >>tracking_standalone.txt
 python heuristic.py --dataset=bank --optimiser=nag --seed=1 --log-level=0
 echo 'standalone,bank,nag,1' >>tracking_standalone.txt
 python heuristic.py --dataset=bank --optimiser=nag --seed=2 --log-level=0
