@@ -241,13 +241,13 @@ LOG_LEVEL=0
 # echo 'bhh_baseline,student_performance,9' >>tracking_bhh_baseline.txt
 # python bhh.py --dataset=student_performance --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_baseline,student_performance,10' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,1' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,2' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,3' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# python bhh.py --dataset=adult --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,1' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,2' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,3' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_baseline,adult,4' >>tracking_bhh_baseline.txt
 python bhh.py --dataset=adult --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_baseline,adult,5' >>tracking_bhh_baseline.txt

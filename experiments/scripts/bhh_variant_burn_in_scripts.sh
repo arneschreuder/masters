@@ -709,202 +709,202 @@ LOG_LEVEL=0
 # echo 'bhh_variant_burn_in,parkinsons,0,3' >>tracking_bhh_variant_burn_in.txt
 # python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_burn_in,parkinsons,0,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,0,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,0,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,0,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,0,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,0,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,0,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,10,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,20,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,50,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,parkinsons,100,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,0,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,10,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,20,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,50,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,2' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,3' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,4' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,5' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,6' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,7' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,8' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,9' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,forest_fires,100,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,bank,0,1' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=bank --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,bank,0,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,0,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,0,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,0,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,0,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,0,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,0,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,10,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,20,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,50,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=1 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=2 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=3 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=4 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=5 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=6 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=7 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=8 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=9 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=parkinsons --seed=10 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,parkinsons,100,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,0,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,10,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=20 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,20,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=50 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,50,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=1 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=2 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,2' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=3 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,3' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=4 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,4' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=5 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,5' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=6 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,6' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=7 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,7' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=8 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,8' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=9 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,9' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=forest_fires --seed=10 --log-level=0 --population-size=5 --burn_in=100 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,forest_fires,100,10' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,bank,0,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=bank --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,bank,0,2' >>tracking_bhh_variant_burn_in.txt
 python bhh.py --dataset=bank --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_burn_in,bank,0,3' >>tracking_bhh_variant_burn_in.txt
 python bhh.py --dataset=bank --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
