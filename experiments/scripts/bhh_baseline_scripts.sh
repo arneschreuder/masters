@@ -248,17 +248,17 @@ LOG_LEVEL=0
 # python bhh.py --dataset=adult --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_baseline,adult,3' >>tracking_bhh_baseline.txt
 # python bhh.py --dataset=adult --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,4' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,5' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,6' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,7' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,8' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,9' >>tracking_bhh_baseline.txt
+# echo 'bhh_baseline,adult,4' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,5' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,6' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,7' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,8' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,9' >>tracking_bhh_baseline.txt
 python bhh.py --dataset=adult --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_baseline,adult,10' >>tracking_bhh_baseline.txt
 python bhh.py --dataset=mushroom --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

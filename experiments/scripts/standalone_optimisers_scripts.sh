@@ -1943,18 +1943,18 @@ LOG_LEVEL=0
 # echo 'standalone,bank,adam,10' >>tracking_standalone.txt
 # python heuristic.py --dataset=bank --optimiser=pso --seed=1 --log-level=0
 # echo 'standalone,bank,pso,1' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=pso --seed=2 --log-level=0
-echo 'standalone,bank,pso,2' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=pso --seed=3 --log-level=0
-echo 'standalone,bank,pso,3' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=pso --seed=4 --log-level=0
-echo 'standalone,bank,pso,4' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=pso --seed=5 --log-level=0
-echo 'standalone,bank,pso,5' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=pso --seed=6 --log-level=0
-echo 'standalone,bank,pso,6' >>tracking_standalone.txt
-python heuristic.py --dataset=bank --optimiser=pso --seed=7 --log-level=0
-echo 'standalone,bank,pso,7' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=pso --seed=2 --log-level=0
+# echo 'standalone,bank,pso,2' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=pso --seed=3 --log-level=0
+# echo 'standalone,bank,pso,3' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=pso --seed=4 --log-level=0
+# echo 'standalone,bank,pso,4' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=pso --seed=5 --log-level=0
+# echo 'standalone,bank,pso,5' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=pso --seed=6 --log-level=0
+# echo 'standalone,bank,pso,6' >>tracking_standalone.txt
+# python heuristic.py --dataset=bank --optimiser=pso --seed=7 --log-level=0
+# echo 'standalone,bank,pso,7' >>tracking_standalone.txt
 python heuristic.py --dataset=bank --optimiser=pso --seed=8 --log-level=0
 echo 'standalone,bank,pso,8' >>tracking_standalone.txt
 python heuristic.py --dataset=bank --optimiser=pso --seed=9 --log-level=0

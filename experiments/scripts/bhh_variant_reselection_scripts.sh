@@ -923,22 +923,22 @@ LOG_LEVEL=0
 # echo 'bhh_variant_reselection,bank,1,10' >>tracking_bhh_variant_reselection.txt
 # python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_reselection,bank,5,1' >>tracking_bhh_variant_reselection.txt
-python bhh.py --dataset=bank --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reselection,bank,5,2' >>tracking_bhh_variant_reselection.txt
-python bhh.py --dataset=bank --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reselection,bank,5,3' >>tracking_bhh_variant_reselection.txt
-python bhh.py --dataset=bank --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reselection,bank,5,4' >>tracking_bhh_variant_reselection.txt
-python bhh.py --dataset=bank --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reselection,bank,5,5' >>tracking_bhh_variant_reselection.txt
-python bhh.py --dataset=bank --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reselection,bank,5,6' >>tracking_bhh_variant_reselection.txt
-python bhh.py --dataset=bank --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reselection,bank,5,7' >>tracking_bhh_variant_reselection.txt
-python bhh.py --dataset=bank --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reselection,bank,5,8' >>tracking_bhh_variant_reselection.txt
-python bhh.py --dataset=bank --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reselection,bank,5,9' >>tracking_bhh_variant_reselection.txt
+# python bhh.py --dataset=bank --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reselection,bank,5,2' >>tracking_bhh_variant_reselection.txt
+# python bhh.py --dataset=bank --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reselection,bank,5,3' >>tracking_bhh_variant_reselection.txt
+# python bhh.py --dataset=bank --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reselection,bank,5,4' >>tracking_bhh_variant_reselection.txt
+# python bhh.py --dataset=bank --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reselection,bank,5,5' >>tracking_bhh_variant_reselection.txt
+# python bhh.py --dataset=bank --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reselection,bank,5,6' >>tracking_bhh_variant_reselection.txt
+# python bhh.py --dataset=bank --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reselection,bank,5,7' >>tracking_bhh_variant_reselection.txt
+# python bhh.py --dataset=bank --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reselection,bank,5,8' >>tracking_bhh_variant_reselection.txt
+# python bhh.py --dataset=bank --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reselection,bank,5,9' >>tracking_bhh_variant_reselection.txt
 python bhh.py --dataset=bank --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=5 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_reselection,bank,5,10' >>tracking_bhh_variant_reselection.txt
 python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=10 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

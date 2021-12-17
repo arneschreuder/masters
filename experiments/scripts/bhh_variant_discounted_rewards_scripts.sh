@@ -443,44 +443,44 @@ LOG_LEVEL=0
 # echo 'bhh_variant_discounted_rewards,bike,false,10' >>tracking_bhh_variant_discounted_rewards.txt
 # python bhh.py --dataset=student_performance --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_discounted_rewards,student_performance,true,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,true,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,5' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,6' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,7' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,8' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,9' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=student_performance --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,student_performance,false,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,true,10' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,6' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,7' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,8' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,9' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=student_performance --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,student_performance,false,10' >>tracking_bhh_variant_discounted_rewards.txt
 python bhh.py --dataset=adult --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_discounted_rewards,adult,true,1' >>tracking_bhh_variant_discounted_rewards.txt
 python bhh.py --dataset=adult --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

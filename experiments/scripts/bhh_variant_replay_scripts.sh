@@ -371,16 +371,16 @@ LOG_LEVEL=0
 # echo 'bhh_variant_replay,air_quality,100,4' >>tracking_bhh_variant_replay.txt
 # python bhh.py --dataset=air_quality --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_replay,air_quality,100,5' >>tracking_bhh_variant_replay.txt
-python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_replay,air_quality,100,6' >>tracking_bhh_variant_replay.txt
-python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_replay,air_quality,100,7' >>tracking_bhh_variant_replay.txt
-python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_replay,air_quality,100,8' >>tracking_bhh_variant_replay.txt
-python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_replay,air_quality,100,9' >>tracking_bhh_variant_replay.txt
-python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_replay,air_quality,100,10' >>tracking_bhh_variant_replay.txt
+# python bhh.py --dataset=air_quality --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_replay,air_quality,100,6' >>tracking_bhh_variant_replay.txt
+# python bhh.py --dataset=air_quality --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_replay,air_quality,100,7' >>tracking_bhh_variant_replay.txt
+# python bhh.py --dataset=air_quality --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_replay,air_quality,100,8' >>tracking_bhh_variant_replay.txt
+# python bhh.py --dataset=air_quality --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_replay,air_quality,100,9' >>tracking_bhh_variant_replay.txt
+# python bhh.py --dataset=air_quality --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=100 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_replay,air_quality,100,10' >>tracking_bhh_variant_replay.txt
 python bhh.py --dataset=air_quality --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=300 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_replay,air_quality,300,1' >>tracking_bhh_variant_replay.txt
 python bhh.py --dataset=air_quality --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=300 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
