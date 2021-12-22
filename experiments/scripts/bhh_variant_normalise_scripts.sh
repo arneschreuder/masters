@@ -483,16 +483,16 @@ LOG_LEVEL=0
 # echo 'bhh_variant_normalise,student_performance,false,10' >>tracking_bhh_variant_normalise.txt
 # python bhh.py --dataset=adult --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_normalise,adult,true,1' >>tracking_bhh_variant_normalise.txt
-python bhh.py --dataset=adult --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_normalise,adult,true,2' >>tracking_bhh_variant_normalise.txt
-python bhh.py --dataset=adult --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_normalise,adult,true,3' >>tracking_bhh_variant_normalise.txt
-python bhh.py --dataset=adult --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_normalise,adult,true,4' >>tracking_bhh_variant_normalise.txt
-python bhh.py --dataset=adult --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_normalise,adult,true,5' >>tracking_bhh_variant_normalise.txt
-python bhh.py --dataset=adult --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_normalise,adult,true,6' >>tracking_bhh_variant_normalise.txt
+# python bhh.py --dataset=adult --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_normalise,adult,true,2' >>tracking_bhh_variant_normalise.txt
+# python bhh.py --dataset=adult --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_normalise,adult,true,3' >>tracking_bhh_variant_normalise.txt
+# python bhh.py --dataset=adult --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_normalise,adult,true,4' >>tracking_bhh_variant_normalise.txt
+# python bhh.py --dataset=adult --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_normalise,adult,true,5' >>tracking_bhh_variant_normalise.txt
+# python bhh.py --dataset=adult --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_normalise,adult,true,6' >>tracking_bhh_variant_normalise.txt
 python bhh.py --dataset=adult --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_normalise,adult,true,7' >>tracking_bhh_variant_normalise.txt
 python bhh.py --dataset=adult --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true

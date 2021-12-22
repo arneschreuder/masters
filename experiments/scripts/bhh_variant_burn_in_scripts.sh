@@ -921,8 +921,8 @@ LOG_LEVEL=0
 # echo 'bhh_variant_burn_in,bank,0,9' >>tracking_bhh_variant_burn_in.txt
 # python bhh.py --dataset=bank --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_burn_in,bank,0,10' >>tracking_bhh_variant_burn_in.txt
-python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_burn_in,bank,10,1' >>tracking_bhh_variant_burn_in.txt
+# python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_burn_in,bank,10,1' >>tracking_bhh_variant_burn_in.txt
 python bhh.py --dataset=bank --seed=2 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_burn_in,bank,10,2' >>tracking_bhh_variant_burn_in.txt
 python bhh.py --dataset=bank --seed=3 --log-level=0 --population-size=5 --burn_in=10 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

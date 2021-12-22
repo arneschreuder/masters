@@ -259,32 +259,32 @@ LOG_LEVEL=0
 # echo 'bhh_baseline,adult,8' >>tracking_bhh_baseline.txt
 # python bhh.py --dataset=adult --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_baseline,adult,9' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=adult --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,adult,10' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,1' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,2' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,3' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,4' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,5' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,6' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,7' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,8' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,9' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=mushroom --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,mushroom,10' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=diabetic --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,diabetic,1' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=diabetic --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,diabetic,2' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=adult --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,adult,10' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,1' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,2' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,3' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,4' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,5' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,6' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,7' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,8' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,9' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=mushroom --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,mushroom,10' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=diabetic --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,diabetic,1' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=diabetic --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,diabetic,2' >>tracking_bhh_baseline.txt
 python bhh.py --dataset=diabetic --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_baseline,diabetic,3' >>tracking_bhh_baseline.txt
 python bhh.py --dataset=diabetic --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
