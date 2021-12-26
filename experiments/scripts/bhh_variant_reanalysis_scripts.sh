@@ -995,40 +995,40 @@ LOG_LEVEL=0
 # echo 'bhh_variant_reanalysis,bank,100,6' >>tracking_bhh_variant_reanalysis.txt
 # python bhh.py --dataset=bank --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=100 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_reanalysis,bank,100,7' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bank --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=100 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bank,100,8' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bank --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=100 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bank,100,9' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bank --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=100 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bank,100,10' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,1' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,2' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,3' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,4' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,5' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,6' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,7' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,8' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,9' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,1,10' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,5,1' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,5,2' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,5,3' >>tracking_bhh_variant_reanalysis.txt
-python bhh.py --dataset=bike --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_reanalysis,bike,5,4' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bank --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=100 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bank,100,8' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bank --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=100 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bank,100,9' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bank --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=100 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bank,100,10' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,1' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,2' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,3' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,4' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,5' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,6' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,7' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,8' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,9' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,1,10' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,5,1' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,5,2' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,5,3' >>tracking_bhh_variant_reanalysis.txt
+# python bhh.py --dataset=bike --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_reanalysis,bike,5,4' >>tracking_bhh_variant_reanalysis.txt
 python bhh.py --dataset=bike --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_reanalysis,bike,5,5' >>tracking_bhh_variant_reanalysis.txt
 python bhh.py --dataset=bike --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=5 --normalise=false --credit=gbest --discounted-rewards=true
