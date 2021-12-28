@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #PBS -N 13_bhh_gd_only_variant_credit
-#PBS -q serial
+#PBS -q normal
 #PBS -P CSCI0886
 #PBS -l select=1:ncpus=24:mem=120gb:ngpus=0
 #PBS -l walltime=48:00:00
