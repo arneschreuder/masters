@@ -56,7 +56,7 @@ class WineQuality(Experiment):
             Random seed. Default = None
         """
         super(WineQuality, self).__init__(
-            dataset=WineQualityDataset(seed=seed, batch_size=30),
+            dataset=WineQualityDataset(seed=seed, batch_size=256),
             model=WineQualityModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
@@ -69,6 +69,6 @@ class WineQuality(Experiment):
                 SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

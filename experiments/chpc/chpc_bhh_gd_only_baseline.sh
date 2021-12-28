@@ -20,4 +20,4 @@ module load chpc/python/3.7.0
 
 # Run your script
 source .venv/bin/activate
-bash experiments/scripts/bhh_gd_only_baseline_scripts.sh
+bash experiments/scripts/bhh_gd_only_baseline.sh

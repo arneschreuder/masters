@@ -56,7 +56,7 @@ class Diabetic(Experiment):
             Random seed. Default = None
         """
         super(Diabetic, self).__init__(
-            dataset=DiabeticDataset(seed=seed, batch_size=30),
+            dataset=DiabeticDataset(seed=seed, batch_size=1024),
             model=DiabeticModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
@@ -69,6 +69,6 @@ class Diabetic(Experiment):
                 SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

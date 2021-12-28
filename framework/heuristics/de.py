@@ -346,6 +346,7 @@ class DE(Heuristic):
         """
         # Get hyper-params
         rp = DE.get_recombination_probability(params=self.params, step=step)
+
         beta = DE.get_beta(params=self.params, step=step)
 
         # Selection
@@ -372,7 +373,6 @@ class DE(Heuristic):
                 exclude=[entity.id]
             )
             parent1 = selection[0]
-
             selection = DE.select(
                 entities=population.entities,
                 selection_strategy='rand',

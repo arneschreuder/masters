@@ -48,7 +48,7 @@ class ForestFires(Experiment):
             Random seed. Default = None
         """
         super(ForestFires, self).__init__(
-            dataset=ForestFiresDataset(seed=seed, batch_size=300),
+            dataset=ForestFiresDataset(seed=seed, batch_size=32),
             model=ForestFiresModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -59,6 +59,6 @@ class ForestFires(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

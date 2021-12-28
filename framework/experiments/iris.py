@@ -52,7 +52,7 @@ class Iris(Experiment):
             Random seed. Default = None
         """
         super(Iris, self).__init__(
-            dataset=IrisDataset(seed=seed, batch_size=30),
+            dataset=IrisDataset(seed=seed, batch_size=32),
             model=IrisModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
@@ -65,6 +65,6 @@ class Iris(Experiment):
                 SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

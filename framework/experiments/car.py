@@ -52,7 +52,7 @@ class Car(Experiment):
             Random seed. Default = None
         """
         super(Car, self).__init__(
-            dataset=CarDataset(seed=seed, batch_size=30),
+            dataset=CarDataset(seed=seed, batch_size=128),
             model=CarModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
@@ -65,6 +65,6 @@ class Car(Experiment):
                 SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

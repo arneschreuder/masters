@@ -1,9 +1,9 @@
 #!/bin/sh
 
 #PBS -N 5_bhh_variant_normalise
-#PBS -q bigmem
+#PBS -q serial
 #PBS -P CSCI0886
-#PBS -l select=1:ncpus=56:mem=512gb:ngpus=0
+#PBS -l select=1:ncpus=24:mem=120gb:ngpus=0
 #PBS -l walltime=48:00:00
 #PBS -o /mnt/lustre/users/aschreuder/5_stdoutput.out
 #PBS -e /mnt/lustre/users/aschreuder/5_stderror.err
@@ -20,4 +20,4 @@ module load chpc/python/3.7.0
 
 # Run your script
 source .venv/bin/activate
-bash experiments/scripts/bhh_variant_normalise_scripts.sh
+bash experiments/scripts/bhh_variant_normalise.sh

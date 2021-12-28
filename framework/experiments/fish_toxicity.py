@@ -49,7 +49,7 @@ class FishToxicity(Experiment):
             Random seed. Default = None
         """
         super(FishToxicity, self).__init__(
-            dataset=FishToxicityDataset(seed=seed, batch_size=30),
+            dataset=FishToxicityDataset(seed=seed, batch_size=64),
             model=FishToxicityModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -60,6 +60,6 @@ class FishToxicity(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

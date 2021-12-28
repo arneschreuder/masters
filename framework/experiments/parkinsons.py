@@ -48,7 +48,7 @@ class Parkinsons(Experiment):
             Random seed. Default = None
         """
         super(Parkinsons, self).__init__(
-            dataset=ParkinsonsDataset(seed=seed, batch_size=30),
+            dataset=ParkinsonsDataset(seed=seed, batch_size=256),
             model=ParkinsonsModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -59,6 +59,6 @@ class Parkinsons(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

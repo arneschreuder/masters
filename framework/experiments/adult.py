@@ -51,7 +51,7 @@ class Adult(Experiment):
             Random seed. Default = None
         """
         super(Adult, self).__init__(
-            dataset=AdultDataset(seed=seed, batch_size=30),
+            dataset=AdultDataset(seed=seed, batch_size=256),
             model=AdultModel(),
             loss_fn=BinaryCrossentropy(),
             optimiser=optimiser,
@@ -64,6 +64,6 @@ class Adult(Experiment):
                 BinaryAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

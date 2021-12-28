@@ -51,7 +51,7 @@ class Bank(Experiment):
             Random seed. Default = None
         """
         super(Bank, self).__init__(
-            dataset=BankDataset(seed=seed, batch_size=30),
+            dataset=BankDataset(seed=seed, batch_size=512),
             model=BankModel(),
             loss_fn=BinaryCrossentropy(),
             optimiser=optimiser,
@@ -64,6 +64,6 @@ class Bank(Experiment):
                 BinaryAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

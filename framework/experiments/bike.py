@@ -48,7 +48,7 @@ class Bike(Experiment):
             Random seed. Default = None
         """
         super(Bike, self).__init__(
-            dataset=BikeDataset(seed=seed, batch_size=30),
+            dataset=BikeDataset(seed=seed, batch_size=256),
             model=BikeModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -59,6 +59,6 @@ class Bike(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

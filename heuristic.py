@@ -38,8 +38,6 @@ LOG_LEVEL = None
 PARAMS = None
 LOG = None
 
-# print(os.environ["LOG_LEVEL"])
-
 
 def parse_basic_arguments():
     global DATASET
@@ -104,7 +102,8 @@ def parse_basic_arguments():
     SEED = args.seed or None
     PARAMS = params.params[DATASET]["optimisers"][OPTIMISER]["params"]
     LOG = params.params[DATASET]["optimisers"][OPTIMISER]["log"].format(SEED)
-    LOG_LEVEL = os.environ["LOG_LEVEL"] if os.environ["LOG_LEVEL"] is not None else 0
+    LOG_LEVEL = int(os.getenv('LOG_LEVEL')) if os.getenv(
+        'LOG_LEVEL') is not None else 0
 
 
 def print_basic_banner():

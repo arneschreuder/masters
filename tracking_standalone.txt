@@ -1,6 +1,0 @@
-standalone,bank,pso,1
-standalone,bank,pso,1
-standalone,bank,de,1
-standalone,bank,pso,1
-standalone,bank,pso,1
-standalone,bank,de,1

@@ -29,6 +29,8 @@ from typing import List, Tuple
 
 import numpy as np
 import tensorflow as tf
+from framework.distributions.bernoulli import Bernoulli
+from framework.distributions.binomial import Binomial
 from framework.entities import Entity
 from framework.heuristics.heuristic import Heuristic
 from framework.hyper_parameters.ga import GA as GAParameters
@@ -84,7 +86,7 @@ class GA(Heuristic):
 
         return mr
 
-    @ staticmethod
+    @staticmethod
     def select(population: Population,
                selection_strategy: str = 'rand',
                count: int = -1,
@@ -209,32 +211,36 @@ class GA(Heuristic):
 
     @staticmethod
     def get_mutation_mask(dimensions: int, mutation_rate: float) -> tf.Tensor:
-        """
-        Gets the mutation mask.
+        # """
+        # Gets the mutation mask.
 
-        Parameters
-        ----------
-        entity: Entity
-            The entity that defines the candidate solution.
-        params: GAParameters
-            The hyper-parameters. Default = 'rand'
+        # Parameters
+        # ----------
+        # entity: Entity
+        #     The entity that defines the candidate solution.
+        # params: GAParameters
+        #     The hyper-parameters. Default = 'rand'
 
-        Returns
-        -------
-        tf.Tensor
-            The mutation mask.
-        """
-        mutation_mask = []
+        # Returns
+        # -------
+        # tf.Tensor
+        #     The mutation mask.
+        # """
+        # mutation_mask = []
 
-        # BINOMIAL SELECTION
-        mutation_mask = np.zeros(dimensions)
+        # # BINOMIAL SELECTION
+        # mutation_mask = np.zeros(dimensions)
 
-        for j in range(dimensions):
-            dice = random.random()
-            if dice < mutation_rate:
-                mutation_mask[j] = 1
+        # for j in range(dimensions):
+        #     dice = random.random()
+        #     if dice < mutation_rate:
+        #         mutation_mask[j] = 1
 
-        return tf.constant(mutation_mask, dtype=tf.float32)
+        # return tf.constant(mutation_mask, dtype=tf.float32)
+
+        # The below is a faster way to do the mutation mask
+        distribution = Bernoulli(mutation_rate)
+        return distribution([dimensions])
 
     @staticmethod
     def mutate(offspring: tf.Tensor, mutation_mask: tf.Tensor) -> tf.Tensor:

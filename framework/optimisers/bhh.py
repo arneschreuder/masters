@@ -638,10 +638,10 @@ class BHH(Optimiser):
             The step number.
         """
         log_level = int(os.getenv('LOG_LEVEL')
-                        ) if os.getenv('LOG_LEVEL') is not None else 1
+                        ) if os.getenv('LOG_LEVEL') is not None else 0
 
         # Only if the log level is 2
-        if self.logger and log_level == 2:
+        if self.logger and log_level >= 2:
             self.logger.log_scalar_results(
                 'alpha[{}]'.format(k), result=self.alpha[k], step=step)
             self.logger.log_scalar_results(

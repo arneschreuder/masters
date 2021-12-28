@@ -51,7 +51,7 @@ class Mushroom(Experiment):
             Random seed. Default = None
         """
         super(Mushroom, self).__init__(
-            dataset=MushroomDataset(seed=seed, batch_size=30),
+            dataset=MushroomDataset(seed=seed, batch_size=512),
             model=MushroomModel(),
             loss_fn=BinaryCrossentropy(),
             optimiser=optimiser,
@@ -64,6 +64,6 @@ class Mushroom(Experiment):
                 BinaryAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

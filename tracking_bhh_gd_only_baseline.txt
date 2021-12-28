@@ -1,3 +1,0 @@
-bhh_gd_only_baseline,iris,1
-bhh_gd_only_baseline,iris,2
-bhh_gd_only_baseline,iris,1

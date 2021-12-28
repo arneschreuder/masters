@@ -236,10 +236,10 @@ class Entity:
         """
         # Get log level
         log_level = int(os.getenv('LOG_LEVEL')
-                        ) if os.getenv('LOG_LEVEL') is not None else 1
+                        ) if os.getenv('LOG_LEVEL') is not None else 0
 
-        #  Only log when the log_level is 2
-        if self.logger and log_level == 2:
+        #  Only log when the log_level is 1
+        if self.logger and log_level >= 1:
             if self.position is not None:
                 self.logger.log_distribution_results('{} position'.format(self.name),
                                                      result=self.position.numpy(), step=step)

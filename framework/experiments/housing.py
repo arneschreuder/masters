@@ -48,7 +48,7 @@ class Housing(Experiment):
             Random seed. Default = None
         """
         super(Housing, self).__init__(
-            dataset=HousingDataset(seed=seed, batch_size=30),
+            dataset=HousingDataset(seed=seed, batch_size=32),
             model=HousingModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -59,6 +59,6 @@ class Housing(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )

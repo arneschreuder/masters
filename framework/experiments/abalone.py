@@ -55,7 +55,7 @@ class Abalone(Experiment):
             Random seed. Default = None
         """
         super(Abalone, self).__init__(
-            dataset=AbaloneDataset(seed=seed, batch_size=30),
+            dataset=AbaloneDataset(seed=seed, batch_size=256),
             model=AbaloneModel(),
             loss_fn=SparseCategoricalCrossentropy(),
             optimiser=optimiser,
@@ -68,6 +68,6 @@ class Abalone(Experiment):
                 SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=50,
+            epochs=20,
             seed=seed
         )
