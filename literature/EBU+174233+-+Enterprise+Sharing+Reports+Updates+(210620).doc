@@ -1,0 +1,3821 @@
+Message-ID: <903501329.95932.1603666629832.JavaMail.confluence@nlacfwrva01.mtn.co.za>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_95931_716406867.1603666629832"
+
+------=_Part_95931_716406867.1603666629832
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>EBU 174233 - Enterprise Sharing Reports Updates (210620)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>EBU 174233 - Enterprise Sharing Reports Updates (210620)</h1>
+    <div class=3D"Section1">
+        <div class=3D"contentLayout2">=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Introduction">I=
+ntroduction</h1>
+<hr>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-ProjectBrief">P=
+roject Brief</h2>
+<p>Enterprise Sharing (ES) Reports were recently deployed and tested. The r=
+eports naming conversion and field descriptions are not customer friendly a=
+nd clear, hence it may result in a lot of queries logged with Support.</p>
+<p>This project is gear<span style=3D"color: rgb(0,0,0);">ed towards u</spa=
+n>pdates and changes to the existing Enterprise Sharing Reports.</p>
+<p>See the following related Wikis for initial creation of reports:</p>
+<ul>
+<li><p>Top Ten and Other Reports:&nbsp;<a href=3D"/confluence/pages/viewpag=
+e.action?pageId=3D89424413">EBU 165121 - Enterprise Sharing =E2=80=93 MVP 2=
+ Top ten and other reports (185215)</a></p></li>
+</ul>
+<p>XMF Implementation details:</p>
+<ul>
+<li><p>Top X/Top 10 Reports:&nbsp;<a href=3D"https://wiki.mtn.co.za/conflue=
+nce/pages/viewpage.action?pageId=3D99524661" rel=3D"nofollow">XMF API - Ent=
+erprise Sharing Top X / Top 10</a></p></li>
+<li><p>Enterprise Sharing Usage Reports:&nbsp;<a href=3D"/confluence/displa=
+y/CE/XMF+API+-+Enterprise+Sharing+-+Usage">XMF API - Enterprise Sharing - U=
+sage</a></p></li>
+<li><p>Active Dormant Reports:&nbsp;<a href=3D"https://wiki.mtn.co.za/confl=
+uence/display/CE/XMF+API+-+Enterprise+Sharing+Active+Dormant" rel=3D"nofoll=
+ow">XMF API - Enterprise Sharing Active Dormant</a></p></li>
+</ul>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-SolutionOvervie=
+w">Solution Overview</h2>
+<p>The solutions consists of the following updates:</p>
+<ul>
+<li><p>Changes to report names</p></li>
+<li><p>Changes to column headers</p></li>
+<li><p>Changes to units of measure in report</p></li>
+</ul>
+<p><br></p>
+<p><br></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-TableOfContents=
+">Table Of Contents</h1>
+<hr>
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-/*<![CDATA[*/di=
+v.rbtoc1603666628737{padding:0px;}div.rbtoc1603666628737ul{list-style:disc;=
+margin-left:0px;}div.rbtoc1603666628737li{margin-left:0px;padding-left:0px;=
+}/*]]>*/Introduction#EBU174233-Enterpris"><style type=3D"text/css">/*<![CDA=
+TA[*/
+div.rbtoc1603666628737 {padding: 0px;}
+div.rbtoc1603666628737 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1603666628737 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style>
+<div class=3D"toc-macro rbtoc1603666628737">=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Introduct=
+ion">Introduction</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-ProjectBr=
+ief">Project Brief</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-SolutionO=
+verview">Solution Overview</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-TableOfCo=
+ntents">Table Of Contents</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-"></a></l=
+i>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Administr=
+ation">Administration</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Contacts"=
+>Contacts</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Timelines=
+">Timelines</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Links">Li=
+nks</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Status">S=
+tatus</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Issuesand=
+Actions">Issues and Actions</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-AnalysisS=
+tatus">Analysis Status</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Requireme=
+nts">Requirements</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Constrain=
+ts,Assumptions,Limitations">Constraints, Assumptions, Limitations</a></li>=
+=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Design:">=
+Design:</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Repo=
+rt-Voice">Top 10 Report - Voice</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before">B=
+efore</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After">Af=
+ter</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Repo=
+rt-Data">Top 10 Report - Data</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.1"=
+>Before</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After.1">=
+After</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Repo=
+rt-SMS">Top 10 Report - SMS</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.2"=
+>Before</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After.2">=
+After</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Repo=
+rt-CUG">Top 10 Report - CUG</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.3"=
+>Before</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After.3">=
+After</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageRepo=
+rt-PeriodMapping">Usage Report - Period Mapping</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageRepo=
+rt-Voice">Usage Report - Voice</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.4"=
+>Before</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After.4">=
+After</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageRepo=
+rt-Data">Usage Report - Data</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.5"=
+>Before</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After.5">=
+After</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageRepo=
+rt-SMS">Usage Report - SMS</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.6"=
+>Before</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After.6">=
+After</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageRepo=
+rt-CUG">Usage Report - CUG</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.7"=
+>Before</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After.7">=
+After</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-ZeroUsage=
+Report(CurrentActiveDormantReport):">Zero Usage Report (Current Active Dorm=
+ant Report):</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.8"=
+>Before</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-After.8">=
+After</a></li>=20
+</ul> </li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Implement=
+ation">Implementation</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Bearers">=
+Bearers</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Repo=
+rt">Top 10 Report</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-XMFExport=
+Configurations">XMF Export Configurations</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageRepo=
+rt">Usage Report</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-XMFExport=
+Configurations.1">XMF Export Configurations</a></li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-ZeroUsage=
+Report(CurrentlyActiveDormantReport)">Zero Usage Report (Currently Active D=
+ormant Report)</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-XMFExport=
+Configurations.2">XMF Export Configurations</a></li>=20
+</ul> </li>=20
+</ul> </li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Testing">=
+Testing</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Delivery,=
+MaintenanceandSupport:">Delivery, Maintenance and Support:</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-ProjectRe=
+view">Project Review</a></li>=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Addendum"=
+>Addendum</a>=20
+<ul class=3D"toc-indentation">=20
+<li><a href=3D"#EBU174233-EnterpriseSharingReportsUpdates(210620)-Attachmen=
+ts">Attachments</a></li>=20
+</ul> </li>=20
+</ul>=20
+</div></h1>
+<p><br></p>
+<p><br></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Administration"=
+>Administration</h1>
+<hr>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Contacts">Conta=
+cts</h2>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class=3D"confluenceTh"><p>Name</p></th>
+<th class=3D"confluenceTh"><p>Role</p></th>
+<th class=3D"confluenceTh"><p>Email</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Goodman Silaule</td>
+<td colspan=3D"1" class=3D"confluenceTd">Business Owner</td>
+<td colspan=3D"1" class=3D"confluenceTd"><a href=3D"mailto:goodman.silaule@=
+mtn.com" class=3D"external-link" rel=3D"nofollow">goodman.silaule@mtn.com</=
+a></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Giovanni Focaracio</td>
+<td colspan=3D"1" class=3D"confluenceTd">IS Architect</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p><a href=3D"mailto:giovanni.faca=
+raccio@mtn.com" class=3D"external-link" rel=3D"nofollow">giovanni.facaracci=
+o@mtn.com</a></p></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Sylvia James</td>
+<td colspan=3D"1" class=3D"confluenceTd">IS Project Manager</td>
+<td colspan=3D"1" class=3D"confluenceTd"><a href=3D"mailto:sylvia.james@mtn=
+.com" class=3D"external-link" rel=3D"nofollow">sylvia.james@mtn.com</a></td=
+>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Arn=C3=A9 Schreuder</td>
+<td colspan=3D"1" class=3D"confluenceTd">EIS BI Architect</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p><a href=3D"mailto:arne.schreude=
+r@mtn.co.za" class=3D"external-link" rel=3D"nofollow">arne.schreuder@mtn.co=
+m</a></p></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Jacques Viljoen</td>
+<td colspan=3D"1" class=3D"confluenceTd">EIS Developer / Resource</td>
+<td colspan=3D"1" class=3D"confluenceTd"><a href=3D"mailto:jacques.viljoen@=
+mtn.com" class=3D"external-link" rel=3D"nofollow">jacques.viljoen@mtn.com</=
+a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Timelines">Time=
+lines</h2>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 55.=
+0515%;">
+<colgroup>
+<col style=3D"width: 17.5%;">
+<col style=3D"width: 11.375%;">
+<col style=3D"width: 17.875%;">
+<col style=3D"width: 39.625%;">
+<col style=3D"width: 13.625%;">
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Component</th>
+<th colspan=3D"1" class=3D"confluenceTh">Estimated Effort</th>
+<th class=3D"confluenceTh">Start Date</th>
+<th colspan=3D"1" class=3D"confluenceTh">Person Responsible</th>
+<th class=3D"confluenceTh">Status</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">FRS Delivery</td>
+<td colspan=3D"1" class=3D"confluenceTd">1 week</td>
+<td class=3D"confluenceTd">2020-10-16</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention current-user-mention" data-=
+username=3D"SCHREU_A" href=3D"/confluence/display/~SCHREU_A" data-linked-re=
+source-id=3D"110348825" data-linked-resource-version=3D"1" data-linked-reso=
+urce-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluence">=
+Arn=C3=A9 Schreuder</a></p>
+</div></td>
+<td style=3D"text-align: center;" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-moved">APPROVAL</spa=
+n></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Implementation</td>
+<td colspan=3D"1" class=3D"confluenceTd">1 week</td>
+<td colspan=3D"1" class=3D"confluenceTd">TBD</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Testing</td>
+<td colspan=3D"1" class=3D"confluenceTd">2 Days</td>
+<td colspan=3D"1" class=3D"confluenceTd">TBD</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Delivery</td>
+<td colspan=3D"1" class=3D"confluenceTd">-</td>
+<td colspan=3D"1" class=3D"confluenceTd">TBD</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention current-user-mention" data-=
+username=3D"SCHREU_A" href=3D"/confluence/display/~SCHREU_A" data-linked-re=
+source-id=3D"110348825" data-linked-resource-version=3D"1" data-linked-reso=
+urce-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluence">=
+Arn=C3=A9 Schreuder</a> and <a class=3D"confluence-userlink user-mention" d=
+ata-username=3D"VILJO_JA" href=3D"/confluence/display/~VILJO_JA" data-linke=
+d-resource-id=3D"78946796" data-linked-resource-version=3D"1" data-linked-r=
+esource-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluenc=
+e">Jacques Viljoen</a></p>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Links">Links</h=
+2>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 100=
+.0%;">
+<colgroup>
+<col style=3D"width: 10.8108%;">
+<col style=3D"width: 13.5135%;">
+<col style=3D"width: 75.6757%;">
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Documentation</th>
+<td colspan=3D"1" class=3D"confluenceTd"><strong>Sharepoint</strong></td>
+<td class=3D"confluenceTd"><p><a href=3D"https://mtncloud.sharepoint.com/si=
+tes/MTNEISEBU/Shared%20Documents/General/Other%20EBU%20Projects/EBU%2017423=
+3%20-%20Enterprise%20Sharing%20Reports%20Updates%20(210620)" rel=3D"nofollo=
+w" class=3D"external-link">https://mtncloud.sharepoint.com/sites/MTNEISEBU/=
+Shared%20Documents/General/Other%20EBU%20Projects/EBU%20174233%20-%20Enterp=
+rise%20Sharing%20Reports%20Updates%20(210620)</a></p></td>
+</tr>
+<tr>
+<th rowspan=3D"4" class=3D"confluenceTh">Jazz</th>
+<td colspan=3D"1" class=3D"confluenceTd"><strong>Project</strong></td>
+<td class=3D"confluenceTd"><a href=3D"https://jazz.mtn.co.za:9443/ccm/web/p=
+rojects/EBU%20Portfolio#action=3Dcom.ibm.team.workitem.viewWorkItem&amp;id=
+=3D174233" class=3D"external-link" rel=3D"nofollow">https://jazz.mtn.co.za:=
+9443/ccm/web/projects/EBU%20Portfolio#action=3Dcom.ibm.team.workitem.viewWo=
+rkItem&amp;id=3D174233</a></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><strong>Sub-Project</strong></td>
+<td colspan=3D"1" class=3D"confluenceTd"><a href=3D"https://jazz.mtn.co.za:=
+9443/ccm/web/projects/IS%20Portfolio#action=3Dcom.ibm.team.workitem.viewWor=
+kItem&amp;id=3D210620" class=3D"external-link" rel=3D"nofollow">https://jaz=
+z.mtn.co.za:9443/ccm/web/projects/IS%20Portfolio#action=3Dcom.ibm.team.work=
+item.viewWorkItem&amp;id=3D210620</a></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><strong>Delivery Requests</strong>=
+</td>
+<td colspan=3D"1" class=3D"confluenceTd"><a href=3D"https://jazz.mtn.co.za:=
+9443/ccm/web/projects/Program%20Enterprise%20Information%20Systems%20%28EIS=
+%29#action=3Dcom.ibm.team.workitem.viewWorkItem&amp;id=3D209826" class=3D"e=
+xternal-link" rel=3D"nofollow">https://jazz.mtn.co.za:9443/ccm/web/projects=
+/Program%20Enterprise%20Information%20Systems%20%28EIS%29#action=3Dcom.ibm.=
+team.workitem.viewWorkItem&amp;id=3D209826</a></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><strong>Tasks</strong></td>
+<td colspan=3D"1" class=3D"confluenceTd">-</td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Requests</th>
+<td colspan=3D"1" class=3D"confluenceTd"><strong>Aveksa</strong></td>
+<td colspan=3D"1" class=3D"confluenceTd">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<p><br></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Status">Status<=
+/h1>
+<hr>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-IssuesandAction=
+s">Issues and Actions</h2>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 79.=
+2276%;">
+<colgroup>
+<col style=3D"width: 3.6961%;">
+<col style=3D"width: 33.5729%;">
+<col style=3D"width: 13.347%;">
+<col style=3D"width: 9.49692%;">
+<col style=3D"width: 12.8337%;">
+<col style=3D"width: 9.85626%;">
+<col style=3D"width: 9.9076%;">
+<col style=3D"width: 7.28953%;">
+</colgroup>
+<thead>
+<tr>
+<th class=3D"confluenceTh"><p>No</p></th>
+<th class=3D"confluenceTh"><p>Name</p></th>
+<th class=3D"confluenceTh"><p>Date Raised</p></th>
+<th class=3D"confluenceTh"><p>Impact</p></th>
+<th colspan=3D"1" class=3D"confluenceTh"><p>Responsible</p></th>
+<th colspan=3D"1" class=3D"confluenceTh"><p>Date Actioned</p></th>
+<th colspan=3D"1" class=3D"confluenceTh"><p>Comments</p></th>
+<th colspan=3D"1" class=3D"confluenceTh"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class=3D"confluenceTd">1</td>
+<td class=3D"confluenceTd">Active Dormant has a default range of 60 days. C=
+onfirm if this satisfies Req A4. Should perhaps move to Active Dormant repo=
+rt requirements then.</td>
+<td class=3D"confluenceTd">2020-10-22</td>
+<td class=3D"confluenceTd">Medium</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention current-user-mention" data-=
+username=3D"SCHREU_A" href=3D"/confluence/display/~SCHREU_A" data-linked-re=
+source-id=3D"110348825" data-linked-resource-version=3D"1" data-linked-reso=
+urce-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluence">=
+Arn=C3=A9 Schreuder</a></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-22</td>
+<td colspan=3D"1" class=3D"confluenceTd">The requirement here is to check i=
+n with portal on the default for all existing ES reports and match that wit=
+h the different services in XMF.</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">RESOLVED</s=
+pan></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">2</td>
+<td colspan=3D"1" class=3D"confluenceTd">Confirm naming of columns.</td>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-22</td>
+<td colspan=3D"1" class=3D"confluenceTd">Medium</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention current-user-mention" data-=
+username=3D"SCHREU_A" href=3D"/confluence/display/~SCHREU_A" data-linked-re=
+source-id=3D"110348825" data-linked-resource-version=3D"1" data-linked-reso=
+urce-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluence">=
+Arn=C3=A9 Schreuder</a></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-22</td>
+<td colspan=3D"1" class=3D"confluenceTd">Had a session with Goodman to conf=
+irm these</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">RESOLVED</s=
+pan></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">3</td>
+<td colspan=3D"1" class=3D"confluenceTd">Confirm assumptions, constraints a=
+nd limitations</td>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-22</td>
+<td colspan=3D"1" class=3D"confluenceTd">Medium</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention current-user-mention" data-=
+username=3D"SCHREU_A" href=3D"/confluence/display/~SCHREU_A" data-linked-re=
+source-id=3D"110348825" data-linked-resource-version=3D"1" data-linked-reso=
+urce-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluence">=
+Arn=C3=A9 Schreuder</a></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>2020-10-22</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">See above (2).</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">RESOLVED</s=
+pan></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">4</td>
+<td colspan=3D"1" class=3D"confluenceTd">Confirm if changes for Top X repor=
+ts are to be made for Usage reports also (consider headers, filenames, defa=
+ults etc.)</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>2020-10-22</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Medium</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention current-user-mention" data-=
+username=3D"SCHREU_A" href=3D"/confluence/display/~SCHREU_A" data-linked-re=
+source-id=3D"110348825" data-linked-resource-version=3D"1" data-linked-reso=
+urce-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluence">=
+Arn=C3=A9 Schreuder</a></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>2020-10-24</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-moved">RESOLVE</span=
+></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">5</td>
+<td colspan=3D"1" class=3D"confluenceTd">For equirement B1, we are now to s=
+how the month name instead of a number. Should we add the year as well? i.e=
+. before: "0", after "January 2020". This compensates when the period is &g=
+t; 12 months.</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>2020-10-24</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Medium</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention current-user-mention" data-=
+username=3D"SCHREU_A" href=3D"/confluence/display/~SCHREU_A" data-linked-re=
+source-id=3D"110348825" data-linked-resource-version=3D"1" data-linked-reso=
+urce-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluence">=
+Arn=C3=A9 Schreuder</a></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>2020-10-24</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-moved">RESOLVE</span=
+></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">6</td>
+<td colspan=3D"1" class=3D"confluenceTd">We have test data for Top X and Ac=
+tive Dormant, but does not look like we have data for usage. Top X and Usag=
+e uses the same test data, but for Usage, our export is empty?</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>2020-10-24</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Medium</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention current-user-mention" data-=
+username=3D"SCHREU_A" href=3D"/confluence/display/~SCHREU_A" data-linked-re=
+source-id=3D"110348825" data-linked-resource-version=3D"1" data-linked-reso=
+urce-type=3D"userinfo" data-base-url=3D"https://wiki.mtn.co.za/confluence">=
+Arn=C3=A9 Schreuder</a></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>2020-10-25</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-moved">RESOLVE</span=
+></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-AnalysisStatus"=
+>Analysis Status</h2>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 71.=
+6667%;">
+<colgroup>
+<col style=3D"width: 4.31328%;">
+<col style=3D"width: 13.0533%;">
+<col style=3D"width: 16.5153%;">
+<col style=3D"width: 57.378%;">
+<col style=3D"width: 8.74007%;">
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">No</th>
+<th class=3D"confluenceTh">Analysis</th>
+<th colspan=3D"1" class=3D"confluenceTh">Detail</th>
+<th class=3D"confluenceTh">Comments</th>
+<th class=3D"confluenceTh">Status</th>
+</tr>
+<tr>
+<td rowspan=3D"2" class=3D"confluenceTd">1</td>
+<td rowspan=3D"2" class=3D"confluenceTd">Introduction</td>
+<td colspan=3D"1" class=3D"confluenceTd">Project Brief</td>
+<td class=3D"confluenceTd">20201010: Added related wikis from previous deve=
+lopment.</td>
+<td style=3D"text-align: center;" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Solution Overview</td>
+<td colspan=3D"1" class=3D"confluenceTd">20201010: Provided a high level ov=
+erview of the solution.</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td rowspan=3D"3" class=3D"confluenceTd">2</td>
+<td rowspan=3D"3" class=3D"confluenceTd">Administration</td>
+<td colspan=3D"1" class=3D"confluenceTd">Contacts</td>
+<td colspan=3D"1" class=3D"confluenceTd">20201010: Added relevant stakehold=
+ers.</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Timelines</td>
+<td colspan=3D"1" class=3D"confluenceTd">20201021: Added section for timeli=
+nes</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Links</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>20201020: Added sharepoint link=
+s, Jazz tasks. There is now a sub-project for this project. Linked in Jazz =
+links (Project 210620)</p><p>20201020: Need to upload CR's</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td rowspan=3D"4" class=3D"confluenceTd">3</td>
+<td rowspan=3D"4" class=3D"confluenceTd">Status</td>
+<td colspan=3D"1" class=3D"confluenceTd">Issues and Actions</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>20101012: Added issues and acti=
+ons section</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Analysis Status</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>20201010: Created status tracki=
+ng section for analysis.</p><p>20201021: Working towards finalising the FRS=
+.</p><p>20201022: Check in on column headings.</p></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Development Status</td>
+<td colspan=3D"1" class=3D"confluenceTd">20201020: Created development stat=
+us section.</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Project Review</td>
+<td colspan=3D"1" class=3D"confluenceTd">20201010: Added project review sec=
+tion</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td rowspan=3D"5" class=3D"confluenceTd">4</td>
+<td rowspan=3D"5" class=3D"confluenceTd">Functional Requirement Specificati=
+on</td>
+<td colspan=3D"1" class=3D"confluenceTd">Requirements</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>20201010: Added requirements se=
+ction, still finalising requirements.</p><p>20201012: Discussions with Regg=
+ie around data fields and formatting.</p><p>20201022: Check in with Goodman=
+ on naming of fields (Req C2-C3)</p><p>20201022: Resolves</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Design</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>20201010: Added design section.=
+ Acquiring sample of current report.</p><p>20201012: Active dormant reports=
+ default to a date range of 60. Confirm if this is applicable. Might need t=
+o update to 90 to reflect "past 2 months"</p><p>20201021: Need to add examp=
+le of intent of report updates, comparing to current report.</p><p>20201022=
+: Period to reflect month, instead of "Current Month, Past Month and Past 2=
+ Months"</p><p><br></p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Implementation</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>20201010: Added implementation =
+section.</p><p>20201021: Need to add XMF services details.</p><p>20201022: =
+Added XMF Service details.</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Testing</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>20201010: Added testing section=
+.</p><p>20201021: Need testing parameters.</p><p>20201021: Upload test data=
+ extracts.</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Delivery, Maintenance and Support<=
+/td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>20201010: Added delivery, maint=
+enance and support section.</p><p>20201021: Need to add timelines for deliv=
+ery</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<p><br></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Requirements">R=
+equirements</h1>
+<hr>
+<p><br></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 70.=
+9756%;">
+<colgroup>
+<col style=3D"width: 6.76218%;">
+<col style=3D"width: 11.7479%;">
+<col style=3D"width: 4.18338%;">
+<col style=3D"width: 58.7966%;">
+<col style=3D"width: 10.2579%;">
+<col style=3D"width: 8.25215%;">
+</colgroup>
+<thead>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh"><p>Group</p></th>
+<th class=3D"confluenceTh"><p>Report</p></th>
+<th colspan=3D"1" class=3D"confluenceTh">No</th>
+<th class=3D"confluenceTh"><p>Requirement Detail</p></th>
+<th colspan=3D"1" class=3D"confluenceTh">Responsible</th>
+<th colspan=3D"1" class=3D"confluenceTh"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan=3D"11" class=3D"confluenceTd">A</td>
+<td rowspan=3D"11" class=3D"confluenceTd">Top 10 Report</td>
+<td colspan=3D"1" class=3D"confluenceTd">A1.1</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Change report name to "Enterpri=
+se_Sharing_Top_10_National_Voice"</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><span>A1.2</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Change report name to "Enter=
+prise_Sharing_Top_10_Data"</span></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><span>A1.3</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Change report name to "Enter=
+prise_Sharing_Top_10_SMS"</span></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><span>A1.4</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Change report name to "Enter=
+prise_Sharing_Top_10_CUG"</span></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">A2.1</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Change unit of measure for Nati=
+onal Voice to Minutes</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">A2.2</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Change unit of measure for C=
+UG to Minutes</span></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">A3.1</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Change column C to "National Vo=
+ice Usage (in Mins)" <span>for the Top 10 Report - Voice</span></p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><span>A3.2</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span><span>Change column C to "Da=
+ta Usage (in GB)" for the Top 10 Report - Data</span></span></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><span>A3.3</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Change column C to "SMS Usag=
+e (in Units)" for the Top 10 Report - SMS</span></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><span>A3.4</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Change column C to "CUG Usag=
+e (in Mins)" for the Top 10 Report - CUG</span></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">A4</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Confirm what the top 10 reports=
+ defaults to as the portal does allow a date/period range</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">B</td>
+<td colspan=3D"1" class=3D"confluenceTd">Usage Report</td>
+<td colspan=3D"1" class=3D"confluenceTd">B1</td>
+<td colspan=3D"1" class=3D"confluenceTd">Reflect column "Period" as a month=
+ name (string) and not a number. (From 0-12, "January 2020"-"December 2020"=
+)</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td rowspan=3D"7" class=3D"confluenceTd">C</td>
+<td rowspan=3D"7" class=3D"confluenceTd">Zero Usage Report<br>(Current: Act=
+ive Dormant Report)&nbsp;</td>
+<td colspan=3D"1" class=3D"confluenceTd">C1</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Change report name to "Enterpri=
+se_Sharing_Active_SIMs_Zero_Usage"</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">DONE</span>=
+</p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">C2</td>
+<td colspan=3D"1" class=3D"confluenceTd">Update field descriptions: Change =
+"LAST_MT_VOICE" to "LAST_DATE_RECEIVED_VOICE"</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">C3</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Update field descriptions: Chan=
+ge "LAST_MO_VOICE" to "LAST_DATE_CALLED_VOICE"</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">C4</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Update field descriptions: Chan=
+ge "LAST_MO_SMS" to "LAST_SENT_SMS"</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">C5</td>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Update field descriptions: Chan=
+ge "LAST_MT_SMS" to "LAST_RECEIVED_SMS"</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">C6</td>
+<td colspan=3D"1" class=3D"confluenceTd">If not records are found, (last da=
+te is never), then output "Never Used".</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">C7</td>
+<td colspan=3D"1" class=3D"confluenceTd">Fix spelling mistakes (RECIEVE =3D=
+ RECEIVE)</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"VILJO_JA"=
+ href=3D"/confluence/display/~VILJO_JA" data-linked-resource-id=3D"78946796=
+" data-linked-resource-version=3D"1" data-linked-resource-type=3D"userinfo"=
+ data-base-url=3D"https://wiki.mtn.co.za/confluence">Jacques Viljoen</a></p=
+>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Constraints,Ass=
+umptions,Limitations">Constraints, Assumptions, Limitations</h3>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Requirement No</th>
+<th class=3D"confluenceTh">Type</th>
+<th class=3D"confluenceTh">Detail</th>
+<th colspan=3D"1" class=3D"confluenceTh">Confirmation</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">C1-C4</td>
+<td class=3D"confluenceTd">Assumption</td>
+<td class=3D"confluenceTd">If no data is found for a particular msisdn, do =
+not show 0 for a date, show "Never Used"</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge aui-lozenge-success">CONFIRMED</=
+span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Design:">Design=
+:</h1>
+<hr>
+<p><br></p>
+<p>Note: Deltas in reports are shown in red</p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Report-Voi=
+ce">Top 10 Report - Voice</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before">Before<=
+/h3>
+<p>See example extract:&nbsp;<a href=3D"https://wiki.mtn.co.za/confluence/d=
+ownload/attachments/113613485/Enterprise_Sharing_Top_10_Voice.xlsx?api=3Dv2=
+" rel=3D"nofollow">Enterprise_Sharing_Top_10_Voice.xlsx</a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 50.=
+813%;">
+<colgroup>
+<col style=3D"width: 12.0897%;">
+<col style=3D"width: 27.1417%;">
+<col style=3D"width: 0.640512%;">
+<col style=3D"width: 21.6173%;">
+<col style=3D"width: 0.720576%;">
+<col style=3D"width: 0.720576%;">
+<col style=3D"width: 0.720576%;">
+<col style=3D"width: 36.3491%;">
+</colgroup>
+<tbody>
+<tr>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh">Filena=
+me</th>
+<th colspan=3D"7" class=3D"confluenceTh"><span>Enterprise_Sharing_Top_10_Vo=
+ice.xlsx<br></span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">CORPORATE_ID</th>
+<th colspan=3D"1" class=3D"confluenceTh">MSISDN</th>
+<th colspan=3D"6" class=3D"confluenceTh">Voice Usage (in Mins)</th>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After">After</h=
+3>
+<div class=3D"table-wrap">
+<table class=3D"wrapped relative-table confluenceTable" style=3D"width: 50.=
+6504%;">
+<colgroup>
+<col style=3D"width: 12.9317%;">
+<col style=3D"width: 26.3454%;">
+<col style=3D"width: 1.44578%;">
+<col style=3D"width: 1.44578%;">
+<col style=3D"width: 1.5261%;">
+<col style=3D"width: 1.5261%;">
+<col style=3D"width: 1.5261%;">
+<col style=3D"width: 1.5261%;">
+<col style=3D"width: 1.5261%;">
+<col style=3D"width: 1.5261%;">
+<col style=3D"width: 48.6747%;">
+</colgroup>
+<tbody>
+<tr>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh">Filena=
+me</th>
+<th style=3D"text-align: left;" colspan=3D"10" class=3D"confluenceTh"><span=
+ style=3D"color: rgb(255,0,0);">Enterprise_Sharing_Top_10_National_Voice.xl=
+sx</span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh"><span>CORPORATE_ID</span></th>
+<th colspan=3D"1" class=3D"confluenceTh"><span>MSISDN</span></th>
+<th colspan=3D"9" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">National Voice Usage (in Mins)</span></th>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column name change</li>
+<li>Limit Column C to 2 decimal places</li>
+</ul>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Report-Dat=
+a">Top 10 Report - Data</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.1">Befor=
+e</h3>
+<p>See example extract:&nbsp;<a href=3D"https://wiki.mtn.co.za/confluence/d=
+ownload/attachments/113613485/Enterprise_Sharing_Top_10_Data.xlsx?api=3Dv2"=
+ rel=3D"nofollow">Enterprise_Sharing_Top_10_Data.xlsx</a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 50.=
+3252%;">
+<colgroup>
+<col style=3D"width: 13.4196%;">
+<col style=3D"width: 26.1116%;">
+<col style=3D"width: 24.4139%;">
+<col style=3D"width: 2.99111%;">
+<col style=3D"width: 33.0639%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"4" class=3D"confluenceTh"><span>Enterprise_Sharing_Top_10_Da=
+ta.xlsx</span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh"><span>CORPORATE_ID</span></th>
+<th colspan=3D"1" class=3D"confluenceTh"><span>MSISDN</span></th>
+<th colspan=3D"3" class=3D"confluenceTh">Data Usage (in GB)</th>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After.1">After<=
+/h3>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 50.=
+3252%;">
+<colgroup>
+<col style=3D"width: 13.3387%;">
+<col style=3D"width: 26.4349%;">
+<col style=3D"width: 1.61681%;">
+<col style=3D"width: 1.61681%;">
+<col style=3D"width: 1.69766%;">
+<col style=3D"width: 1.69766%;">
+<col style=3D"width: 1.69766%;">
+<col style=3D"width: 1.69766%;">
+<col style=3D"width: 50.2021%;">
+</colgroup>
+<tbody>
+<tr>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh">Filena=
+me</th>
+<th style=3D"text-align: left;" colspan=3D"8" class=3D"confluenceTh"><span =
+style=3D"color: rgb(255,0,0);">Enterprise_Sharing_Top_10_Data.xlsx</span></=
+th>
+</tr>
+<tr>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh"><span>=
+CORPORATE_ID</span></th>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh">MSISDN=
+</th>
+<th style=3D"text-align: left;" colspan=3D"7" class=3D"confluenceTh"><span =
+style=3D"color: rgb(255,0,0);">Data Usage (in GB)</span></th>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column name change</li>
+<li>This should already be done, just double check.</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Report-SMS=
+">Top 10 Report - SMS</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.2">Befor=
+e</h3>
+<p>See example extract:&nbsp;<a href=3D"https://wiki.mtn.co.za/confluence/d=
+ownload/attachments/113613485/Enterprise_Sharing_Top_10_Data.xlsx?api=3Dv2"=
+ rel=3D"nofollow">Enterprise_Sharing_Top_10_Data.xlsx</a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 49.=
+3902%;">
+<colgroup>
+<col style=3D"width: 20.6755%;">
+<col style=3D"width: 26.6063%;">
+<col style=3D"width: 24.8764%;">
+<col style=3D"width: 3.04778%;">
+<col style=3D"width: 24.7941%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"4" class=3D"confluenceTh">Enterprise_Sharing_Top_10_SMS.xlsx=
+</th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">CORPORATE_ID</th>
+<th colspan=3D"1" class=3D"confluenceTh">MSISDN</th>
+<th colspan=3D"3" class=3D"confluenceTh">SMS Usage</th>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After.2">After<=
+/h3>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 49.=
+187%;">
+<colgroup>
+<col style=3D"width: 20.4301%;">
+<col style=3D"width: 27.2126%;">
+<col style=3D"width: 1.48883%;">
+<col style=3D"width: 1.48883%;">
+<col style=3D"width: 1.57155%;">
+<col style=3D"width: 1.57155%;">
+<col style=3D"width: 1.57155%;">
+<col style=3D"width: 1.57155%;">
+<col style=3D"width: 43.0935%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"8" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">Enterprise_Sharing_Top_10_SMS.xlsx<br></span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">CORPORATE_ID</th>
+<th colspan=3D"1" class=3D"confluenceTh">MSISDN</th>
+<th colspan=3D"7" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">SMS Usage (in Units)</span></th>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column name change</li>
+</ul>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Report-CUG=
+">Top 10 Report - CUG</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.3">Befor=
+e</h3>
+<p>See example extract:&nbsp;<a class=3D"filename" href=3D"https://wiki.mtn=
+.co.za/confluence/download/attachments/113613485/Enterprise_Sharing_Top_10_=
+CUG.xlsx?api=3Dv2" title=3D"Download" rel=3D"nofollow">Enterprise_Sharing_T=
+op_10_CUG.xlsx</a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 49.=
+1729%;">
+<colgroup>
+<col style=3D"width: 20.5207%;">
+<col>
+<col style=3D"width: 28.4839%;">
+<col style=3D"width: 50.9954%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"3" class=3D"confluenceTh"><span>Enterprise_Sharing_Top_10_CU=
+G.xlsx<br></span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh"><span>CORPORATE_ID</span></th>
+<th colspan=3D"1" class=3D"confluenceTh"><span>MSISDN</span></th>
+<th colspan=3D"2" class=3D"confluenceTh">CUG Voice Usage (in Mins)</th>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After.3">After<=
+/h3>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 49.=
+1057%;">
+<colgroup>
+<col style=3D"width: 20.3811%;">
+<col style=3D"width: 22.2038%;">
+<col style=3D"width: 1.3256%;">
+<col style=3D"width: 1.3256%;">
+<col style=3D"width: 1.24275%;">
+<col style=3D"width: 1.24275%;">
+<col style=3D"width: 1.40845%;">
+<col style=3D"width: 1.40845%;">
+<col style=3D"width: 49.4615%;">
+</colgroup>
+<tbody>
+<tr>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh">Filena=
+me</th>
+<th style=3D"text-align: left;" colspan=3D"8" class=3D"confluenceTh"><span =
+style=3D"color: rgb(255,0,0);">Enterprise_Sharing_Top_10_CUG.xlsx</span></t=
+h>
+</tr>
+<tr>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh"><span>=
+CORPORATE_ID</span></th>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh"><span>=
+MSISDN</span></th>
+<th style=3D"text-align: left;" colspan=3D"7" class=3D"confluenceTh"><span =
+style=3D"color: rgb(255,0,0);">CUG Usage (in Mins)</span></th>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column name change</li>
+<li>Limit Column C to 2 decimal places</li>
+</ul>
+<p><br><br><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageReport-Per=
+iodMapping">Usage Report - Period Mapping</h2>
+<p><strong>Taken from&nbsp;<a href=3D"/confluence/display/CE/XMF+API+-+Ente=
+rprise+Sharing+-+Usage">XMF API - Enterprise Sharing - Usage</a>:</strong><=
+/p>
+<p>Suppose it is December, then the mapping follows</p>
+<div class=3D"table-wrap">
+<table class=3D"confluenceTable">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Period Before</th>
+<th class=3D"confluenceTh">Period After</th>
+</tr>
+<tr>
+<td style=3D"text-align: center;" class=3D"confluenceTd">0</td>
+<td class=3D"confluenceTd">"December 2020"</td>
+</tr>
+<tr>
+<td style=3D"text-align: center;" class=3D"confluenceTd">1</td>
+<td class=3D"confluenceTd">"November 2020"</td>
+</tr>
+<tr>
+<td style=3D"text-align: center;" class=3D"confluenceTd">2</td>
+<td class=3D"confluenceTd">"October 2020"</td>
+</tr>
+<tr>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">...<=
+/td>
+<td colspan=3D"1" class=3D"confluenceTd">....</td>
+</tr>
+<tr>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">11</=
+td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>"January 2020"</span></td>
+</tr>
+<tr>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">12</=
+td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>"December 2019"</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageReport-Voi=
+ce">Usage Report - Voice</h2>
+<p>For all usage reports use this:</p>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.4">Befor=
+e</h3>
+<p>See example extract:&nbsp;<a href=3D"https://wiki.mtn.co.za/confluence/d=
+ownload/attachments/113613485/27734669064_enterprise_sharing_usage_voice.xl=
+sx?api=3Dv2" rel=3D"nofollow">27734669064_enterprise_sharing_usage_voice.xl=
+sx</a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 95.4545%;">
+<colgroup>
+<col style=3D"width: 6.75139%;">
+<col style=3D"width: 9.6108%;">
+<col style=3D"width: 15.7268%;">
+<col style=3D"width: 11.2788%;">
+<col style=3D"width: 13.0262%;">
+<col style=3D"width: 0.555997%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 5.48054%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 34.3924%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"12" class=3D"confluenceTh">%s_enterprise_sharing.xlsx</th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Usage Date</th>
+<th colspan=3D"1" class=3D"confluenceTh">PERIOD</th>
+<th colspan=3D"1" class=3D"confluenceTh">Corporate MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Member MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Voice Usage (Sec)</th>
+<th colspan=3D"8" class=3D"confluenceTh">ES Voice Call Count</th>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-10</td>
+<td colspan=3D"1" class=3D"confluenceTd">0</td>
+<td colspan=3D"1" class=3D"confluenceTd">27834446666</td>
+<td colspan=3D"1" class=3D"confluenceTd">27835557777</td>
+<td colspan=3D"1" class=3D"confluenceTd">120</td>
+<td colspan=3D"8" class=3D"confluenceTd">12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After.4">After<=
+/h3>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 95.4545%;">
+<colgroup>
+<col style=3D"width: 6.75139%;">
+<col style=3D"width: 9.6108%;">
+<col style=3D"width: 15.7268%;">
+<col style=3D"width: 11.2788%;">
+<col style=3D"width: 13.0262%;">
+<col style=3D"width: 0.555997%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 5.48054%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 34.3924%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"12" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0=
+);">Enterprise_Sharing_Usage_National_Voice.xlsx</span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Usage Date</th>
+<th colspan=3D"1" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">Period</span></th>
+<th colspan=3D"1" class=3D"confluenceTh">Corporate MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Member MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">National Voice Usage (in Mins)</span></th>
+<th colspan=3D"8" class=3D"confluenceTh">ES Voice Call Count</th>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-10</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0)=
+;">October 2020</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">27834446666</td>
+<td colspan=3D"1" class=3D"confluenceTd">27835557777</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0)=
+;">2</span></td>
+<td colspan=3D"8" class=3D"confluenceTd">12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column name change</li>
+<li>Limit (in Mins) column to 2 decimal places</li>
+</ul>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageReport-Dat=
+a">Usage Report - Data</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.5">Befor=
+e</h3>
+<p>See example extract:&nbsp;<a href=3D"https://wiki.mtn.co.za/confluence/d=
+ownload/attachments/113613485/27734669064_enterprise_sharing_usage_data.xls=
+x?api=3Dv2" rel=3D"nofollow">27734669064_enterprise_sharing_usage_data.xlsx=
+</a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 92.8788%;">
+<colgroup>
+<col style=3D"width: 9.64052%;">
+<col style=3D"width: 10.5392%;">
+<col style=3D"width: 15.0327%;">
+<col style=3D"width: 13.3987%;">
+<col style=3D"width: 0.490196%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 6.45425%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 41.1765%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"11" class=3D"confluenceTh">%s_enterprise_sharing.xlsx</th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Usage Date</th>
+<th colspan=3D"1" class=3D"confluenceTh">PERIOD</th>
+<th colspan=3D"1" class=3D"confluenceTh">Corporate MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Member MSISDN</th>
+<th colspan=3D"8" class=3D"confluenceTh">ES Data Usage (Bytes)</th>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-10</td>
+<td colspan=3D"1" class=3D"confluenceTd">0</td>
+<td colspan=3D"1" class=3D"confluenceTd">27834446666</td>
+<td colspan=3D"1" class=3D"confluenceTd">27835557777</td>
+<td colspan=3D"8" class=3D"confluenceTd"><span style=3D"color: rgb(77,81,86=
+);">1073741824</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After.5">After<=
+/h3>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 95.4545%;">
+<colgroup>
+<col style=3D"width: 6.75139%;">
+<col style=3D"width: 9.6108%;">
+<col style=3D"width: 15.7268%;">
+<col style=3D"width: 11.2788%;">
+<col style=3D"width: 0.555997%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 5.48054%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 34.3924%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"11" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0=
+);">Enterprise_Sharing_Usage_Data.xlsx</span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Usage Date</th>
+<th colspan=3D"1" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">Period</span></th>
+<th colspan=3D"1" class=3D"confluenceTh">Corporate MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Member MSISDN</th>
+<th colspan=3D"8" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">ES Data Usage (in GB)</span></th>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-10</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0)=
+;">October 2020</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">27834446666</td>
+<td colspan=3D"1" class=3D"confluenceTd">27835557777</td>
+<td colspan=3D"8" class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0)=
+;">1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column name change</li>
+<li>Notice the unit of measure of ES Data Usage (in GB)</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageReport-SMS=
+">Usage Report - SMS</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.6">Befor=
+e</h3>
+<p>See example extract:&nbsp;<a href=3D"https://wiki.mtn.co.za/confluence/d=
+ownload/attachments/113613485/27734669064_enterprise_sharing_usage_data.xls=
+x?api=3Dv2" rel=3D"nofollow">27734669064_enterprise_sharing_usage_data.xlsx=
+</a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 92.8788%;">
+<colgroup>
+<col style=3D"width: 9.64052%;">
+<col style=3D"width: 10.5392%;">
+<col style=3D"width: 15.0327%;">
+<col style=3D"width: 13.3987%;">
+<col style=3D"width: 0.490196%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 6.45425%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 0.653595%;">
+<col style=3D"width: 41.1765%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"11" class=3D"confluenceTh">%s_enterprise_sharing.xlsx</th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Usage Date</th>
+<th colspan=3D"1" class=3D"confluenceTh">PERIOD</th>
+<th colspan=3D"1" class=3D"confluenceTh">Corporate MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Member MSISDN</th>
+<th colspan=3D"8" class=3D"confluenceTh">ES SMS Usage</th>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">020-10-10</td>
+<td colspan=3D"1" class=3D"confluenceTd">0</td>
+<td colspan=3D"1" class=3D"confluenceTd">27834446666</td>
+<td colspan=3D"1" class=3D"confluenceTd">27835557777</td>
+<td colspan=3D"8" class=3D"confluenceTd"><span style=3D"color: rgb(77,81,86=
+);">235</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After.6">After<=
+/h3>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 95.4545%;">
+<colgroup>
+<col style=3D"width: 6.75139%;">
+<col style=3D"width: 9.6108%;">
+<col style=3D"width: 15.7268%;">
+<col style=3D"width: 11.2788%;">
+<col style=3D"width: 0.555997%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 5.48054%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 0.635425%;">
+<col style=3D"width: 34.3924%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"11" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0=
+);">Enterprise_Sharing_Usage_SMS.xlsx</span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Usage Date</th>
+<th colspan=3D"1" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">Period</span></th>
+<th colspan=3D"1" class=3D"confluenceTh">Corporate MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Member MSISDN</th>
+<th colspan=3D"8" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;"><span>ES SMS Usage</span> (in Units)</span></th>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-10</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0)=
+;">October 2020</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">27834446666</td>
+<td colspan=3D"1" class=3D"confluenceTd">27835557777</td>
+<td colspan=3D"8" class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0)=
+;">235</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column name change</li>
+<li>Notice the unit of measure of ES SMS Usage (in GB)</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageReport-CUG=
+">Usage Report - CUG</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.7">Befor=
+e</h3>
+<p>See example extract:&nbsp;<a href=3D"https://wiki.mtn.co.za/confluence/d=
+ownload/attachments/113613485/27734669064_enterprise_sharing_usage_cug.xlsx=
+?api=3Dv2" rel=3D"nofollow">27734669064_enterprise_sharing_usage_cug.xlsx</=
+a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 100.0%;">
+<colgroup>
+<col style=3D"width: 8.41547%;">
+<col style=3D"width: 9.02199%;">
+<col style=3D"width: 13.1918%;">
+<col style=3D"width: 11.903%;">
+<col style=3D"width: 15.3904%;">
+<col style=3D"width: 0.45489%;">
+<col style=3D"width: 0.530705%;">
+<col style=3D"width: 0.60652%;">
+<col style=3D"width: 0.60652%;">
+<col style=3D"width: 5.23124%;">
+<col style=3D"width: 0.60652%;">
+<col style=3D"width: 0.60652%;">
+<col style=3D"width: 0.60652%;">
+<col style=3D"width: 32.8279%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"13" class=3D"confluenceTh">%s_enterprise_sharing.xlsx</th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Usage Date</th>
+<th colspan=3D"1" class=3D"confluenceTh">PERIOD</th>
+<th colspan=3D"1" class=3D"confluenceTh">Corporate MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Member MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">CUG Voice Usage (Sec)</th>
+<th colspan=3D"9" class=3D"confluenceTh">CUG Call Count</th>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">020-10-10</td>
+<td colspan=3D"1" class=3D"confluenceTd">0</td>
+<td colspan=3D"1" class=3D"confluenceTd">27834446666</td>
+<td colspan=3D"1" class=3D"confluenceTd">27835557777</td>
+<td colspan=3D"1" class=3D"confluenceTd">180</td>
+<td colspan=3D"9" class=3D"confluenceTd"><span style=3D"color: rgb(77,81,86=
+);">2</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After.7">After<=
+/h3>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 84.8485%;">
+<colgroup>
+<col style=3D"width: 14.1197%;">
+<col style=3D"width: 10.7239%;">
+<col style=3D"width: 17.605%;">
+<col style=3D"width: 12.6005%;">
+<col style=3D"width: 20.286%;">
+<col style=3D"width: 24.6649%;">
+</colgroup>
+<tbody>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Filename</th>
+<th colspan=3D"5" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">Enterprise_Sharing_Usage_CUG.xlsx</span></th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Usage Date</th>
+<th colspan=3D"1" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">Period</span></th>
+<th colspan=3D"1" class=3D"confluenceTh">Corporate MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh">Member MSISDN</th>
+<th colspan=3D"1" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">CUG Voice Usage (in Mins)</span></th>
+<th colspan=3D"1" class=3D"confluenceTh"><span style=3D"color: rgb(255,0,0)=
+;">CUG Call Count</span></th>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-10</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0)=
+;">October 2020</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">27834446666</td>
+<td colspan=3D"1" class=3D"confluenceTd">27835557777</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0)=
+;">3</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column name change</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-ZeroUsageReport=
+(CurrentActiveDormantReport):">Zero Usage Report (Current Active Dormant Re=
+port):</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Before.8"><stro=
+ng>Before</strong></h3>
+<p>See example extract:&nbsp;<a href=3D"https://wiki.mtn.co.za/confluence/d=
+ownload/attachments/113613485/Enterprise_Sharing_Active_SIMs_Zero_Usage.xls=
+x?api=3Dv2" rel=3D"nofollow">Enterprise_Sharing_Active_SIMs_Zero_Usage.xlsx=
+</a></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 63.=
+374%;">
+<colgroup>
+<col style=3D"width: 7.70218%;">
+<col style=3D"width: 14.1207%;">
+<col style=3D"width: 15.982%;">
+<col style=3D"width: 16.2388%;">
+<col style=3D"width: 12.2593%;">
+<col style=3D"width: 10.2696%;">
+<col style=3D"width: 6.09756%;">
+<col style=3D"width: 17.3299%;">
+</colgroup>
+<tbody>
+<tr>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh">FILENA=
+ME</th>
+<th style=3D"text-align: left;" colspan=3D"7" class=3D"confluenceTh"><span =
+style=3D"color: rgb(255,0,0);">Enterprise_Sharing_Active_SIMs_Zero_Usage.xl=
+sx</span></th>
+</tr>
+<tr>
+<th style=3D"text-align: left;" class=3D"confluenceTh">MSISDN</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">LAST_DATA_USED (in G=
+B)</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">LAST_CALLED_VOICE (i=
+n Mins)</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">LAST_RECIEVED_VOICE =
+(in Mins)</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">LAST_RECIEVED_SMS</t=
+h>
+<th style=3D"text-align: left;" class=3D"confluenceTh">LAST_CALLED_SMS</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">DATE</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">STATUS_90_DAYS</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">27634045484</td>
+<td class=3D"confluenceTd">0</td>
+<td class=3D"confluenceTd">0</td>
+<td class=3D"confluenceTd">0</td>
+<td class=3D"confluenceTd">0</td>
+<td class=3D"confluenceTd">0</td>
+<td class=3D"confluenceTd">0</td>
+<td class=3D"confluenceTd">DORMANT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-After.8">After<=
+/h3>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th style=3D"text-align: left;" colspan=3D"1" class=3D"confluenceTh">FILENA=
+ME</th>
+<th style=3D"text-align: left;" colspan=3D"7" class=3D"confluenceTh"><span =
+style=3D"color: rgb(255,0,0);">Enterprise_Sharing_Active_SIMs_Zero_Usage.xl=
+sx</span></th>
+</tr>
+<tr>
+<th style=3D"text-align: left;" class=3D"confluenceTh">MSISDN</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">LAST_DATA_USAGE</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh"><span style=3D"color=
+: rgb(255,0,0);">LAST_DATE_CALLED_VOICE</span></th>
+<th style=3D"text-align: left;" class=3D"confluenceTh"><span style=3D"color=
+: rgb(255,0,0);">LAST_DATE_RECEIVED_VOICE</span></th>
+<th style=3D"text-align: left;" class=3D"confluenceTh"><span style=3D"color=
+: rgb(255,0,0);">LAST_DATE_CALLED_SMS</span></th>
+<th style=3D"text-align: left;" class=3D"confluenceTh"><span style=3D"color=
+: rgb(255,0,0);">LAST_DATE_RECEIVED_SMS</span></th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">LAST_DATE</th>
+<th style=3D"text-align: left;" class=3D"confluenceTh">STATUS_30_DAYS</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">27634045484</td>
+<td class=3D"confluenceTd">2020-01-01</td>
+<td class=3D"confluenceTd">2020-01-01</td>
+<td class=3D"confluenceTd">2020-01-01</td>
+<td class=3D"confluenceTd">2020-01-01</td>
+<td class=3D"confluenceTd">2020-01-01</td>
+<td class=3D"confluenceTd">2020-01-01</td>
+<td class=3D"confluenceTd">DORMANT</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">27634045484</td>
+<td colspan=3D"1" class=3D"confluenceTd">Never used</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Never used</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Never used</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Never used</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Never used</span></td>
+<td colspan=3D"1" class=3D"confluenceTd"><span>Never used</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">DORMANT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Note:&nbsp;</strong></p>
+<ul>
+<li>Filename change</li>
+<li>Column headings change</li>
+<li>Date format if data is available (yyyy-mm-dd)</li>
+<li>"<span>Never used"</span> if no date is available meaning the subscribe=
+r has never used that MSISDN.</li>
+<li>Notice fixed spelling mistakes</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Implementation"=
+>Implementation</h1>
+<hr>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Bearers">Bearer=
+s</h2>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Bearers</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Voice</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Data</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">SMS</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">CUG</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Top10Report">To=
+p 10 Report</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-XMFExportConfig=
+urations">XMF Export Configurations</h3>
+<p>These are the list of XMF export configurations that will be affected an=
+d need to be updated for Top 10/X reports.</p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 61.=
+9549%;">
+<colgroup>
+<col style=3D"width: 25.1519%;">
+<col style=3D"width: 60.6318%;">
+<col style=3D"width: 14.2163%;">
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Export Name</th>
+<th class=3D"confluenceTh">Description</th>
+<th colspan=3D"1" class=3D"confluenceTh">Status</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Enterprise Sharing Top X</td>
+<td class=3D"confluenceTd">Starting point of the enterprise sharing top X q=
+ueries</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Enterprise Sharing Top X All</td>
+<td class=3D"confluenceTd">Retrieve the top X records for all bearers and t=
+he specified corporate ID</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Enterprise Sharing Top CUG</td>
+<td class=3D"confluenceTd">Retrieve the top X CUG records for the specified=
+ corporate ID</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Top Data</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the top X data records fo=
+r the specified corporate ID</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Top SMS</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the top X SMS records for=
+ the specified corporate ID</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Top Voice</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the top X voice records f=
+or the specified corporate ID</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><em>Note:</em></strong></p>
+<ul>
+<li>Queries to be updated in Query Tab</li>
+<li>Filename to be updated in field "Filename Template"<br><br></li>
+</ul>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-UsageReport">Us=
+age Report</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-XMFExportConfig=
+urations.1">XMF Export Configurations</h3>
+<p>These are the list of XMF export configurations that will be affected an=
+d need to be updated for Usage reports.</p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 71.=
+203%;">
+<colgroup>
+<col style=3D"width: 34.0381%;">
+<col style=3D"width: 53.9112%;">
+<col style=3D"width: 12.0507%;">
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Export Name</th>
+<th class=3D"confluenceTh">Description</th>
+<th colspan=3D"1" class=3D"confluenceTh">Status</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Enterprise Sharing</td>
+<td class=3D"confluenceTd">Starting point for the enterprise sharing querie=
+s</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing All Corporate A=
+ll</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve all the enterprise sharin=
+g records for all members in corporation</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing All Corporate R=
+olled Up</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve all the enterprise sharin=
+g records for corporation rolled up</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing All Member</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the all the enterprise sh=
+aring records for a single member</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing CUG Corporate A=
+ll</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing CU=
+G records for all members in corporation</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing CUG Corporate R=
+olled Up</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing CU=
+G records for corporation rolled up</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing CUG Member</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the all the enterprise sh=
+aring records for a single member</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Data Corporate =
+All</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing da=
+ta records for all members in corporation</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Data Corporate =
+Rolled Up</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing da=
+ta records for corporation rolled up</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Data Member</td=
+>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing da=
+ta records for a single member</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing SMS Corporate A=
+ll</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing SM=
+S records for all members in corporation</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing SMS Corporate R=
+olled Up</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing SM=
+S records for corporation rolled up</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Voice Corporate=
+ All</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing vo=
+ice records for all members in corporation</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Voice Corporate=
+ Rolled Up</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing vo=
+ice records for corporation rolled up</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Voice Member</t=
+d>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the enterprise sharing vo=
+ice records for a single member</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><em>Note:</em></strong></p>
+<ul>
+<li>Queries to be updated in Query Tab<br><br></li>
+</ul>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-ZeroUsageReport=
+(CurrentlyActiveDormantReport)">Zero Usage Report (Currently Active Dormant=
+ Report)</h2>
+<h3 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-XMFExportConfig=
+urations.2">XMF Export Configurations</h3>
+<p>These are the list of XMF export configurations that will be affected an=
+d need to be updated for Zero Usage (Active Dormant) reports.</p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 80.=
+6015%;">
+<colgroup>
+<col style=3D"width: 33.5201%;">
+<col style=3D"width: 56.0224%;">
+<col style=3D"width: 10.4575%;">
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Export Name</th>
+<th class=3D"confluenceTh">Description</th>
+<th colspan=3D"1" class=3D"confluenceTh">Status</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Enterprise Sharing Active Dormant MSISDN's</td>
+<td class=3D"confluenceTd">Retrieve the last usage per bearer</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Active Dormant =
+MSISDN's - Accounts</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the last usage per bearer=
+ for the supplied account numbers and package CD's</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Active Dormant =
+MSISDN's - EVA</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the last usage per bearer=
+</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise Sharing Active Dormant =
+MSISDN's - MSISDN List</td>
+<td colspan=3D"1" class=3D"confluenceTd">Retrieve the last usage per bearer=
+ for the supplied MSISDN's</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><em>Note:</em></strong></p>
+<ul>
+<li>Use `TO_DATE('${SDATE}', 'yyyy-mm-dd')`&nbsp;&nbsp;to convert integer r=
+epresentation of date i.e. 20,201,001 to date i.e. 2020-01-01&nbsp;</li>
+<li>Queries to be updated in Query Tab</li>
+<li>Filename to be updated in field "Filename Template"<br><br><br><br></li=
+>
+</ul>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Testing">Testin=
+g</h1>
+<hr>
+<p>See these Wikis for each report's testing protocols and details:</p>
+<ul>
+<li><a href=3D"/confluence/pages/viewpage.action?pageId=3D99524661">XMF API=
+ - Enterprise Sharing Top X / Top 10</a></li>
+<li><a href=3D"/confluence/display/CE/XMF+API+-+Enterprise+Sharing+-+Usage"=
+>XMF API - Enterprise Sharing - Usage</a></li>
+<li><a href=3D"/confluence/display/CE/XMF+API+-+Enterprise+Sharing+Active+D=
+ormant">XMF API - Enterprise Sharing Active Dormant</a><br><br></li>
+</ul>
+<p>All tests are done using a REST interface (can use postman) with the fol=
+lowing details:</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Dev &amp; Test End-point</th>
+<th class=3D"confluenceTh">Production End-point</th>
+<th class=3D"confluenceTh">HTTP Method</th>
+<th colspan=3D"1" class=3D"confluenceTh">Authentication</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><a href=3D"https://det-dev.mtn.co.za/rai/submit_=
+export/" class=3D"external-link" rel=3D"nofollow">https://det-dev.mtn.co.za=
+/rai/submit_export/</a></td>
+<td class=3D"confluenceTd"><a href=3D"https://det.mtn.co.za/rai/submit_expo=
+rt/" class=3D"external-link" rel=3D"nofollow">https://det.mtn.co.za/rai/sub=
+mit_export/</a></td>
+<td class=3D"confluenceTd">PUT</td>
+<td colspan=3D"1" class=3D"confluenceTd">Basic, use domain username and pas=
+sword</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<p>The following data was loaded as test data on `XDR@ES_TEST` and is proce=
+ssed in `CCN@ES_TEST`. This data can be used for testing purposes.</p>
+<p>See extracts:</p>
+<ul>
+<li><a href=3D"https://wiki.mtn.co.za/confluence/download/attachments/11361=
+3485/CCN_SESSION_EDR_202010191254.csv?api=3Dv2" class=3D"filename" title=3D=
+"Download" rel=3D"nofollow">CCN_SESSION_EDR_202010191254.csv</a></li>
+<li><a href=3D"https://wiki.mtn.co.za/confluence/download/attachments/11361=
+3485/CCN_VOICE_202010191256_full.csv?api=3Dv2" rel=3D"nofollow">https://wik=
+i.mtn.co.za/confluence/download/attachments/113613485/CCN_VOICE_20201019125=
+6_full.csv?api=3Dv2</a></li>
+</ul>
+<p>Queries:</p>
+<ul>
+<li><a href=3D"https://wiki.mtn.co.za/confluence/download/attachments/11361=
+3485/xdr.ccn%20queries.sql?api=3Dv2" class=3D"filename" title=3D"Download" =
+rel=3D"nofollow">xdr.ccn queries.sql</a></li>
+</ul>
+<p><br></p>
+<p>In general these parameters can be used:</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Parameter</th>
+<th class=3D"confluenceTh">Value</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Minimum Date</td>
+<td class=3D"confluenceTd">2020-06-01 09:38:45</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Maximum Date</td>
+<td colspan=3D"1" class=3D"confluenceTd">2020-10-13 16:24:59</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Corporate IDs</td>
+<td colspan=3D"1" class=3D"confluenceTd">27734669064</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">MSISDNs</td>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p>27717358359<br>27638504070<br>27605274562<br>27632148900<br>27732262503<=
+/p>
+<div id=3D"expander-855745923" class=3D"expand-container">
+<div id=3D"expander-control-855745923" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"53032a3e26be481549b33c748773ae8f" widt=
+h=3D"16" height=3D"16"></span>
+<span class=3D"expand-control-text">See more...</span>
+</div>
+<div id=3D"expander-content-855745923" class=3D"expand-content">
+27634158902
+<br>27786480574
+<br>27734038499
+<br>27633341117
+<br>27631932627
+<br>27735065346
+<br>27835866118
+<br>27631147379
+<br>27631951785
+<br>27718208537
+<br>27605891244
+<br>27632310479
+<br>27832128941
+<br>27780387914
+<br>27838725902
+<br>27717951043
+<br>27783586055
+<br>27735639151
+<br>27838594998
+<br>27630123160
+<br>27781297484
+<br>27635382398
+<br>27638641393
+<br>27605474523
+<br>27719816740
+<br>27837033641
+<br>27717421888
+<br>27810075410
+<br>27789351217
+<br>27736520367
+<br>27780733642
+<br>27785687050
+<br>27729471731
+<br>27787954488
+<br>27787043436
+<br>27733540538
+<br>27604927300
+</div>
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<p><br></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Delivery,Mainte=
+nanceandSupport:">Delivery, Maintenance and Support:</h1>
+<hr>
+<p><em>Not applicable</em></p>
+<p><em><br></em></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-ProjectReview">=
+Project Review</h1>
+<hr>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 50.=
+8943%;">
+<colgroup>
+<col style=3D"width: 47.3221%;">
+<col style=3D"width: 18.3853%;">
+<col style=3D"width: 34.2926%;">
+</colgroup>
+<thead>
+<tr>
+<th class=3D"confluenceTh"><p>Review Item</p></th>
+<th colspan=3D"1" class=3D"confluenceTh"><p>Status</p></th>
+<th class=3D"confluenceTh"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Key Success Areas (incl Value Add)=
+</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Requirements / Scope Creep</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><p>Major Issues Experienced</p></t=
+d>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Development (Which environment use=
+d)</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Testing (Was testing done and docu=
+mented). Was testing team involved?</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><p>Peer Review</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td class=3D"confluenceTd"><p><br></p></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Monitoring in Place (Alarms in ACC=
+ for support team?)</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Support Team Handover (Include lin=
+k to section on the wiki / video)</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Documentation (Ex. Sources, Marts,=
+ Information Flows, KPIs,<br>Platform &amp; Technologies, Reporting Catalog=
+, Definitions, etc).<p>Add links to pages edited in EIS landscape.</p></td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Code in SVN (Provide Link)</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Key Areas for Improvement &amp; Su=
+ggestions</td>
+<td style=3D"text-align: center;" colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><span class=3D"status-macro aui-lozenge">PENDING</span></p>
+</div></td>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<p><br></p>
+</div>=20
+</div>=20
+</div>=20
+<div class=3D"columnLayout single" data-layout=3D"single">=20
+<div class=3D"cell normal" data-type=3D"normal">=20
+<div class=3D"innerCell">=20
+<h1 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Addendum">Adden=
+dum</h1>
+<hr>
+<h2 id=3D"EBU174233-EnterpriseSharingReportsUpdates(210620)-Attachments">At=
+tachments</h2>
+<p> </p>
+<div class=3D"plugin_attachments_container">=20
+<div class=3D"plugin_attachments_table_container">=20
+<fieldset class=3D"hidden">=20
+<input type=3D"hidden" class=3D"plugin_attachments_macro_render_param" name=
+=3D"pageId" value=3D"113613485">=20
+<input type=3D"hidden" name=3D"deleteConfirmMessage" value=3D"Are you sure =
+you want to send the attached file " {0}" to the trash? only a space admini=
+strator can undo this action.">=20
+<input type=3D"hidden" name=3D"outputType" value=3D"word">=20
+</fieldset>=20
+<table class=3D"attachments aui">=20
+<thead>=20
+<tr>=20
+<th class=3D"expand-column attachment-summary-toggle">&nbsp;</th>=20
+<th class=3D"filename-column"> <a href=3D"/confluence/pages/viewpage.action=
+?pageId=3D113613485&amp;sortBy=3Dname&amp;sortOrder=3Dascending">File</a> <=
+/th>=20
+<th class=3D"modified-column"> <span class=3D"propersortedby $sortOrder"><a=
+ href=3D"/confluence/pages/viewpage.action?pageId=3D113613485&amp;sortBy=3D=
+date&amp;sortOrder=3Ddescending">Modified</a></span> </th>=20
+</tr>=20
+</thead>=20
+<tbody>=20
+<tr id=3D"attachment-113617407" class=3D"attachment-row" data-attachment-id=
+=3D"113617407" data-attachment-idx=3D"1">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-pdf" title=3D"PDF File">PDF File</span> <a class=3D"filename" href=3D"/=
+confluence/download/attachments/113613485/CR%20_ES%20Reports%20Enhancements=
+-signed.pdf?api=3Dv2" title=3D"Download" data-filename=3D"CR _ES Reports En=
+hancements-signed.pdf" data-type=3D"application/pdf" data-linked-resource-c=
+ontainer-id=3D"113613485"> CR _ES Reports Enhancements-signed.pdf </a> </td=
+>=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617407 hidden" data-a=
+ttachment-id=3D"113617407" data-attachment-filename=3D"CR _ES Reports Enhan=
+cements-signed.pdf">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2">=20
+<div class=3D"attachment-image-preview"></div> <p class=3D"attachment-label=
+s">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617407"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"CR _ES Repor=
+ts Enhancements-signed.pdf" data-file-src=3D"/confluence/download/attachmen=
+ts/113613485/CR%20_ES%20Reports%20Enhancements-signed.pdf?api=3Dv2" data-li=
+nked-resource-default-alias=3D"CR _ES Reports Enhancements-signed.pdf" data=
+-mime-type=3D"application/pdf" data-linked-resource-container-id=3D"1136134=
+85" data-linked-resource-id=3D"113617407">Preview</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3DCR+_ES+Reports+Enhancements-signed.pdf&amp;pageId=3D113613485">Vi=
+ew</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3DCR+_ES+Reports+Enhancemen=
+ts-signed.pdf&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3DCR+_ES+Report=
+s+Enhancements-signed.pdf">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617410" class=3D"attachment-row" data-attachment-id=
+=3D"113617410" data-attachment-idx=3D"2">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/Enterprise_Sharing_Active_SIMs_Zero_Usage.xlsx?api=3Dv2" title=3D"Do=
+wnload" data-filename=3D"Enterprise_Sharing_Active_SIMs_Zero_Usage.xlsx" da=
+ta-type=3D"application/vnd.openxmlformats-officedocument.spreadsheetml.shee=
+t" data-linked-resource-container-id=3D"113613485"> Enterprise_Sharing_Acti=
+ve_SIMs_Zero_Usage.xlsx </a> </td>=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617410 hidden" data-a=
+ttachment-id=3D"113617410" data-attachment-filename=3D"Enterprise_Sharing_A=
+ctive_SIMs_Zero_Usage.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617410"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"Enterprise_S=
+haring_Active_SIMs_Zero_Usage.xlsx" data-file-src=3D"/confluence/download/a=
+ttachments/113613485/Enterprise_Sharing_Active_SIMs_Zero_Usage.xlsx?api=3Dv=
+2" data-linked-resource-default-alias=3D"Enterprise_Sharing_Active_SIMs_Zer=
+o_Usage.xlsx" data-mime-type=3D"application/vnd.openxmlformats-officedocume=
+nt.spreadsheetml.sheet" data-linked-resource-container-id=3D"113613485" dat=
+a-linked-resource-id=3D"113617410">Preview</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3DEnterprise_Sharing_Active_SIMs_Zero_Usage.xlsx&amp;pageId=3D11361=
+3485">View</a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/Enterprise_Sharing_Ac=
+tive_SIMs_Zero_Usage.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sharing_Active=
+_SIMs_Zero_Usage.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sh=
+aring_Active_SIMs_Zero_Usage.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617411" class=3D"attachment-row" data-attachment-id=
+=3D"113617411" data-attachment-idx=3D"3">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/Enterprise_Sharing_Top_10_CUG.xlsx?api=3Dv2" title=3D"Download" data=
+-filename=3D"Enterprise_Sharing_Top_10_CUG.xlsx" data-type=3D"application/v=
+nd.openxmlformats-officedocument.spreadsheetml.sheet" data-linked-resource-=
+container-id=3D"113613485"> Enterprise_Sharing_Top_10_CUG.xlsx </a> </td>=
+=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617411 hidden" data-a=
+ttachment-id=3D"113617411" data-attachment-filename=3D"Enterprise_Sharing_T=
+op_10_CUG.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617411"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"Enterprise_S=
+haring_Top_10_CUG.xlsx" data-file-src=3D"/confluence/download/attachments/1=
+13613485/Enterprise_Sharing_Top_10_CUG.xlsx?api=3Dv2" data-linked-resource-=
+default-alias=3D"Enterprise_Sharing_Top_10_CUG.xlsx" data-mime-type=3D"appl=
+ication/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-linked-=
+resource-container-id=3D"113613485" data-linked-resource-id=3D"113617411">P=
+review</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3DEnterprise_Sharing_Top_10_CUG.xlsx&amp;pageId=3D113613485">View</=
+a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/Enterprise_Sharing_To=
+p_10_CUG.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sharing_Top_10=
+_CUG.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sh=
+aring_Top_10_CUG.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617412" class=3D"attachment-row" data-attachment-id=
+=3D"113617412" data-attachment-idx=3D"4">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/Enterprise_Sharing_Top_10_Data.xlsx?api=3Dv2" title=3D"Download" dat=
+a-filename=3D"Enterprise_Sharing_Top_10_Data.xlsx" data-type=3D"application=
+/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-linked-resourc=
+e-container-id=3D"113613485"> Enterprise_Sharing_Top_10_Data.xlsx </a> </td=
+>=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617412 hidden" data-a=
+ttachment-id=3D"113617412" data-attachment-filename=3D"Enterprise_Sharing_T=
+op_10_Data.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617412"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"Enterprise_S=
+haring_Top_10_Data.xlsx" data-file-src=3D"/confluence/download/attachments/=
+113613485/Enterprise_Sharing_Top_10_Data.xlsx?api=3Dv2" data-linked-resourc=
+e-default-alias=3D"Enterprise_Sharing_Top_10_Data.xlsx" data-mime-type=3D"a=
+pplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-link=
+ed-resource-container-id=3D"113613485" data-linked-resource-id=3D"113617412=
+">Preview</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3DEnterprise_Sharing_Top_10_Data.xlsx&amp;pageId=3D113613485">View<=
+/a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/Enterprise_Sharing_To=
+p_10_Data.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sharing_Top_10=
+_Data.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sh=
+aring_Top_10_Data.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617413" class=3D"attachment-row" data-attachment-id=
+=3D"113617413" data-attachment-idx=3D"5">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/Enterprise_Sharing_Top_10_SMS.xlsx?api=3Dv2" title=3D"Download" data=
+-filename=3D"Enterprise_Sharing_Top_10_SMS.xlsx" data-type=3D"application/v=
+nd.openxmlformats-officedocument.spreadsheetml.sheet" data-linked-resource-=
+container-id=3D"113613485"> Enterprise_Sharing_Top_10_SMS.xlsx </a> </td>=
+=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617413 hidden" data-a=
+ttachment-id=3D"113617413" data-attachment-filename=3D"Enterprise_Sharing_T=
+op_10_SMS.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617413"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"Enterprise_S=
+haring_Top_10_SMS.xlsx" data-file-src=3D"/confluence/download/attachments/1=
+13613485/Enterprise_Sharing_Top_10_SMS.xlsx?api=3Dv2" data-linked-resource-=
+default-alias=3D"Enterprise_Sharing_Top_10_SMS.xlsx" data-mime-type=3D"appl=
+ication/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-linked-=
+resource-container-id=3D"113613485" data-linked-resource-id=3D"113617413">P=
+review</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3DEnterprise_Sharing_Top_10_SMS.xlsx&amp;pageId=3D113613485">View</=
+a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/Enterprise_Sharing_To=
+p_10_SMS.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sharing_Top_10=
+_SMS.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sh=
+aring_Top_10_SMS.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617414" class=3D"attachment-row" data-attachment-id=
+=3D"113617414" data-attachment-idx=3D"6">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/Enterprise_Sharing_Top_10_Voice.xlsx?api=3Dv2" title=3D"Download" da=
+ta-filename=3D"Enterprise_Sharing_Top_10_Voice.xlsx" data-type=3D"applicati=
+on/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-linked-resou=
+rce-container-id=3D"113613485"> Enterprise_Sharing_Top_10_Voice.xlsx </a> <=
+/td>=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617414 hidden" data-a=
+ttachment-id=3D"113617414" data-attachment-filename=3D"Enterprise_Sharing_T=
+op_10_Voice.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617414"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"Enterprise_S=
+haring_Top_10_Voice.xlsx" data-file-src=3D"/confluence/download/attachments=
+/113613485/Enterprise_Sharing_Top_10_Voice.xlsx?api=3Dv2" data-linked-resou=
+rce-default-alias=3D"Enterprise_Sharing_Top_10_Voice.xlsx" data-mime-type=
+=3D"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data=
+-linked-resource-container-id=3D"113613485" data-linked-resource-id=3D"1136=
+17414">Preview</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3DEnterprise_Sharing_Top_10_Voice.xlsx&amp;pageId=3D113613485">View=
+</a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/Enterprise_Sharing_To=
+p_10_Voice.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sharing_Top_10=
+_Voice.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3DEnterprise_Sh=
+aring_Top_10_Voice.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617417" class=3D"attachment-row" data-attachment-id=
+=3D"113617417" data-attachment-idx=3D"7">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-unknown" title=3D"File">File</span> <a class=3D"filename" href=3D"/conf=
+luence/download/attachments/113613485/CCN_SESSION_EDR_202010191254.csv?api=
+=3Dv2" title=3D"Download" data-filename=3D"CCN_SESSION_EDR_202010191254.csv=
+" data-type=3D"text/csv" data-linked-resource-container-id=3D"113613485"> C=
+CN_SESSION_EDR_202010191254.csv </a> </td>=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617417 hidden" data-a=
+ttachment-id=3D"113617417" data-attachment-filename=3D"CCN_SESSION_EDR_2020=
+10191254.csv">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617417"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"CCN_SESSION_=
+EDR_202010191254.csv" data-file-src=3D"/confluence/download/attachments/113=
+613485/CCN_SESSION_EDR_202010191254.csv?api=3Dv2" data-linked-resource-defa=
+ult-alias=3D"CCN_SESSION_EDR_202010191254.csv" data-mime-type=3D"text/csv" =
+data-linked-resource-container-id=3D"113613485" data-linked-resource-id=3D"=
+113617417">Preview</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3DCCN_SESSION_EDR_202010191=
+254.csv&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3DCCN_SESSION_E=
+DR_202010191254.csv">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617418" class=3D"attachment-row" data-attachment-id=
+=3D"113617418" data-attachment-idx=3D"8">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-unknown" title=3D"File">File</span> <a class=3D"filename" href=3D"/conf=
+luence/download/attachments/113613485/CCN_VOICE_202010191256_full.csv?api=
+=3Dv2" title=3D"Download" data-filename=3D"CCN_VOICE_202010191256_full.csv"=
+ data-type=3D"text/csv" data-linked-resource-container-id=3D"113613485"> CC=
+N_VOICE_202010191256_full.csv </a> </td>=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617418 hidden" data-a=
+ttachment-id=3D"113617418" data-attachment-filename=3D"CCN_VOICE_2020101912=
+56_full.csv">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617418"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"CCN_VOICE_20=
+2010191256_full.csv" data-file-src=3D"/confluence/download/attachments/1136=
+13485/CCN_VOICE_202010191256_full.csv?api=3Dv2" data-linked-resource-defaul=
+t-alias=3D"CCN_VOICE_202010191256_full.csv" data-mime-type=3D"text/csv" dat=
+a-linked-resource-container-id=3D"113613485" data-linked-resource-id=3D"113=
+617418">Preview</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3DCCN_VOICE_202010191256_fu=
+ll.csv&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3DCCN_VOICE_202=
+010191256_full.csv">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617419" class=3D"attachment-row" data-attachment-id=
+=3D"113617419" data-attachment-idx=3D"9">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-unknown" title=3D"File">File</span> <a class=3D"filename" href=3D"/conf=
+luence/download/attachments/113613485/xdr.ccn%20queries.sql?api=3Dv2" title=
+=3D"Download" data-filename=3D"xdr.ccn queries.sql" data-type=3D"applicatio=
+n/octet-stream" data-linked-resource-container-id=3D"113613485"> xdr.ccn qu=
+eries.sql </a> </td>=20
+<td class=3D"attachment-created modified-column"> <span>Oct 22, 2020</span>=
+ <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617419 hidden" data-a=
+ttachment-id=3D"113617419" data-attachment-filename=3D"xdr.ccn queries.sql"=
+>=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617419"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"xdr.ccn quer=
+ies.sql" data-file-src=3D"/confluence/download/attachments/113613485/xdr.cc=
+n%20queries.sql?api=3Dv2" data-linked-resource-default-alias=3D"xdr.ccn que=
+ries.sql" data-mime-type=3D"application/octet-stream" data-linked-resource-=
+container-id=3D"113613485" data-linked-resource-id=3D"113617419">Preview</a=
+>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3Dxdr.ccn+queries.sql&amp;i=
+sFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3Dxdr.ccn+queri=
+es.sql">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617680" class=3D"attachment-row" data-attachment-id=
+=3D"113617680" data-attachment-idx=3D"10">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/27734669064_enterprise_sharing_usage_cug.xlsx?api=3Dv2" title=3D"Dow=
+nload" data-filename=3D"27734669064_enterprise_sharing_usage_cug.xlsx" data=
+-type=3D"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"=
+ data-linked-resource-container-id=3D"113613485"> 27734669064_enterprise_sh=
+aring_usage_cug.xlsx </a> </td>=20
+<td class=3D"attachment-created modified-column"> <span>32 minutes ago</spa=
+n> <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617680 hidden" data-a=
+ttachment-id=3D"113617680" data-attachment-filename=3D"27734669064_enterpri=
+se_sharing_usage_cug.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617680"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"27734669064_=
+enterprise_sharing_usage_cug.xlsx" data-file-src=3D"/confluence/download/at=
+tachments/113613485/27734669064_enterprise_sharing_usage_cug.xlsx?api=3Dv2"=
+ data-linked-resource-default-alias=3D"27734669064_enterprise_sharing_usage=
+_cug.xlsx" data-mime-type=3D"application/vnd.openxmlformats-officedocument.=
+spreadsheetml.sheet" data-linked-resource-container-id=3D"113613485" data-l=
+inked-resource-id=3D"113617680">Preview</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3D27734669064_enterprise_sharing_usage_cug.xlsx&amp;pageId=3D113613=
+485">View</a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/27734669064_enterpris=
+e_sharing_usage_cug.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3D27734669064_enterprise_sh=
+aring_usage_cug.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3D27734669064_e=
+nterprise_sharing_usage_cug.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617681" class=3D"attachment-row" data-attachment-id=
+=3D"113617681" data-attachment-idx=3D"11">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/27734669064_enterprise_sharing_usage_data.xlsx?api=3Dv2" title=3D"Do=
+wnload" data-filename=3D"27734669064_enterprise_sharing_usage_data.xlsx" da=
+ta-type=3D"application/vnd.openxmlformats-officedocument.spreadsheetml.shee=
+t" data-linked-resource-container-id=3D"113613485"> 27734669064_enterprise_=
+sharing_usage_data.xlsx </a> </td>=20
+<td class=3D"attachment-created modified-column"> <span>32 minutes ago</spa=
+n> <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617681 hidden" data-a=
+ttachment-id=3D"113617681" data-attachment-filename=3D"27734669064_enterpri=
+se_sharing_usage_data.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617681"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"27734669064_=
+enterprise_sharing_usage_data.xlsx" data-file-src=3D"/confluence/download/a=
+ttachments/113613485/27734669064_enterprise_sharing_usage_data.xlsx?api=3Dv=
+2" data-linked-resource-default-alias=3D"27734669064_enterprise_sharing_usa=
+ge_data.xlsx" data-mime-type=3D"application/vnd.openxmlformats-officedocume=
+nt.spreadsheetml.sheet" data-linked-resource-container-id=3D"113613485" dat=
+a-linked-resource-id=3D"113617681">Preview</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3D27734669064_enterprise_sharing_usage_data.xlsx&amp;pageId=3D11361=
+3485">View</a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/27734669064_enterpris=
+e_sharing_usage_data.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3D27734669064_enterprise_sh=
+aring_usage_data.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3D27734669064_e=
+nterprise_sharing_usage_data.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617682" class=3D"attachment-row" data-attachment-id=
+=3D"113617682" data-attachment-idx=3D"12">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/27734669064_enterprise_sharing_usage_sms.xlsx?api=3Dv2" title=3D"Dow=
+nload" data-filename=3D"27734669064_enterprise_sharing_usage_sms.xlsx" data=
+-type=3D"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"=
+ data-linked-resource-container-id=3D"113613485"> 27734669064_enterprise_sh=
+aring_usage_sms.xlsx </a> </td>=20
+<td class=3D"attachment-created modified-column"> <span>32 minutes ago</spa=
+n> <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617682 hidden" data-a=
+ttachment-id=3D"113617682" data-attachment-filename=3D"27734669064_enterpri=
+se_sharing_usage_sms.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617682"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"27734669064_=
+enterprise_sharing_usage_sms.xlsx" data-file-src=3D"/confluence/download/at=
+tachments/113613485/27734669064_enterprise_sharing_usage_sms.xlsx?api=3Dv2"=
+ data-linked-resource-default-alias=3D"27734669064_enterprise_sharing_usage=
+_sms.xlsx" data-mime-type=3D"application/vnd.openxmlformats-officedocument.=
+spreadsheetml.sheet" data-linked-resource-container-id=3D"113613485" data-l=
+inked-resource-id=3D"113617682">Preview</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3D27734669064_enterprise_sharing_usage_sms.xlsx&amp;pageId=3D113613=
+485">View</a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/27734669064_enterpris=
+e_sharing_usage_sms.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3D27734669064_enterprise_sh=
+aring_usage_sms.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3D27734669064_e=
+nterprise_sharing_usage_sms.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+<tr id=3D"attachment-113617683" class=3D"attachment-row" data-attachment-id=
+=3D"113617683" data-attachment-idx=3D"13">=20
+<td class=3D"attachment-summary-toggle"> <span class=3D"icon icon-section-c=
+losed" title=3D"Show more info"></span> </td>=20
+<td class=3D"filename-column"> <span class=3D"aui-icon content-type-attachm=
+ent-excel" title=3D"Microsoft Excel Spreadsheet">Microsoft Excel Spreadshee=
+t</span> <a class=3D"filename" href=3D"/confluence/download/attachments/113=
+613485/27734669064_enterprise_sharing_usage_voice.xlsx?api=3Dv2" title=3D"D=
+ownload" data-filename=3D"27734669064_enterprise_sharing_usage_voice.xlsx" =
+data-type=3D"application/vnd.openxmlformats-officedocument.spreadsheetml.sh=
+eet" data-linked-resource-container-id=3D"113613485"> 27734669064_enterpris=
+e_sharing_usage_voice.xlsx </a> </td>=20
+<td class=3D"attachment-created modified-column"> <span>32 minutes ago</spa=
+n> <span>by</span> <a href=3D"    /confluence/display/~SCHREU_A
+" class=3D"url fn confluence-userlink" data-username=3D"SCHREU_A">Arn=C3=A9=
+ Schreuder [ MTN Innovation Centre ]</a> </td>=20
+</tr>=20
+<tr class=3D"attachment-summary attachment-summary-113617683 hidden" data-a=
+ttachment-id=3D"113617683" data-attachment-filename=3D"27734669064_enterpri=
+se_sharing_usage_voice.xlsx">=20
+<td class=3D"attachment-summary-toggle"></td>=20
+<td class=3D"attachment-details-wrapper" colspan=3D"2"> <p class=3D"attachm=
+ent-labels">Labels</p>=20
+<div class=3D"labels-section-content content-column" entityid=3D"113617683"=
+ entitytype=3D"attachment">=20
+<div class=3D"labels-content">=20
+<ul class=3D"label-list  has-pen">=20
+<li class=3D"no-labels-message"> No labels </li>=20
+<li class=3D"labels-edit-container"> <a href=3D"#" class=3D"show-labels-edi=
+tor" title=3D"Edit Labels"> <span class=3D"aui-icon aui-icon-small aui-icon=
+font-devtools-tag-small">Edit Labels</span> </a> </li>=20
+</ul>=20
+</div>=20
+</div>=20
+<div class=3D"attachment-history-wrapper"></div>=20
+<div class=3D"attachment-buttons">=20
+<a class=3D"aui-button previewAttachmentLink" data-filename=3D"27734669064_=
+enterprise_sharing_usage_voice.xlsx" data-file-src=3D"/confluence/download/=
+attachments/113613485/27734669064_enterprise_sharing_usage_voice.xlsx?api=
+=3Dv2" data-linked-resource-default-alias=3D"27734669064_enterprise_sharing=
+_usage_voice.xlsx" data-mime-type=3D"application/vnd.openxmlformats-officed=
+ocument.spreadsheetml.sheet" data-linked-resource-container-id=3D"113613485=
+" data-linked-resource-id=3D"113617683">Preview</a>=20
+<a class=3D"aui-button " href=3D"/confluence/pages/worddav/preview.action?f=
+ileName=3D27734669064_enterprise_sharing_usage_voice.xlsx&amp;pageId=3D1136=
+13485">View</a>=20
+<a class=3D"aui-button office-editable-pathauth" href=3D"/confluence/plugin=
+s/servlet/confluence/editinword/113613485/attachments/27734669064_enterpris=
+e_sharing_usage_voice.xlsx">Edit in Office</a>=20
+<a class=3D"aui-button editAttachmentLink" href=3D"/confluence/pages/editat=
+tachment.action?pageId=3D113613485&amp;fileName=3D27734669064_enterprise_sh=
+aring_usage_voice.xlsx&amp;isFromPageView=3Dtrue">Properties</a>=20
+<a class=3D"aui-button removeAttachmentLink" href=3D"/confluence/pages/conf=
+irmattachmentremoval.action?pageId=3D113613485&amp;fileName=3D27734669064_e=
+nterprise_sharing_usage_voice.xlsx">Delete</a>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</div>=20
+<div class=3D"plugin_attachments_upload_container">=20
+<div class=3D"attachments-table-drop-zone">=20
+<li class=3D"drop-zone-text">=20
+<div class=3D"drop-zone-image"></div> <span>Drag and drop to upload or <a c=
+lass=3D"aui-button aui-button-link browse-files">browse for files</a></span=
+> <img src=3D"c49fe3205dc7160b276f1bce0de0a213" class=3D"plugin_attachments=
+_dropzone_uploadwaiticon" width=3D"16" height=3D"16"> </li>=20
+<form method=3D"POST" class=3D"plugin_attachments_uploadform aui hidden" ac=
+tion=3D"/confluence/pages/plugins/attachments/doattachfile.action?pageId=3D=
+113613485" enctype=3D"multipart/form-data">=20
+<input type=3D"hidden" name=3D"atl_token" value=3D"32609d7a4f2a603e2bf70fcd=
+858645da74b0911d">=20
+<div class=3D"field-group">=20
+<label>Upload file</label>=20
+<input type=3D"file" name=3D"file_0" size=3D"30">=20
+</div>=20
+<div class=3D"field-group">=20
+<label>File description</label>=20
+<input type=3D"text" class=3D"blank-search text" name=3D"comment_0" size=3D=
+"20" placeholder=3D"Comment">=20
+<input type=3D"hidden" name=3D"labels" value=3D"$macroParams.labels">=20
+</div>=20
+<div class=3D"field-group">=20
+<input type=3D"submit" class=3D"submit aui-button" name=3D"confirm" value=
+=3D"Upload">=20
+</div>=20
+<iframe class=3D"plugin_attachments_uploadiframe hidden" name=3D"kx7uJCORmr=
+WCIUd2wBrvfENYKZIAKdfYWy6eFwluWSY7rKEEZxWRRz2wgwsRdwC6" src=3D""></iframe>=
+=20
+</form>=20
+</div>=20
+</div>=20
+<div>=20
+<a class=3D"download-all-link" href=3D"/confluence/pages/downloadallattachm=
+ents.action?pageId=3D113613485" title=3D"Download all the latest versions o=
+f attachments on this page as single zip file.">Download All</a>=20
+</div>=20
+</div>=20
+<p></p>
+</div>=20
+</div>=20
+</div>=20
+</div>
+    </div>
+</body>
+</html>
+------=_Part_95931_716406867.1603666629832
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/c49fe3205dc7160b276f1bce0de0a213
+
+R0lGODlhEAAQAMQAAP///+7u7t3d3bu7u6qqqpmZmYiIiHd3d2ZmZlVVVURERDMzMyIiIhEREQAR
+AAAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05F
+VFNDQVBFMi4wAwEAAAAh+QQFBwAQACwAAAAAEAAQAAAFdyAkQgGJJOWoQgIjBM8jkKsoPEzgyMGs
+CjPDw7ADpkQBxRDmSCRetpRA6Rj4kFBkgLC4IlUGhbNQIwXOYYWCXDufzYPDMaoKGBoKb886OjAK
+dgZAAgQkfCwzAgsDBAUCgl8jAQkHEAVkAoA1AgczlyIDczUDA2UhACH5BAUHABAALAAAAAAPABAA
+AAVjICSO0IGIATkqIiMKDaGKC8Q49jPMYsE0hQdrlABCGgvT45FKiRKQhWA0mPKGPAgBcTjsspBC
+AoH4gl+FmXNEUEBVAYHToJAVZK/XWoQQDAgBZioHaX8igigFKYYQVlkCjiMhACH5BAUHABAALAAA
+AAAQAA8AAAVgICSOUGGQqIiIChMESyo6CdQGdRqUENESI8FAdFgAFwqDISYwPB4CVSMnEhSej+Fo
+gNhtHyfRQFmIol5owmEta/fcKITB6y4choMBmk7yGgSAEAJ8JAVDgQFmKUCCZnwhACH5BAUHABAA
+LAAAAAAQABAAAAViICSOYkGe4hFAiSImAwotB+si6Co2QxvjAYHIgBAqDoWCK2Bq6A40iA4yYMgg
+NZKwGFgVCAQZotFwwJIF4QnxaC9IsZNgLtAJDKbraJCGzPVSIgEDXVNXA0JdgH6ChoCKKCEAIfkE
+BQcAEAAsAAAAABAADgAABUkgJI7QcZComIjPw6bs2kINLB5uW9Bo0gyQx8LkKgVHiccKVdyRlqjF
+SAApOKOtR810StVeU9RAmLqOxi0qRG3LptikAVQEh4UAACH5BAUHABAALAAAAAAQABAAAAVxICSO
+0DCQKBQQonGIh5AGB2sYkMHIqYAIN0EDRxoQZIaC6bAoMRSiwMAwCIwCggRkwRMJWKSAomBVCc5l
+UiGRUBjO6FSBwWggwijBooDCdiFfIlBRAlYBZQ0PWRANaSkED1oQYHgjDA8nM3kPfCmejiEAIfkE
+BQcAEAAsAAAAABAAEAAABWAgJI6QIJCoOIhFwabsSbiFAotGMEMKgZoB3cBUQIgURpFgmEI0EqjA
+CYXwiYJBGAGBgGIDWsVicbiNEgSsGbKCIMCwA4IBCRgXt8bDACkvYQF6U1OADg8mDlaACQtwJCEA
+IfkEBQcAEAAsAAABABAADwAABV4gJEKCOAwiMa4Q2qIDwq4wiriBmItCCREHUsIwCgh2q8MiyEKO
+DK7ZbHCoqqSjWGKI1d2kRp+RAWGyHg+DQUEmKliGx4HBKECIMwG61AgssAQPKA19EAxRKz4QCVIh
+ACH5BAUHABAALAAAAAAQABAAAAVjICSOUBCQqHhCgiAOKyqcLVvEZOC2geGiK5NpQBAZCilgAYFM
+ogo/J0lgqEpHgoO2+GIMUL6p4vFojhQNg8rxWLgYBQJCASkwEKLC17hYFJtRIwwBfRAJDk4Obwsi
+dEkrWkkhACH5BAUHABAALAAAAQAQAA8AAAVcICSOUGAGAqmKpjis6vmuqSrUxQyPhDEEtpUOgmgY
+ETCCcrB4OBWwQsGHEhQatVFhB/mNAojFVsQgBhgKpSHRTRxEhGwhoRg0CCXYAkKHHPZCZRAKUERZ
+MAYGMCEAIfkEBQcAEAAsAAABABAADwAABV0gJI4kFJToGAilwKLCST6PUcrB8A70844CXenwILRk
+IoYyBRk4BQlHo3FIOQmvAEGBMpYSop/IgPBCFpCqIuEsIESHgkgoJxwQAjSzwb1DClwwgQhgAVVM
+IgVyKCEAIfkECQcAEAAsAAAAABAAEAAABWQgJI5kSQ6NYK7Dw6xr8hCw+ELC85hCIAq3Am0U6JUK
+jkHJNzIsFAqDqShQHRhY6bKqgvgGCZOSFDhAUiWCYQwJSxGHKqGAE/5EqIHBjOgyRQELCBB7EAQH
+fySDhGYQdDWGQyUhADs=
+------=_Part_95931_716406867.1603666629832
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/53032a3e26be481549b33c748773ae8f
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAFVBMVEX/
+//9wcHBwcHBwcHBwcHBwcHBwcHA3RenHAAAAB3RSTlMAZoiZzN3/SzZomQAAAAlwSFlzAAALEgAA
+CxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAUdEVYdENy
+ZWF0aW9uIFRpbWUANi8xLzEzOKlF0AAAACFJREFUCJljYCATsCgwqIAZTMnMyRAhsTABCIMxkVxT
+GQCLcwHyUKXpLgAAAABJRU5ErkJggg==
+------=_Part_95931_716406867.1603666629832--

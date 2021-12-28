@@ -1,6 +1,6 @@
-TF_CPP_MIN_LOG_LEVEL=3
-CUDA_VISIBLE_DEVICES=''
-LOG_LEVEL=0
+export TF_CPP_MIN_LOG_LEVEL=3
+export CUDA_VISIBLE_DEVICES=''
+export LOG_LEVEL=0
 # python bhh.py --dataset=iris --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_discounted_rewards,iris,true,1' >>tracking_bhh_variant_discounted_rewards.txt
 # python bhh.py --dataset=iris --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
@@ -481,16 +481,16 @@ LOG_LEVEL=0
 # echo 'bhh_variant_discounted_rewards,student_performance,false,9' >>tracking_bhh_variant_discounted_rewards.txt
 # python bhh.py --dataset=student_performance --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_discounted_rewards,student_performance,false,10' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=adult --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,adult,true,1' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=adult --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,adult,true,2' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=adult --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,adult,true,3' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=adult --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,adult,true,4' >>tracking_bhh_variant_discounted_rewards.txt
-python bhh.py --dataset=adult --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_discounted_rewards,adult,true,5' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=adult --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,adult,true,1' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=adult --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,adult,true,2' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=adult --seed=3 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,adult,true,3' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=adult --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,adult,true,4' >>tracking_bhh_variant_discounted_rewards.txt
+# python bhh.py --dataset=adult --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_discounted_rewards,adult,true,5' >>tracking_bhh_variant_discounted_rewards.txt
 python bhh.py --dataset=adult --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 echo 'bhh_variant_discounted_rewards,adult,true,6' >>tracking_bhh_variant_discounted_rewards.txt
 python bhh.py --dataset=adult --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true

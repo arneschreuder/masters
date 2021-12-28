@@ -1,6 +1,6 @@
-TF_CPP_MIN_LOG_LEVEL=3
-CUDA_VISIBLE_DEVICES=''
-LOG_LEVEL=0
+export TF_CPP_MIN_LOG_LEVEL=3
+export CUDA_VISIBLE_DEVICES=''
+export LOG_LEVEL=0
 # python heuristic.py --dataset=iris --optimiser=sgd --seed=1 --log-level=0
 # echo 'standalone,iris,sgd,1' >> tracking_standalone.txt
 # python heuristic.py --dataset=iris --optimiser=sgd --seed=2 --log-level=0

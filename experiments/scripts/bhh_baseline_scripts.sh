@@ -1,6 +1,6 @@
-TF_CPP_MIN_LOG_LEVEL=3
-CUDA_VISIBLE_DEVICES=''
-LOG_LEVEL=0
+export TF_CPP_MIN_LOG_LEVEL=3
+export CUDA_VISIBLE_DEVICES=''
+export LOG_LEVEL=0
 # python bhh.py --dataset=iris --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_baseline,iris,1' >>tracking_bhh_baseline.txt
 # python bhh.py --dataset=iris --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
@@ -299,5 +299,5 @@ LOG_LEVEL=0
 # echo 'bhh_baseline,diabetic,8' >>tracking_bhh_baseline.txt
 # python bhh.py --dataset=diabetic --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_baseline,diabetic,9' >>tracking_bhh_baseline.txt
-python bhh.py --dataset=diabetic --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_baseline,diabetic,10' >>tracking_bhh_baseline.txt
+# python bhh.py --dataset=diabetic --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_baseline,diabetic,10' >>tracking_bhh_baseline.txt

@@ -5,9 +5,9 @@
 
 # set -ex
 
-echo "TF_CPP_MIN_LOG_LEVEL=3"
-echo "CUDA_VISIBLE_DEVICES=''"
-echo "LOG_LEVEL=0"
+echo "export TF_CPP_MIN_LOG_LEVEL=3"
+echo "export CUDA_VISIBLE_DEVICES=''"
+echo "export LOG_LEVEL=0"
 LOG_LEVEL=0
 RUNS=10
 

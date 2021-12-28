@@ -32,6 +32,7 @@ import framework as fw
 import params
 
 # Globals
+VARIANT = None
 DATASET = None
 OPTIMISER = None
 SEED = None
@@ -49,6 +50,7 @@ DISCOUNTED_REWARDS = None
 
 
 def parse_bhh_arguments():
+    global VARIANT
     global DATASET
     global OPTIMISER
     global SEED
@@ -70,6 +72,17 @@ def parse_bhh_arguments():
     )
 
     # Basic Params
+    parser.add_argument(
+        "--variant",
+        type=str,
+        required=True,
+        default="all",
+        choices=[
+            "all",
+            "gd_only",
+        ],
+        help="The BHH variant to use"
+    )
     parser.add_argument(
         "--dataset",
         type=str,
@@ -198,11 +211,10 @@ def parse_bhh_arguments():
 
     # Arguments
     args = parser.parse_args()
-    args = parser.parse_args()
+    VARIANT = args.variant
     DATASET = args.dataset
     OPTIMISER = 'bhh'
     SEED = args.seed or None
-    LOG_LEVEL = args.log_level or 2
     POPULATION_SIZE = args.population_size
     BURN_IN = args.burn_in
     REPLAY = args.replay
@@ -211,6 +223,7 @@ def parse_bhh_arguments():
     NORMALISE = args.normalise
     CREDIT = args.credit
     DISCOUNTED_REWARDS = args.discounted_rewards
+    LOG_LEVEL = os.environ["LOG_LEVEL"] if os.environ["LOG_LEVEL"] is not None else 0
     LOG = "logs/{}/bhh/ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}".format(
         DATASET,
         POPULATION_SIZE,
@@ -225,6 +238,7 @@ def parse_bhh_arguments():
 
 
 def print_bhh_banner():
+    global VARIANT
     global DATASET
     global OPTIMISER
     global SEED
@@ -243,6 +257,7 @@ def print_bhh_banner():
     print("====================================================================")
     print("Training Feedforward Neural Networks using Bayesian Hyper-Heuristics")
     print("====================================================================")
+    print("Variant: {}".format(VARIANT))
     print("Dataset: {}".format(DATASET))
     print("Optimiser: {}".format(OPTIMISER))
     print("Seed: {}".format(SEED))
@@ -261,6 +276,7 @@ def print_bhh_banner():
 
 
 def bhh_optimiser():
+    global VARIANT
     global DATASET
     global POPULATION_SIZE
     global POPULATION_SIZE
@@ -278,6 +294,7 @@ def bhh_optimiser():
     Optimiser = fw.optimisers.BHH
 
     PARAMS = params.get_bhh_defaults(
+        variant=VARIANT,
         experiment=DATASET,
         population_size=POPULATION_SIZE,
         burn_in=BURN_IN,
@@ -289,8 +306,9 @@ def bhh_optimiser():
         discounted_rewards=DISCOUNTED_REWARDS
     )
 
-    LOG = "logs/{}/bhh/ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}/{}".format(
+    LOG = "logs/{}/{}/ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}/{}".format(
         DATASET,
+        "bhh" if VARIANT == "all" else "bhh_gd_only",
         POPULATION_SIZE,
         BURN_IN,
         REPLAY,

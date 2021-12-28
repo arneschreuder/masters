@@ -1,6 +1,6 @@
-TF_CPP_MIN_LOG_LEVEL=3
-CUDA_VISIBLE_DEVICES=''
-LOG_LEVEL=0
+export TF_CPP_MIN_LOG_LEVEL=3
+export CUDA_VISIBLE_DEVICES=''
+export LOG_LEVEL=0
 # python bhh.py --dataset=iris --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=ibest --discounted-rewards=true
 # echo 'bhh_variant_credit,iris,ibest,1' >>tracking_bhh_variant_credit.txt
 # python bhh.py --dataset=iris --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=ibest --discounted-rewards=true
@@ -969,18 +969,18 @@ LOG_LEVEL=0
 # echo 'bhh_variant_credit,bank,gbest,3' >>tracking_bhh_variant_credit.txt
 # python bhh.py --dataset=bank --seed=4 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_credit,bank,gbest,4' >>tracking_bhh_variant_credit.txt
-python bhh.py --dataset=bank --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_credit,bank,gbest,5' >>tracking_bhh_variant_credit.txt
-python bhh.py --dataset=bank --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_credit,bank,gbest,6' >>tracking_bhh_variant_credit.txt
-python bhh.py --dataset=bank --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_credit,bank,gbest,7' >>tracking_bhh_variant_credit.txt
-python bhh.py --dataset=bank --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_credit,bank,gbest,8' >>tracking_bhh_variant_credit.txt
-python bhh.py --dataset=bank --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_credit,bank,gbest,9' >>tracking_bhh_variant_credit.txt
-python bhh.py --dataset=bank --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
-echo 'bhh_variant_credit,bank,gbest,10' >>tracking_bhh_variant_credit.txt
+# python bhh.py --dataset=bank --seed=5 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_credit,bank,gbest,5' >>tracking_bhh_variant_credit.txt
+# python bhh.py --dataset=bank --seed=6 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_credit,bank,gbest,6' >>tracking_bhh_variant_credit.txt
+# python bhh.py --dataset=bank --seed=7 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_credit,bank,gbest,7' >>tracking_bhh_variant_credit.txt
+# python bhh.py --dataset=bank --seed=8 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_credit,bank,gbest,8' >>tracking_bhh_variant_credit.txt
+# python bhh.py --dataset=bank --seed=9 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_credit,bank,gbest,9' >>tracking_bhh_variant_credit.txt
+# python bhh.py --dataset=bank --seed=10 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true
+# echo 'bhh_variant_credit,bank,gbest,10' >>tracking_bhh_variant_credit.txt
 python bhh.py --dataset=bank --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=symmetric --discounted-rewards=true
 echo 'bhh_variant_credit,bank,symmetric,1' >>tracking_bhh_variant_credit.txt
 python bhh.py --dataset=bank --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=symmetric --discounted-rewards=true

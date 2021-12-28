@@ -1,6 +1,6 @@
 import framework as fw
 
-INCLUDE = [
+INCLUDE_ALL = [
     "sgd",
     "momentum",
     "nag",
@@ -11,6 +11,16 @@ INCLUDE = [
     "pso",
     "ga",
     "de"
+]
+
+INCLUDE_GD_ONLY = [
+    "sgd",
+    "momentum",
+    "nag",
+    "adagrad",
+    "rmsprop",
+    "adadelta",
+    "adam"
 ]
 
 params = {
@@ -2532,16 +2542,18 @@ params = {
 }
 
 
-def get_bhh_defaults(experiment: str,
-                     population_size: int = 10,
-                     burn_in: int = 0,
-                     replay: int = 10,
-                     reselection: int = 1,
-                     reanalysis: int = 1,
-                     normalise: bool = False,
-                     credit: str = "gbest",
-                     discounted_rewards: bool = True
-                     ):
+def get_bhh_defaults(
+    variant: str,
+    experiment: str,
+    population_size: int = 10,
+    burn_in: int = 0,
+    replay: int = 10,
+    reselection: int = 1,
+    reanalysis: int = 1,
+    normalise: bool = False,
+    credit: str = "gbest",
+    discounted_rewards: bool = True
+):
     # Get Experiment defaults
     defaults = {}
     optimisers = params[experiment]["optimisers"]
@@ -2559,7 +2571,12 @@ def get_bhh_defaults(experiment: str,
     optimisers = params[experiment]["optimisers"]
 
     for key, optimiser in optimisers.items():
-        if any(key in string for string in INCLUDE):
+        if variant == 'all' and any(key in string for string in INCLUDE_ALL):
+            Heuristic = optimiser["heuristic"]
+            optimiser_params = optimiser["params"]
+            heuristic = Heuristic(params=optimiser_params)
+            heuristics.append(heuristic)
+        elif variant == 'gd_only' and any(key in string for string in INCLUDE_GD_ONLY):
             Heuristic = optimiser["heuristic"]
             optimiser_params = optimiser["params"]
             heuristic = Heuristic(params=optimiser_params)

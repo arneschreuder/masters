@@ -1,6 +1,6 @@
-TF_CPP_MIN_LOG_LEVEL=3
-CUDA_VISIBLE_DEVICES=''
-LOG_LEVEL=0
+export TF_CPP_MIN_LOG_LEVEL=3
+export CUDA_VISIBLE_DEVICES=''
+export LOG_LEVEL=0
 # python bhh.py --dataset=iris --seed=1 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true
 # echo 'bhh_variant_normalise,iris,true,1' >>tracking_bhh_variant_normalise.txt
 # python bhh.py --dataset=iris --seed=2 --log-level=0 --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=true --credit=gbest --discounted-rewards=true

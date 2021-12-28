@@ -642,7 +642,6 @@ class BHH(Optimiser):
 
         # Only if the log level is 2
         if self.logger and log_level == 2:
-            print('Logging here')
             self.logger.log_scalar_results(
                 'alpha[{}]'.format(k), result=self.alpha[k], step=step)
             self.logger.log_scalar_results(

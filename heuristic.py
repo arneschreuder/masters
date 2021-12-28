@@ -38,9 +38,7 @@ LOG_LEVEL = None
 PARAMS = None
 LOG = None
 
-# Pragma
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-os.environ["CUDA_VISIBLE_DEVICES"] = ""
+# print(os.environ["LOG_LEVEL"])
 
 
 def parse_basic_arguments():
@@ -98,7 +96,6 @@ def parse_basic_arguments():
         help="The optimiser to use"
     )
     parser.add_argument("--seed", type=int, help="The seed to use")
-    parser.add_argument("--log-level", type=int, help="The log level to use")
 
     # Arguments
     args = parser.parse_args()
@@ -107,14 +104,7 @@ def parse_basic_arguments():
     SEED = args.seed or None
     PARAMS = params.params[DATASET]["optimisers"][OPTIMISER]["params"]
     LOG = params.params[DATASET]["optimisers"][OPTIMISER]["log"].format(SEED)
-    LOG_LEVEL = args.log_level or 2
-
-
-def set_environment_variables():
-    global LOG_LEVEL
-
-    # Set the global log level
-    os.environ["LOG_LEVEL"] = "{}".format(LOG_LEVEL)
+    LOG_LEVEL = os.environ["LOG_LEVEL"] if os.environ["LOG_LEVEL"] is not None else 0
 
 
 def print_basic_banner():
@@ -162,7 +152,6 @@ def basic_optimisers():
 
 def main():
     parse_basic_arguments()
-    set_environment_variables()
     print_basic_banner()
     basic_optimisers()
 
