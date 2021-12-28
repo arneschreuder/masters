@@ -103,7 +103,6 @@ pip install -r requirements.txt
 usage: heuristic.py [-h] --dataset
                     {abalone,adult,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
                     --optimiser {sgd,momentum,nag,adagrad,rmsprop,adadelta,adam,pso,de,ga,bhh} [--seed SEED]
-                    [--log-level LOG_LEVEL]
 
 Training Feedforward Neural Networks using Bayesian Hyper-Heuristics
 
@@ -114,23 +113,23 @@ optional arguments:
   --optimiser {sgd,momentum,nag,adagrad,rmsprop,adadelta,adam,pso,de,ga,bhh}
                         The optimiser to use
   --seed SEED           The seed to use
-  --log-level LOG_LEVEL
-                        The log level to use
 ```
 
 ### Bayesian Hyper-Heuristic:
 
 ```
-usage: bhh.py [-h] --dataset
+usage: bhh.py [-h] --variant {all,gd_only} --dataset
               {abalone,adult,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
-              [--seed SEED] [--log-level LOG_LEVEL] [--population-size {5,10,20,50,100}] [--burn_in {0,10,20,50,100}]
-              [--replay {10,20,50,100,300}] [--reselection {1,5,10,50,100}] [--reanalysis {1,5,10,50,100}]
-              [--normalise NORMALISE] [--credit {ibest,pbest,rbest,gbest,symmetric}] [--discounted-rewards DISCOUNTED_REWARDS]
+              [--seed SEED] [--log-level LOG_LEVEL] [--population-size {5,10,20,50,100}] [--burn_in {0,10,20,50,100}] [--replay {10,20,50,100,300}]
+              [--reselection {1,5,10,50,100}] [--reanalysis {1,5,10,50,100}] [--normalise NORMALISE] [--credit {ibest,pbest,rbest,gbest,symmetric}]
+              [--discounted-rewards DISCOUNTED_REWARDS]
 
 Training Feedforward Neural Networks using Bayesian Hyper-Heuristics
 
 optional arguments:
   -h, --help            show this help message and exit
+  --variant {all,gd_only}
+                        The BHH variant to use
   --dataset {abalone,adult,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
                         The dataset to use
   --seed SEED           The seed to use
