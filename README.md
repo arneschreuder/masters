@@ -65,7 +65,7 @@ Dept. of Computer Science (CS),<br>
 School of Computer Science and Applied Mathematics,<br>
 University of Witwatersrand, Johannesburg (WITS)
 
-### Engelbrecht, A.P. (Co-Supervisor):
+### Engelbrecht, A.P. (Supervisor):
 
 Prof. Andries Engelbrecht
 Voigt Chair in Data Science<br>

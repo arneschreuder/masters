@@ -75,7 +75,6 @@ def parse_bhh_arguments():
     parser.add_argument(
         "--variant",
         type=str,
-        required=True,
         default="all",
         choices=[
             "all",
