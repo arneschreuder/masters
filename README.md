@@ -152,3 +152,15 @@ optional arguments:
   --discounted-rewards DISCOUNTED_REWARDS
                         The credit reward discount flag
 ```
+
+### Export TensorBoard data
+
+```
+usage: export.py [-h] --data-dir DATA_DIR
+
+Export TensorBoard data to csv
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --data-dir DATA_DIR  The directory that contains the data
+```

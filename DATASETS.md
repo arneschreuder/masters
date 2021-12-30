@@ -21,7 +21,7 @@
 - [Parkinsons Telemonitoring](https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring) - Regression, Multivariate, 26 attr, 5875 instances
 - [QSAR Fish Toxicity](https://archive.ics.uci.edu/ml/datasets/QSAR+fish+toxicity) - Regression, Multivariate, 7 attr, 908 instances
 - [Air Quality UCI](https://archive.ics.uci.edu/ml/datasets/Air+Quality) - Regression, Multivariate, 15 attr, 10000 instances
-- [Housing](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/) - Regression, Multivariate, 13, 506 -> Note: Does not appear in UCI Dataset list
+- [Housing](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/) - Regression, Univariate, 13, 506 -> Note: Does not appear in UCI Dataset list
 - [Student Performance](https://archive.ics.uci.edu/ml/datasets/Student+Performance) - Regression, Multivariate, 33 aatributes, 649 intances
 
 ### Dataset Sizes:
