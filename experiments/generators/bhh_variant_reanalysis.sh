@@ -12,7 +12,7 @@ echo "export LOG_LEVEL=0"
 RUNS=10
 
 declare -a DATASETS=("iris" "fish_toxicity" "abalone" "air_quality" "housing" "wine_quality" "car" "parkinsons" "forest_fires" "bank" "bike" "student_performance" "adult" "mushroom" "diabetic")
-declare -a REANALYSISES=(1 5 10 50 100)
+declare -a REANALYSISES=(5 10 50 100)
 
 for DATASET in ${DATASETS[@]}; do
 	for REANALYSIS in ${REANALYSISES[@]}; do

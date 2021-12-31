@@ -12,7 +12,7 @@ echo "export LOG_LEVEL=0"
 RUNS=10
 
 declare -a DATASETS=("iris" "fish_toxicity" "abalone" "air_quality" "housing" "wine_quality" "car" "parkinsons" "forest_fires" "bank" "bike" "student_performance" "adult" "mushroom" "diabetic")
-declare -a POPULATION_SIZES=(5 10 20 50 100)
+declare -a POPULATION_SIZES=(10 20 50 100)
 
 for DATASET in ${DATASETS[@]}; do
 	for POPULATION_SIZE in ${POPULATION_SIZES[@]}; do
