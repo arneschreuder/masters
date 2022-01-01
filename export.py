@@ -74,6 +74,11 @@ def export_events(path):
 
 	directory = os.path.abspath(os.path.join(path, os.pardir))
 	filename = os.path.basename(path)
+	data_filepath = "{}/{}.csv".format(directory, filename)
+
+	if os.path.isfile(data_filepath):
+		print("Skipped: {}".format(data_filepath))
+		return
 
 	experiment = str(directory).replace(os.getcwd() + '/data/', '')
 	experiment_parts = experiment.split('/')
@@ -141,7 +146,7 @@ def export_events(path):
 
 			df = df.append(row, ignore_index=True)
 
-	data_filepath = "{}/{}.csv".format(directory, filename)
+	
 	print(data_filepath)
 	df.to_csv(data_filepath, index=False, header=False)
 		
