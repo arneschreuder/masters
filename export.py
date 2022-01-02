@@ -108,7 +108,7 @@ def export_events(path):
 		replay = int(config_parts[2].replace('rp:',''))
 		reselection = int(config_parts[3].replace('rs:',''))
 		reanalysis = int(config_parts[4].replace('ra:',''))
-		normalisation = bool(config_parts[5].replace('nm:',''))
+		normalisation = bool(True if config_parts[5].replace('nm:','') == 'True' else False)
 		credit = config_parts[6].replace('ct:','')
 		discounted_rewards = bool(config_parts[7].replace('dr:',''))
 
