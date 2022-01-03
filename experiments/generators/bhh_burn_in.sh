@@ -17,7 +17,7 @@ declare -a BURN_INS=(5 10 15 20) # Default is 0
 for DATASET in ${DATASETS[@]}; do
 	for BURN_IN in ${BURN_INS[@]}; do
 		for ((RUN = 1; RUN <= RUNS; RUN++)); do
-			echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic_pool=all --population-size=5 --burn_in=${BURN_IN} --replay=10 --reselection=10 --reanalysis=10 --credit=ibest"
+			echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic-pool=all --population-size=5 --burn_in=${BURN_IN} --replay=10 --reselection=10 --reanalysis=10 --credit=ibest"
 			echo "echo 'bhh_burn_in,${DATASET},${BURN_IN},${RUN}' >> tracking/progress/bhh_burn_in.txt"
 		done
 	done

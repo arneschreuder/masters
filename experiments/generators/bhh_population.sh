@@ -17,7 +17,7 @@ declare -a POPULATIONS=(10 15 20 25) # Default is ibest
 for DATASET in ${DATASETS[@]}; do
 	for POPULATION in ${POPULATIONS[@]}; do
 		for ((RUN = 1; RUN <= RUNS; RUN++)); do
-			echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic_pool=all --population-size=${POPULATION} --burn_in=0 --replay=10 --reselection=10 --reanalysis=10 --credit=ibest"
+			echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic-pool=all --population-size=${POPULATION} --burn_in=0 --replay=10 --reselection=10 --reanalysis=10 --credit=ibest"
 			echo "echo 'bhh_population,${DATASET},${POPULATION},${RUN}' >> tracking/progress/bhh_population.txt"
 		done
 	done
