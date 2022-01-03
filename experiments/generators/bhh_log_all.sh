@@ -19,3 +19,17 @@ for DATASET in ${DATASETS[@]}; do
 		echo "echo 'bhh_log_all,${DATASET},${RUN}' >> tracking/progress/bhh_log_all.txt"
 	done
 done
+
+for DATASET in ${DATASETS[@]}; do
+	for ((RUN = 101; RUN <= RUNS + 100; RUN++)); do
+		echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic-pool=all --population-size=5 --burn_in=0 --replay=10 --reselection=10 --reanalysis=10 --credit=ibest --discounted-rewards"
+		echo "echo 'bhh_log_all,${DATASET},${RUN}' >> tracking/progress/bhh_log_all.txt"
+	done
+done
+
+for DATASET in ${DATASETS[@]}; do
+	for ((RUN = 101; RUN <= RUNS + 100; RUN++)); do
+		echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic-pool=all --population-size=5 --burn_in=0 --replay=10 --reselection=10 --reanalysis=10 --credit=ibest --normalise"
+		echo "echo 'bhh_log_all,${DATASET},${RUN}' >> tracking/progress/bhh_log_all.txt"
+	done
+done
