@@ -9,7 +9,7 @@ echo "export TF_CPP_MIN_LOG_LEVEL=3"
 echo "export CUDA_VISIBLE_DEVICES=''"
 echo "export LOG_LEVEL=0"
 
-RUNS=1
+RUNS=30
 
 declare -a DATASETS=("iris" "abalone" "housing" "forest_fires" "fish_toxicity" "student_performance" "car" "parkinsons" "wine_quality" "mushroom" "air_quality" "adult" "bike" "bank" "diabetic")
 declare -a CREDITS=("pbest" "rbest" "gbest" "symmetric") # Default is ibest

@@ -1,9 +1,9 @@
 #!/bin/sh
 
 #PBS -N bhh_la
-#PBS -q seriallong
+#PBS -q serial
 #PBS -P CSCI0886
-#PBS -l select=1:ncpus=12:mem=32gb:ngpus=0
+#PBS -l select=1:ncpus=24:mem=120gb:ngpus=0
 #PBS -l walltime=48:00:00
 #PBS -o /mnt/lustre/users/aschreuder/tracking/stdin/bhh_la.out
 #PBS -e /mnt/lustre/users/aschreuder/tracking/stderr/bhh_la.err
