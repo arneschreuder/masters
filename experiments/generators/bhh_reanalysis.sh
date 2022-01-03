@@ -18,7 +18,7 @@ for DATASET in ${DATASETS[@]}; do
 	for REANALYSIS in ${REANALYSISS[@]}; do
 		for ((RUN = 1; RUN <= RUNS; RUN++)); do
 			echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic_pool=all --population-size=5 --burn_in=0 --replay=10 --reselection=10 --reanalysis=${REANALYSIS} --credit=ibest"
-			echo "echo 'bhh_reanalysis,${DATASET},${REANALYSIS},${RUN}' >> bhh_reanalysis.txt"
+			echo "echo 'bhh_reanalysis,${DATASET},${REANALYSIS},${RUN}' >> tracking/progress/bhh_reanalysis.txt"
 		done
 	done
 done

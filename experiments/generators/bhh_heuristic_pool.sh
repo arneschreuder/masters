@@ -18,7 +18,7 @@ for DATASET in ${DATASETS[@]}; do
 	for HEURISTIC_POOL in ${HEURISTIC_POOLS[@]}; do
 		for ((RUN = 1; RUN <= RUNS; RUN++)); do
 			echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic-pool=${HEURISTIC_POOL} --population-size=5 --burn_in=0 --replay=10 --reselection=10 --reanalysis=10 --credit=ibest"
-			echo "echo 'bhh_heuristic_pool,${DATASET},${HEURISTIC_POOL},${RUN}' >> bhh_heuristic_pool.txt"
+			echo "echo 'bhh_heuristic_pool,${DATASET},${HEURISTIC_POOL},${RUN}' >> tracking/progress/bhh_heuristic_pool.txt"
 		done
 	done
 done

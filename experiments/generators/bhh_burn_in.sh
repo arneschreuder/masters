@@ -18,7 +18,7 @@ for DATASET in ${DATASETS[@]}; do
 	for BURN_IN in ${BURN_INS[@]}; do
 		for ((RUN = 1; RUN <= RUNS; RUN++)); do
 			echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic_pool=all --population-size=5 --burn_in=${BURN_IN} --replay=10 --reselection=10 --reanalysis=10 --credit=ibest"
-			echo "echo 'bhh_burn_in,${DATASET},${BURN_IN},${RUN}' >> bhh_burn_in.txt"
+			echo "echo 'bhh_burn_in,${DATASET},${BURN_IN},${RUN}' >> tracking/progress/bhh_burn_in.txt"
 		done
 	done
 done

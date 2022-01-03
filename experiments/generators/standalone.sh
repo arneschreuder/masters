@@ -18,7 +18,7 @@ for DATASET in ${DATASETS[@]}; do
 	for OPTIMISER in ${OPTIMISERS[@]}; do
 		for ((RUN = 1; RUN <= RUNS; RUN++)); do
 			echo "python heuristic.py --dataset=$DATASET --optimiser=$OPTIMISER --seed=$RUN"
-			echo "echo 'standalone,${DATASET},${OPTIMISER},${RUN}' >> standalone.txt"
+			echo "echo 'standalone,${DATASET},${OPTIMISER},${RUN}' >> tracking/progress/standalone.txt"
 		done
 	done
 done

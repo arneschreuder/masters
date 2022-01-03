@@ -5,8 +5,8 @@
 #PBS -P CSCI0886
 #PBS -l select=1:ncpus=56:mem=256gb:ngpus=0
 #PBS -l walltime=48:00:00
-#PBS -o /mnt/lustre/users/aschreuder/bhh_hp_stdoutput.out
-#PBS -e /mnt/lustre/users/aschreuder/bhh_hp_stderror.err
+#PBS -o /mnt/lustre/users/aschreuder/tracking/stdin/bhh_hp.out
+#PBS -e /mnt/lustre/users/aschreuder/tracking/stderror/bhh_hp.err
 #PBS -m abe -M arneschreuder@icloud.com
 
 ulimit -s unlimited
