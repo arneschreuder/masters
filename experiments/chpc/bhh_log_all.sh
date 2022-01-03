@@ -6,7 +6,7 @@
 #PBS -l select=1:ncpus=12:mem=32gb:ngpus=0
 #PBS -l walltime=48:00:00
 #PBS -o /mnt/lustre/users/aschreuder/tracking/stdin/bhh_la.out
-#PBS -e /mnt/lustre/users/aschreuder/tracking/stderror/bhh_la.err
+#PBS -e /mnt/lustre/users/aschreuder/tracking/stderr/bhh_la.err
 #PBS -m abe -M arneschreuder@icloud.com
 
 ulimit -s unlimited
