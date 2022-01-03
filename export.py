@@ -110,7 +110,7 @@ def export_events(path):
 		reanalysis = int(config_parts[4].replace('ra:',''))
 		normalisation = bool(True if config_parts[5].replace('nm:','') == 'True' else False)
 		credit = config_parts[6].replace('ct:','')
-		discounted_rewards = bool(config_parts[7].replace('dr:',''))
+		discounted_rewards = bool(True if config_parts[7].replace('dr:','') == 'True' else False)
 
 	df = pd.DataFrame([], columns=COLUMNS)
 

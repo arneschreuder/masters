@@ -181,7 +181,7 @@ def parse_bhh_arguments():
     )
     parser.add_argument(
         "--normalise",
-        type=lambda x: (str(x).lower() == 'true'),
+        type=bool,
         required=False,
         default=False,
         help="The normalisation flag"
@@ -204,7 +204,7 @@ def parse_bhh_arguments():
         "--discounted-rewards",
         type=bool,
         required=False,
-        default=True,
+        default=False,
         help="The credit reward discount flag"
     )
 
@@ -222,10 +222,13 @@ def parse_bhh_arguments():
     NORMALISE = args.normalise
     CREDIT = args.credit
     DISCOUNTED_REWARDS = args.discounted_rewards
+    print(DISCOUNTED_REWARDS)
+
     LOG_LEVEL = int(os.getenv('LOG_LEVEL')) if os.getenv(
         'LOG_LEVEL') is not None else 0
-    LOG = "logs/{}/bhh/ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}".format(
+    LOG = "logs/{}/{}/ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}".format(
         DATASET,
+        "bhh" if VARIANT == "all" else "bhh_gd_only",
         POPULATION_SIZE,
         BURN_IN,
         REPLAY,

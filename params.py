@@ -1704,7 +1704,7 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=100,
+                        steps=250,
                         rate=0.01,
                         staircase=False
                     )
@@ -1718,7 +1718,7 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=100,
+                        steps=250,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1733,7 +1733,7 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=100,
+                        steps=250,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1748,7 +1748,7 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=100,
+                        steps=250,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1763,7 +1763,7 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=100,
+                        steps=250,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1779,7 +1779,7 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=100,
+                        steps=250,
                         rate=0.95,
                         staircase=False
                     ),
@@ -1795,7 +1795,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=100,
+                        steps=250,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1813,7 +1813,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=100,
+                        steps=250,
                         rate=0.9,
                         staircase=False
                     ),
@@ -1835,13 +1835,13 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=100,
+                        steps=250,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=100,
+                        steps=250,
                         rate=0.1,
                         staircase=False
                     ),
@@ -1858,7 +1858,7 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=100,
+                        steps=250,
                         rate=0.05,
                         staircase=False
                     ),

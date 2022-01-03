@@ -124,11 +124,11 @@ class BHH(Heuristic):
         - Yielding that we always calculate p_HgEC from model params.
         - The alternative to this is to use Maximum-likelihood-estimate (MLE) update of model.
         - In that case, we will assign p_H_t_plus_1 = p_HgEC_t = p_EgH_t* p_CgH_t * p_H_t
-        - and with log-sum-exp this yields: p_H_t_plus_1 = p_HgEC_t = exp(log(p_EgH_t) + log(p_CgH_t) + log(p_H_t))
+        - and with log-sum-exp this yields: p_H_t_plus_1 = p_HgEC_t = log(exp(p_EgH_t) + exp(p_CgH_t) + exp(p_H_t))
         - See: https://stats.stackexchange.com/questions/105602/example-of-how-the-log-sum-exp-trick-works-in-naive-bayes
         """
-        p_HgEC.assign(tf.math.exp(tf.math.log(p_EgH) +
-                      tf.math.log(p_CgH) + tf.math.log(p_H)))
+        p_HgEC.assign(tf.math.log(tf.math.exp(p_EgH) +
+                      tf.math.exp(p_CgH) + tf.math.exp(p_H)))
 
         # Likelihoods
         l_HgEC = Categorical(logits=p_HgEC)
