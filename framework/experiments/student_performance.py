@@ -51,7 +51,7 @@ class StudentPerformance(Experiment):
         """
         super(StudentPerformance, self).__init__(
             dataset=StudentPerformanceDataset(
-                seed=seed, batch_size=64),
+                seed=seed, batch_size=32),
             model=StudentPerformanceModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -62,6 +62,6 @@ class StudentPerformance(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=20,
+            epochs=30,
             seed=seed
         )

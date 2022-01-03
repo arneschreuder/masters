@@ -1,6 +1,6 @@
 import framework as fw
 
-INCLUDE_ALL = [
+HEURISTIC_POOL_ALL = [
     "sgd",
     "momentum",
     "nag",
@@ -13,7 +13,7 @@ INCLUDE_ALL = [
     "de"
 ]
 
-INCLUDE_GD_ONLY = [
+HEURISTIC_POOL_GD = [
     "sgd",
     "momentum",
     "nag",
@@ -21,6 +21,12 @@ INCLUDE_GD_ONLY = [
     "rmsprop",
     "adadelta",
     "adam"
+]
+
+HEURISTIC_POOL_MH = [
+    "pso",
+    "ga",
+    "de"
 ]
 
 params = {
@@ -33,12 +39,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=350,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/abalone/sgd/default/{}"
+                "log": "logs/abalone/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -46,13 +52,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=350,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/abalone/momentum/default/{}"
+                "log": "logs/abalone/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -60,13 +66,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=350,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/abalone/nag/default/{}"
+                "log": "logs/abalone/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -74,13 +80,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=350,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/abalone/adagrad/default/{}"
+                "log": "logs/abalone/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -88,14 +94,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=350,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/abalone/rmsprop/default/{}"
+                "log": "logs/abalone/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -103,14 +109,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=350,
+                        steps=500,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/abalone/adadelta/default/{}"
+                "log": "logs/abalone/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -118,7 +124,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=350,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
@@ -126,7 +132,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/abalone/adam/default/{}"
+                "log": "logs/abalone/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -135,7 +141,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=350,
+                        steps=500,
                         rate=0.9,
                         staircase=False
                     ),
@@ -145,7 +151,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/abalone/pso/default/{}"
+                "log": "logs/abalone/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -156,18 +162,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=350,
+                        steps=500,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=350,
+                        steps=500,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/abalone/de/default/{}"
+                "log": "logs/abalone/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -178,12 +184,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=350,
+                        steps=500,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/abalone/ga/default/{}"
+                "log": "logs/abalone/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -200,12 +206,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=3800,
+                        steps=5800,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/adult/sgd/default/{}"
+                "log": "logs/adult/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -213,13 +219,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=3800,
+                        steps=5800,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/adult/momentum/default/{}"
+                "log": "logs/adult/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -227,13 +233,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=3800,
+                        steps=5800,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/adult/nag/default/{}"
+                "log": "logs/adult/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -241,13 +247,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=3800,
+                        steps=5800,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/adult/adagrad/default/{}"
+                "log": "logs/adult/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -255,14 +261,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=3800,
+                        steps=5800,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/adult/rmsprop/default/{}"
+                "log": "logs/adult/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -270,14 +276,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=3800,
+                        steps=5800,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/adult/adadelta/default/{}"
+                "log": "logs/adult/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -285,7 +291,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=3800,
+                        steps=5800,
                         rate=0.01,
                         staircase=False
                     ),
@@ -293,7 +299,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/adult/adam/default/{}"
+                "log": "logs/adult/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -302,7 +308,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=3800,
+                        steps=5800,
                         rate=0.9,
                         staircase=False
                     ),
@@ -312,7 +318,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/adult/pso/default/{}"
+                "log": "logs/adult/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -323,18 +329,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=3800,
+                        steps=5800,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=3800,
+                        steps=5800,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/adult/de/default/{}"
+                "log": "logs/adult/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -345,12 +351,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=3800,
+                        steps=5800,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/adult/ga/default/{}"
+                "log": "logs/adult/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -367,12 +373,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1600,
+                        steps=1100,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/air_quality/sgd/default/{}"
+                "log": "logs/air_quality/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -380,13 +386,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1600,
+                        steps=1100,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/air_quality/momentum/default/{}"
+                "log": "logs/air_quality/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -394,13 +400,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1600,
+                        steps=1100,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/air_quality/nag/default/{}"
+                "log": "logs/air_quality/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -408,13 +414,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1600,
+                        steps=1100,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/air_quality/adagrad/default/{}"
+                "log": "logs/air_quality/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -422,14 +428,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1600,
+                        steps=1100,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/air_quality/rmsprop/default/{}"
+                "log": "logs/air_quality/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -437,14 +443,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=1600,
+                        steps=1100,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/air_quality/adadelta/default/{}"
+                "log": "logs/air_quality/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -452,7 +458,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1600,
+                        steps=1100,
                         rate=0.01,
                         staircase=False
                     ),
@@ -460,7 +466,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/air_quality/adam/default/{}"
+                "log": "logs/air_quality/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -469,7 +475,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=1600,
+                        steps=1100,
                         rate=0.9,
                         staircase=False
                     ),
@@ -479,7 +485,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/air_quality/pso/default/{}"
+                "log": "logs/air_quality/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -490,18 +496,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=1600,
+                        steps=1100,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=1600,
+                        steps=1100,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/air_quality/de/default/{}"
+                "log": "logs/air_quality/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -512,12 +518,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=1600,
+                        steps=1100,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/air_quality/ga/default/{}"
+                "log": "logs/air_quality/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -534,12 +540,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1800,
+                        steps=2700,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/bank/sgd/default/{}"
+                "log": "logs/bank/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -547,13 +553,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1800,
+                        steps=2700,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/bank/momentum/default/{}"
+                "log": "logs/bank/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -561,13 +567,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1800,
+                        steps=2700,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/bank/nag/default/{}"
+                "log": "logs/bank/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -575,13 +581,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1800,
+                        steps=2700,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/bank/adagrad/default/{}"
+                "log": "logs/bank/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -589,14 +595,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1800,
+                        steps=2700,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/bank/rmsprop/default/{}"
+                "log": "logs/bank/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -604,14 +610,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=1800,
+                        steps=2700,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/bank/adadelta/default/{}"
+                "log": "logs/bank/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -619,7 +625,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1800,
+                        steps=2700,
                         rate=0.01,
                         staircase=False
                     ),
@@ -627,7 +633,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/bank/adam/default/{}"
+                "log": "logs/bank/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -636,7 +642,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=1800,
+                        steps=2700,
                         rate=0.9,
                         staircase=False
                     ),
@@ -646,7 +652,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/bank/pso/default/{}"
+                "log": "logs/bank/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -657,18 +663,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=1800,
+                        steps=2700,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=1800,
+                        steps=2700,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/bank/de/default/{}"
+                "log": "logs/bank/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -679,12 +685,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=1800,
+                        steps=2700,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/bank/ga/default/{}"
+                "log": "logs/bank/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -701,12 +707,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1360,
+                        steps=2000,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/bike/sgd/default/{}"
+                "log": "logs/bike/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -714,13 +720,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1360,
+                        steps=2000,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/bike/momentum/default/{}"
+                "log": "logs/bike/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -728,13 +734,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1360,
+                        steps=2000,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/bike/nag/default/{}"
+                "log": "logs/bike/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -742,13 +748,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1360,
+                        steps=2000,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/bike/adagrad/default/{}"
+                "log": "logs/bike/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -756,14 +762,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1360,
+                        steps=2000,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/bike/rmsprop/default/{}"
+                "log": "logs/bike/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -771,14 +777,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=1360,
+                        steps=2000,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/bike/adadelta/default/{}"
+                "log": "logs/bike/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -786,7 +792,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=1360,
+                        steps=2000,
                         rate=0.01,
                         staircase=False
                     ),
@@ -794,7 +800,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/bike/adam/default/{}"
+                "log": "logs/bike/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -803,7 +809,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=1360,
+                        steps=2000,
                         rate=0.9,
                         staircase=False
                     ),
@@ -813,7 +819,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/bike/pso/default/{}"
+                "log": "logs/bike/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -824,18 +830,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=1360,
+                        steps=2000,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=1360,
+                        steps=2000,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/bike/de/default/{}"
+                "log": "logs/bike/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -846,12 +852,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=1360,
+                        steps=2000,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/bike/ga/default/{}"
+                "log": "logs/bike/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -868,12 +874,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=270,
+                        steps=400,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/car/sgd/default/{}"
+                "log": "logs/car/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -881,13 +887,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=270,
+                        steps=400,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/car/momentum/default/{}"
+                "log": "logs/car/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -895,13 +901,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=270,
+                        steps=400,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/car/nag/default/{}"
+                "log": "logs/car/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -909,13 +915,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=270,
+                        steps=400,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/car/adagrad/default/{}"
+                "log": "logs/car/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -923,14 +929,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=270,
+                        steps=400,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/car/rmsprop/default/{}"
+                "log": "logs/car/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -938,14 +944,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=270,
+                        steps=400,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/car/adadelta/default/{}"
+                "log": "logs/car/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -953,7 +959,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=270,
+                        steps=400,
                         rate=0.01,
                         staircase=False
                     ),
@@ -961,7 +967,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/car/adam/default/{}"
+                "log": "logs/car/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -970,7 +976,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=270,
+                        steps=400,
                         rate=0.9,
                         staircase=False
                     ),
@@ -980,7 +986,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/car/pso/default/{}"
+                "log": "logs/car/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -991,18 +997,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=270,
+                        steps=400,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=270,
+                        steps=400,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/car/de/default/{}"
+                "log": "logs/car/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -1013,12 +1019,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=12000,
+                        steps=400,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/car/ga/default/{}"
+                "log": "logs/car/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -1035,12 +1041,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=2000,
+                        steps=3000,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/diabetic/sgd/default/{}"
+                "log": "logs/diabetic/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -1048,13 +1054,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=2000,
+                        steps=3000,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/diabetic/momentum/default/{}"
+                "log": "logs/diabetic/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -1062,13 +1068,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=2000,
+                        steps=3000,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/diabetic/nag/default/{}"
+                "log": "logs/diabetic/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -1076,13 +1082,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=2000,
+                        steps=3000,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/diabetic/adagrad/default/{}"
+                "log": "logs/diabetic/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -1090,14 +1096,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=2000,
+                        steps=3000,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/diabetic/rmsprop/default/{}"
+                "log": "logs/diabetic/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -1105,14 +1111,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=2000,
+                        steps=3000,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/diabetic/adadelta/default/{}"
+                "log": "logs/diabetic/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -1120,7 +1126,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=2000,
+                        steps=3000,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1128,7 +1134,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/diabetic/adam/default/{}"
+                "log": "logs/diabetic/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -1137,7 +1143,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=2000,
+                        steps=3000,
                         rate=0.9,
                         staircase=False
                     ),
@@ -1147,7 +1153,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/diabetic/pso/default/{}"
+                "log": "logs/diabetic/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -1158,18 +1164,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=2000,
+                        steps=3000,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=2000,
+                        steps=3000,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/diabetic/de/default/{}"
+                "log": "logs/diabetic/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -1180,12 +1186,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=2000,
+                        steps=3000,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/diabetic/ga/default/{}"
+                "log": "logs/diabetic/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -1202,12 +1208,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=280,
+                        steps=425,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/fish_toxicity/sgd/default/{}"
+                "log": "logs/fish_toxicity/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -1215,13 +1221,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=280,
+                        steps=425,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/fish_toxicity/momentum/default/{}"
+                "log": "logs/fish_toxicity/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -1229,13 +1235,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=280,
+                        steps=425,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/fish_toxicity/nag/default/{}"
+                "log": "logs/fish_toxicity/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -1243,13 +1249,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=280,
+                        steps=425,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/fish_toxicity/adagrad/default/{}"
+                "log": "logs/fish_toxicity/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -1257,14 +1263,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=280,
+                        steps=425,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/fish_toxicity/rmsprop/default/{}"
+                "log": "logs/fish_toxicity/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -1272,14 +1278,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=280,
+                        steps=425,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/fish_toxicity/adadelta/default/{}"
+                "log": "logs/fish_toxicity/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -1287,7 +1293,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=280,
+                        steps=425,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1295,7 +1301,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/fish_toxicity/adam/default/{}"
+                "log": "logs/fish_toxicity/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -1304,7 +1310,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=280,
+                        steps=425,
                         rate=0.9,
                         staircase=False
                     ),
@@ -1314,7 +1320,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/fish_toxicity/pso/default/{}"
+                "log": "logs/fish_toxicity/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -1325,18 +1331,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=280,
+                        steps=425,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=280,
+                        steps=425,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/fish_toxicity/de/default/{}"
+                "log": "logs/fish_toxicity/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -1347,12 +1353,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=280,
+                        steps=425,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/fish_toxicity/ga/default/{}"
+                "log": "logs/fish_toxicity/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -1369,12 +1375,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/forest_fires/sgd/default/{}"
+                "log": "logs/forest_fires/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -1382,13 +1388,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/forest_fires/momentum/default/{}"
+                "log": "logs/forest_fires/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -1396,13 +1402,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/forest_fires/nag/default/{}"
+                "log": "logs/forest_fires/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -1410,13 +1416,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/forest_fires/adagrad/default/{}"
+                "log": "logs/forest_fires/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -1424,14 +1430,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/forest_fires/rmsprop/default/{}"
+                "log": "logs/forest_fires/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -1439,14 +1445,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=320,
+                        steps=500,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/forest_fires/adadelta/default/{}"
+                "log": "logs/forest_fires/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -1454,7 +1460,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=500,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1462,7 +1468,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/forest_fires/adam/default/{}"
+                "log": "logs/forest_fires/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -1471,7 +1477,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=320,
+                        steps=500,
                         rate=0.9,
                         staircase=False
                     ),
@@ -1481,7 +1487,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/forest_fires/pso/default/{}"
+                "log": "logs/forest_fires/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -1492,18 +1498,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=320,
+                        steps=500,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=320,
+                        steps=500,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/forest_fires/de/default/{}"
+                "log": "logs/forest_fires/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -1514,12 +1520,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=320,
+                        steps=500,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/forest_fires/ga/default/{}"
+                "log": "logs/forest_fires/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -1536,12 +1542,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/housing/sgd/default/{}"
+                "log": "logs/housing/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -1549,13 +1555,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/housing/momentum/default/{}"
+                "log": "logs/housing/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -1563,13 +1569,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/housing/nag/default/{}"
+                "log": "logs/housing/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -1577,13 +1583,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/housing/adagrad/default/{}"
+                "log": "logs/housing/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -1591,14 +1597,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/housing/rmsprop/default/{}"
+                "log": "logs/housing/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -1606,14 +1612,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=320,
+                        steps=480,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/housing/adadelta/default/{}"
+                "log": "logs/housing/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -1621,7 +1627,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1629,7 +1635,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/housing/adam/default/{}"
+                "log": "logs/housing/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -1638,7 +1644,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=320,
+                        steps=480,
                         rate=0.9,
                         staircase=False
                     ),
@@ -1648,7 +1654,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/housing/pso/default/{}"
+                "log": "logs/housing/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -1659,18 +1665,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=320,
+                        steps=480,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=320,
+                        steps=480,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/housing/de/default/{}"
+                "log": "logs/housing/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -1681,12 +1687,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=320,
+                        steps=480,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/housing/ga/default/{}"
+                "log": "logs/housing/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -1704,12 +1710,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=250,
+                        steps=280,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/iris/sgd/default/{}"
+                "log": "logs/iris/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -1718,13 +1724,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=250,
+                        steps=280,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/iris/momentum/default/{}"
+                "log": "logs/iris/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -1733,13 +1739,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=250,
+                        steps=280,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/iris/nag/default/{}"
+                "log": "logs/iris/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -1748,13 +1754,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=250,
+                        steps=280,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/iris/adagrad/default/{}"
+                "log": "logs/iris/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -1763,14 +1769,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=250,
+                        steps=280,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/iris/rmsprop/default/{}"
+                "log": "logs/iris/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -1779,14 +1785,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=250,
+                        steps=280,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/iris/adadelta/default/{}"
+                "log": "logs/iris/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -1795,7 +1801,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=250,
+                        steps=280,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1803,7 +1809,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/iris/adam/default/{}"
+                "log": "logs/iris/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -1813,7 +1819,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=250,
+                        steps=280,
                         rate=0.9,
                         staircase=False
                     ),
@@ -1823,7 +1829,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/iris/pso/default/{}"
+                "log": "logs/iris/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -1835,18 +1841,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=250,
+                        steps=280,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=250,
+                        steps=280,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/iris/de/default/{}"
+                "log": "logs/iris/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -1858,12 +1864,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=250,
+                        steps=280,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/iris/ga/default/{}"
+                "log": "logs/iris/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -1880,12 +1886,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/mushroom/sgd/default/{}"
+                "log": "logs/mushroom/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -1893,13 +1899,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/mushroom/momentum/default/{}"
+                "log": "logs/mushroom/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -1907,13 +1913,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/mushroom/nag/default/{}"
+                "log": "logs/mushroom/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -1921,13 +1927,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/mushroom/adagrad/default/{}"
+                "log": "logs/mushroom/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -1935,14 +1941,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/mushroom/rmsprop/default/{}"
+                "log": "logs/mushroom/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -1950,14 +1956,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=320,
+                        steps=480,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/mushroom/adadelta/default/{}"
+                "log": "logs/mushroom/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -1965,7 +1971,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=320,
+                        steps=480,
                         rate=0.01,
                         staircase=False
                     ),
@@ -1973,7 +1979,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/mushroom/adam/default/{}"
+                "log": "logs/mushroom/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -1982,7 +1988,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=320,
+                        steps=480,
                         rate=0.9,
                         staircase=False
                     ),
@@ -1992,7 +1998,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/mushroom/pso/default/{}"
+                "log": "logs/mushroom/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -2003,18 +2009,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=320,
+                        steps=480,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=320,
+                        steps=480,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/mushroom/de/default/{}"
+                "log": "logs/mushroom/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -2025,12 +2031,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=320,
+                        steps=480,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/mushroom/ga/default/{}"
+                "log": "logs/mushroom/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -2047,12 +2053,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=460,
+                        steps=690,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/parkinsons/sgd/default/{}"
+                "log": "logs/parkinsons/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -2060,13 +2066,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=460,
+                        steps=690,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/parkinsons/momentum/default/{}"
+                "log": "logs/parkinsons/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -2074,13 +2080,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=460,
+                        steps=690,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/parkinsons/nag/default/{}"
+                "log": "logs/parkinsons/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -2088,13 +2094,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=460,
+                        steps=690,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/parkinsons/adagrad/default/{}"
+                "log": "logs/parkinsons/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -2102,14 +2108,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=460,
+                        steps=690,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/parkinsons/rmsprop/default/{}"
+                "log": "logs/parkinsons/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -2117,14 +2123,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=460,
+                        steps=690,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/parkinsons/adadelta/default/{}"
+                "log": "logs/parkinsons/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -2132,7 +2138,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=460,
+                        steps=690,
                         rate=0.01,
                         staircase=False
                     ),
@@ -2140,7 +2146,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/parkinsons/adam/default/{}"
+                "log": "logs/parkinsons/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -2149,7 +2155,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=460,
+                        steps=690,
                         rate=0.9,
                         staircase=False
                     ),
@@ -2159,7 +2165,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/parkinsons/pso/default/{}"
+                "log": "logs/parkinsons/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -2170,18 +2176,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=460,
+                        steps=690,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=460,
+                        steps=690,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/parkinsons/de/default/{}"
+                "log": "logs/parkinsons/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -2192,12 +2198,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=460,
+                        steps=690,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/parkinsons/ga/default/{}"
+                "log": "logs/parkinsons/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -2214,12 +2220,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=200,
+                        steps=610,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/student_performance/sgd/default/{}"
+                "log": "logs/student_performance/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -2227,13 +2233,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=200,
+                        steps=610,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/student_performance/momentum/default/{}"
+                "log": "logs/student_performance/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -2241,13 +2247,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=200,
+                        steps=610,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/student_performance/nag/default/{}"
+                "log": "logs/student_performance/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -2255,13 +2261,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=200,
+                        steps=610,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/student_performance/adagrad/default/{}"
+                "log": "logs/student_performance/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -2269,14 +2275,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=200,
+                        steps=610,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/student_performance/rmsprop/default/{}"
+                "log": "logs/student_performance/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -2284,14 +2290,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=200,
+                        steps=610,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/student_performance/adadelta/default/{}"
+                "log": "logs/student_performance/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -2299,7 +2305,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=200,
+                        steps=610,
                         rate=0.01,
                         staircase=False
                     ),
@@ -2307,7 +2313,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/student_performance/adam/default/{}"
+                "log": "logs/student_performance/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -2316,7 +2322,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=200,
+                        steps=610,
                         rate=0.9,
                         staircase=False
                     ),
@@ -2326,7 +2332,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/student_performance/pso/default/{}"
+                "log": "logs/student_performance/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -2337,18 +2343,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=200,
+                        steps=610,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=200,
+                        steps=610,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/student_performance/de/default/{}"
+                "log": "logs/student_performance/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -2359,12 +2365,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=200,
+                        steps=610,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/student_performance/ga/default/{}"
+                "log": "logs/student_performance/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -2381,12 +2387,12 @@ params = {
                 "params": fw.hyper_parameters.SGD(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=300,
+                        steps=590,
                         rate=0.01,
                         staircase=False
                     )
                 ),
-                "log": "logs_revised/wine_quality/sgd/default/{}"
+                "log": "logs/wine_quality/sgd/default/{}"
             },
             "momentum": {
                 "optimiser": fw.optimisers.Momentum,
@@ -2394,13 +2400,13 @@ params = {
                 "params": fw.hyper_parameters.Momentum(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=300,
+                        steps=590,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/wine_quality/momentum/default/{}"
+                "log": "logs/wine_quality/momentum/default/{}"
             },
             "nag": {
                 "optimiser": fw.optimisers.NAG,
@@ -2408,13 +2414,13 @@ params = {
                 "params": fw.hyper_parameters.NAG(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=300,
+                        steps=590,
                         rate=0.01,
                         staircase=False
                     ),
                     momentum=0.9
                 ),
-                "log": "logs_revised/wine_quality/nag/default/{}"
+                "log": "logs/wine_quality/nag/default/{}"
             },
             "adagrad": {
                 "optimiser": fw.optimisers.Adagrad,
@@ -2422,13 +2428,13 @@ params = {
                 "params": fw.hyper_parameters.Adagrad(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=300,
+                        steps=590,
                         rate=0.01,
                         staircase=False
                     ),
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/wine_quality/adagrad/default/{}"
+                "log": "logs/wine_quality/adagrad/default/{}"
             },
             "rmsprop": {
                 "optimiser": fw.optimisers.RMSProp,
@@ -2436,14 +2442,14 @@ params = {
                 "params": fw.hyper_parameters.RMSProp(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=300,
+                        steps=590,
                         rate=0.01,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/wine_quality/rmsprop/default/{}"
+                "log": "logs/wine_quality/rmsprop/default/{}"
             },
             "adadelta": {
                 "optimiser": fw.optimisers.Adadelta,
@@ -2451,14 +2457,14 @@ params = {
                 "params": fw.hyper_parameters.Adadelta(
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=300,
+                        steps=590,
                         rate=0.95,
                         staircase=False
                     ),
                     rho=0.95,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/wine_quality/adadelta/default/{}"
+                "log": "logs/wine_quality/adadelta/default/{}"
             },
             "adam": {
                 "optimiser": fw.optimisers.Adam,
@@ -2466,7 +2472,7 @@ params = {
                 "params": fw.hyper_parameters.Adam(
                     learning_rate=fw.schedules.Exponential(
                         initial=0.1,
-                        steps=300,
+                        steps=590,
                         rate=0.01,
                         staircase=False
                     ),
@@ -2474,7 +2480,7 @@ params = {
                     beta2=0.999,
                     epsilon=1e-07
                 ),
-                "log": "logs_revised/wine_quality/adam/default/{}"
+                "log": "logs/wine_quality/adam/default/{}"
             },
             "pso": {
                 "optimiser": fw.optimisers.PSO,
@@ -2483,7 +2489,7 @@ params = {
                     population_size=10,
                     learning_rate=fw.schedules.Exponential(
                         initial=1.0,
-                        steps=300,
+                        steps=590,
                         rate=0.9,
                         staircase=False
                     ),
@@ -2493,7 +2499,7 @@ params = {
                     velocity_clip_min=-1.0,
                     velocity_clip_max=1.0
                 ),
-                "log": "logs_revised/wine_quality/pso/default/{}"
+                "log": "logs/wine_quality/pso/default/{}"
             },
             "de": {
                 "optimiser": fw.optimisers.DE,
@@ -2504,18 +2510,18 @@ params = {
                     xo_strategy="exp",
                     recombination_probability=fw.schedules.Exponential(
                         initial=0.9,
-                        steps=300,
+                        steps=590,
                         rate=0.1,
                         staircase=False
                     ),
                     beta=fw.schedules.Exponential(
                         initial=2.0,
-                        steps=300,
+                        steps=590,
                         rate=0.1,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/wine_quality/de/default/{}"
+                "log": "logs/wine_quality/de/default/{}"
             },
             "ga": {
                 "optimiser": fw.optimisers.GA,
@@ -2526,12 +2532,12 @@ params = {
                     xo_strategy="bin",
                     mutation_rate=fw.schedules.Exponential(
                         initial=0.2,
-                        steps=300,
+                        steps=590,
                         rate=0.05,
                         staircase=False
                     ),
                 ),
-                "log": "logs_revised/wine_quality/ga/default/{}"
+                "log": "logs/wine_quality/ga/default/{}"
             },
             "bhh": {
                 "optimiser": fw.optimisers.BHH,
@@ -2543,16 +2549,16 @@ params = {
 
 
 def get_bhh_defaults(
-    variant: str,
+    heuristic_pool: str,
     experiment: str,
-    population_size: int = 10,
+    population_size: int = 5,
     burn_in: int = 0,
     replay: int = 10,
-    reselection: int = 1,
-    reanalysis: int = 1,
+    reselection: int = 10,
+    reanalysis: int = 10,
     normalise: bool = False,
-    credit: str = "gbest",
-    discounted_rewards: bool = True
+    credit: str = "ibest",
+    discounted_rewards: bool = False
 ):
     # Get Experiment defaults
     defaults = {}
@@ -2571,12 +2577,17 @@ def get_bhh_defaults(
     optimisers = params[experiment]["optimisers"]
 
     for key, optimiser in optimisers.items():
-        if variant == 'all' and any(key in string for string in INCLUDE_ALL):
+        if heuristic_pool == 'all' and any(key in string for string in HEURISTIC_POOL_ALL):
             Heuristic = optimiser["heuristic"]
             optimiser_params = optimiser["params"]
             heuristic = Heuristic(params=optimiser_params)
             heuristics.append(heuristic)
-        elif variant == 'gd_only' and any(key in string for string in INCLUDE_GD_ONLY):
+        elif heuristic_pool == 'gd' and any(key in string for string in HEURISTIC_POOL_GD):
+            Heuristic = optimiser["heuristic"]
+            optimiser_params = optimiser["params"]
+            heuristic = Heuristic(params=optimiser_params)
+            heuristics.append(heuristic)
+        elif heuristic_pool == 'mh' and any(key in string for string in HEURISTIC_POOL_MH):
             Heuristic = optimiser["heuristic"]
             optimiser_params = optimiser["params"]
             heuristic = Heuristic(params=optimiser_params)

@@ -69,6 +69,6 @@ class Diabetic(Experiment):
                 SparseCategoricalAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=20,
+            epochs=30,
             seed=seed
         )

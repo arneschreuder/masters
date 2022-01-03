@@ -59,6 +59,6 @@ class Bike(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=20,
+            epochs=30,
             seed=seed
         )

@@ -69,14 +69,14 @@ class BHH(Parameters):
     heuristics: List[Heuristic] = None
 
     def __init__(self,
-                 population_size: int = 10,
-                 burn_in: int = 30,
-                 replay: int = 30,
-                 reselection: int = 1,
-                 reanalysis: int = 1,
+                 population_size: int = 5,
+                 burn_in: int = 0,
+                 replay: int = 10,
+                 reselection: int = 10,
+                 reanalysis: int = 10,
                  normalise: bool = False,
                  credit: List[Credit] = [
-                     IBest(discounted_rewards=True)
+                     IBest(discounted_rewards=False)
                  ],
                  defaults: Dict = None,
                  heuristics: List[Heuristic] = None):
@@ -84,19 +84,19 @@ class BHH(Parameters):
         Parameters
         ----------
         population_size: int
-            The number of entities in the swarm/population. Default = 10
+            The number of entities in the swarm/population. Default = 5
         burn_in: int
-            The burn-in window size. Default = 30
+            The burn-in window size. Default = 0
         replay: int
-            The replay window size. Default = 30
+            The replay window size. Default = 10
         reselection: int
-            The reselection interval. Default = 1
+            The reselection interval. Default = 10
         reanalysis: int
-            The reanalysis interval. Default = 1
+            The reanalysis interval. Default = 10
         normalise: bool
             Flag to normalise pseudo counts. Default = False
         credit: List[Credit]
-            The credit assignment strategy to use. Default = IBest(discounted_rewards=True)
+            The credit assignment strategy to use. Default = IBest(discounted_rewards=False)
         defaults: Dict
             The default parameters for all lower level heuristics. Default = None
         heuristics: List[Heuristic]

@@ -64,6 +64,6 @@ class Mushroom(Experiment):
                 BinaryAccuracyMetric(name="test_accuracy")
             ],
             log_dir=log_dir,
-            epochs=20,
+            epochs=30,
             seed=seed
         )

@@ -138,6 +138,5 @@ dmypy.json
 cython_debug/
 
 /logs
-/logs_revised
 
 tracking*

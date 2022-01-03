@@ -88,8 +88,7 @@ def parse_basic_arguments():
             "adam",
             "pso",
             "de",
-            "ga",
-            "bhh"
+            "ga"
         ],
         help="The optimiser to use"
     )

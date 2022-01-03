@@ -32,13 +32,13 @@ import framework as fw
 import params
 
 # Globals
-VARIANT = None
 DATASET = None
 OPTIMISER = None
 SEED = None
 LOG_LEVEL = None
 PARAMS = None
 LOG = None
+HEURISTIC_POOL = None
 POPULATION_SIZE = None
 BURN_IN = None
 REPLAY = None
@@ -50,13 +50,13 @@ DISCOUNTED_REWARDS = None
 
 
 def parse_bhh_arguments():
-    global VARIANT
     global DATASET
     global OPTIMISER
     global SEED
     global LOG_LEVEL
     global PARAMS
     global LOG
+    global HEURISTIC_POOL
     global POPULATION_SIZE
     global BURN_IN
     global REPLAY
@@ -72,16 +72,6 @@ def parse_bhh_arguments():
     )
 
     # Basic Params
-    parser.add_argument(
-        "--variant",
-        type=str,
-        default="all",
-        choices=[
-            "all",
-            "gd_only",
-        ],
-        help="The BHH variant to use"
-    )
     parser.add_argument(
         "--dataset",
         type=str,
@@ -110,15 +100,26 @@ def parse_bhh_arguments():
 
     # BHH Params
     parser.add_argument(
+        "--heuristic-pool",
+        type=str,
+        default="all",
+        choices=[
+            "all",
+            "gd",
+            "mh",
+        ],
+        help="The BHH heuristic pool to use"
+    )
+    parser.add_argument(
         "--population-size",
         type=int,
         required=False,
         choices=[
             5,
             10,
+            15,
             20,
-            50,
-            100
+            25
         ],
         default=5,
         help="The population size to use"
@@ -129,10 +130,10 @@ def parse_bhh_arguments():
         required=False,
         choices=[
             0,
+            5,
             10,
-            20,
-            50,
-            100
+            15,
+            20
         ],
         default=0,
         help="The burn-in to use"
@@ -142,11 +143,11 @@ def parse_bhh_arguments():
         type=int,
         required=False,
         choices=[
+            1,
+            5,
             10,
-            20,
-            50,
-            100,
-            300
+            15,
+            20
         ],
         default=10,
         help="The replay buffer size to use"
@@ -159,10 +160,10 @@ def parse_bhh_arguments():
             1,
             5,
             10,
-            50,
-            100
+            15,
+            20
         ],
-        default=1,
+        default=10,
         help="The reselection interval to use"
     )
     parser.add_argument(
@@ -173,10 +174,10 @@ def parse_bhh_arguments():
             1,
             5,
             10,
-            50,
-            100
+            15,
+            20
         ],
-        default=1,
+        default=10,
         help="The reanalysis interval to use"
     )
     parser.add_argument(
@@ -197,7 +198,7 @@ def parse_bhh_arguments():
             "gbest",
             "symmetric",
         ],
-        default="gbest",
+        default="ibest",
         help="The credit assignment strategy to use"
     )
     parser.add_argument(
@@ -210,7 +211,7 @@ def parse_bhh_arguments():
 
     # Arguments
     args = parser.parse_args()
-    VARIANT = args.variant
+    HEURISTIC_POOL = args.heuristic_pool
     DATASET = args.dataset
     OPTIMISER = 'bhh'
     SEED = args.seed or None
@@ -226,9 +227,9 @@ def parse_bhh_arguments():
 
     LOG_LEVEL = int(os.getenv('LOG_LEVEL')) if os.getenv(
         'LOG_LEVEL') is not None else 0
-    LOG = "logs/{}/{}/ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}".format(
+    LOG = "logs/{}/bhh/hp:{}_ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}".format(
         DATASET,
-        "bhh" if VARIANT == "all" else "bhh_gd_only",
+        HEURISTIC_POOL,
         POPULATION_SIZE,
         BURN_IN,
         REPLAY,
@@ -241,12 +242,12 @@ def parse_bhh_arguments():
 
 
 def print_bhh_banner():
-    global VARIANT
     global DATASET
     global OPTIMISER
     global SEED
     global LOG
     global LOG_LEVEL
+    global HEURISTIC_POOL
     global POPULATION_SIZE
     global BURN_IN
     global REPLAY
@@ -260,12 +261,12 @@ def print_bhh_banner():
     print("====================================================================")
     print("Training Feedforward Neural Networks using Bayesian Hyper-Heuristics")
     print("====================================================================")
-    print("Variant: {}".format(VARIANT))
     print("Dataset: {}".format(DATASET))
     print("Optimiser: {}".format(OPTIMISER))
     print("Seed: {}".format(SEED))
     print("Log: {}".format(LOG))
     print("Log Level: {}".format(LOG_LEVEL))
+    print("Heuristic Pool: {}".format(HEURISTIC_POOL))
     print("Population Size: {}".format(POPULATION_SIZE))
     print("Burn In: {}".format(BURN_IN))
     print("Replay: {}".format(REPLAY))
@@ -279,9 +280,8 @@ def print_bhh_banner():
 
 
 def bhh_optimiser():
-    global VARIANT
     global DATASET
-    global POPULATION_SIZE
+    global HEURISTIC_POOL
     global POPULATION_SIZE
     global BURN_IN
     global REPLAY
@@ -297,7 +297,7 @@ def bhh_optimiser():
     Optimiser = fw.optimisers.BHH
 
     PARAMS = params.get_bhh_defaults(
-        variant=VARIANT,
+        heuristic_pool=HEURISTIC_POOL,
         experiment=DATASET,
         population_size=POPULATION_SIZE,
         burn_in=BURN_IN,
@@ -309,9 +309,9 @@ def bhh_optimiser():
         discounted_rewards=DISCOUNTED_REWARDS
     )
 
-    LOG = "logs_revised/{}/{}/ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}/{}".format(
+    LOG = "logs/{}/bhh/hp:{}_ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}/{}".format(
         DATASET,
-        "bhh" if VARIANT == "all" else "bhh_gd_only",
+        HEURISTIC_POOL,
         POPULATION_SIZE,
         BURN_IN,
         REPLAY,

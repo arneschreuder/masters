@@ -48,7 +48,7 @@ class AirQuality(Experiment):
             Random seed. Default = None
         """
         super(AirQuality, self).__init__(
-            dataset=AirQualityDataset(seed=seed, batch_size=128),
+            dataset=AirQualityDataset(seed=seed, batch_size=256),
             model=AirQualityModel(),
             loss_fn=RMSE(),
             optimiser=optimiser,
@@ -59,6 +59,6 @@ class AirQuality(Experiment):
                 RMSEMetric(name="test_loss")
             ],
             log_dir=log_dir,
-            epochs=20,
+            epochs=30,
             seed=seed
         )

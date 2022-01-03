@@ -14,9 +14,8 @@ from tensorflow.python.lib.io import tf_record
 COLUMNS = [
 	'id',
 	'dataset',
-	'heuristic_type',
 	'heuristic',
-	'is_baseline',
+	'heuristic_pool',
 	'population',
 	'burn_in',
 	'replay',
@@ -90,8 +89,8 @@ def export_events(path):
 
 	# Extract parameters
 	if len(config_parts) == 1:
-		heuristic_type = 'standalone'
-		is_baseline = None
+		heuristic_pool = None
+		population = None
 		burn_in = None
 		credit = None
 		discounted_rewards = None
@@ -101,16 +100,15 @@ def export_events(path):
 		replay = None
 		reselection = None
 	else:
-		heuristic_type = 'bhh'
-		is_baseline = True if config == 'ps:5_bi:0_rp:10_rs:1_ra:1_nm:False_ct:gbest_dr:True' else False 
-		population = int(config_parts[0].replace('ps:',''))
-		burn_in = int(config_parts[1].replace('bi:',''))
-		replay = int(config_parts[2].replace('rp:',''))
-		reselection = int(config_parts[3].replace('rs:',''))
-		reanalysis = int(config_parts[4].replace('ra:',''))
-		normalisation = bool(True if config_parts[5].replace('nm:','') == 'True' else False)
-		credit = config_parts[6].replace('ct:','')
-		discounted_rewards = bool(True if config_parts[7].replace('dr:','') == 'True' else False)
+		heuristic_pool = config_parts[0].replace('hp:','')
+		population = int(config_parts[1].replace('ps:',''))
+		burn_in = int(config_parts[2].replace('bi:',''))
+		replay = int(config_parts[3].replace('rp:',''))
+		reselection = int(config_parts[4].replace('rs:',''))
+		reanalysis = int(config_parts[5].replace('ra:',''))
+		normalisation = bool(True if config_parts[6].replace('nm:','') == 'True' else False)
+		credit = config_parts[7].replace('ct:','')
+		discounted_rewards = bool(True if config_parts[8].replace('dr:','') == 'True' else False)
 
 	df = pd.DataFrame([], columns=COLUMNS)
 
@@ -126,9 +124,8 @@ def export_events(path):
 			row = {
 				'id': id,
 				'dataset': dataset,
-				'heuristic_type': heuristic_type,
 				'heuristic': heuristic,
-				'is_baseline': is_baseline,
+				'heuristic_pool': heuristic_pool,
 				'population': population,
 				'burn_in': burn_in,
 				'replay': replay,
@@ -158,7 +155,7 @@ def export_data():
 		for file in files:
 			FILEPATH = os.path.join(subdir, file)
 			
-			if not re.search('gbest_dr:True\/1[0-9]+[0-9]+', str(FILEPATH)) and file.endswith('.v2'):
+			if not re.search('ibest_dr:False\/1[0-9]+[0-9]+', str(FILEPATH)) and file.endswith('.v2'):
 				export_events(FILEPATH)
 			
 def main():

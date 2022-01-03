@@ -1,5 +1,5 @@
-# BHH Baseline
-# This runs the baseline BHH against only iris, with full logging enables
+# BHH Variant: Heuristic Pool
+# This runs the baseline BHH variants with varying
 
 #!/usr/bin/env bash
 
@@ -9,13 +9,13 @@ echo "export TF_CPP_MIN_LOG_LEVEL=3"
 echo "export CUDA_VISIBLE_DEVICES=''"
 echo "export LOG_LEVEL=2"
 
-RUNS=10
+RUNS=1
 
 declare -a DATASETS=("iris")
 
 for DATASET in ${DATASETS[@]}; do
-	for ((RUN = 100; RUN <= RUNS + 100; RUN++)); do
-		echo "python bhh.py --variant='all' --dataset=$DATASET --seed=$RUN --population-size=5 --burn_in=0 --replay=10 --reselection=1 --reanalysis=1 --normalise=false --credit=gbest --discounted-rewards=true"
-		echo "echo 'bhh_log_all,${DATASET},${RUN}' >>tracking_bhh_log_all.txt"
+	for ((RUN = 101; RUN <= RUNS + 100; RUN++)); do
+		echo "python bhh.py --dataset=$DATASET --seed=$RUN --heuristic-pool=all --population-size=5 --burn_in=0 --replay=10 --reselection=10 --reanalysis=10 --credit=ibest"
+		echo "echo 'bhh_log_all,${DATASET},${RUN}' >> bhh_log_all.txt"
 	done
 done
