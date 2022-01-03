@@ -1,14 +1,14 @@
 # Experiments:
 
-| #   | Group                           | Status |
-| --- | ------------------------------- | ------ |
-| 1   | BHH Baseline                    | 100%   |
-| 2   | BHH Variant: Burn In            | 66%    |
-| 3   | BHH Variant: Credit             | 66%    |
-| 4   | BHH Variant: Discounted Rewards | 80%    |
-| 5   | BHH Variant: Normalise          | 75%    |
-| 6   | BHH Variant: Population         | 25%    |
-| 7   | BHH Variant: Reanalysis         | 70%    |
-| 8   | BHH Variant: Replay             | 28%    |
-| 9   | BHH Variant: Reselection        | 66%    |
-| 10  | Standalone Optimisers           | 66%    |
+| #   | Group                  | Status |
+| --- | ---------------------- | ------ |
+| 1   | BHH Burn In            | 0%     |
+| 2   | BHH Credit             | 0%     |
+| 3   | BHH Discounted Rewards | 0%     |
+| 4   | BHH Heuristic Pool     | 0%     |
+| 5   | BHH Normalise          | 0%     |
+| 6   | BHH Population         | 0%     |
+| 7   | BHH Reanalysis         | 0%     |
+| 8   | BHH Replay             | 0%     |
+| 9   | BHH Reselection        | 0%     |
+| 10  | Standalone             | 0%     |
