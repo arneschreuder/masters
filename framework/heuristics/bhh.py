@@ -179,6 +179,8 @@ class BHH(Heuristic):
         # Total occurences of failing to meet performance criteria by heuristic k
         N_0k = np.ones([K], dtype=np.float32)
 
+        # print(log.log)
+
         # First count occurences
         for _, row in log.log.iterrows():
             j = row['entity'].astype(int)
@@ -190,12 +192,19 @@ class BHH(Heuristic):
         for c in params.credit:
             credit = c(log=log)
 
+            # print(credit)
+
             for _, row in credit.iterrows():
                 j = row['entity'].astype(int)
                 k = row['heuristic'].astype(int)
                 l = row['credit'].astype(int)
                 N_1k[k] += l
                 N_0k[k] += 1-l
+
+        # print(N_k)
+        # print(N_jk)
+        # print(N_1k)
+        # print(N_0k)
 
         _alpha = tf.constant(N_k)
         _beta = tf.constant(N_jk)

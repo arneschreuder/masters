@@ -139,5 +139,7 @@ cython_debug/
 
 /logs
 /data
+/analysis
+/credentials
 
 tracking*
