@@ -10,8 +10,12 @@ qsub experiments/chpc/bhh_heuristic_pool.sh
 # qsub experiments/chpc/bhh_normalise.sh
 qsub experiments/chpc/bhh_population.sh
 qsub experiments/chpc/bhh_population2.sh
+qsub experiments/chpc/bhh_population3.sh
 qsub experiments/chpc/bhh_reanalysis.sh
+qsub experiments/chpc/bhh_reanalysis2.sh
 qsub experiments/chpc/bhh_replay.sh
+qsub experiments/chpc/bhh_replay2.sh
 qsub experiments/chpc/bhh_reselection.sh
+qsub experiments/chpc/bhh_reselection2.sh
 qsub experiments/chpc/standalone.sh
 qsub experiments/chpc/standalone2.sh

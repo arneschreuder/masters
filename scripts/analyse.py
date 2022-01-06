@@ -69,7 +69,7 @@ ANALYSIS_CONFIG = {
 		'view': 'standalone',
 		'friendly': 'Heuristics',
 		'column': 'heuristic',
-		'param_count': 10
+		'param_count': 13
 	},
 }
 

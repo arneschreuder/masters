@@ -45,7 +45,7 @@ class Categorical(Distribution):
         """
         instance = None
 
-        if probabilities:
+        if probabilities is not None:
             instance = tfp.distributions.Categorical(
                 probs=probabilities
             )

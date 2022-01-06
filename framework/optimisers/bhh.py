@@ -29,6 +29,7 @@ from typing import List, Tuple
 
 import tensorflow as tf
 from framework.distributions.beta import Beta
+from framework.distributions.categorical import Categorical
 from framework.distributions.dirichlet import Dirichlet
 from framework.distributions.distribution import Distribution
 from framework.entities.entity import Entity
@@ -583,9 +584,6 @@ class BHH(Optimiser):
                 entity=entity
             )
 
-            entity.log_state(step=step)
-            self.log_state(j, k, step)
-
             # Log performance
             self.log.append(
                 step=step,
@@ -621,6 +619,12 @@ class BHH(Optimiser):
         logits, loss = self.evaluate(features=features, labels=labels)
         self.population.loss = loss
         self.population.log_state(step=step)
+
+
+        for j, entity in enumerate(self.population.entities):
+            entity.log_state(step=step)
+            for k, heuristic in enumerate(self.heuristic.params.heuristics):
+                self.log_state(j,k,step)
 
         return logits, loss
 
@@ -673,3 +677,7 @@ class BHH(Optimiser):
                 'HgEC[{}]'.format(j), result=self.HgEC[j], step=step)
             self.logger.log_distribution_results(
                 'HgEC', result=self.HgEC, step=step)
+
+            l_HgEC = Categorical(logits=self.p_HgEC)
+            self.logger.log_scalar_results(
+                'l_HgEC[{}]'.format(k), result=l_HgEC()[j], step=step)
