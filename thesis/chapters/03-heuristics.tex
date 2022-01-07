@@ -1,0 +1,191 @@
+\chapter{Heuristics}
+\label{chap:heuristics}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{quote}
+\it {
+  Albert Einstein once said: "Look deep into nature, and then you will understand everything better". Nature has inspired the development of many different optimisation techniques. One such technique investigates the flocking of birds while foraging or in flight. Other techniques are inspired by ants, bees and fungi. 
+}
+\end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The fittest will survive \cite[p.~444]{ref:spencer:1864}. This concept drives the evolutionary process. Species either hunt or are being hunted. Over millions of years, the living have evolved some fascinating techniques to improve their chances of survival. These techniques include everything from camouflage, stealth, strength, speed and many more. One well-known example of this is Darwin's Finches as described in the book by David Lack \cite{ref:lack:1983} in 1947. Finches from the Galapagos islands have been found to evolve distinctly different beak shapes and sizes depending on the food sources that were present on the various islands. This process of improvement over time is necessary for species to survive. Determining the ideal survival method is a difficult task and finding an optimal solution to this problem can be seen as a search problem. 
+
+The search process is a strategic process in which better solutions to problems are being sought out. This strategic process is executed by search techniques known as Heuristics \todo[inline]{refs}. Training of NNs is itself a search process as the ideal weight values that minimises the cost of the NN are strategically being searched for. HHs takes this concept a step further by searching for the ideal heuristic in heuristic-space, to be used to find optimal solutions to problems.
+
+This chapter provides the necessary background information on heuristics and is structured as follows:
+
+\begin{itemize}
+  \item Section~\ref{sec:heuristics:optimisation} provides readers with a  necessary overview of optimisation and the fundamentals that drive search processes. Furthermore it is shown how the training of NNs is an optimisation problem. Various techniques that have been used to train NNs are provided.
+  \item Sections~\ref{sec:heuristics:gradient-descent}, \ref{sec:heuristics:adaptive-gradients}, \ref{sec:heuristics:adaptive-delta}, \ref{sec:heuristics:momentum}, \ref{sec:heuristics:rmsprop} and \ref{sec:heuristics:adam} provide details on classic heuristics that make use of mathematical constructs to find optimum solutions to problems. Classic heuristics that are discussed include Gradient Descent (GD) and its various improvements such as Adaptive Gradients (AdaGrad), Adaptive Delta (AdaDelta), GD with Momentum, Root Mean Squared Propagation (RMSProp) and Adaptive Momentum (Adam)\todo[inline]{acronyms}.
+  \item Sections~\ref{sec:heuristics:pso}, \ref{sec:heuristics:de} and \ref{sec:heuristics:ga} discusses Meta-Heuristics. In particular, population-based approaches are the focus of these sections and includes detailed discussions on Particle Swarm Optimisation (PSO), Differential Evolution (DE) and Genetic Algorithms (GA).
+  \item Section~\ref{sec:heuristics:meta-learning} provides a brief overview of Meta-Learning and shows how it is related to Hyper-Heuristics (HHs).
+  \item The chapter is then concluded and summarised in Section~\ref{sec:heuristics:summary}.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Optimisation}
+\label{sec:heuristics:optimisation}
+
+Optimisation is the task of finding a solution to a given problem that is better than alternative solutions. Better stated by Oldewage \cite{ref:oldewage:2017}, optimisation is the task of finding values for a set of variables such that some measure of optimality is satisfied given a set of constraints. Engelbrecht \cite{ref:engelbrecht:2007} breaks optimisations problems down into three components:
+
+\begin{itemize}
+  \item An \textbf{objective function}: Represents the quantity to be optimised and is used as the "measure of optimality". Optimisation can be defined in terms of the minimisation or maximisation of the objective function $f$. 
+  \item A \textbf{set of unknowns or independent variables}: These affect the outcome of the objective function $f$ and is denoted as $x$. $f(x)$ is thus the quantification of the objective function over the unknowns $x$.
+  \item A \textbf{set of constraints}: This restrict and limit the values that can be assigned to the unknowns $x$. Optimisation problems that contain must adhere to a set of constraints are referred to as constraint-satisfaction problems (CSPs).
+\end{itemize}
+
+The goals of heuristics is to find a set of valid values for $x$ that optimises the objective function while adhering to a set of constraints. Heuristics thus search for solutions, referred to as candidate solutions, in a set of all possible and valid solutions, referred to as the feasible search space.
+
+For HHs this definition is also valid. The HH just searches, on a higher level, for an optimal combination and collaboration of lower level heuristics in a heuristic space that is then used to optimise $f(x)$.
+
+Optimisation problems come in a wide variety of forms. Mostly these functions are defined in terms of the number of variables used (uni- vs. multivariate), the number of objective functions used (single- vs. multi-objective), the degree of linearity (linear vs. quadratic/polynomial), the number of optima (uni- vs. multi-modal), the nature of the environment (static vs. dynamic), the types of variables used (separable vs. inseparable, discrete vs. continuous) and  the set of constraints that the solution has to adhere to (constrained vs unconstrained). 
+
+Optima can be defined as local or global optima. Local optima is the best optimisation of $f(x)$ in a neighbourhood of solutions, while the global optima is the best optimisation of $f(x)$ over all solutions in the solution space.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Training of Neural Networks is an Optimisation Problem}
+\label{sec:heuristics:nns-optimisation-problem}
+
+In Section~\todo[inline]{ref}, it is mentioned that NNs are universal function approximators. The accuracy of the approximation of a function by the NN is measured by some performance measure as discussed in Section~\todo[inline]{ref}. Given the definition of optimisation problems one can see how the training of NNs adhere to all three components that make up optimisation problems as follows:
+
+\begin{itemize}
+  \item \textbf{Objective function:} The objective of a NN is to approximate some function $f$. The ability of a NN to closely approximate $f$, is referred to as the performance of the NN and is  measured by some performance measure as described in Section~\todo[inline]{ref}. This performance measure is seen as the objective function.
+  \item \textbf{Set of independent variables:} By strategically fine-tuning the weights of the NN, the quantification of the NN is altered. The weights to be altered are the independent variable of the NN.
+  \item \textbf{Set of constraints:} Training of NNs is restricted to produce only valid output, while still performing well over some performance measure.
+\end{itemize} 
+
+Researchers have used many different techniques to train Neural Networks. Broadly speaking, the most popular techniques include classic heuristics such as Gradient Descent (GD) and its variants and improvements \todo[inline]{ref}. This is largely due to the fact that NNs are trained much faster on GPUs when compared to training on CPUs \todo[inline]{ref} as GPUs as better fitted to compute large blocks of data (vectors/matrices/tensors), typically as NN weights would be represented.
+
+Other techniques used to train NNs include population-based metaheuristics such as PSOs, DEs and GAs \todo[inline]{refs}. Each of the above mentioned techniques are discussed next.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Gradient Descent}
+\label{sec:heuristics:gradient-descent}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Adaptive Gradients}
+\label{sec:heuristics:adaptive-gradients}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Adaptive Delta}
+\label{sec:heuristics:adaptive-delta}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Momentum}
+\label{sec:heuristics:momentum}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Root Mean Squared Propagation}
+\label{sec:heuristics:rmsprop}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Adaptive Momentum}
+\label{sec:heuristics:adam}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Particle Swarm Optimisation}
+\label{sec:heuristics:pso}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Differential Evolution}
+\label{sec:heuristics:de}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Genetic Algorithms}
+\label{sec:heuristics:ga}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Meta-Learning}
+\label{sec:heuristics:meta-learning}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Summary}
+\label{sec:heuristics:summary}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,435 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+\begin{quote}
+    \textit{The Cephalopod retreats and crawls back up against the glass of the fish tank
+        evaluating the situation in front of him. In front of him is a glass jar with
+        prey inside. The lid is shut tightly. Never before has he encountered such an
+        obstacle in nature, prohibiting him from feeding. He curiously swims closer,
+        feeling the shape of the jar with his tentacles. He wraps his tentacles over the
+        jar and with a small turn and pop, he releases the lid. The experiment is
+        repeated and without hesitation, without failure, he opens the jar, faster, more
+    efficiently, every time.}
+\end{quote}
+
+\Ac{ML} is one of the most popular fields of research in \ac{AI} studies today.
+In recent years, \ac{ML} research has seen some notable achievements in the
+academia \cite{ref:lecun:2015, ref:glorot:2010, ref:goodfellow:2014,
+ref:quoc:2017}, as well as the industry at large \cite{ref:silver:2016,
+ref:silver:2017, ref:zoph:2017, ref:lewis:2017}.  \ac{ML} research has grown
+tremendously over the past decade with successes like AlphaGo, which set new
+standards for \ac{AI} capabilities by beating the world's best Go player, Lee
+Sedol, 4-1 \cite{ref:san-hun:2016}.  Furthermore, an improvement on AlphaGo,
+called AlphaZero, learned to play Go, \textit{tabula rasa} \footnote{Latyn word
+meaning to learn from no prior knowledge} and managed to beat AlphaGo, 100-1
+\cite{ref:silver:2017}.
+
+Historically, \ac{ML} models were built with a specific purpose in mind and
+revolved around specialised applications. A notable development was that of Deep
+Blue by IBM \cite{ref:keene:1996}, which managed to play chess at a grand master
+level. Deep Blue was able to finish 2-4 against the greatest chess player at the
+time, Gary Kasparov. Although Deep Blue lost the tournament, this was a major
+breakthrough in the field of \ac{AI}. However, Deep Blue was only able to play
+chess and could not be utilised for any other purposes \cite{ref:kelley:2010}.
+Today, DeepMind's \ac{RL} algorithm is capable of playing all of the original
+Atari games \cite{ref:mnih:2013}, but is still very limited to a small set of
+problems that it can solve. 
+
+Over the past few years, modern hardware capabilities have improved to the
+point where workloads in the field of \ac{ML} that were previously computationally
+infeasible, is now possible. One such subfield of \ac{ML} is \acp{ANN}. With
+the improvement of hardware came an influx of \ac{ML} researchers that focussed
+their attention on the training and generalisation capabilities of \acp{ANN}.
+
+A popular field of focus for studing \acp{ANN} is the training process by which
+these models are trained. Today, the most common form of training is
+\index{supervised training}supervised learning of \acp{FFNN}, a specific type of
+\ac{ANN} \cite{ref:reed:1999}. Training of \acp{ANN} is seen as an optimisation problem.
+A search algorithm known as a \index{heuristic}\textit{heuristic}
+\cite{ref:pearl:1984} is used to assign the optimal values to the \ac{ANN}
+weights such that a specified objective function is minimised.
+
+Although the landscape of what can be solved using \acp{ANN} today
+is extensive, there still exists no single model that can be generalised to
+solving multiple problem classes, across multiple problem domains. This problem
+is known as the \ac{NFL} \cite{ref:wolpert:1997}.
+
+Various attempts have been made to improve the generalisation capabilities of
+\acp{ANN}. Examples of techniques used include weight \index{dropout}dropout
+\cite{ref:srivastava:2014}, \index{weight decay}weight decay
+\cite{ref:krogh:1992}, \index{meta-learning}meta-learning of learning parameters
+such as the \index{learning rate}learning rate and \index{momentum}momentum of
+gradient-based heuristics \cite{ref:zeiler:2012, ref:lv:2017, ref:darken:1992}
+and carefully selecting training data. Other techniques focus on improving
+generalisation through model design (architecture and topology). Examples of such
+techniques include learning of \ac{ANN} architectures through pruning techniques
+\cite{ref:cibas:1996, ref:engelbrecht:1996} or constructive techniques
+\cite{ref:hassibi:1994, ref:lecun:1990}, adaptive activation functions
+\cite{ref:engelbrecht:1995, ref:fletcher:1994}, and quantum methods
+\cite{ref:wan:2017, ref:ricks:2004}.  
+
+One promising approach to improving \ac{ANN} generalisation capabilities is the
+idea of hybridisation \cite{ref:burke:2013}, which makes use of a combination of
+multiple learning paradigms in order to yield better generalisation. For
+example, heteregenous approaches have been shown to balance the tradeoff between
+exploration and exploitation. \cite{ref:nepomuceno:2013}. This hints towards the
+idea that \ac{ML} models could yield better generalisation capabilities if the
+learning process and learning mechanism applied is not statically defined, but
+rather dynamic and under the control of some control mechanism.
+
+The learning process is influenced by various factors, including the type of
+learning technique used, how the model parameters are initialised, the
+hyper-parameters used, the constraints of learning and the learning mechanism
+itself. In order to yield better generalisation capabilities, the model should
+be trained by a learning technique that has at its disposal a more diverse set
+of learning behaviours from which it can dynamically select should the need arise
+\cite{ref:huang:2009}. In doing so, balancing between exploration and
+exploitation of solutions is a dynamic process that would yield better
+generalisation capabilities.
+
+An example of dynamically balancing exploitation and exploration during the
+search process is done by dynamically adjusting and learning the heuristic
+\index{hyper-parameters}\textit{hyper-parameters} as part of the learning
+process. This field of study is known as \index{meta-learning}meta-learning
+\cite{ref:giraud:2004}. \index{meta-learning}Meta-learning of heuristic
+hyper-parameters as applied in the training of \acp{ANN} has shown to yield good
+generalisation results \cite{ref:hospedales:2020, ref:vilalta:2002}.
+
+A more recent suggestion related to the field of
+\index{meta-learning}meta-learning is to dynamically select and/or adjust the
+heuristic used throughout the training process. This approach is about the
+hybridisation of heuristics as they are applied to some optimisation problem.
+These methods are referred to as \acp{HH} and focus on finding the best
+heuristic in \textit{heuristic-space}. One such form of \ac{HH} is a
+population-based approach that guides the search process by automatically
+selecting heuristics from a heuristic-space to be applied to a collection of
+different candidate solutions in the solution-space. This collection of
+candidate solutions are referred to as a \textit{population} of
+\textit{entities}, where each \textit{entity} is a single candidate solution to
+the problem being optimised.
+
+Population-based \acp{HH} implement the strategy of multiple heuristics working
+together to solve a problem. However, finding the best heuristic to use is
+non-trivial and some \textit{selection strategy} must be used to select the best
+heuristic. \acp{HH} that implement such a selection strategy is referred to as
+\textit{selection} \acp{HH}. The term \textit{selection} refers to the ability
+of the \ac{HH} to select the best heuristic from a pool of low-level heuristics.
+
+These selection \acp{HH} can be further categorised based on what information
+they use in the selection strategy. One specific type of selection \ac{HH} is
+called a \index{multi-method populated-based meta-heuristic}\textit{multi-method
+population-based \index{meta-heuristic}meta-heuristic}
+\cite{ref:vanderstockt:2018}. The term \index{multi-method}\textit{multi-method}
+refers to the incorporation of different low-level heuristics, with different
+search behaviours, into the heuristic-space. The term \textit{population-based}
+refers to the utilisation of a population of entities that represent candidate
+solutions. Finally, the term \index{meta-heuristic}\textit{meta-heuristics}
+refers to the \ac{HH} as a heuristic that does not have any domain knowledge and
+only makes use of information from the search process.
+\citeauthor{ref:grobler:2015} \cite{ref:grobler:2015} mentioned that \acp{HH}
+have been shown to solve a number of problems including bin-packing, examination
+timetabling, production scheduling, the traveling salesman problem, vehicle
+routing problem and many more.
+
+This thesis focusses on the development of a \ac{HH} to train \acp{FFNN} in a
+supervised learning approach.
+
+\section{Problem Statement}
+\label{sec:introduction:problem}
+
+Many different heuristics have been developed and used to train \acp{FFNN}
+\cite{ref:gudise:2003, ref:rakitianskaia:2012, ref:montana:1989}.  The problem
+lies in the process of finding the best heuristic to train the \ac{FFNN}. This
+process is often non-trivial and could be a time-consuming exercise.  Consider
+that selection of the best heuristic as applied to optimisation problems, such
+as training \acp{FFNN}, is very problem dependent \cite{ref:allen:1996,
+ref:drake:2020, ref:pillay:2018}. Furthermore, the \ac{NFL} shows that no single
+heuristic performs better than any other heuristic for all problems
+\cite{ref:wolpert:1997}.
+
+Careful, systematic selection is thus required to find and select the best
+heuristic to train \acp{FFNN}. In the past, researchers selected the best
+heuristic by trail and error. A set of heuristics and carefully selected
+hyper-parmeters would be implemented, followed by an empirical test to evaluate
+the performance of each heuristic for a given problem domain
+\cite{ref:pillay:2015}. In this way, researchers were able to determine which
+heuristics and which hyper-parameters performed well for different problems.
+However, this approach is problematic as it is time-consuming and tedious.
+
+
+\section{Motivation}
+\label{sec:introduction:motivation}
+
+A process is required to alleviate the burden of having to exhaustively test
+each implementation of heuristic and hyper-parameters, for every problem being
+optimised. 
+
+A modern approach is to use \acp{HH} to automated the process for selecting the
+best heuristic when applied to some optimisation problem. The best heuristic
+might not be a single heuristic, but rather a hybridisation of heuristics
+\cite{ref:pillay:2015}. Therefore, careful consideration is required to include
+a diverse and applicable set of heuristics to select from that is capable of
+solving the given problem. \citeauthor{ref:pillay:2015} \cite{ref:pillay:2015}
+mentions that only heuristics that are known to have the potential to solve the
+problem must be included in the set of heuristics to select from.
+
+\acp{HH} have been implemented on a wide range of optimisation problems
+\cite{ref:grobler:2011, ref:burke:2013, ref:pillay:2015}, but no research has
+been found where \acp{HH} have been applied on the training of \acp{FFNN}.
+
+The training of \acp{FFNN} is seen as a computational search problem. \Acl{HH}
+as defined by Burke et al. \cite{ref:burke:2010} is ``a search method or
+learning mechanism for selecting or generating heuristics to solve computational
+search problems". \acp{HH} is a field of research aimed at the automated
+selection, combination, adaptation and generation of multiple lower-level
+heuristics to efficiently solve computational search problems. This implies that
+one should be able to apply \acp{HH} in the context of training \acp{FFNN}.
+
+\citeauthor{ref:grobler:2012} \cite{ref:grobler:2012} mentions that the focus of
+\acp{HH} is on automating the development of the \textit{learning mechanism}
+used to obtain an appropriate solution for an optimisation problem. The authors
+go on to explain that \acp{HH} employ a high-level heuristic that focusses on
+finding the best low-level heuristic in heuristic-space that could include
+\textit{single-method} and \textit{multi-method} optimistion algorithms
+(heuristics). Applying \acp{HH} to train \acp{FFNN} could generally be applied
+to multiple problems given that the set of low-level heuristics include
+heuristics that have the potential to solve the problem at hand
+\cite{ref:burke:2010}. This relieves the burden of having to select the best
+heuristic to use by trial and error and is generally applicable to multiple
+problems. The automation of the selection process as well as the generalisation
+capabilities of \acp{HH}, if applied in the context of training \acp{FFNN},
+could reduce the effort required to find the best heuristic to use.
+
+Note that training \acp{FFNN} using \acp{HH} is not to be confused by the
+training of \acp{FFNN} using \index{ensemble networks}\textit{ensemble networks}
+or \index{query by committees}\textit{query by committees}.
+\citeauthor{ref:pappa:2014} \cite{ref:pappa:2014} describes \index{ensemble
+networks}ensemble networks as a combination method in
+\index{meta-learning}meta-learning whereby multiple \acp{ANN} are jointly used
+to solve a problem. Each member network in the ensemble gets trained using a
+specified heuristic and generally this heuristic is applied to the same member
+throughout the training process. The results of all of the member networks are
+then joined together using some mechanism \cite{ref:zhou:2002}. This mechanism
+could be weighted averages or majority or weighted voting. \index{ensemble
+networks}Ensemble networks do not search through the heuristic space and do not
+reselect lower-level heuristics for each member, while \acp{HH} do. There is
+thus no hybridisation of heuristics in \index{ensemble networks}ensemble
+networks and therefore, no information-sharing between any of the members of the
+ensemble, in comparison to \acp{HH} that do incorporate some shared information
+space.
+
+Many different types of \acp{HH} have been implemented and shown to solve many
+different problems. Some notable examples include the
+\index{tabu-search}tabu-search \ac{HH} of Burke et al. \cite{ref:burke:2010} and
+the \index{simulated annealing}simulated annealing-based \ac{HH} by Dowsland et
+al. \cite{ref:dowsland:2007}.  
+
+This research takes a particular interest in developing a high-level heuristic
+that makes use of probability theory and Bayesian statistical concepts to guide
+the heuristic selection process. This research develops the novel \Ac{BHH}, a
+new high-level heuristic that utilises \index{Bayesian analysis}\textit{Bayesian
+analysis} as the selection mechanism for a \ac{HH} to select the appropriate
+heuristic to train \acp{FFNN}. 
+
+
+\section{Objectives}
+\label{sec:introduction:objectives}
+
+The main objectives of this research is focussed on developing a novel \Ac{BHH}
+selection mechanism in a \ac{HH} framework that can be used to train \acp{FFNN}.
+In order to reach this objective, the following sub-objectives are defined:
+
+\begin{itemize}
+    \item
+    Conduct a literature study on \acp{ANN} in order to provide
+    the necessary background information of the \ac{AN}, \acp{FFNN} and the
+    training process.
+
+    \item
+    Conduct a literature study on different types of heuristics that have been
+    used to train \acp{FFNN}. The literature study will provide the necessary
+    background information to understand how the these different heuristics can
+    be used in the set of heuristics to be selected to train the \ac{FFNN}.
+
+    \item
+    Conduct a literature study on \index{meta-learning}meta-learning and
+    \acp{HH} in order to provide the required background information
+    necessary to propose and develop a new high-level heuristic.
+    
+    \item
+    Conduct a literature study on probability theory and Bayesian statistics
+    such as Bayesian inference and Bayesian analysis to provide the necessary
+    background information required to understand how Bayesian approaches can be
+    used as a learning technique.
+
+    \item
+    Develop a novel \Ac{BHH} selection mechanism for a \ac{HH} that makes use
+    of Bayesian statistics to guide the \ac{HH} search process while training
+    \acp{FFNN} on different problems.
+
+    \item
+    Conduct an empirical study to show that the developed \Ac{BHH} can
+    effectively be used to train \acp{FFNN}.
+
+    \item
+    Conduct an empirical study and critically evaluate the performance of the
+    developed \Ac{BHH} compared to individual heuristics in the heuristic-space
+    as they are used to train \acp{FFNN} on different problems.
+
+    \item
+    Conduct an empirical study and critically evaluate the performance of the
+    developed \Ac{BHH} as a selection mechanism to other selection mechanisms
+    for \acp{HH} as they are used to train \acp{FFNN} on different problems.
+
+    \item
+    Conduct an empirical study that investigate variations of the \Ac{BHH} and the
+    effects of design decisions and hyper-parameters on the search process.
+
+    \item
+    Provide a statistically sound analysis of the results obtained from the
+    empirical study.
+\end{itemize}
+
+
+\section{Contributions}
+\label{sec:introduction:contributions}
+
+The results obtained from this research contributes to the field of study in the
+following ways:
+
+\begin{itemize}
+    \item
+    To the knowledge of the author, this study provides the first application
+    of using \acp{HH} to train \acp{FFNN}.
+
+    \item
+    A novel heuristic selection operator is used that focusses on using Bayesian
+    statistics to calculate the probability that a heuristic should be selected
+    in order to efficiently train \acp{FFNN}. The resulting \ac{HH} is referred
+    to as the \Acl{BHH}.
+
+    \item
+    The results of the empirical study show that the \Ac{BHH} perform generally
+    better than the individual lower-level heuristics as applied to the same
+    problems, with statistical significance and certainty.
+
+    \item
+    The results of the empirical study show that the \Ac{BHH} is able to select
+    the best heuristic to train \ac{FFNN} in general, with statistical
+    certainty. This relieves researchers from the burden of having to do this
+    selection process manually through trial and error.
+
+    \item
+    The results of the empirical study show that the \Ac{BHH}, given a diverse
+    set of lower-level heuristics, will generally produce good results when
+    applied to multiple problems.
+
+    \item
+    Finally, the results of the empirical study show that the \Ac{BHH} is
+    capable of utilising \textit{a priori} \footnote{Latin word, meaning "from
+    what comes before"} knowledge in which a predefined selection bias is used
+    for heuristics the are known to be well suited for certain problems.
+\end{itemize}
+
+
+\section{Thesis Outline}
+ \label{sec:introduction:outline}
+
+The remainder of this thesis is structured as follows:
+
+ \begin{itemize}
+ 	\item
+    \textbf{Chapter~\ref{chap:anns}} provides a literature study on \acp{ANN}
+    and the various components that make up an \ac{AN}. The focus is on the
+    training of \acp{FFNN} and it is shown how the training of \acp{FFNN} is
+    seen as an optimisation problem.
+
+	\item
+    \textbf{Chapter~\ref{chap:heuristics}} provides details on various types of
+    heuristics and metaheuristics that have been used to train \acp{FFNN}. A
+    literature study is done to provide details on the search behaviours, application and
+    implementation of each heuristics in the context of training \acp{FFNN}.
+
+	\item
+    \textbf{Chapter~\ref{chap:hhs}} presents a literature study on the details
+    of \acp{HH} and \index{meta-learning}meta-learning in general. A
+    discussion follows on the current landscape of \ac{HH} research. It is shown
+    how \acp{HH} is a suitabe approach for training \acp{FFNN}.
+	
+    \item
+    \textbf{Chapter~\ref{chap:probability}} presents a literature study on
+    probability theory. Probability distributions and
+    conjugate priors are discussed in detail. The chapter concludes with a
+    detailed discussion on Bayesian statistics, specifically focussing on
+    Bayesian inference and analysis.
+    
+	\item
+    \textbf{Chapter~\ref{chap:bhh}} presents the developed \Ac{BHH}. It is shown
+    how the \Ac{BHH} is implemented as a selection mechanism in the context of a
+    \ac{HH} framework. The \Ac{BHH} is shown to implement a \index{Na\"ive Bayes
+    classifier}Na\"ive Bayes classifier. The probabilistic model that is
+    implemented is derived and discussed in detail. Finally, the chapter
+    concludes with a detailed discussion on how \index{Bayesian
+    analysis}Bayesian analysis is used to guide the heuristic selection process.
+    The update step (training step) for prior probability concentration
+    parameters is derived and discussed in detail. The \Ac{BHH} algorithmic
+    implementation, variants and suggested application are presented as well.
+
+	\item
+    \textbf{Chapter~\ref{chap:methodology}} presents a detailed description of
+    the empirical process and the setup of each experiment. It discusses the
+    datasets used, the \ac{FFNN} architecture and topology used, heuristics that
+    are used, the configuration of hyper-parameters, initialisation techniques
+    used, performance measures used and other smaller details to the
+    implementation of each experiment.  Finally discussions follow on how the
+    results are analysed. This includes a discussion on the method used to
+    determine statistical significance.
+
+    \item
+    \textbf{Chapter~\ref{chap:results}} provides and discusses the results of
+    the empirical study, in detail. A baseline comparison is done by comparing
+    the performance of the \Ac{BHH} to that of all the individual lower-level
+    heuristics on all the datasets. These datasets include classification and
+    regression problems of various sizes and complexity.  Detailed results are
+    presented on the performance of the \Ac{BHH} as a selection mechanism for
+    \acp{HH} and a brief comparison is made to other selection mechanisms.
+    Finally, results are presented on the effects of the hyper-parameters of the
+    \Ac{BHH} on the training process. Discussions follow on how the \Ac{BHH} is
+    shown to automate the selection of the best heuristic during the training of
+    \acp{FFNN}, as applied to a range of problems, alleviating the burden on
+    researchers to apply traditional trial and error approaches. The chapter is
+    concluded with a brief argument in favor of the general applicability of the
+    \Ac{BHH} to more problem domains.
+
+	\item
+    \textbf{Chapter~\ref{chap:conclusion}} summarises the research done in this
+    thesis along with a brief overview of findings made throughout the research
+    process. A review of the research goals are given and suggestions for future
+    research are made.
+\end{itemize}
+
+This thesis is accompanied by a full index given at page~\pageref{index} along with the following appendices:
+
+\begin{itemize}
+	\item
+    \textbf{Appendix~\ref{app:datasets}} provides details on the datasets used
+    for the empirical analysis.
+
+ 	\item
+    \textbf{Appendix~\ref{app:acronyms}} provides a list of the important
+    acronyms used or newly defined in the course of this work, as well as their
+    associated definitions.
+
+ 	\item
+    \textbf{Appendix~\ref{app:symbols}} lists and defines the mathematical
+    symbols used in this work, categorised according to the relevant chapter
+    in which they appear.
+
+ 	\item
+    \textbf{Appendix~\ref{app:derived_publications}} lists the publications
+    derived from this work.
+ \end{itemize}
+
+To best view the illustrations, tables and figures presented throughout this
+thesis, it is recommended that the thesis be viewed in colour.
+

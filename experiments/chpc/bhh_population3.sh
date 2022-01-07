@@ -20,5 +20,4 @@ module load chpc/python/3.7.0
 
 # Run your script
 source .venv/bin/activate
-bash experiments/scripts/bhh_population2.sh
 bash experiments/scripts/bhh_population3.sh

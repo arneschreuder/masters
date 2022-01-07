@@ -1,0 +1,95 @@
+\chapter{Results}
+\label{chap:results}
+
+
+\begin{quote}
+    \textit{
+    TODO
+    }
+\end{quote}
+
+Intro
+
+The remainder of the chapter is structured as follows: Section \ref{sec:bhh:overview} provides an ....
+
+
+% overview of the \Ac{BHH} optimiser. Section \ref{sec:bhh:architecture} presents the general architecture, \Ac{HH} framework and the various components that make up the \index{Optimiser}optimiser. Section \ref{sec:bhh:model} discusses the models that can be optimised using the \Ac{BHH}, specifically referring to its application to training \acp{FFNN}. Section \ref{sec:bhh:entity_pool} discusses in more detail the \index{Population}population and its \index{Entity}entities, with specific detail provided on entity (local) and population (global) state and memory. Section \ref{sec:bhh:heuristic_pool} discusses the collection of low-level \index{Heuristic}heuristics, referred to as the \index{Heuristic}Heuristic Pool and puts emphasis on the importance of a diverse set of low-level \index{Heuristic}heuristics. Section \ref{sec:bhh:performance_log} presents the performance log and discusses performance measurement in more detail. Section \ref{sec:bhh:selection_mechanism} presents the \index{Bayesian}\textit{Bayesian} probabilistic model that is used as a selection mechanism . Section \ref{sec:bhh:optimisation} presents the mechanisms by which the probabilistic model can be optimised. Section \ref{sec:bhh:hyper_parameters} summarises and discusses the associated \index{Hyper-Parameters}hyper-parameters and default values. Section \ref{sec:bhh:initialisation} presents the initialisation step in detail and Section \ref{sec:bhh:heuristic} presents the \index{Heuristic}heuristic/update step in detail. The pseudo-code algorithm is given in Section \ref{sec:bhh:algorithm} and the chapter is concluded in Section \ref{sec:bhh:conclusion}.
+
+
+\section{Overview}
+\label{sec:results:overview}
+
+% This section provides an overview of the workings of the \Ac{BHH}. To start the discussion, consider the following analogy:
+% \\
+
+
+
+
+\section{Burn In}
+\label{sec:results:bhh_burn_in}
+
+
+\begin{table}[htbp]
+  \centering
+  \caption{Empirical Results: BHH - Burn In }
+  \label{tbl:results:bhh_burn_in_metrics}%
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{rccccccccccccccc}
+    \textbf{step} & \multicolumn{1}{l}{(All)} &       &       &       &       &       &       &       &       &       &       &       &       &       &  \\
+\cmidrule{1-2}          &       &       &       &       &       &       &       &       &       &       &       &       &       &       &  \\
+          & \multicolumn{1}{l}{\textbf{burn\_in}} & \multicolumn{1}{l}{\textbf{results}} &       &       &       &       &       &       &       &       &       &       &       &       &  \\
+\cmidrule{2-16}          & \textbf{0} &       &       & \textbf{5} &       &       & \textbf{10} &       &       & \textbf{15} &       &       & \textbf{20} &       &  \\
+    \midrule
+    \textbf{dataset} & \textbf{count} & \textbf{avg} & \textbf{std} & \textbf{count} & \textbf{avg} & \textbf{std} & \textbf{count} & \textbf{avg} & \textbf{std} & \textbf{count} & \textbf{avg} & \textbf{std} & \textbf{count} & \textbf{avg} & \textbf{std} \\
+    \midrule
+    abalone & 930   & 2.9151 & 1.3952 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.6935} & 1.3934 & 930   & 2.9172 & 1.3837 & 930   & 2.8398 & 1.3524 & 930   & 3.6344 & 1.3574 \\
+    air\_quality & 930   & 2.9097 & 1.4408 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.6817} & 1.4270 & 930   & 2.7699 & 1.3443 & 930   & 3.3720 & 1.3137 & 930   & 3.2667 & 1.4119 \\
+    car   & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.3624} & 1.2315 & 930   & 2.5882 & 1.4246 & 930   & 3.2978 & 1.3922 & 930   & 3.3796 & 1.2711 & 930   & 3.3720 & 1.4009 \\
+    fish\_toxicity & 930   & 3.0634 & 1.4589 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.7935} & 1.4021 & 930   & 2.8204 & 1.5131 & 930   & 3.1022 & 1.3461 & 930   & 3.2204 & 1.2949 \\
+    forest\_fires & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.8161} & 1.3301 & 930   & 2.8495 & 1.3830 & 930   & 2.8645 & 1.4092 & 930   & 3.3774 & 1.3976 & 930   & 3.0925 & 1.4709 \\
+    housing & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.6903} & 1.3837 & 930   & 2.9516 & 1.3176 & 930   & 2.9968 & 1.4425 & 930   & 3.0581 & 1.3435 & 930   & 3.3032 & 1.5101 \\
+    iris  & 930   & 2.9473 & 1.4608 & 930   & 2.9720 & 1.3675 & 930   & 3.1903 & 1.4493 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.7710} & 1.3694 & 930   & 3.1194 & 1.3872 \\
+    mushroom & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.2065} & 1.2486 & 930   & 2.9376 & 1.2977 & 930   & 3.1613 & 1.2966 & 930   & 3.1441 & 1.4015 & 930   & 3.5226 & 1.5006 \\
+    parkinsons & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.2796} & 1.2822 & 930   & 2.8892 & 1.2474 & 930   & 2.7065 & 1.3143 & 930   & 3.3968 & 1.4175 & 930   & 3.7280 & 1.3295 \\
+    student\_performance & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.1452} & 1.2052 & 930   & 2.6946 & 1.4032 & 930   & 3.0968 & 1.3525 & 930   & 3.4581 & 1.3539 & 930   & 3.6054 & 1.2312 \\
+    wine\_quality & 930   & 2.9699 & 1.4373 & 930   & 3.0108 & 1.3041 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.6634} & 1.4186 & 930   & 3.1247 & 1.3980 & 930   & 3.2312 & 1.4471 \\
+    \midrule
+    \textbf{overall} & \textbf{10230} & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{\textbf{2.6641}} & \textbf{1.3943} & \textbf{10230} & \textbf{2.8239} & \textbf{1.3679} & \textbf{10230} & \textbf{2.9532} & \textbf{1.4075} & \textbf{10230} & \textbf{3.1840} & \textbf{1.3786} & \textbf{10230} & \textbf{3.3723} & \textbf{1.4118} \\
+    \end{tabular}%
+    }
+  \label{tab:results:bhh_burn_in_metrics}%
+\end{table}%
+
+
+\section{Credit}
+\label{sec:results:bhh_credit}
+
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+  \centering
+  \caption{Empirical results: BHH - Credit}
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{rccccccccccccccc}
+    \textbf{step} & \multicolumn{1}{l}{(All)} &       &       &       &       &       &       &       &       &       &       &       &       &       &  \\
+\cmidrule{1-2}          &       &       &       &       &       &       &       &       &       &       &       &       &       &       &  \\
+          & \multicolumn{1}{l}{\textbf{credit}} & \multicolumn{1}{l}{\textbf{results}} &       &       &       &       &       &       &       &       &       &       &       &       &  \\
+\cmidrule{2-16}          & \multicolumn{1}{l}{\textbf{ibest}} &       &       & \multicolumn{1}{l}{\textbf{pbest}} &       &       & \multicolumn{1}{l}{\textbf{rbest}} &       &       & \multicolumn{1}{l}{\textbf{gbest}} &       &       & \multicolumn{1}{l}{\textbf{symmetric}} &       &  \\
+\cmidrule{2-16}    \textbf{dataset} & \textbf{count} & \textbf{avg} & \textbf{std} & \textbf{count} & \textbf{avg} & \textbf{std} & \textbf{count} & \textbf{avg} & \textbf{std} & \textbf{count} & \textbf{avg} & \textbf{std} & \textbf{count} & \textbf{avg} & \textbf{std} \\
+    abalone & 930   & 3.1677 & 1.3188 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.8613} & 1.4588 & 930   & 2.9968 & 1.3993 & 930   & 2.9667 & 1.4547 & 930   & 3.0075 & 1.4214 \\
+    air\_quality & 930   & 3.1312 & 1.3472 & 930   & 3.0376 & 1.3566 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.5914} & 1.4646 & 930   & 3.1280 & 1.3358 & 930   & 3.1118 & 1.4871 \\
+    car   & 930   & 3.1151 & 1.3562 & 930   & 3.0312 & 1.4826 & 930   & 3.2516 & 1.4024 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.6892} & 1.3540 & 930   & 2.9129 & 1.4111 \\
+    fish\_toxicity & 930   & 3.1516 & 1.4360 & 930   & 2.9903 & 1.4521 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.7581} & 1.4748 & 930   & 3.2043 & 1.2988 & 930   & 2.8957 & 1.3579 \\
+    forest\_fires & 930   & 3.0968 & 1.2771 & 930   & 3.1806 & 1.3040 & 930   & 2.8559 & 1.3562 & 930   & 3.1215 & 1.5018 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.7452} & 1.5627 \\
+    housing & 930   & 2.9011 & 1.4938 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.8527} & 1.3168 & 930   & 2.9022 & 1.3974 & 930   & 3.3108 & 1.3243 & 930   & 3.0333 & 1.4833 \\
+    iris  & 930   & 3.1892 & 1.4281 & 930   & 3.0839 & 1.4412 & 930   & 3.0591 & 1.3755 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.8237} & 1.4085 & 930   & 2.8441 & 1.3844 \\
+    mushroom & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.8075} & 1.4594 & 930   & 3.0183 & 1.4107 & 930   & 2.8957 & 1.3985 & 930   & 3.0839 & 1.4178 & 930   & 3.1720 & 1.3813 \\
+    parkinsons & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.5645} & 1.4835 & 930   & 2.8925 & 1.3429 & 930   & 3.5065 & 1.2190 & 930   & 3.0796 & 1.3920 & 930   & 2.9570 & 1.4548 \\
+    student\_performance & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.6624} & 1.3124 & 930   & 3.0290 & 1.4067 & 930   & 3.1892 & 1.3821 & 930   & 2.7978 & 1.4702 & 930   & 3.3215 & 1.3938 \\
+    wine\_quality & 930   & 3.1871 & 1.3080 & 930   & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{2.6366} & 1.4706 & 930   & 3.0140 & 1.3712 & 930   & 2.9419 & 1.4115 & 930   & 3.2204 & 1.4300 \\
+    \midrule
+    \textbf{overall} & \textbf{10230} & \textbf{2.9977} & \textbf{1.4017} & \textbf{10230} & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{\textbf{2.9649}} & \textbf{1.4115} & \textbf{10230} & \textbf{3.0019} & \textbf{1.4067} & \textbf{10230} & \textbf{3.0134} & \textbf{1.4093} & \textbf{10230} & \textbf{3.0201} & \textbf{1.4434} \\
+    \end{tabular}%
+    }
+ \label{tab:results:bhh_burn_in_credit}%
+\end{table}%
+

@@ -228,8 +228,7 @@ def setup_seaborn():
 	global PALETTE
 	global PARAM_COUNT
 	# Setup Plots
-	# sns.set_context('paper', font_scale=1.0, rc={'lines.linewidth': 5, 'lines.markersize': 5})
-	sns.set_context('paper', rc={'lines.linewidth': 1, 'lines.markersize': 5})
+	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 2, 'lines.markersize': 7})
 	PALETTE = sns.color_palette('viridis', PARAM_COUNT)
 
 def plot(train: bool = False, accuracy = False):
@@ -248,7 +247,7 @@ def plot(train: bool = False, accuracy = False):
 			query = 'dataset == "{}"'.format(dataset)
 			subset = DATA.query(query)
 
-			fig, ax = plt.subplots()
+			fig, ax = plt.subplots(figsize=(12,9))
 			fig.suptitle('BHH {} - {} {} - Dataset: {}'.format(FRIENDLY, DS, TYPE, dataset))
 
 			plot = sns.lineplot(

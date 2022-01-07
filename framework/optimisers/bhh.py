@@ -28,6 +28,7 @@ import os
 from typing import List, Tuple
 
 import tensorflow as tf
+from framework.distributions.bernoulli import Bernoulli
 from framework.distributions.beta import Beta
 from framework.distributions.categorical import Categorical
 from framework.distributions.dirichlet import Dirichlet
@@ -620,17 +621,136 @@ class BHH(Optimiser):
         self.population.loss = loss
         self.population.log_state(step=step)
 
+        # Logging
+        self.log_overall_state(step=step)
 
         for j, entity in enumerate(self.population.entities):
-            entity.log_state(step=step)
+            self.log_entities_state(j, step=step)
+            entity.log_state(step)
+
+        for k, heuristic in enumerate(self.heuristic.params.heuristics):
+            self.log_heuristics_state(k, step=step)
+
+        for j, entity in enumerate(self.population.entities):
             for k, heuristic in enumerate(self.heuristic.params.heuristics):
-                self.log_state(j,k,step)
+                self.log_entity_heuristic_state(j,k,step)
 
         return logits, loss
 
-    def log_state(self, j, k, step):
+
+    def log_overall_state(self, step):
         """
         Logs the optimiser's metrics to Tensorboard.
+
+        Parameters
+        ----------
+        step: int
+            The step number.
+        """
+        log_level = int(os.getenv('LOG_LEVEL')
+                        ) if os.getenv('LOG_LEVEL') is not None else 0
+
+        # Only if the log level is 2
+        if self.logger and log_level >= 2:
+            theta = Dirichlet(concentration=self.alpha)
+            psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
+
+            self.logger.log_distribution_results(
+                'theta', result=theta(), step=step)
+
+            self.logger.log_distribution_results(
+                'psi', result=psi(), step=step)
+
+            self.logger.log_distribution_results(
+                'HgEC', result=self.HgEC, step=step)
+
+            l_HgEC = Categorical(logits=self.p_HgEC)
+            self.logger.log_distribution_results(
+                'l_HgEC', result=l_HgEC(), step=step)
+
+
+
+    def log_entities_state(self, j, step):
+        """
+        Logs the optimiser's metrics to Tensorboard.
+
+        Parameters
+        ----------
+        j: int
+            The j-th index representing the j-th entity.
+        step: int
+            The step number.
+        """
+        log_level = int(os.getenv('LOG_LEVEL')
+                        ) if os.getenv('LOG_LEVEL') is not None else 0
+
+        # Only if the log level is 2
+        if self.logger and log_level >= 2:
+            theta = Dirichlet(concentration=self.alpha)
+            phi = Dirichlet(concentration=self.beta)
+            psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
+
+            self.logger.log_distribution_results(
+                'theta', result=theta(), step=step)
+
+            self.logger.log_distribution_results(
+                'phi[{}]'.format(j), result=phi()[j], step=step)
+
+            self.logger.log_distribution_results(
+                'psi', result=psi(), step=step)
+
+            self.logger.log_distribution_results(
+                'p_HgEC[{}]'.format(j), result=self.p_HgEC[j], step=step)
+
+            self.logger.log_scalar_results(
+                'HgEC[{}]'.format(j), result=self.HgEC[j], step=step)
+            self.logger.log_distribution_results(
+                'HgEC', result=self.HgEC, step=step)
+
+            l_EgH = Categorical(logits=self.p_EgH)
+            self.logger.log_scalar_results(
+                'l_EgH[{}]'.format(j), result=l_EgH()[j], step=step)
+
+    def log_heuristics_state(self, k, step):
+        """
+        Logs the heuristic's metrics to Tensorboard.
+
+        Parameters
+        ----------
+        k: int
+            The k-th index representing the k-th heuristic.
+        step: int
+            The step number.
+        """
+        log_level = int(os.getenv('LOG_LEVEL')
+                        ) if os.getenv('LOG_LEVEL') is not None else 0
+
+        # Only if the log level is 2
+        if self.logger and log_level >= 2:
+            self.logger.log_scalar_results(
+                'alpha[{}]'.format(k), result=self.alpha[k], step=step)
+            self.logger.log_scalar_results(
+                'gamma1[{}]'.format(k), result=self.gamma1[k], step=step)
+            self.logger.log_scalar_results(
+                'gamma0[{}]'.format(k), result=self.gamma0[k], step=step)
+
+            theta = Dirichlet(concentration=self.alpha)
+            phi = Dirichlet(concentration=self.beta)
+            psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
+
+            self.logger.log_scalar_results(
+                'theta[{}]'.format(k), result=theta()[k], step=step)
+
+            self.logger.log_scalar_results(
+                'psi[{}]'.format(k), result=psi()[k], step=step)
+
+            l_CgH = Bernoulli(probs=self.p_CgH)
+            self.logger.log_scalar_results(
+                'l_CgH[{}]'.format(k), result=l_CgH()[k], step=step)
+
+    def log_entity_heuristic_state(self, j, k, step):
+        """
+        Logs the entity and heuristic's combination metrics to Tensorboard.
 
         Parameters
         ----------
@@ -647,37 +767,12 @@ class BHH(Optimiser):
         # Only if the log level is 2
         if self.logger and log_level >= 2:
             self.logger.log_scalar_results(
-                'alpha[{}]'.format(k), result=self.alpha[k], step=step)
-            self.logger.log_scalar_results(
                 'beta[{}][{}]'.format(j, k), result=self.beta[j][k], step=step)
-            self.logger.log_scalar_results(
-                'gamma1[{}]'.format(k), result=self.gamma1[k], step=step)
-            self.logger.log_scalar_results(
-                'gamma0[{}]'.format(k), result=self.gamma0[k], step=step)
 
-            theta = Dirichlet(concentration=self.alpha)
             phi = Dirichlet(concentration=self.beta)
-            psi = Beta(concentration1=self.gamma1, concentration0=self.gamma0)
-
-            self.logger.log_scalar_results(
-                'theta[{}]'.format(k), result=theta()[k], step=step)
 
             self.logger.log_scalar_results(
                 'phi[{}][{}]'.format(j, k), result=phi()[j][k], step=step)
-
-            self.logger.log_scalar_results(
-                'psi[{}]'.format(k), result=psi()[k], step=step)
-
+            
             self.logger.log_scalar_results(
                 'p_HgEC[{}][{}]'.format(j, k), result=self.p_HgEC[j][k], step=step)
-            self.logger.log_distribution_results(
-                'p_HgEC[{}]'.format(j), result=self.p_HgEC[j], step=step)
-
-            self.logger.log_scalar_results(
-                'HgEC[{}]'.format(j), result=self.HgEC[j], step=step)
-            self.logger.log_distribution_results(
-                'HgEC', result=self.HgEC, step=step)
-
-            l_HgEC = Categorical(logits=self.p_HgEC)
-            self.logger.log_scalar_results(
-                'l_HgEC[{}]'.format(k), result=l_HgEC()[j], step=step)

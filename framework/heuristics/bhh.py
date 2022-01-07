@@ -126,6 +126,9 @@ class BHH(Heuristic):
         - In that case, we will assign p_H_t_plus_1 = p_HgEC_t = p_EgH_t* p_CgH_t * p_H_t
         - and with log-sum-exp this yields: p_H_t_plus_1 = p_HgEC_t = log(exp(p_EgH_t) + exp(p_CgH_t) + exp(p_H_t))
         - See: https://stats.stackexchange.com/questions/105602/example-of-how-the-log-sum-exp-trick-works-in-naive-bayes
+        - Use if numerical underflow is not an usue
+            p_HgEC.assign(p_EgH*p_CgH*p_H)
+            l_HgEC = Categorical(probabilities=p_HgEC)
         """
         p_HgEC.assign(tf.math.log(tf.math.exp(p_EgH) +
                       tf.math.exp(p_CgH) + tf.math.exp(p_H)))
