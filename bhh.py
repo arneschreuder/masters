@@ -147,7 +147,8 @@ def parse_bhh_arguments():
             5,
             10,
             15,
-            20
+            20,
+            250 # Special case
         ],
         default=10,
         help="The replay buffer size to use"
