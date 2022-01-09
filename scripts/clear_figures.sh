@@ -2,4 +2,4 @@
 
 set -ex
 
-find analysis -name '*.png' -exec rm -f {} \;
+find analysis -regex '.*figures.*.png' -exec rm -f {} \;
