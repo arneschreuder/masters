@@ -28,3 +28,12 @@ set -ex
 # qsub experiments/chpc/standalone.sh
 # qsub experiments/chpc/standalone2.sh
 qsub experiments/chpc/again.sh
+qsub experiments/chpc/again2.sh
+qsub experiments/chpc/again3.sh
+qsub experiments/chpc/again4.sh
+qsub experiments/chpc/again5.sh
+qsub experiments/chpc/again6.sh
+qsub experiments/chpc/again7.sh
+qsub experiments/chpc/again8.sh
+qsub experiments/chpc/again9.sh
+qsub experiments/chpc/again10.sh
