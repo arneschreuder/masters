@@ -9,16 +9,16 @@ set -ex
 # qsub experiments/chpc/bhh_heuristic_pool.sh
 # qsub experiments/chpc/bhh_log_all.sh
 # qsub experiments/chpc/bhh_normalise.sh
-qsub experiments/chpc/bhh_population.sh
-qsub experiments/chpc/bhh_population2.sh
-qsub experiments/chpc/bhh_population3.sh
-qsub experiments/chpc/bhh_population4.sh
-qsub experiments/chpc/bhh_population5.sh
-qsub experiments/chpc/bhh_population6.sh
-qsub experiments/chpc/bhh_population7.sh
-qsub experiments/chpc/bhh_population8.sh
-qsub experiments/chpc/bhh_population9.sh
-qsub experiments/chpc/bhh_population10.sh
+# qsub experiments/chpc/bhh_population.sh
+# qsub experiments/chpc/bhh_population2.sh
+# qsub experiments/chpc/bhh_population3.sh
+# qsub experiments/chpc/bhh_population4.sh
+# qsub experiments/chpc/bhh_population5.sh
+# qsub experiments/chpc/bhh_population6.sh
+# qsub experiments/chpc/bhh_population7.sh
+# qsub experiments/chpc/bhh_population8.sh
+# qsub experiments/chpc/bhh_population9.sh
+# qsub experiments/chpc/bhh_population10.sh
 # qsub experiments/chpc/bhh_reanalysis.sh
 # qsub experiments/chpc/bhh_reanalysis2.sh
 # qsub experiments/chpc/bhh_replay.sh
@@ -27,3 +27,4 @@ qsub experiments/chpc/bhh_population10.sh
 # qsub experiments/chpc/bhh_reselection2.sh
 # qsub experiments/chpc/standalone.sh
 # qsub experiments/chpc/standalone2.sh
+qsub experiments/chpc/again.sh
