@@ -622,12 +622,23 @@ class BHH(Optimiser):
 
         # Logging
         self.log_state(step=step)
-        # self.population.log_state(step=step)
+        self.population.log_state(step=step)
 
         return logits, loss
 
 
     def log_state(self, step):
+        """
+        Log various state elements.
+
+        Parameters
+        ----------
+        features: tf.Tensor
+            The input data
+        step: int
+            What training step the log entry is for.
+        """
+
         log_level = int(os.getenv('LOG_LEVEL')) if os.getenv('LOG_LEVEL') is not None else 0
 
         # Only if the log level is 2
