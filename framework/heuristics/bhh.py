@@ -39,7 +39,6 @@ from framework.hyper_parameters.bhh import BHH as BHHParameters
 from framework.performance_log.performance_log import PerformanceLog
 
 
-# TODO: STILL NEED TO COMMENT THIS FILE
 class BHH(Heuristic):
     """
     The Particle Swarm Optimiser concrete heuristic.
@@ -130,8 +129,6 @@ class BHH(Heuristic):
             p_HgEC.assign(p_EgH*p_CgH*p_H)
             l_HgEC = Categorical(probabilities=p_HgEC)
         """
-        # p_HgEC.assign(p_EgH*p_CgH*p_H)
-        # l_HgEC = Categorical(probabilities=p_HgEC)
         p_HgEC.assign(tf.math.log(tf.math.exp(p_EgH) +
                       tf.math.exp(p_CgH) + tf.math.exp(p_H)))
 
@@ -207,6 +204,7 @@ class BHH(Heuristic):
         _gamma1 = tf.constant(N_1k)
         _gamma0 = tf.constant(N_0k)
 
+        # Comment out the below to get a model that is purely random
         alpha.assign(_alpha)
         beta.assign(_beta)
         gamma1.assign(_gamma1)

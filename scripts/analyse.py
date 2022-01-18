@@ -69,7 +69,7 @@ ANALYSIS_CONFIG = {
 		'view': 'standalone',
 		'friendly': 'Heuristics',
 		'column': 'heuristic',
-		'param_count': 13
+		'param_count': 11
 	},
 }
 
@@ -241,7 +241,9 @@ def plot(train: bool = False, accuracy = False):
 	global FRIENDLY
 	global PALETTE
 
-	for dataset in DATASETS:
+	DATASETS_SUBSET = CATEGORICAL_DATASETS if accuracy else DATASETS
+
+	for dataset in DATASETS_SUBSET:
 		print('Processing: {}...'.format(dataset))
 		try:
 			query = 'dataset == "{}"'.format(dataset)
