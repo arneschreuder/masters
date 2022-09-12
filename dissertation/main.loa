@@ -1,0 +1,9 @@
+\contentsline {algorithm}{\numberline {1}{\ignorespaces The pseudo code algorithm for the \ac {SGD} heuristic.\relax }}{39}{algorithm.1}%
+\contentsline {algorithm}{\numberline {2}{\ignorespaces The pseudo code algorithm for the gbest \ac {PSO} heuristic.\relax }}{52}{algorithm.2}%
+\contentsline {algorithm}{\numberline {3}{\ignorespaces The pseudo code algorithm for the binomial crossover technique for \ac {DE}.\relax }}{55}{algorithm.3}%
+\contentsline {algorithm}{\numberline {4}{\ignorespaces The pseudo code algorithm for the exponential crossover technique for \ac {DE}.\relax }}{55}{algorithm.4}%
+\contentsline {algorithm}{\numberline {5}{\ignorespaces The pseudo code for the general \ac {DE} heuristic.\relax }}{56}{algorithm.5}%
+\contentsline {algorithm}{\numberline {6}{\ignorespaces The pseudo code for the generic \ac {EC} heuristic.\relax }}{58}{algorithm.6}%
+\contentsline {algorithm}{\numberline {7}{\ignorespaces The pseudo code for the uniform crossover operator as used by \acp {GA}.\relax }}{60}{algorithm.7}%
+\contentsline {algorithm}{\numberline {8}{\ignorespaces The pseudo code for the uniform mutation operator as used by \acp {GA}.\relax }}{61}{algorithm.8}%
+\contentsline {algorithm}{\numberline {9}{\ignorespaces The pseudo code for the Bayesian Hyper-Heuristic optimiser\relax }}{122}{algorithm.9}%
