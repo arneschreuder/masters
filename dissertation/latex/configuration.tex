@@ -1,0 +1,115 @@
+% Biblatex
+\addbibresource{./bibliography/references.bib}
+
+% Acro
+\acsetup {
+    make-links=true
+}
+
+% Fancy headers and footers
+\fancyhead[L]{\textsf{\nouppercase{\leftmark}}} % Left side of header
+\fancyhead[R]{\textsf{\thepage}} % Right side of header
+\fancyfoot{} % No footer
+\renewcommand{\headrulewidth}{1pt} % Line under header
+
+% Graphics
+\graphicspath{{./images/}{./plots/}{./analysis/}} % Include path for images
+
+% % Hyperlinks
+\hypersetup{
+    breaklinks=true,   %  Allow link breaking across lines
+    citecolor=blue,    %  Citation link color
+    colorlinks=true,   %  Color link text only (no borders)
+    filecolor=blue,    %  File link color
+    linkcolor=blue,    %  Internal link color
+    menucolor=blue,    %  Acrobat menu link color
+    pageanchor=true,   %  Enable page referencing
+    pdffitwindow=true, %  Fit pdf to window
+    pdfhighlight=/N,   %  No visual cue on clicking link
+    pdfstartview=Fit,  %  Fit initial view to page
+    plainpages=false,  %  Prevent hyperref page number changes
+    urlcolor=blue,      %  URL link color,
+    draft=false 
+}
+
+% PDF Meta
+\hypersetup{
+    pdftitle    = {Training Feedforward Neural Networks with Bayesian
+    Hyper-Heuristics},
+    pdfauthor   = {A.N. Schreuder <arne@schreuder.ai>},
+    pdfsubject  = {Bayesian Hyper-Heuristics},
+    pdfkeywords = {Hyper-Heuristics, Meta-Learning, Feedforward Neural
+    Networks, Supervised Learning, Bayesian Statistics, Optimisation.},
+    % draft              %  Remove on final document
+}
+
+% Dates
+\newdateformat{monthyeardate}{\monthname[\THEMONTH], \THEYEAR}
+
+% Force LaTeX-compliant spacing
+\pdfadjustspacing=1 
+
+% Sets minimum compatibility for pdfplotset
+\pgfplotsset{compat=1.17} 
+
+% Lengths
+\setlength{\headheight}{15pt}
+\setlength{\marginparwidth}{2cm}
+
+% Line spacing
+\linespread{1.3}
+
+% URLs
+\urlstyle{same} % Set the URL font to the same as the text font
+
+% Define graph float
+\newfloat{graph}{tbp}{lgf}[chapter]
+\floatname{graph}{Graph}
+
+% Define algorithm float
+\newfloat{algorithm}{tbp}{loa}
+\floatname{algorithm}{Algorithm}
+
+% Bold float caption numbers and reduced size captions
+\makeatletter
+\long\def\@makecaption#1#2{%
+    \vskip\abovecaptionskip
+    \sbox\@tempboxa{{\small{\bf #1:} #2}}%
+    \ifdim \wd\@tempboxa >\hsize
+        {\small{\bf #1:} #2\par}
+    \else
+        \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+    \fi
+    \vskip\belowcaptionskip
+}
+\renewcommand\floatc@plain[2]{
+    \setbox\@tempboxa\hbox{\small{\bf #1:} #2}%
+    \ifdim\wd\@tempboxa>\hsize
+        {\small{\bf #1:} #2\par}
+    \else
+        \hbox to\hsize{\hfil\box\@tempboxa\hfil}
+    \fi
+}
+\makeatother
+
+% Declare argmin and argmax math operators
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{5pt}
+  \setlength\belowdisplayskip{20pt}
+  \setlength\abovedisplayshortskip{5pt}
+  \setlength\belowdisplayshortskip{20pt}
+}
+\makeatother
+
+% Defines a theorem keyword
+\newtheorem{theorem}{Theorem}
+
+% Defines a definition keyword
+\newtheorem{definition}{Definition}[subsection]
+
+% Defines a example keyword
+\newtheorem{example}{Example}

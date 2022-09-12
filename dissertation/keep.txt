@@ -1,0 +1,102 @@
+\Ac{ML} is one of the most popular fields of research in \ac{AI} studies today.
+In recent years, \ac{ML} research has seen some notable achievements in the
+academia \cite{ref:lecun:2015, ref:glorot:2010, ref:goodfellow:2014,
+    ref:quoc:2017}, as well as the industry at large \cite{ref:silver:2016,
+    ref:silver:2017, ref:zoph:2017, ref:lewis:2017}.  \ac{ML} research has grown
+tremendously over the past decade with successes like AlphaGo, which set new
+standards for \ac{AI} capabilities by beating the world's best Go player, Lee
+Sedol, 4-1 \cite{ref:san-hun:2016}.  Furthermore, an improvement on AlphaGo,
+called AlphaZero, learned to play Go, \textit{tabula rasa} \footnote{Latin word
+    meaning to learn from no prior knowledge.} and managed to beat AlphaGo, 100-1
+\cite{ref:silver:2017}.
+
+Historically, \ac{ML} models were built with a specific purpose in mind and
+revolved around specialised applications. A notable development was that of Deep
+Blue by IBM \cite{ref:keene:1996}, which managed to play chess at a grand master
+level. Deep Blue was able to finish 2-4 against the greatest chess player at the
+time, Gary Kasparov. Although Deep Blue lost the tournament, this was a major
+breakthrough in the field of \ac{AI}. However, Deep Blue was only able to play
+chess and could not be utilised for any other purposes \cite{ref:kelley:2010}.
+Today, DeepMind's \ac{RL} algorithm is capable of playing all of the original
+Atari games \cite{ref:mnih:2013}, but is still very limited to a small set of
+problems that it can solve.
+
+Over the past few years, modern hardware capabilities have improved to the
+point where workloads in the field of \ac{ML} that were previously computationally
+infeasible, are now possible. One such sub-field of \ac{ML} is \acp{ANN}. \acp{ANN} can generally be described as well-organised structures of mathematical computation and are inspired by the biological brain \cite{ref:engelbrecht:2007}. \acp{ANN} are the digital equivalent of how we currently understand the brain to work. \acp{ANN} can be trained, which is the equivalent of ``learnin'' from data. Learning gives rise to the ability to apply some form of decision making. This ability provides a wide-range of applications from healthcare to finance and yields great interest in the field. With the improvement of hardware came an influx of \ac{ML} researchers that focused
+their attention on the training of \acp{ANN}.
+
+A popular field of focus for studying \acp{ANN} is the process by which
+these models are trained. \acp{FFNN} are specific types of
+\acp{ANN} \cite{ref:reed:1999}. The most common way of training \acp{FFNN} is
+\index{supervised training}supervised learning. Training of \acp{ANN} is seen as an optimisation problem. The \ac{ANN} maintains a set of parameters, referred to as ``weights'' and ``biases''. A search algorithm known as a \index{heuristic}\textit{heuristic}
+\cite{ref:pearl:1984} is used to assign optimal values to the parameters of the \ac{ANN}, such that a specified objective function is minimised.
+
+Although the landscape of what can be solved using \acp{ANN} today
+is extensive, there still exists no single model that can be generalised to
+solving multiple problem classes, across multiple problem domains. \acs{ANN} training algorithms mostly yield problem specific solutions. This means that a particular approach that works well for one domain of problem class, often does not necessarily work for another. This problem is known as the \ac{NFL} \cite{ref:wolpert:1997}.
+
+Generalisation of \acp{ANN} refer to the capabilities of the network to either perform well on unseen data or to be applied to other problem domains. Various attempts have been made to improve the generalisation capabilities of
+\acp{ANN}. Examples of techniques used include weight \index{dropout}dropout
+\cite{ref:srivastava:2014}, \index{weight decay}weight decay
+\cite{ref:krogh:1992}, \index{meta-learning}meta-learning of learning parameters
+such as the \index{learning rate}learning rate and \index{momentum}momentum of
+gradient-based heuristics \cite{ref:zeiler:2012, ref:lv:2017, ref:darken:1992},
+and removing or postponing the use of outliers in the training data \cite{ref:reeves:1998}. Other techniques focus on improving
+generalisation through model design. Design configurations focus on the layout of the neurons and structure of the \acs{ANN} (architecture) and how neurons are connected to interact (topology). Examples of such
+techniques include learning of \ac{ANN} architectures through pruning techniques
+\cite{ref:cibas:1996, ref:engelbrecht:1996} or constructive techniques
+\cite{ref:hassibi:1994, ref:lecun:1990}, adaptive activation functions
+\cite{ref:engelbrecht:1995, ref:fletcher:1994}, and quantum methods
+\cite{ref:wan:2017, ref:ricks:2004}.
+
+The performance and capabilities of \acp{ANN} is largely influenced by the learning process used. The learning process consists of multiple components. These include the type of underlying optimisation algorithm used, how the model parameters are initialised, the hyper-parameters used and the constraints of learning such as allowed search space and boundaries. Each of these elements influence how much a particular learning technique might focus on a particular solution (exploitation), in comparison to seeking out novel solutions (exploration) during training.
+
+An example of dynamically balancing exploitation and exploration during the
+search process is by dynamically adjusting and learning the heuristic
+\index{hyper-parameters}\textit{hyper-parameters} as part of the learning
+process. This field of study is known as \index{meta-learning}meta-learning
+\cite{ref:giraud:2004}. \index{meta-learning}Meta-learning of heuristic
+hyper-parameters as applied in the training of \acp{ANN} has shown to yield good
+generalisation results \cite{ref:hospedales:2020, ref:vilalta:2002}.
+
+This dynamic nature of the learning process leads towards the
+idea that \ac{ML} models could yield better generalisation capabilities if the
+learning process and learning mechanism applied are not statically defined, but
+rather dynamic and under the control of some mechanism. Furthermore, a learning technique that has at its disposal a more diverse set
+of learning behaviours from which it can dynamically select (when the need arises) could yield better generalisation capabilities \cite{ref:huang:2009}.
+
+A more recent suggestion related to the field of \index{meta-learning}meta-learning is to dynamically select and/or adjust the heuristic used throughout the training process. This approach focuses on the hybridisation of learning paradigms. The main concept behind this paradigm is that the learning process is dynamic and differs from problem to problem. A particular learning technique might work well for one problem and not for another. At the same time, a particular learning technique might work well for a particular part of the search landscape, but not for another. By dynamically combining the best of different learning paradigms throughout the learning process, a trade-off can be made between exploration and exploitation as is required.
+
+One such form of hybridisation of learning paradigms is referred to as \index{heterogeneous learning approaches}\textit{heterogeneous learning approaches}. Heterogeneous learning approaches make use of different search behaviours by selecting from a behaviour pool. Heterogeneous approaches have shown to balance the trade-off between exploration and exploitation \cite{ref:nepomuceno:2013}.
+
+A step further in the concept of hybridisation of learning paradigms is that of hybridisation of different heuristics as they are applied to some optimisation problem \cite{ref:burke:2013}. These methods are referred to as \acfp{HH} and focus on finding the best heuristic in \textit{heuristic-space} to solve a specific problem. One such form of \ac{HH} is a
+population-based approach that guides the search process by automatically
+selecting heuristics from a heuristic-space to be applied to a collection of
+different candidate solutions in the solution-space. This collection of
+candidate solutions are referred to as a \textit{population} of
+\textit{entities}, where each \textit{entity} is a single candidate solution to
+the problem being optimised.
+
+Population-based \acp{HH} implement the strategy of multiple heuristics working
+together to solve a problem. However, finding the best heuristic to use is
+non-trivial and some \textit{selection strategy} must be used to select the best
+heuristic. \acp{HH} that implement such a selection strategy are referred to as
+\textit{selection} \acp{HH}. The term \textit{selection} refers to the ability
+of the \ac{HH} to select the best heuristic from a pool of low-level heuristics.
+
+These selection \acp{HH} can be further categorised based on what information
+they use in the selection strategy. One specific type of selection \ac{HH} is
+called a \index{multi-method populated-based meta-heuristic}\textit{multi-method
+    population-based \index{meta-heuristic}meta-heuristic}
+\cite{ref:vanderstockt:2018}. The term \index{multi-method}\textit{multi-method}
+refers to the incorporation of different low-level heuristics, with different
+search behaviours, into the heuristic-space. The term \textit{population-based}
+refers to the utilisation of a population of entities that represent candidate
+solutions. Finally, the term \index{meta-heuristic}\textit{meta-heuristics}
+refers to the \ac{HH} as a heuristic that does not have any domain knowledge and
+only makes use of information from the search process.
+\citeauthor{ref:grobler:2015} \cite{ref:grobler:2015} mentioned that \acp{HH}
+have been shown to solve a number of problems including bin-packing, examination
+timetabling, production scheduling, the traveling salesman problem, vehicle
+routing problem and many more.
