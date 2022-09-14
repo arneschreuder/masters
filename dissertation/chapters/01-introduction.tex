@@ -1,16 +1,9 @@
-\chapter{Introduction}
-\label{chap:introduction}
+\chapter{Introduction}\label{chap:introduction}
 
-\begin{quote}
-      \textit{The Cephalopod retreats and crawls back up against the glass of the fish tank
-            evaluating the situation in front of him. In front of him is a glass jar with
-            prey inside. The lid is shut tightly. Never before has he encountered such an
-            obstacle in nature, prohibiting him from feeding. He curiously swims closer,
-            feeling the shape of the jar with his tentacles. He wraps his tentacles over the
-            jar and with a small turn and pop, he releases the lid. The experiment is
-            repeated and without hesitation, without failure, he opens the jar, faster, more
-            efficiently, every time.}
-\end{quote}
+\begin{quotation}
+      \textit{``It is better to solve one problem five different ways, than to solve five problems one way.'' - George Polya}
+\end{quotation}
+
 
 \Ac{ML} is one of the most popular fields of research in \ac{AI} studies today.
 In recent years, \ac{ML} research has seen some notable achievements in the
@@ -24,17 +17,6 @@ called AlphaZero, learned to play Go, \textit{tabula rasa} \footnote{Latin word
       meaning to learn from no prior knowledge.} and managed to beat AlphaGo, 100-1
 \cite{ref:silver:2017}.
 
-Historically, \ac{ML} models were built with a specific purpose in mind and
-revolved around specialised applications. A notable development was that of Deep
-Blue by IBM \cite{ref:keene:1996}, which managed to play chess at a grand master
-level. Deep Blue was able to finish 2-4 against the greatest chess player at the
-time, Gary Kasparov. Although Deep Blue lost the tournament, this was a major
-breakthrough in the field of \ac{AI}. However, Deep Blue was only able to play
-chess and could not be utilised for any other purposes \cite{ref:kelley:2010}.
-Today, DeepMind's \ac{RL} algorithm is capable of playing all of the original
-Atari games \cite{ref:mnih:2013}, but is still very limited to a small set of
-problems that it can solve.
-
 Over the past few years, modern hardware capabilities have improved to the
 point where workloads in the field of \ac{ML} that were previously computationally
 infeasible, are now possible. One such sub-field of \ac{ML} is \acp{ANN}. \acp{ANN} can generally be described as well-organised structures of mathematical computation and are inspired by the biological brain \cite{ref:engelbrecht:2007}. \acp{ANN} are the digital equivalent of how we currently understand the brain to work. \acp{ANN} can be trained, which is the equivalent of ``learnin'' from data. Learning gives rise to the ability to apply some form of decision making. This ability provides a wide-range of applications from healthcare to finance and yields great interest in the field. With the improvement of hardware came an influx of \ac{ML} researchers that focused
@@ -45,6 +27,40 @@ these models are trained. \acp{FFNN} are specific types of
 \acp{ANN} \cite{ref:reed:1999}. The most common way of training \acp{FFNN} is
 \index{supervised training}supervised learning. Training of \acp{ANN} is seen as an optimisation problem. The \ac{ANN} maintains a set of parameters, referred to as ``weights'' and ``biases''. A search algorithm known as a \index{heuristic}\textit{heuristic}
 \cite{ref:pearl:1984} is used to assign optimal values to the parameters of the \ac{ANN}, such that a specified objective function is minimised.
+
+This dissertation focuses on the development of a specific type of heuristic, called a \acl{HH} to train \acp{FFNN} in a supervised learning approach. In particular, this chapter provides the reader with a brief overview of the problem domain and outlines the research problem, objectives and purpose.
+
+The remainder of the chapter is presented as follows:
+
+\begin{itemize}
+      \item \textbf{Section \ref{sec:introduction:summary_problem_domain}} provides the reader with brief summary of the problem domain.
+
+      \item \textbf{Section \ref{sec:introduction:problem}} outlines the research problem being addressed in this dissertation.
+
+      \item \textbf{Section \ref{sec:introduction:motivation}} provides motivations as to why this research is important and valuable to the field.
+
+      \item \textbf{Section \ref{sec:introduction:objectives}} presents the reader with research objectives.
+      \item
+      \item \textbf{Section \ref{sec:introduction:contributions}} outlines the contributions of this research to the field.
+
+      \item Finally, a full dissertation outline is provided in \textbf{Section \ref{sec:introduction:outline}}.
+\end{itemize}
+
+
+\section{Summary of Problem Domain}
+\label{sec:introduction:summary_problem_domain}
+
+
+Historically, \ac{ML} models were built with a specific purpose in mind and
+revolved around specialised applications. A notable development was that of Deep
+Blue by IBM \cite{ref:keene:1996}, which managed to play chess at a grand master
+level. Deep Blue was able to finish 2-4 against the greatest chess player at the
+time, Gary Kasparov. Although Deep Blue lost the tournament, this was a major
+breakthrough in the field of \ac{AI}. However, Deep Blue was only able to play
+chess and could not be utilised for any other purposes \cite{ref:kelley:2010}.
+Today, DeepMind's \ac{RL} algorithm is capable of playing all of the original
+Atari games \cite{ref:mnih:2013}, but is still very limited to a small set of
+problems that it can solve.
 
 Although the landscape of what can be solved using \acp{ANN} today
 is extensive, there still exists no single model that can be generalised to
@@ -115,8 +131,8 @@ have been shown to solve a number of problems including bin-packing, examination
 timetabling, production scheduling, the traveling salesman problem, vehicle
 routing problem and many more.
 
-This dissertation focuses on the development of a \ac{HH} to train \acp{FFNN} in a
-supervised learning approach.
+The following section outlines the research problem that this dissertation aims to focus on and is followed by a discussion as to why this research endevour is important and valuable to the field.
+
 
 \section{Problem Statement}
 \label{sec:introduction:problem}
