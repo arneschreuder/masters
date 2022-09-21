@@ -16,7 +16,7 @@ ANALYSIS_CONFIG = {
 		'friendly': 'Burn In',
 		'column': 'burn_in',
 		'param_count': 5,
-		'order': ['0', '5', '10', '15', '20']
+		'order': [0, 5, 10, 15, 20]
 	},
 	'bhh_credit': {
 		'view': 'bhh_credit',
@@ -30,7 +30,7 @@ ANALYSIS_CONFIG = {
 		'friendly': 'Discounted Rewards',
 		'column': 'discounted_rewards',
 		'param_count': 2,
-		'order': ['true', 'false']
+		'order': [True, False]
 	},
 	'bhh_heuristic_pool': {
 		'view': 'bhh_heuristic_pool',
@@ -44,44 +44,42 @@ ANALYSIS_CONFIG = {
 		'friendly': 'Normalisation',
 		'column': 'normalisation',
 		'param_count': 2,
-		'order': ['true', 'false']
+		'order': [True, False]
 	},
 	'bhh_population': {
 		'view': 'bhh_population',
 		'friendly': 'Population',
 		'column': 'population',
 		'param_count': 5,
-		'order': ['5', '10', '15', '20', '25']
+		'order': [5, 10, 15, 20, 25]
 	},
 	'bhh_reanalysis': {
 		'view': 'bhh_reanalysis',
 		'friendly': 'Reanalysis',
 		'column': 'reanalysis',
 		'param_count': 5,
-		'order': ['1', '5', '10', '15', '20']
+		'order': [1, 5, 10, 15, 20]
 	},
 	'bhh_replay': {
 		'view': 'bhh_replay',
 		'friendly': 'Replay',
 		'column': 'replay',
 		'param_count': 5,
-		'order': ['1', '5', '10', '15', '20']
+		'order': [1, 5, 10, 15, 20]
 	},
 	'bhh_reselection': {
 		'view': 'bhh_reselection',
 		'friendly': 'Reselection',
 		'column': 'reselection',
 		'param_count': 5,
-		'order': ['1', '5', '10', '15', '20']
+		'order': [1, 5, 10, 15, 20]
 	},
 	'standalone': {
 		'view': 'standalone',
 		'friendly': 'Heuristics',
 		'column': 'heuristic',
-		'param_count': 11,
-		# 'param_count': 13,
-		'order': ['adam', 'adadelta', 'adagrad', 'bhh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd']
-		# 'order': ['adam', 'adadelta', 'adagrad', 'bhh_all', 'bhh_gd', 'bhh_mh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd']
+		'param_count': 13,
+		'order': ['adam', 'adadelta', 'adagrad', 'bhh_all', 'bhh_gd', 'bhh_mh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd']
 	},
 }
 
@@ -204,7 +202,7 @@ def create_cd_plots_per_dataset():
 			cd = Orange.evaluation.compute_CD(avg_ranks, 31*30) #tested on 31 steps (0-30) and 30 epochs (1-300)
 			plot = Orange.evaluation.graph_ranks(avg_ranks, names, cd=cd, width=10, textspace=2)
 			plt.title('BHH {} - Critical Difference - Dataset: {}'.format(FRIENDLY, dataset), pad=20)
-			OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/cd/{}.png'.format(dataset))
+			OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/cd/{}.pdf'.format(dataset))
 			plt.savefig(OUTPUT, transparent=True, bbox_inches='tight')
 			plt.close()
 		except Exception as e:
@@ -233,7 +231,7 @@ def create_cd_plots_overall():
 		cd = Orange.evaluation.compute_CD(avg_ranks, 31*30) #tested on 31 steps (0-30) and 30 epochs (1-300)
 		plot = Orange.evaluation.graph_ranks(avg_ranks, names, cd=cd, width=10, textspace=2)
 		plt.title('BHH {} - Critical Difference - Overall'.format(FRIENDLY), pad=20)
-		OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/cd/overall.png')
+		OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/cd/overall.pdf')
 		plt.savefig(OUTPUT, transparent=True, bbox_inches='tight')
 		plt.close()
 	except Exception as e:
@@ -306,10 +304,10 @@ def main():
 	create_cd_plots_per_dataset()
 	create_cd_plots_overall()
 	setup_seaborn()
-	plot(train=True,accuracy=False)
-	plot(train=True,accuracy=True)
-	plot(train=False,accuracy=False)
-	plot(train=False,accuracy=True)
+	# plot(train=True,accuracy=False)
+	# plot(train=True,accuracy=True)
+	# plot(train=False,accuracy=False)
+	# plot(train=False,accuracy=True)
 
 if __name__ == '__main__':
 	main()

@@ -6,7 +6,7 @@ from google.cloud import bigquery
 
 CREDENTIALS=os.path.abspath(os.path.join(os.getcwd(), 'credentials/masters.json'))
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = CREDENTIALS
-PROJECT_ID="masters-287321"
+PROJECT_ID="masters-363209"
 
 ANALYSIS = None
 ANALYSIS_PATH = None
@@ -66,7 +66,7 @@ def get_data_from_bq():
 	print("Fetching data from BigQuery")
 	global DATA
 	
-	QUERY = 'SELECT * FROM `masters-287321.results.{}`;'.format(ANALYSIS)
+	QUERY = 'SELECT * FROM `masters-363209.results.{}`;'.format(ANALYSIS)
 	bigquery_client = bigquery.Client(project=PROJECT_ID)
 	DATA = bigquery_client.query(QUERY).to_dataframe()
 

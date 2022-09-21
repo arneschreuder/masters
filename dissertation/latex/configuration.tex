@@ -13,7 +13,7 @@
 \renewcommand{\headrulewidth}{1pt} % Line under header
 
 % Graphics
-\graphicspath{{./images/}{./plots/}{./analysis/}} % Include path for images
+\graphicspath{{./images/}{./plots/}{../analysis/}} % Include path for images
 
 % % Hyperlinks
 \hypersetup{
@@ -29,17 +29,17 @@
     pdfstartview=Fit,  %  Fit initial view to page
     plainpages=false,  %  Prevent hyperref page number changes
     urlcolor=blue,      %  URL link color,
-    draft=false 
+    draft=false
 }
 
 % PDF Meta
 \hypersetup{
     pdftitle    = {Training Feedforward Neural Networks with Bayesian
-    Hyper-Heuristics},
+            Hyper-Heuristics},
     pdfauthor   = {A.N. Schreuder <arne@schreuder.ai>},
     pdfsubject  = {Bayesian Hyper-Heuristics},
     pdfkeywords = {Hyper-Heuristics, Meta-Learning, Feedforward Neural
-    Networks, Supervised Learning, Bayesian Statistics, Optimisation.},
+            Networks, Supervised Learning, Bayesian Statistics, Optimisation.},
     % draft              %  Remove on final document
 }
 
@@ -47,10 +47,10 @@
 \newdateformat{monthyeardate}{\monthname[\THEMONTH], \THEYEAR}
 
 % Force LaTeX-compliant spacing
-\pdfadjustspacing=1 
+\pdfadjustspacing=1
 
 % Sets minimum compatibility for pdfplotset
-\pgfplotsset{compat=1.17} 
+\pgfplotsset{compat=1.17}
 
 % Lengths
 \setlength{\headheight}{15pt}
@@ -98,10 +98,10 @@
 
 \makeatletter
 \g@addto@macro\normalsize{%
-  \setlength\abovedisplayskip{5pt}
-  \setlength\belowdisplayskip{20pt}
-  \setlength\abovedisplayshortskip{5pt}
-  \setlength\belowdisplayshortskip{20pt}
+    \setlength\abovedisplayskip{5pt}
+    \setlength\belowdisplayskip{20pt}
+    \setlength\abovedisplayshortskip{5pt}
+    \setlength\belowdisplayshortskip{20pt}
 }
 \makeatother
 

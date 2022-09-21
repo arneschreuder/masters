@@ -158,18 +158,6 @@ optional arguments:
 
 ```
 
-### Export TensorBoard tf.event data
-
-```
-usage: tf_events_to_csv.py [-h] --data-dir DATA_DIR
-
-Export TensorBoard tf.event data to csv
-
-optional arguments:
-  -h, --help           show this help message and exit
-  --data-dir DATA_DIR  The directory that contains the data
-```
-
 ## Citation
 
 When citing this work, please use the following BibTex citation:
