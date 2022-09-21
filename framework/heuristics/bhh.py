@@ -113,12 +113,11 @@ class BHH(Heuristic):
         """
         PERFORMANCE BIAS:
 
-        - Calculate the probability of  P(H|E,C) \propto P(E|H)*P(C|H)*(P(H)
+        - Calculate the probability of  P(H|E,C) \propto P(E|H)*P(C|H)*P(H)
         - Create a categorical distribution with the probabilities from above
         - Then pick the combination of entity and heuristic by sampling from
-        - a categorical distribution with the learnt probabilities probabilities.
-        - We use the log-sum-xp
-        - To avoid underflow here, we use the log-sum-exp trick
+        - a categorical distribution with the learnt probabilities.
+        - We use the log-sum-exp to avoid underflow here, we use the log-sum-exp trick
         - This is sufficient since we are using Maximum-a-priori (MAP) updates of model.
         - Yielding that we always calculate p_HgEC from model params.
         - The alternative to this is to use Maximum-likelihood-estimate (MLE) update of model.

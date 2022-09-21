@@ -39,7 +39,7 @@ def parse_arguments():
 
 	# Parser
 	parser = argparse.ArgumentParser(
-			description="Export TensorBoard data to csv"
+			description="Export TensorBoard tf.event data to csv"
 	)
 
 	# Basic Params
@@ -58,7 +58,7 @@ def print_banner():
 
     print("")
     print("====================================================================")
-    print("Export TensorBoard data to csv")
+    print("Export TensorBoard tf.event data to csv")
     print("====================================================================")
     print("Data Directory: {}".format(DATA_DIR))
     print("====================================================================")

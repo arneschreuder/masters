@@ -15,61 +15,73 @@ ANALYSIS_CONFIG = {
 		'view': 'bhh_burn_in',
 		'friendly': 'Burn In',
 		'column': 'burn_in',
-		'param_count': 5
+		'param_count': 5,
+		'order': ['0', '5', '10', '15', '20']
 	},
 	'bhh_credit': {
 		'view': 'bhh_credit',
 		'friendly': 'Credit',
 		'column': 'credit',
-		'param_count': 5
+		'param_count': 5,
+		'order': ['ibest', 'pbest', 'rbest', 'gbest', 'symmetric']
 	},
 	'bhh_discounted_rewards': {
 		'view': 'bhh_discounted_rewards',
 		'friendly': 'Discounted Rewards',
 		'column': 'discounted_rewards',
-		'param_count': 2
+		'param_count': 2,
+		'order': ['true', 'false']
 	},
 	'bhh_heuristic_pool': {
 		'view': 'bhh_heuristic_pool',
 		'friendly': 'Heuristic Pool',
 		'column': 'heuristic_pool',
-		'param_count': 3
+		'param_count': 3,
+		'order': ['all', 'gd', 'mh']
 	},
 	'bhh_normalise': {
 		'view': 'bhh_normalise',
 		'friendly': 'Normalisation',
 		'column': 'normalisation',
-		'param_count': 2
+		'param_count': 2,
+		'order': ['true', 'false']
 	},
 	'bhh_population': {
 		'view': 'bhh_population',
 		'friendly': 'Population',
 		'column': 'population',
-		'param_count': 5
+		'param_count': 5,
+		'order': ['5', '10', '15', '20', '25']
 	},
 	'bhh_reanalysis': {
 		'view': 'bhh_reanalysis',
 		'friendly': 'Reanalysis',
 		'column': 'reanalysis',
-		'param_count': 5
+		'param_count': 5,
+		'order': ['1', '5', '10', '15', '20']
 	},
 	'bhh_replay': {
 		'view': 'bhh_replay',
 		'friendly': 'Replay',
 		'column': 'replay',
-		'param_count': 5
+		'param_count': 5,
+		'order': ['1', '5', '10', '15', '20']
 	},
 	'bhh_reselection': {
 		'view': 'bhh_reselection',
 		'friendly': 'Reselection',
 		'column': 'reselection',
-		'param_count': 5
+		'param_count': 5,
+		'order': ['1', '5', '10', '15', '20']
 	},
 	'standalone': {
 		'view': 'standalone',
 		'friendly': 'Heuristics',
 		'column': 'heuristic',
-		'param_count': 11
+		'param_count': 11,
+		# 'param_count': 13,
+		'order': ['adam', 'adadelta', 'adagrad', 'bhh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd']
+		# 'order': ['adam', 'adadelta', 'adagrad', 'bhh_all', 'bhh_gd', 'bhh_mh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd']
 	},
 }
 
@@ -105,6 +117,7 @@ DATA = None
 VIEW = None
 FRIENDLY = None
 COLUMN = None
+ORDER = None
 PARAM_COUNT = None
 PALETTE = None
 
@@ -114,6 +127,7 @@ def parse_arguments():
 	global VIEW
 	global FRIENDLY
 	global COLUMN
+	global ORDER
 	global PARAM_COUNT
 
 	# Parser
@@ -135,6 +149,7 @@ def parse_arguments():
 	VIEW = ANALYSIS_CONFIG[ANALYSIS]['view']
 	FRIENDLY = ANALYSIS_CONFIG[ANALYSIS]['friendly']
 	COLUMN = ANALYSIS_CONFIG[ANALYSIS]['column']
+	ORDER = ANALYSIS_CONFIG[ANALYSIS]['order']
 	PARAM_COUNT = ANALYSIS_CONFIG[ANALYSIS]['param_count']
 
 def print_banner():
@@ -162,6 +177,7 @@ def read_data_from_csv():
 	print('Reading data from CSV')
 	global DATA
 	DATA = pd.read_csv(os.path.join(ANALYSIS_PATH, '{}.csv'.format(ANALYSIS)))
+	DATA = DATA.reindex(sorted(DATA.columns), axis=1)
 
 def create_cd_plots_per_dataset():
 	global FRIENDLY
@@ -228,15 +244,19 @@ def setup_seaborn():
 	global PALETTE
 	global PARAM_COUNT
 	# Setup Plots
-	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 2, 'lines.markersize': 7})
-	PALETTE = sns.color_palette('viridis', PARAM_COUNT)
+	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 2, 'lines.markersize': 5})
+	# PALETTE = sns.color_palette('viridis', PARAM_COUNT)
+	PALETTE = sns.color_palette('mako_r', PARAM_COUNT)
 
 def plot(train: bool = False, accuracy = False):
 	DS = 'Train' if train else 'Test'
-	TYPE = 'Accuracy' if accuracy else 'Loss'
+	TYPE = 'Accuracy' if accuracy else 'Log Loss'
 	print("Plotting {} {}".format(DS, TYPE))
+	Y_DATA = 'accuracy' if TYPE == 'Accuracy' else 'loss'
 
 	global DATA
+	global COLUMN
+	global ORDER
 	global COLUMN
 	global FRIENDLY
 	global PALETTE
@@ -255,8 +275,10 @@ def plot(train: bool = False, accuracy = False):
 			plot = sns.lineplot(
 				data=subset,
 				x='step',
-				y='{}_{}'.format(DS.lower(), TYPE.lower()),
+				y='{}_{}'.format(DS.lower(), Y_DATA.lower()),
+				hue_order=ORDER,
 				hue=COLUMN,
+				style_order=ORDER,
 				style=COLUMN,
 				markers=True,
 				dashes=True,
@@ -266,8 +288,9 @@ def plot(train: bool = False, accuracy = False):
 
 			plot.set_xlabel("Epoch")
 			plot.set_ylabel('{} {}'.format(DS, TYPE))
+			plot.set_yscale('log') # Logarithmic plot
 
-			OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/{}/{}/{}.png'.format(DS.lower(), TYPE.lower(), dataset))
+			OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/{}/{}/{}.pdf'.format(DS.lower(), Y_DATA.lower(), dataset))
 			fig.savefig(OUTPUT, transparent=True)
 			plt.close()
 		except Exception as e:

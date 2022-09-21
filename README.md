@@ -8,31 +8,11 @@ Training Feedforward Neural Networks with Bayesian Hyper-Heuristics
 
 ## Abstract
 
-Many different heuristics have been developed and used to train feedforward neural
-networks (FFNNs). However, selection of the best heuristic to train FFNNs is a time
-consuming and non-trivial exercise. Careful, systematic selection is thus required to select
-the best heuristic. In the past, selection was done by trial and error. A modern approach
-is to automate this selection proses. However, a single approach might not be sufficient.
-Research has proposed the use of hybridisation of heuristics. These methods are referred
-to as hyper-heuristics (HHs) and focus on finding the best heuristic or combinations of
-heuristics in heuristic-space by making use of heuristic performance information during
-training time. One such implementation of HH is a population-based approach that guides
-the search process by dynamically selecting heuristics from a heuristic-pool to be applied
-to different entities that represent candidate solutions to the problem-space and work
-together to find good solutions. This thesis introduces a novel population-based Bayesian
-hyper-heuristic (BHH). An empirical study is done by using the BHH to train FFNNs.
-An in-depth behaviour analysis is done and the performance of the BHH is compared to
-that of ten popular low-level heuristics each with different search behaviours. The chosen
-heuristic pool consists out of classic gradient-based heuristics as well as meta-heuristics.
-The empirical process was executed on fifteen datasets consisting out of classification
-and regression problems with varying characteristics. Results are analysed for statistical
-significance and the BHH is shown to be able to train FFNNs well and provide an automated
-method for finding the best heuristic to train the FFNNs at various stages of the training
-process.
+Many different heuristics have been developed and used to train feedforward neural networks (FFNNs). However, selection of the best heuristic to train FFNNs is a time consuming and non-trivial exercise. Careful, systematic selection is thus required to ensure that the best heuristic is used to train the FFNNs. In the past, selection was done by trial and error. A modern approach is to automate the heuristic selection process. Often it is found that a single approach is not sufficient. Research has proposed the use of hybridisation of heuristics. One such approach is referred to as hyper-heuristics (HHs). HHs focus on dynamically finding the best heuristic or combinations of heuristics in heuristic-space by making use of heuristic performance information during training time. One such implementation of a HH is a population-based approach that guides the search process by dynamically selecting heuristics from a heuristic-pool to be applied to different entities that represent candidate solutions to the problem-space and work together to find good solutions. This dissertation introduces a novel population-based Bayesian hyper-heuristic (BHH). An empirical study is done by using the BHH to train FFNNs. An in-depth behaviour analysis is done and the performance of the BHH is compared to that of ten popular low-level heuristics each with different search behaviours. The chosen heuristic pool consists out of classic gradient-based heuristics as well as meta-heuristics. The empirical process was executed on fifteen datasets consisting of classification and regression problems with varying characteristics. Results are analysed for statistical significance and the BHH is shown to be able to train FFNNs well and provide an automated method for finding the best heuristic to train the FFNNs at various stages of the training process.
 
 ## Keywords
 
-hyper-heuristics, meta-learning, feedforward neural networks, supervised learning, bayesian statistics, optimisation
+hyper-heuristics, meta-learning, feedforward neural networks, supervised learning, Bayesian statistics
 
 ## Authors
 
@@ -70,7 +50,7 @@ University of Witwatersrand Johannesburg (WITS)<br>
 
 Prof. Andries Engelbrecht<br>
 Voigt Chair in Data Science<br>
-Dept. of Industrial Engineering and Computer Science<br>
+Dept. of Industrial Engineering, Computer Science Division<br>
 School of Information Technology (IT)<br>
 Faculty of Engineering<br>
 Stellenbosch University (SUN)<br>
@@ -178,12 +158,12 @@ optional arguments:
 
 ```
 
-### Export TensorBoard data
+### Export TensorBoard tf.event data
 
 ```
-usage: export.py [-h] --data-dir DATA_DIR
+usage: tf_events_to_csv.py [-h] --data-dir DATA_DIR
 
-Export TensorBoard data to csv
+Export TensorBoard tf.event data to csv
 
 optional arguments:
   -h, --help           show this help message and exit
