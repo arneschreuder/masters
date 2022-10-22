@@ -2,34 +2,34 @@
 \label{chap:methodology}
 
 \begin{quote}
-    \textit{Observation, reason and experimentation make up what we call the scientific method. $\sim$ Richard P. Feynman}
+      \textit{Observation, reason and experimentation make up what we call the scientific method. $\sim$ Richard P. Feynman}
 \end{quote}
 
 
-Chapter \ref{chap:introduction} set out the objectives of the dissertation. These objectives can broadly be split between background information and an empirical component. So far, chapters \ref{chap:introduction}-\ref{chap:bhh} provided the necessary background information. This chapter now provides the detailed specification of the methodology that is followed for the empirical process and the analysis of the results. The remainder of the chapter is structured as follows: 
+Chapter \ref{chap:introduction} set out the objectives of the dissertation. These objectives can broadly be split between background information and an empirical component. So far, chapters \ref{chap:introduction}-\ref{chap:bhh} provided the necessary background information. This chapter now provides the detailed specification of the methodology that is followed for the empirical process and the analysis of the results. The remainder of the chapter is structured as follows:
 
 \begin{itemize}
-    \item \textbf{Section \ref{sec:methodology:overview}} provides a brief overview of the entire empirical process, leaving the detail to subsequent sections.
+      \item \textbf{Section \ref{sec:methodology:overview}} provides a brief overview of the entire empirical process, leaving the detail to subsequent sections.
 
-    \item \textbf{Section \ref{sec:methodology:datasets}} presents the detail around the datasets that are used.
-    
-    \item \textbf{Section \ref{sec:methodology:model}} provides the details of the models (\acs{FFNN}s) that are being trained.
-    
-    \item \textbf{Section \ref{sec:methodology:heuristics}} presents the detail around the different \index{heuristic}heuristics that are used along with their hyper-parameters.
-    
-    \item \textbf{Section \ref{sec:methodology:baseline_bhh}} provides the detail of the configuration of the \acs{BHH} baseline.
-    
-    \item \textbf{Section \ref{sec:methodology:performance_measures}} sheds light into the performance evaluation measures that are used.
-    
-    \item \textbf{Section \ref{sec:methodology:stopping_conditions}} discusses the stopping conditions that are used.
-    
-    \item \textbf{Section \ref{sec:methodology:experiments}} presents the different experimental groups that is executed.
+      \item \textbf{Section \ref{sec:methodology:datasets}} presents the detail around the datasets that are used.
 
-    \item \textbf{Section \ref{sec:methodology:implementation}} sheds some light as to the implementation and execution of the empirical process.
-    
-    \item \textbf{Section \ref{sec:methodology:statistical_analysis}} presents the procedures that are followed in during the statistical analysis of the results.
-    
-    \item Finally, a summary of the chapter is provided in \textbf{Section \ref{sec:methodology:summary}}
+      \item \textbf{Section \ref{sec:methodology:model}} provides the details of the models (\acs{FFNN}s) that are being trained.
+
+      \item \textbf{Section \ref{sec:methodology:heuristics}} presents the detail around the different \index{heuristic}heuristics that are used along with their hyper-parameters.
+
+      \item \textbf{Section \ref{sec:methodology:baseline_bhh}} provides the detail of the configuration of the \acs{BHH} baseline.
+
+      \item \textbf{Section \ref{sec:methodology:performance_measures}} sheds light into the performance evaluation measures that are used.
+
+      \item \textbf{Section \ref{sec:methodology:stopping_conditions}} discusses the stopping conditions that are used.
+
+      \item \textbf{Section \ref{sec:methodology:experiments}} presents the different experimental groups that is executed.
+
+      \item \textbf{Section \ref{sec:methodology:implementation}} sheds some light as to the implementation and execution of the empirical process.
+
+      \item \textbf{Section \ref{sec:methodology:statistical_analysis}} presents the procedures that are followed in during the statistical analysis of the results.
+
+      \item Finally, a summary of the chapter is provided in \textbf{Section \ref{sec:methodology:summary}}
 \end{itemize}
 
 \section{Overview of Empirical Process}
@@ -44,47 +44,47 @@ Detail around each of these elements are now provided, starting with the dataset
 \section{Datasets}
 \label{sec:methodology:datasets}
 
-This section provides the detail around the different datasets that are used throughout the empirical process. These datasets originate from the UCI Machine Learning Repository \cite{ref:uci:2022}. Datasets are grouped by problem type and include 8 classification and 7 regression datasets. The classification datasets are given in Table \ref{tab:methodology:datasets:classification} and the regression datasets are given in Table \ref{tab:methodology:datasets:regression} below.
+This section provides the detail around the different datasets that are used throughout the empirical process. These datasets originate from the UCI Machine Learning Repository~\cite{ref:uci:2022}. Datasets are grouped by problem type and include 8 classification and 7 regression datasets. The classification datasets are given in Table \ref{tab:methodology:datasets:classification} and the regression datasets are given in Table \ref{tab:methodology:datasets:regression} below.
 
 \begin{table}[htbp]
-    \centering
-    \caption{Classification datasets}
-    \label{tab:methodology:datasets:classification}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-        \begin{tabular}{ccccccccc}
-            \textbf{dataset} & \textbf{output} & \textbf{types} & \textbf{attributes} & \textbf{classes} & \textbf{instances} & \textbf{batch} & \textbf{steps} & \textbf{citation} \\
-            \midrule
-            iris  & multivariate & real  & 4     & 3     & 150   & 16    & 10    & \cite{ref:fisher:1936} \\
-            car   & multivariate & categorical & 6     & 4     & 1728  & 128   & 14    & \cite{ref:bohanec:1988} \\
-            abalone & multivariate & categorical, integer, real & 8     & 28    & 4177  & 256   & 17    & \cite{ref:waugh:1995} \\
-            mushroom & multivariate & categorical & 22    & 2     & 8214  & 512   & 17    & \cite{ref:schlimmer:1987} \\
-            wine\_quality & multivariate & real  & 12    & 11    & 4898  & 256   & 20    & \cite{ref:cortez:2009} \\
-            bank  & multivariate & real  & 17    & 2     & 45211 & 512   & 89    & \cite{ref:moro:2014} \\
-            diabetic & multivariate & integer & 55    & 3     & 100000 & 1024  & 98    & \cite{ref:strack:2014} \\
-            adult & multivariate & categorical, integer & 14    & 2     & 48842 & 256   & 191   & \cite{ref:kohavi:1996} \\
-        \end{tabular}%
-    }
+      \centering
+      \caption{Classification datasets}
+      \label{tab:methodology:datasets:classification}%
+      \par\bigskip
+      \resizebox{\textwidth}{!}{
+            \begin{tabular}{ccccccccc}
+                  \textbf{dataset} & \textbf{output} & \textbf{types}             & \textbf{attributes} & \textbf{classes} & \textbf{instances} & \textbf{batch} & \textbf{steps} & \textbf{citation}          \\
+                  \midrule
+                  iris             & multivariate    & real                       & 4                   & 3                & 150                & 16             & 10             & ~\cite{ref:fisher:1936}    \\
+                  car              & multivariate    & categorical                & 6                   & 4                & 1728               & 128            & 14             & ~\cite{ref:bohanec:1988}   \\
+                  abalone          & multivariate    & categorical, integer, real & 8                   & 28               & 4177               & 256            & 17             & ~\cite{ref:waugh:1995}     \\
+                  mushroom         & multivariate    & categorical                & 22                  & 2                & 8214               & 512            & 17             & ~\cite{ref:schlimmer:1987} \\
+                  wine\_quality    & multivariate    & real                       & 12                  & 11               & 4898               & 256            & 20             & ~\cite{ref:cortez:2009}    \\
+                  bank             & multivariate    & real                       & 17                  & 2                & 45211              & 512            & 89             & ~\cite{ref:moro:2014}      \\
+                  diabetic         & multivariate    & integer                    & 55                  & 3                & 100000             & 1024           & 98             & ~\cite{ref:strack:2014}    \\
+                  adult            & multivariate    & categorical, integer       & 14                  & 2                & 48842              & 256            & 191            & ~\cite{ref:kohavi:1996}    \\
+            \end{tabular}%
+      }
 \end{table}%
 
 \begin{table}[htbp]
-    \centering
-    \caption{Regression datasets}
-    \label{tab:methodology:datasets:regression}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-        \begin{tabular}{cccccccc}
-            \textbf{dataset} & \textbf{output} & \textbf{types} & \textbf{attributes} & \textbf{instances} & \textbf{batch} & \textbf{steps} & \textbf{citation} \\
-            \midrule
-            fish\_toxicity & multivariate & real  & 7     & 908   & 64    & 15    & \cite{ref:cassotti:2015} \\
-            housing & univariate & real  & 13    & 506   & 32    & 16    & \cite{ref:harrison:1978} \\
-            forest\_fires & multivariate & real  & 13    & 517   & 32    & 17    & \cite{ref:cortez:2007} \\
-            student\_performance & multivariate & integer & 33    & 649   & 32    & 21    & \cite{ref:cortez:2008} \\
-            parkinsons & multivariate & integer, real & 26    & 5875  & 256   & 23    & \cite{ref:tsanas:2009} \\
-            air\_quality & multivariate, timeseries & real  & 15    & 9358  & 256   & 37    & \cite{ref:de:2008} \\
-            bike  & univariate & integer, real & 16    & 17389 & 256   & 68    & \cite{ref:fanaee:2014} \\
-        \end{tabular}%
-    }
+      \centering
+      \caption{Regression datasets}
+      \label{tab:methodology:datasets:regression}%
+      \par\bigskip
+      \resizebox{\textwidth}{!}{
+            \begin{tabular}{cccccccc}
+                  \textbf{dataset}     & \textbf{output}          & \textbf{types} & \textbf{attributes} & \textbf{instances} & \textbf{batch} & \textbf{steps} & \textbf{citation}         \\
+                  \midrule
+                  fish\_toxicity       & multivariate             & real           & 7                   & 908                & 64             & 15             & ~\cite{ref:cassotti:2015} \\
+                  housing              & univariate               & real           & 13                  & 506                & 32             & 16             & ~\cite{ref:harrison:1978} \\
+                  forest\_fires        & multivariate             & real           & 13                  & 517                & 32             & 17             & ~\cite{ref:cortez:2007}   \\
+                  student\_performance & multivariate             & integer        & 33                  & 649                & 32             & 21             & ~\cite{ref:cortez:2008}   \\
+                  parkinsons           & multivariate             & integer, real  & 26                  & 5875               & 256            & 23             & ~\cite{ref:tsanas:2009}   \\
+                  air\_quality         & multivariate, timeseries & real           & 15                  & 9358               & 256            & 37             & ~\cite{ref:de:2008}       \\
+                  bike                 & univariate               & integer, real  & 16                  & 17389              & 256            & 68             & ~\cite{ref:fanaee:2014}   \\
+            \end{tabular}%
+      }
 \end{table}%
 
 Details on how the datasets where preprocessed and prepared is given in Appendix \ref{app:datasets}. The concept of class balancing is briefly discussed next.
@@ -104,31 +104,31 @@ As the title of the dissertation suggests, these empirical process are focused o
 
 % Table generated by Excel2LaTeX from sheet 'Model Configurations'
 \begin{table}[htbp]
-    \centering
-    \caption{Model configurations}
-    \label{tab:methodology:models:configurations}%
-    \par\bigskip
-    \resizebox{\textwidth}{!}{
-        \begin{tabular}{rcccccccc}
-            \textbf{dataset} & \textbf{inputs} & \textbf{hidden} & \textbf{output} & \textbf{biases} & \textbf{parameters} & \textbf{topology} & \textbf{l1 activation} & \textbf{l2 activation} \\
-            \midrule
-            fish\_toxicity & 6     & 3     & 1     & yes   & 25    & dense & LReLU ($\alpha = 0.3$) & sigmoid \\
-            iris  & 4     & 5     & 3     & yes   & 43    & dense & LReLU ($\alpha = 0.3$) & softmax \\
-            air\_quality & 12    & 8     & 1     & yes   & 113   & dense & LReLU ($\alpha = 0.3$) & sigmoid \\
-            housing & 13    & 8     & 1     & yes   & 121   & dense & LReLU ($\alpha = 0.3$) & sigmoid \\
-            wine\_quality & 13    & 10    & 7     & yes   & 217   & dense & LReLU ($\alpha = 0.3$) & softmax \\
-            parkinsons & 21    & 10    & 1     & yes   & 231   & dense & LReLU ($\alpha = 0.3$) & sigmoid \\
-            car   & 21    & 10    & 4     & yes   & 264   & dense & LReLU ($\alpha = 0.3$) & softmax \\
-            forest\_fires & 43    & 16    & 1     & yes   & 721   & dense & LReLU ($\alpha = 0.3$) & sigmoid \\
-            abalone & 10    & 36    & 28    & yes   & 1432  & dense & LReLU ($\alpha = 0.3$) & softmax \\
-            bank  & 51    & 32    & 1     & yes   & 1697  & dense & LReLU ($\alpha = 0.3$) & softmax \\
-            bike  & 61    & 32    & 1     & yes   & 2017  & dense & LReLU ($\alpha = 0.3$) & sigmoid \\
-            student\_performance & 99    & 32    & 1     & yes   & 3233  & dense & LReLU ($\alpha = 0.3$) & sigmoid \\
-            adult & 108   & 64    & 1     & yes   & 7041  & dense & LReLU ($\alpha = 0.3$) & softmax \\
-            mushroom & 117   & 64    & 1     & yes   & 7617  & dense & LReLU ($\alpha = 0.3$) & softmax \\
-            diabetic & 2369  & 32    & 3     & yes   & 75939 & dense & LReLU ($\alpha = 0.3$) & softmax \\
-        \end{tabular}%
-    }
+      \centering
+      \caption{Model configurations}
+      \label{tab:methodology:models:configurations}%
+      \par\bigskip
+      \resizebox{\textwidth}{!}{
+            \begin{tabular}{rcccccccc}
+                  \textbf{dataset}     & \textbf{inputs} & \textbf{hidden} & \textbf{output} & \textbf{biases} & \textbf{parameters} & \textbf{topology} & \textbf{l1 activation} & \textbf{l2 activation} \\
+                  \midrule
+                  fish\_toxicity       & 6               & 3               & 1               & yes             & 25                  & dense             & LReLU ($\alpha = 0.3$) & sigmoid                \\
+                  iris                 & 4               & 5               & 3               & yes             & 43                  & dense             & LReLU ($\alpha = 0.3$) & softmax                \\
+                  air\_quality         & 12              & 8               & 1               & yes             & 113                 & dense             & LReLU ($\alpha = 0.3$) & sigmoid                \\
+                  housing              & 13              & 8               & 1               & yes             & 121                 & dense             & LReLU ($\alpha = 0.3$) & sigmoid                \\
+                  wine\_quality        & 13              & 10              & 7               & yes             & 217                 & dense             & LReLU ($\alpha = 0.3$) & softmax                \\
+                  parkinsons           & 21              & 10              & 1               & yes             & 231                 & dense             & LReLU ($\alpha = 0.3$) & sigmoid                \\
+                  car                  & 21              & 10              & 4               & yes             & 264                 & dense             & LReLU ($\alpha = 0.3$) & softmax                \\
+                  forest\_fires        & 43              & 16              & 1               & yes             & 721                 & dense             & LReLU ($\alpha = 0.3$) & sigmoid                \\
+                  abalone              & 10              & 36              & 28              & yes             & 1432                & dense             & LReLU ($\alpha = 0.3$) & softmax                \\
+                  bank                 & 51              & 32              & 1               & yes             & 1697                & dense             & LReLU ($\alpha = 0.3$) & softmax                \\
+                  bike                 & 61              & 32              & 1               & yes             & 2017                & dense             & LReLU ($\alpha = 0.3$) & sigmoid                \\
+                  student\_performance & 99              & 32              & 1               & yes             & 3233                & dense             & LReLU ($\alpha = 0.3$) & sigmoid                \\
+                  adult                & 108             & 64              & 1               & yes             & 7041                & dense             & LReLU ($\alpha = 0.3$) & softmax                \\
+                  mushroom             & 117             & 64              & 1               & yes             & 7617                & dense             & LReLU ($\alpha = 0.3$) & softmax                \\
+                  diabetic             & 2369            & 32              & 3               & yes             & 75939               & dense             & LReLU ($\alpha = 0.3$) & softmax                \\
+            \end{tabular}%
+      }
 \end{table}%
 
 It should be noted that for the classification problems, the \index{softmax}softmax activation is not actually part of the model. It is just added for predictive output and is not needed during evaluation. The loss functions (\ac{SparseCatXE} and \ac{BinXE}) that are used contains a \index{softmax}softmax function. Models' initial weights are initialised by means of \index{Glorot uniform sampling}Glorot uniform sampling.
@@ -136,56 +136,56 @@ It should be noted that for the classification problems, the \index{softmax}soft
 \section{Heuristics/Optimisers}
 \label{sec:methodology:heuristics}
 
-This section provides the details of the standalone \index{heuristic}heuristics/optimisers that are used in the empirical process. 
+This section provides the details of the standalone \index{heuristic}heuristics/optimisers that are used in the empirical process.
 
 Table \ref{tab:methodology:heuristics} contain a list of all the standalone \index{heuristic}heuristics that are used as well as their hyper-parameter configuration.
 
 % Table generated by Excel2LaTeX from sheet 'BHH Baseline'
 \begin{table}[htbp]
-    \centering
-    \caption{Heuristics/optimisers and their hyper-parameter configuration of their}
-    \label{tab:methodology:heuristics}%
-    \par\bigskip
-    \resizebox{0.8\textwidth}{!}{
-            
-        \begin{tabular}{llll}
-            \textbf{heuristic} & \textbf{configuration} & \textbf{value} & \textbf{citation} \\
-            \midrule
-            sgd   & learning\_rate & 0.1**0.01 & \cite{ref:sutskever:2013} \\
-            momentum & learning\_rate & 0.1**0.01 & \cite{ref:sutskever:2013} \\
-                  & momentum & 0.9   &  \\
-            nag   & learning\_rate & 0.1**0.01 & \cite{ref:sutskever:2013} \\
-                  & momentum & 0.9   &  \\
-            adagrad & learning\_rate & 0.1**0.01 & \cite{ref:duchi:2011} \\
-                  & epsilon & 1E-07 &  \\
-            rmsprop & learning\_rate & 0.1**0.01 & \cite{ref:hinton:2012} \\
-                  & rho   & 0.95  &  \\
-                  & epsilon & 1E-07 &  \\
-            adadelta & learning\_rate & 1.0**0.95 & \cite{ref:zeiler:2012} \\
-                  & rho   & 0.95  &  \\
-                  & epsilon & 0.0000001 &  \\
-            adam  & learning\_rate & 0.1**0.01 & \cite{ref:kingma:2014} \\
-                  & beta1 & 0.9   &  \\
-                  & beta2 & 0.95  &  \\
-                  & epsilon & 1E-07 &  \\
-            pso   & population\_size & 10    & \cite{ref:van:2010} \\
-                  & learning\_rate & 0.1**0.01 &  \\
-                  & inertia\_weight (w) & 0.729844 &  \\
-                  & cognitive\_control (c1) & 1.49618 &  \\
-                  & social\_control (c2) & 1.49618 &  \\
-                  & velocity\_clip\_min & -1.0  &  \\
-                  & velocity\_clip\_max & 1.0   &  \\
-            de    & population\_size & 10    & \cite{ref:mezura:2006} \\
-                  & selection\_strategy & best  &  \\
-                  & xo\_strategy & exp   &  \\
-                  & recombination probability & 0.9**0.1 &  \\
-                  & beta  & 2.0**0.1 &  \\
-            ga    & population\_size & 10    & \cite{ref:lambora:2019} \\
-                  & selection\_strategy & rand  &  \\
-                  & xo\_strategy & bin   &  \\
-                  & mutation\_rate & 0.2**0.05 &  \\
-        \end{tabular}%
-    }
+      \centering
+      \caption{Heuristics/optimisers and their hyper-parameter configuration of their}
+      \label{tab:methodology:heuristics}%
+      \par\bigskip
+      \resizebox{0.8\textwidth}{!}{
+
+            \begin{tabular}{llll}
+                  \textbf{heuristic} & \textbf{configuration}    & \textbf{value} & \textbf{citation}          \\
+                  \midrule
+                  sgd                & learning\_rate            & 0.1**0.01      & ~\cite{ref:sutskever:2013} \\
+                  momentum           & learning\_rate            & 0.1**0.01      & ~\cite{ref:sutskever:2013} \\
+                                     & momentum                  & 0.9            &                            \\
+                  nag                & learning\_rate            & 0.1**0.01      & ~\cite{ref:sutskever:2013} \\
+                                     & momentum                  & 0.9            &                            \\
+                  adagrad            & learning\_rate            & 0.1**0.01      & ~\cite{ref:duchi:2011}     \\
+                                     & epsilon                   & 1E-07          &                            \\
+                  rmsprop            & learning\_rate            & 0.1**0.01      & ~\cite{ref:hinton:2012}    \\
+                                     & rho                       & 0.95           &                            \\
+                                     & epsilon                   & 1E-07          &                            \\
+                  adadelta           & learning\_rate            & 1.0**0.95      & ~\cite{ref:zeiler:2012}    \\
+                                     & rho                       & 0.95           &                            \\
+                                     & epsilon                   & 0.0000001      &                            \\
+                  adam               & learning\_rate            & 0.1**0.01      & ~\cite{ref:kingma:2014}    \\
+                                     & beta1                     & 0.9            &                            \\
+                                     & beta2                     & 0.95           &                            \\
+                                     & epsilon                   & 1E-07          &                            \\
+                  pso                & population\_size          & 10             & ~\cite{ref:van:2010}       \\
+                                     & learning\_rate            & 0.1**0.01      &                            \\
+                                     & inertia\_weight (w)       & 0.729844       &                            \\
+                                     & cognitive\_control (c1)   & 1.49618        &                            \\
+                                     & social\_control (c2)      & 1.49618        &                            \\
+                                     & velocity\_clip\_min       & -1.0           &                            \\
+                                     & velocity\_clip\_max       & 1.0            &                            \\
+                  de                 & population\_size          & 10             & ~\cite{ref:mezura:2006}    \\
+                                     & selection\_strategy       & best           &                            \\
+                                     & xo\_strategy              & exp            &                            \\
+                                     & recombination probability & 0.9**0.1       &                            \\
+                                     & beta                      & 2.0**0.1       &                            \\
+                  ga                 & population\_size          & 10             & ~\cite{ref:lambora:2019}   \\
+                                     & selection\_strategy       & rand           &                            \\
+                                     & xo\_strategy              & bin            &                            \\
+                                     & mutation\_rate            & 0.2**0.05      &                            \\
+            \end{tabular}%
+      }
 \end{table}%
 
 Take note that for Table \ref{tab:methodology:heuristics}, values that contains an asterisk ($*$) are configured on a schedule with the initial value depicted first and the decay rate is depicted last. The number of steps is the total number of steps for that particular dataset it is being applied to.
@@ -247,39 +247,39 @@ The \ac{BHH} baseline is a name given to a specific configuration of the \ac{BHH
 
 % Table generated by Excel2LaTeX from sheet 'BHH Baseline'
 \begin{table}[htbp]
-  \centering
-    \caption{BHH baseline configurations}
-    \label{tab:methodology:bhh_baseline_configuration}%
-    \par\bigskip
-    \resizebox{0.8\textwidth}{!}{
-        \begin{tabular}{rrcc}
-            \multicolumn{1}{c}{\textbf{hyper-heuristic}} & \multicolumn{1}{c}{\textbf{variant}} & \textbf{configuration} & \textbf{value} \\
-            \midrule
-            \multicolumn{1}{l}{bhh} & \multicolumn{1}{l}{baseline} & heuristic\_pool & all \\
-                  &       & population & 5 \\
-                  &       & credit & ibest \\
-                  &       & reselection & 10 \\
-                  &       & replay & 10 \\
-                  &       & reanalysis & 10 \\
-                  &       & normalise & false \\
-                  &       & discounted\_rewards & false \\
-        \end{tabular}%
-    }
+      \centering
+      \caption{BHH baseline configurations}
+      \label{tab:methodology:bhh_baseline_configuration}%
+      \par\bigskip
+      \resizebox{0.8\textwidth}{!}{
+            \begin{tabular}{rrcc}
+                  \multicolumn{1}{c}{\textbf{hyper-heuristic}} & \multicolumn{1}{c}{\textbf{variant}} & \textbf{configuration} & \textbf{value} \\
+                  \midrule
+                  \multicolumn{1}{l}{bhh}                      & \multicolumn{1}{l}{baseline}         & heuristic\_pool        & all            \\
+                                                               &                                      & population             & 5              \\
+                                                               &                                      & credit                 & ibest          \\
+                                                               &                                      & reselection            & 10             \\
+                                                               &                                      & replay                 & 10             \\
+                                                               &                                      & reanalysis             & 10             \\
+                                                               &                                      & normalise              & false          \\
+                                                               &                                      & discounted\_rewards    & false          \\
+            \end{tabular}%
+      }
 \end{table}%
 
-Table \ref{tab:methodology:bhh_baseline_configuration} refers to the \index{heuristic}heuristic pool that is used as \textit{all}. This refers to a configuration where the heuristic pool contains all the low-level heuristics as presented in Section \ref{sec:methodology:heuristics}. This list of low-level \index{heuristic}heuristics naturally also then form the list of standalone heuristics/optimisers to which the \ac{BHH} is compared and analysed as is described later in  Section \ref{sec:methodology:experiments:standalone_optimisers}. Specifically the finer details of the implementation of the \ac{BHH}, the low-level \index{heuristic}heuristic pool and how it is used is given in Chapter \ref{chap:bhh}. 
+Table \ref{tab:methodology:bhh_baseline_configuration} refers to the \index{heuristic}heuristic pool that is used as \textit{all}. This refers to a configuration where the heuristic pool contains all the low-level heuristics as presented in Section \ref{sec:methodology:heuristics}. This list of low-level \index{heuristic}heuristics naturally also then form the list of standalone heuristics/optimisers to which the \ac{BHH} is compared and analysed as is described later in  Section \ref{sec:methodology:experiments:standalone_optimisers}. Specifically the finer details of the implementation of the \ac{BHH}, the low-level \index{heuristic}heuristic pool and how it is used is given in Chapter \ref{chap:bhh}.
 
 
 \section{Performance Measures}
 \label{sec:methodology:performance_measures}
 
-This section sheds light into the performance measures that are used to evaluate the different experimental runs. 
+This section sheds light into the performance measures that are used to evaluate the different experimental runs.
 
 Chapter \ref{chap:anns} provided the reader with a number of techniques that are used to evaluate \ac{FFNN} performance during training. Broadly these techniques measure the output of some loss/cost function and accuracy for classification problems. For the classifications problems, the loss metrics used included \ac{SparseCatXE} and \ac{BinXE}. Their accuracy equivalent metrics are then also used. For regression problems, \ac{RMSE} is used as a loss metric.
 
 As mentioned in the preceding sections, datasets are split into a training set and a test dataset. The training set is used to train the model and the test set is used to test the model. Evaluation takes place at the end of each mini-batch iteration. Loss and accuracy is measured for both training and test datasets and is captured at each mini-batch iteration.
 
-Post processing of the results yield a average rank (by test loss metric) between configurations at each mini-batch step across all runs. This test loss metric and rank then form experimental results that are then statistically analysed. 
+Post processing of the results yield a average rank (by test loss metric) between configurations at each mini-batch step across all runs. This test loss metric and rank then form experimental results that are then statistically analysed.
 
 \section{Stopping Conditions}
 \label{sec:methodology:stopping_conditions}
@@ -309,7 +309,7 @@ This section presents the experimental groups that form part of the empirical pr
 
 This experimental group is concerned with objectively studying the behaviour of the \ac{BHH} baseline across a number of runs. This is meant to be an introductory analysis of the \ac{BHH} and includes analysis of the selection mechanism as well as the perturbative nature of the \ac{BHH}. It is important to mention that this experimental group is not meant to be statistically analysed, but to rather provide a detailed visual analysis of a number of hand-picked example runs, to determine if the \ac{BHH} is behaving as expected. It also provides a gentle introduction to the \ac{BHH}'s inner workings. From these observations, it is determined if the \ac{BHH} is learning and that selection is indeed biasing towards better performance. It also provides an opportunity to determine the outcome of the perturbative component of the \ac{BHH} which includes proxied \index{heuristic}heuristic update step operations.
 
-Two different configurations of the \ac{BHH} baseline is trained using the iris dataset \cite{ref:fisher:1936}. These configurations include a replay window size of 10 (short memory) and a high replay window size of 250 (long memory). Each configuration is repeat 3 times. Finally these configurations are compared to a run that is purely random.
+Two different configurations of the \ac{BHH} baseline is trained using the iris dataset~\cite{ref:fisher:1936}. These configurations include a replay window size of 10 (short memory) and a high replay window size of 250 (long memory). Each configuration is repeat 3 times. Finally these configurations are compared to a run that is purely random.
 
 The analysis is primarily done by dissecting the output of various parameters and studying the plots of their values. From these plots, conclusions about the \ac{BHH}'s behaviour is made.
 
@@ -330,25 +330,25 @@ This section provides the details of the experimental group that focuses on \ac{
 The different variants and their possible configurations is given in Table \ref{tab:methodology:experiments:bhh_variants} below.
 
 \begin{table}[htbp]
-    \centering
-    \caption{BHH variants and their configuration}
-    \label{tab:methodology:experiments:bhh_variants}%
-    \par\bigskip
-    \resizebox{0.9\textwidth}{!}{
-        \begin{tabular}{rcc}
-            \multicolumn{1}{c}{\textbf{hyper-heuristic}} & \textbf{variant} & \textbf{values} \\
-            \midrule
-            \multicolumn{1}{l}{bhh} & heuristic\_pool & all,gd,mh \\
-            & population & 5,10,15,20,25 \\
-            & credit & ibest,pbest,rbest,gbest,symmetric \\
-            & reselection & 1,5,10,15,20 \\
-            & replay & 1,5,10,15,20 \\
-            & reanalysis & 1,5,10,15,20 \\
-            & burn\_in & 0,5,10,15,20 \\
-            & normalise & false,true \\
-            & discounted\_rewards & false,true \\
-        \end{tabular}%
-    }
+      \centering
+      \caption{BHH variants and their configuration}
+      \label{tab:methodology:experiments:bhh_variants}%
+      \par\bigskip
+      \resizebox{0.9\textwidth}{!}{
+            \begin{tabular}{rcc}
+                  \multicolumn{1}{c}{\textbf{hyper-heuristic}} & \textbf{variant}    & \textbf{values}                   \\
+                  \midrule
+                  \multicolumn{1}{l}{bhh}                      & heuristic\_pool     & all,gd,mh                         \\
+                                                               & population          & 5,10,15,20,25                     \\
+                                                               & credit              & ibest,pbest,rbest,gbest,symmetric \\
+                                                               & reselection         & 1,5,10,15,20                      \\
+                                                               & replay              & 1,5,10,15,20                      \\
+                                                               & reanalysis          & 1,5,10,15,20                      \\
+                                                               & burn\_in            & 0,5,10,15,20                      \\
+                                                               & normalise           & false,true                        \\
+                                                               & discounted\_rewards & false,true                        \\
+            \end{tabular}%
+      }
 \end{table}%
 
 Take note that the \index{heuristics}heuristic pool options \textit{gd} and \textit{mh} refers to the \index{heuristics}heuristic pool configurations where the heuristic pools contain only gradient-descent heuristics or only \{index{meta-heuristics}meta-heuristics  respectively.
@@ -373,11 +373,11 @@ Regardless of the statistical test that is used, a post-hoc Tukey honest signifi
 \section{Implementation and Execution}
 \label{sec:methodology:implementation}
 
-This section sheds some light as to the details of the implementation and execution of the empircal process. 
+This section sheds some light as to the details of the implementation and execution of the empircal process.
 
 All implementation is done from first principles in Python 3.9 using Tensorflow 2.7 and Tensorflow Probability 0.15.0. Most underlying function are reused from the Tensorflow library, however, all heuristics/optimisers are implemented from first principles to fit the \ac{HH} framework that was developed. All source code and data is provided is resources in this dissertation.
 
-It should be noted that this implementation makes heavy use of CPU processing, due to the nature of modeling flattening for the \index{heuristic}heuristics. For this reason, execution is much more timely and costly than with GPU training. The authors hope that as the \ac{BHH} evolves, that better GPU implementations may speed up execution times. 
+It should be noted that this implementation makes heavy use of CPU processing, due to the nature of modeling flattening for the \index{heuristic}heuristics. For this reason, execution is much more timely and costly than with GPU training. The authors hope that as the \ac{BHH} evolves, that better GPU implementations may speed up execution times.
 
 With regards to the computational power that was used the execute this empirical process. All experiments were run on the CHPC's cluster. This included 14 servers each running 24-56 cores and 256GB memory each. The entire empirical process took 6 days.
 

@@ -2,9 +2,9 @@
 \label{chap:conclusion}
 
 \begin{quote}
-	\textit{
-		I am sorry to have made such a long speech, but I did not have time to make a shorter one. - Winston Churchill
-	}
+      \textit{
+            I am sorry to have made such a long speech, but I did not have time to make a shorter one. - Winston Churchill
+      }
 \end{quote}
 
 Finally, the research objectives that have been set out in this dissertation must be concluded. This chapter provides a summary of the research that has been done.
@@ -12,21 +12,21 @@ Finally, the research objectives that have been set out in this dissertation mus
 The remainder of the chapter is structured as follows:
 
 \begin{itemize}
-	\item \textbf{Section \ref{sec:conclusion:research_goals}} provides a review of the problem statement, objectives and motivations behind the research.
+      \item \textbf{Section \ref{sec:conclusion:research_goals}} provides a review of the problem statement, objectives and motivations behind the research.
 
-	\item \textbf{Section \ref{sec:conclusion:background_info}} summarises the background information that was covered.
+      \item \textbf{Section \ref{sec:conclusion:background_info}} summarises the background information that was covered.
 
-	\item \textbf{Section \ref{sec:conclusion:bhh}} provides a brief recap of the \ac{BHH} and its implementation.
+      \item \textbf{Section \ref{sec:conclusion:bhh}} provides a brief recap of the \ac{BHH} and its implementation.
 
-	\item \textbf{Section \ref{sec:conclusion:methodology}} provides a brief recap of the methodology and the empirical process that was followed.
+      \item \textbf{Section \ref{sec:conclusion:methodology}} provides a brief recap of the methodology and the empirical process that was followed.
 
-	\item \textbf{Section \ref{sec:conclusion:results}} summarises the research findings.
+      \item \textbf{Section \ref{sec:conclusion:results}} summarises the research findings.
 
-	\item \textbf{Section \ref{sec:conclusion:further_research}} discuss further research opportunities.
+      \item \textbf{Section \ref{sec:conclusion:further_research}} discuss further research opportunities.
 
-	\item \textbf{Section \ref{sec:conclusion:documentation_and_data}} briefly discusses some supplementary and supporting material related to the research, as made available by the authors either as external sources or in the appendices of this dissertation.
+      \item \textbf{Section \ref{sec:conclusion:documentation_and_data}} briefly discusses some supplementary and supporting material related to the research, as made available by the authors either as external sources or in the appendices of this dissertation.
 
-	\item Finally, \textbf{Section \ref{sec:conclusion:closing_statements}} provides the closing statements of the dissertation.
+      \item Finally, \textbf{Section \ref{sec:conclusion:closing_statements}} provides the closing statements of the dissertation.
 \end{itemize}
 
 \section{Reviewing Research Objectives}
@@ -36,26 +36,26 @@ This section briefly reviews the problem statement, motivations and research obj
 
 The main area of focus for this research stems from the problem statement which identified the difficult and tedious problem of heuristic selection for \ac{FFNN} training. Often times this process is non-trivial and very time-consuming. It has been identified that there is no easy way to know which heuristic to select to train \acp{FFNN}. Traditionally, an iterative approach of trial-and-error was followed. This process involves a tedious process of careful consideration and selection, often at the expense of the researcher's resources.  This research has identified the possibility of using a relatively new approach, referred to as \acp{HH} to automate this selection process. \ac{HH} has been shown to provide a general solution to this problem. The consequences of such approach being successful could provide a mechanism that saves a lot of time and could provide a more generalised solution to heuristic selection.
 
-Investigation was done into the landscapes of existing solutions to train \acp{FFNN} as well as \acp{HH}. Though there exists many applications of \acp{HH} there are little to no published work on using \acp{HH} to train \acp{FFNN}. The only work that was found include the work by \citeauthor{ref:nel:2021} \cite{ref:nel:2021}.
+Investigation was done into the landscapes of existing solutions to train \acp{FFNN} as well as \acp{HH}. Though there exists many applications of \acp{HH} there are little to no published work on using \acp{HH} to train \acp{FFNN}. The only work that was found include the work by~\citeauthor{ref:nel:2021}~\cite{ref:nel:2021}.
 
 Other existing techniques from other problem domains were investigated. \ac{RL}, meta-learning, online, one-shot and probabilistic learning approached were considered. Bayesian probability theory showed promise and the \Ac{BHH} was conceptualised.
 
 The research objectives were defined and are summarised as follows:
 
 \begin{itemize}
-	\item Conduct literature studies on all related topics that are relevant to the development of the \ac{BHH}. These include \ac{ANN}, \index{heuristic}heuristics/optimisers, meta-learning, \acp{HH}, probability theory and Bayesian statistics.
+      \item Conduct literature studies on all related topics that are relevant to the development of the \ac{BHH}. These include \ac{ANN}, \index{heuristic}heuristics/optimisers, meta-learning, \acp{HH}, probability theory and Bayesian statistics.
 
-	\item Develop a novel \ac{BHH} that has both a selective and perturbative element. For the selection mechanism, Bayesian statistics and \ac{MAP} is used. For the perturbative element, proxied low-level \index{heuristic}heuristic update steps are used.
+      \item Develop a novel \ac{BHH} that has both a selective and perturbative element. For the selection mechanism, Bayesian statistics and \ac{MAP} is used. For the perturbative element, proxied low-level \index{heuristic}heuristic update steps are used.
 
-	\item Conduct an empirical study to show that the \ac{BHH} is able to train \acp{FFNN} effectively on a number of different datasets.
+      \item Conduct an empirical study to show that the \ac{BHH} is able to train \acp{FFNN} effectively on a number of different datasets.
 
-	\item Conduct an empirical study to study the behavioural characteristics of the \ac{BHH}.
+      \item Conduct an empirical study to study the behavioural characteristics of the \ac{BHH}.
 
-	\item Conduct an empirical study to critically evaluate the performance of the \ac{BHH} to those of traditional, low-level \index{heuristic}heuristic when training \acp{FFNN} on a number of different datasets.
+      \item Conduct an empirical study to critically evaluate the performance of the \ac{BHH} to those of traditional, low-level \index{heuristic}heuristic when training \acp{FFNN} on a number of different datasets.
 
-	\item Conduct an empirical study to evaluate variants of the \ac{BHH} to study the impacts of various design decisions on the outcomes of the \ac{BHH}.
+      \item Conduct an empirical study to evaluate variants of the \ac{BHH} to study the impacts of various design decisions on the outcomes of the \ac{BHH}.
 
-	\item Provide a statistically sound evaluation of outcomes with statistical significance tests driving the conclusions of the outcomes.
+      \item Provide a statistically sound evaluation of outcomes with statistical significance tests driving the conclusions of the outcomes.
 \end{itemize}
 
 As one can see, the research set out to do in this dissertation was quite extensive and also identifies many different opportunities for future research.
@@ -84,11 +84,11 @@ Furthermore, it is shown that selection alone is not enough and that a measure o
 The simplicity of the \ac{BHH} and various challenges related to it have been highlighted. Of these challenge include:
 
 \begin{itemize}
-	\item Catering for overfitting by early stopping conditions.
-	\item Catering for invalid selections.
-	\item Catering for invalid or stale entity and \index{heuristic}heuristic states.
-	\item Catering for mode-collapse where a \index{heuristic}heuristic is either always selected or never selected.
-	\item Catering for a trade-off between exploration and exploitation.
+      \item Catering for overfitting by early stopping conditions.
+      \item Catering for invalid selections.
+      \item Catering for invalid or stale entity and \index{heuristic}heuristic states.
+      \item Catering for mode-collapse where a \index{heuristic}heuristic is either always selected or never selected.
+      \item Catering for a trade-off between exploration and exploitation.
 \end{itemize}
 
 After the development of the \ac{BHH}, the authors presented the methodology used to execute the empirical process. The details of which is summarised in the next section.
@@ -101,20 +101,20 @@ After the development of the \ac{BHH}, the authors presented the methodology use
 As discussed above, the research objectives defined a number of empirical tests to be executed. Each one of the empirical tests is referred to as an experimental group. Various experimental groups have been identified and is listed below:
 
 \begin{itemize}
-	\item A case-study on the behaviour of the \ac{BHH} during training and testing to understand the workings of the \ac{BHH} and to see if the \ac{BHH} is able to train \acp{FFNN}.
-	\item A comparative analysis between the performance of standalone \index{heuristic}heuristics and the baseline \ac{BHH} when training \acp{FFNN}.
-	\item A comparative analysis between variants of the \ac{BHH} that include:
-	      \begin{itemize}
-		      \item Different \index{heuristic}heuristic pool configurations.
-		      \item Different population sizes.
-		      \item Different credit assignment strategies.
-		      \item Different reselection window sizes.
-		      \item Different replay window sizes.
-		      \item Different reanalysis window sizes.
-		      \item Different burn in window sizes.
-		      \item Enabling and disabling normalisation of pseudo counts in the performance log.
-		      \item Enabling and disabling discounted rewards of pseudo counts in the performance log.
-	      \end{itemize}
+      \item A case-study on the behaviour of the \ac{BHH} during training and testing to understand the workings of the \ac{BHH} and to see if the \ac{BHH} is able to train \acp{FFNN}.
+      \item A comparative analysis between the performance of standalone \index{heuristic}heuristics and the baseline \ac{BHH} when training \acp{FFNN}.
+      \item A comparative analysis between variants of the \ac{BHH} that include:
+            \begin{itemize}
+                  \item Different \index{heuristic}heuristic pool configurations.
+                  \item Different population sizes.
+                  \item Different credit assignment strategies.
+                  \item Different reselection window sizes.
+                  \item Different replay window sizes.
+                  \item Different reanalysis window sizes.
+                  \item Different burn in window sizes.
+                  \item Enabling and disabling normalisation of pseudo counts in the performance log.
+                  \item Enabling and disabling discounted rewards of pseudo counts in the performance log.
+            \end{itemize}
 \end{itemize}
 
 Each experimental group is run against a set of 15 datasets, consisting of regression and classification problems, split between uni- and multimodal problems. Each experimental group is repeated over 30 runs for statistical certainty. The statistical analysis process was discussed and ANOVA, post hoc Tukey, independent T-test and Kruskal-Wallis formed part of the statistical test repertoir.
@@ -136,11 +136,11 @@ For this experimental group it was found that the \ac{BHH} is able to train \acp
 It was shown how the \ac{BHH} drastically overfits at some point during training for a number of datasets. Although it is known that early stopping conditions would prohibit this from happening, other solutions have also been proposed. These include:
 
 \begin{itemize}
-	\item \index{heuristic}Heuristic selection acceptance criteria: where a selection is only deemed valid if it does indeed improve on performance.
+      \item \index{heuristic}Heuristic selection acceptance criteria: where a selection is only deemed valid if it does indeed improve on performance.
 
-	\item State reset: to avoid overshooting solutions due to momentum.
+      \item State reset: to avoid overshooting solutions due to momentum.
 
-	\item Various techniques to balance exploration and exploitation.
+      \item Various techniques to balance exploration and exploitation.
 \end{itemize}
 
 Various example plots on training and test datasets have been provided and detailed plots of the inner-workings of the \ac{BHH} have been presented to support the findings and arguments.
@@ -235,10 +235,10 @@ It was shown that generally larger reselection window sizes are required. It was
 This dissertation only considered 3 different configurations of the heuristic pool. The following alternative  configurations could be considered:
 
 \begin{itemize}
-	\item Multiple of the same heuristic, but with different hyper-parameter values.
-	\item Very large or very small heuristic pool sizes.
-	\item Inclusion of black-box optimisers such as CMA-ES.
-	\item Ensemble pools where the heuristic selection is a selection of a ensemble configuration.
+      \item Multiple of the same heuristic, but with different hyper-parameter values.
+      \item Very large or very small heuristic pool sizes.
+      \item Inclusion of black-box optimisers such as CMA-ES.
+      \item Ensemble pools where the heuristic selection is a selection of a ensemble configuration.
 \end{itemize}
 
 \subsubsection{Parameter Pools}
