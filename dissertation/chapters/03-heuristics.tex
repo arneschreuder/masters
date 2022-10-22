@@ -64,7 +64,7 @@ Chapter~\ref{chap:anns} introduced the reader to \index {supervised learning}sup
 \begin{figure}[htbp]
       \centering
       \includegraphics[width=0.85\textwidth]{images/gradient_descent.pdf}
-      \caption{An illustration of \acs{GD} over various timesteps showing the minimisation of the error with regards to weight value.}
+      \caption{An illustration of \acf{GD} over various timesteps showing the minimisation of the error with regards to weight value.}
       \label{fig:heuristics:gd:gd_illustration}
 \end{figure}
 
@@ -93,39 +93,37 @@ In Equation~\eqref{eq:heuristics:gd:update_step_part_2} above, $\eta$ is the lea
 \end{equation}
 
 \noindent
-In the context of training \textit{shallow} \acp{FFNN} using \index{supervised learning}supervised learning, the error signal is propagated backwards in the network from the output layer, through the hidden layer. The algorithm that propagates the error signal backwardds is known as \acf{BP}. \Acs{BP} was popularised by~\citeauthor{ref:werbos:1994}~\cite{ref:werbos:1994}.~\citeauthor{ref:nel:2021}~\cite{ref:nel:2021} states that \acs{BP} provides a procedure for updating the network weights, layer by layer, by evaluating the derivatives of the error function $\epsilon$ with respect to the weights at each layer.~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007}describes the \acs{BP} process in two steps:
+In the context of training \textit{shallow} \acp{FFNN}, using \index{supervised learning}supervised learning, the error signal is propagated backwards in the network from the output layer, through the hidden layer. The algorithm that propagates the error signal backwardds is known as \acf{BP}. \Acs{BP} was popularised by~\citeauthor{ref:werbos:1994}~\cite{ref:werbos:1994}.~\citeauthor{ref:nel:2021}~\cite{ref:nel:2021} states that \acs{BP} provides a procedure for updating the network weights, layer by layer, by evaluating the derivatives of the error function $\epsilon$ with respect to the weights at each layer.~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007}describes the \acs{BP} process in two steps:
 
 \begin{itemize}
       \item \textbf{Feedforward Pass}: During this phase the output values of the \acs{FFNN} is calculcated for each training pattern.
-      \item \textbf{Backward Propagation}: During this phase the error signal that is calculated as is shown above in Equations~\eqref{eq:heuristics:gd:update_step_part_1}-~\eqref{eq:heuristics:gd:update_step_part_3} is propagated backwards from the output layer, through the hidden layer, to the input layer of the \acs{FFNN}. Weights are then adjusted as functions of the backpropagated error signal.
+
+      \item \textbf{Backward Propagation}: During this phase the error signal that is calculated as is shown above in Equations~\eqref{eq:heuristics:gd:update_step_part_1}, ~\eqref{eq:heuristics:gd:update_step_part_2} and~\eqref{eq:heuristics:gd:update_step_part_3} is propagated backwards from the output layer, through the hidden layer, to the input layer of the \acs{FFNN}. Weights are then adjusted as functions of the backpropagated error signal.
 \end{itemize}
 
-
-\subsection{Stochastic Gradient Descent}\label{sec:heuristics:gd:sgd}
-
-This section shines light on the algorithmic implementation of \ac{BP} with specific context to \ac{SGD}. The algorithm is provided followed by a simplification of the update-step that provides the basis for the next gradient-based heuristics that follow.
-
-The pseudo-code implementation for the \acs{SGD} algorithm is taken from~\cite{ref:engelbrecht:2007} and is presented in Algorithm~\ref{algo:heuristics:gd:sgd} below.
+\noindent
+The pseudo-code implementation for the generic \acs{GD} algorithm is taken from~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} and is presented in Algorithm~\ref{algo:heuristics:gd:gd} below.
 
 \begin{algorithm}[H]
-      \caption{The pseudo code algorithm for the \acs{SGD} heuristic.}
-      \label{algo:heuristics:gd:sgd}
+      \caption{The pseudo code algorithm for the generic \acf{GD} heuristic.}
+      \label{algo:heuristics:gd:gd}
       \begin{algorithmic}
-            \State Initialise weights, $\eta$, $\alpha$ and the number of epochs $t=0$;
-            \While{stopping condition not met}
-            let $\epsilon_{T} = 0$
+            \State Initialise the \acs{FFNN} weights and biases, the learning rate $\eta$ and the timestep/epoch $T=0$;
+            \While{stopping conditions are not met}
+            \State Let $\epsilon_{T} = 0$;
             \For{each training pattern p}
-            \State Do the feedforward pass phase to calculate $y_{j,p}$ ($\forall j = 1, \dots, J$) and $o_{k,p}$ ($\forall k = 1, \dots, K$);
+            \State Do the feedforward pass phase to calculate the output of the hidden layer $y_{j,p}$ ($\forall j = 1, \dots, J$), and the output of the output layer $o_{k,p}$ ($\forall k = 1, \dots, K$);
             \State Compute the output error signals $\delta_{o_{k,p}}$ and the hidden layer error signals $\delta_{y_{j,p}}$;
-            \State Adjust the weights $w_{kj}$ and $v_{ji}$ (backpropagation of errors);
-            \State $\epsilon_{T}$ += $[\epsilon_{p} = \sum^{K}_{k=1}(t_{k,p} - o_{k,p})^{2}]$;
+            \State Adjust the weights of the output layer $w_{kj}$, and the weights of the hidden layer $v_{ji}$ (backpropagation of errors);
+            \State $\epsilon_{T}$ += $[\epsilon_{T_{p}} = \sum^{K}_{k=1}(t_{k,p} - o_{k,p})^{2}]$; (assuming the use of \acs{SSE} as the loss function)
             \EndFor
-            \State $t = t + 1$;
+            \State $T += 1$;
             \EndWhile
       \end{algorithmic}
 \end{algorithm}
 
-In order to provide a simplified frame of reference from which the gradient-based heuristics are compared, consider a simplification of the update-step for the weights of the \acs{FFNN} as is done using \ac{SGD} below.
+\noindent
+In order to provide a simplified frame of reference from which the gradient-based heuristics are compared, consider a simplification of the update-step for \acs{SGD} as presented in Equation~\eqref{eq:heuristics:gd:update_step_part_1}. This simplification is depicted in Equation~\eqref{eq:heuristics:gd:sgd} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:sgd}
@@ -134,51 +132,65 @@ In order to provide a simplified frame of reference from which the gradient-base
       \end{split}
 \end{equation}
 
-In Equation~\ref{eq:heuristics:gd:sgd} $w$ refers to the weights of the \acs{FFNN}, $\eta$ refers to the learning rate as before and $\nabla_{w}\mathcal{E}(w)$ refers to the gradient of the loss/cost function w.r.t the output of the \acs{FFNN} as a result of its weights. Note that all subscripts w.r.t. layers and training patterns are omitted for convenience.
+\noindent
+In Equation~\eqref{eq:heuristics:gd:sgd} above, $w$ refers to the weights of the \acs{FFNN}, $\eta$ refers to the learning rate as before and $\nabla_{w}\mathcal{E}(w)$ refers to the gradient of the loss function $\mathcal{E}$, w.r.t the output of the \acs{FFNN} as a result of its weights. Note that all subscripts w.r.t. layers and training patterns are omitted for convenience.
 
-So far detailed mathematical descriptions have been provided to illustrate the concept of \ac{GD} and how it applies to the \acs{SGD} heuristic as applied to \ac{FFNN} training. It was mentioned that \ac{SGD} was one of the first widely used heuristics to train \ac{FFNN}, however, it is not without flaws. With stochastic learning, only one training pattern is presented at each iteration. As such, weight updates are done with high variance and noise~\cite{ref:ruder:2016}. An illustration of the the fluctuations caused by \ac{SGD} during training is given in Figure~\ref{fig:heuristics:gd:sgd}.
+\subsection{Stochastic vs. Batch Training}\label{sec:heuristics:gd:sgd}
+
+This section shines light on the algorithmic implementation of \ac{BP} with specific context to stochastic and batch training. The implementation of \acs{GD} using stochastic training is referred to as \acf{SGD}.
+
+\acs{SGD} was one of the first widely used heuristics to train \ac{FFNN}, however, it is not without flaws. With stochastic training, only one training pattern is presented at each iteration/epoch. As such, weight updates are done with high variance and noise~\cite{ref:ruder:2016}. An illustration of the the fluctuations caused by \ac{SGD} during training is given in Figure~\ref{fig:heuristics:gd:sgd}.
 
 \begin{figure}[htbp]
-      \includegraphics[width=\textwidth]{images/sgd.png}
-      \caption{An illustration of \ac{SGD} fluctuations during training as taken from~\cite{ref:sgd:2006}.}
+      \centering
+      \includegraphics[width=0.9\textwidth]{images/sgd.png}
+      \caption{An illustration of \acf{SGD} fluctuations during training as taken from~\cite{ref:sgd:2006}.}
       \label{fig:heuristics:gd:sgd}
 \end{figure}
 
-With batch learning, all the training patterns are presented at once and the \acs{FFNN} converges to the minimum of the loss/cost function w.r.t $w$. However, this is computationally expensive and intractable to implement in many situations. While \ac{SGD} is able to jump out of local minima into new, potentially better local minima~\cite{ref:ruder:2016}, it does at first this seems advantageous. However, this complicates convergence to the exact minima as \ac{SGD} can potentially keep overshooting better minima. It is shown that a slow decrease in the learning rate $\eta$ will lead to the same convergence behaviour as with batch learning, almost certainly converging to local or global minima for non-convex and convex optimisation respectively. A compromise to this problem is to include mini-batches of training patterns where a small number of training patterns are presented to the \acs{FFNN} at once. This means that the input patterns from mini-batches are just approximations of the total population of training patterns. According to~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} this has two main advantages
+\noindent
+With batch training, all the training patterns are presented at once and the \acs{FFNN} converges to the global minimum of the loss function w.r.t $w$ (assuming the loss function is convex). However, this is computationally expensive and impractical to implement in many situations. While \acs{SGD} is able to jump out of local minima into new, potentially better local minima~\cite{ref:ruder:2016}, \acs{SGD} complicates convergence to the minima as \acs{SGD} can potentially keep overshooting better minima. By slowly decreasing the learning rate $\eta$ during training, the same convergence behaviour is achieved as with batch training.
+
+A compromise to overshooting minima that \acs{SGD} suffers from, is to include mini-batches of training patterns where a small number of training patterns are presented to the \acs{FFNN} at once. This is referred to as \textit{mini-batch} training. Input patterns from mini-batches are approximations of the total population of training patterns. According to~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} this has two main advantages:
 
 \begin{itemize}
-      \item Reduces the high variance of weight updates which leads to better convergence
-      \item Allows for the implementation of \ac{SGD} using highly optimised matrix operations, common to the state-of-the-art \ac{ML} libraries used today.
+      \item Mini-batch training reduces the high variance of weight updates as observed for \acs{SGD}, which leads to better convergence.
+
+      \item Mini-batch training allows for the implementation of \acs{GD} using highly optimised matrix operations, common to the state-of-the-art \acs{ML} libraries used today.
 \end{itemize}
 
-In the context of this dissertation, \ac{SGD} refers to the mini-batch learning implementation. Although mini-batch \ac{SGD} does provide a compromise between single-pattern and batch learning there are still a number of challenges posed by this approach. These include:
+\noindent
+In the context of this dissertation, the implementation of \acs{SGD} refers to the mini-batch training implementation of \acs{GD}. Although mini-batch training does provide a compromise between stochastic and batch training, there are still a number of challenges faced by mini-batch training. These include:
 
 \begin{itemize}
       \item The appropriate value to use for the learning rate $\eta$ is difficult to determine and is often problem-specific. A learning rate that is too small causes premature exploitation, leading to slow and bad convergence. On the contrary, a learning rate that is too high may lead to bad learning outcomes as the heuristic keeps overshooting good minima.
 
       \item Learning rate schedules~\cite{ref:robbins:1951} can be introduced to dynamically change the learning rate throughout the training process, however, these schedules and their parameters have to be defined a priori and are thus problem specific~\cite{ref:darken:1992}.
 
-      \item The learning rate that has been introduced so far is applied to all weight updates. If the training data is sparse and the features have very different frequencies an equal update to all weights is inefficient. Larger weight updates are required for less frequently occurring features. This problem eludes to the credit assignment problem~\cite{ref:rumelhart:1986} common to these \ac{GD} variants.
+      \item The learning rate that has been introduced so far is applied to all elements of the weight vector updates. If the training data is sparse and the features have very different frequencies, an equal update to all weights elements is inefficient. Larger weight updates are required for less frequently occurring features. Inefficient updates of all elements in the weight vectors contribute to the credit assignment problem~\cite{ref:rumelhart:1986}, common to \acs{GD} variants.
 
-      \item It is difficult to avoid getting trapped in local minima, especially for highly non-convex loss/cost functions used for \ac{ANN} training.~\cite{ref:dauphin:2014} argues that this difficulty arises not from local minima, but from sadle points. Sadle points are points at which one dimensions slopes upwards while another dimension slopes downwards.~\cite{ref:ruder:2016} mentions that these sadle points are usually surrounded by plateaus of the same error, leading to gradients that are close to zero in all dimensions.
+      \item It is difficult to avoid getting trapped in local minima, especially for highly non-convex loss functions used for training \acp{FFNN}. \citeauthor{ref:dauphin:2014}~\cite{ref:dauphin:2014} mentions the role of sadle points in getting trapped in local minima. Sadle points are points at which one dimensions slopes upwards, while another dimension slopes downwards. \citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that these sadle points are usually surrounded by plateaus of the same error, leading to gradients that are close to zero in all dimensions.
 \end{itemize}
 
+\noindent
+Alternative variants have been proposed that lead to better control over the convergence characteristics caused by \acs{GD}. The first of these \acs{GD} variants include \acs{Momentum} and is presented in the following section.
 
-Alternative methods have been proposed that lead to better control over the convergence characteristics caused by \ac{GD} variants. The first of these include \ac{Momentum} and is presented next.
 
+\subsection{Momentum}\label{sec:heuristics:gd:momentum}
 
-\subsection{Momentum}
-\label{sec:heuristics:gd:momentum}
+Research shows that \ac{SGD} has difficulty navigating ravines~\cite{ref:sutton:1986}. Ravines are areas where the surface curves much more steeply in one dimension than in another. These ravines are common around local minima. As such, \acs{SGD} is shown to oscillate across the slopes of the ravine while only making minor progress towards the local minima.
 
-Research shows that \ac{SGD} has difficulty navigating ravines i.e. areas where the surface curves much more steeply in one dimension than in another~\cite{ref:sutton:1986}. These ravines are common around local minima. As such, \ac{SGD} is shown to oscillate across the slopes of the ravine while only making minor progress towards the local minima. An illustration of this is given in Figure~\ref{fig:heuristics:gd:sgd_with_and_without_momentum}.
+\Acs{Momentum} ~\cite{ref:qian:1999} is a variant of the \acs{SGD} that helps accelerate \ac{SGD} in the relevant direction, dampening oscillations.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that this is done by adding a fraction $\alpha$, of the weight update vector of the previous timestep to the current weight update vector. An illustration of \acs{SGD} with and without momentum is given in Figure~\ref{fig:heuristics:gd:sgd_with_and_without_momentum}.
 
 \begin{figure}[htbp]
-      \includegraphics[width=\textwidth]{images/sgd_with_and_without_momentum.png}
-      \caption{An illustration of \ac{SGD} with and without momentum taken from~\cite{ref:du:2019}.}
+      \centering
+      \includegraphics[width=0.99\textwidth]{images/sgd_with_and_without_momentum.pdf}
+      \caption{An illustration of \acf{SGD} with and without momentum taken from~\cite{ref:du:2019}.}
       \label{fig:heuristics:gd:sgd_with_and_without_momentum}
 \end{figure}
 
-Momentum~\cite{ref:qian:1999} is a variant of the \acs{SGD} that helps accelerate \ac{SGD} in the relevant direction, dampening oscillations.~\cite{ref:ruder:2016} mentions that this is done by adding a fraction $\alpha$ of the weight update vector of the previous timestep to the current weight update vector. The accumulation of momentum is presented in Equation~\ref{eq:heuristics:gd:momentum_part_1} while the update step is then amended in Equation~\ref{eq:heuristics:gd:momentum_part_2} below.
+\noindent
+The accumulation of momentum is presented in Equation~\eqref{eq:heuristics:gd:momentum_part_1} below, while the update step is then amended in Equation~\ref{eq:heuristics:gd:momentum_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:momentum_part_1}
@@ -194,22 +206,25 @@ Momentum~\cite{ref:qian:1999} is a variant of the \acs{SGD} that helps accelerat
       \end{split}
 \end{equation}
 
-By redefining the \acs{SGD} update steps as shown above, the \acs{Momentum} heuristic allows for the increase of momentum for dimensions whose gradients point in the same direction, while simultaneously reducing momentum for dimensions whose gradients change direction, leading to faster convergence and less oscillation. The momentum term $\alpha$ is usually set to 0.9~\cite{ref:engelbrecht:2007}\cite{ref:ruder:2016}.
+\noindent
+By redefining the \acs{SGD} update steps as shown above in Equations~\eqref{eq:heuristics:gd:momentum_part_1} and~\eqref{eq:heuristics:gd:momentum_part_2}, the \acs{Momentum} heuristic allows for the increase of momentum for dimensions whose gradients point in the same direction, while simultaneously reducing momentum for dimensions whose gradients change direction, leading to faster convergence and less oscillation. The momentum term $\alpha$ is usually set to 0.9~\cite{ref:engelbrecht:2007, ref:ruder:2016}.
 
 
-\subsection{Nesterov Accelerated Gradients}
-\label{sec:heuristics:nag}
+\subsection{Nesterov Accelerated Gradients}\label{sec:heuristics:nag}
 
-\Acl{NAG} is a variant of the \acs{Momentum} heuristics developed by Ilya Sutskever~\cite{ref:sutskever:2013-2} and is inspired from Yurii Nesterov's~\cite{ref:nesterov:1983} work on optimising convex functions. \ac{NAG} provides an improvement to the momentum accumulation term by providing a look-ahead term that better refines the weight update step. In the \acs{NAG} heuristic, the gradient is not calculated w.r.t the current weights, but rather w.r.t the approximate future positions of the weights~\cite{ref:ruder:2016}. An illustration of this is taken from Geoffrey Hinton's lecture on mini-batch \ac{GD}~\cite{ref:hinton:2012} and is presented in Figure~\ref{fig:heuristics:gd:nag} below.
+\Acf{NAG} is a variant of the \acs{Momentum} heuristic developed by~\citeauthor{ref:sutskever:2013-2}~\cite{ref:sutskever:2013-2} and is inspired from~\citeauthor{ref:nesterov:1983}~\cite{ref:nesterov:1983} work on optimising convex functions. \ac{NAG} provides an improvement to the momentum accumulation term by providing a look-ahead term that better refines the weight update step.
+
+In the \acs{NAG} heuristic, the gradient is not calculated w.r.t the current weights, but rather w.r.t the approximate future positions of the weights~\cite{ref:sutskever:2013-2, ref:ruder:2016}. An illustration of the weight update vector using \acs{NAG} is taken from Geoffrey Hinton's lecture on mini-batch \acs{GD}~\cite{ref:hinton:2012} and is presented in Figure~\ref{fig:heuristics:gd:nag} below.
 
 \begin{figure}[htbp]
-      \includegraphics[width=\textwidth]{images/nag.png}
-      \caption{An illustration of the weight update vector for \ac{NAG} taken from~\cite{ref:hinton:2012}.}
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/nag.pdf}
+      \caption{An illustration of the weight update vector for \acf{NAG} taken from~\cite{ref:hinton:2012}.}
       \label{fig:heuristics:gd:nag}
 \end{figure}
 
-
-\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} explains the update step as is done by \ac{NAG} is follows. \ac{Momentum} first computes the current gradient. This is seen by the small blue vector presented in Figure~\ref{fig:heuristics:gd:nag}. A large step is taken in the direction of the updated accumulated gradient, presented by the big blue vector. \ac{NAG} then first takes a big step in the direction of the previous accumulated gradient presented by the brown vector. At this point the gradient is measured and \ac{NAG} then makes a correction (red vector), which results in the complete NAG update (green vector). By anticipating approximate future positions of the weights, the weight update step as defined by \ac{NAG} controls the optimisation process from from going too fast and results in increased responsiveness. The \ac{NAG} weight vector update steps are given in Equations~\ref{eq:heuristics:gd:nag_part_1} and~\ref{eq:heuristics:gd:nag_part_2} below.
+\noindent
+The difference in the update step for \acs{Momentum} and the update step for \ac{NAG} as developed by~\citeauthor{ref:sutskever:2013-2}~\cite{ref:sutskever:2013-2} is described by~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} as follows. \ac{Momentum} first calculates the current gradient, represented by the small blue vector in Figure~\ref{fig:heuristics:gd:nag} and then takes a large step in the direction of the updated accumulated gradient, presented by the big blue vector. In contrast, \acs{NAG} first takes a big step in the direction of the previous accumulated gradient presented by the brown vector. At this point the gradient is measured and \acs{NAG} makes a correction represented by the red vector. The complete update step is represented by the green vector. By anticipating approximate future positions of the weights, the weight update step as defined by \ac{NAG} controls the optimisation process from going too fast and results in increased responsiveness~\cite{ref:bengio:2013}. The \acs{NAG} update steps are given in Equations~\eqref{eq:heuristics:gd:nag_part_1} and~\eqref{eq:heuristics:gd:nag_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:nag_part_1}
@@ -225,14 +240,11 @@ By redefining the \acs{SGD} update steps as shown above, the \acs{Momentum} heur
       \end{split}
 \end{equation}
 
-The next logical step in the improvement of the weight vector update step is to tailor the update steps for each weight parameter controlling the magnitude of the update step based on the relevance and importance for that dimension.
+\subsection{Adaptive Gradients}\label{sec:heuristics:adagrad}
 
-\subsection{Adaptive Gradients}
-\label{sec:heuristics:adagrad}
+\Acf{Adagrad} is an adaptation of \ac{SGD} which implements a learning rate for every element in the weight vector and is developed by Duchi et al.~\cite{ref:duchi:2011}.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that \acs{Adagrad} adapts the learning rate to the elements of the weight vector, by  performing small updates (i.e. low learning rates) for weights associated with frequently occurring features and larger updates (i.e. high learning rates) for weights associated with infrequent features. For this reason, \acs{Adagrad} is well suited for dealing with situations where training data is sparse.
 
-\Acl{Adagrad} is an adaptation of \ac{SGD} which implements a learning rate for every parameter in the weight vector and is developed by Duchi et al.~\cite{ref:duchi:2011}.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that \Ac{Adagrad} adapts the learning rate to the weights, performing small updates (i.e. low learning rates) for weights associated with frequently occurring features and larger updates (i.e. high learning rates) for weights associated with infrequent features. For this reason \ac{Adagrad} is well suited for dealing with situations with very sparse training data.
-
-In the \acs{GD} variants presented thus far, the weight updates have been applied to all weights at once using the same learning rate $\eta$ for all dimensions of the weight update vector. \Ac{Adagrad} uses a different learning rate for every weight $w_{i}$ at every timestep $t$. The weight update step as implemented by \ac{Adagrad} is presented in Equation~\ref{eq:heuristics:gd:adagrad_part_1} below.
+In the \acs{GD} variants presented thus far, the weight updates have been applied by making use of the same learning rate $\eta$ for all elements of the weight update vector. \Acs{Adagrad} uses a different learning rate for every weight element $w_{i}$, at every timestep $t$. The weight update step is presented in Equation~\eqref{eq:heuristics:gd:adagrad_part_1} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adagrad_part_1}
@@ -241,7 +253,8 @@ In the \acs{GD} variants presented thus far, the weight updates have been applie
       \end{split}
 \end{equation}
 
-where $w_{i}$ is the $i$-th dimension of the weight vector, $G_{ii} \in \mathbb{R}^{d \times d}$ is a diagonal matrix where each diagonal element $i,i$ is the sum of the squared of the gradients w.r.t. $w_{i}$ up to timestep $t$ and $\epsilon$ is a smoothing term that avoids division by zero, usually set in the order of $1 \times 10^{-8}$~\cite{ref:ruder:2016}. Since $G_{t}$ contains the sum of the squares of the gradients with respect to all parameters $w$ along its diagonal, the weight update step can be vectorised and updated using the matrix-vector product between $G_{t}$ and $\nabla_{w_{i}}\mathcal{E}(w_{i})$. This is presented in Equation~\ref{eq:heuristics:gd:adagrad_part_2} below.
+\noindent
+In Equation~\eqref{eq:heuristics:gd:adagrad_part_1} above, $w_{i}$ is the $i$-th element of the weight vector, $G_{t,ii} \in \mathbb{R}^{d \times d}$ is a diagonal matrix where each diagonal element $i,i$ is the sum of the squared gradients w.r.t. $w_{i}$, up to timestep $t$ and $\epsilon$ is a smoothing term that avoids division by zero and is set to an insignificant value such as $1 \times 10^{-8}$. Since $G_{t}$ contains the sum of the squares of the gradients along its diagonal, the weight update step can be vectorised and updated using the matrix-vector product, represented by $\odot$, between $G_{t}$ and $\nabla_{w_{i}}\mathcal{E}(w_{i})$. The simplified update step as implemented by \acs{Adagrad} is given in Equation~\eqref{eq:heuristics:gd:adagrad_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adagrad_part_2}
@@ -250,12 +263,12 @@ where $w_{i}$ is the $i$-th dimension of the weight vector, $G_{ii} \in \mathbb{
       \end{split}
 \end{equation}
 
-\Ac{Adagrad}'s main benefit is that it does not require the need to manually tune the learning rate. However, a problem with \ac{Adagrad} is the accumulation of the sums of squared gradients in the denominator. Since every term that is added is positive, this number keeps growing, leading to a situation where the learning rate shrinks to the point that the heuristic is no longer able to learn. \acl{Adadelta} aims to improve on this problem.
+\noindent
+\Ac{Adagrad}'s main benefit is that it does not require manual tuning of the learning rate $\eta$. However, a problem with \ac{Adagrad} is in the accumulation of squared gradients in the denominator, represented by $G_{t}$. Since every term that is added is positive, $G_{t}$ keeps growing, leading to a situation where the learning rate shrinks to the point that the heuristic is no longer able to learn.
 
-\subsection{Adaptive Learning Rate}
-\label{sec:heuristics:adadelta}
+\subsection{Adaptive Learning Rate}\label{sec:heuristics:adadelta}
 
-In Section~\ref{sec:heuristics:adagrad} it was mentioned that one of the main problems of \ac{Adagrad} is that it has an aggressively monotonically decreasing learning rate because of the accumulation of the sum of squared gradients in its denominator. Zeiler~\cite{ref:zeiler:2012} presents an improvement on \ac{Adagrad} that eliminates this problem.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that instead of accumulating all past squared gradients as in the case of \ac{Adagrad}, \ac{Adadelta} restricts the window of accumulation to a window with a fixed size $W$. However, storing $W$ previous squared gradients is very inefficient. Instead, the accumulation of the sum of gradients over $W$ steps is defined recursively as a decaying average of all past squared gradients. The moving average $E[g^{2}]_{t}$ at timestep $t$ then depends only a fraction $\alpha$ of the previous average and current gradient, similar to the update step for \ac{Momentum}. In order to simplify the notation of update steps, let $g = \nabla_{w_{i}}\mathcal{E}(w_{t})$. The moving average update step for $E[g^{2}]_{t}$ is then presented in Equation~\ref{eq:heuristics:gd:adadelta_part_1} below.
+Zeiler~\cite{ref:zeiler:2012} presents \ac{Adadelta}, an improvement of \acs{Adagrad} that eliminates the accumulation of squared gradients in the denominator.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that instead of accumulating all past squared gradients as in the case of \ac{Adagrad}, \ac{Adadelta} restricts the window of accumulation to a window with a fixed size $W$. However, storing $W$ previous squared gradients is very inefficient. Instead, the accumulation of gradients over $W$ steps is defined recursively as a decaying average of all past squared gradients. In order to simplify the notation of update steps, let $g_{t} = \nabla_{w_{i}}\mathcal{E}(w_{t})$. The moving average of squared gradients at timestep $t$, denoted by $E[g^{2}]_{t}$  depends on a fraction $\alpha$ of the previous average of squared gradients and the current gradient, similar to the update step for \acs{Momentum}. Similar to \acs{Momentum}, $\alpha$ is set to 0.9. The update step for $E[g^{2}]_{t}$ is presented in Equation~\eqref{eq:heuristics:gd:adadelta_part_1} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_1}
@@ -264,7 +277,8 @@ In Section~\ref{sec:heuristics:adagrad} it was mentioned that one of the main pr
       \end{split}
 \end{equation}
 
-The value for $\alpha$ is set to a similar value, 0.9, as was done with \ac{Momentum}. For sake of clarity, the basic \ac{SGD} update step is rewritten in terms of the weight update vector $\Delta w_{t}$. This is presented in Equations~\ref{eq:heuristics:gd:adadelta_part_2} and~\ref{eq:heuristics:gd:adadelta_part_2} below.
+\noindent
+To illustrate the difference between \acs{Adagrad} and \acs{Adadelta}, the \ac{SGD} update step as presented in~\eqref{eq:heuristics:gd:sgd} is rewritten in terms of the weight update vector $\Delta w_{t}$ and gradient $g_{t}$ and is presented in Equations~\ref{eq:heuristics:gd:adadelta_part_2} and~\eqref{eq:heuristics:gd:adadelta_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_2}
@@ -280,8 +294,8 @@ The value for $\alpha$ is set to a similar value, 0.9, as was done with \ac{Mome
       \end{split}
 \end{equation}
 
-The weight update vector for \ac{Adagrad} as defined in Equation~\ref{eq:heuristics:gd:adagrad_part_2} is then rewritten as
-
+\noindent
+The weight update vector for \ac{Adagrad} is then redefined in Equation~\eqref{eq:heuristics:gd:adagrad_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adagrad_part_2_new}
@@ -290,7 +304,8 @@ The weight update vector for \ac{Adagrad} as defined in Equation~\ref{eq:heurist
       \end{split}
 \end{equation}
 
-The diagonal matrix $G_{t}$ is then replaced with the decaying average over the past $W$ squared gradients as presented in Equation~\ref{eq:heuristics:gd:adadelta_part_4} below.
+\noindent
+The diagonal matrix $G_{t}$, implemented by \ac{Adagrad}, is then replaced with the moving average of squared gradients as presented in Equation~\ref{eq:heuristics:gd:adadelta_part_4} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_4}
@@ -299,7 +314,8 @@ The diagonal matrix $G_{t}$ is then replaced with the decaying average over the 
       \end{split}
 \end{equation}
 
-Since the denominator is the \acs{RMS} error criterion of the gradient, the criteria short-hand notation is used as follows.
+\noindent
+Since the denominator is the \acf{RMS} error criterion of the gradient, the criteria short-hand notation is used as is depicted in Equation~\eqref{eq:heuristics:gd:adadelta_part_5} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_5}
@@ -308,16 +324,18 @@ Since the denominator is the \acs{RMS} error criterion of the gradient, the crit
       \end{split}
 \end{equation}
 
-\citeauthor{ref:ruder:2016}\cite{ref:ruder:2016} highlights that the original authors~\cite{ref:zeiler:2012} noted that the units of the update step as presented in Equation~\ref{eq:heuristics:gd:adadelta_part_2} do not match i.e. the update vector should have the same hypothetical units as the weight vector. To realize this, another exponentially decaying average is defined in terms of squared weight updates as is presented in Equation~\ref{eq:heuristics:gd:adadelta_part_6} below.
+\noindent
+~\citeauthor{ref:zeiler:2012}~\cite{ref:zeiler:2012} noted that the units of the update step as presented in Equation~\ref{eq:heuristics:gd:adadelta_part_5} do not match. The weight update vector should have the same hypothetical units as the weight vector. To fix the aforemention problem, another exponentially decaying average is defined in terms of squared weight updates as is presented in Equation~\ref{eq:heuristics:gd:adadelta_part_6} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_6}
       \begin{split}
-            E[\Delta w^{2}]_{t} = \alpha E[\Delta w^{2}]_{t - 1} + (1 - \alpha)\Delta w^{2}
+            E[\Delta w^{2}]_{t} = \alpha E[\Delta w^{2}]_{t - 1} + (1 - \alpha)\Delta w_{t}^{2}
       \end{split}
 \end{equation}
 
-The \ac{RMS} error of weight updates is thus
+\noindent
+The \acf{RMS} error of weight updates is given in Equation~\ref{eq:heuristics:gd:adadelta_part_7} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_7}
@@ -326,7 +344,8 @@ The \ac{RMS} error of weight updates is thus
       \end{split}
 \end{equation}
 
-Note that $RMS[\Delta w]_{t}$ is unknown at timestep $t$. It is thus approximated with the \acs{RMS} of weight updates until the previous timestep. The learning rate in Equation~\ref{eq:heuristics:gd:adadelta_part_5} is then replaced as follows.
+\noindent
+Note that $RMS[\Delta w]_{t}$ is unknown at timestep $t$. $RMS[\Delta w]_{t}$ is approximated with the \acf{RMS} of weight updates until the previous timestep. The learning rate in Equation~\eqref{eq:heuristics:gd:adadelta_part_5} is then replaced. The weight update step for \acs{Adadelta} is then concluded in Equation~\eqref{eq:heuristics:gd:adadelta_part_8} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_8}
@@ -335,46 +354,17 @@ Note that $RMS[\Delta w]_{t}$ is unknown at timestep $t$. It is thus approximate
       \end{split}
 \end{equation}
 
-Finally, the weight update step for \ac{Adadelta} is concluded as follows.
+\noindent
+The main advantage of \ac{Adadelta} is in removing the need for a learning rate.
 
-\begin{equation}
-      \label{eq:heuristics:gd:adadelta_part_9}
-      \begin{split}
-            w_{t+1} = w_{t} + \Delta w_{t}
-      \end{split}
-\end{equation}
+\subsection{Root Mean Squared Error Propagation}\label{sec:heuristics:rmsprop}
 
-The main advantage of \ac{Adadelta} is that one does not have to provide a default learning rate a priori as it is no longer included in the weight update step.
-
-\subsection{Root Mean Squared Error Propagation}
-\label{sec:heuristics:rmsprop}
-
-\Ac{RMSProp} is a similar heuristic to \ac{Adadelta} presented by Geoffrey Hinton~\cite{ref:hinton:2012} and was developed independently around the same time.~\citeauthor{ref:ruder:2016}\cite{ref:ruder:2016} mentions that \ac{RMSProp} is in fact the same as the first weight update vector as defined for \ac{Adadelta}. The update step for \ac{RMSProp} is then defined in terms of a decaying running average of gradients squared as is presented again for convenience in Equations~\ref{eq:heuristics:gd:rmsprop_part_1} and~\ref{eq:heuristics:gd:rmsprop_part_2} below.
+\Acf{RMSProp}, presented by~\citeauthor{ref:hinton:2012}~\cite{ref:hinton:2012} is similar to \acs{Adadelta}  and was developed independently around the same time. \ac{RMSProp} is the same as the first weight update vector for \ac{Adadelta}, presented in~\eqref{eq:heuristics:gd:adadelta_part_4}. A disadvantage of \acs{RMSProp} is that it still includes the learning rate term $\eta$ that needs to be tuned. For \acs{RMSProp},~\citeauthor{ref:hinton:2012}~\cite{ref:hinton:2012} suggests $\alpha$ be set to 0.9 and $\eta$ be set to $0.001$.
 
 
-\begin{equation}
-      \label{eq:heuristics:gd:rmsprop_part_1}
-      \begin{split}
-            E[g^{2}]_{t} = \alpha E[g^{2}]_{t - 1} + (1 - \alpha)g_{t}^{2}
-      \end{split}
-\end{equation}
+\subsection{Adaptive Moments Estimation}\label{sec:heuristics:adam}
 
-\begin{equation}
-      \label{eq:heuristics:gd:rmsprop_part_2}
-      \begin{split}
-            w_{t+1} = w_{t} - \frac{\eta}{\sqrt{E[g^{2}]_{t} + \epsilon}} g_{t}
-      \end{split}
-\end{equation}
-
-Note that \ac{RMSProp} still includes the learning rate term $\eta$ meaning that a default learning rate is required a priori. This is one of the disadvantages of \ac{RMSProp}. Hinton suggests $\alpha$ be set to 0.9 and $\eta$ be set to $0.001$~\cite{ref:hinton:2012}.
-
-
-\subsection{Adaptive Moments Estimation}
-\label{sec:heuristics:adam}
-
-\Ac{Adam} is another variant of \ac{SGD} that includes adaptive learning rates and is presented by Kingma et. al~\cite{ref:kingma:2014}. However, in addition to storing an exponentially decaying average of past squared gradients like \ac{Adadelta} and \ac{RMSProp}, \ac{Adam} also stores an exponentially decaying average of past gradients $v_{t}$, similar to \ac{Momentum}~\cite{ref:ruder:2016}.~\citeauthor{ref:heusel:2017}~\cite{ref:heusel:2017} uses the analogy that \ac{Momentum} can be seen as a ball running down a slope, while \ac{Adam} behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
-
-The decaying averages for past gradients and past squared gradients is given in Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_part_2} respectively.
+\Acf{Adam} is another variant of \ac{SGD} that includes adaptive learning rates and is presented by~\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014}. In addition to storing an exponentially decaying average of past squared gradients like \acs{Adadelta} and \acs{RMSProp}, \acs{Adam} also stores an exponentially decaying average of past gradients, similar to \ac{Momentum}~\cite{ref:ruder:2016}.~\citeauthor{ref:heusel:2017}~\cite{ref:heusel:2017} uses the analogy that, if \acs{Momentum} can be seen as a ball running down a slope, then \acs{Adam} behaves like a heavy ball with friction, which prefers flat minima in the error surface. The decaying averages for past gradients and past squared gradients is given in Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_part_2} respectively.
 
 \begin{equation}
       \label{eq:heuristics:gd:adam_part_1}
@@ -383,7 +373,6 @@ The decaying averages for past gradients and past squared gradients is given in 
       \end{split}
 \end{equation}
 
-
 \begin{equation}
       \label{eq:heuristics:gd:adam_part_2}
       \begin{split}
@@ -391,9 +380,10 @@ The decaying averages for past gradients and past squared gradients is given in 
       \end{split}
 \end{equation}
 
-In Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_part_2} above, $\beta_{1}$ and $\beta_{2}$ are decay rates, similar to $\alpha$ for \ac{Momentum}.
+\noindent
+In Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_part_2} above, $\beta_{1}$ and $\beta_{2}$ are decay rates, similar to $\alpha$ for \ac{Momentum}. \citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} suggest default values $B_{1}=0.9$, $B_{2}=0.999$ and $\epsilon = 1 \times 10^{-8}$.
 
-\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that $v_{t}$ and $w_{t}$ presented above are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively. It is from these moment terms that the name \acl{Adam} is derived.~\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} mentions that because $v_{t}$ and $w_{t}$ is initialised to be vectors of 0's, they are biased towards 0. This is especially true during the initial timesteps and/or when the decay rates $\beta_{1}$ and $\beta_{2}$ are small (i.e. $\beta_{1}$ and $\beta_{2}$ is close to 1). These biases need to be corrected. The bias-corrected first and second moment estimates are presented in Equations~\ref{eq:heuristics:gd:adam_bc_first_moment} and~\ref{eq:heuristics:gd:adam_bc_second_moment} below.
+\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that $m_{t}$ and $v_{t}$ presented above are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively. ~\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} mentions that because $m_{t}$ and $v_{t}$ are initialised to be vectors of 0's, they are biased towards 0. The aforementioned bias is especially prominent during the initial timesteps and/or when the decay rates $\beta_{1}$ and $\beta_{2}$ are small ($\beta_{1}$ and $\beta_{2}$ are close to 1). These biases need to be corrected. The bias-corrected first and second moment estimates are presented in Equations~\ref{eq:heuristics:gd:adam_bc_first_moment} and~\ref{eq:heuristics:gd:adam_bc_second_moment} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adam_bc_first_moment}
@@ -402,7 +392,6 @@ In Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_p
       \end{split}
 \end{equation}
 
-
 \begin{equation}
       \label{eq:heuristics:gd:adam_bc_second_moment}
       \begin{split}
@@ -410,7 +399,8 @@ In Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_p
       \end{split}
 \end{equation}
 
-The \ac{Adam} update rule is then presented in Equation~\ref{eq:heuristics:gd:adam} below.
+\noindent
+The \acs{Adam} update rule is then presented in Equation~\ref{eq:heuristics:gd:adam} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adam}
@@ -419,7 +409,8 @@ The \ac{Adam} update rule is then presented in Equation~\ref{eq:heuristics:gd:ad
       \end{split}
 \end{equation}
 
-\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} suggest default values $B_{1}=0.9$, $B_{2}=0.999$ and $\epsilon = 1 \times 10^{-8}$. This section provided the reader with a collection of gradient-based heuristics. The next section introduces meta-heuristics.
+\noindent
+This section provided the reader with a collection of gradient-based \index{heuristic}heuristics. The next section presents the reader with \index{meta-heuristic}meta-heuristics.
 
 \section{Meta-Heuristics}
 \label{sec:heuristics:mh}
