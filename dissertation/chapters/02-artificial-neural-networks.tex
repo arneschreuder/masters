@@ -14,15 +14,15 @@ The human brain is one of the most complicated biological organs in nature. It g
 The purpose of this chapter is to provide the necessary background information needed on \acp{ANN} and is structured as follows.
 
 \begin{itemize}
-    \item \textbf{Section \ref{sec:anns:bn}} gives background information on the \acs{BN}.
+    \item \textbf{Section~\ref{sec:anns:bn}} gives background information on the \acs{BN}.
 
-    \item \textbf{Section \ref{sec:anns:an}} introduces the \acs{AN}. Brief discussions follow on input, \index{weights}weights and \index{biases}biases, \index{net input signal}net input signal, \index{activation function}activation functions, and output.
+    \item \textbf{Section~\ref{sec:anns:an}} introduces the \acs{AN}. Brief discussions follow on input, \index{weights}weights and \index{biases}biases, \index{net input signal}net input signal, \index{activation function}activation functions, and output.
 
-    \item \textbf{Section \ref{sec:anns:ann}} introduces the \acs{ANN}. Brief discussions follow on \acs{ANN} architecture, topology, and \acp{FFNN}.
+    \item \textbf{Section~\ref{sec:anns:ann}} introduces the \acs{ANN}. Brief discussions follow on \acs{ANN} architecture, topology, and \acp{FFNN}.
 
-    \item \textbf{Section \ref{sec:anns:training}} provides details on the training process, \index {supervised learning}supervised learning, training sets, stopping conditions, performance measures and \index{error function}error functions.
+    \item \textbf{Section~\ref{sec:anns:training}} provides details on the training process, \index {supervised learning}supervised learning, training sets, stopping conditions, performance measures and \index{error function}error functions.
 
-    \item \textbf{Section \ref{sec:anns:summary}} provides a brief summary of the chapter.
+    \item \textbf{Section~\ref{sec:anns:summary}} provides a brief summary of the chapter.
 \end{itemize}
 
 
@@ -39,7 +39,7 @@ This section introduces the \acs{BN} and provides the necessary background infor
 \end{figure}
 
 \noindent
-The biological neural systems are made up of microscopic nerve cells called neurons \cite{ref:jain:1996}. Figure \ref{fig:biological_neuron} illustrates a single \acs{BN}. The main components of the \acs{BN} include the cell body, \index{dendrites}\textit{dendrites} and the \index{axon}\textit{axon}. \Acp{NN} are formed through the connections between the \index{axon}axons and \index{dendrites}dendrites of various neurons. This is known as \index{synaptogenesis}\textit{synaptogenesis} \cite{ref:huttenlocher:1997}. Such a connection is referred to as a \index{synapse}\textit{synapse}. Communication takes place, through the synapse, by electro-chemical pulse and is often referred to as an \textit{activation} or \textit{action potential}.  Communication signals propagate from the \index{dendrites}dendrites, through the cell body to the axon of a neuron, provoking a signal in the post-synaptic neuron \cite{ref:engelbrecht:2007}. The greater the connection between two neurons, the stronger the communication.  Kennedy \cite{ref:kennedy:2016} defines stronger \index{synapse}synapses as ones that contribute more depolarisation to the neural membrane upon activation than weaker ones. Stronger \index{synapse}synapses have a higher probability of generating an action potential in the post-synaptic neuron. During activation, the pre-synaptic neuron release neurotransmitters that bind to the post-synaptic neuron \cite{ref:khanacademy:synapse}. The frequent release of these molecules cause the \index{synapse}synapse to grow. Connections that grow over time yield stronger signals (learning), while connections that are weak propagate low intensity signals and vanish over time (forgetting). The ability of synapses to strengthen and weaken over time is known as \index{synaptic plasticity}\textit{synaptic plasticity} \cite{ref:huttenlocher:1997}.
+The biological neural systems are made up of microscopic nerve cells called neurons \cite{ref:jain:1996}. Figure~\ref{fig:biological_neuron} illustrates a single \acs{BN}. The main components of the \acs{BN} include the cell body, \index{dendrites}\textit{dendrites} and the \index{axon}\textit{axon}. \Acp{NN} are formed through the connections between the \index{axon}axons and \index{dendrites}dendrites of various neurons. This is known as \index{synaptogenesis}\textit{synaptogenesis} \cite{ref:huttenlocher:1997}. Such a connection is referred to as a \index{synapse}\textit{synapse}. Communication takes place, through the synapse, by electro-chemical pulse and is often referred to as an \textit{activation} or \textit{action potential}.  Communication signals propagate from the \index{dendrites}dendrites, through the cell body to the axon of a neuron, provoking a signal in the post-synaptic neuron \cite{ref:engelbrecht:2007}. The greater the connection between two neurons, the stronger the communication.  Kennedy \cite{ref:kennedy:2016} defines stronger \index{synapse}synapses as ones that contribute more depolarisation to the neural membrane upon activation than weaker ones. Stronger \index{synapse}synapses have a higher probability of generating an action potential in the post-synaptic neuron. During activation, the pre-synaptic neuron release neurotransmitters that bind to the post-synaptic neuron \cite{ref:khanacademy:synapse}. The frequent release of these molecules cause the \index{synapse}synapse to grow. Connections that grow over time yield stronger signals (learning), while connections that are weak propagate low intensity signals and vanish over time (forgetting). The ability of synapses to strengthen and weaken over time is known as \index{synaptic plasticity}\textit{synaptic plasticity} \cite{ref:huttenlocher:1997}.
 
 \index{artificial neuron}
 \section{Artificial Neuron}\label{sec:anns:an}
@@ -59,7 +59,7 @@ in Equation~\eqref{eq:an_function_mapping} below.
 \noindent
 In Equation~\eqref{eq:an_function_mapping} above, $f_{AN}$ is the mapping function produced by the \acs{AN}, $I$ is the total number of dimensions of the input in real-number space ($\mathbb{R}$), and $T$ is the total number of dimensions of the target (desired output) in real-number space.
 
-The \acs{AN} implements various components and is illustrated in Figure \ref{fig:artificial_neuron}.
+The \acs{AN} implements various components and is illustrated in Figure~\ref{fig:artificial_neuron}.
 
 \begin{figure}[htpb]
     \centering
@@ -72,17 +72,17 @@ The \acs{AN} implements various components and is illustrated in Figure \ref{fig
 Each of the components of the \acs{AN} is inspired by some element of the \acs{BN}. Brief descriptions of these are given as follows.
 
 \begin{itemize}
-    \item \textbf{Input:} The input models the activations received from the pre-synaptic neuron or from some environment sensor. Input is represented by the input vector $\vec{x}$, in Figure \ref{fig:artificial_neuron}.
+    \item \textbf{Input:} The input models the activations received from the pre-synaptic neuron or from some environment sensor. Input is represented by the input vector $\vec{x}$, in Figure~\ref{fig:artificial_neuron}.
 
-    \item \textbf{Weights:} The weights model the \index{synapse}synapses and connection strengths. Weights are represented by the weight vector $\vec{v}$, in Figure \ref{fig:artificial_neuron}.
+    \item \textbf{Weights:} The weights model the \index{synapse}synapses and connection strengths. Weights are represented by the weight vector $\vec{v}$, in Figure~\ref{fig:artificial_neuron}.
 
-    \item \index{net input signal}\textbf{Net input signal:} The \index{net input signal}net input signal models the net resulting activations from all connected pre-synaptic neurons or environment sensors. The \index{net input signal}net input signal is represented by $net$, in Figure \ref{fig:artificial_neuron}.
+    \item \index{net input signal}\textbf{Net input signal:} The \index{net input signal}net input signal models the net resulting activations from all connected pre-synaptic neurons or environment sensors. The \index{net input signal}net input signal is represented by $net$, in Figure~\ref{fig:artificial_neuron}.
 
-    \item \textbf{Biases:} The biases model a mechanism introduced to influence the strength of the activation (output signal) of the \acs{AN}. The bias is represented by $\theta$, in Figure \ref{fig:artificial_neuron}.
+    \item \textbf{Biases:} The biases model a mechanism introduced to influence the strength of the activation (output signal) of the \acs{AN}. The bias is represented by $\theta$, in Figure~\ref{fig:artificial_neuron}.
 
-    \item \index{activation function}\textbf{Activation function:} The activation function models the action potential of the \acs{BN} and is based on the net input signal. The \index{activation function}activation function is represented by $f$, in Figure \ref{fig:artificial_neuron}.
+    \item \index{activation function}\textbf{Activation function:} The activation function models the action potential of the \acs{BN} and is based on the net input signal. The \index{activation function}activation function is represented by $f$, in Figure~\ref{fig:artificial_neuron}.
 
-    \item \textbf{Output:} The output models the activation by the post-synaptic neuron. Output is represented by the output vector $\vec{y}$, in Figure \ref{fig:artificial_neuron}.
+    \item \textbf{Output:} The output models the activation by the post-synaptic neuron. Output is represented by the output vector $\vec{y}$, in Figure~\ref{fig:artificial_neuron}.
 \end{itemize}
 
 \noindent
@@ -248,7 +248,7 @@ The \acf{LReLU} \index{activation function}activation function is a variant of t
 \end{equation}
 
 \noindent
-By introducing a parameter $\alpha > 0$, negative \index{net input signal}net input signals will still yield non-zero activations, resulting in non-zero gradients and avoiding gradient saturation. Non-zero gradients are required by some heuristics such as \acs{SGD} in order to be able to effectively train \acp{ANN} \cite{ref:hanin:2018}. An illustration of \acs{LReLU} with various values for $\alpha$ and $\theta = 0$ is given in Figure \ref{fig:anns:activation_functions:leaky_relu}.
+By introducing a parameter $\alpha > 0$, negative \index{net input signal}net input signals will still yield non-zero activations, resulting in non-zero gradients and avoiding gradient saturation. Non-zero gradients are required by some heuristics such as \acs{SGD} in order to be able to effectively train \acp{ANN} \cite{ref:hanin:2018}. An illustration of \acs{LReLU} with various values for $\alpha$ and $\theta = 0$ is given in Figure~\ref{fig:anns:activation_functions:leaky_relu}.
 
 \begin{figure}[htpb]
     \centering
@@ -267,7 +267,7 @@ The \index{sigmoid}sigmoid activation is the continuous differentiable approxima
 \end{equation}
 
 \noindent
-In Equation~\eqref{eq:sigmoid} above, $\lambda$ is a control parameter, which controls the steepness of the sigmoid activation function and is usually set to $\lambda = 1$. An illustration of the \index{sigmoid}sigmoid \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$ is given in Figure \ref{fig:anns:activation_functions:sigmoid}.
+In Equation~\eqref{eq:sigmoid} above, $\lambda$ is a control parameter, which controls the steepness of the sigmoid activation function and is usually set to $\lambda = 1$. An illustration of the \index{sigmoid}sigmoid \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$ is given in Figure~\ref{fig:anns:activation_functions:sigmoid}.
 
 \begin{figure}[htpb]
     \centering
@@ -286,7 +286,7 @@ The \index{hyperbolic tangent}hyperbolic tangent \index{activation function}acti
 \end{equation}
 
 \noindent
-An illustration of the \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$ is given in Figure \ref{fig:anns:activation_functions:hyperbolic_tangent}.
+An illustration of the \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$ is given in Figure~\ref{fig:anns:activation_functions:hyperbolic_tangent}.
 
 
 \begin{figure}[htpb]
@@ -343,7 +343,7 @@ The \index{argmax}argmax function is similar to the \index{softmax}softmax funct
 \end{equation}
 
 \noindent
-Figure \ref{fig:anns:activation_functions:softmax_argmax} illustrates the comparison of transformations of the output vector $\vec{y}$, where the \index{sigmoid}sigmoid, the \index{softmax}softmax and the \index{argmax}argmax \index{activation function}activation functions are used.
+Figure~\ref{fig:anns:activation_functions:softmax_argmax} illustrates the comparison of transformations of the output vector $\vec{y}$, where the \index{sigmoid}sigmoid, the \index{softmax}softmax and the \index{argmax}argmax \index{activation function}activation functions are used.
 
 
 \begin{figure}[htpb]
@@ -402,7 +402,7 @@ The topology of the \acs{ANN} refers to the way that layers of \acp{AN} are conn
 
 \subsection{Feedforward Neural Networks}\label{sec:anns:anns:ffnns}
 
-\acp{FFNN} were the first and simplest type of \acp{ANN} developed \cite{ref:schmidhuber:2015} and implement input, hidden and output layers by arranging them in sequential order. Furthermore, \acp{FFNN} implement \index{fully connected topology}fully connected topologies. In \acp{FFNN}, information moves forward, in one direction, from the input nodes, through the hidden nodes and finally to the output nodes. Depending on the optimisation algorithm used, error correction information can be ``backpropagated'' through the network. An illustration of a \acs{FFNN} is given in Figure \ref{fig:ffnn} below.
+\acp{FFNN} were the first and simplest type of \acp{ANN} developed \cite{ref:schmidhuber:2015} and implement input, hidden and output layers by arranging them in sequential order. Furthermore, \acp{FFNN} implement \index{fully connected topology}fully connected topologies. In \acp{FFNN}, information moves forward, in one direction, from the input nodes, through the hidden nodes and finally to the output nodes. Depending on the optimisation algorithm used, error correction information can be ``backpropagated'' through the network. An illustration of a \acs{FFNN} is given in Figure~\ref{fig:ffnn} below.
 
 \begin{figure}[htpb]
     \centering
@@ -412,7 +412,7 @@ The topology of the \acs{ANN} refers to the way that layers of \acp{AN} are conn
 \end{figure}
 
 \noindent
-In Figure \ref{fig:ffnn}, $x_i$ refers to the $i$-th dimension in the input vector $\vec{x}$, $h_j$ refers to the $j$-th dimension in the hidden layer, $y_k$ refers to the $k$-th dimension in the output vector $\vec{y}$, $v_{i,j}$ refers to the weight associated with input node $x_i$ and the hidden node $h_j$, and $w_{j,k}$ refers to the weight associated with hidden node $h_j$ and the output node $y_k$.
+In Figure~\ref{fig:ffnn}, $x_i$ refers to the $i$-th dimension in the input vector $\vec{x}$, $h_j$ refers to the $j$-th dimension in the hidden layer, $y_k$ refers to the $k$-th dimension in the output vector $\vec{y}$, $v_{i,j}$ refers to the weight associated with input node $x_i$ and the hidden node $h_j$, and $w_{j,k}$ refers to the weight associated with hidden node $h_j$ and the output node $y_k$.
 
 Assuming the use of \acp{SU} and bias weights, the output for the \acs{FFNN} at index $k$, denoted $y_k$, is calculated as is shown in Equation~\eqref{eq:ffnn} below.
 
@@ -440,7 +440,7 @@ detailed discussions on \index{supervised learning}supervised learning and loss 
 
 The degree to which the produced outcome differs from the target outcome is referred to as \textit{loss}. Since training of \acp{FFNN} is an optimisation problem, the goal of the training process is to minimise the loss of the \acp{FFNN} as it related to input and target data.
 
-Finding the optimal weights that produce the best performance on a given task is an optimisation problem. The optimisation algorithm used to find the optimal weights is referred to as a \index{heuristic}\textit{heuristic}. \index{heuristic}Heuristics search for possible solutions in the solution-space and make use of information from the search-space to guide to process. Heuristics are discussed in detail in Chapter \ref{chap:heuristics}.
+Finding the optimal weights that produce the best performance on a given task is an optimisation problem. The optimisation algorithm used to find the optimal weights is referred to as a \index{heuristic}\textit{heuristic}. \index{heuristic}Heuristics search for possible solutions in the solution-space and make use of information from the search-space to guide to process. Heuristics are discussed in detail in Chapter~\ref{chap:heuristics}.
 
 
 \subsection{Supervised Learning}
@@ -544,8 +544,7 @@ The \acs{MAE} is given in Equation~\eqref{eq:mae} below.
 
 \noindent
 
-\subsubsection{Categorical Cross-Entropy}
-\label{sec:anns:training:error_functions:cat_xe}
+\subsubsection{Categorical Cross-Entropy}\label{sec:anns:training:error_functions:cat_xe}
 
 \acs{CatXE} is used in classification problems where the target output or \textit{label} is a one-hot encoded vector. \acs{CatXE} is given in Equation~\eqref{eq:cat_xe} below.
 
@@ -562,7 +561,6 @@ In Equation~\eqref{eq:cat_xe} above, $\mathbbm{1}$ is the indicator function tha
 \acs{SparseCatXE} error function is similar to \acs{CatXE} with the only difference being that the target output or label is a one-hot embedding of a class represented as an integer, $c \in \{1,2, \dots, C\}$.
 
 
-\section{Summary}
-\label{sec:anns:summary}
+\section{Summary}\label{sec:anns:summary}
 
 This chapter presented background information on the \acs{BN}. The \acs{AN} was introduced and discussions followed on the various components that make up the \acs{AN}. Details on input, weights and biases, \index{net input signal}net input signal, \index{activation function}activation functions, and output were provided. The \acs{ANN} was introduced. \acs{ANN} design was described in terms of architecture and topologies. Special emphasis was put on \acp{FFNN}. Background information on the training of \acp{FFNN} was presented. A variant of training, called \index{supervised learning}supervised learning was presented and led to the discussion on datasets, performance measures and training outcomes. The chapter concluded with a number or error functions that can be used to calculate the loss in the context of supervised learning.
