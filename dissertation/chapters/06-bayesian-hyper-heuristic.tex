@@ -401,21 +401,21 @@ The dependence between random events can have a drastic impact on the probabilis
 \subsection{Bayes' Theorem}
 \label{sec:bhh:selection_mechanism:bayes_theorem}
 
-Section \ref{sec:bhh:selection_mechanism:random_events} presented the reader with the random events that are observed by the \ac{BHH} and Section \ref{sec:bhh:selection_mechanism:independence} provided an argument for independence between events. Chapter \ref{chap:probability} presented Bayes Theorem, but for convenience, it is given again in Equation \ref{eq:bhh:selection_mechanism:bayes_theorem} below.
+Section \ref{sec:bhh:selection_mechanism:random_events} presented the reader with the random events that are observed by the \ac{BHH} and Section \ref{sec:bhh:selection_mechanism:independence} provided an argument for independence between events. Chapter \ref{chap:probability} presented Bayes Theorem, but for convenience, it is given again in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:bayes_theorem}
       P(A \vert B) = \frac{P(B \vert A)P(A)}{P(B)}
 \end{equation}
 
-As was indicated in Section \ref{sec:bhh:selection_mechanism:independence}, Equation \ref{eq:bhh:selection_mechanism:bayes_theorem} can be evaluated for proportionality since the \ac{BHH} is not concerned with actual accurate selection probabilities, but rather implements a Bayesian classifier. The resulting proportionality is expressed in Equation \ref{eq:bhh:selection_mechanism:bayes_theorem_prop_to} below
+As was indicated in Section \ref{sec:bhh:selection_mechanism:independence}, Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} can be evaluated for proportionality since the \ac{BHH} is not concerned with actual accurate selection probabilities, but rather implements a Bayesian classifier. The resulting proportionality is expressed in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem_prop_to} below
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:bayes_theorem_prop_to}
       P(A \vert B) \propto P(B \vert A)P(A)
 \end{equation}
 
-Notice how the Equation \ref{eq:bhh:selection_mechanism:bayes_theorem_prop_to} implements a Bayesian conditionally. This conditionality can be extended to include multiple criteria. The next section shows how the Bayesian classifier is implemented by providing the detail around the implemented predictive model.
+Notice how the Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem_prop_to} implements a Bayesian conditionally. This conditionality can be extended to include multiple criteria. The next section shows how the Bayesian classifier is implemented by providing the detail around the implemented predictive model.
 
 
 \subsection{Predictive Model}
@@ -442,7 +442,7 @@ Finally the reader is presented with the underlying predictive model as implemen
       \item $C \vert \psi \sim Bin(\psi, I)$: Denote the distribution of credit-heuristic combinations (event $C$), implementing a Binomial distribution, parameterised by the sampled credit-heuristic selection probability $\psi$ and the maximum number of instances $I$.
 \end{itemize}
 
-The parameterised predictive model, as derived from Bayes theorem presented in Equation \ref{eq:bhh:selection_mechanism:bayes_theorem} is then given in Equation \ref{eq:bhh:selection_mechanism:predictive_model} below.
+The parameterised predictive model, as derived from Bayes theorem presented in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} is then given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:predictive_model}
@@ -471,7 +471,7 @@ The parameterised predictive model, as derived from Bayes theorem presented in E
       \end{split}
 \end{equation}
 
-Notice the joint probability over events $E$ and $C$ given the selection of a heuristic $H$ denoted by the sums of the products of the separate parts, for $E$ and $C$, in the denominator. The calculation in the denominator can be intractable as has been previously indicated. However, in order to derive the posterior distribution as given in Equation \ref{eq:bhh:selection_mechanism:bayes_theorem}), one only has to evaluate to proportionality as is given in Equation \ref{eq:bhh:selection_mechanism:predictive_model_prop_to} below.
+Notice the joint probability over events $E$ and $C$ given the selection of a heuristic $H$ denoted by the sums of the products of the separate parts, for $E$ and $C$, in the denominator. The calculation in the denominator can be intractable as has been previously indicated. However, in order to derive the posterior distribution as given in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem}), one only has to evaluate to proportionality as is given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:predictive_model_prop_to}
@@ -489,7 +489,7 @@ The predictive model thus models the \textit{proportional} probability of the ev
 
 This section aims to dissect the probabilistic model that is presented in Equestion \ref{eq:bhh:selection_mechanism:predictive_model_prop_to}. It has been established in Section \ref{sec:bhh:selection_mechanism:independence} that for \index{Naïve Bayes} naïve Bayes classifiers, independence between events can be assumed. The following derived \acp{PMF} are provided as fundamental building blocks that are later shown to be used in the optimisation process of the \ac{BHH} as is shown in Section \ref{sec:bhh:optimisation_step}.
 
-The independence between events for the class label $H$ simply yields the \ac{PMF} of the Multinomial distribution as presented in Equation \ref{eq:bhh:selection_mechanism:naive_bayes:h_pmf} below.
+The independence between events for the class label $H$ simply yields the \ac{PMF} of the Multinomial distribution as presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:h_pmf}
@@ -509,7 +509,7 @@ $I$ independent, identical runs.
 
 The independence between events $E$ given class label $H$ is denoted by the likelihood of $E$
 conditional to the occurrence of heuristic $k$ and model parameter $\phi$ as
-presented in Equation \ref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} below.
+presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf}
@@ -530,7 +530,7 @@ $k$ occurring together in $I$ independent, identical runs.
 
 Finally, the independence between events for the performance criteria feature $C$ given class
 label $H$ is denoted by the likelihood of $C$ conditional to the occurrence of
-heuristic $k$ and model parameter $\psi$ as given in Equation \ref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} below.
+heuristic $k$ and model parameter $\psi$ as given in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf}
@@ -544,7 +544,7 @@ heuristic $k$ and model parameter $\psi$ as given in Equation \ref{eq:bhh:select
       \end{split}
 \end{equation}
 
-Where $N_{k}$ is the summary variable as described for Equation \ref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} above.
+Where $N_{k}$ is the summary variable as described for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} above.
 $N_{1,k}$ is a summary variable such that $N_{1,k} = \sum_{i=1}^{I}
       \mathbbm{1}_{1}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of
 occurrences of the events $c_{i}$ taking on a success $(c_{i}=1)$ and $h_{i}$
@@ -555,7 +555,7 @@ occurrences of the events $c_{i}$ taking on a failure $(c_{i}=0)$ and $h_{i}$
 taking on class $k$.
 
 
-Given the assumptions of the naïve Bayes classifier, one could supplement Equations \ref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}, \ref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} and \ref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} above into the proportional evaluation of the predictive model as given in Equation \ref{eq:bhh:selection_mechanism:predictive_model_prop_to}. This is presented in Equation \ref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} below.
+Given the assumptions of the naïve Bayes classifier, one could supplement Equations \ref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}, \ref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} and \ref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} above into the proportional evaluation of the predictive model as given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to}. This is presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}
@@ -566,14 +566,14 @@ Given the assumptions of the naïve Bayes classifier, one could supplement Equat
       \end{split}
 \end{equation}
 
-Computationally the equation presented in Equation \ref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} will underflow if the resulting probabilities are very small.
+Computationally the equation presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} will underflow if the resulting probabilities are very small.
 
 
 \index{Numerical Stability}
 \subsection{Numerical Stability}
 \label{sec:bhh:selection_mechanism:numerical_stability}
 
-When evaluating for Equation \ref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplying multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfills a credit assignment, yielding an extremely small probability for $\psi$. A solution to this problem is to apply the \textit{log-sum-exp trick}, parameterising distributions no longer using logits rather than probabilities. The transformation of Equation \ref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given below in Equation \ref{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}.
+When evaluating for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplying multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfills a credit assignment, yielding an extremely small probability for $\psi$. A solution to this problem is to apply the \textit{log-sum-exp trick}, parameterising distributions no longer using logits rather than probabilities. The transformation of Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given below in Equation~\eqref{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}
@@ -670,7 +670,7 @@ In probability theory and statistics, \ac{MLE} is a method that estimates the pa
 
 The calculations of the \ac{MLE} for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and
 $\hat{\psi}_{k}$ are now presented. The log likelihood of $\hat{\theta}$, $\hat{\phi}$ and $\hat{\psi}$ as derived
-from the Equation \ref{eq:bhh:selection_mechanism:predictive_model_prop_to} is given in Equation \ref{eq:bhh:optimisation_step:mle:log_likelihood_all} below.
+from the Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} is given in Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:log_likelihood_all}
@@ -684,7 +684,7 @@ from the Equation \ref{eq:bhh:selection_mechanism:predictive_model_prop_to} is g
       \end{split}
 \end{equation}
 
-Equation \ref{eq:bhh:optimisation_step:mle:log_likelihood_all} can be broken down into each of its factors. Consider the log likelihood of $\psi$  as denoted by Equation \ref{eq:bhh:optimisation_step:mle:log_likelihood_psi} below.
+Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} can be broken down into each of its factors. Consider the log likelihood of $\psi$  as denoted by Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_psi} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:log_likelihood_psi}
@@ -693,7 +693,7 @@ Equation \ref{eq:bhh:optimisation_step:mle:log_likelihood_all} can be broken dow
       \end{split}
 \end{equation}
 
-The MLE for $\hat{\psi_{k}} $ can be calculated by taking the derivative of Equation \ref{eq:bhh:optimisation_step:mle:log_likelihood_psi} with respect to $\psi_{k}$ and equating to zero as presented in Equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_psi} as follows.
+The MLE for $\hat{\psi_{k}} $ can be calculated by taking the derivative of Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_psi} with respect to $\psi_{k}$ and equating to zero as presented in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_psi} as follows.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_psi}
@@ -709,7 +709,7 @@ The MLE for $\hat{\psi_{k}} $ can be calculated by taking the derivative of Equa
 \end{equation}
 
 
-The value for $\hat{\theta_{k}} $ can be calculated similarly. However, one has to compensate for the $K-1$ simplex $S$ by adding error factor $\epsilon$ to correct values for  $\theta$ where $\sum_{k}^{K} \theta_{k} \neq 1$. The new log likelihood function is then given in Equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_1} below.
+The value for $\hat{\theta_{k}} $ can be calculated similarly. However, one has to compensate for the $K-1$ simplex $S$ by adding error factor $\epsilon$ to correct values for  $\theta$ where $\sum_{k}^{K} \theta_{k} \neq 1$. The new log likelihood function is then given in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_1} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_1}
@@ -720,7 +720,7 @@ The value for $\hat{\theta_{k}} $ can be calculated similarly. However, one has 
       \end{split}
 \end{equation}
 
-Solving first for $\epsilon$ yields Equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_2} below.
+Solving first for $\epsilon$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_2} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_2}
@@ -730,7 +730,7 @@ Solving first for $\epsilon$ yields Equation \ref{eq:bhh:optimisation_step:mle:p
       \end{split}
 \end{equation}
 
-Then solving for $\theta_{k}$ yields Equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_3} as presented below.
+Then solving for $\theta_{k}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_3} as presented below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_3}
@@ -744,7 +744,7 @@ Then solving for $\theta_{k}$ yields Equation \ref{eq:bhh:optimisation_step:mle:
       \end{split}
 \end{equation}
 
-Substituting back into the Equation yields Equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_4} below.
+Substituting back into the Equation yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_4} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_4}
@@ -755,7 +755,7 @@ Substituting back into the Equation yields Equation \ref{eq:bhh:optimisation_ste
       \end{split}
 \end{equation}
 
-The value for $\hat{\phi}_{j, k} $ is calculated very similarly. To compensate for the $K-1$ simplex $S$ an error factor $\lambda = (\lambda_{1}, \dots, \lambda_{J})$ is added. This follows in Equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1} as is presented below.
+The value for $\hat{\phi}_{j, k} $ is calculated very similarly. To compensate for the $K-1$ simplex $S$ an error factor $\lambda = (\lambda_{1}, \dots, \lambda_{J})$ is added. This follows in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1} as is presented below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1}
@@ -766,7 +766,7 @@ The value for $\hat{\phi}_{j, k} $ is calculated very similarly. To compensate f
       \end{split}
 \end{equation}
 
-Solving first for $\lambda_{j}$ yields Equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_2} as is given below.
+Solving first for $\lambda_{j}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_2} as is given below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_2}
@@ -776,7 +776,7 @@ Solving first for $\lambda_{j}$ yields Equation \ref{eq:bhh:optimisation_step:ml
       \end{split}
 \end{equation}
 
-Then solving for $\phi_{j,k}$ yields Equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_3} below.
+Then solving for $\phi_{j,k}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_3} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_3}
@@ -818,7 +818,7 @@ Bayesian analysis makes use of the \textit{posterior} probability distribution. 
       \end{split}
 \end{equation*}
 
-The likelihood is presented in Equation \ref{eq:bhh:optimisation_step:map:bayesian_analysis_lamens} above. The event $H$ is a multinomial distribution with parameter $\theta$. It is known that the conjugate prior to a multinomial distribution is a Dirichlet distribution (see Chapter \ref{chap:probability}. The \textit{prior} probability distribution for  $\theta_{k}$ is thus presented in Equation \ref{eq:bhh:optimisation_step:map:map_theta_prior} below.
+The likelihood is presented in Equation~\eqref{eq:bhh:optimisation_step:map:bayesian_analysis_lamens} above. The event $H$ is a multinomial distribution with parameter $\theta$. It is known that the conjugate prior to a multinomial distribution is a Dirichlet distribution (see Chapter \ref{chap:probability}. The \textit{prior} probability distribution for  $\theta_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_theta_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_theta_prior}
@@ -828,7 +828,7 @@ The likelihood is presented in Equation \ref{eq:bhh:optimisation_step:map:bayesi
       \end{split}
 \end{equation}
 
-Furthermore, the event $E$ is also a multinomial distribution with parameter $\phi$. The \textit{prior} probability distribution for $\phi_{j,k}$ is thus presented in Equation \ref{eq:bhh:optimisation_step:map:map_phi_prior} below.
+Furthermore, the event $E$ is also a multinomial distribution with parameter $\phi$. The \textit{prior} probability distribution for $\phi_{j,k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_phi_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_phi_prior}
@@ -838,7 +838,7 @@ Furthermore, the event $E$ is also a multinomial distribution with parameter $\p
       \end{split}
 \end{equation}
 
-Finally, the event $C$ is a binomial distribution with parameter $\psi$. It is known that the conjugate prior to a binomial distribution is a Beta distribution (see Chapter \ref{chap:probability}). The prior probability distribution for $\psi_{k}$ is thus presented in Equation \ref{eq:bhh:optimisation_step:map:map_psi_prior} below.
+Finally, the event $C$ is a binomial distribution with parameter $\psi$. It is known that the conjugate prior to a binomial distribution is a Beta distribution (see Chapter \ref{chap:probability}). The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_psi_prior}
@@ -848,7 +848,7 @@ Finally, the event $C$ is a binomial distribution with parameter $\psi$. It is k
       \end{split}
 \end{equation}
 
-Putting the likelihood and priors together yields the posterior distribution as given in Equation \ref{eq:bhh:optimisation_step:map:map_psi_prior} below.
+Putting the likelihood and priors together yields the posterior distribution as given in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:posterior}
@@ -864,7 +864,7 @@ Putting the likelihood and priors together yields the posterior distribution as 
       \end{split}
 \end{equation}
 
-From Equation \ref{eq:bhh:optimisation_step:map:posterior} above, it can be seen that the posterior distribution has the same form $\mathcal{A}(v)$ as the prior distribution. The concentration update operations can then be given in equations \ref{eq:bhh:optimisation_step:map:alpha_update_operation}, \ref{eq:bhh:optimisation_step:map:beta_update_operation}, \ref{eq:bhh:optimisation_step:map:gamma1_update_operation} and \ref{eq:bhh:optimisation_step:map:gamma2_update_operation} below.
+From Equation~\eqref{eq:bhh:optimisation_step:map:posterior} above, it can be seen that the posterior distribution has the same form $\mathcal{A}(v)$ as the prior distribution. The concentration update operations can then be given in equations \ref{eq:bhh:optimisation_step:map:alpha_update_operation}, \ref{eq:bhh:optimisation_step:map:beta_update_operation}, \ref{eq:bhh:optimisation_step:map:gamma1_update_operation} and \ref{eq:bhh:optimisation_step:map:gamma2_update_operation} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:alpha_update_operation}

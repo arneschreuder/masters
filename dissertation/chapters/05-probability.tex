@@ -179,28 +179,28 @@ Probability distributions are mathematical functions that give the probabilities
 \subsection{Beta Distribution}
 \label{sec:probability:probability_distributions:beta}
 
-The Beta distribution is a family of univariate continuous probability distributions over some $x$, with support on the interval $[0,1]$~\cite{ref:wackerly:2014}. It is parameterised by two shape parameters $\alpha > 0$, $\alpha \in \mathbb{R}$ and $\beta > 0$, $\beta \in \mathbb{R}$. The Beta distribution is denoted as $Beta(\alpha, \beta)$. The \ac{PDF} of the Beta distribution is given below in Equation \ref{eq:probability:probability_distributions:beta:pdf}.
+The Beta distribution is a family of univariate continuous probability distributions over some $x$, with support on the interval $[0,1]$~\cite{ref:wackerly:2014}. It is parameterised by two shape parameters $\alpha > 0$, $\alpha \in \mathbb{R}$ and $\beta > 0$, $\beta \in \mathbb{R}$. The Beta distribution is denoted as $Beta(\alpha, \beta)$. The \ac{PDF} of the Beta distribution is given below in Equation~\eqref{eq:probability:probability_distributions:beta:pdf}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:pdf}
       P(x \vert \alpha, \beta) = f_{Beta}(x; \alpha, \beta) = \frac{1}{B(\alpha, \beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}
 \end{equation}
 
-where the normalising constant $B(\alpha, \beta)$ is defined below in Equation \ref{eq:probability:probability_distributions:beta:norm_const}.
+where the normalising constant $B(\alpha, \beta)$ is defined below in Equation~\eqref{eq:probability:probability_distributions:beta:norm_const}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:norm_const}
       B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
 \end{equation}
 
-and $\Gamma$ is the Gamma function as defined below in Equation \ref{eq:probability:probability_distributions:beta:gamma_func}.
+and $\Gamma$ is the Gamma function as defined below in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:gamma_func}
       \Gamma(n) = ( n - 1)!
 \end{equation}
 
-it should be noted that the Gamma function can also be written as shown in Equation \ref{eq:probability:probability_distributions:beta:gamma_func_alt} below.
+it should be noted that the Gamma function can also be written as shown in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func_alt} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:gamma_func_alt}
@@ -226,28 +226,28 @@ It should be noted that $\alpha$ and $\beta$ determine the shape of the distribu
 \end{figure}
 
 
-The expected value of $x$ is given below in Equation \ref{eq:probability:probability_distributions:beta:expected_value}.
+The expected value of $x$ is given below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:expected_value}
       E[x] = \frac{\alpha}{\alpha + \beta}
 \end{equation}
 
-Similarly, the expected value of the natural logarithm of $x$ can be calculated as shown below in Equation \ref{eq:probability:probability_distributions:beta:expected_value_ln}.
+Similarly, the expected value of the natural logarithm of $x$ can be calculated as shown below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value_ln}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:expected_value_ln}
       E[\ln(x)] = \psi({\alpha}) - \psi(\alpha + \beta)
 \end{equation}
 
-where $\psi$ is the logarithmic derivative of the Gamma function, called the \textit{Digamma} function. The Digamma function is given below in Equation \ref{eq:probability:probability_distributions:beta:digamma}.
+where $\psi$ is the logarithmic derivative of the Gamma function, called the \textit{Digamma} function. The Digamma function is given below in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:digamma}
       \psi(n) = \frac{d}{dn}\ln(\Gamma(n)) = \frac{\Gamma'(n)}{\Gamma(n)}
 \end{equation}
 
-Finally, the mode of the distribution is given in Equation \ref{eq:probability:probability_distributions:beta:mode} below.
+Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:beta:mode} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:mode}
@@ -267,21 +267,21 @@ Finally, the mode of the distribution is given in Equation \ref{eq:probability:p
 \label{sec:probability:probability_distributions:dirichlet}
 
 
-The Dirichlet distribution is a family of multivariate continuous probability distributions over some $x$ in $K$ dimensions ~\cite{ref:wackerly:2014}. The Dirichlet distribution is the multivariate generalization of the Beta distribution and is thus sometimes referred to by its alternative name, the Multivariate Beta Distribution. The Dirichlet distribution is parameterised by some vector $\alpha = (\alpha_{1}$,  $\dots, \alpha_{K})$ $\forall_{k=1}^{K} \alpha_{k} > 0$, $\alpha_{k} \in \mathbb{R}$. $\alpha$ is referred to as the concentration parameter. It is later shown in Chapter \ref{chap:bhh} that this parameter plays a vital role in the optimisation process of the \ac{BHH}. The Dirichlet distribution of order $K \geq 2$ with parameters $\alpha$, denoted $Dir(\alpha)$, has a \ac{PDF} as given in Equation \ref{eq:probability:probability_distributions:dirichlet:pdf} below.
+The Dirichlet distribution is a family of multivariate continuous probability distributions over some $x$ in $K$ dimensions ~\cite{ref:wackerly:2014}. The Dirichlet distribution is the multivariate generalization of the Beta distribution and is thus sometimes referred to by its alternative name, the Multivariate Beta Distribution. The Dirichlet distribution is parameterised by some vector $\alpha = (\alpha_{1}$,  $\dots, \alpha_{K})$ $\forall_{k=1}^{K} \alpha_{k} > 0$, $\alpha_{k} \in \mathbb{R}$. $\alpha$ is referred to as the concentration parameter. It is later shown in Chapter \ref{chap:bhh} that this parameter plays a vital role in the optimisation process of the \ac{BHH}. The Dirichlet distribution of order $K \geq 2$ with parameters $\alpha$, denoted $Dir(\alpha)$, has a \ac{PDF} as given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:pdf}
       P(x \vert \alpha) =  f_{Dir}(x; K, \alpha) = \frac{1}{B(\alpha)}  \prod_{k=1}^{K} x_{k}^{\alpha_{k} - 1}
 \end{equation}
 
-where the normalising constant $B(\alpha)$ is defined in Equation \ref{eq:probability:probability_distributions:dirichlet:norm_cost}.
+where the normalising constant $B(\alpha)$ is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:norm_cost}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:norm_cost}
       B(\alpha) = \frac{\prod_{k=1}^{K} \Gamma(\alpha_{k})}{\Gamma(\alpha_{0})}
 \end{equation}
 
-and $\alpha_{0}$ is defined in Equation \ref{eq:probability:probability_distributions:dirichlet:alpha_0} below.
+and $\alpha_{0}$ is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:alpha_0} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:alpha_0}
@@ -298,21 +298,21 @@ Similar to the Beta distribution, $\alpha$ determines the shape of the distribut
       \label{fig:probability:probability_distributions:dirichlet}
 \end{figure}
 
-The expected value of $x$ can be calculated as shown in Equation \ref{eq:probability:probability_distributions:dirichlet:expected_value} below.
+The expected value of $x$ can be calculated as shown in Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:expected_value}
       E[x_{k}] = \frac{\alpha_{k}}{\alpha_{0}}
 \end{equation}
 
-Similarly, the expected value of the natural logarithm of $x_{k}$ can be calculated as defined in Equation \ref{eq:probability:probability_distributions:dirichlet:expected_value_ln} below.
+Similarly, the expected value of the natural logarithm of $x_{k}$ can be calculated as defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value_ln} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:expected_value_ln}
       E[\ln(x_{k})] = \psi({\alpha_{k}}) - \psi(\alpha_{0})
 \end{equation}
 
-where $\psi$ is the Digamma function as defined in Equation \ref{eq:probability:probability_distributions:beta:digamma}. Finally, the mode of the distribution is given in Equation \ref{eq:probability:probability_distributions:dirichlet:mode} below.
+where $\psi$ is the Digamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}. Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:mode} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:mode}
@@ -326,7 +326,7 @@ where $\psi$ is the Digamma function as defined in Equation \ref{eq:probability:
 \subsection{Bernoulli Distribution}
 \label{sec:probability:probability_distributions:bernoulli}
 
-The Bernoulli distribution is a discrete probability distribution over some random variable $x$ that takes the value of $1$ with probability $\theta$ and $0$ with probability $1-\theta$ ~\cite{ref:wackerly:2014}. It is denoted as $Ber(\theta)$ with support $x \in \{0, 1\}$. In probability theory, the Bernoulli distribution is often used to explain the possible outcomes of a single experiment that asks a \textit{yes-no} question such as flipping a coin. The outcome of such an experiment is a boolean value. The Bernoulli distribution has a \ac{PMF} as given below in Equation \ref{eq:probability:probability_distributions:bernoulli:pmf}.
+The Bernoulli distribution is a discrete probability distribution over some random variable $x$ that takes the value of $1$ with probability $\theta$ and $0$ with probability $1-\theta$ ~\cite{ref:wackerly:2014}. It is denoted as $Ber(\theta)$ with support $x \in \{0, 1\}$. In probability theory, the Bernoulli distribution is often used to explain the possible outcomes of a single experiment that asks a \textit{yes-no} question such as flipping a coin. The outcome of such an experiment is a boolean value. The Bernoulli distribution has a \ac{PMF} as given below in Equation~\eqref{eq:probability:probability_distributions:bernoulli:pmf}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:bernoulli:pmf}
@@ -337,7 +337,7 @@ The Bernoulli distribution is a discrete probability distribution over some rand
       \end{cases}
 \end{equation}
 
-The above equation can also be expressed as show in Equation \ref{eq:probability:probability_distributions:bernoulli:alt} below.
+The above equation can also be expressed as show in Equation~\eqref{eq:probability:probability_distributions:bernoulli:alt} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:bernoulli:alt}
@@ -362,14 +362,14 @@ The mean of the Bernoulli distribution approaches $\theta$ over many samples acc
       \label{fig:probability:probability_distributions:bernoulli:coin}
 \end{figure}
 
-The expected value of the distribution is thus given according to Equation \ref{eq:probability:probability_distributions:bernoulli:expected_value} below.
+The expected value of the distribution is thus given according to Equation~\eqref{eq:probability:probability_distributions:bernoulli:expected_value} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:bernoulli:expected_value}
       E[x] = \theta
 \end{equation}
 
-while the mode of the distribution is given in Equation \ref{eq:probability:probability_distributions:bernoulli:mode} below.
+while the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:bernoulli:mode} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:bernoulli:mode}
@@ -388,21 +388,21 @@ while the mode of the distribution is given in Equation \ref{eq:probability:prob
 \label{sec:probability:probability_distributions:bin}
 
 
-The Binomial distribution is a discrete probability distribution over a random variable $x$ taking on a number of successes in $N$ sequential independent experiments that each ask a \textit{yes-no} question~\cite{ref:wackerly:2014}. The probability of a single independent experiment yielding a success is given as $\theta$ and the Binomial distribution is denoted as $Bin(N, \theta)$ with support $x \in \{0, 1, \dots, N\}$.  It should be noted that the Binomial distribution is the extension of the Bernoulli distribution over $N$ independent sequential experiments and thus, each experiment also yields some boolean outcome. When $N=1$, the experiment is referred to as a Bernoulli trial and the distribution is just a Bernoulli distribution. When $N > 1$, the sequence of outcomes is referred to as a Bernoulli process. The \ac{PMF} of the Binomial distribution is given in Equation \ref{eq:probability:probability_distributions:binomial:pmf} below.
+The Binomial distribution is a discrete probability distribution over a random variable $x$ taking on a number of successes in $N$ sequential independent experiments that each ask a \textit{yes-no} question~\cite{ref:wackerly:2014}. The probability of a single independent experiment yielding a success is given as $\theta$ and the Binomial distribution is denoted as $Bin(N, \theta)$ with support $x \in \{0, 1, \dots, N\}$.  It should be noted that the Binomial distribution is the extension of the Bernoulli distribution over $N$ independent sequential experiments and thus, each experiment also yields some boolean outcome. When $N=1$, the experiment is referred to as a Bernoulli trial and the distribution is just a Bernoulli distribution. When $N > 1$, the sequence of outcomes is referred to as a Bernoulli process. The \ac{PMF} of the Binomial distribution is given in Equation~\eqref{eq:probability:probability_distributions:binomial:pmf} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:binomial:pmf}
       P(x \vert \theta; N) = f_{Bin}(x; N, \theta) = \binom{N}{x} \theta^{x}(1-\theta)^{1-x}
 \end{equation}
 
-Similar to the Bernoulli distribution, the mean of the Binomial distribution is $N\theta$ given the \ac{CLT} as was shown in Figure \ref{fig:probability:probability_distributions:bernoulli:coin}. The expected value of the Binomial distribution is thus given in Equation \ref{eq:probability:probability_distributions:binomial:expected_value} below.
+Similar to the Bernoulli distribution, the mean of the Binomial distribution is $N\theta$ given the \ac{CLT} as was shown in Figure \ref{fig:probability:probability_distributions:bernoulli:coin}. The expected value of the Binomial distribution is thus given in Equation~\eqref{eq:probability:probability_distributions:binomial:expected_value} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:binomial:expected_value}
       E[x] = N\theta
 \end{equation}
 
-The mode of the distribution is given in Equation \ref{eq:probability:probability_distributions:binomial:mode} below.
+The mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:binomial:mode} below.
 
 \begin{align}
       \label{eq:probability:probability_distributions:binomial:mode}
@@ -418,21 +418,21 @@ The mode of the distribution is given in Equation \ref{eq:probability:probabilit
 \subsection{Categorical Distribution}
 \label{sec:probability:probability_distributions:categorical}
 
-The Categorical distribution is a discrete probability distribution over some random variable $x$, taking on any one of $K$ possible categories~\cite{ref:wackerly:2014}. There is no innate underlying ordering to these categories and therefore, for simplicity, each category is assigned a numerical representative value such that $k = (1, \dots, K)$. The probabilities for all outcomes is given by the probability vector $\theta = (\theta_{1}, \dots, \theta_{K})$.  This means that the probability $P(x=k)=\theta_{k}$ has support $x \in \{1, \dots, K\}$. The Categorical distribution, denoted $Cat(\theta)$ is the generalization of the Bernoulli distribution and is sometimes referred to it by its alternative names, the generalised Bernoulli Distribution or the Multinoulli distribution. In probability theory, the Categorical distribution is often used to explain the outcome of a single experiment with more than two possible outcomes such as rolling a die~\cite{ref:wackerly:2014}. The \ac{PMF} of the Categorical distribution is given in Equation \ref{eq:probability:probability_distributions:categorical:pmf} below.
+The Categorical distribution is a discrete probability distribution over some random variable $x$, taking on any one of $K$ possible categories~\cite{ref:wackerly:2014}. There is no innate underlying ordering to these categories and therefore, for simplicity, each category is assigned a numerical representative value such that $k = (1, \dots, K)$. The probabilities for all outcomes is given by the probability vector $\theta = (\theta_{1}, \dots, \theta_{K})$.  This means that the probability $P(x=k)=\theta_{k}$ has support $x \in \{1, \dots, K\}$. The Categorical distribution, denoted $Cat(\theta)$ is the generalization of the Bernoulli distribution and is sometimes referred to it by its alternative names, the generalised Bernoulli Distribution or the Multinoulli distribution. In probability theory, the Categorical distribution is often used to explain the outcome of a single experiment with more than two possible outcomes such as rolling a die~\cite{ref:wackerly:2014}. The \ac{PMF} of the Categorical distribution is given in Equation~\eqref{eq:probability:probability_distributions:categorical:pmf} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:categorical:pmf}
       P(x \vert \theta; K) = f_{Cat}(x; K, \theta) = \prod_{k=1}^{K}\theta_{k}^{[x = k]}
 \end{equation}
 
-where $[x = k]$ is the Iversion Bracket~\cite{ref:iverson:1962}, yielding 1 if $x = k$ and 0 otherwise. From this, one can conclude that for a given class $k$, the categorical distribution simply yields $\theta_{k}$ as is shown in Equation \ref{eq:probability:probability_distributions:categorical:pmf_k} below.
+where $[x = k]$ is the Iversion Bracket~\cite{ref:iverson:1962}, yielding 1 if $x = k$ and 0 otherwise. From this, one can conclude that for a given class $k$, the categorical distribution simply yields $\theta_{k}$ as is shown in Equation~\eqref{eq:probability:probability_distributions:categorical:pmf_k} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:categorical:pmf_k}
       f_{Cat}(x=k; K, \theta) = \theta_{k}
 \end{equation}
 
-The random variable $x$ can also be encoded in binary format, yielding a vector $x = (x_{1}, \dots, x_{K})$ of Bernoulli distributions such that the support is $\forall_{k=1}^{K} x_{k} \in \{0, 1\}$. Importantly, if the outcome of the random event is of category $k$, then $x_{k} = 1$ and $\forall_{j=1}^{K} x_{j} = 0, j \neq k$ so that the standard $K-1$ probability simplex $S$ still holds. The \ac{PMF} of the Categorical distribution can then be rewritten as follows in Equation \ref{eq:probability:probability_distributions:categorical:pmf_alt} below.
+The random variable $x$ can also be encoded in binary format, yielding a vector $x = (x_{1}, \dots, x_{K})$ of Bernoulli distributions such that the support is $\forall_{k=1}^{K} x_{k} \in \{0, 1\}$. Importantly, if the outcome of the random event is of category $k$, then $x_{k} = 1$ and $\forall_{j=1}^{K} x_{j} = 0, j \neq k$ so that the standard $K-1$ probability simplex $S$ still holds. The \ac{PMF} of the Categorical distribution can then be rewritten as follows in Equation~\eqref{eq:probability:probability_distributions:categorical:pmf_alt} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:categorical:pmf_alt}
@@ -441,7 +441,7 @@ The random variable $x$ can also be encoded in binary format, yielding a vector 
 
 where $\mathbbm{1}(x_{k})$ is the \textit{indicator function}, yielding 1 if $x_{k} = 1$ and 0 otherwise.
 
-Since there is no innate order to the underlying categories, the mean of the distribution does not yield any relevant information. The mode of the distribution is given in Equation \ref{eq:probability:probability_distributions:categorical:mode} below.
+Since there is no innate order to the underlying categories, the mean of the distribution does not yield any relevant information. The mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:categorical:mode} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:categorical:mode}
@@ -460,14 +460,14 @@ The Multinomial distribution is a discrete probability distribution over some ra
       \item When $K > 2$ and $N = 1$, the Multinomial distribution is the Categorical distribution.
 \end{itemize}
 
-The support for the Multinomial is $\forall_{i=1}^{K} x_{k} \in \{1, \dots, N\}, \sum_{k=1}^{K}x_{k} = N$ and the \ac{PMF} for the Multinomial distribution is given below in Equation \ref{eq:probability:probability_distributions:multinomial:pmf}.
+The support for the Multinomial is $\forall_{i=1}^{K} x_{k} \in \{1, \dots, N\}, \sum_{k=1}^{K}x_{k} = N$ and the \ac{PMF} for the Multinomial distribution is given below in Equation~\eqref{eq:probability:probability_distributions:multinomial:pmf}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:multinomial:pmf}
       P(x \vert \theta; N; K) = f_{Mul}(x; N, K, \theta) = \frac{N!}{\prod_{k=1}^{K}x_{k}!} \prod_{k=1}^{K}\theta_{k}^{x_{k}}
 \end{equation}
 
-Similar to the Categorical distribution, the random variable $x$ can also be encoded in binary format, yielding an $N \times K$ matrix $X$ of Bernoulli distributions. The support is then given as $X \in \{0, 1\}^{N \times K}, \forall_{i=1}^{N}\sum_{k=1}^{K} x_{i,k} = 1$ so that the standard $K-1$ probability simplex $S$ still holds for each trial. The \ac{PMF} of the Multinomial distribution can then be rewritten as is presented in Equation \ref{eq:probability:probability_distributions:multinomial:pmf_alt}
+Similar to the Categorical distribution, the random variable $x$ can also be encoded in binary format, yielding an $N \times K$ matrix $X$ of Bernoulli distributions. The support is then given as $X \in \{0, 1\}^{N \times K}, \forall_{i=1}^{N}\sum_{k=1}^{K} x_{i,k} = 1$ so that the standard $K-1$ probability simplex $S$ still holds for each trial. The \ac{PMF} of the Multinomial distribution can then be rewritten as is presented in Equation~\eqref{eq:probability:probability_distributions:multinomial:pmf_alt}
 
 \begin{equation}
       \label{eq:probability:probability_distributions:multinomial:pmf_alt}
@@ -512,7 +512,7 @@ same functional form $\mathcal{A}(v)$ as the prior distribution as follows. \\\\
       \item Let $N_{1} = \sum_{i=1}^{I} \mathbbm{1}(x_{i} = 1)$ and $N_{0} = \sum_{i=1}^{I} \mathbbm{1}(x_{i} = 0)$.
 \end{itemize}
 
-The Bernoulli likelihood is then given in Equation \ref{eq:probability:conjugate_priors:binom_likelihood:likelihood} below.
+The Bernoulli likelihood is then given in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:likelihood} below.
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:binom_likelihood:likelihood}
@@ -522,7 +522,7 @@ The Bernoulli likelihood is then given in Equation \ref{eq:probability:conjugate
       \end{split}
 \end{equation}
 
-By Bayes Theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation \ref{eq:probability:conjugate_priors:binom_likelihood:posterior} below.
+By Bayes Theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:posterior} below.
 
 \begin{equation}
       \begin{split}
@@ -531,7 +531,7 @@ By Bayes Theorem, the posterior distribution with given prior data $\mathcal{D}$
       \end{split}
 \end{equation}
 
-Since the denominator sums to $1$, one could get rid of the denominator and constants for the Bernoulli likelihood and the Beta prior, by expressing the posterior as proportional to the likelihood times the prior as is shown in Equation \ref{eq:probability:conjugate_priors:binom_likelihood:posterior_propto} below.
+Since the denominator sums to $1$, one could get rid of the denominator and constants for the Bernoulli likelihood and the Beta prior, by expressing the posterior as proportional to the likelihood times the prior as is shown in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:posterior_propto} below.
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:binom_likelihood:posterior_propto}
@@ -569,7 +569,7 @@ The conjugate prior to a Categorical and Multinomail distribution is the Dirichl
       \item Let $N = (N_{1}, \dots, N_{K}), N_{k} = \sum_{i=1}^{I} \mathbbm{1}(x_{i,k} = 1)$, denote the counts for each occurrence of a class $k$.
 \end{itemize}
 
-The likelihood of the Categorical and Multinomial distributions is then given in Equation \ref{eq:probability:conjugate_priors:mult_likelihood:likelihood} below.
+The likelihood of the Categorical and Multinomial distributions is then given in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:likelihood} below.
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:mult_likelihood:likelihood}
@@ -579,7 +579,7 @@ The likelihood of the Categorical and Multinomial distributions is then given in
       \end{split}
 \end{equation}
 
-By Bayes Theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation \ref{eq:probability:conjugate_priors:mult_likelihood:posterior} below.
+By Bayes Theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:posterior} below.
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:mult_likelihood:posterior}
@@ -588,7 +588,7 @@ By Bayes Theorem, the posterior distribution with given prior data $\mathcal{D}$
       \end{split}
 \end{equation}
 
-Since the denominator sums to $1$, one could get rid of the denominator and constants for the Dirichlet prior,by expressing the posterior as proportional to the likelihood times the prior as is shown in Equation \ref{eq:probability:conjugate_priors:mult_likelihood:posterior_propto} below.
+Since the denominator sums to $1$, one could get rid of the denominator and constants for the Dirichlet prior,by expressing the posterior as proportional to the likelihood times the prior as is shown in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:posterior_propto} below.
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:mult_likelihood:posterior_propto}
@@ -631,21 +631,21 @@ One can see from Figure \ref{fig:probability:bayesian_statistics:mouse_distribut
 \subsection{Bayesian Analysis}
 \label{sec:probability:bayesian_statistics:bayesian_analysis}
 
-Bayesian analysis is the process by which prior beliefs are updated as a result of observing new data/evidence. Similar to the approaches followed above to explain Bayesian statistics, a proposal is made to explain Bayesian analysis by means of an example taken from~\cite{ref:wackerly:2014}. Let $Y_{1}, Y_{2}, \dots, Y_{N}$ denote the random variable that is observed over a sample size of $N$. Then the likelihood of the sample is given as $\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)$. In the discrete case this function is defined to be the joint probability $P(Y_{1} = y_{1}, Y_{2} = y_{2}, \dots, Y_{N} = y_{n})$ and the continuous case yields the joint density of $Y_{1}, Y_{2}, \dots, Y_{N}$, evaluated at $y_{1}, y_{2}, \dots, y_{n}$. The Bayesian view models the parameter $\theta$ as a random variable with a probability distribution. This probability distribution is referred to as the prior distribution of $\theta$. The symbol $\theta$ is included in the notation of $\mathcal{L}$ as an argument to illustrate that this function is dependent explicitly on the value of $\theta$. Importantly, this prior distribution is specified before any data is collected and represents the theoretical prior knowledge about $\theta$. Assume that the parameter $\theta$ has a continuous distribution with density $g(\theta)$ that has no unknown parameters. Considering the likelihood of the data and the prior on $\theta$, then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ is given in Equation \ref{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood} below.
+Bayesian analysis is the process by which prior beliefs are updated as a result of observing new data/evidence. Similar to the approaches followed above to explain Bayesian statistics, a proposal is made to explain Bayesian analysis by means of an example taken from~\cite{ref:wackerly:2014}. Let $Y_{1}, Y_{2}, \dots, Y_{N}$ denote the random variable that is observed over a sample size of $N$. Then the likelihood of the sample is given as $\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)$. In the discrete case this function is defined to be the joint probability $P(Y_{1} = y_{1}, Y_{2} = y_{2}, \dots, Y_{N} = y_{n})$ and the continuous case yields the joint density of $Y_{1}, Y_{2}, \dots, Y_{N}$, evaluated at $y_{1}, y_{2}, \dots, y_{n}$. The Bayesian view models the parameter $\theta$ as a random variable with a probability distribution. This probability distribution is referred to as the prior distribution of $\theta$. The symbol $\theta$ is included in the notation of $\mathcal{L}$ as an argument to illustrate that this function is dependent explicitly on the value of $\theta$. Importantly, this prior distribution is specified before any data is collected and represents the theoretical prior knowledge about $\theta$. Assume that the parameter $\theta$ has a continuous distribution with density $g(\theta)$ that has no unknown parameters. Considering the likelihood of the data and the prior on $\theta$, then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood} below.
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood}
       f(y_{1}, y_{2}, \dots, y_{n}, \theta) = \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)
 \end{equation}
 
-The marginal density or mass function of $Y_{1}, Y_{2}, \dots, Y_{N}$ is given in Equation \ref{eq:probability:bayesian_statistic:bayesian_analysis:marginal_density} below.
+The marginal density or mass function of $Y_{1}, Y_{2}, \dots, Y_{N}$ is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:marginal_density} below.
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:marginal_density}
       m(y_{1}, y_{2}, \dots, y_{n}) = \int_{-\infty}^{\infty} \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)d\theta
 \end{equation}
 
-Finally, the posterior density of $\theta \vert y_{1}, y_{2}, \dots, y_{n}$ according to Bayes' Theorem is given in Equation \ref{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density} below.
+Finally, the posterior density of $\theta \vert y_{1}, y_{2}, \dots, y_{n}$ according to Bayes' Theorem is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density} below.
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density}

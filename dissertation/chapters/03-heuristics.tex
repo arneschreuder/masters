@@ -15,7 +15,7 @@ Chapter~\ref{chap:anns} briefly introduced the reader to the concept of \index{h
 \begin{itemize}
       \item \textbf{Section~\ref{sec:heuristics:optimisation}} provides a brief review of optimisation. It is shown that training of \acp{FFNN} is an optimisation problem.
 
-      \item \textbf{Section~\ref{sec:heuristics:what_is_a_heuristic}} provides background information on the origins and definition the term \index{heuristic}\textit{heuristic}. It is shown that \index{heuristic}heuristics are a class of algorithms that are used to solve optimisation problems.
+      \item \textbf{Section~\ref{sec:heuristics:what_is_a_heuristic}} provides background information on the origins and definition of the term \index{heuristic}\textit{heuristic}. It is shown that \index{heuristic}heuristics are a class of algorithms that are used to solve optimisation problems.
 
       \item \textbf{Section~\ref{sec:heuristics:gd}} presents the reader with seven low-level, gradient-based \index{heuristic}heuristics, including \acf{SGD}, \acf{Momentum}, \acf{NAG}, \acf{Adagrad}, \acf{RMSProp}, \acf{Adadelta} and \acf{Adam}.
 
@@ -45,17 +45,17 @@ As stated in Chapter~\ref{chap:anns}, the training of an \acp{FFNN} is a particu
 
 \section{What is a heuristic?}\label{sec:heuristics:what_is_a_heuristic}
 
-The term \textit{heuristic} comes from the Latin word \textit{heuristicus} which means ``to find out or discover''.~\citeauthor{ref:romanycia:1985}~\cite{ref:romanycia:1985} provides a complete study on the history and origins of the term \index{heuristic}\textit{heuristic}. From their research, a proposal is made to define \index{heuristic}heuristics in the context of \acf{AI}, as any device, be it a program, rule, piece of knowledge, which is added to a problem-solving system, in expectation that on average, the performance will improve.
+The term \textit{heuristic} comes from the Latin word \textit{heuristicus} which means ``to find out or discover''.~\citeauthor{ref:romanycia:1985}~\cite{ref:romanycia:1985} provides a complete study on the history and origins of the term \index{heuristic}\textit{heuristic}. From their research, a proposal is made to define \index{heuristic}heuristics in the context of \acf{AI}, as any device, be it a program, rule, piece of knowledge, which is added to a problem-solving system, in expectation that, on average, the performance will improve.
 
-In the context of this dissertation, a \index{heuristic}heuristic refers to an algorithmic search technique that serves as a guide to a search process where good solutions to a optimisation problem is being sought out. Different \index{heuristic}heuristics make use of different information during the search process~\cite{ref:kheiri:2017}. During the training of \acp{FFNN}, \index{heuristic}heuristics such as gradient-based \index{heuristic}heuristics make use of the derivatives obtained by evaluating the \acs{FFNN}. It can thus be said that gradient-based \index{heuristic}heuristics make use of information directly from the \textit{search space}. On the contrary, \index{heuristic}heuristics such as \index{hmeta-euristic}meta-heuristics make use of meta-information obtained as a result of evaluating the \acs{FFNN}~\cite{ref:blum:2003}. The meta-information that \index{meta-heuristic}meta-heuristics make use of could include ranked-performance of a population of candidate solutions, referred to as \textit{entities}. \index{meta-heuristic}Meta-heuristics are useful when there is imperfect information about the search space~\cite{ref:bianchi:2009}, and are generally less problem-specific than other classes of \index{heuristic}heuristics~\cite{ref:blum:2003}. This disseration takes a particular interest in gradient-based \index{heuristic}heuristics and \index{meta-heuristic}meta-heuristics. Each of these are presented in detail in the following sections.
+In the context of this dissertation, a \index{heuristic}heuristic refers to an algorithmic search technique that serves as a guide to a search process where good solutions to a optimisation problem is being sought out. Different \index{heuristic}heuristics make use of different information during the search process~\cite{ref:kheiri:2017}. During the training of \acp{FFNN}, \index{heuristic}heuristics such as gradient-based \index{heuristic}heuristics make use of the derivatives obtained by evaluating the \acs{FFNN}. It can thus be said that gradient-based \index{heuristic}heuristics make use of information directly from the \textit{search space}. On the contrary, \index{heuristic}heuristics such as \index{meta-heuristic}meta-heuristics make use of meta-information obtained as a result of evaluating the \acs{FFNN}~\cite{ref:blum:2003}. The meta-information that \index{meta-heuristic}meta-heuristics make use of could include ranked-performance of a population of candidate solutions, referred to as \textit{entities}. \index{meta-heuristic}Meta-heuristics are useful when there is imperfect information about the search space~\cite{ref:bianchi:2009}, and are generally less problem-specific than other classes of \index{heuristic}heuristics~\cite{ref:blum:2003}. This disseration takes a particular interest in gradient-based \index{heuristic}heuristics and \index{meta-heuristic}meta-heuristics. Each of these are presented in detail in the following sections.
 
 
 \section{Gradient-Based Heuristics}\label{sec:heuristics:gd}
 
 Gradient-based \index{heuristic}heuristics are optimisation techniques that make use of derivates obtained from evaluating the model being optimised. Specifically, in the context of a minimisation problem, these techniques are called \acf{GD} heuristics as they \textit{minimise} some loss function. \Acs{GD} is generally attributed to Cauchy~\cite{ref:lemarechal:2012}, who first suggested it in 1847. In 1907 Hadamard~\cite{ref:hadamard:1908} independently proposed a similar method.
 
-Although \acs{GD} \index{heuristic}heuristics where not the first \index{heuristic}heuristics used to train \acp{FFNN}
-\cite{ref:engelbrecht:2007}, they are certainly the most whidely used. \Acs{GD} heuristics have become increasingly popular partly due to their simplicity and low computational overhead compared to other \index{heuristic}heuristics such as \index{meta-heuristic}meta-heuristics and other second-order derivative methods such as Newtons' method. There are many variants of \acs{GD} \index{heuristic}heuristics, however, they all fundamentally apply the same generic \acs{GD} framework called \acl{BP}.
+Although gradient-based \index{heuristic}heuristics where not the first \index{heuristic}heuristics used to train \acp{FFNN}
+\cite{ref:engelbrecht:2007}, they are certainly the most widely used. Gradient-based heuristics have become increasingly popular partly due to their simplicity and low computational overhead compared to other \index{heuristic}heuristics such as \index{meta-heuristic}meta-heuristics and other second-order derivative methods such as Newtons' method. There are many variants of gradient-based \index{heuristic}heuristics, however, they all fundamentally apply the same generic \acs{GD} framework called \acf{BP}.
 
 \subsection{Backpropagation}\label{sec:heuristics:gd:backpropagation}
 
@@ -69,7 +69,16 @@ Chapter~\ref{chap:anns} introduced the reader to \index {supervised learning}sup
 \end{figure}
 
 \noindent
-The update step for \acs{GD} can be formulated as is shown in Equation~\eqref{eq:heuristics:gd:update_step_part_1} below.
+In the context of training \textit{shallow} \acp{FFNN} using \index{supervised learning}supervised learning, the error signal is propagated backwards in the network from the output layer, through the hidden layer to the input layer, updating the weights at the output and hidden layers. The algorithm that propagates the error signal backwards is known as \acf{BP}. \Acs{BP} was popularised by~\citeauthor{ref:werbos:1994}~\cite{ref:werbos:1994}.~\citeauthor{ref:nel:2021}~\cite{ref:nel:2021} states that \acs{BP} provides a procedure for updating the network weights, layer by layer, by evaluating the derivatives of the error function $\mathcal{E}$, with respect to the weights at each layer.~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} describes the \acs{BP} process in two steps:
+
+\begin{itemize}
+      \item \textbf{Feedforward Pass}: During this phase the output values of the \acs{FFNN} is calculcated for each training pattern.
+
+      \item \textbf{Backward Propagation}: During this phase the error signal is propagated backwards from the output layer, through the hidden layer, to the input layer of the \acs{FFNN}. Weights at the output and hidden layers are then adjusted as functions of the backpropagated error signal.
+\end{itemize}
+
+\noindent
+The update step for \acs{GD} by means of \acs{BP} can be formulated as is shown in Equations~\eqref{eq:heuristics:gd:update_step_part_1}-\eqref{eq:heuristics:gd:update_step_part_3} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:update_step_part_1}
@@ -77,7 +86,7 @@ The update step for \acs{GD} can be formulated as is shown in Equation~\eqref{eq
 \end{equation}
 
 \noindent
-In Equation~\eqref{eq:heuristics:gd:update_step_part_1} above, the delta weight $\Delta w$, at index $i$ and timestep $t$ is given by Equation~\eqref{eq:heuristics:gd:update_step_part_2} below.
+In Equation~\eqref{eq:heuristics:gd:update_step_part_1} above, $w_{i}$ is the weight value at index $i$, $t$ is the timestep, $\Delta w_{i}(t)$ is the weight update vector at index $i$ and timestep $t$. $\Delta w_{i}(t)$ is specified by Equation~\eqref{eq:heuristics:gd:update_step_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:update_step_part_2}
@@ -85,7 +94,7 @@ In Equation~\eqref{eq:heuristics:gd:update_step_part_1} above, the delta weight 
 \end{equation}
 
 \noindent
-In Equation~\eqref{eq:heuristics:gd:update_step_part_2} above, $\eta$ is the learning rate. The learning rate is an important hyper-parameter in gradient-based \index{heuristic}heuristic as it controls the step-size that is taken in the direction of the negative gradient at each timestep. Assuming the use of \acs{SSE} as the loss function, the partial derivative of $\epsilon$, relative to the weight $w$, at index $i$, is given by Equation~\eqref{eq:heuristics:gd:update_step_part_3} below.
+In Equation~\eqref{eq:heuristics:gd:update_step_part_2} above, $\eta$ is the learning rate and $\frac{\partial \epsilon}{\partial w_{i}}$ is the \textit{gradient} of the error, as a result of a loss function, relative to the weight at index $i$. The learning rate is an important hyper-parameter in gradient-based \index{heuristic}heuristics as it controls the step-size that is taken in the direction of the negative gradient at each timestep. Assuming the use of \acs{SSE} as the loss function, the partial derivative of $\epsilon$, relative to the weight $w$, at index $i$, is given by Equation~\eqref{eq:heuristics:gd:update_step_part_3} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:update_step_part_3}
@@ -93,16 +102,17 @@ In Equation~\eqref{eq:heuristics:gd:update_step_part_2} above, $\eta$ is the lea
 \end{equation}
 
 \noindent
-In the context of training \textit{shallow} \acp{FFNN}, using \index{supervised learning}supervised learning, the error signal is propagated backwards in the network from the output layer, through the hidden layer. The algorithm that propagates the error signal backwardds is known as \acf{BP}. \Acs{BP} was popularised by~\citeauthor{ref:werbos:1994}~\cite{ref:werbos:1994}.~\citeauthor{ref:nel:2021}~\cite{ref:nel:2021} states that \acs{BP} provides a procedure for updating the network weights, layer by layer, by evaluating the derivatives of the error function $\epsilon$ with respect to the weights at each layer.~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007}describes the \acs{BP} process in two steps:
+In Equation~\eqref{eq:heuristics:gd:update_step_part_3} above, $t_{p}$ refers to the target value for pattern $p$, $o_{p}$ refers to the output value for pattern $p$, $f$ refers to the \index{activation function}activation function, $net_{p}$ refers to the \index{net input signal}net input signal for pattern $p$, and $z_{i,p}$ refers to the input value at index $i$ for pattern $p$.
 
-\begin{itemize}
-      \item \textbf{Feedforward Pass}: During this phase the output values of the \acs{FFNN} is calculcated for each training pattern.
+Finally, assuming the use of \index{sigmoid}sigmoid activation function, the partial derivative of the activation function, relative to the net input signal is given in Equation~\eqref{eq:heuristics:gd:update_step_part_4} below.
 
-      \item \textbf{Backward Propagation}: During this phase the error signal that is calculated as is shown above in Equations~\eqref{eq:heuristics:gd:update_step_part_1}, ~\eqref{eq:heuristics:gd:update_step_part_2} and~\eqref{eq:heuristics:gd:update_step_part_3} is propagated backwards from the output layer, through the hidden layer, to the input layer of the \acs{FFNN}. Weights are then adjusted as functions of the backpropagated error signal.
-\end{itemize}
+\begin{equation}
+      \label{eq:heuristics:gd:update_step_part_4}
+      \frac{\partial f}{\partial net_{p}} = o_p(1 - o_{p})
+\end{equation}
 
 \noindent
-The pseudo-code implementation for the generic \acs{GD} algorithm is taken from~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} and is presented in Algorithm~\ref{algo:heuristics:gd:gd} below.
+Again, assuming the use of \acs{SSE} as the loss function, the pseudo-code implementation for the generic \acs{GD} algorithm is taken from~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} and is presented in Algorithm~\ref{algo:heuristics:gd:gd} below.
 
 \begin{algorithm}[H]
       \caption{The pseudo code algorithm for the generic \acf{GD} heuristic.}
@@ -112,10 +122,10 @@ The pseudo-code implementation for the generic \acs{GD} algorithm is taken from~
             \While{stopping conditions are not met}
             \State Let $\epsilon_{T} = 0$;
             \For{each training pattern p}
-            \State Do the feedforward pass phase to calculate the output of the hidden layer $y_{j,p}$ ($\forall j = 1, \dots, J$), and the output of the output layer $o_{k,p}$ ($\forall k = 1, \dots, K$);
-            \State Compute the output error signals $\delta_{o_{k,p}}$ and the hidden layer error signals $\delta_{y_{j,p}}$;
-            \State Adjust the weights of the output layer $w_{kj}$, and the weights of the hidden layer $v_{ji}$ (backpropagation of errors);
-            \State $\epsilon_{T}$ += $[\epsilon_{T_{p}} = \sum^{K}_{k=1}(t_{k,p} - o_{k,p})^{2}]$; (assuming the use of \acs{SSE} as the loss function)
+            \State Calculate the output of the hidden and output layers (feedforward);
+            \State Compute the error signals of the hidden and output layers;
+            \State Adjust the weights of the output and hidden layers (backpropagate);
+            \State $\epsilon_{T}$ += $[\epsilon_{T_{p}} = \sum^{K}_{k=1}(t_{k,p} - o_{k,p})^{2}]$;
             \EndFor
             \State $T += 1$;
             \EndWhile
@@ -123,23 +133,23 @@ The pseudo-code implementation for the generic \acs{GD} algorithm is taken from~
 \end{algorithm}
 
 \noindent
-In order to provide a simplified frame of reference from which the gradient-based heuristics are compared, consider a simplification of the update-step for \acs{SGD} as presented in Equation~\eqref{eq:heuristics:gd:update_step_part_1}. This simplification is depicted in Equation~\eqref{eq:heuristics:gd:sgd} below.
+A simplified notation is proposed from which the gradient-based heuristics can be compared. Consider a simplification of the update-step for \acs{SGD} as presented in Equations~\eqref{eq:heuristics:gd:update_step_part_1} and~\eqref{eq:heuristics:gd:update_step_part_2} where $\frac{\partial \epsilon}{\partial w_{i}}$ is simply represented as the gradient term $g$, resulting in a simplified weight update step as is shown in Equation~\eqref{eq:heuristics:gd:sgd} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:sgd}
       \begin{split}
-            w = w - \eta \nabla_{w}\mathcal{E}(w)
+            w = w - \eta g
       \end{split}
 \end{equation}
 
 \noindent
-In Equation~\eqref{eq:heuristics:gd:sgd} above, $w$ refers to the weights of the \acs{FFNN}, $\eta$ refers to the learning rate as before and $\nabla_{w}\mathcal{E}(w)$ refers to the gradient of the loss function $\mathcal{E}$, w.r.t the output of the \acs{FFNN} as a result of its weights. Note that all subscripts w.r.t. layers and training patterns are omitted for convenience.
+In Equation~\eqref{eq:heuristics:gd:sgd} above, $w$ refers to the weight vector, $\eta$ refers to the learning rate as before and $g$ refers to the gradient of the error function relative to weight vector. Note that, vector notation and some subscripts related to layers, indices, timesteps and training patterns are omitted for convenience.
 
 \subsection{Stochastic vs. Batch Training}\label{sec:heuristics:gd:sgd}
 
-This section shines light on the algorithmic implementation of \ac{BP} with specific context to stochastic and batch training. The implementation of \acs{GD} using stochastic training is referred to as \acf{SGD}.
+This section shines light on the algorithmic implementation of \acs{BP} with specific context to stochastic and batch training. The implementation of \acs{GD} using stochastic training is referred to as \acf{SGD}.
 
-\acs{SGD} was one of the first widely used heuristics to train \ac{FFNN}, however, it is not without flaws. With stochastic training, only one training pattern is presented at each iteration/epoch. As such, weight updates are done with high variance and noise~\cite{ref:ruder:2016}. An illustration of the the fluctuations caused by \ac{SGD} during training is given in Figure~\ref{fig:heuristics:gd:sgd}.
+\acs{SGD} was one of the first widely used heuristics to train \acs{FFNN}, however, it is not without flaws. With stochastic training, only one training pattern is presented at each iteration/epoch. As such, weight updates are done with high variance and noise~\cite{ref:ruder:2016}. An illustration of the the fluctuations caused by \acs{SGD} during training is given in Figure~\ref{fig:heuristics:gd:sgd}.
 
 \begin{figure}[htbp]
       \centering
@@ -151,7 +161,7 @@ This section shines light on the algorithmic implementation of \ac{BP} with spec
 \noindent
 With batch training, all the training patterns are presented at once and the \acs{FFNN} converges to the global minimum of the loss function w.r.t $w$ (assuming the loss function is convex). However, this is computationally expensive and impractical to implement in many situations. While \acs{SGD} is able to jump out of local minima into new, potentially better local minima~\cite{ref:ruder:2016}, \acs{SGD} complicates convergence to the minima as \acs{SGD} can potentially keep overshooting better minima. By slowly decreasing the learning rate $\eta$ during training, the same convergence behaviour is achieved as with batch training.
 
-A compromise to overshooting minima that \acs{SGD} suffers from, is to include mini-batches of training patterns where a small number of training patterns are presented to the \acs{FFNN} at once. This is referred to as \textit{mini-batch} training. Input patterns from mini-batches are approximations of the total population of training patterns. According to~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} this has two main advantages:
+A compromise to overshooting minima that \acs{SGD} suffers from, is to make use of mini-batches of training patterns where a small number of training patterns are presented to the \acs{FFNN} at once. This is referred to as \textit{mini-batch} training. Input patterns from mini-batches are approximations of the total population of training patterns. According to~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} this has two main advantages:
 
 \begin{itemize}
       \item Mini-batch training reduces the high variance of weight updates as observed for \acs{SGD}, which leads to better convergence.
@@ -167,7 +177,7 @@ In the context of this dissertation, the implementation of \acs{SGD} refers to t
 
       \item Learning rate schedules~\cite{ref:robbins:1951} can be introduced to dynamically change the learning rate throughout the training process, however, these schedules and their parameters have to be defined a priori and are thus problem specific~\cite{ref:darken:1992}.
 
-      \item The learning rate that has been introduced so far is applied to all elements of the weight vector updates. If the training data is sparse and the features have very different frequencies, an equal update to all weights elements is inefficient. Larger weight updates are required for less frequently occurring features. Inefficient updates of all elements in the weight vectors contribute to the credit assignment problem~\cite{ref:rumelhart:1986}, common to \acs{GD} variants.
+      \item The learning rate that has been introduced so far is applied to all elements of the weight update vector. If the training data is sparse and the features have varying frequencies, an equal update to all weight elements is inefficient. Larger weight updates are required for less frequently occurring features. Inefficient updates of all elements in the weight vectors contribute to the credit assignment problem~\cite{ref:rumelhart:1986}, common to \acs{GD} variants.
 
       \item It is difficult to avoid getting trapped in local minima, especially for highly non-convex loss functions used for training \acp{FFNN}. \citeauthor{ref:dauphin:2014}~\cite{ref:dauphin:2014} mentions the role of sadle points in getting trapped in local minima. Sadle points are points at which one dimensions slopes upwards, while another dimension slopes downwards. \citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that these sadle points are usually surrounded by plateaus of the same error, leading to gradients that are close to zero in all dimensions.
 \end{itemize}
@@ -178,9 +188,9 @@ Alternative variants have been proposed that lead to better control over the con
 
 \subsection{Momentum}\label{sec:heuristics:gd:momentum}
 
-Research shows that \ac{SGD} has difficulty navigating ravines~\cite{ref:sutton:1986}. Ravines are areas where the surface curves much more steeply in one dimension than in another. These ravines are common around local minima. As such, \acs{SGD} is shown to oscillate across the slopes of the ravine while only making minor progress towards the local minima.
+Research shows that \acs{SGD} has difficulty navigating ravines~\cite{ref:sutton:1986}. Ravines are areas where the surface curves much more steeply in one dimension than in another. These ravines are common around local minima. As such, \acs{SGD} is shown to oscillate across the slopes of the ravine while only making minor progress towards the local minima.
 
-\Acs{Momentum} ~\cite{ref:qian:1999} is a variant of the \acs{SGD} that helps accelerate \ac{SGD} in the relevant direction, dampening oscillations.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that this is done by adding a fraction $\alpha$, of the weight update vector of the previous timestep to the current weight update vector. An illustration of \acs{SGD} with and without momentum is given in Figure~\ref{fig:heuristics:gd:sgd_with_and_without_momentum}.
+\Acs{Momentum} ~\cite{ref:qian:1999} is a variant of the \acs{SGD} that helps accelerate \acs{SGD} in the relevant direction, dampening oscillations.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that this is done by adding a fraction $\alpha$, of the weight update vector of the previous timestep to the current weight update vector. An illustration of \acs{SGD} with and without momentum is given in Figure~\ref{fig:heuristics:gd:sgd_with_and_without_momentum}.
 
 \begin{figure}[htbp]
       \centering
@@ -190,19 +200,19 @@ Research shows that \ac{SGD} has difficulty navigating ravines~\cite{ref:sutton:
 \end{figure}
 
 \noindent
-The accumulation of momentum is presented in Equation~\eqref{eq:heuristics:gd:momentum_part_1} below, while the update step is then amended in Equation~\ref{eq:heuristics:gd:momentum_part_2} below.
+The accumulation of momentum is presented in Equation~\eqref{eq:heuristics:gd:momentum_part_1} below, while the update step is then amended in Equation~\eqref{eq:heuristics:gd:momentum_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:momentum_part_1}
       \begin{split}
-            v_{t} = \alpha v_{t-1} + \eta \nabla_{w}\mathcal{E}(w)
+            v = \alpha v - \eta g
       \end{split}
 \end{equation}
 
 \begin{equation}
       \label{eq:heuristics:gd:momentum_part_2}
       \begin{split}
-            w = w - v_{t}
+            w = w + v
       \end{split}
 \end{equation}
 
@@ -212,7 +222,7 @@ By redefining the \acs{SGD} update steps as shown above in Equations~\eqref{eq:h
 
 \subsection{Nesterov Accelerated Gradients}\label{sec:heuristics:nag}
 
-\Acf{NAG} is a variant of the \acs{Momentum} heuristic developed by~\citeauthor{ref:sutskever:2013-2}~\cite{ref:sutskever:2013-2} and is inspired from~\citeauthor{ref:nesterov:1983}~\cite{ref:nesterov:1983} work on optimising convex functions. \ac{NAG} provides an improvement to the momentum accumulation term by providing a look-ahead term that better refines the weight update step.
+\Acf{NAG} is a variant of the \acs{Momentum} heuristic developed by~\citeauthor{ref:sutskever:2013-2}~\cite{ref:sutskever:2013-2} and is inspired by~\citeauthor{ref:nesterov:1983}'s~\cite{ref:nesterov:1983} work on optimising convex functions. \acs{NAG} provides an improvement to the momentum accumulation term by providing a look-ahead term that better refines the weight update step.
 
 In the \acs{NAG} heuristic, the gradient is not calculated w.r.t the current weights, but rather w.r.t the approximate future positions of the weights~\cite{ref:sutskever:2013-2, ref:ruder:2016}. An illustration of the weight update vector using \acs{NAG} is taken from Geoffrey Hinton's lecture on mini-batch \acs{GD}~\cite{ref:hinton:2012} and is presented in Figure~\ref{fig:heuristics:gd:nag} below.
 
@@ -224,51 +234,45 @@ In the \acs{NAG} heuristic, the gradient is not calculated w.r.t the current wei
 \end{figure}
 
 \noindent
-The difference in the update step for \acs{Momentum} and the update step for \ac{NAG} as developed by~\citeauthor{ref:sutskever:2013-2}~\cite{ref:sutskever:2013-2} is described by~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} as follows. \ac{Momentum} first calculates the current gradient, represented by the small blue vector in Figure~\ref{fig:heuristics:gd:nag} and then takes a large step in the direction of the updated accumulated gradient, presented by the big blue vector. In contrast, \acs{NAG} first takes a big step in the direction of the previous accumulated gradient presented by the brown vector. At this point the gradient is measured and \acs{NAG} makes a correction represented by the red vector. The complete update step is represented by the green vector. By anticipating approximate future positions of the weights, the weight update step as defined by \ac{NAG} controls the optimisation process from going too fast and results in increased responsiveness~\cite{ref:bengio:2013}. The \acs{NAG} update steps are given in Equations~\eqref{eq:heuristics:gd:nag_part_1} and~\eqref{eq:heuristics:gd:nag_part_2} below.
-
-\begin{equation}
-      \label{eq:heuristics:gd:nag_part_1}
-      \begin{split}
-            v_{t} = \alpha v_{t-1} + \eta \nabla_{w}\mathcal{E}(w - \alpha v_{t-1})
-      \end{split}
-\end{equation}
+The difference in the update step for \acs{Momentum} and the update step for \acs{NAG} as developed by~\citeauthor{ref:sutskever:2013-2}~\cite{ref:sutskever:2013-2} is described by~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} as follows. \acs{Momentum} first calculates the current gradient, represented by the small blue vector in Figure~\ref{fig:heuristics:gd:nag} and then takes a large step in the direction of the updated accumulated gradient, presented by the big blue vector. In contrast, \acs{NAG} first takes a big step in the direction of the previous accumulated gradient presented by the brown vector. At this point the gradient is measured and \acs{NAG} makes a correction represented by the red vector. The complete update step is represented by the green vector. By anticipating approximate future positions of the weights, the weight update step as defined by \acs{NAG} controls the optimisation process from going too fast and results in increased responsiveness~\cite{ref:bengio:2013}. Along with the same velocity update step for \acs{Momentum}, as presented in Equation~\eqref{eq:heuristics:gd:momentum_part_1}, the \acs{NAG} weight update step is given in Equation~\eqref{eq:heuristics:gd:nag_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:nag_part_2}
       \begin{split}
-            w = w - v_{t}
+            w = w + \alpha v - \eta g
       \end{split}
 \end{equation}
 
+
 \subsection{Adaptive Gradients}\label{sec:heuristics:adagrad}
 
-\Acf{Adagrad} is an adaptation of \ac{SGD} which implements a learning rate for every element in the weight vector and is developed by Duchi et al.~\cite{ref:duchi:2011}.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that \acs{Adagrad} adapts the learning rate to the elements of the weight vector, by  performing small updates (i.e. low learning rates) for weights associated with frequently occurring features and larger updates (i.e. high learning rates) for weights associated with infrequent features. For this reason, \acs{Adagrad} is well suited for dealing with situations where training data is sparse.
+\Acf{Adagrad} is an adaptation of \acs{SGD} which implements a learning rate for every element in the weight vector and is developed by Duchi et al.~\cite{ref:duchi:2011}.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that \acs{Adagrad} adapts the learning rate to the elements of the weight vector, by  performing small updates (i.e. low learning rates) for weights associated with frequently occurring features and larger updates (i.e. high learning rates) for weights associated with infrequent features. For this reason, \acs{Adagrad} is well suited for dealing with situations where training data is sparse.
 
-In the \acs{GD} variants presented thus far, the weight updates have been applied by making use of the same learning rate $\eta$ for all elements of the weight update vector. \Acs{Adagrad} uses a different learning rate for every weight element $w_{i}$, at every timestep $t$. The weight update step is presented in Equation~\eqref{eq:heuristics:gd:adagrad_part_1} below.
+In the \acs{GD} variants presented thus far, the weight updates have been applied by making use of the same learning rate $\eta$, for all elements of the weight update vector. \Acs{Adagrad} uses a different learning rate for every weight element $w_{i}$, at every timestep $t$. The weight update step for \acs{Adagrad} is presented in Equation~\eqref{eq:heuristics:gd:adagrad_part_1} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adagrad_part_1}
       \begin{split}
-            w_{t+1,i} = w_{t,i} - \frac{\eta}{\sqrt{G_{t,ii} + \epsilon}}.\nabla_{w_{i}}\mathcal{E}(w_{t,i})
+            w_{t+1,i} = w_{t,i} - \frac{\eta}{\sqrt{G_{t,ii} + \epsilon}}.g_{t,i}
       \end{split}
 \end{equation}
 
 \noindent
-In Equation~\eqref{eq:heuristics:gd:adagrad_part_1} above, $w_{i}$ is the $i$-th element of the weight vector, $G_{t,ii} \in \mathbb{R}^{d \times d}$ is a diagonal matrix where each diagonal element $i,i$ is the sum of the squared gradients w.r.t. $w_{i}$, up to timestep $t$ and $\epsilon$ is a smoothing term that avoids division by zero and is set to an insignificant value such as $1 \times 10^{-8}$. Since $G_{t}$ contains the sum of the squares of the gradients along its diagonal, the weight update step can be vectorised and updated using the matrix-vector product, represented by $\odot$, between $G_{t}$ and $\nabla_{w_{i}}\mathcal{E}(w_{i})$. The simplified update step as implemented by \acs{Adagrad} is given in Equation~\eqref{eq:heuristics:gd:adagrad_part_2} below.
+In Equation~\eqref{eq:heuristics:gd:adagrad_part_1} above, $w_{i}$ is the $i$-th element of the weight vector, $G_{t,ii} \in \mathbb{R}^{d \times d}$ is a diagonal matrix where each diagonal element $i,i$, is the sum of the squared gradients w.r.t. $w_{i}$, up to timestep $t$ and $\epsilon$ is a smoothing term that avoids division by zero and is set to an insignificant value such as $1 \times 10^{-8}$. Since $G_{t}$ contains the sum of the squares of the gradients along its diagonal, the weight update step can be vectorised and updated using the matrix-vector product, represented by $\odot$, between $G_{t}$ and $g_{t,i}$. The simplified update step as implemented by \acs{Adagrad} is given in Equation~\eqref{eq:heuristics:gd:adagrad_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adagrad_part_2}
       \begin{split}
-            w_{t+1} = w_{t} - \frac{\eta}{\sqrt{G_{t} + \epsilon}} \odot \nabla_{w_{i}}\mathcal{E}(w_{t})
+            w_{t+1} = w_{t} - \frac{\eta}{\sqrt{G_{t} + \epsilon}} \odot g_{t,i}
       \end{split}
 \end{equation}
 
 \noindent
-\Ac{Adagrad}'s main benefit is that it does not require manual tuning of the learning rate $\eta$. However, a problem with \ac{Adagrad} is in the accumulation of squared gradients in the denominator, represented by $G_{t}$. Since every term that is added is positive, $G_{t}$ keeps growing, leading to a situation where the learning rate shrinks to the point that the heuristic is no longer able to learn.
+\Ac{Adagrad}'s main benefit is that it does not require manual tuning of the learning rate $\eta$. However, a problem with \acs{Adagrad} is in the accumulation of squared gradients in the denominator, represented by $G_{t}$. Since every term that is added is positive, $G_{t}$ keeps growing, leading to a situation where the learning rate shrinks to the point that the heuristic is no longer able to learn.
 
 \subsection{Adaptive Learning Rate}\label{sec:heuristics:adadelta}
 
-Zeiler~\cite{ref:zeiler:2012} presents \ac{Adadelta}, an improvement of \acs{Adagrad} that eliminates the accumulation of squared gradients in the denominator.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that instead of accumulating all past squared gradients as in the case of \ac{Adagrad}, \ac{Adadelta} restricts the window of accumulation to a window with a fixed size $W$. However, storing $W$ previous squared gradients is very inefficient. Instead, the accumulation of gradients over $W$ steps is defined recursively as a decaying average of all past squared gradients. In order to simplify the notation of update steps, let $g_{t} = \nabla_{w_{i}}\mathcal{E}(w_{t})$. The moving average of squared gradients at timestep $t$, denoted by $E[g^{2}]_{t}$  depends on a fraction $\alpha$ of the previous average of squared gradients and the current gradient, similar to the update step for \acs{Momentum}. Similar to \acs{Momentum}, $\alpha$ is set to 0.9. The update step for $E[g^{2}]_{t}$ is presented in Equation~\eqref{eq:heuristics:gd:adadelta_part_1} below.
+Zeiler~\cite{ref:zeiler:2012} presents \acs{Adadelta}, an improvement of \acs{Adagrad} that eliminates the accumulation of squared gradients in the denominator.~\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that instead of accumulating all past squared gradients as in the case of \acs{Adagrad}, \acs{Adadelta} restricts the window of accumulation to a window with a fixed size $W$. However, storing $W$ previous squared gradients is very inefficient. Instead, the accumulation of gradients over $W$ steps is defined recursively as a decaying average of all past squared gradients. The moving average of squared gradients at timestep $t$, denoted by $E[g^{2}]_{t}$  depends on a fraction $\alpha$ of the previous average of squared gradients and the current gradient, similar to the update step for \acs{Momentum}. Also similar to \acs{Momentum}, $\alpha$ is set to 0.9. The update step for $E[g^{2}]_{t}$ is presented in Equation~\eqref{eq:heuristics:gd:adadelta_part_1} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_1}
@@ -278,93 +282,66 @@ Zeiler~\cite{ref:zeiler:2012} presents \ac{Adadelta}, an improvement of \acs{Ada
 \end{equation}
 
 \noindent
-To illustrate the difference between \acs{Adagrad} and \acs{Adadelta}, the \ac{SGD} update step as presented in~\eqref{eq:heuristics:gd:sgd} is rewritten in terms of the weight update vector $\Delta w_{t}$ and gradient $g_{t}$ and is presented in Equations~\ref{eq:heuristics:gd:adadelta_part_2} and~\eqref{eq:heuristics:gd:adadelta_part_2} below.
+To illustrate the difference between \acs{Adagrad} and \acs{Adadelta}, the \acs{SGD} weight update step for \acs{Adagrad}, as presented in~\eqref{eq:heuristics:gd:adagrad_part_2} is rewritten such that the diagonal matrix $G_{t}$, is replaced with the moving average of squared gradients as presented in Equation~\eqref{eq:heuristics:gd:adadelta_part_2} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_2}
       \begin{split}
-            \Delta w_{t} = -\eta g_{t,i}
+            w_{t+1} = w_{t} - \frac{\eta}{\sqrt{E[g^{2}]_{t} + \epsilon}} g_{t}
       \end{split}
 \end{equation}
+
+\noindent
+Since the denominator is the \acf{RMS} error criterion of the gradient, the criteria short-hand notation is used as is depicted in Equation~\eqref{eq:heuristics:gd:adadelta_part_3} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_3}
       \begin{split}
-            w_{t+1} = w_{t} + \Delta w_{t}
+            w_{t+1} = w_{t} - \frac{\eta}{RMS[g]_{t}} g_{t}
       \end{split}
 \end{equation}
 
 \noindent
-The weight update vector for \ac{Adagrad} is then redefined in Equation~\eqref{eq:heuristics:gd:adagrad_part_2} below.
-
-\begin{equation}
-      \label{eq:heuristics:gd:adagrad_part_2_new}
-      \begin{split}
-            \Delta w_{t} = - \frac{\eta}{\sqrt{G_{t} + \epsilon}} \odot g_{t}
-      \end{split}
-\end{equation}
-
-\noindent
-The diagonal matrix $G_{t}$, implemented by \ac{Adagrad}, is then replaced with the moving average of squared gradients as presented in Equation~\ref{eq:heuristics:gd:adadelta_part_4} below.
+~\citeauthor{ref:zeiler:2012}~\cite{ref:zeiler:2012} noted that the units of the update step as presented in Equation~\eqref{eq:heuristics:gd:adadelta_part_3} do not match. The weight update vector should have the same hypothetical units as the weight vector. To fix the aforemention problem, another exponentially decaying average is defined in terms of squared weight updates as is presented in Equation~\eqref{eq:heuristics:gd:adadelta_part_4} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adadelta_part_4}
-      \begin{split}
-            \Delta w_{t} = - \frac{\eta}{\sqrt{E[g^{2}]_{t} + \epsilon}} g_{t}
-      \end{split}
-\end{equation}
-
-\noindent
-Since the denominator is the \acf{RMS} error criterion of the gradient, the criteria short-hand notation is used as is depicted in Equation~\eqref{eq:heuristics:gd:adadelta_part_5} below.
-
-\begin{equation}
-      \label{eq:heuristics:gd:adadelta_part_5}
-      \begin{split}
-            \Delta w_{t} = - \frac{\eta}{RMS[g]_{t}} g_{t}
-      \end{split}
-\end{equation}
-
-\noindent
-~\citeauthor{ref:zeiler:2012}~\cite{ref:zeiler:2012} noted that the units of the update step as presented in Equation~\ref{eq:heuristics:gd:adadelta_part_5} do not match. The weight update vector should have the same hypothetical units as the weight vector. To fix the aforemention problem, another exponentially decaying average is defined in terms of squared weight updates as is presented in Equation~\ref{eq:heuristics:gd:adadelta_part_6} below.
-
-\begin{equation}
-      \label{eq:heuristics:gd:adadelta_part_6}
       \begin{split}
             E[\Delta w^{2}]_{t} = \alpha E[\Delta w^{2}]_{t - 1} + (1 - \alpha)\Delta w_{t}^{2}
       \end{split}
 \end{equation}
 
 \noindent
-The \acf{RMS} error of weight updates is given in Equation~\ref{eq:heuristics:gd:adadelta_part_7} below.
+The \acf{RMS} error of weight updates is given in Equation~\eqref{eq:heuristics:gd:adadelta_part_5} below.
 
 \begin{equation}
-      \label{eq:heuristics:gd:adadelta_part_7}
+      \label{eq:heuristics:gd:adadelta_part_5}
       \begin{split}
             RMS[\Delta w]_{t} = \sqrt{E[\Delta w^{2}]_{t} + \epsilon}
       \end{split}
 \end{equation}
 
 \noindent
-Note that $RMS[\Delta w]_{t}$ is unknown at timestep $t$. $RMS[\Delta w]_{t}$ is approximated with the \acf{RMS} of weight updates until the previous timestep. The learning rate in Equation~\eqref{eq:heuristics:gd:adadelta_part_5} is then replaced. The weight update step for \acs{Adadelta} is then concluded in Equation~\eqref{eq:heuristics:gd:adadelta_part_8} below.
+Note that $RMS[\Delta w]_{t}$ is unknown at timestep $t$. $RMS[\Delta w]_{t}$ is approximated with the \acf{RMS} of weight updates until the previous timestep. The learning rate in Equation~\eqref{eq:heuristics:gd:adadelta_part_3} is then replaced. The weight update step for \acs{Adadelta} is then concluded in Equation~\eqref{eq:heuristics:gd:adadelta_part_6} below.
 
 \begin{equation}
-      \label{eq:heuristics:gd:adadelta_part_8}
+      \label{eq:heuristics:gd:adadelta_part_6}
       \begin{split}
-            \Delta w_{t} = - \frac{RMS[\Delta w]_{t-1}}{RMS[g]_{t}} g_{t}
+            w_{t+1} = w_{t} - \frac{RMS[\Delta w]_{t-1}}{RMS[g]_{t}} g_{t}
       \end{split}
 \end{equation}
 
 \noindent
-The main advantage of \ac{Adadelta} is in removing the need for a learning rate.
+The main advantage of \acs{Adadelta} is in removing the learning rate, which eliminates the need for hyper-parameter tuning of the learning rate.
 
 \subsection{Root Mean Squared Error Propagation}\label{sec:heuristics:rmsprop}
 
-\Acf{RMSProp}, presented by~\citeauthor{ref:hinton:2012}~\cite{ref:hinton:2012} is similar to \acs{Adadelta}  and was developed independently around the same time. \ac{RMSProp} is the same as the first weight update vector for \ac{Adadelta}, presented in~\eqref{eq:heuristics:gd:adadelta_part_4}. A disadvantage of \acs{RMSProp} is that it still includes the learning rate term $\eta$ that needs to be tuned. For \acs{RMSProp},~\citeauthor{ref:hinton:2012}~\cite{ref:hinton:2012} suggests $\alpha$ be set to 0.9 and $\eta$ be set to $0.001$.
+\Acf{RMSProp}, presented by~\citeauthor{ref:hinton:2012}~\cite{ref:hinton:2012} is similar to \acs{Adadelta}  and was developed independently around the same time. \acs{RMSProp} is the same as the first weight update vector for \acs{Adadelta}, presented in Equation~\eqref{eq:heuristics:gd:adadelta_part_2}. A disadvantage of \acs{RMSProp} is that it still includes the learning rate term $\eta$ that needs to be tuned. For \acs{RMSProp},~\citeauthor{ref:hinton:2012}~\cite{ref:hinton:2012} suggests $\alpha$ be set to 0.9 and $\eta$ be set to $0.001$.
 
 
 \subsection{Adaptive Moments Estimation}\label{sec:heuristics:adam}
 
-\Acf{Adam} is another variant of \ac{SGD} that includes adaptive learning rates and is presented by~\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014}. In addition to storing an exponentially decaying average of past squared gradients like \acs{Adadelta} and \acs{RMSProp}, \acs{Adam} also stores an exponentially decaying average of past gradients, similar to \ac{Momentum}~\cite{ref:ruder:2016}.~\citeauthor{ref:heusel:2017}~\cite{ref:heusel:2017} uses the analogy that, if \acs{Momentum} can be seen as a ball running down a slope, then \acs{Adam} behaves like a heavy ball with friction, which prefers flat minima in the error surface. The decaying averages for past gradients and past squared gradients is given in Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_part_2} respectively.
+\Acf{Adam} is another variant of \acs{SGD} that includes adaptive learning rates and is presented by~\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014}. In addition to storing an exponentially decaying average of past squared gradients like \acs{Adadelta} and \acs{RMSProp}, \acs{Adam} also stores an exponentially decaying average of past gradients, similar to \acs{Momentum}~\cite{ref:ruder:2016}.~\citeauthor{ref:heusel:2017}~\cite{ref:heusel:2017} uses the analogy that, if \acs{Momentum} can be seen as a ball running down a slope, then \acs{Adam} behaves like a heavy ball with friction, which prefers flat minima in the error surface. The decaying averages for past gradients and past squared gradients is given in Equations~\eqref{eq:heuristics:gd:adam_part_1} and~\eqref{eq:heuristics:gd:adam_part_2} respectively.
 
 \begin{equation}
       \label{eq:heuristics:gd:adam_part_1}
@@ -381,9 +358,9 @@ The main advantage of \ac{Adadelta} is in removing the need for a learning rate.
 \end{equation}
 
 \noindent
-In Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_part_2} above, $\beta_{1}$ and $\beta_{2}$ are decay rates, similar to $\alpha$ for \ac{Momentum}. \citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} suggest default values $B_{1}=0.9$, $B_{2}=0.999$ and $\epsilon = 1 \times 10^{-8}$.
+In Equations~\eqref{eq:heuristics:gd:adam_part_1} and~\eqref{eq:heuristics:gd:adam_part_2} above, $\beta_{1}$ and $\beta_{2}$ are decay rates, similar to $\alpha$ for \acs{Momentum}. \citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} suggest default values $B_{1}=0.9$, $B_{2}=0.999$ and $\epsilon = 1 \times 10^{-8}$.
 
-\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that $m_{t}$ and $v_{t}$ presented above are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively. ~\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} mentions that because $m_{t}$ and $v_{t}$ are initialised to be vectors of 0's, they are biased towards 0. The aforementioned bias is especially prominent during the initial timesteps and/or when the decay rates $\beta_{1}$ and $\beta_{2}$ are small ($\beta_{1}$ and $\beta_{2}$ are close to 1). These biases need to be corrected. The bias-corrected first and second moment estimates are presented in Equations~\ref{eq:heuristics:gd:adam_bc_first_moment} and~\ref{eq:heuristics:gd:adam_bc_second_moment} below.
+\citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that $m_{t}$ and $v_{t}$ presented above are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively. ~\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} mentions that because $m_{t}$ and $v_{t}$ are initialised to be vectors of 0's, they are biased towards 0. The aforementioned bias is especially prominent during the initial timesteps and/or when the decay rates $\beta_{1}$ and $\beta_{2}$ are small ($\beta_{1}$ and $\beta_{2}$ are close to 1). These biases need to be corrected. The bias-corrected first and second moment estimates are presented in Equations~\eqref{eq:heuristics:gd:adam_bc_first_moment} and~\eqref{eq:heuristics:gd:adam_bc_second_moment} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adam_bc_first_moment}
@@ -400,7 +377,7 @@ In Equations~\ref{eq:heuristics:gd:adam_part_1} and~\ref{eq:heuristics:gd:adam_p
 \end{equation}
 
 \noindent
-The \acs{Adam} update rule is then presented in Equation~\ref{eq:heuristics:gd:adam} below.
+The \acs{Adam} weight update rule is then presented in Equation~\eqref{eq:heuristics:gd:adam} below.
 
 \begin{equation}
       \label{eq:heuristics:gd:adam}
@@ -415,70 +392,48 @@ This section provided the reader with a collection of gradient-based \index{heur
 \section{Meta-Heuristics}
 \label{sec:heuristics:mh}
 
-Gradient-based methods are sensitive to the type of problem that they it applied to, with hyper-parameter selection often dominating the research focus~\cite{ref:bengio:2000}\cite{ref:feurer:2019}. In the context of \acp{HH}, it is important to consider a diverse set of low-level heuristics to select from. Apart from gradient-based methods, alternative heuristics must thus be considered.~\cite{ref:blum:2003} mentions since the 1980's, a new kind of approximate algorithm has emerged which basically tries to combine basic heuristic methods in higher level frameworks aimed at efficiently and effectively exploring a search space. These methods referred to as metaheuristics. This section aims to introduce the reader to the concept of meta-heuristics. Specifically, this section focuses on population-based meta-heuristics. Three well known meta-heuristics are presented. Each of these have been shown to train \ac{FFNN}. These meta-heuristics include \ac{PSO}, \ac{DE} and \acp{GA}.~\cite{ref:carvalho:2006} compared various \ac{PSO} variants for training \acp{FFNN}.~\cite{ref:espinal:2011} compared \ac{DE} and \ac{PSO} when applied to \ac{FFNN} training and~\cite{ref:gupta:1999} compared \ac{BP} to a \ac{GA} for training \acp{FFNN}.
+Gradient-based heuristics are sensitive to the problem that they are applied to, with hyper-parameter selection often dominating the research focus~\cite{ref:bengio:2000, ref:feurer:2019}.~\citeauthor{ref:blum:2003}~\cite{ref:blum:2003} mentions that since the 1980's, a new kind of approximate algorithm has emerged which tries to combine basic heuristic methods in higher level frameworks aimed at efficiently and effectively exploring a search space. These methods are referred to as \index{meta-heuristic}\textit{meta-heuristics}.
 
-A formal definition for meta-heuristics is required. The term \aclp{MH} was first introduced by~\citeauthor{ref:glover:1986}\cite{ref:glover:1986} in 1986. The world derives from the composition of two Greek words. Heuristic derives from the verb \textit{heuriskein} which means ``to find''. The suffix, \textit{meta} means ``beyond, in an upper level''. Before this term was widely adopted, \acp{MH} were often called \textit{modern heuristics}~\cite{ref:reeves:1993}.~\cite{ref:blum:2003} mentions that there is a debate as to what the formal defintion of \acp{MH} is and suggests the definition of \acp{MH} to be high level strategies for exploring search spaces by using different methods.~\citeauthor{ref:blum:2003}~\cite{ref:blum:2003} provides characterists of meta-heuristics. These characterists are given as follows.
+This section aims to introduce the reader to the concept of \index{meta-heuristic}meta-heuristics, with focus on population-based meta-heuristics. Three well known \index{meta-heuristic}meta-heuristics, that have been shown to train \acs{FFNN}, are presented. These meta-heuristics include \acf{PSO}, \acf{DE} and \acfp{GA}.~\citeauthor{ref:carvalho:2006}~\cite{ref:carvalho:2006} compared various \acs{PSO} variants for training \acp{FFNN}.~\citeauthor{ref:espinal:2011}~\cite{ref:espinal:2011} compared \acs{DE} and \acs{PSO} when applied to \acs{FFNN} training and~\citeauthor{ref:gupta:1999}~\cite{ref:gupta:1999} compared \acs{BP} to a \acs{GA} for training \acp{FFNN}.
 
-\begin{itemize}
-      \item \ac{MH} are strategies to guide the search process.
+The term \acf{MH} was first introduced by~\citeauthor{ref:glover:1986}~\cite{ref:glover:1986} in 1986 and is derived from the composition of two Greek words. \index{heuristic}Heuristic derives from the verb \textit{heuriskein} which means ``to find''. The prefix, \textit{meta}, means ``beyond, in an upper level''. \Acp{MH} were often called \textit{modern heuristics}~\cite{ref:reeves:1993}.~\citeauthor{ref:blum:2003}~\cite{ref:blum:2003} mentions that there is a debate as to what the formal defintion of \acp{MH} is and suggests the definition of \acp{MH} to be ``high level strategies for exploring search spaces by using different methods''.
 
-      \item The goal of \acp{MH} is to efficiently explore the search space in order to find (near) optimal solutions.
-
-      \item Techniques that constitute \ac{MH} algorithms range from simple local search to complex learning processes.
-
-      \item \ac{MH} algorithms are approximate and usually non-deterministic.
-
-      \item \acp{MH} may incorporate some mechanism to avoid getting trapped in local minima.
-
-      \item The basic concept of \acp{MH} permit an abstract level description.
-
-      \item \acp{MH} are not problem-specific.
-
-      \item \acp{MH} may make use of domain-specific knowledge  in the form of heuristics that are controlled by the upper level strategy.
-
-      \item Today's more advanced \acp{MH} use search experience (embodied in some form of memory) to guide the search/optimisation process.
-\end{itemize}
-
-\citeauthor{ref:blum:2003}~\cite{ref:blum:2003} proposes the classification of heuristics as follows:
-
-\begin{itemize}
-      \item Nature inspired vs. non-nature inspired.
-      \item Population-based vs. single point search.
-      \item Dynamic vs. statis objective functions.
-      \item One vs. various neighbourhood structures.
-      \item Memory usage vs. memory-less methods.
-\end{itemize}
-
-The first of these \ac{MH} algorithms that are relevant to this dissertation include \ac{PSO}. The concept of \acp{PSO} is presented and discussed next.
+The biggest difference between \index{meta-heuristic}meta-heuristics and gradient-bases heuristics is that
+\index{meta-heuristic}meta-heuristics make use of meta-information obtained as a result of evaluating the \acs{FFNN} during training and is not limited to information about the search-space~\cite{ref:blum:2003}.
 
 
 \subsection{Particle Swarm Optimisation}
 \label{sec:heuristics:mh:pso}
 
-\Ac{PSO} is a stochastic population-based search algorithm based on the social behaviour of birds in a flock~\cite{ref:kennedy:1995}. By definition, the \acs{PSO} heuristic is nature-inspired.  \Acp{PSO} were first presented  by~\citeauthor{ref:kennedy:1995}\cite{ref:kennedy:1995}. It was also Kennedy and Eberhart that first applied \acp{PSO} to train of \acp{FFNN}~\cite{ref:eberhart:1995}\cite{ref:kennedy:1997}. The application of \acp{PSO} in the context of training \ac{FFNN} have been widely studied~\cite{ref:rakitianskaia:2012}\cite{ref:vanwyk:2014} and it has been found to perform well. This section aims to provide the reader with the detail of \ac{PSO} implementation.
+\Ac{PSO} is a stochastic population-based search algorithm based on the social behaviour of birds in a flock~\cite{ref:kennedy:1995}. By definition, the \acs{PSO} heuristic is nature-inspired.  \Acp{PSO} were first presented  by~\citeauthor{ref:kennedy:1995}\cite{ref:kennedy:1995}. Kennedy and Eberhart first applied \acp{PSO} to train of \acp{FFNN}~\cite{ref:eberhart:1995, ref:kennedy:1997}. The application of \acp{PSO} in the context of training \acs{FFNN} have been widely studied~\cite{ref:rakitianskaia:2012, ref:vanwyk:2014}. This section aims to provide the reader with the detail of \acs{PSO} implementation.
 
-In general, this dissertation uses the term \textit{entity} for candidate solutions and a \textit{population} for a collection of entities.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} mentions that in \acp{PSO} individual candidate solutions are referred to as \textit{particles} and the population is referred to as a \textit{swarm}. These particles are ``flown'' through a hyperdimensional space. Changes in particle position is due to social-psychological tendencies of individuals to emulate the success of other individuals. The changes in the particle position are then influenced by the experience or knowledge of the particle's neighbours. It can be said that the position of a particle is thus influenced by the positions of other particles in the swarm resulting in a symbiotic cooperative heuristic. The social behaviour of particles is modeled such that they stochastically return to previously successful regions in the search space.
+In general, this dissertation uses the term \textit{entity} for candidate solutions and a \textit{population} for a collection of entities.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} mentions that in \acp{PSO} individual candidate solutions are referred to as \textit{particles} and the population is referred to as a \textit{swarm}. These particles are ``flown'' through a hyperdimensional space. Changes in particle position is due to social-psychological tendencies of individuals to emulate the success of other individuals. The changes in the particle position are then influenced by the experience or knowledge of the particle's neighbours. The social behaviour of particles is modeled such that they stochastically return to previously successful regions in the search space.
 
-\citeauthor{ref:vanwyk:2014}\cite{ref:vanwyk:2014} mentions that the swarm is usually arranged in a predefined structure, called a \textit{neighbourhood topology} that governs the communication between particles. Two different configurations of neighbourhood topologies exists. These are referred to as \textit{Local best (lbest)} \ac{PSO} and \textit{global best (gbest)} \ac{PSO}. There are two main differences between the two approaches in terms of their convergence characteristics~\cite{ref:eberhart:1996}. These include:
+\citeauthor{ref:vanwyk:2014}~\cite{ref:vanwyk:2014} mentions that the swarm is usually arranged in a predefined structure, called a \textit{neighbourhood topology} that governs the communication between particles. Two specific configurations of neighbourhood topologies that exists are referred to as \textit{local best (lbest)} \acs{PSO} and \textit{global best (gbest)} \acs{PSO}. There are two main differences between the two approaches in terms of their convergence characteristics~\cite{ref:eberhart:1996}. These include:
 
 \begin{itemize}
-      \item Due to the larger particle interconnectivity of \textit{gbest} \ac{PSO}, the heuristic converges faster than with \textit{lbest} \ac{PSO}.~\cite{ref:engelbrecht:2007} mentions that faster convergence comes at a cost of less diversity.
-      \item As a consequence of larger diversity, the \textit{lbest} \ac{PSO} is less susceptible to getting trapped in local minima.
+      \item Due to the larger particle interconnectivity of \textit{gbest} \acs{PSO}, the heuristic converges faster than with \textit{lbest} \acs{PSO}.~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} mentions that faster convergence comes at a cost of less diversity.
+
+      \item As a consequence of larger diversity, the \textit{lbest} \acs{PSO} is less susceptible to getting trapped in local minima.
 \end{itemize}
 
-\citeauthor{ref:shi:1998}\cite{ref:shi:1998} proposed a modification of the original \ac{PSO} as was presented by~\citeauthor{ref:kennedy:1995}. Their implementation focuses on the \textit{gbest} \ac{PSO} with \textit{inertia} weights. This dissertation focuses on their implementation of \textit{global best} \ac{PSO} and is discussed next.
-
-The particles in this configuration has a number of properties associated with them~\cite{ref:vanwyk:2014}. These include:
+\noindent
+\citeauthor{ref:shi:1998}~\cite{ref:shi:1998} proposed a modification of the original \acs{PSO} as was presented by~\citeauthor{ref:kennedy:1995}~\cite{ref:kennedy:1995}. Their implementation focuses on the \textit{gbest} \acs{PSO} with \textit{inertia} weights. This dissertation focuses on the \citeauthor{ref:shi:1998}~\cite{ref:shi:1998} implementation of \textit{global best} \acs{PSO}. The particles in this configuration has a number of properties associated with them~\cite{ref:vanwyk:2014}. These include:
 
 \begin{itemize}
       \item \textbf{Position}: Refers to the candidate solution that is represented by the particle and defines the particle position within the optimisation problem's hyper-dimensional solution space. Let the current position of particle $i$ at timestep $t$ be denoted by $x_{i}(t)$ and let $N$ be the search space dimensionality.
+
       \item \textbf{Velocity}: Represents a step size for the particle in the search space. The velocity vector of particle $i$ at timestep $t$ is denoted $v_{i}(t)$.
+
       \item \textbf{Solution Quality}: Refers to the evaluation of the particle's position with respect to the objective function. Let $f(x_{i}(t)$ denote the quality of the solution represented by the particle's position.
-      \item \textbf{Personal Best Position}: Refers to a cognitive memory construct where each particle keeps track of their personal best position found during optimisation thus far. The personal best position is denoted $y_{i}(t)$.
-      \item \textbf{Global Best Position}: Refers to a social memory construct where the each particle has a reference to the best solution found in the particle's neighbourhood thus far. In the case of \text{gbest} \ac{PSO}, the global best position is the best position of the entire swarm. The personal best position is denoted $\hat{y}_{i}(t)$.
+
+      \item \textbf{Personal Best Position}: Refers to a cognitive memory construct, where each particle keeps track of their personal best position found during optimisation thus far. The personal best position is denoted $y_{i}(t)$.
+
+      \item \textbf{Global Best Position}: Refers to a social memory construct, where the each particle has a reference to the best solution found in the particle's neighbourhood thus far. In the case of \text{gbest} \acs{PSO}, the global best position is the best position of the entire swarm. The personal best position is denoted $\hat{y}_{i}(t)$.
 \end{itemize}
 
-During initialisation particles are randomly places within the search space by sampling from a uniform distribution such that $x_{i} \sim U(x_{min}, x_{max})$ and the velocity is set to vector of 0 such that $v_{i} = 0$. At timestep 0, the particle's initial position is set to be the particle's personal best solution such that $y_{i}(0) = x_{i}(0)$. The particle's update step is then broken into two parts. These include a velocity update step presented in Equation~\ref{eq:heuristics:pso:velocity} followed by a position update step as presented in Equation~\ref{eq:heuristics:pso:position} below.
+\noindent
+During initialisation, particles are randomly places within the search space by sampling from a uniform distribution such that $x_{i} \sim U(x_{min}, x_{max})$ and the velocity is set to 0. At timestep 0, the particle's initial position is set to be the particle's personal best solution such that $y_{i}(0) = x_{i}(0)$. The particle's update step is then broken into two parts. These include a velocity update step presented in Equation~\eqref{eq:heuristics:pso:velocity} followed by a position update step as presented in Equation~\eqref{eq:heuristics:pso:position} below.
 
 \begin{equation}
       \label{eq:heuristics:pso:velocity}
@@ -494,17 +449,19 @@ During initialisation particles are randomly places within the search space by s
       \end{split}
 \end{equation}
 
-In Equations~\ref{eq:heuristics:pso:velocity} and~\ref{eq:heuristics:pso:position}, $i$ refers to the $i$-th particle in the swarm, $j$ refers to the $j$-th dimension of vectors with dimensionality $N$ defined by the optimisation problem. A breakdown of the components introduced above is required. The velocity update step consists of:
+\noindent
+In Equations~\eqref{eq:heuristics:pso:velocity} and~\eqref{eq:heuristics:pso:position} above, $i$ refers to the $i$-th particle in the swarm and $j$ refers to the $j$-th dimension of  the particle's position. A breakdown of the components introduced above is required. The velocity update step consists of:
 
 \begin{itemize}
-      \item \textbf{Previous Velocity}: Denoted by the term $wv_{ij}(t)$. This term represents the particle's momentum and is used to formulate an update step for the particle in the search space.~\citeauthor{ref:vanwyk:2014}\cite{ref:vanwyk:2014} mentions that it forces the particle to maintain a consistent direction, preventing drastic changes in terms of update steps. This term is then scaled by the \textit{inertia} weight control parameter, denoted $w$. Inertia weight was introduced by~\citeauthor{ref:shi:1998}\cite{ref:shi:1998} as a mechanism to control the exploration and exploitation abilities of the swarm. It was also introduced as a mechanism to eliminate velocity clamping (discussed later in the section). The introduction of inertia weight was successful in addressing the first objective, however did not quite provide a way to totally eliminate velocity clamping~\cite{ref:shi:2001}.
+      \item \textbf{Previous Velocity}: Denoted by the term $v_{ij}(t)$. This term represents the particle's momentum and is used to formulate an update step for the particle in the search space.~\citeauthor{ref:vanwyk:2014}~\cite{ref:vanwyk:2014} mentions that it forces the particle to maintain a consistent direction, preventing drastic changes in terms of update steps. This term is then scaled by the \textit{inertia} weight control parameter, denoted $w$. Inertia weight was introduced by~\citeauthor{ref:shi:1998}~\cite{ref:shi:1998} as a mechanism to control the exploration and exploitation abilities of the swarm.
 
       \item \textbf{Cognitive Component}: Denoted by the term $c_{1}r_{1}(t)[y_{ij} - x_{ij}(t)]$. This component represents the particle's personal  experience. It introduces an attractor to the particle's personal best position so far. The cognitive component is stochastically scaled with random numbers $r{1} \sim U(0,1)^N$ and the cognitive acceleration coefficient $c_{1}$ is used to control the influence of the cognitive attractor.
 
       \item \textbf{Social Component}: Denoted by the term $c_{2}r_{2}(t)[\hat{y}_{ij} - x_{ij}(t)]$. This component represents the particle's social  experience. It introduces an attractor to the swarm's best position so far. The social component is also stochastically scaled with random numbers $r{2} \sim U(0,1)^N$, while also introducing the social acceleration coefficient $c_{2}$ that is used to control the influence of the social attractor.
 \end{itemize}
 
-A concept known as \textit{velocity clamping} is mentioned above.~\citeauthor{ref:vanwyk:2014}\cite{ref:vanwyk:2014} mentions that when \acp{PSO} where first developed, it was possible for particle velocities to become inappropriately large during optimisation leading to situations where particles fly out of the feasible search space. This is known as \textit{swarm explosion} and occurs when there are frequent changes in the global best position. In order to address this issues, the concept of \textit{velocity clamping} was introduced~\cite{ref:eberhart:1996}. The idea behind velocity clamping is to restrict particle velocities to some $V_{max}$ threshold, in essence, modeling a form of terminal velocity. Velocity clamping is applied after the velocity update step and is given in Equation~\ref{eq:heuristics:pso:velocity_clamping} below.
+\noindent
+~\citeauthor{ref:vanwyk:2014}\cite{ref:vanwyk:2014} mentions that when \acp{PSO} where first developed, it was possible for particle velocities to become inappropriately large during optimisation, leading to situations where particles fly out of the feasible search space. This is known as \textit{swarm explosion} and occurs when there are frequent changes in the global best position. In order to address this issues, the concept of \textit{velocity clamping} was introduced~\cite{ref:eberhart:1996}. The idea behind velocity clamping is to restrict particle velocities to some $V_{max}$ threshold, in essence, modeling a form of terminal velocity. Velocity clamping is applied after the velocity update step and is given in Equation~\eqref{eq:heuristics:pso:velocity_clamping} below.
 
 \begin{equation}
       \label{eq:heuristics:pso:velocity_clamping}
@@ -518,14 +475,15 @@ A concept known as \textit{velocity clamping} is mentioned above.~\citeauthor{re
       \end{split}
 \end{equation}
 
-$V_{max}$ then becomes another hyper-parameter that must be defined a priori. Appropriate values $V_{max}$ may prevent swarm explosion, but also has an effect on the exploration and exploitation of the heuristic. If $V_{max}$ is small, particle update steps are small, resulting in exploitation~\cite{ref:eberhart:1996}. If $V_{max}$ is big, it allows for larger update steps, promoting more exploration. A balance is needed between exploration and exploitation. Similar to other strategies, such as learning rate schedules for gradient-based heuristics, adaptive strategies such as those proposed in~\cite{ref:fan:2002} have been developed, but are beyond the scope of this dissertation.
+\noindent
+$V_{max}$ then becomes another hyper-parameter that must be defined a priori. Appropriate values for $V_{max}$ may prevent swarm explosion, but also has an effect on the exploration and exploitation of the heuristic. If $V_{max}$ is small, particle update steps are small, resulting in exploitation~\cite{ref:eberhart:1996}. If $V_{max}$ is big, it allows for larger update steps, promoting more exploration.
 
-It should be noted that the choice of control parameter play a vital role on the behaviour and characteristics of the \acs{PSO}. Van den Berg and Engelbrecht~\cite{ref:vandenberg:2007}\cite{ref:vandenberg:2006} have done extensive work on the effects of different values for control parameters. For the purposes of this dissertation, the $c_{1}$ and $c_{2}$ control parameter are set to $1.496180$ and the inertia weight $w$ is set to $0.0729844$ as these correspond to values used in~\cite{ref:eberhart:2000} and have been shown to be appropriate for a number of problems.
+It should be noted that the choice of control parameters play a vital role in the behaviour and characteristics of the \acs{PSO}. Van den Berg and Engelbrecht~\cite{ref:vandenberg:2007, ref:vandenberg:2006} have done extensive work on the effects of different values for control parameters. For the purposes of this dissertation, the $c_{1}$ and $c_{2}$ control parameter are set to $1.496180$ and the inertia weight $w$ is set to $0.0729844$ as these correspond to values used in~\cite{ref:eberhart:2000} and have been shown to be appropriate for a number of problems.
 
-An example of the pseudo code implementation of the \textit{gbest} \ac{PSO} is taken from~\cite{ref:engelbrecht:2007} and is given in Algorithm~\ref{algo:heuristics:pso:gbest} below.
+An example of the pseudo code implementation of the \textit{gbest} \acs{PSO} is taken from~\cite{ref:engelbrecht:2007} and is given in Algorithm~\ref{algo:heuristics:pso:gbest} below.
 
 \begin{algorithm}[H]
-      \caption{The pseudo code algorithm for the gbest \ac{PSO} heuristic.}
+      \caption{The pseudo code algorithm for the gbest \acs{PSO} heuristic.}
       \label{algo:heuristics:pso:gbest}
       \begin{algorithmic}
             \State Create and initialise an $N_{x}$ dimensional swarm;
@@ -552,23 +510,21 @@ An example of the pseudo code implementation of the \textit{gbest} \ac{PSO} is t
       \end{algorithmic}
 \end{algorithm}
 
-This section provided the reader with the implementation details of the \acs{PSO} heuristic. It was mentioned that \ac{PSO} have been used to train \acp{FFNN} on many occasions with successful outcomes. The following section presents the reader with the next population-based \ac{MH} that is considered.
-
 \subsection{Differential Evolution}
 \label{sec:heuristics:mh:de}
 
-This section aims to introduce the reader to the next population-based \ac{MH} called \acl{DE}. Similar to \ac{PSO}, \Ac{DE} is a stochastic population-based search strategy developed by Storm and Price~\cite{ref:price:2006} in 1995. \Ac{DE} shares a lot of similarities with other evolutionary \ac{MH} paradigms such as \acp{PSO} and \acp{GA}. However, \ac{DE} differs significantly in the sense that it makes use of distance and direction information from the current population to guide the search process~\cite{ref:engelbrecht:2007}. Originally, \ac{DE} was focused on multi-dimensional real-values optimisation problems, but unlike gradient-based heuristics, it does not require any gradient information. This means that \ac{DE} does not require the underlying optimisation problem to be differentiable, meaning that it can be applied to problems that are discrete, noisy and dynamic~\cite{ref:rocca:2011}.
+This section aims to introduce the reader to the next population-based \acs{MH} called \acl{DE}. Similar to \acs{PSO}, \Ac{DE} is a stochastic population-based search strategy developed by Storm and Price~\cite{ref:price:2006} in 1995. \Ac{DE} shares a lot of similarities with other evolutionary \acs{MH} paradigms such as \acp{PSO} and \acp{GA}. However, \acs{DE} differs significantly in the sense that it makes use of distance and direction information from the current population to guide the search process~\cite{ref:engelbrecht:2007}. Originally, \acs{DE} was focused on multi-dimensional real-values optimisation problems, but unlike gradient-based heuristics, it does not require any gradient information. This means that \acs{DE} does not require the underlying optimisation problem to be differentiable, meaning that it can be applied to problems that are discrete, noisy and dynamic~\cite{ref:rocca:2011}.
 
-Lots of research has been done on using \ac{DE} to train \acp{FFNN}. Some notable work include~\cite{ref:ilonen:2003}\cite{ref:slowik:2008}\cite{ref:mingguang:2009}. In these works, the authors often highlight the low computational complexity and simplicity of implementation for \ac{DE}.
+Lots of research has been done on using \acs{DE} to train \acp{FFNN}. Some notable work include~\cite{ref:ilonen:2003}\cite{ref:slowik:2008}\cite{ref:mingguang:2009}. In these works, the authors often highlight the low computational complexity and simplicity of implementation for \acs{DE}.
 
-Similar to other \acp{EA}, variation from one generation to the next is achieved through the application of crossover and mutation operators. Engelbrecht~\cite{ref:engelbrecht:2007} mentions that for other \acp{EA} if both these operators are used, crossover is applied first after which the generated offspring is mutated. For other \acp{EA} mutation step sizes are sampled from some probability distribution. \ac{DE} differs from these implementations in that
+Similar to other \acp{EA}, variation from one generation to the next is achieved through the application of crossover and mutation operators. Engelbrecht~\cite{ref:engelbrecht:2007} mentions that for other \acp{EA} if both these operators are used, crossover is applied first after which the generated offspring is mutated. For other \acp{EA} mutation step sizes are sampled from some probability distribution. \acs{DE} differs from these implementations in that
 
 \begin{itemize}
       \item mutation is applied first to generate a \textit{trial vector}, which is then used within the crossover operator to produce one offspring and
       \item mutation step sizes are not sampled from prior known probability distributions.
 \end{itemize}
 
-In \ac{DE} mutation step sizes are influenced by the differences in positions of different entities in the current population. The positions of entities in the population provide valuable information about the fitness landscape. This is under the assumption that entities are initially uniformly placed in the search space. \ac{DE} aims to exploit this concept in order to find optimal solutions. There are three main components to the \acs{DE} heuristic. These include mutation, crossover and selection operators~\cite{ref:price:2006}. Each of these are presented briefly next.
+In \acs{DE} mutation step sizes are influenced by the differences in positions of different entities in the current population. The positions of entities in the population provide valuable information about the fitness landscape. This is under the assumption that entities are initially uniformly placed in the search space. \acs{DE} aims to exploit this concept in order to find optimal solutions. There are three main components to the \acs{DE} heuristic. These include mutation, crossover and selection operators~\cite{ref:price:2006}. Each of these are presented briefly next.
 
 \subsubsection{Mutation}
 \label{sec:heuristics:mh:de:mutation}
@@ -578,7 +534,7 @@ The purpose of the mutation operator is to produce a trial vector for each entit
 \begin{itemize}
       \item Select a target vector, $x_{i_{1}}(t)$ from the population the is not the same as the parent i.e. $i \neq i_{1}$.
       \item This is followed by randomly selecting two other individuals $x_{i_{2}}(t)$ and $x_{i_{3}}(t)$. Importantly, all of these entities must be unique such that $i \neq i_{1} \neq i_{2} \neq i_{3}$ and $i_{2}, i_{3} \sim U(1, N_{s}$ where $N_{s}$ is the size of the swarm.
-      \item These individual entities are then used to calculate the trial vector by perturbing the target vector as presented in Equation~\ref{eq:heuristics:de:mutation} below.
+      \item These individual entities are then used to calculate the trial vector by perturbing the target vector as presented in Equation~\eqref{eq:heuristics:de:mutation} below.
 \end{itemize}
 
 
@@ -589,13 +545,13 @@ The purpose of the mutation operator is to produce a trial vector for each entit
       \end{split}
 \end{equation}
 
-In Equation~\ref{eq:heuristics:de:mutation} $\beta \in (0, \infty)$ is the scale factor and controls the amplification of the differential variation~\cite{ref:engelbrecht:2007}. Note that in the above steps, the selection strategy to select the target vector is not specified. Selection is discussed in Section~\ref{sec:heuristics:mh:de:selection} below.
+In Equation~\eqref{eq:heuristics:de:mutation} $\beta \in (0, \infty)$ is the scale factor and controls the amplification of the differential variation~\cite{ref:engelbrecht:2007}. Note that in the above steps, the selection strategy to select the target vector is not specified. Selection is discussed in Section~\ref{sec:heuristics:mh:de:selection} below.
 
 
 \subsubsection{Crossover}
 \label{sec:heuristics:mh:de:crossover}
 
-In the context of \acp{EA}, reproduction and recombination is done through the crossover operation. The same applies to \ac{DE}. The \ac{DE} crossover operator implements a discrete recombination of the trial vector, $u_{i}(t)$ (as was generated in Section~\ref{sec:heuristics:mh:de:mutation} above) and the parent vector $x_{i}(t)$ to produce new offspring $x'_{i}(t)$. The crossover operator is given in Equation~\ref{eq:heuristics:de:crossover} below.
+In the context of \acp{EA}, reproduction and recombination is done through the crossover operation. The same applies to \acs{DE}. The \acs{DE} crossover operator implements a discrete recombination of the trial vector, $u_{i}(t)$ (as was generated in Section~\ref{sec:heuristics:mh:de:mutation} above) and the parent vector $x_{i}(t)$ to produce new offspring $x'_{i}(t)$. The crossover operator is given in Equation~\eqref{eq:heuristics:de:crossover} below.
 
 \begin{equation}
       \label{eq:heuristics:de:crossover}
@@ -608,7 +564,7 @@ In the context of \acp{EA}, reproduction and recombination is done through the c
       \end{split}
 \end{equation}
 
-In Equation~\ref{eq:heuristics:de:crossover}, $x_{ij}(t)$ refers to the $j$-th element of the vector $x_{i}(t)$ and $\mathcal{J}$ refers to a set of crossover points or indices at which perturbation is done. Different techniques for determining the set, $\mathcal{J}$ has been proposed~\cite{ref:storn:1996}\cite{ref:storn:1997}. These include:
+In Equation~\eqref{eq:heuristics:de:crossover}, $x_{ij}(t)$ refers to the $j$-th element of the vector $x_{i}(t)$ and $\mathcal{J}$ refers to a set of crossover points or indices at which perturbation is done. Different techniques for determining the set, $\mathcal{J}$ has been proposed~\cite{ref:storn:1996}\cite{ref:storn:1997}. These include:
 
 \begin{itemize}
       \item \textbf{Binomial crossover}: A crossover mask is generated by randomly selecting indices from the set of possible crossover points $\{1,2,\dots,N_{x}$ where $N_{x}$ is the problem dimension. This techique is presented in Algorithm~\ref{algo:heuristics:de:bin} below. In Algorithm~\ref{algo:heuristics:de:bin} $p_{r}$ is the crossover probability. The higher the value of $p_{r}$, the more points will be included in the set $\mathcal{J}$. A \textit{Bernoulli} distribution (presented in Chapter~\ref{chap:probability} can be used to generate the binomial crossover mask. Note that due to the probabilistic nature of this process, it is possible that no crossover points are selected. To counteract this situation, a randomly selected crossover point $j^{*}$ is included in the set $\mathcal{J}$ such that $\mathcal{J} \neq \emptyset$ where $\emptyset$ is the empty set.
@@ -616,7 +572,7 @@ In Equation~\ref{eq:heuristics:de:crossover}, $x_{ij}(t)$ refers to the $j$-th e
 \end{itemize}
 
 \begin{algorithm}[H]
-      \caption{The pseudo code algorithm for the binomial crossover technique for \ac{DE}.}
+      \caption{The pseudo code algorithm for the binomial crossover technique for \acs{DE}.}
       \label{algo:heuristics:de:bin}
       \begin{algorithmic}
             \State $j^{*} \sim U(1,N_{x})$;
@@ -630,7 +586,7 @@ In Equation~\ref{eq:heuristics:de:crossover}, $x_{ij}(t)$ refers to the $j$-th e
 \end{algorithm}
 
 \begin{algorithm}[H]
-      \caption{The pseudo code algorithm for the exponential crossover technique for \ac{DE}.}
+      \caption{The pseudo code algorithm for the exponential crossover technique for \acs{DE}.}
       \label{algo:heuristics:de:exp}
       \begin{algorithmic}
             \State $\mathcal{J} \gets \{\}$;
@@ -645,15 +601,15 @@ In Equation~\ref{eq:heuristics:de:crossover}, $x_{ij}(t)$ refers to the $j$-th e
 \subsubsection{Selection}
 \label{sec:heuristics:mh:de:selection}
 
-Selection refers to the technique that is used to determine which entities are included in the mutation operator to produce a trial vector~\cite{ref:engelbrecht:2007} as was shown in Section~\ref{sec:heuristics:mh:de:mutation} above. Various selection operators have been suggested. With reference to the mutation operator, most \ac{DE} implementations make use of random selection or the best entity is used as the target vector $x_{i_{1}}(t)$. To construct the population for the next generation, deterministic selection is used. As such, a parent is replaced if the offspring produces a better solution that the parent such that $f(x'_{i}(t)) \leq f(x_{i}(t))$.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} states that this is to ensure the average fitness of the population does not deteriorate.
+Selection refers to the technique that is used to determine which entities are included in the mutation operator to produce a trial vector~\cite{ref:engelbrecht:2007} as was shown in Section~\ref{sec:heuristics:mh:de:mutation} above. Various selection operators have been suggested. With reference to the mutation operator, most \acs{DE} implementations make use of random selection or the best entity is used as the target vector $x_{i_{1}}(t)$. To construct the population for the next generation, deterministic selection is used. As such, a parent is replaced if the offspring produces a better solution that the parent such that $f(x'_{i}(t)) \leq f(x_{i}(t))$.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} states that this is to ensure the average fitness of the population does not deteriorate.
 
 
 \subsubsection{General Differential Evolution Algorithm}
 
-Algorithm~\ref{algo:heuristics:de:general_de} is taken from~\cite{ref:engelbrecht:2007} and presents the general \ac{DE} algorithm. The population is initialised by randomly placing entities in the search space such that the positions of the entities are confined to some search boundary. As such, $x_{ij}(t) \sim U(x_{min,j}, x_{max,j})$, where $x_{min,j}$ and $x_{max,j}$ define the search boundaries.
+Algorithm~\ref{algo:heuristics:de:general_de} is taken from~\cite{ref:engelbrecht:2007} and presents the general \acs{DE} algorithm. The population is initialised by randomly placing entities in the search space such that the positions of the entities are confined to some search boundary. As such, $x_{ij}(t) \sim U(x_{min,j}, x_{max,j})$, where $x_{min,j}$ and $x_{max,j}$ define the search boundaries.
 
 \begin{algorithm}[H]
-      \caption{The pseudo code for the general \ac{DE} heuristic.}
+      \caption{The pseudo code for the general \acs{DE} heuristic.}
       \label{algo:heuristics:de:general_de}
       \begin{algorithmic}
             \State Set the generation counter, $t = 0$;
@@ -674,7 +630,7 @@ Algorithm~\ref{algo:heuristics:de:general_de} is taken from~\cite{ref:engelbrech
       \end{algorithmic}
 \end{algorithm}
 
-As with other heuristics, \ac{DE} also contains a set of control parameters. These include:
+As with other heuristics, \acs{DE} also contains a set of control parameters. These include:
 
 \begin{itemize}
       \item \textbf{Population size:} The population size has a direct influence on the exploration ability of the \acs{DE} heuristic~\cite{ref:engelbrecht:2007}. The larger the population size, the more differential vectors are available and thus, more directions can be explored.
@@ -687,7 +643,7 @@ As with other heuristics, \ac{DE} also contains a set of control parameters. The
 
 \subsubsection{DE/$x$/$y$/$z$ Notation}
 
-Many variants of \ac{DE} have been created and researched~\cite{ref:mezura:2006}. A general notation for \ac{DE} heuristic variants have been developed by Storn et al.~\cite{ref:storn:1996}\cite{ref:storn:1997}. The notation follows the form \textit{DE/$x$/$y$/$z$} where $x$,$y$ and $z$ refer to the components that are used by the particular \ac{DE}. A breakdown of this notation is provided as follows.
+Many variants of \acs{DE} have been created and researched~\cite{ref:mezura:2006}. A general notation for \acs{DE} heuristic variants have been developed by Storn et al.~\cite{ref:storn:1996}\cite{ref:storn:1997}. The notation follows the form \textit{DE/$x$/$y$/$z$} where $x$,$y$ and $z$ refer to the components that are used by the particular \acs{DE}. A breakdown of this notation is provided as follows.
 
 \begin{itemize}
       \item \textbf{$x$:} The selection mechanism for the target vector.
@@ -704,20 +660,20 @@ For this dissertation, \textit{random} and \textit{best entity} selection, a sin
       \item DE/best/1/exp
 \end{itemize}
 
-This section provided the reader with the details around the implementation of the \acs{DE} heuristic. The last population-based \ac{MH} is presented next.
+This section provided the reader with the details around the implementation of the \acs{DE} heuristic. The last population-based \acs{MH} is presented next.
 
 
 \subsection{Genetic Algorithms}
 \label{sec:heuristics:mh:ga}
 
-\Ac{EC} refers to a collection of nature-inspired optimisation algorithms that lend their foundation to biological evolution.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} mentions that \ac{EC} refers to computer-based problem solving systems that use computational models of evolutionary processes such as natural selection, survival of the fittest and reproduction. It was Charles Darwin's theory of \textit{natural selection} that became the foundation of biological evolution~\cite{ref:darwin:1987}.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} summarises the Darwinian theory of evolution~\cite{ref:darwin:2012} as follows. In a world with limited resources and stable populations, each individual competes with others for survival. Those individuals with the ``best'' characteristics (traits) are more likely to survive and to reproduce and those characteristics will be passed on to their offspring. These desirable characteristics are inherited by the following generations and (over time) become dominant among the population. Evolution via natural selection of a randomly chosen population of entities can be seen as a search through the space of possible chromosome values. This makes the \acs{EC} search process a stochastic search for an optimal solution to the given problem.
+\Ac{EC} refers to a collection of nature-inspired optimisation algorithms that lend their foundation to biological evolution.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} mentions that \acs{EC} refers to computer-based problem solving systems that use computational models of evolutionary processes such as natural selection, survival of the fittest and reproduction. It was Charles Darwin's theory of \textit{natural selection} that became the foundation of biological evolution~\cite{ref:darwin:1987}.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} summarises the Darwinian theory of evolution~\cite{ref:darwin:2012} as follows. In a world with limited resources and stable populations, each individual competes with others for survival. Those individuals with the ``best'' characteristics (traits) are more likely to survive and to reproduce and those characteristics will be passed on to their offspring. These desirable characteristics are inherited by the following generations and (over time) become dominant among the population. Evolution via natural selection of a randomly chosen population of entities can be seen as a search through the space of possible chromosome values. This makes the \acs{EC} search process a stochastic search for an optimal solution to the given problem.
 
-So far the reader has been introduced to two population-based \acp{MH}. These include \ac{PSO} and \ac{DE}. The \ac{DE} heuristic that was presented in Section~\ref{sec:heuristics:mh:de} is one type of \ac{EC} algorithm. This section introduces another population-based, nature-inspired optimisation \ac{EC} algorithm named \aclp{GA}. The detail of the implementation of \acp{GA} is given in this section. Importantly, the application of \acp{GA} is presented in the context of training \acp{FFNN}. \acp{GA} have been widely used to train \acp{FFNN}~\cite{ref:montana:1989}\cite{ref:siddique:2001}\cite{ref:miller:1989}. This section shines light on how this is done.
+So far the reader has been introduced to two population-based \acp{MH}. These include \acs{PSO} and \acs{DE}. The \acs{DE} heuristic that was presented in Section~\ref{sec:heuristics:mh:de} is one type of \acs{EC} algorithm. This section introduces another population-based, nature-inspired optimisation \acs{EC} algorithm named \aclp{GA}. The detail of the implementation of \acp{GA} is given in this section. Importantly, the application of \acp{GA} is presented in the context of training \acp{FFNN}. \acp{GA} have been widely used to train \acp{FFNN}~\cite{ref:montana:1989}\cite{ref:siddique:2001}\cite{ref:miller:1989}. This section shines light on how this is done.
 
-\Acp{GA} where first proposed by Fraser~\cite{ref:fraser:1957} and later by Bremermann~\cite{ref:bremermann:1962} and Reed et al.~\cite{ref:reed:1967}. However, Holland~\cite{ref:holland:1992} is widely regarded as the father of \acp{GA}. Similar to \acp{DE}, \acp{GA} are also nature-inspired population-based \acp{MH} and model genetic evolution of entities in a hypothetical population. As with other \acp{EA}, \acp{GA} implement a number of operators that drive the optimisation process.  Primarily, \acp{GA} implement selection, modeling survival of the fittest and crossover, modeling reproduction. The remainder of this section follows the same approach as was done with \ac{DE} where the different operators are discussed. However, it is necessary to first provide the reader with the generic \ac{EC} algorithm. This algorithm is also referred to as the canonical \ac{GA} (CGA) and was proposed by Holland~\cite{ref:holland:1992}. The generic \ac{EC} algorithm is taken from~\cite{ref:engelbrecht:2007} and is is presented in Algorithm~\ref{algo:heuristics:ga:generic_ec} below.
+\Acp{GA} where first proposed by Fraser~\cite{ref:fraser:1957} and later by Bremermann~\cite{ref:bremermann:1962} and Reed et al.~\cite{ref:reed:1967}. However, Holland~\cite{ref:holland:1992} is widely regarded as the father of \acp{GA}. Similar to \acp{DE}, \acp{GA} are also nature-inspired population-based \acp{MH} and model genetic evolution of entities in a hypothetical population. As with other \acp{EA}, \acp{GA} implement a number of operators that drive the optimisation process.  Primarily, \acp{GA} implement selection, modeling survival of the fittest and crossover, modeling reproduction. The remainder of this section follows the same approach as was done with \acs{DE} where the different operators are discussed. However, it is necessary to first provide the reader with the generic \acs{EC} algorithm. This algorithm is also referred to as the canonical \acs{GA} (CGA) and was proposed by Holland~\cite{ref:holland:1992}. The generic \acs{EC} algorithm is taken from~\cite{ref:engelbrecht:2007} and is is presented in Algorithm~\ref{algo:heuristics:ga:generic_ec} below.
 
 \begin{algorithm}[H]
-      \caption{The pseudo code for the generic \ac{EC} heuristic.}
+      \caption{The pseudo code for the generic \acs{EC} heuristic.}
       \label{algo:heuristics:ga:generic_ec}
       \begin{algorithmic}
             \State Let $t = 0$ be the generation counter;
@@ -746,12 +702,12 @@ From Algorithm~\ref{algo:heuristics:ga:generic_ec} above it can be seen that a n
       \item \textbf{Reproduction}: Refers to the generation of the next population and is implemented through crossover operators.
 \end{itemize}
 
-Note that the initial implementations of \ac{EC} heuristics such as \acp{GA} did not contain a mutation operator as this was only introduced later. The following sections provide the crossover, mutation and selection operators for \acp{GA}.
+Note that the initial implementations of \acs{EC} heuristics such as \acp{GA} did not contain a mutation operator as this was only introduced later. The following sections provide the crossover, mutation and selection operators for \acp{GA}.
 
 \subsubsection{Crossover}
 \label{sec:heuristics:mh:ga:crossover}
 
-As with \ac{DE}, crossover operators model the reproduction of entities in the population. Broadly speaking, the crossover operators can be divided into three main categories~\cite{ref:engelbrecht:2007} and are based on arity of the operator i.e. the number of parents used for reproduction.
+As with \acs{DE}, crossover operators model the reproduction of entities in the population. Broadly speaking, the crossover operators can be divided into three main categories~\cite{ref:engelbrecht:2007} and are based on arity of the operator i.e. the number of parents used for reproduction.
 
 \begin{itemize}
       \item \textbf{Asexual: } Offspring is generated from one parent.
@@ -842,7 +798,7 @@ Various selection mechanisms have been proposed. For the purposes of this disser
 
       \item \textbf{Rank-based Selection: } Rank-based selection uses the rank-ordered fitness values to determine the probability of selection and not the absolute fitness value. It can therefore be said that selection is independent of actual fitness values.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} mentions that the advantage of this approach is that the best entities will not dominate the selection process. Non-deterministic linear sampling selects an entity $x_{i}(t)$ such that $i \sim U(0, U(0, N_{s} - 1))$. Importantly, in the context of a minimisation problem, entities are first sorted in decreasing order of fitness value, assuming that the best heuristic is then contained at index 0, while the worst entity is contained at index $N_{s} - 1$.
 
-      \item \textbf{Elitism: } Elitism refers to the process of ensuring that the best entities from the current population survive to the next generation. The best entities are simply passed on to the next generation without mutation. The more entities that survive to the next generation, the lower the diversity of the new population. It is later shown in~\ref{chap:bhh} that the proposed \ac{BHH} can incorporate a form of elitism in its credit assignment strategy.
+      \item \textbf{Elitism: } Elitism refers to the process of ensuring that the best entities from the current population survive to the next generation. The best entities are simply passed on to the next generation without mutation. The more entities that survive to the next generation, the lower the diversity of the new population. It is later shown in~\ref{chap:bhh} that the proposed \acs{BHH} can incorporate a form of elitism in its credit assignment strategy.
 \end{itemize}
 
 
