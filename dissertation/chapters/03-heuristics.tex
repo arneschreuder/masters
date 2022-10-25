@@ -185,7 +185,6 @@ In the context of this dissertation, the implementation of \acs{SGD} refers to t
 \noindent
 Alternative variants have been proposed that lead to better control over the convergence characteristics caused by \acs{GD}. The first of these \acs{GD} variants include \acs{Momentum} and is presented in the following section.
 
-
 \subsection{Momentum}\label{sec:heuristics:gd:momentum}
 
 Research shows that \acs{SGD} has difficulty navigating ravines~\cite{ref:sutton:1986}. Ravines are areas where the surface curves much more steeply in one dimension than in another. These ravines are common around local minima. As such, \acs{SGD} is shown to oscillate across the slopes of the ravine while only making minor progress towards the local minima.
@@ -218,7 +217,6 @@ The accumulation of momentum is presented in Equation~\eqref{eq:heuristics:gd:mo
 
 \noindent
 By redefining the \acs{SGD} update steps as shown above in Equations~\eqref{eq:heuristics:gd:momentum_part_1} and~\eqref{eq:heuristics:gd:momentum_part_2}, the \acs{Momentum} heuristic allows for the increase of momentum for dimensions whose gradients point in the same direction, while simultaneously reducing momentum for dimensions whose gradients change direction, leading to faster convergence and less oscillation. The momentum term $\alpha$ is usually set to 0.9~\cite{ref:engelbrecht:2007, ref:ruder:2016}.
-
 
 \subsection{Nesterov Accelerated Gradients}\label{sec:heuristics:nag}
 
@@ -399,15 +397,15 @@ This section aims to introduce the reader to the concept of \index{meta-heuristi
 The term \acf{MH} was first introduced by~\citeauthor{ref:glover:1986}~\cite{ref:glover:1986} in 1986 and is derived from the composition of two Greek words. \index{heuristic}Heuristic derives from the verb \textit{heuriskein} which means ``to find''. The prefix, \textit{meta}, means ``beyond, in an upper level''. \Acp{MH} were often called \textit{modern heuristics}~\cite{ref:reeves:1993}.~\citeauthor{ref:blum:2003}~\cite{ref:blum:2003} mentions that there is a debate as to what the formal defintion of \acp{MH} is and suggests the definition of \acp{MH} to be ``high level strategies for exploring search spaces by using different methods''.
 
 The biggest difference between \index{meta-heuristic}meta-heuristics and gradient-bases heuristics is that
-\index{meta-heuristic}meta-heuristics make use of meta-information obtained as a result of evaluating the \acs{FFNN} during training and is not limited to information about the search-space~\cite{ref:blum:2003}.
+\index{meta-heuristic}meta-heuristics make use of meta-information obtained as a result of evaluating the \acs{FFNN} during training and is not limited to information about the search space~\cite{ref:blum:2003}.
 
 
 \subsection{Particle Swarm Optimisation}
 \label{sec:heuristics:mh:pso}
 
-\Ac{PSO} is a stochastic population-based search algorithm based on the social behaviour of birds in a flock~\cite{ref:kennedy:1995}. By definition, the \acs{PSO} heuristic is nature-inspired.  \Acp{PSO} were first presented  by~\citeauthor{ref:kennedy:1995}\cite{ref:kennedy:1995}. Kennedy and Eberhart first applied \acp{PSO} to train of \acp{FFNN}~\cite{ref:eberhart:1995, ref:kennedy:1997}. The application of \acp{PSO} in the context of training \acs{FFNN} have been widely studied~\cite{ref:rakitianskaia:2012, ref:vanwyk:2014}. This section aims to provide the reader with the detail of \acs{PSO} implementation.
+\Acf{PSO} is a stochastic population-based search algorithm based on the social behaviour of birds in a flock~\cite{ref:kennedy:1995}. By definition, the \acs{PSO} heuristic is nature-inspired.  \Acp{PSO} were first presented  by~\citeauthor{ref:kennedy:1995}\cite{ref:kennedy:1995}. Kennedy and Eberhart first applied \acp{PSO} to train of \acp{FFNN}~\cite{ref:eberhart:1995, ref:kennedy:1997}. The application of \acp{PSO} in the context of training \acs{FFNN} have been widely studied~\cite{ref:rakitianskaia:2012, ref:vanwyk:2014}. This section aims to provide the reader with the detail of \acs{PSO} implementation.
 
-In general, this dissertation uses the term \textit{entity} for candidate solutions and a \textit{population} for a collection of entities.~\citeauthor{ref:engelbrecht:2007}\cite{ref:engelbrecht:2007} mentions that in \acp{PSO} individual candidate solutions are referred to as \textit{particles} and the population is referred to as a \textit{swarm}. These particles are ``flown'' through a hyperdimensional space. Changes in particle position is due to social-psychological tendencies of individuals to emulate the success of other individuals. The changes in the particle position are then influenced by the experience or knowledge of the particle's neighbours. The social behaviour of particles is modeled such that they stochastically return to previously successful regions in the search space.
+This dissertation uses the term \textit{entity} for candidate solutions and a \textit{population} for a collection of entities, in the general context of population-based \index{meta-heuristic}meta-heuristics.~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} mentions that in \acp{PSO} individual candidate solutions are referred to as \textit{particles} and the population is referred to as a \textit{swarm}. These particles are ``flown'' through a hyperdimensional search space. Changes in particle position is due to social-psychological tendencies of individuals to emulate the success of other individuals. The changes in the particle position are then influenced by the experience or knowledge of the particle's neighbours. The social behaviour of particles is modeled such that they stochastically return to previously successful regions in the search space.
 
 \citeauthor{ref:vanwyk:2014}~\cite{ref:vanwyk:2014} mentions that the swarm is usually arranged in a predefined structure, called a \textit{neighbourhood topology} that governs the communication between particles. Two specific configurations of neighbourhood topologies that exists are referred to as \textit{local best (lbest)} \acs{PSO} and \textit{global best (gbest)} \acs{PSO}. There are two main differences between the two approaches in terms of their convergence characteristics~\cite{ref:eberhart:1996}. These include:
 
@@ -418,14 +416,14 @@ In general, this dissertation uses the term \textit{entity} for candidate soluti
 \end{itemize}
 
 \noindent
-\citeauthor{ref:shi:1998}~\cite{ref:shi:1998} proposed a modification of the original \acs{PSO} as was presented by~\citeauthor{ref:kennedy:1995}~\cite{ref:kennedy:1995}. Their implementation focuses on the \textit{gbest} \acs{PSO} with \textit{inertia} weights. This dissertation focuses on the \citeauthor{ref:shi:1998}~\cite{ref:shi:1998} implementation of \textit{global best} \acs{PSO}. The particles in this configuration has a number of properties associated with them~\cite{ref:vanwyk:2014}. These include:
+\citeauthor{ref:shi:1998}~\cite{ref:shi:1998} proposed a modification of the original \acs{PSO} as was presented by~\citeauthor{ref:kennedy:1995}~\cite{ref:kennedy:1995}. Their implementation focuses on the \textit{gbest} \acs{PSO} with \textit{inertia} weights. This dissertation focuses on the \citeauthor{ref:shi:1998}~\cite{ref:shi:1998} implementation of \textit{global best} \acs{PSO} and particles in this specific implementation has a number of properties associated with them~\cite{ref:vanwyk:2014}. These include:
 
 \begin{itemize}
-      \item \textbf{Position}: Refers to the candidate solution that is represented by the particle and defines the particle position within the optimisation problem's hyper-dimensional solution space. Let the current position of particle $i$ at timestep $t$ be denoted by $x_{i}(t)$ and let $N$ be the search space dimensionality.
+      \item \textbf{Position}: Refers to the candidate solution that is represented by the particle and defines the particle position within the optimisation problem's hyper-dimensional solution space. Let the current position of particle $i$ at timestep $t$ be denoted by $x_{i}(t)$ and let $J$ be the search space dimensionality.
 
       \item \textbf{Velocity}: Represents a step size for the particle in the search space. The velocity vector of particle $i$ at timestep $t$ is denoted $v_{i}(t)$.
 
-      \item \textbf{Solution Quality}: Refers to the evaluation of the particle's position with respect to the objective function. Let $f(x_{i}(t)$ denote the quality of the solution represented by the particle's position.
+      \item \textbf{Solution Quality}: Refers to the evaluation of the particle's position with respect to the objective function. Let $f(x_{i}(t))$ denote the quality of the solution represented by the particle's position.
 
       \item \textbf{Personal Best Position}: Refers to a cognitive memory construct, where each particle keeps track of their personal best position found during optimisation thus far. The personal best position is denoted $y_{i}(t)$.
 
@@ -433,12 +431,12 @@ In general, this dissertation uses the term \textit{entity} for candidate soluti
 \end{itemize}
 
 \noindent
-During initialisation, particles are randomly places within the search space by sampling from a uniform distribution such that $x_{i} \sim U(x_{min}, x_{max})$ and the velocity is set to 0. At timestep 0, the particle's initial position is set to be the particle's personal best solution such that $y_{i}(0) = x_{i}(0)$. The particle's update step is then broken into two parts. These include a velocity update step presented in Equation~\eqref{eq:heuristics:pso:velocity} followed by a position update step as presented in Equation~\eqref{eq:heuristics:pso:position} below.
+During initialisation, particles are randomly places within the search space by sampling from a uniform distribution such that $x_{i} \sim U(x_{min}, x_{max})$ and the velocity is set to 0. At timestep 0, the particle's initial position is set to be the particle's personal best solution such that $y_{i}(0) = x_{i}(0)$. The particle's update step is then broken into two parts, including a velocity update step presented in Equation~\eqref{eq:heuristics:pso:velocity} followed by a position update step as presented in Equation~\eqref{eq:heuristics:pso:position} below.
 
 \begin{equation}
       \label{eq:heuristics:pso:velocity}
       \begin{split}
-            v_{ij}(t+1) = wv_{ij}(t) + c_{1}r_{1}(t)[y_{ij}(t) - x_{ij}(t)] + c_{2}r_{2}(t)[\hat{y}_{ij}(t) - x_{ij}(t)]
+            v_{ij}(t+1) = wv_{ij}(t) + c_{1}r_{1_{j}}(t)[y_{ij}(t) - x_{ij}(t)] + c_{2}r_{2_{j}}(t)[\hat{y}_{ij}(t) - x_{ij}(t)]
       \end{split}
 \end{equation}
 
@@ -455,9 +453,9 @@ In Equations~\eqref{eq:heuristics:pso:velocity} and~\eqref{eq:heuristics:pso:pos
 \begin{itemize}
       \item \textbf{Previous Velocity}: Denoted by the term $v_{ij}(t)$. This term represents the particle's momentum and is used to formulate an update step for the particle in the search space.~\citeauthor{ref:vanwyk:2014}~\cite{ref:vanwyk:2014} mentions that it forces the particle to maintain a consistent direction, preventing drastic changes in terms of update steps. This term is then scaled by the \textit{inertia} weight control parameter, denoted $w$. Inertia weight was introduced by~\citeauthor{ref:shi:1998}~\cite{ref:shi:1998} as a mechanism to control the exploration and exploitation abilities of the swarm.
 
-      \item \textbf{Cognitive Component}: Denoted by the term $c_{1}r_{1}(t)[y_{ij} - x_{ij}(t)]$. This component represents the particle's personal  experience. It introduces an attractor to the particle's personal best position so far. The cognitive component is stochastically scaled with random numbers $r{1} \sim U(0,1)^N$ and the cognitive acceleration coefficient $c_{1}$ is used to control the influence of the cognitive attractor.
+      \item \textbf{Cognitive Component}: Denoted by the term $c_{1}r_{1_{j}}(t)[y_{ij} - x_{ij}(t)]$. This component represents the particle's personal  experience. It introduces an attractor to the particle's personal best position so far. The cognitive component is stochastically scaled with random numbers $r_{1} \sim U(0,1)^J$ and the cognitive acceleration coefficient $c_{1}$ is used to control the influence of the cognitive attractor.
 
-      \item \textbf{Social Component}: Denoted by the term $c_{2}r_{2}(t)[\hat{y}_{ij} - x_{ij}(t)]$. This component represents the particle's social  experience. It introduces an attractor to the swarm's best position so far. The social component is also stochastically scaled with random numbers $r{2} \sim U(0,1)^N$, while also introducing the social acceleration coefficient $c_{2}$ that is used to control the influence of the social attractor.
+      \item \textbf{Social Component}: Denoted by the term $c_{2}r_{2+{j}}(t)[\hat{y}_{ij} - x_{ij}(t)]$. This component represents the particle's social  experience. It introduces an attractor to the swarm's best position so far. The social component is also stochastically scaled with random numbers $r_{2} \sim U(0,1)^J$, while also introducing the social acceleration coefficient $c_{2}$ that is used to control the influence of the social attractor.
 \end{itemize}
 
 \noindent
@@ -486,9 +484,9 @@ An example of the pseudo code implementation of the \textit{gbest} \acs{PSO} is 
       \caption{The pseudo code algorithm for the gbest \acs{PSO} heuristic.}
       \label{algo:heuristics:pso:gbest}
       \begin{algorithmic}
-            \State Create and initialise an $N_{x}$ dimensional swarm;
-            \While{stopping condition not met}
-            \For{each particle $i = 1, \dots, N_{s}$}
+            \State Create swarm of $N$ entities, each with $J$ dimensions;
+            \While{stopping condition are not met}
+            \For{each particle $i = 1, \dots, N$}
             \State // Set the personal best position;
             \If{$f(x_{i}) < f(y_{i})$ }
             \State $y_{i} = x_{i}$;
@@ -500,11 +498,13 @@ An example of the pseudo code implementation of the \textit{gbest} \acs{PSO} is 
             \EndIf
             \EndFor
 
-            \For{each particle $i = 1, \dots, N_{s}$}
+            \For{each particle $i = 1, \dots, N$}
+            \For{each dimension $j = 1, \dots, J$}
             \State // Perform velocity update step;
-            \State $v_{ij} = wv_{ij} + c_{1}r_{1}[y_{ij} - x_{ij}] + c_{2}r_{2}[\hat{y}_{ij} - x_{ij}]$
+            \State $v_{ij} = wv_{ij} + c_{1}r_{1_{j}}[y_{ij} - x_{ij}] + c_{2}r_{2_{j}}[\hat{y}_{ij} - x_{ij}]$
             \State // Perform position update step;
             \State $x_{ij} = x_{ij} + v_{ij}$
+            \EndFor
             \EndFor
             \EndWhile
       \end{algorithmic}

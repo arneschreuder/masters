@@ -2187,7 +2187,7 @@ One can then conclude that most of the overfitting occurs as a result of the inc
 
 Another aspect to remember is that when overfitting starts, the \Ac{BHH} has no notion of negative progress, since it merely maps the best of the evidence it observes. A strategy of picking the ``lesser of two evils''. It will then continue to bias toward the best of the heuristics even though the underlying entities have vastly overshot good solutions.
 
-Credit should however be given to the \Ac{BHH} for its ability to learn positively in such a short timespan. It has been indicated that the update step for the \Ac{BHH} happens at each mini-batch iteration. If a large dataset is presented, that means that the majority of training takes place in a small number of epochs. This leaves a very small window for the \Ac{BHH} to actually learn relevant and useful information from the \index{heuristic}heuristic-space.
+Credit should however be given to the \Ac{BHH} for its ability to learn positively in such a short timespan. It has been indicated that the update step for the \Ac{BHH} happens at each mini-batch iteration. If a large dataset is presented, that means that the majority of training takes place in a small number of epochs. This leaves a very small window for the \Ac{BHH} to actually learn relevant and useful information from the \index{heuristic}heuristic space.
 
 Once overfitting has occurred, it is difficult to undo. Therefore the best recommendation is to just use early stopping criteria. A suggestion is to simply stop training after $k$-iterations have not yielded better test set generalisation results.
 
