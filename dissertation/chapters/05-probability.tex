@@ -2,15 +2,18 @@
 \label{chap:probability}
 
 \begin{quotation}
-      \textit{``Probability theory is nothing but common sense reduced to calculation.'' - Pierre-Simon Laplace}
+      \noindent ``Probability theory is nothing but common sense reduced to calculation.''
 \end{quotation}
+\begin{flushright}
+      - Pierre-Simon Laplace
+\end{flushright}
 
-Probability theory and statistics can be traced back to as early as the 17th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of of Chance}; a book that is widely seen as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of Bayes' Theorem was introduced. It is from this theorem that the \ac{BHH} was named after.
+\noindent
+Probability theory and statistics can be traced back to as early as the 18th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of of Chance}; a book that is widely seen as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of Bayes' Theorem was introduced.
 
-Probability theory and statistics play a vital role in the \ac{ML} space. A lot of constructs that arise in \ac{ML} originate from the fields of statistics and probability theory. There are many examples of how these two fields overlap. In 1991,~\citeauthor{ref:denker:1991},~\cite{ref:denker:1991} proposed a way to transform \ac{ANN} outputs to probability distributions. In 1993,
-\citeauthor{ref:neal:1993}~\cite{ref:neal:1993} developed the first \ac{MCMC} sampling algorithm for Bayesian \acp{NN}. These are just a  few examples of how the fields of probability theory, statistics and \ac{ML} overlap.
+Probability theory, statistics and \acf{ML} are transdisciplinary fields with many shared concepts. There are many examples of how probability theory has been incorporated into \acs{ML} research. In 1991,~\citeauthor{ref:denker:1991},~\cite{ref:denker:1991} proposed a way to transform \acf{ANN} outputs to probability distributions. In 1993, \citeauthor{ref:neal:1993}~\cite{ref:neal:1993} developed a \acf{MCMC} sampling algorithm for Bayesian \acp{NN}. These are but a few examples of the role that probability theory has played in \acs{ML} research in the past.
 
-So far the reader has been provided with the problem statement and goals of this dissertation in Chapter \ref{chap:introduction} and a detailed literature study and background information on \acp{ANN} was provided in Chapter \ref{chap:anns}. This chapter aims to provide the reader with the necessary background information on probability theory and statistics. These are big fields and focus is put on the elements that are required to formulate the proposed \ac{BHH}. The remainder of the chapter is structured as follows.
+Chapter \ref{chap:hhs} provided the reader with the concept of a \acf{HH}. This dissertation aims to develop a selection \acs{HH} that makes use of probability theory to select the best \ac{HH} to solve a given problem. This chapter aims to provide the reader with the necessary background information on probability theory and statistics. These are big fields and focus is put on the elements that are required to formulate the proposed \acf{BHH}. The remainder of the chapter is structured as follows.
 
 \begin{itemize}
       \item \textbf{Section \ref{sec:probability:overview}} gives a brief overview of what probability is and how it is used.
@@ -21,43 +24,42 @@ So far the reader has been provided with the problem statement and goals of this
 
       \item \textbf{Section \ref{sec:probability:cond_probability}} introduces conditional probability.
 
-      \item \textbf{Section \ref{sec:probability:bayes_theorem}} introduces Bayes' Theorem, the fundamental theorem upon which the \ac{BHH} is built.
+      \item \textbf{Section \ref{sec:probability:bayes_theorem}} introduces Bayes' Theorem, the fundamental theorem upon which the \acs{BHH} is built.
 
-      \item \textbf{Section \ref{sec:probability:probability_distributions}} presents relevant probability distributions.
+      \item \textbf{Section \ref{sec:probability:probability_distributions}} presents the reader with the details of some relevant probability distributions.
 
-      \item \textbf{Section \ref{sec:probability:conjugate_priors}} presents the conjugate prior probability distributions for the probability distributions provided in Section \ref{sec:probability:probability_distributions}.
+      \item \textbf{Section \ref{sec:probability:conjugate_priors}} presents the reader with relevant conjugate prior probability distributions.
 
-      \item \textbf{Section \ref{sec:probability:bayesian_statistics}} presents \textit{Bayesian} statistics. Brief discussions follow on the \textit{frequentist} view and \textit{Bayesian} view of probability. It is shown how Bayes' Theorem can be used to apply Bayesian statistics a alternative mechanism to do inference. Detailed discussions follow on \index{Bayesian optimisation}Bayesian optimisation methods such as \index{Bayesian analysis}\textit{Bayesian analysis}.
+      \item \textbf{Section \ref{sec:probability:bayesian_statistics}} presents \textit{Bayesian} statistics. Brief discussions follow on the \textit{frequentist} view and \textit{Bayesian} view of probability. Detailed discussions follow on \index{Bayesian optimisation}Bayesian optimisation methods such as \index{Bayesian analysis}\textit{Bayesian analysis}.
 
-      \item Finally, a summary of the elements discussed in this chapter is provided in \textbf{Section \ref{sec:probability:summary}}.
+      \item \textbf{Section \ref{sec:probability:summary}} provides a brief summary of the chapter.
 \end{itemize}
 
 
+\section{Overview of Probability}\label{sec:probability:overview}
 
+In everyday conversation, the term \textit{probability} is a measure of one's belief in the occurrence of a future event~\cite{ref:wackerly:2014}. Probability is a necessary tool used in many fields including physics, biology, chemistry and computer science. These fields contain many cases that generate observations that can not be predicted with absolute certainty~\cite{ref:wackerly:2014}. Probability can be be inferred and confirmed through past events. These events are referred to as \textit{random} or \textit{stochastic} events. The probability that a certain event $A$ might occur is denoted $P(A)$. Although these random events cannot be predicted with absolute certainty, the relative frequency with which they occur over many trials if often remarkably stable.
 
-\section{Overview}
-\label{sec:probability:overview}
+Consider flipping an unbiased, fair coin. The coin has two possible outcomes. From this, one can conclude that each side has a $\frac{1}{2}$ or $50\%$ chance of occurring. In statistics, the decimal probability notation is used, where $0 <= P(A) <= 1$. Suppose the fair coin is thrown 10 times, one is not guaranteed to observe $0.5$ heads and $0.5$ tails. There is some probability (although small) that the coin might fall on heads $0/10$ times. The probability of such an event occurring is $0.0009765625$. The \ac{CLT} shows that the normalised sum of events tends toward a normal distribution with a mean value of $0.5$ if the number of events observed $N$, is large~\cite{ref:wackerly:2014}. The larger the value of $N$, the higher the confidence of mean probability and relative frequency of the event. The stable long-term relative frequency by which a random event occurs, provides an intuitive and meaningful measure of belief that a certain event will occur again at some point in the future~\cite{ref:wackerly:2014}.
 
+Probability can also be expressed over multiple random events. For example, again consider flipping a fair, unbiased coin, but this time with a fair, unbiased 6-sided dice. One could consider the probability of observing a certain outcome for the coin together with a certain outcome for the dice. Multiple random events can be considered together, dependently or conditionally. The following sections provides insight into conditional and joints probabilities.
 
-In everyday conversation, the term \textit{probability} is a measure of one's belief in the occurrence of a future event~\cite{ref:wackerly:2014}. Probability is a necessary tool used in many fields including physics, biology, chemistry and computer science. These fields contain many cases that generate observations that can not be predicted with absolute certainty~\cite{ref:wackerly:2014}. Probability can be be inferred and confirmed through past events. These events are referred to as \textit{random} or \textit{stochastic} events. The probability that a certain event $A$ might occur is denoted $P(A)$. Although these random events cannot be predicted with absolute certainty, the relative frequency with which they occur over many trials if often remarkably stable. Consider flipping an unbiased, fair coin. The coin has two possible outcomes. From this, one can conclude that each side has a $\frac{1}{2}$ or $50\%$ chance of occurring. In statistics, the decimal probability notation is used where $0 <= P(A) <= 1$. Suppose the fair coin is thrown 10 times, one is not guaranteed to observe $0.5$ heads and $0.5$ tails. There is is some probability, although small, that the coin might fall on heads $0/10$ times. The probability of such an event occurring is $0.0009765625$. The \ac{CLT} shows that the normalised sum of events tends toward a normal distribution with a mean value of $0.5$ if the number of events observed $N$, is large~\cite{ref:wackerly:2014}. The larger the value of $N$, the higher the confidence of mean probability and relative frequency of the event. The stable long-term relative frequency by which a random event occurs provides an intuitive and meaningful measure of belief that a certain event will occur again at some point in the future~\cite{ref:wackerly:2014}. The belief that a random event would occur again sometime in the future, at an expected relative frequency could be useful for decision making. It will later be shown that the proposed \ac{BHH} implements a probabilistic selection mechanism that continuously updates its beliefs such that it learns what the relative frequency by which a heuristic is selected should be.
+\section{Conditional Probability and Independence}\label{sec:probability:cond_probability}
 
-Probability can also be expressed over multiple random events. For example, consider flipping a fair, unbiased coin and 6-sided dice together. One could then consider the probability of observing a certain outcome for the coin together with a certain outcome for the dice. Multiple random events can be considered together, dependently or conditionally. The following sections provides insight into conditional and joints probabilities.
-
-\section{Conditional Probability and Independence}
-\label{sec:probability:cond_probability}
-
-The occurrence of a given random event $A$ can often be dependent on the occurrence of another event $B$. In the field of medicine, an example of this is to calculate the probability of a certain diagnosis of a sick patient given his/her symptoms. This is referred to as the conditional probability between two events. The conditional probability is expressed as $P(A \vert B)$ and is read \textit{the probability of $A$ given $B$}. On the contrary, the \textit{unconditional} probability is the probability of an event, not dependent on any other. The conditional probability of $A$ given $B$ can be expressed as is given in Definition \ref{eq:probability:cond_probability} below~\cite{ref:wackerly:2014}.
+The occurrence of a given random event $A$ can often be dependent on the occurrence of another event $B$. In the field of medicine, an example of this is to calculate the probability of a certain diagnosis of a sick patient given his/her symptoms. The aforementioned dependence is referred to as the conditional probability between two events. The conditional probability is expressed as $P(A \vert B)$ and is read \textit{the probability of $A$ given $B$}. On the contrary, the \textit{unconditional} probability is the probability of an event, not dependent on any other. The conditional probability of $A$ given $B$ can be expressed as is given in Definition \ref{eq:probability:cond_probability} below~\cite{ref:wackerly:2014}.
 
 \begin{definition}[\textbf{Conditional Probability}]
       \label{eq:probability:cond_probability}
       The conditional probability of an event $A$, subject to the occurrence of event $B$ is expressed as
 
-      \begin{equation*}
+      \begin{equation}
+            \label{eq:probability:overview:conditional}
             P(A \vert B) = \frac{P(A \cap B)}{P(B)}
-      \end{equation*}
+      \end{equation}
 \end{definition}
 
-where $P(B) > 0$. Notice that conditional probability does not suggest causation. If an event $A$ has a high probability of occurring after observing event $B$, it does not necessarily mean that $A$ is caused by $B$. Conditional probability simply expresses the dependence amongst events.
+\noindent
+In Equation~\eqref{eq:probability:overview:conditional} above, $P(B) > 0$. Note that conditional probability does not suggest causation. If an event $A$ has a high probability of occurring after observing event $B$, it does not necessarily mean that $A$ is caused by $B$. Conditional probability simply expresses the dependence amongst events.
 
 It could also be the case that the outcome of observing event $A$ is not affected by the occurrence of $B$. In this case, it is said that events $A$ and $B$ are independent. The independence between two events are expressed in Definition \ref{def:probability:cond_probability:independence} below.
 
@@ -74,12 +76,12 @@ It could also be the case that the outcome of observing event $A$ is not affecte
       otherwise events $A$ and $B$ are said to be \textit{dependent} random events.
 \end{definition}
 
+\noindent
 Events can also be considered together. The laws of probability for multiple events are presented next.
 
-\section{Two Laws of Probability for Multiple Events}
-\label{sec:probability:multiple_events}
+\section{Two Laws of Probability for Multiple Events}\label{sec:probability:multiple_events}
 
-Often times probabilities are calculated by considering multiple random events together. Suppose there are two random events $A$ and $B$, then one can calculate the probability of the union and intersection of these events. From this concept, two laws of probability can be formulated. These are referred to as the \textit{multiplicative} and \textit{additive} laws of probability~\cite{ref:wackerly:2014} and is given below in Theorems \ref{th:probability:multiple_events:multiplicative} and \ref{th:probability:multiple_events:additive} respectively.
+Suppose there are two random events $A$ and $B$, then one can calculate the probability of the union and intersection of these events. From the aforementioned concept, two laws of probability can be formulated. These are referred to as the \textit{multiplicative} and \textit{additive} laws of probability~\cite{ref:wackerly:2014} and is given below in Theorems \ref{th:probability:multiple_events:multiplicative} and \ref{th:probability:multiple_events:additive} respectively.
 
 \begin{theorem}[\textbf{The Multiplicative Law of Probability}]
       \label{th:probability:multiple_events:multiplicative}
@@ -93,6 +95,7 @@ Often times probabilities are calculated by considering multiple random events t
             \end{split}
       \end{equation*}
 
+      \noindent
       If $A$ and $B$ are independent, then
 
       \begin{equation*}
@@ -114,109 +117,110 @@ Often times probabilities are calculated by considering multiple random events t
 \end{theorem}
 
 \begin{proof}
-      The proof of the additive law of probability is supported by the Venn Diagram presented in Figure \ref{fig:probability:multiple_events:additive} below. Notice that $A \cup B = A \cup ( \bar{A} \cap B)$, where $A$ and $\bar{A} \cap B$ are mutually exclusive events. Furthermore, consider that $B = (\bar{A} \cap B) \cup (A \cap B)$, where $\bar{A} \cap B$ and $A \cap B$ are mutually exclusive. Then $P(A \cup B) = P(A) + P(\bar{A} \cap B)$ and $P(B) = P(\bar{A} \cap B) + P(A \cap B)$. The equality on the right implies that $P(\bar{A} \cap B) = P(B) - P(A \cap B)$. By substituting the expression for $P(\bar{A} \cap B)$ into the expression for $P(A \cup B)$, one can obtain the result $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
+      The geometric proof of the additive law of probability is given by the Venn Diagram presented in Figure \ref{fig:probability:multiple_events:additive}. Note that $A \cup B = A \cup ( \bar{A} \cap B)$, where $A$ and $\bar{A} \cap B$ are mutually exclusive events. Furthermore, consider that $B = (\bar{A} \cap B) \cup (A \cap B)$, where $\bar{A} \cap B$ and $A \cap B$ are mutually exclusive. Then $P(A \cup B) = P(A) + P(\bar{A} \cap B)$ and $P(B) = P(\bar{A} \cap B) + P(A \cap B)$. The equality on the right implies that $P(\bar{A} \cap B) = P(B) - P(A \cap B)$. By substituting the expression for $P(\bar{A} \cap B)$ into the expression for $P(A \cup B)$, one can obtain the result $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
 \end{proof}
 
 \begin{figure}[htbp]
-      \includegraphics[width=\textwidth]{images/additive_law_of_probability_proof.png}
+      \centering
+      \includegraphics[width=0.7\textwidth]{images/additive_law_of_probability_proof.png}
       \caption{A Venn-Diagram showing the proof of the additive law of probability for multiple events.}
       \label{fig:probability:multiple_events:additive}
 \end{figure}
 
-The next section presents Bayes' Theorem and it is shown how it is related to conditional probability.
+\section{Bayes' Theorem}\label{sec:probability:bayes_theorem}
 
-\section{Bayes' Theorem}
-\label{sec:probability:bayes_theorem}
-
-Bayes' Theorem, named after Thomas Bayes, describes the probability of an event $A$, based on prior knowledge of conditions that might be related to $A$~\cite{ref:zalta:2015}. On order to derive the formal theorem and proof, first consider Definition \ref{def:probability:bayes_theorem:partition} below~\cite{ref:zalta:2015}.
+Bayes' Theorem, named after Thomas Bayes, describes the probability of an event $A$, based on prior knowledge of conditions that might be related to $A$~\cite{ref:zalta:2015}. In order to derive the formal theorem and proof, first consider Definition \ref{def:probability:bayes_theorem:partition} below~\cite{ref:zalta:2015}.
 
 \begin{definition}
       \label{def:probability:bayes_theorem:partition}
-      For some positive integer, $k$, let the sets $B_{1}, B_{2}, \dots, B_{k}$ be such that
+      For some positive integer, $K$, let the sets $B_{1}, B_{2}, \dots, B_{K}$ be such that
 
       \begin{enumerate}
-            \item $S = B_{1} \cup B_{2} \cup \dots \cup B_{k}$
-            \item $B_{i} \cap B_{j} = \emptyset, for i \neq j$
+            \item $S = B_{1} \cup B_{2} \cup \dots \cup B_{K}$
+            \item $B_{i} \cap B_{j} = \emptyset$, for $i \neq j$
       \end{enumerate}
 
-      Then the collection of sets [$B_{1}$, $B_{2}$, $\dots$, $B_{k}$] is said to be a partition of S.
+      \noindent
+      Then the collection of sets [$B_{1}$, $B_{2}$, $\dots$, $B_{K}$] is said to be a partition of S.
 \end{definition}
 
-Bayes Theorem is then presented in Theorem \ref{th:probability:bayes_theorem:theorem} below.
 
 \begin{theorem}[\textbf{Bayes' Theorem}]
       \label{th:probability:bayes_theorem:theorem}
-      Assume that $[B_{1}, B_{2}, \dots, B_{k}]$ is a partition of $S$ such that $P(B_{i}) > 0$, for $i = 1,2, \dots, k$ then
+      Assume that $[B_{1}, B_{2}, \dots, B_{K}]$ is a partition of $S$ such that $P(B_{k}) > 0$, for $k = 1,2, \dots, K$ then\\
+      \\
       \begin{equation*}
-            P(B_{j} \vert A) = \frac{P(A \vert B_{j})P(B_{j})}{\sum_{i=1}^{k} P(A \vert B_{i})P(B_{i})}
+            P(B_{k} \vert A) = \frac{P(A \vert B_{k})P(B_{k})}{\sum_{k=1}^{K} P(A \vert B_{k})P(B_{k})}
       \end{equation*}
 \end{theorem}
 
 \begin{proof}
-      The proof follows directly from the definition of of conditional probability as was discussed in \ref{sec:probability:cond_probability}. This is shown below
+      The proof follows directly from the definition of conditional probability as was presented in \ref{sec:probability:cond_probability}. This is shown below
 
       \begin{equation*}
             \begin{split}
-                  P(B_{j} \vert A)
-                  &= \frac{P(A \cap B_{j})}{P(A)}\\
-                  &= \frac{P(A \vert B_{j})P(B_{j})}{\sum_{i=1}^{k} P(A \vert B_{i})P(B_{i})}
+                  P(B_{k} \vert A)
+                  &= \frac{P(A \cap B_{k})}{P(A)}\\
+                  &= \frac{P(A \vert B_{k})P(B_{k})}{\sum_{k=1}^{K} P(A \vert B_{k})P(B_{k})}
             \end{split}
       \end{equation*}
 \end{proof}
 
-One of the many applications of Bayes' Theorem is to do statistical inference. This is referred to as Bayesian inference. The theorem expresses how a degree of belief, expressed as a probability, should rationally change to account for the availability of related evidence.
-
-Bayesian inference is fundamental to Bayesian statistics. Section \ref{sec:probability:bayesian_statistics} presents the detail around Bayesian statistics. However, a brief detour is required to present to the user, a number of probability distributions. These probability distributions are presented next. Consider now a number of probability distributions as they are implemented.
-
+\noindent
+One of the many applications of Bayes' Theorem is to do statistical inference. Bayes' Theorem expresses how a degree of belief, expressed as a probability, should rationally change to account for the availability of related evidence.
 
 
-\section{Probability Distributions}
-\label{sec:probability:probability_distributions}
+\section{Probability Distributions}\label{sec:probability:probability_distributions}
 
-Probability distributions are mathematical functions that give the probabilities of the occurrences of different possible outcomes in the experiment. They play a crucial role in the architecture and design of the \ac{BHH}. It will later be shown how the proposed \ac{BHH} makes extensive use of probability distributions and sampling to formulate its selection mechanism. The theory and equations presented in the following sections where all taken from~\citeauthor{ref:wackerly:2014}~\cite{ref:wackerly:2014}.
+Probability distributions are mathematical functions that give the probabilities of the occurrences of different possible outcomes in the experiment. The theory and equations presented in the following sections where all taken from~\citeauthor{ref:wackerly:2014}~\cite{ref:wackerly:2014}.
 
 
-\subsection{Beta Distribution}
-\label{sec:probability:probability_distributions:beta}
+\subsection{Beta Distribution}\label{sec:probability:probability_distributions:beta}
 
-The Beta distribution is a family of univariate continuous probability distributions over some $x$, with support on the interval $[0,1]$~\cite{ref:wackerly:2014}. It is parameterised by two shape parameters $\alpha > 0$, $\alpha \in \mathbb{R}$ and $\beta > 0$, $\beta \in \mathbb{R}$. The Beta distribution is denoted as $Beta(\alpha, \beta)$. The \ac{PDF} of the Beta distribution is given below in Equation~\eqref{eq:probability:probability_distributions:beta:pdf}.
+The Beta distribution is a family of univariate, continuous, probability distributions over some $x$, with support on the interval $[0,1]$~\cite{ref:wackerly:2014}. It is parameterised by two shape parameters $\alpha > 0$, $\alpha \in \mathbb{R}$ and $\beta > 0$, $\beta \in \mathbb{R}$. The Beta distribution is denoted as $Beta(\alpha, \beta)$. The \ac{PDF} of the Beta distribution is given in Equation~\eqref{eq:probability:probability_distributions:beta:pdf} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:pdf}
       P(x \vert \alpha, \beta) = f_{Beta}(x; \alpha, \beta) = \frac{1}{B(\alpha, \beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}
 \end{equation}
 
-where the normalising constant $B(\alpha, \beta)$ is defined below in Equation~\eqref{eq:probability:probability_distributions:beta:norm_const}.
+\noindent
+From Equation~\eqref{eq:probability:probability_distributions:beta:pdf} above, the normalising constant $B(\alpha, \beta)$, is defined below in Equation~\eqref{eq:probability:probability_distributions:beta:norm_const}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:norm_const}
       B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
 \end{equation}
 
-and $\Gamma$ is the Gamma function as defined below in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func}.
+\noindent
+In Equation~\eqref{eq:probability:probability_distributions:beta:norm_const}, $\Gamma$ is the Gamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:gamma_func}
       \Gamma(n) = ( n - 1)!
 \end{equation}
 
-it should be noted that the Gamma function can also be written as shown in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func_alt} below.
+\noindent
+It should be noted that the Gamma function can also be written as shown in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func_alt} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:gamma_func_alt}
       \Gamma(n+1) = n!
 \end{equation}
 
-It should be noted that $\alpha$ and $\beta$ determine the shape of the distribution. There exists a special case where $\alpha = \beta$. This is referred to as the \textit{symmetric} Beta distribution. In the case where $\alpha = \beta = 1$ the distribution is equivalent to the uniform distribution over all points in its support. The Beta distribution for various values of $\alpha$ and $\beta$, including the symmetric version is presented below in Figure \ref{fig:probability:probability_distributions:beta}.
+\noindent
+The control parameters $\alpha$ and $\beta$, determine the shape of the distribution. There exists a special case where $\alpha = \beta$. This is referred to as the \textit{symmetric} Beta distribution. In the case where $\alpha = \beta = 1$ the distribution is equivalent to the uniform distribution over all points in its support. The Beta distribution for various values of $\alpha$ and $\beta$, including the symmetric version is presented in Figure \ref{fig:probability:probability_distributions:beta}.
 
 \begin{figure}[htbp]
       \begin{subfigure}{0.49\textwidth}
-            \includegraphics[width=\textwidth]{images/beta_various.png}
+            \centering
+            \includegraphics[width=\textwidth]{images/beta_various.pdf}
             \caption{Beta distribution}
             \label{fig:probability:probability_distributions:beta_normal}
       \end{subfigure}
       \begin{subfigure}{0.49\textwidth}
-            \includegraphics[width=\textwidth]{images/beta_cumulative.png}
+            \centering
+            \includegraphics[width=\textwidth]{images/beta_cumulative.pdf}
             \caption{Cumulative Beta distribution}
             \label{fig:probability:probability_distributions:beta_cumulative}
       \end{subfigure}
@@ -225,7 +229,7 @@ It should be noted that $\alpha$ and $\beta$ determine the shape of the distribu
       \label{fig:probability:probability_distributions:beta}
 \end{figure}
 
-
+\noindent
 The expected value of $x$ is given below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value}.
 
 \begin{equation}
@@ -233,20 +237,23 @@ The expected value of $x$ is given below in Equation~\eqref{eq:probability:proba
       E[x] = \frac{\alpha}{\alpha + \beta}
 \end{equation}
 
-Similarly, the expected value of the natural logarithm of $x$ can be calculated as shown below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value_ln}.
+\noindent
+Similarly, the expected value of the natural logarithm of $x$ can be calculated as is shown below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value_ln}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:expected_value_ln}
       E[\ln(x)] = \psi({\alpha}) - \psi(\alpha + \beta)
 \end{equation}
 
-where $\psi$ is the logarithmic derivative of the Gamma function, called the \textit{Digamma} function. The Digamma function is given below in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}.
+\noindent
+In Equation~\eqref{eq:probability:probability_distributions:beta:expected_value_ln} above, $\psi$ is the logarithmic derivative of the Gamma function, called the \textit{Digamma} function. The Digamma function is given below in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:digamma}
       \psi(n) = \frac{d}{dn}\ln(\Gamma(n)) = \frac{\Gamma'(n)}{\Gamma(n)}
 \end{equation}
 
+\noindent
 Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:beta:mode} below.
 
 \begin{equation}
@@ -255,49 +262,46 @@ Finally, the mode of the distribution is given in Equation~\eqref{eq:probability
 \end{equation}
 
 
-
-
-
-
-
-
-
-
 \subsection{Dirichlet Distribution}
 \label{sec:probability:probability_distributions:dirichlet}
 
 
-The Dirichlet distribution is a family of multivariate continuous probability distributions over some $x$ in $K$ dimensions ~\cite{ref:wackerly:2014}. The Dirichlet distribution is the multivariate generalization of the Beta distribution and is thus sometimes referred to by its alternative name, the Multivariate Beta Distribution. The Dirichlet distribution is parameterised by some vector $\alpha = (\alpha_{1}$,  $\dots, \alpha_{K})$ $\forall_{k=1}^{K} \alpha_{k} > 0$, $\alpha_{k} \in \mathbb{R}$. $\alpha$ is referred to as the concentration parameter. It is later shown in Chapter \ref{chap:bhh} that this parameter plays a vital role in the optimisation process of the \ac{BHH}. The Dirichlet distribution of order $K \geq 2$ with parameters $\alpha$, denoted $Dir(\alpha)$, has a \ac{PDF} as given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} below.
+The Dirichlet distribution is a family of multivariate continuous probability distributions over some $x$ in $K$ dimensions ~\cite{ref:wackerly:2014}. The Dirichlet distribution is the multivariate generalization of the Beta distribution and is thus sometimes referred to by its alternative name, the Multivariate Beta Distribution. The Dirichlet distribution is parameterised by some vector $\alpha = (\alpha_{1}$,  $\dots, \alpha_{K})$ $\forall_{k=1}^{K} \alpha_{k} > 0$, $\alpha_{k} \in \mathbb{R}$. $\alpha$ is referred to as the concentration parameter. The Dirichlet distribution of order $K \geq 2$ with parameters $\alpha$, denoted $Dir(\alpha)$, has a \ac{PDF} as given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:pdf}
       P(x \vert \alpha) =  f_{Dir}(x; K, \alpha) = \frac{1}{B(\alpha)}  \prod_{k=1}^{K} x_{k}^{\alpha_{k} - 1}
 \end{equation}
 
-where the normalising constant $B(\alpha)$ is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:norm_cost}.
+\noindent
+In Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} above, the normalising constant $B(\alpha)$, is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:norm_cost}.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:norm_cost}
       B(\alpha) = \frac{\prod_{k=1}^{K} \Gamma(\alpha_{k})}{\Gamma(\alpha_{0})}
 \end{equation}
 
-and $\alpha_{0}$ is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:alpha_0} below.
+\noindent
+In Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} above, $\alpha_{0}$ is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:alpha_0} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:alpha_0}
       \alpha_{0} = \sum_{k=1}^{K}\alpha_{k}
 \end{equation}
 
+\noindent
 Importantly, the set $\{x_{k}\}_{k=1}^{K}$ belongs to the standard $K-1$ probability simplex $S$, meaning that $x_{K} = 1 - \sum_{k=1}^{K-1}x_{k}$ with support $\forall_{k=1}^{K} x \in [0,1]$. Under the simplex $S$, this means that the sum over all values of the vector $x$ must be 1. The simplex can thus be rewritten as $\sum_{k=1}^{K}x_{k} = 1$.
 
-Similar to the Beta distribution, $\alpha$ determines the shape of the distribution in $K$ dimensions and thus, there also exist a special case, referred to as the \textit{symmetric} distribution when $\forall_{k=1}^{K} \alpha_{k} = c$, where $c$ is some constant. In the case where $c = 1$, the distribution is referred to as a \textit{flat} distribution and yields the uniform distribution over all points in $S$. The Dirichlet distribution of order $K = 3$, for various values of $\alpha$, including the symmetric version is presented in Figure \ref{fig:probability:probability_distributions:dirichlet} below.
+Similar to the Beta distribution, $\alpha$ determines the shape of the distribution in $K$ dimensions and thus, there also exist a special case, referred to as the \textit{symmetric} distribution when $\forall_{k=1}^{K} \alpha_{k} = c$, where $c$ is some constant. In the case where $c = 1$, the distribution is referred to as a \textit{flat} distribution and yields the uniform distribution over all points in $S$. The Dirichlet distribution of order $K = 3$, for various values of $\alpha$, including the symmetric version is presented in Figure \ref{fig:probability:probability_distributions:dirichlet}.
 
 \begin{figure}[htbp]
-      \includegraphics[width=\textwidth]{images/dirichlet.jpg}
-      \caption{The \acp{PDF} for the Dirichlet distribution over the 2-simplex. The concentration parameter $\alpha$ is varied. The values of $\alpha$ are set to (1.5, 1.5, 1.5), (5, 5, 5), (1, 2, 2), and (2, 4, 8) respectively, read from top to bottom, left to right. The values of the \ac{PDF} are shown by the color maps with contour lines at equal values as indicated in the color bars~\cite{ref:dirichlet:2020}.}
+      \centering
+      \includegraphics[width=0.8\textwidth]{images/dirichlet.pdf}
+      \caption{The \acfp{PDF} for the Dirichlet distribution over the 2-simplex. The concentration parameter $\alpha$ is varied. The values of the \acs{PDF} are shown by the color maps with contour lines at equal values as indicated in the color bars~\cite{ref:dirichlet:2020}.}
       \label{fig:probability:probability_distributions:dirichlet}
 \end{figure}
 
+\noindent
 The expected value of $x$ can be calculated as shown in Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value} below.
 
 \begin{equation}
@@ -305,6 +309,7 @@ The expected value of $x$ can be calculated as shown in Equation~\eqref{eq:proba
       E[x_{k}] = \frac{\alpha_{k}}{\alpha_{0}}
 \end{equation}
 
+\noindent
 Similarly, the expected value of the natural logarithm of $x_{k}$ can be calculated as defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value_ln} below.
 
 \begin{equation}
@@ -312,7 +317,8 @@ Similarly, the expected value of the natural logarithm of $x_{k}$ can be calcula
       E[\ln(x_{k})] = \psi({\alpha_{k}}) - \psi(\alpha_{0})
 \end{equation}
 
-where $\psi$ is the Digamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}. Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:mode} below.
+\noindent
+In Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value_ln} above, $\psi$ is the Digamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}. Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:mode} below.
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:mode}
