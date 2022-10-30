@@ -433,8 +433,8 @@ Finally the reader is presented with the underlying predictive model as implemen
       \item $\beta = (\beta_{1}, \dots, \beta_{K})^{J}$: Denote the concentration parameters for the entity-heuristic probability distributions.
       \item $\gamma = (\gamma_{1}, \dots, \gamma_{K})^{L}$: Denote the concentration parameters for the credit-heuristic probability distribution.
 
-      \item $\theta \vert \alpha \sim Dir(\alpha; K)$: Denote the heuristic probability distribution, implementing a Dirchlet probability distribution parameterised by $\alpha$ and $K$. Heuristic selection probabilities are sampled from this distribution.
-      \item $\phi \vert \beta \sim Dir(\beta; K)^{J}$: Denote the entity-heuristic probability distribution, implementing a Dirchlet probability distribution parameterised by $\beta$ and $K$ for each entity in the entity pool with population size $J$. Entity-heuristic probabilities are sampled from this distribution.
+      \item $\theta \vert \alpha \sim Dir(\alpha; K)$: Denote the heuristic probability distribution, implementing a Dirichlet probability distribution parameterised by $\alpha$ and $K$. Heuristic selection probabilities are sampled from this distribution.
+      \item $\phi \vert \beta \sim Dir(\beta; K)^{J}$: Denote the entity-heuristic probability distribution, implementing a Dirichlet probability distribution parameterised by $\beta$ and $K$ for each entity in the entity pool with population size $J$. Entity-heuristic probabilities are sampled from this distribution.
       \item $\psi \vert \gamma_{1}, \gamma_{0}  \sim Beta(\gamma_{1}, \gamma_{0})$: Denote the credit-heuristic probability distribution, implementing a Beta probability distribution parameterised by $\gamma_{1}$ and $\gamma_{0}$. Credit-heuristic probabilities are sampled from this distribution.
 
       \item $H \vert \theta \sim Mult(\theta; I, K)$: Denote the distribution of heuristics (event $H$), implementing a Multinomial distribution, parameterised by the sampled heuristic selection probability $\theta$, the heuristic pool size $K$ and maximum number of instances $I$.
@@ -818,7 +818,7 @@ Bayesian analysis makes use of the \textit{posterior} probability distribution. 
       \end{split}
 \end{equation*}
 
-The likelihood is presented in Equation~\eqref{eq:bhh:optimisation_step:map:bayesian_analysis_lamens} above. The event $H$ is a multinomial distribution with parameter $\theta$. It is known that the conjugate prior to a multinomial distribution is a Dirichlet distribution (see Chapter \ref{chap:probability}. The \textit{prior} probability distribution for  $\theta_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_theta_prior} below.
+The likelihood is presented in Equation~\eqref{eq:bhh:optimisation_step:map:bayesian_analysis_lamens} above. The event $H$ is a multinomial distribution with parameter $\theta$. It is known that the conjugate prior to a multinomial distribution is a Dirichlet probability distribution (see Chapter \ref{chap:probability}. The \textit{prior} probability distribution for  $\theta_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_theta_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_theta_prior}
@@ -838,7 +838,7 @@ Furthermore, the event $E$ is also a multinomial distribution with parameter $\p
       \end{split}
 \end{equation}
 
-Finally, the event $C$ is a binomial distribution with parameter $\psi$. It is known that the conjugate prior to a binomial distribution is a Beta distribution (see Chapter \ref{chap:probability}). The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
+Finally, the event $C$ is a binomial distribution with parameter $\psi$. It is known that the conjugate prior to a binomial distribution is a Beta probability distribution (see Chapter \ref{chap:probability}). The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_psi_prior}
@@ -980,7 +980,7 @@ Discounted rewards is another hyper-parameter that is borrowed from \ac{RL}. Thi
 \subsection{Normalisation}
 \label{sec:bhh:hyper_parameters:normalisation}
 
-Normalisation is a hyper-parameter that aims to provide a mechanism of control for the degree to which exploration is allowed. Figure \ref{sec:bhh:hyper_parameters:discounted_rewards:normalisation} shows the effect of different concentrations ($\alpha$ and $\beta$) on the Beta distribution. By normalising the concentration parameters for the \ac{BHH} ($\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$), the variance of the selection probability distributions increase, allowing for sampled probabilities further from the mean and thus allowing for more exploration.
+Normalisation is a hyper-parameter that aims to provide a mechanism of control for the degree to which exploration is allowed. Figure \ref{sec:bhh:hyper_parameters:discounted_rewards:normalisation} shows the effect of different concentrations ($\alpha$ and $\beta$) on the Beta probability distribution. By normalising the concentration parameters for the \ac{BHH} ($\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$), the variance of the selection probability distributions increase, allowing for sampled probabilities further from the mean and thus allowing for more exploration.
 
 
 \begin{figure}[htbp]
@@ -1002,7 +1002,7 @@ Normalisation is a hyper-parameter that aims to provide a mechanism of control f
             \label{sec:bhh:hyper_parameters:normalisation_beta_20_20}
       \end{subfigure}
       \par\bigskip
-      \caption{Beta distribution with varying $\alpha$ and $\beta$ values.}
+      \caption{Beta probability distribution with varying $\alpha$ and $\beta$ values.}
       \label{sec:bhh:hyper_parameters:discounted_rewards:normalisation}
 \end{figure}
 
