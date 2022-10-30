@@ -439,7 +439,7 @@ Finally the reader is presented with the underlying predictive model as implemen
 
       \item $H \vert \theta \sim Mult(\theta; I, K)$: Denote the distribution of heuristics (event $H$), implementing a Multinomial distribution, parameterised by the sampled heuristic selection probability $\theta$, the heuristic pool size $K$ and maximum number of instances $I$.
       \item $E \vert \phi \sim Mult(\phi; I, K)^{J}$: Denote the distribution of entity-heuristic combinations (event $E$), implementing a Multinomial distribution, parameterised by the sampled entity-heuristic selection probability $\phi$, the heuristic pool size $K$ and maximum number of instances $I$, for each entity in $J$.
-      \item $C \vert \psi \sim Bin(\psi, I)$: Denote the distribution of credit-heuristic combinations (event $C$), implementing a Binomial distribution, parameterised by the sampled credit-heuristic selection probability $\psi$ and the maximum number of instances $I$.
+      \item $C \vert \psi \sim Bin(\psi, I)$: Denote the distribution of credit-heuristic combinations (event $C$), implementing a\index{Binomial probability distribution}Binomial probability distribution, parameterised by the sampled credit-heuristic selection probability $\psi$ and the maximum number of instances $I$.
 \end{itemize}
 
 The parameterised predictive model, as derived from Bayes theorem presented in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} is then given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model} below.
@@ -838,7 +838,7 @@ Furthermore, the event $E$ is also a multinomial distribution with parameter $\p
       \end{split}
 \end{equation}
 
-Finally, the event $C$ is a binomial distribution with parameter $\psi$. It is known that the conjugate prior to a binomial distribution is a Beta probability distribution (see Chapter \ref{chap:probability}). The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
+Finally, the event $C$ is a\index{Binomial probability distribution}Binomial probability distribution with parameter $\psi$. It is known that the conjugate prior to a\index{Binomial probability distribution}Binomial probability distribution is a Beta probability distribution (see Chapter \ref{chap:probability}). The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_psi_prior}
