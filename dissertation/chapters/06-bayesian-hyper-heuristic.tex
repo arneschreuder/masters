@@ -1,167 +1,147 @@
-\chapter{Bayesian Hyper-Heuristic}
-\label{chap:bhh}
+\chapter{Bayesian Hyper-Heuristic}\label{chap:bhh}
 
-\begin{quote}
-      \textit{
-            ``The result is a posterior distribution which the agent may use as its new prior in the next step.'' - Pedro Domingos, The Master Algorithm: How the Quest for the Ultimate Learning Machine Will Remake Our World.
-      }
-\end{quote}
+\begin{quotation}
+      \noindent ``The result is a posterior distribution, which the agent may use as its new prior in the next step.''
+\end{quotation}
+\begin{flushright}
+      - Pedro Domingos, The Master Algorithm
+\end{flushright}
 
-The above quote was the inspiration for the development of a novel \ac{HH} that uses \index{Bayesian}\textit{Bayesian} probability concepts as a selection mechanism to drive the heuristic selection process. Thus far the reader was presented with all of the necessary background information on \acp{ANN} in Chapter \ref{chap:anns}, low-level \index{heuristic}heuristics/\index{Optimiser}optimisers in Chapter \ref{chap:heuristics}, \acp{HH} in Chapter \ref{chap:hhs}  and lastly, \index{probability theory}probability theory in Chapter \ref{chap:probability}. These elements form the fundamental components that make up the proposed \Ac{BHH}. A detailed specification on the \Ac{BHH} can now be formulated. This chapter provides the detail around the theory, concept and implementation of the \Ac{BHH} and explains how it used to train \acp{ANN}. It is shown throughout this chapter that the \Ac{BHH} implements a probabilistic optimisation technique that implements and biases a \index{Gaussian Process}\textit{Gaussian process} towards good optimisation and performance. The remainder of the chapter is structured as follows:
+\noindent
+The above quote was the inspiration for the development of a novel \acf{HH} that uses Bayesian probability concepts as a selection mechanism to drive the heuristic selection process. Thus far the reader has been presented with all of the necessary background information on \acp{ANN} (Chapter \ref{chap:anns}), low-level \index{heuristic}heuristics (Chapter \ref{chap:heuristics}), \acp{HH} (Chapter \ref{chap:hhs}) and lastly, probability theory(Chapter \ref{chap:probability}). These elements form the fundamental components of the proposed \Acf{BHH}. This chapter provides the details around the implementation of the \Ac{BHH} and explains how it used to train \acp{FFNN}. The remainder of the chapter is structured as follows.
 
 \begin{itemize}
-      \item \textbf{Section \ref{sec:bhh:overview}} provides a brief overview of the \Ac{BHH} optimiser.
+      \item \textbf{Section \ref{sec:bhh:overview}} provides a brief overview of the \Acs{BHH}.
 
-      \item \textbf{Section \ref{sec:bhh:architecture}} presents the general architecture, \Ac{HH} framework and the various components that make up the \index{Optimiser}optimiser.
+      \item \textbf{Section \ref{sec:bhh:architecture}} provides the general architecture and \Ac{HH} framework implemented by the \Acs{BHH}.
 
-      \item \textbf{Section \ref{sec:bhh:heuristic_pool}} discusses the collection of low-level \index{heuristic}heuristics, referred to as the \index{heuristic}\textit{heuristic pool} and puts emphasis on the importance of a diverse set of low-level \index{heuristic}heuristics.
+      \item \textbf{Section \ref{sec:bhh:heuristic_pool}} presents the \index{heuristic}\textit{heuristic pool}, a collection of low-level \index{heuristic}heuristics. Discussions follow on the importance of diversity amoungst heuristics in the \index{heuristic pool}heuristic pool.
 
-      \item \textbf{Section \ref{sec:bhh:entity_pool}} discusses the detail of the \index{Population}population and its \index{entity}entities, with specific detail provided on entity (local) and population (global) state and memory.
+      \item \textbf{Section \ref{sec:bhh:entity_pool}} presents details on entity (local) and population (global) memory (state).
 
-      \item \textbf{Section \ref{sec:bhh:initialisation_step}} presents the initialisation strategy in detail.
+      \item \textbf{Section \ref{sec:bhh:heuristic_entity_selections}} presents discussions on heuristic-entity selections.
 
-      \item \textbf{Section \ref{sec:bhh:selection_mechanism}} presents the \index{Bayesian}\textit{Bayesian} probabilistic model that is used as a selection mechanism.
+      \item \textbf{Section \ref{sec:bhh:model}} presents the models that can be optimised using the \Acs{BHH}, specifically referring to the training of \acp{FFNN}.
 
-      \item \textbf{Section \ref{sec:bhh:heuristic_entity_selections}} discusses heuristic-entity selections and how these two concepts are utilised together.
+      \item \textbf{Section \ref{sec:bhh:train_test_datasets}} presents a brief discussion on the role of datasets for training and testing.
 
-      \item \textbf{Section\ref{sec:bhh:model}} discusses the models that can be optimised using the \Ac{BHH}, specifically referring to its application to training \acp{FFNN}.
+      \item \textbf{Section \ref{sec:bhh:loss_function}} presents discussions on model evaluation and the role of the loss function.
 
-      \item \textbf{Section \ref{sec:bhh:train_test_datasets}} briefly discussed the role of the train and test datasets during training.
+      \item \textbf{Section \ref{sec:bhh:domain_barrier}} presents discussions on the domain barrier, an information barrier that exists between the high-level \acs{BHH} and low-level heuristics in the \index{heuristic pool}heuristic pool.
 
-      \item \textbf{Section \ref{sec:bhh:loss_function}} discusses model evaluation and the role of the loss/cost function.
+      \item \textbf{Section \ref{sec:bhh:performance_log}} presents detailed discussions on performance measurement. The \textit{performance log}, implemented by the \acs{BHH}, is presented.
 
-      \item \textbf{Section \ref{sec:bhh:domain_barrier}} discusses the domain barrier that exists between the high-level \ac{BHH} and low-level heuristics in the \index{heuristic pool}heuristic pool.
+      \item \textbf{Section \ref{sec:bhh:credit_assignment_strategy}} presents detailed discussions on credit assignment and move acceptance strategies.
 
-      \item \textbf{Section \ref{sec:bhh:performance_log}} presents the performance log and discusses performance measurement in more detail.
+      \item \textbf{Section \ref{sec:bhh:selection_mechanism}} presents the Bayesian probabilistic model that is used as the heuristic selection mechanism.
 
-      \item \textbf{Section \ref{sec:bhh:credit_assignment_strategy}} discussed credit assignment and move acceptance strategies in detail.
+      \item \textbf{Section \ref{sec:bhh:initialisation_step}} presents the initialisation strategy.
 
       \item \textbf{Section \ref{sec:bhh:optimisation_step}} presents the learning mechanisms by which the probabilistic model can be optimised.
 
       \item \textbf{Section \ref{sec:bhh:hyper_parameters}} summarises and discusses the associated \index{hyper-parameters}hyper-parameters and default values.
 
-      \item The pseudo-code algorithm for the \ac{BHH} is given in \textbf{Section \ref{sec:bhh:algorithm}}.
+      \item \textbf{Section \ref{sec:bhh:algorithm}} provides the pseudo-code algorithm for the \ac{BHH}.
 
-      \item Finally, a summary of the chapter is provide in \textbf{Section \ref{sec:bhh:summary}}.
+      \item \textbf{Section \ref{sec:bhh:summary}} provides a brief summary of the chapter.
 \end{itemize}
 
 
-\section{Overview}
-\label{sec:bhh:overview}
+\section{Overview}\label{sec:bhh:overview}
 
-This section provides an overview of the workings of the \Ac{BHH}. To start the discussion, consider the following analogy:\\
-\\
-\textit{
-      Bob is a teacher at a high school. Every year his students perform really well and he wins the prize for best teacher, evaluated by student performance. He is able to do this not just because he is a good teacher, but he understands that each student has a learning technique that works best for him/her. He exploits this concept by tailoring the teaching process to each students such that the result is an optimum mark for that student and by definition, the whole class. Bob knows that it is too timely to get to know each student, so he devises a model that does the allocations for him. This model uses a process of observation. With each evaluation opportunity he experiments by allocating different learning techniques to different students. He evaluates the student for the given opportunity and keeps a log of which learning technique he assigned to the student as well as the outcome. With each evaluation opportunity he updates his model by biasing the assignment process such that students generally get assigned learning techniques that yield the best performance for them.
-}\\
-\\
-The key take-out from the analogy above is the concept that Bob can maximise student performance by updating his beliefs, over time, about which learning technique to assign to which (type of) student. He does this by biasing selection/assignment towards the best combinations of student, learning technique
-and evaluation opportunity. This is the basic nature of the \Ac{BHH}. The students are analogous to a population of entities. The learning techniques are analogous to heuristics/optimisers. Evaluation opportunities are analogous to optimisation problems to be optimised. Student performance is analogous to optimisation capability and performance measurement. The general goal of the \ac{BHH} can be summarised as aiming to select and managing the appropriate  heuristic/optimiser and update step for each entity, at each optimisation step, while optimising some underlying model, which for this dissertation, is to train \acp{FFNN}.
+This section provides an overview of the workings of the \Acf{BHH}. The general concept of the \acs{BHH} can be summarised as follows. The \acs{BHH} implements a high-level heuristic selection mechanism that learns to select the best heuristic, from a pool of low-level heuristics, to apply to a population of entities, each implementing a candidate solution to a \acs{FFNN}, with the intent of both optimising the underlying \acs{FFNN} and \acs{FFNN} training process. The \acs{BHH} does so by learning the probability that a given heuristic will perform well at a given stage in the \acs{FFNN} training process. These probabilities are then used as heuristic selection probabilities in the next step of the training process.
 
-Formal classification of the \Ac{BHH} is needed. Burke et al.~\cite{ref:burke:2010} proposed a classification mechanism that was discussed in detail in Chapter \ref{chap:hhs}. The same classification mechanism is used to classify the \ac{BHH}. For the first dimension of the classification, the authors propose that the \Ac{BHH} be classified as a \textit{selection} \ac{HH}. For the second dimension of the classification proposed, the authors propose that the \Ac{BHH} be classified as utilising \textit{perturbation} low-level heuristics. Furthermore, the \ac{BHH} is also classified as a population-based approach that includes meta-heuristics. Burke et al.~\cite{ref:burke:2010} further proposed the classification of \acp{HH} according to the source of the feedback used during learning. It can thus be said that the \ac{BHH} employs online learning according to this criteria, classifying it as an \textit{adaptive} \ac{HH}. A \textit{population-based, selection, meta-hyper-heuristic that utilised perturbation of low-level heuristics and online learning} seems like an mouthful, but technically, that is it's full and formal classification. A breakdown and motivation of these classifications is given below:
+Formal classification of the \Acs{BHH} is needed. Chapter \ref{chap:hhs} presented the reader with a proposed classification scheme for \acp{HH} by~\citeauthor{ref:burke:2010}~\cite{ref:burke:2010}. According to the aforementioned classification scheme, the \Acs{BHH} is a population-based, meta-hyper-heuristic that utilises selection and perturbation of low-level heuristics in an online learning fashion. A breakdown of the classification is given as follows.
 
 \begin{itemize}
-      \item \textbf{Population-Based:} The \ac{BHH} follows a population-based approach where a number of different \index{candidate solution}candidate solutions, referred to as \index{entity}\textit{entities} work together to yield a global best solution. There is also the concept of a shared global state or memory.
+      \item \textbf{Population-Based:} The \ac{BHH} implements a population-based approach, where a collection of different candidate solutions, referred to as \textit{entities}, work together to yield a global best solution.
 
-      \item \textbf{Selection:} The \ac{BHH} implements a \index{heuristic}heuristic selection mechanism that selects from a collection of lower level \index{heuristic}heuristics' in a so-called \index{heuristic hool}\textit{heuristic pool}. There is also a measure of acceptance criteria through credit assignment strategies.
+      \item \textbf{Meta-Hyper-Heuristic:} There exists a domain barrier, where the \ac{BHH} searches through the \textit{heuristic space}, using only \index{heuristic}heuristic performance information, while lower level heuristics search through the \textit{solution space} using information from the search domain itself. Furthermore, the \index{heuristic pool}heuristic pool implemented by the \acs{BHH} supports both gradient-based low level \index{heuristic}heuristics, as well as meta-heuristics.
 
-      \item \textbf{Meta:} Incorporates the classical/analytical gradient-based low level \index{heuristic}heuristics (typically from the \ac{ML} research space) as well as meta-heuristics such as other population-based \index{Meta-Heuristic}meta-heuristics (typically \ac{EC} research space).
+      \item \textbf{Selection and Perturbation of Low-Level Heuristics:} The \acs{BHH} implements a \index{heuristic}heuristic selection mechanism that selects from a collection of lower level \index{heuristic}heuristics, called a \index{heuristic pool}\textit{heuristic pool}. Selection is biased towards good performing heuristics. A credit assignment strategy is used to \textit{reward} good heuristic performance. The \acs{BHH} maintains entity and population state through operations that \textit{proxy} update steps from different heuristics (perturbation), as is required. These proxy operations ensure that heuristic requirements are satisfied even when different heuristics are used for different entities throughout the training process.
 
-      \item \textbf{Hyper-Heuristic:} There exists a domain barrier where the \ac{BHH} searches through the \textit{heuristic space} while lower level heuristics search through the \textit{solution space}.
-
-      \item \textbf{Perturbation of Low-Level Heuristics:} Refers to the iterative optimisation approach followed by the \ac{BHH}. The \ac{BHH} considers a number of randomly initialised candidate solutions in the form of entities in a population. It is applied in an iterative manner, during the training process. It generally employs the two main processes of \acp{HH} with perturbation of heuristics. These include a \textit{selection step} that selects from low-level heuristics and applies them to entities/candidate solutions. It also includes an \textit{acceptance strategy}. The \ac{BHH} maintains entity and population state through update step operations that proxy update steps from different heuristics. More details on this concept is given later in Section \ref{sec:bhh:heuristic:proxies}.
-
-      \item \textbf{Online Learning:} Refers to the source of the feedback used during training. The \ac{BHH} optimises, at a higher level, the selection and application of the \index{heuristic space}\textit{heuristic space} while low-level heuristics optimise entities' solution to the underlying model, in this case a \ac{FFNN}. This happens during training time, yielding the classification of utilising \textit{online} learning.
+      \item \textbf{Online Learning:} The \acs{BHH} applies learning, at specified intervals, throughout the \acs{FFNN} training process.
 \end{itemize}
 
-More detailed consideration of these elements are required. The following sections break down the \Ac{BHH} into its various parts, starting with a discussion on the high-level architecture next.
+\noindent
+The following sections presents the reader with more detail on the implementation of the \acs{BHH}. Discussions lead with the \acs{BHH} architecture and general \acs{HH} framework in the following section.
 
+\section{Architecture}\label{sec:bhh:architecture}
 
-\index{Architecture}
-\section{Architecture}
-\label{sec:bhh:architecture}
+This section aims to present the reader with all the high level components in the architecture of the \Acs{BHH}. Burke et al.~\cite{ref:burke:2010} proposed an initial framework for \acp{HH} and Grobler~\cite{ref:grobler:2015} further proposed a framework for a heterogeneous meta-\ac{HH}. The aforementioned frameworks are adapted for the implementation of the \Acs{BHH}. An illustration of the high-level architecture of the \Acs{BHH} is given in Figure \ref{fig:bhh_architecture}.
 
-This section aims to present the reader with all the high level components in the architecture of the \Ac{BHH}. Burke et al.~\cite{ref:burke:2010} proposed an initial framework for \acp{HH} and Grobler~\cite{ref:grobler:2015} further proposed a framework for a heterogeneous meta-\ac{HH}. These frameworks have been adapted for the implementation of the \Ac{BHH}. An illustration of the high-level architecture of the \Ac{BHH} is given in Figure \ref{fig:bhh_architecture} below.
-
-\begin{figure}[H]
+\begin{figure}[htbp]
       \centering
-      \includegraphics[width=1.0\textwidth]{bhh_architecture.png}
-      \caption[The \index{Bayesian Hyper-Heuristics}Bayesian Hyper-Heuristic Architecture]{An illustration of
-            the architecture and high level components of the \index{Bayesian Hyper-Heuristics}Bayesian Hyper-Heuristic.}
+      \includegraphics[width=1.0\textwidth]{bhh_architecture.pdf}
+      \caption[An illustration of
+            the architecture and high level components of the \acf{BHH}.]{An illustration of
+            the architecture and high level components of the \acf{BHH}.}
       \label{fig:bhh_architecture}
 \end{figure}
 
-At a high level, the architecture presented in Figure \ref{fig:bhh_architecture} above, presents the following main components:
+\noindent
+With reference to Figure \ref{fig:bhh_architecture}, the components are briefly given below in the order of information flow during the \acs{FFNN} training process steps.
 
 \begin{itemize}
-      \item \textbf{Heuristic Pool}: Contains a collection of low-level \index{heuristic}heuristics/\index{optimiser}optimisers. This is the \index{heuristic space}\textit{heuristic} space. Each heuristic has a proxy that is used to relay heuristic state update operations.
+      \item \textbf{Initialisation Step}: The initialisation step refers to the initialisation strategy implemented by the \acs{BHH}.
 
-      \item \textbf{Entity Pool}: A collection of \index{entity}entities in a \index{population}population. These entities represent candidate solutions to the model. Each entity has its own state, but there is also a shared global population state.
+      \item \textbf{Heuristic Pool}: The \index{heuristic pool}heuristic pool contains a collection of low-level \index{heuristic}heuristics.
 
-      \item \textbf{Initialisation Step}: This is the execution of some initialisation strategy that determines how the entities in the entity pool (population) and the heuristics in the heuristic pool are initialised.
+      \item \textbf{Entity Pool}: The \index{entity pool}entity pool represents a collection of candidate solutions for the underlying \acs{FFNN}, referred to as entities in a population.
 
-      \item \textbf{Selection Mechanism}: This is the implementation of the selection mechanism of selection \acp{HH}. In the case of the \ac{BHH}, the selection mechanism is a Bayesian probabilistic model.
+      \item \textbf{Selection Mechanism}: The selection mechanism refers to the Bayesian probabilistic model.
 
-      \item \textbf{Heuristic-Entity Selections}: This is the results of the selection mechanism. Heuristics are sampled/selected for each entity. Each entity's state will thus be manipulated by that particular heuristic's proxy methods.
-
-      \item \textbf{Model}: The \index{model}model to be optimised. This forms the problem domain. In the case of this dissertation, the model is a \ac{FFNN}.Technically the model here simply refers to the architectural structure of the model, while entities represent that candidate solution (weights) to the model.
+      \item \textbf{Heuristic-Entity Selections}: Every entity in the \index{entity pool}entity pool gets assigned a selected heuristic.
 
       \item \textbf{Train and Test Datasets}: The training set is used to train the model while the test set is used to evaluate the model's generalisation capabilities.
 
-      \item \textbf{Loss/Cost Function}: The loss/cost function is the metric  by which the model is evaluated. In the case of supervised learning, the loss/cost function is a measure of distance between predicted output and the ground truth.
+      \item \textbf{Model}: The underlying \acs{FFNN} to be trained.
 
-      \item \textbf{Domain Barrier}: A constraint on information flow, prohibiting high level components in the \index{heuristic space}\textit{heuristic} space from interacting and relaying information related to the \index{solution space}\textit{solution} space.
+      \item \textbf{Low-Level Heuristics Update Step}: The low-level heuristics' update step as it applies to its allocated entity.
+
+      \item \textbf{Loss Function}: In supervised learning, the loss function is a measure of distance between predicted output and the ground truth, and is the mechanism used to evaluate the model's performance.
+
+      \item \textbf{Domain Barrier}: The domain barrier is the logical separation of information available in the heuristic space and the solution space. The \acs{BHH} searches in the heuristic space, while low-level heuristics search in the solution space.
 
       \item \textbf{Performance Log}: Contains a record of heuristic-entity performance at each step of the training process.
 
-      \item \textbf{Credit Assignment Strategy}: Implements a specific strategy to determine if the performance of an entity-heuristic combination is better than others or not.
+      \item \textbf{Credit Assignment Strategy}: The strategy used to assign credit to heuristics for their performance.
 
-      \item \textbf{Update Step}: The high level heuristic update step. This involves the mechanism by with the \ac{BHH} is optimised.
+      \item \textbf{Update Step}: The high-level heuristic update step as implemented by the \acs{BHH}.
 \end{itemize}
 
-The above components are not described in enough detailed to properly illustrate their role in the \Ac{BHH}. To ensure proper clarity is given to each of these elements, a detailed discussion on each of these elements are presented next.
+\noindent
+Each of the components in Figure \ref{fig:bhh_architecture} is discussed in detail in the following sections.
 
+\index{heuristic pool}
+\section{Heuristic Pool}\label{sec:bhh:heuristic_pool}
 
-\index{Heuristic Pool}
-\section{Heuristic Pool}
-\label{sec:bhh:heuristic_pool}
+Generally speaking, the \index{heuristic pool}heuristic pool is a collection of low-level heuristics under consideration by the \acs{BHH}. The \index{heuristic pool}heuristic pool contains the set of low-level \index{heuristic}heuristics that, together with their performance information, make up the \text{heuristic space}. Importantly, the \acs{BHH} searches in \index{heuristic}heuristic space. The \index{heuristic pool}heuristic pool is defined in terms of the diversity of heuristics, as well as the amount of heuristics in the \index{heuristic pool}heuristic pool. Each of these are discussed in the following sections.
 
-This section discusses the concept of the heuristic pool, as implemented by the \ac{BHH}. Generally speaking, they heuristic pool is just a collection of low-level heuristics and make up the set of possible heuristics to select from. This is referred to as \text{heuristic space}. Importantly, since \acp{HH} optimise in heuristic space, it is from these lower-level heuristics that the \ac{BHH} must select and apply. The heuristic pool can then be defined in terms of size and/or heuristics that are included in the pool. These two aspects pose very important design choices. Both of these concepts can be empirically tested, however, one could argue the choice of design. Fundamentally, these design choices are about diversity. A brief discussion is given next on the trade-offs between exploration, exploitation and capability.
+\subsection{Heuristic Diversity}\label{sec:bhh:heuristic_pool:diversity}
 
-\index{Exploration}
-\index{Exploitation}
-\subsection{Diversity: Exploration, Exploitation and Capability}
-\label{sec:bhh:heuristic_pool:diversity}
+A \index{heuristic}heuristic's eligibility for inclusion in the \index{heuristic}heuristic pool, is determined by its ability to solve to underlying problem and its search behaviour and characteristics. The \index{heuristic pool}heuristic pool should contain a variety of different heuristics that have different search behaviours, so that a trade-off can be made by between exploration and exploitation of solutions, as is required during the training process. Heuristics that explore a lot, should be selected when exploration is needed, and heuristics that exploit a lot should be selected accordingly. The trade-off between exploration and exploitation is managed by the high-level heuristic. The \acs{BHH} will learn to select and apply the appropriate heuristic, at the appropriate points, throughout the training process. In doing so, a balance is achieved between exploration and exploitation.
 
-As with all \acp{HH}, the heuristics to be included in the heuristic pool is of great importance and should be carefully decided upon. A heuristic's eligibility for inclusion is determined by the following factors:
+\subsection{Heuristic Pool Size}\label{sec:bhh:heuristic_pool:pool_size}
+
+Another design decision in the heuristic pool is heuristic pool size. Since the \acs{BHH} is a \textit{learning} \acs{HH}, every heuristic that is included in the heuristic pool increases the requirement of more statistical evidence of heuristic performance. Not only does a large \index{heuristic pool}heuristic pool drastically complicate the learning process that is required by the \ac{BHH}, but it also drastically complicates the process of maintaining \textit{state}. State is the term used to describe data that is relevant to the training process, and is maintained between training steps. An example of \textit{local} state is an entity's position, while an example of \textit{global} state is the global best solution found thus far. The following section presents the concept of \textit{proxies} and their role in maintaining state.
+
+\subsection{Proxies}\label{sec:bhh:heuristic:proxies}
+
+The concept of proxies arise from the sparsity of state as maintained by different \index{heuristic}heuristics. Since \index{heuristic}heuristics maintain (possibly) different states, there is an uncertainty of state transition when switching between \index{heuristic}heuristics. Consider an example where the \index{heuristic pool}heuristic pool consists of just two \index{heuristic}heuristics. One heuristic is a gradient-based heuristic that maintains momentum such as \acs{Adam}. The other is a \index{meta-heuristic}meta-heuristic that does not require a gradient, such as \acs{PSO}. Both these \index{heuristic}heuristics track different parameters in their state. For \acs{Adam}, the expected gradient mean and variance is maintained, while the \ac{PSO} maintains record of the gbest and pbest solutions of all of entities. A solution to state indifference, is to proxy heuristic state update operations. State is then maintained in two parts:
 
 \begin{itemize}
-      \item \textbf{Capability}: Certain heuristics are only capable of solving or optimising for certain problem types and domains. Examples include continuous vs. discrete, differentiable vs.  non-differentiable or static vs. dynamic problems.
+      \item \textbf{Primary State}: Refers to the state that is originally maintained by a heuristic. The selected heuristic simply applies the normal state update operations to its state.
 
-      \item \textbf{Exploration and Exploitation Trade-off}: Some heuristics explore or exploit more than others. This could be due to the nature of the implementation or due to some hyper-parameter such as a learning rate.
+      \item \textbf{Proxied State}: Refers to the state that is not directly maintained by the heuristic, but can be updated by outsourcing the required state update operation to another heuristic.
 \end{itemize}
 
-An argument for diversity must thus be made. One of the benefits of \acp{HH} in general is that it will learn which heuristics to apply and when. The trade-off between exploration and exploitation should thus be outsourced to the \ac{BHH} itself. By including a diverse set of heuristics, based on the criteria mentioned above, the \ac{BHH} will learn to select and apply the appropriate heuristic at the appropriate time throughout the training process, naturally balancing a trade-off between exploration and exploitation. Heuristics that initially explore a lot should be selected when exploration is needed and heuristics that exploit a lot should be selected accordingly.
-
-Notice however that diversity can not be achieved by simply including many different heuristics. The \ac{BHH} is still constraint by heuristic pool size. Consider that for every heuristic that is included, the demand for samples size required to learn with statistical certainty exponentially increases. Not only does a large heuristic pool drastically complicate the learning that is required by the \ac{BHH}, but it also drastically complicates the process of maintaining state. The next section provides the concept of heuristic update step proxies, an important component of the \ac{BHH}.
-
-\index{Proxies}
-\subsection{Proxies}
-\label{sec:bhh:heuristic:proxies}
-
-The concept of proxies arise from the sparsity of state as maintained by different heuristics. Since heuristics maintain different states, there is an uncertainty of state transition when switching between heuristics. Consider an example where the heuristic pool consists of just two heuristics. One heuristic is a gradient-based heuristic that maintains momentum such as \ac{Adam}. The other is a meta-heuristic that does not require a gradient at all such as \ac{PSO}. Both these heuristics track different parameters in their state. For \ac{Adam}, the expected gradient mean and variance is maintained, while the \ac{PSO} maintains record of the gbest and pbest solutions all of entities. A solution to this is to proxy heuristic state update operations. This allows us to maintain state in two parts:
-
-\begin{itemize}
-      \item \textbf{Primary State}: This refers to state the is originally maintained by a heuristic. The selected heuristic simply applies the normal state update operations to its state.
-
-      \item \textbf{Proxied State}: This refers to state that is not directly maintained by the current selected heuristic, but can be updated by outsourcing the required state update operation to another heuristic.
-\end{itemize}
-
-Effectively this means that both primary and proxied state elements must be maintained together. Since entities represent candidate solutions, which are a form of state, entities are ideal components to store these state parameters. Thus, entities are extended to include the primary state elements of all the underlying low-level heuristics as well as the candidate solution (weights) for the model. At each heuristic-entity application step, all state elements per entity are updated either by primary method or by proxied method. The \ac{BHH} thus incorporates a state update operation proxy mapping as given in the example in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example} below.
+\noindent
+Primary and proxied state parameters must be maintained together. Since entities represent candidate solutions, which are forms of state, entities are ideal candidates to store and maintain these state parameters. Entities are extended to include the primary state elements of \textit{all} the underlying low-level heuristics, as well as the candidate solution (weights) for the \acs{FFNN}. At each heuristic-entity application step, all state elements per entity are updated either by primary method or by proxied method. The \ac{BHH} thus incorporates a mapping of proxied state update operation as given in the example in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example} below.
 
 \begin{table}[htbp]
       \centering
-      \caption{State update operation proxy mapping example.}
+      \caption{An example of mapping of proxied state update operation maintained by the \acs{BHH}.}
       \label{tab:bhh:heuristic_pool:proxy_mapping_example}%
       \par\bigskip
       \resizebox{0.5\textwidth}{!}{
@@ -175,83 +155,80 @@ Effectively this means that both primary and proxied state elements must be main
       }
 \end{table}%
 
-From the example given in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example}, when heuristic A is selected, it will outsource state update operations from heuristic B, for state parameter 2. Heuristic B will outsource from heuristic A, for state parameter 3. Finally, heuristic C will outsource from heuristic A and B, for state parameters 2 and 3 respectively. In this way, all heuristics maintain all the state parameters.
+\noindent
+From the example given in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example}, when \index{heuristic}heuristic A is selected, it will outsource state update operations from \index{heuristic}heuristic B, for state parameter 2. Heuristic B will outsource from \index{heuristic}heuristic A, for state parameter 3. Finally, \index{heuristic}heuristic C will outsource from \index{heuristic}heuristic A and B, for state parameters 2 and 3 respectively. In this way, all \index{heuristic}heuristics maintain all the state parameters.
 
-Notice however that this is a simple concept in principle, but requires detailed decomposition of the heuristics included in the heuristic pool.  Overlapping and unique state parameters must be identified so that a proxy mapping such as the one given in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example} can be constructed. A suggestion to simplify this process is to borrow concepts from the equations of motion from physics. These include \textit{position}, \textit{velocity}, \textit{acceleration} and \textit{momentum}. Expressing heuristic update steps according to these parameters drastically simplify the process. However, it is possible that heuristics implement unique state parameters that do not overlap, these have to be catered for in the proxy mapping.
+Proxied state update operations is a simple concept in principle, but requires detailed decomposition of the \index{heuristic}heuristics included in the \index{heuristic pool}heuristic pool.  Overlapping and unique state parameters must be identified so that a proxy mapping, such as the one given in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example}, can be constructed. A suggestion to simplify this process is to borrow concepts from the equations of motion from physics. These include \textit{position}, \textit{velocity}, \textit{acceleration} and \textit{momentum}. Expressing \index{heuristic}heuristic update steps according to these parameters drastically simplify the process. However, it is possible that \index{heuristic}heuristics implement unique state parameters that do not overlap, these have to be catered for in the proxy mapping.
 
-These state parameters and update operations should not be considered in isolation. An example of this is position and velocity. Consider for example heuristics such as \acl{DE} and \aclp{GA}. These heuristics recombine entities. In this case, the concept of an equation of motion does not entirely make sense, since the displacement of its position is not a result of maintaining velocity or momentum, but rather by pure displacement through recombination. In this particular case, a solution to this is to apply the recombination operation to all secondary state parameters as well or to nullify secondary state parameters. Unfortunately there is no general solution and each heuristic must be carefully considered. The \ac{BHH} incorporates both of these approaches. The next section provides the reader with details around the entity pool.
+State parameters and update operations should not be considered in isolation. An example is \textit{position} and \textit{velocity}. Consider, for example, \index{heuristic}heuristics such as \acf{DE} and \acfp{GA}. These \index{heuristic}heuristics recombine entities. In the aforementioned case, the concept of an equation of motion does not entirely make sense, since the displacement of its position is not a result of maintaining velocity or momentum, but rather by displacement through recombination. In this particular case, a solution is to apply the recombination operation to \textit{all} applicable state parameters as well, or to nullify the necessary state parameters. Unfortunately there is no general, automated solution to formulate these heuristic state overlaps. Each \index{heuristic}heuristic must be carefully considered. More details on the \index{entity pool}entity pool and entity state are presented in the following section.
 
-\index{Entity Pool}
-\section{Entity Pool}
-\label{sec:bhh:entity_pool}
+\index{entity pool}
+\section{Entity Pool}\label{sec:bhh:entity_pool}
 
-This section presents the details around the \index{entity pool}\textit{entity pool}. The \index{entity pool}entity pool refers to a collection of so-called individual \index{entity}\textit{entities}. A common naming convention for such a collection is a \textit{population} of entities. Similar to the heuristic pool that was described in Section \ref{sec:bhh:heuristic_pool} above, the entity pool size is an important design choice. The correct population size is thus a hyper-parameter that can be empirically evaluated.
+The \index{entity pool}entity pool refers to a collection of \textit{entities} that each represent a candidate solution to the underlying \acs{FFNN} being trained. The entities contain information of the solution space. A common naming convention for such a collection is a \textit{population} of entities. The \acs{BHH} is a population-based \acs{HH} and as such, the \index{entity pool}entity pool size or population size is an important design choice. The population size is defined as a hyper-parameter of the \acs{BHH} and can be empirically evaluated.
 
-The entity pool maintains two different types of state. These include entity (local) and population (global) state. Each of these are discussed in more detail next.
+The \index{entity pool}entity pool maintains two different types of state. These include entity (local) and population (global) state. Each of these are discussed in more detail next.
 
-\index{Entity State}
-\subsection{Entity State}
-\label{sec:bhh:entity_pool:entity_state}
+\subsection{Entity State}\label{sec:bhh:entity_pool:entity_state}
 
-\index{entity}Entities represent \index{candidate solution}candidate solutions to the \index{model}model's trainable parameters (weights) and other heuristic-specific state parameters as was just discussed above in Section \ref{sec:bhh:heuristic:proxies}. It can be said that entities implement \textit{local} state. It was mentioned that these \index{entity}entities can be treated as physical \index{particle}\textit{particles} in a hyper-dimensional physical environment. This means that these \index{entity}entities model concepts from physics. For example, the candidate solution is represented as the \index{entity}entity's \textit{position} and an \index{entity}entity's velocity and acceleration, is analogous to the gradient and momentum of an \index{entity}entity respectfully. Examples of \index{Entity State}entity state parameters as derived from various low-level heuristics is given as follows:
+Entities represent candidate solutions to the model's trainable parameters (weights) and other heuristic-specific state parameters, as was discussed in Section \ref{sec:bhh:heuristic:proxies}. It can be said that entities implement \textit{local} state. It was mentioned that these entities can be treated as physical \index{particle}\textit{particles} in a hyper-dimensional search environment. Entities model concepts from physics. For example, the candidate solution is represented as the entity's position, and an entity's velocity and acceleration is analogous to the gradient and momentum of the entity respectfully. Examples of \index{Entity State}entity state parameters, as derived from various low-level heuristics, is given as follows.
 
 \begin{itemize}
       \item \textbf{position}: General parameter that represents the actual candidate solution and is thus a primary state parameter for all heuristics.
 
-      \item \textbf{velocity}: Directly implemented by heuristics such as \acp{PSO} can be derived proportionally from the gradient for gradient-based heuristics such as \ac{Momentum}.
+      \item \textbf{velocity}: Directly implemented by heuristics such as \acp{PSO} and is analogous to the gradient for gradient-based heuristics such as \ac{Momentum}.
 
-      \item \textbf{gradient}: The last know gradient as derived from gradient-based heuristics.
+      \item \textbf{gradient}: The last known gradient, as derived from gradient-based heuristics.
 
       \item \textbf{position delta}: The last computed position delta between the current timestep and the previous timestep.
 
-      \item \textbf{sum of the gradients squared}: As required and maintained by heuristics such as \ac{Adagrad}.
+      \item \textbf{sum of the gradients squared}: As required and maintained by heuristics such as \acs{Adagrad}.
 
-      \item \textbf{expected position delta variance}: As required and maintained by heuristics such as \ac{Adadelta}.
+      \item \textbf{expected position delta variance}: As required and maintained by heuristics such as \acs{Adadelta}.
 
-      \item \textbf{expected gradient mean}: As required and maintained by heuristics such as \ac{Momentum}, \ac{NAG} and \ac{Adam}.
+      \item \textbf{expected gradient mean}: As required and maintained by heuristics such as \acs{Momentum}, \acs{NAG} and \acs{Adam}.
 
-      \item \textbf{expected gradient variance}: As required and maintained by heuristics such as \ac{RMSProp}, \ac{Adadelta} and \ac{Adam}.
+      \item \textbf{expected gradient variance}: As required and maintained by heuristics such as \acs{RMSProp}, \acs{Adadelta} and \acs{Adam}.
 
-      \item \textbf{personal best position}: Parameter that tracks that best known position by the entity thus far. As required and maintained by heuristics such as \ac{PSO}.
+      \item \textbf{personal best position}: Parameter that tracks that best known position by the entity thus far. As required and maintained by heuristics such as \acs{PSO}.
 
-      \item \textbf{personal best loss}: Parameter that tracks that best known loss by the entity thus far. As required and maintained by heuristics such as \ac{PSO}.
+      \item \textbf{personal best loss}: Parameter that tracks that best known loss by the entity thus far. As required and maintained by heuristics such as \acs{PSO}.
 
-      \item \textbf{loss}: General parameter that tracks the loss as achieved by the the entity throughout training.
+      \item \textbf{loss}: Parameter that tracks the loss as achieved by the the entity throughout training.
 \end{itemize}
 
-From the list above it should become clear that entity state becomes increasingly complicated as the number of distinct heuristics included in the heuristic pool increases. Consider next the global state that is maintained.
+\noindent
+From the list above, it should be clear that entity state becomes increasingly complicated as the number of distinct \index{heuristic}heuristics, included in the \index{heuristic pool}heuristic pool, increases.
 
-\index{Population State}
-\subsection{Population State}
-\label{sec:bhh:entity_pool:population_state}
+\subsection{Population State}\label{sec:bhh:entity_pool:population_state}
 
-
-The \index{Population State}\textit{population state} refers to a collection of parameters that are shared between the \index{entity}entities in the population. This state is also referred to as \index{global state}\textit{global} state and represents the entity pool's memory of the population. The \index{population state}population state generally contains state parameters that are of importance to multiple heuristics and usually track the state of the population as a whole and not individual heuristic states. Some examples of population state that can arise from different heuristics is given below:
+The population state refers to a collection of parameters that are shared between the entities in the population. Population state is also referred to as \textit{global} state and represents the population's memory. The population state generally contains state parameters that are of importance to multiple \index{heuristic}heuristics, and usually tracks the state of the population and not individual heuristic. Some examples of population state that can arise from different \index{heuristic}heuristics is given below:
 
 \begin{itemize}
-      \item \textbf{\textit{entities}}: Naturally, the population state contains the list of entities in the population. List size determined by \index{Population Size}population size. Naturally this list contains multiple entities as with population based approaches such as \acp{PSO} and \acp{GA}.
+      \item \textbf{entities}: Naturally, the population state contains the list of entities in the population.
 
-      \item \textbf{\textit{ibest}} and \textbf{\textit{ibest loss}}: Refers to the best position and loss achieved by the population for the current iteration/step. This parameter is introduced by the \ac{BHH} itself through the requirements of the \textit{ibest} credit assignment strategy.
+      \item \textbf{ibest} and \textbf{ibest loss}: Refers to the best position and loss achieved by the population for the current iteration/step. This parameter is introduced by the \ac{BHH} itself through the requirements of the \textit{ibest} credit assignment strategy.
 
-      \item \textbf{\textit{rbest}} and \textbf{\textit{rbest loss}}: Refers to the best position and loss achieved by the population for the current replay buffer/window size. This parameter is introduced by the \ac{BHH} itself through the requirements of the \textit{rbest} credit assignment strategy.
+      \item \textbf{rbest} and \textbf{rbest loss}: Refers to the best position and loss achieved by the population for the current replay buffer/window size. This parameter is introduced by the \ac{BHH} itself through the requirements of the \textit{rbest} credit assignment strategy.
 
-      \item \textbf{\textit{gbest}} and \textbf{\textit{gbest loss}}: Refers to the overall/global best position and loss achieved by the population for the entire training process. This parameter is introduced by heuristics such as \acp{PSO} and is also introduced by the \ac{BHH} itself through the requirements of the \textit{gbest} credit assignment strategy.
+      \item \textbf{gbest} and \textbf{gbest loss}: Refers to the overall/global best position and loss achieved by the population for the entire training process. This parameter is introduced by heuristics such as \acp{PSO}, and is also introduced by the \ac{BHH} itself through the requirements of the \textit{gbest} credit assignment strategy.
 \end{itemize}
 
-The reader was now introduced to both the heuristic pool and entity pool. The next section considers how the \ac{BHH} is initialised and makes specific reference to how these two pools of elements are initialised.
+\noindent
+Entities in the entity pool are each assigned an associated \index{heuristic}heuristic. The following section provides details around the heuristic-entity selection process.
 
 \section{Heuristic-Entity Selections}
 \label{sec:bhh:heuristic_entity_selections}
 
-The \ac{BHH} selects from the heuristic pool a low-level heuristic to be applied to an entity. The outcome of this selection process is a table that tracks which heuristic has been selected for which entity. The selection process is executed by the selection mechanism of the \ac{BHH} and is discussed later in Section \ref{sec:bhh:selection_mechanism}. These heuristic-entity combinations are applied to an underlying model. The next section provides clarity on the model component from the architecture of the \ac{BHH}.
+The \ac{BHH} selects from the \index{heuristic pool}heuristic pool a low-level heuristic to be applied to an entity. The outcome of this selection process is a table that tracks which heuristic has been selected for which entity. The selection process is executed by the selection mechanism of the \ac{BHH} and is discussed later in Section \ref{sec:bhh:selection_mechanism}. These heuristic-entity combinations are applied to an underlying model. The next section provides clarity on the model component from the architecture of the \ac{BHH}.
 
 \index{Model}
 \section{Model}
 \label{sec:bhh:model}
 
-The \index{Model}model refers to the target \index{model}model to be optimised and is usually expressed as a complex mathematical function. For this dissertation, the authors focused specifically on shallow \acp{FFNN} (only one hidden layer). Figure \ref{fig:shallow_ffnn} below presents such a shallow \acp{FFNN}.
+The \index{Model}model refers to the target model to be optimised and is usually expressed as a complex mathematical function. For this dissertation, the authors focused specifically on shallow \acp{FFNN} (only one hidden layer). Figure \ref{fig:shallow_ffnn} below presents such a shallow \acp{FFNN}.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
       \centering
       \includegraphics[width=0.4\textwidth]{shallow_ffnn.pdf}
       \caption[Shallow \index{Feedforward Neural Network}Feedforward Neural Network]{An illustration of
@@ -425,8 +402,8 @@ Finally the reader is presented with the underlying predictive model as implemen
 
 \begin{itemize}
       \item $I$: Denote the maximum number of instances in the replay window.
-      \item $J$: Denote the entity pool (population) size.
-      \item $K$: Denote the heuristic pool size.
+      \item $J$: Denote the \index{entity pool}entity pool (population) size.
+      \item $K$: Denote the \index{heuristic pool}heuristic pool size.
       \item $L$: Denote the number of credit assignment output classes. Since the output of credit assignment is boolean, $L = 2$.
 
       \item $\alpha = (\alpha_{1}, \dots, \alpha_{K})$: Denote the concentration parameters for the heuristic probability distribution.
@@ -434,11 +411,11 @@ Finally the reader is presented with the underlying predictive model as implemen
       \item $\gamma = (\gamma_{1}, \dots, \gamma_{K})^{L}$: Denote the concentration parameters for the credit-heuristic probability distribution.
 
       \item $\theta \vert \alpha \sim Dir(\alpha; K)$: Denote the heuristic probability distribution, implementing a Dirichlet probability distribution parameterised by $\alpha$ and $K$. Heuristic selection probabilities are sampled from this distribution.
-      \item $\phi \vert \beta \sim Dir(\beta; K)^{J}$: Denote the entity-heuristic probability distribution, implementing a Dirichlet probability distribution parameterised by $\beta$ and $K$ for each entity in the entity pool with population size $J$. Entity-heuristic probabilities are sampled from this distribution.
+      \item $\phi \vert \beta \sim Dir(\beta; K)^{J}$: Denote the entity-heuristic probability distribution, implementing a Dirichlet probability distribution parameterised by $\beta$ and $K$ for each entity in the \index{entity pool}entity pool with population size $J$. Entity-heuristic probabilities are sampled from this distribution.
       \item $\psi \vert \gamma_{1}, \gamma_{0}  \sim Beta(\gamma_{1}, \gamma_{0})$: Denote the credit-heuristic probability distribution, implementing a Beta probability distribution parameterised by $\gamma_{1}$ and $\gamma_{0}$. Credit-heuristic probabilities are sampled from this distribution.
 
-      \item $H \vert \theta \sim Mult(\theta; I, K)$: Denote the distribution of heuristics (event $H$), implementing a Multinomial distribution, parameterised by the sampled heuristic selection probability $\theta$, the heuristic pool size $K$ and maximum number of instances $I$.
-      \item $E \vert \phi \sim Mult(\phi; I, K)^{J}$: Denote the distribution of entity-heuristic combinations (event $E$), implementing a Multinomial distribution, parameterised by the sampled entity-heuristic selection probability $\phi$, the heuristic pool size $K$ and maximum number of instances $I$, for each entity in $J$.
+      \item $H \vert \theta \sim Mult(\theta; I, K)$: Denote the distribution of heuristics (event $H$), implementing a Multinomial distribution, parameterised by the sampled heuristic selection probability $\theta$, the \index{heuristic pool}heuristic pool size $K$ and maximum number of instances $I$.
+      \item $E \vert \phi \sim Mult(\phi; I, K)^{J}$: Denote the distribution of entity-heuristic combinations (event $E$), implementing a Multinomial distribution, parameterised by the sampled entity-heuristic selection probability $\phi$, the \index{heuristic pool}heuristic pool size $K$ and maximum number of instances $I$, for each entity in $J$.
       \item $C \vert \psi \sim Bin(\psi, I)$: Denote the distribution of credit-heuristic combinations (event $C$), implementing a\index{Binomial probability distribution}Binomial probability distribution, parameterised by the sampled credit-heuristic selection probability $\psi$ and the maximum number of instances $I$.
 \end{itemize}
 
@@ -607,7 +584,7 @@ This section briefly touched on parameter initialisation. The next section discu
 \section{Initialisation Step}
 \label{sec:bhh:initialisation_step}
 
-This section sheds light into the initialisation of the \ac{BHH} and how it applies to the heuristic and entity pools. Since the heuristic pool is a collection of stateless heuristic proxy operations, there is no explicit initialisation that is applied to the heuristic pool itself. On the contrary, the entity pool is stateful and maintain candidate solutions. Chapter \ref{chap:anns} presented various initialisation strategies to randomly place candidate solutions in the solution space. The \ac{BHH} can make use of any of these initialisation strategies and as such, by default makes use of \index{Glorot uniform sampling}Glorot uniform sampling. All other entity state parameters are initialised to be zero.
+This section sheds light into the initialisation of the \ac{BHH} and how it applies to the heuristic and \index{entity pool}entity pools. Since the \index{heuristic pool}heuristic pool is a collection of stateless heuristic proxy operations, there is no explicit initialisation that is applied to the \index{heuristic pool}heuristic pool itself. On the contrary, the \index{entity pool}entity pool is stateful and maintain candidate solutions. Chapter \ref{chap:anns} presented various initialisation strategies to randomly place candidate solutions in the solution space. The \ac{BHH} can make use of any of these initialisation strategies and as such, by default makes use of \index{Glorot uniform sampling}Glorot uniform sampling. All other entity state parameters are initialised to be zero.
 
 The selection mechanism also requires initialisation. Section \ref{sec:bhh:selection_mechanism:predictive_model} introduces the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$. These parameters \textit{symmetrically} initialised, meaning that they are all initialised to the value of one in all dimensions. Section \ref{sec:bhh:optimisation_step:a_priori_bias} shows that these concentration parameters can be used to introduce \textit{a priori} biases based on expert knowledge. The next section provides the detail around the selection mechanism that is implemented by the \ac{BHH}.
 
@@ -909,22 +886,22 @@ This section provides the reader with a breakdown of all the hyper-parameters th
 \subsection{Heuristic Pool}
 \label{sec:bhh:hyper_parameters:heuristic_pool}
 
-Section \ref{sec:bhh:heuristic_pool} provided the reader with the context and detail of the heuristic pool as it is included in the architecture of the \ac{BHH}. A detailed discussion was given around the importance of diversity and balancing exploration and exploitation capabilities. The heuristic pool hyper-parameter refers to the heuristic-pool configuration that is used. This configuration should account for the following factors.
+Section \ref{sec:bhh:heuristic_pool} provided the reader with the context and detail of the \index{heuristic pool}heuristic pool as it is included in the architecture of the \ac{BHH}. A detailed discussion was given around the importance of diversity and balancing exploration and exploitation capabilities. The \index{heuristic pool}heuristic pool hyper-parameter refers to the heuristic-pool configuration that is used. This configuration should account for the following factors.
 
 \begin{itemize}
-      \item The type of low-level heuristics to include in the heuristic pool. This dissertation investigates two main groups including gradient-based and meta-heuristics.
+      \item The type of low-level heuristics to include in the \index{heuristic pool}heuristic pool. This dissertation investigates two main groups including gradient-based and meta-heuristics.
       \item The low-level heuristic's hyper-parameters. At a lower-level, each of these heuristics have their own set of hyper-parameters.
-      \item The heuristic pool size. This refers to the number of heuristics in the heuristic pool.
+      \item The \index{heuristic pool}heuristic pool size. This refers to the number of heuristics in the \index{heuristic pool}heuristic pool.
 \end{itemize}
 
-The granularity of design choices at a high level is not as strict for the \ac{BHH} as it is for low-level heuristics. If one is unsure as to which low-level hyper-parameters to use, one could simply include multiple configurations of that low-level heuristic, each just with its own unique hyper-parameter configurations. Take note that it has not been established yet if this is to the benefit or detriment of \ac{BHH}. These configurations increase the heuristic pool size and could also counteract eachother.  It is thus still important to include relevant heuristics that is appropriate to the underlying problem being solved. These heuristics should contain a balance between exploration and exploitation, either through the nature of their implementation or through careful hyper-parameter selection. Often times hyper-parameter schedules are used. This is also possible with the \ac{BHH}.
+The granularity of design choices at a high level is not as strict for the \ac{BHH} as it is for low-level heuristics. If one is unsure as to which low-level hyper-parameters to use, one could simply include multiple configurations of that low-level heuristic, each just with its own unique hyper-parameter configurations. Take note that it has not been established yet if this is to the benefit or detriment of \ac{BHH}. These configurations increase the \index{heuristic pool}heuristic pool size and could also counteract eachother.  It is thus still important to include relevant heuristics that is appropriate to the underlying problem being solved. These heuristics should contain a balance between exploration and exploitation, either through the nature of their implementation or through careful hyper-parameter selection. Often times hyper-parameter schedules are used. This is also possible with the \ac{BHH}.
 
 
-\index{Population Size}
+
 \subsection{Population Size}
 \label{sec:bhh:hyper_parameters:population_size}
 
-\index{Population Size}\textit{Population size} refers to the number of \index{entity}entities included in the \index{Entity Pool}entity pool/\index{Population}population. The exact \index{Population Size}population size to use is to be determined empirically. Naturely, an assumption is made that a larger population could lead to better results, assuming that entities are initialised to be spread uniformly across the solution search space. Oldewage~\cite{ref:oldewage:2017} mentions that a large number of particles (entities) may be able to traverse a greater portion of the search space as every particle provides additional information about the search space. However, it is to be determined if this is indeed the case for the \ac{BHH}. The authors propose the following considerations when picking a \index{population size}population size:
+\textit{Population size} refers to the number of entities included in the \index{entity pool}entity pool/population. The exact population size to use is to be determined empirically. Naturely, an assumption is made that a larger population could lead to better results, assuming that entities are initialised to be spread uniformly across the solution search space. Oldewage~\cite{ref:oldewage:2017} mentions that a large number of particles (entities) may be able to traverse a greater portion of the search space as every particle provides additional information about the search space. However, it is to be determined if this is indeed the case for the \ac{BHH}. The authors propose the following considerations when picking a \index{population size}population size:
 
 \begin{itemize}
       \item When considering the lower bound of possible \index{population size}population sizes, take into account the highest, minimum \index{population size}population size required by all low-level \index{heuristic}heuristics. For example, if one includes \Ac{DE} into the \index{heuristic}heuristic pool, one needs a \index{population size}population size of at least 4. For \acp{PSO}, the minimum population size is 3.
@@ -1011,7 +988,7 @@ This concludes the hyper-parameters that are used by the \ac{BHH}. The following
 \subsection{Defaults}
 \label{sec:bhh:hyper_parameters:defaults}
 
-Section \ref{sec:bhh:heuristic:proxies} provided the reader with the concept of proxied heuristic update step operations. As was mentioned in Section \ref{sec:bhh:hyper_parameters:heuristic_pool}, low-level heuristics each have their own set of hyper-parameters as well. This means that a set of default low-level parameters must be allocated specifically for these proxies. Consider a scenario where two instances of \ac{Adam} is included in the heuristic pool. Each has its own set of hyper-parameters that (should) differ from each other. In the case of \ac{Adam}, there are 4 hyper-parameters that include learning rate, $\beta1$, $\beta2$ and $\epsilon$. If another heuristic needs to proxy \ac{Adam}'s ``expected gradient mean operation'', a default $\beta1$ parameter must be supplied. Notice that this is only the case where multiple instances of a heuristic is included and there is uncertainty about which instance's hyper-parameters to use for the proxied heuristic update steps. If there is only one instance of a particular heuristic, that instance's hyper-parameters are used. The next section provides the reader with the pseudo-code algorithm for the \ac{BHH}.
+Section \ref{sec:bhh:heuristic:proxies} provided the reader with the concept of proxied heuristic update step operations. As was mentioned in Section \ref{sec:bhh:hyper_parameters:heuristic_pool}, low-level heuristics each have their own set of hyper-parameters as well. This means that a set of default low-level parameters must be allocated specifically for these proxies. Consider a scenario where two instances of \ac{Adam} is included in the \index{heuristic pool}heuristic pool. Each has its own set of hyper-parameters that (should) differ from each other. In the case of \ac{Adam}, there are 4 hyper-parameters that include learning rate, $\beta1$, $\beta2$ and $\epsilon$. If another heuristic needs to proxy \ac{Adam}'s ``expected gradient mean operation'', a default $\beta1$ parameter must be supplied. Notice that this is only the case where multiple instances of a heuristic is included and there is uncertainty about which instance's hyper-parameters to use for the proxied heuristic update steps. If there is only one instance of a particular heuristic, that instance's hyper-parameters are used. The next section provides the reader with the pseudo-code algorithm for the \ac{BHH}.
 
 \section{Algorithm}
 \label{sec:bhh:algorithm}
