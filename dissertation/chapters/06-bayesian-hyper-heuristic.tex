@@ -8,7 +8,7 @@
 \end{flushright}
 
 \noindent
-The above quote was the inspiration for the development of a novel \acf{HH} that uses Bayesian probability concepts as a selection mechanism to drive the heuristic selection process. Thus far the reader has been presented with all of the necessary background information on \acp{ANN} (Chapter \ref{chap:anns}), low-level \index{heuristic}heuristics (Chapter \ref{chap:heuristics}), \acp{HH} (Chapter \ref{chap:hhs}) and lastly, probability theory(Chapter \ref{chap:probability}). These elements form the fundamental components of the proposed \Acf{BHH}. This chapter provides the details around the implementation of the \Ac{BHH} and explains how it used to train \acp{FFNN}. The remainder of the chapter is structured as follows.
+The above quote was the inspiration for the development of a novel \acf{HH} that uses Bayesian probability concepts as a selection mechanism to drive the heuristic selection process. Thus far the reader has been presented with all of the necessary background information on \acp{ANN} (Chapter \ref{chap:anns}), low-level \index{heuristic}heuristics (Chapter \ref{chap:heuristics}), \acp{HH} (Chapter \ref{chap:hhs}) and lastly, probability theory (Chapter \ref{chap:probability}). These elements form the fundamental components of the proposed \Acf{BHH}. This chapter provides the details around the implementation of the \Ac{BHH} and explains how it used to train \acp{FFNN}. The remainder of the chapter is structured as follows.
 
 \begin{itemize}
       \item \textbf{Section \ref{sec:bhh:overview}} provides a brief overview of the \Acs{BHH}.
@@ -125,7 +125,7 @@ The concept of proxies arise from the sparsity of state as maintained by differe
 \end{itemize}
 
 \noindent
-Primary and proxied state parameters must be maintained together. Since entities represent candidate solutions, which are forms of state, entities are ideal candidates to store and maintain these state parameters. Entities are extended to include the primary state elements of \textit{all} the underlying low-level heuristics, as well as the candidate solution (weights) for the \acs{FFNN}. At each heuristic-entity application step, all state elements per entity are updated either by primary method or by proxied method. The \acs{BHH} thus incorporates a mapping of proxied state update operation as given in the example in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example} below.
+Primary and proxied state parameters must be maintained together. Since entities represent candidate solutions, which are forms of state, entities are ideal candidates to store and maintain these state parameters. Entities are extended to include the primary state elements of \textit{all} the underlying low-level heuristics, as well as the candidate solution (weights) for the \acs{FFNN}. At each heuristic-entity application step, all state parameters, per entity, are updated either by primary method or by proxied method. The \acs{BHH} thus incorporates a mapping of proxied state update operation as given in the example in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example} below.
 
 \begin{table}[htbp]
       \centering
@@ -269,7 +269,7 @@ The credit assignment strategy is a mechanism that assigns a discrete credit ind
 \end{itemize}
 
 \noindent
-The implementation of a credit assignment strategy is simply a function that translates the performance log from Table \ref{tab:bhh:performance_log:performance_log_example}, into Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example} below.
+The implementation of a credit assignment strategy is simply a function that translates the performance log from Table \ref{tab:bhh:performance_log:performance_log_example}, into Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}.
 
 \begin{table}[htbp]
       \centering
@@ -309,7 +309,7 @@ Observation of random events is treated as evidence. In the context of a Bayesia
 \end{itemize}
 
 \noindent
-It should be noted that event information is stored and observed direclty from the performance log as presented in Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}. From the above list of events, the event $C$ is dependent on the occurrence of $H$ and $E$ and a credit assignment strategy.
+It should be noted that event information is stored and observed directly from the performance log as presented in Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}. From the above list of events, the event $C$ is dependent on the occurrence of $H$ and $E$ and a credit assignment strategy.
 
 \subsection{Independence}\label{sec:bhh:selection_mechanism:independence}
 
@@ -338,7 +338,7 @@ The conditionality implemented by \index{Bayes' Theorem}Bayes' Theorem can be ex
 
 \subsection{Predictive Model}\label{sec:bhh:selection_mechanism:predictive_model}
 
-This section presents the predictive model as implemented by the selection mechanism of the \acs{BHH}. The predictive model is arguably the most important component of the \acs{BHH}, as it drives heuristic selection process. The \acs{BHH} implements a predictive model that predicts which heuristic to select, given the conditionality that a particular entity is used and a particular credit assignment criteria is met. The predictive model can be derived as follows.\\\\
+This section presents the predictive model as implemented by the selection mechanism of the \acs{BHH}. The predictive model is arguably the most important component of the \acs{BHH}, as it drives the heuristic selection process. The \acs{BHH} implements a predictive model that predicts which heuristic to select, given the conditionality that a particular entity is used and a particular credit assignment criteria is met. The predictive model can be derived as follows.\\\\
 \textbf{Setup}:
 \\
 \noindent
@@ -398,7 +398,7 @@ Vector notation is dropped for sake of convenience, simplicity and readability. 
 \end{equation}
 
 \noindent
-Notice the joint probability over events $E$ and $C$, given the selection of a heuristic $H$, denoted by the sums of the products of the separate parts, for $E$ and $C$, in the denominator. The calculation in the denominator can be intractable. Since the \acs{BHH} selection mechanism uses the predictive model as a classifier, the posterior distribution as given in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem}), can be evaluated for proportionality, as is given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} below.
+Notice the joint probability over events $E$ and $C$, given the selection of a heuristic $H$, denoted by the product of the sums of the separate parts for $E$ and $C$, in the denominator. The calculation in the denominator can be intractable. Since the \acs{BHH} selection mechanism uses the predictive model as a classifier, the posterior distribution as given in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem}, can be evaluated for proportionality, as is given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:predictive_model_prop_to}
@@ -447,7 +447,7 @@ conditional to the occurrence of heuristic $k$ and model parameter $\phi$ as is 
 \end{equation}
 
 \noindent
-In Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} above, $N_{j,k}$ is a summary variable such that $N_{j,k} = \sum_{i=i}^{I} \mathbbm{1}_{1}(e_{i,j,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the events $e_{i}$ taking on class $j$ and $h_{i}$ taking on class $k$, i.e. the count of occurrences of both entity entity $e$ and heuristic $k$ occurring together in $I$ independent, identical runs.
+In Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} above, $N_{j,k}$ is a summary variable such that $N_{j,k} = \sum_{i=i}^{I} \mathbbm{1}_{1}(e_{i,j,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the events $e_{i}$ taking on class $j$ and $h_{i}$ taking on class $k$, i.e. the count of occurrences of both entity $e$ and heuristic $k$ occurring together in $I$ independent, identical runs.
 
 Finally, the independence between events for the performance criteria $C$, given class label $H$, is denoted by the likelihood of $C$, conditional to the occurrence of heuristic $k$ and model parameter $\psi$ as given in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} below.
 
@@ -497,7 +497,7 @@ The log-sum-exp trick as shown above caters for very small probabilities, howeve
 
 \subsection{Mode Collapse}\label{sec:bhh:selection_mechanism:mode_collapse}
 
-Mode collapse is the situation that occurs where the selective pressure towards a heuristic is close to zero as a results of random sampling, low initial bias or bad performance. This leads to a situation where the probabilistic model continually decreases the selective pressure, until the selection probability of that heuristic is 0, yielding no further observations of that particular random event. The \acs{BHH} addresses the aforementioned issue by:
+Mode collapse is the situation that occurs where the selective pressure towards a heuristic is close to zero as a result of random sampling, low initial bias or bad performance. This leads to a situation where the probabilistic model continually decreases the selective pressure, until the selection probability of that heuristic is 0, yielding no further observations of that particular random event. The \acs{BHH} addresses the aforementioned issue by:
 
 \begin{itemize}
       \item Using \textit{symmetric} initialisation of the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$.
@@ -508,7 +508,7 @@ Mode collapse is the situation that occurs where the selective pressure towards 
 \end{itemize}
 
 \noindent
-Another suggestion is to ensure that at least one of every heuristic is always selected during training. The \acs{BHH} does not incorporate this model as this could result in a situation where a bad choice of heuristic is continually used throughout the training process, possibly resulting in bad update steps/selections. Instead, the \acs{BHH} relies on the underlying learning process to control the selective pressure according to performance and nothing else. If this leads to a situation where mode collapse occurs, the \acs{BHH} accepts the outcome.
+Another suggestion is to ensure that at least one of every heuristic is always selected during training. The \acs{BHH} does not incorporate this approach as this could result in a situation where a bad choice of heuristic is continually used throughout the training process, possibly resulting in bad update steps/selections. Instead, the \acs{BHH} relies on the underlying learning process to control the selective pressure according to performance and nothing else. If this leads to a situation where mode collapse occurs, the \acs{BHH} accepts the outcome.
 
 \section{Optimisation Step}\label{sec:bhh:optimisation_step}
 
@@ -640,7 +640,7 @@ Substituting $N = \epsilon$ back into Equation~\eqref{eq:bhh:optimisation_step:m
 \end{equation}
 
 \noindent
-The \acs{MLE} for $\hat{\phi}_{j, k} $ is calculated similarly. To compensate for the $K-1$ simplex $S$ an error $\lambda = (\lambda_{1}, \dots, \lambda_{J})$ is added as is shown in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1} below.
+The \acs{MLE} for $\hat{\phi}_{j, k} $ is calculated similarly. To compensate for the $K-1$ simplex $S$, an error $\lambda = (\lambda_{1}, \dots, \lambda_{J})$ is added as is shown in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1}
@@ -726,7 +726,7 @@ Furthermore, the event $E$ is also a multinomial distribution with parameter $\p
 \end{equation}
 
 \noindent
-Finally, the event $C$ is a \index{Binomial probability distribution}Binomial probability distribution with probability parameter $\psi$. It is known that the conjugate prior to a\index{Binomial probability distribution}Binomial probability distribution is a Beta probability distribution. The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
+Finally, the event $C$ is a \index{Binomial probability distribution}Binomial probability distribution with probability parameter $\psi$. It is known that the conjugate prior to a \index{Binomial probability distribution}Binomial probability distribution is a Beta probability distribution. The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_psi_prior}
@@ -787,7 +787,7 @@ From Equation~\eqref{eq:bhh:optimisation_step:map:posterior} above, it can be se
 \end{equation}
 
 \noindent
-It can be seen that the prior and posterior probability distributions are of the same shape $\mathcal{A}(v)$. It can therefore be said that the \acs{BHH} implements a Gaussian process. Since the reselection of heuristics happen at regular intervals, the outcome of a selection in one iteration may influence the outcome of another in the next iteration, making the implementation of the \acs{BHH} a \acf{HMM}.
+It can be seen that the prior and posterior probability distributions are of the same form, $\mathcal{A}(v)$. It can therefore be said that the \acs{BHH} implements a Gaussian process. Since the reselection of heuristics happens at regular intervals, the outcome of a selection in one iteration may influence the outcome of another in the next iteration, making the implementation of the \acs{BHH} a \acf{HMM}.
 
 Throughout this chapter a number of hyper-parameters have been identified. These are summarised and discussed in the next section.
 
@@ -810,7 +810,7 @@ Section \ref{sec:bhh:heuristic_pool} provided the reader with the context and de
 \end{itemize}
 
 \noindent
-The granularity of design choices at a high level is not as strict for the \acs{BHH} as it is for low-level heuristics. If one is unsure as to which low-level hyper-parameters to use, one could simply include multiple configurations of a low-level heuristic, each with its own unique hyper-parameter configurations.
+The design choices at a high level is not as strict for the \acs{BHH} as it is for low-level heuristics. If one is unsure as to which low-level hyper-parameters to use, one could simply include multiple configurations of a low-level heuristic, each with its own unique hyper-parameter configurations.
 
 
 \subsection{Population Size}\label{sec:bhh:hyper_parameters:population_size}
@@ -825,7 +825,7 @@ Population size refers to the number of entities included in the \index{entity p
 
 \subsection{Credit}\label{sec:bhh:hyper_parameters:credit}
 
-The credit hyper-parameter refers to the credit assignment strategy that is used. This dissertation proposed 5 different credit assignment strategies that were presented in Section \ref{sec:bhh:credit_assignment_strategy}. The choice of credit assignment is assumed to be problem-dependent, however, this is to be empirically tested. Along from the credit assignment strategy itself, the following factors related to the credit assignment strategy should be considered.
+The credit hyper-parameter refers to the credit assignment strategy that is used. This dissertation proposed 5 different credit assignment strategies that were presented in Section \ref{sec:bhh:credit_assignment_strategy}. The choice of credit assignment is assumed to be problem-dependent, however, this is to be  tested empirically. Along with the credit assignment strategy itself, the following factors related to the credit assignment strategy should be considered.
 
 \begin{itemize}
       \item When to apply credit assignment during the training process.
@@ -834,7 +834,7 @@ The credit hyper-parameter refers to the credit assignment strategy that is used
 \end{itemize}
 
 \noindent
-A number of other hyper-parameters are specifically included to address the list of considerations as given above. These include \textit{reselection}, \textit{replay} and \textit{reanalysis window sizes},\textit{burn in}, \textit{discounted rewards} and \textit{normalisation}. Each of these are presented next.
+A number of other hyper-parameters are specifically included to address the list of considerations as given above. These include \textit{reselection}, \textit{replay} and \textit{reanalysis window sizes}, \textit{burn in}, \textit{discounted rewards} and \textit{normalisation}. Each of these are presented next.
 
 \subsection{Reselection}\label{sec:bhh:hyper_parameters:reselection}
 
@@ -842,7 +842,7 @@ The reselection window size is a hyper-parameter that controls how often heurist
 
 \subsection{Replay}\label{sec:bhh:hyper_parameters:replay}
 
-The replay window size is a hyper-parameter that controls how much historical performance information is kept in the performance log for the \acs{BHH} to learn from and was introduced in Section \ref{sec:bhh:performance_log}. The replay window size is a parameter that is borrowed from \acf{RL} and aims to control the effect that past performances have on the \acs{BHH}. A replay window size that is too small includes little to no memory, resulting in a situation where the \acs{BHH} simply looks at the most recent evidence that is collected and nothing more. On the contrary, if the replay window size is big, the \acs{BHH} tracks a longer history of past performances, leading to a situation where previously well-performing heuristics that are not relevant later in the training process is still selected often.
+The replay window size is a hyper-parameter that controls how much historical performance information is kept in the performance log for the \acs{BHH} to learn from and was introduced in Section \ref{sec:bhh:performance_log}. The replay window size is a parameter that is borrowed from \acf{RL} and aims to control the effect that past performances have on the \acs{BHH}. A replay window size that is too small includes little to no memory, resulting in a situation where the \acs{BHH} simply looks at the most recent evidence that is collected and nothing more. On the contrary, if the replay window size is big, the \acs{BHH} tracks a longer history of past performances, leading to a situation where previously well-performing heuristics that are not relevant later in the training process, is still selected often.
 
 \subsection{Reanalysis}\label{sec:bhh:hyper_parameters:reanalysis}
 
@@ -850,12 +850,12 @@ The reanalysis window size is a hyper-parameter that controls how often the \acs
 
 \subsection{Burn In}\label{sec:bhh:hyper_parameters:burn_in}
 
-Burn in is a hyper-parameter that is borrowed from \acf{MCMC} and aims to delay the learning process of the \acs{BHH}. The intent of the burn in hyper-parameter is to determine if heuristics need time to execute before reselection starts. Notice that a delay in the learning process does not mean that reselection doesn't occur or performance information is not collected in the replay window. Therefore, it should be noted that the burn in window size, reselection window size and replay window size should be considered together. If the replay window size is smaller than the burn in window size, performance information is discarded and an opportunity to learn is lost.
+Burn in is a hyper-parameter that is borrowed from \acf{MCMC} and aims to delay the learning process of the \acs{BHH}. The intent of the burn in hyper-parameter is to determine if heuristics need time to execute before reanalysis starts. Notice that a delay in the learning process does not mean that reselection doesn't occur or performance information is not collected in the replay window. Therefore, it should be noted that the burn in window size, reselection window size and replay window size should be considered together. If the replay window size is smaller than the burn in window size, performance information is discarded and an opportunity to learn is lost.
 
 \index{discounted rewards}
 \subsection{Discounted Rewards}\label{sec:bhh:hyper_parameters:discounted_rewards}
 
-\index{discounted rewards}Discounted rewards is another hyper-parameter that is borrowed from \acs{RL} and is a flag that determines if discounted rewards are applied or not. \index{discounted rewards}Discounted rewards refers to an implementation where credit assignments for past performances are exponentially decreased further into the past. An exponential decay factor of 0.5 is proposed. The intent of the discounted rewards flag is to scale the effect of past performances that are further back in the performance log, such that they have a smaller impact than more recent evidence on the learning process of the \acs{BHH}.
+\index{discounted rewards}Discounted rewards is another hyper-parameter that is borrowed from \acs{RL} and is a flag that determines if discounted rewards are applied or not. \index{discounted rewards}Discounted rewards refer to an implementation where credit assignments for past performances are exponentially decreased further into the past. An exponential decay factor of 0.5 is proposed. The intent of the discounted rewards flag is to scale the effect of past performances that are further back in the performance log, such that they have a smaller impact than more recent evidence on the learning process of the \acs{BHH}.
 
 \subsection{Normalisation}\label{sec:bhh:hyper_parameters:normalisation}
 
