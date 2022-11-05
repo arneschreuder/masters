@@ -9,7 +9,7 @@
 \end{flushright}
 
 \noindent
-Probability theory and statistics can be traced back to as early as the 18th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of of Chance}; a book that is widely seen as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of Bayes' Theorem was introduced.
+Probability theory and statistics can be traced back to as early as the 18th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of of Chance}; a book that is widely seen as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of \index{Bayes' Theorem}Bayes' Theorem was introduced.
 
 Probability theory, statistics and \acf{ML} are transdisciplinary fields with many shared concepts. There are many examples of how probability theory has been incorporated into \acs{ML} research. In 1991,~\citeauthor{ref:denker:1991},~\cite{ref:denker:1991} proposed a way to transform \acf{ANN} outputs to probability distributions. In 1993, \citeauthor{ref:neal:1993}~\cite{ref:neal:1993} developed a \acf{MCMC} sampling algorithm for Bayesian \acp{NN}. These are but a few examples of the role that probability theory has played in \acs{ML} research in the past.
 
@@ -24,7 +24,7 @@ Chapter \ref{chap:hhs} provided the reader with the concept of a \acf{HH}. This 
 
       \item \textbf{Section \ref{sec:probability:cond_probability}} introduces conditional probability.
 
-      \item \textbf{Section \ref{sec:probability:bayes_theorem}} introduces Bayes' Theorem, the fundamental theorem upon which the \acs{BHH} is built.
+      \item \textbf{Section \ref{sec:probability:bayes_theorem}} introduces \index{Bayes' Theorem}Bayes' Theorem, the fundamental theorem upon which the \acs{BHH} is built.
 
       \item \textbf{Section \ref{sec:probability:probability_distributions}} presents the reader with relevant probability distributions.
 
@@ -126,9 +126,10 @@ Suppose there are two random events $A$ and $B$, then one can calculate the prob
       \label{fig:probability:multiple_events:additive}
 \end{figure}
 
+\index{Bayes Theorem}
 \section{Bayes' Theorem}\label{sec:probability:bayes_theorem}
 
-Bayes' Theorem, named after Thomas Bayes, describes the probability of an event $A$, based on prior knowledge of conditions that might be related to $A$~\cite{ref:zalta:2015}. In order to derive the formal theorem and proof, first consider Definition \ref{def:probability:bayes_theorem:partition} below~\cite{ref:zalta:2015}.
+\index{Bayes' Theorem}Bayes' Theorem, named after Thomas Bayes, describes the probability of an event $A$, based on prior knowledge of conditions that might be related to $A$~\cite{ref:zalta:2015}. In order to derive the formal theorem and proof, first consider Definition \ref{def:probability:bayes_theorem:partition} below~\cite{ref:zalta:2015}.
 \\
 \begin{definition}
       \label{def:probability:bayes_theorem:partition}
@@ -144,6 +145,7 @@ Bayes' Theorem, named after Thomas Bayes, describes the probability of an event 
 \end{definition}
 \vspace*{0.5cm}
 
+\index{Bayes Theorem}
 \begin{theorem}[\textbf{Bayes' Theorem}]
       \label{th:probability:bayes_theorem:theorem}
       Assume that $[B_{1}, B_{2}, \dots, B_{K}]$ is a partition of $S$ such that $P(B_{i}) > 0$, for $i = 1,2, \dots, K$ then\\
@@ -166,7 +168,7 @@ Bayes' Theorem, named after Thomas Bayes, describes the probability of an event 
 \end{proof}
 
 \noindent
-One of the many applications of Bayes' Theorem is to do statistical inference. Bayes' Theorem expresses how a degree of belief, expressed as a probability, should rationally change to account for the availability of related evidence.
+One of the many applications of \index{Bayes' Theorem}Bayes' Theorem is to do statistical inference. \index{Bayes' Theorem}Bayes' Theorem expresses how a degree of belief, expressed as a probability, should rationally change to account for the availability of related evidence.
 
 
 \section{Probability Distributions}\label{sec:probability:probability_distributions}
@@ -533,7 +535,7 @@ The Bernoulli likelihood is given in Equation~\eqref{eq:probability:conjugate_pr
 \end{equation}
 
 \noindent
-By Bayes' Theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:posterior} below.
+By \index{Bayes' Theorem}Bayes' Theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:posterior} below.
 
 \begin{equation}
       \begin{split}
@@ -594,7 +596,7 @@ The likelihood of the Categorical and \index{Multinomial probability distributio
 \end{equation}
 
 \noindent
-By Bayes' Theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:posterior} below.
+By \index{Bayes' Theorem}Bayes' Theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:posterior} below.
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:mult_likelihood:posterior}
@@ -624,7 +626,7 @@ The next section aims to provide the reader with the concept of Bayesian statist
 \section{Bayesian Statistics}
 \label{sec:probability:bayesian_statistics}
 
-In general, there are two main views to probability and statistics. These include the \textit{frequentist} and the \textit{Bayesian} view of statistics. Naturally, Bayesian statistics is based on Bayes' Theorem as was presented in Section \ref{sec:probability:bayes_theorem}. Bayesian statistics describe the probability of an event in terms of some belief, based on previous knowledge of the event, and the conditions under which the event happens~\cite{ref:hackenberger:2019}. To introduce the concept of Bayesian inference and analysis, one first need to understand the difference between these two approaches. Bayesian statistics out-date the frequentist approach, but lacked interest in the early days, partly because of the limited applications where the conjugate priors where known~\cite{ref:hackenberger:2019}. More recent advancements in mathematical methods popularised the Bayesian approach again. A notable contribution to this switch, was the development of \acf{MCMC} in the 1950's. This family of algorithms allowed for the construction of random sampling algorithms from a probability distribution, which allows for the calculation of Bayesian hierarchical models~\cite{ref:hackenberger:2019}. Soon after followed one of the earliest papers that use Bayesian statistics in the field of medicine in 1982~\cite{ref:ashby:2006}.
+In general, there are two main views to probability and statistics. These include the \textit{frequentist} and the \textit{Bayesian} view of statistics. Naturally, Bayesian statistics is based on \index{Bayes' Theorem}Bayes' Theorem as was presented in Section \ref{sec:probability:bayes_theorem}. Bayesian statistics describe the probability of an event in terms of some belief, based on previous knowledge of the event, and the conditions under which the event happens~\cite{ref:hackenberger:2019}. To introduce the concept of Bayesian inference and analysis, one first need to understand the difference between these two approaches. Bayesian statistics out-date the frequentist approach, but lacked interest in the early days, partly because of the limited applications where the conjugate priors where known~\cite{ref:hackenberger:2019}. More recent advancements in mathematical methods popularised the Bayesian approach again. A notable contribution to this switch, was the development of \acf{MCMC} in the 1950's. This family of algorithms allowed for the construction of random sampling algorithms from a probability distribution, which allows for the calculation of Bayesian hierarchical models~\cite{ref:hackenberger:2019}. Soon after followed one of the earliest papers that use Bayesian statistics in the field of medicine in 1982~\cite{ref:ashby:2006}.
 
 The difference between the frequentist approach and the Bayesian approach can be illustrated using an example.~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} suggests an experiment that investigates whether the sex ration in some hypothetical mice population is $1:1$. Two experiments can be designed. In the first experiment, mice are randomly selected until the first male is chosen. The result in this experiment will then be the total number of mice chosen by sex. For the second experiment, exactly seven mice are randomly selected. The result of the second experiment would be the number of males and females in a sample of seven. Suppose the outcome of the experiment was $FFFFFFM$, where $F$ represents a female and $M$ represents a male. If the experimental design is not known ahead of time, the result is useless. Consider the $P$-value for each of these experiments. The P-value is the probability of obtaining results at least as extreme as the observed results of a statistical hypothesis test~\cite{ref:beers:2022}. For the first experiment, the $P$-value is $0.031$ and for the second experiment, the $P$-value is $0.227$. Using a confidence level of $\alpha = 0.05$, one would conclude opposite outcomes for these two experiments, when it comes to rejecting the null hypothesis, despite using the same data. The reason for the difference in outcomes, is due to the difference in their null distributions. The first approach uses a geometrical approach, and the second used a binomial approach as is illustrated on Figure \ref{fig:probability:bayesian_statistics:mouse_experiment_outcome} below.
 
@@ -669,7 +671,7 @@ The marginal density or mass function of $Y_{1}, Y_{2}, \dots, Y_{N}$ is given i
 \end{equation}
 
 \noindent
-Finally, the posterior density of $\theta \vert y_{1}, y_{2}, \dots, y_{n}$, according to Bayes' Theorem, is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density} below.
+Finally, the posterior density of $\theta \vert y_{1}, y_{2}, \dots, y_{n}$, according to \index{Bayes' Theorem}Bayes' Theorem, is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density} below.
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density}

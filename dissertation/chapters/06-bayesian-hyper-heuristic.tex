@@ -19,29 +19,17 @@ The above quote was the inspiration for the development of a novel \acf{HH} that
 
       \item \textbf{Section \ref{sec:bhh:entity_pool}} presents details on entity (local) and population (global) memory (state).
 
-      \item \textbf{Section \ref{sec:bhh:heuristic_entity_selections}} presents discussions on heuristic-entity selections.
-
-      \item \textbf{Section \ref{sec:bhh:model}} presents the models that can be optimised using the \Acs{BHH}, specifically referring to the training of \acp{FFNN}.
-
-      \item \textbf{Section \ref{sec:bhh:train_test_datasets}} presents a brief discussion on the role of datasets for training and testing.
-
-      \item \textbf{Section \ref{sec:bhh:loss_function}} presents discussions on model evaluation and the role of the loss function.
-
-      \item \textbf{Section \ref{sec:bhh:domain_barrier}} presents discussions on the domain barrier, an information barrier that exists between the high-level \acs{BHH} and low-level heuristics in the \index{heuristic pool}heuristic pool.
-
       \item \textbf{Section \ref{sec:bhh:performance_log}} presents detailed discussions on performance measurement. The \textit{performance log}, implemented by the \acs{BHH}, is presented.
 
       \item \textbf{Section \ref{sec:bhh:credit_assignment_strategy}} presents detailed discussions on credit assignment and move acceptance strategies.
 
       \item \textbf{Section \ref{sec:bhh:selection_mechanism}} presents the Bayesian probabilistic model that is used as the heuristic selection mechanism.
 
-      \item \textbf{Section \ref{sec:bhh:initialisation_step}} presents the initialisation strategy.
-
       \item \textbf{Section \ref{sec:bhh:optimisation_step}} presents the learning mechanisms by which the probabilistic model can be optimised.
 
       \item \textbf{Section \ref{sec:bhh:hyper_parameters}} summarises and discusses the associated \index{hyper-parameters}hyper-parameters and default values.
 
-      \item \textbf{Section \ref{sec:bhh:algorithm}} provides the pseudo-code algorithm for the \ac{BHH}.
+      \item \textbf{Section \ref{sec:bhh:algorithm}} provides the pseudo-code algorithm for the \acs{BHH}.
 
       \item \textbf{Section \ref{sec:bhh:summary}} provides a brief summary of the chapter.
 \end{itemize}
@@ -54,9 +42,9 @@ This section provides an overview of the workings of the \Acf{BHH}. The general 
 Formal classification of the \Acs{BHH} is needed. Chapter \ref{chap:hhs} presented the reader with a proposed classification scheme for \acp{HH} by~\citeauthor{ref:burke:2010}~\cite{ref:burke:2010}. According to the aforementioned classification scheme, the \Acs{BHH} is a population-based, meta-hyper-heuristic that utilises selection and perturbation of low-level heuristics in an online learning fashion. A breakdown of the classification is given as follows.
 
 \begin{itemize}
-      \item \textbf{Population-Based:} The \ac{BHH} implements a population-based approach, where a collection of different candidate solutions, referred to as \textit{entities}, work together to yield a global best solution.
+      \item \textbf{Population-Based:} The \acs{BHH} implements a population-based approach, where a collection of different candidate solutions, referred to as \textit{entities}, work together to yield a global best solution.
 
-      \item \textbf{Meta-Hyper-Heuristic:} There exists a domain barrier, where the \ac{BHH} searches through the \textit{heuristic space}, using only \index{heuristic}heuristic performance information, while lower level heuristics search through the \textit{solution space} using information from the search domain itself. Furthermore, the \index{heuristic pool}heuristic pool implemented by the \acs{BHH} supports both gradient-based low level \index{heuristic}heuristics, as well as meta-heuristics.
+      \item \textbf{Meta-Hyper-Heuristic:} There exists a domain barrier, where the \acs{BHH} searches through the \textit{heuristic space}, using only \index{heuristic}heuristic performance information, while lower level heuristics search through the \textit{solution space} using information from the search domain itself. Furthermore, the \index{heuristic pool}heuristic pool implemented by the \acs{BHH} supports both gradient-based low level \index{heuristic}heuristics, as well as meta-heuristics.
 
       \item \textbf{Selection and Perturbation of Low-Level Heuristics:} The \acs{BHH} implements a \index{heuristic}heuristic selection mechanism that selects from a collection of lower level \index{heuristic}heuristics, called a \index{heuristic pool}\textit{heuristic pool}. Selection is biased towards good performing heuristics. A credit assignment strategy is used to \textit{reward} good heuristic performance. The \acs{BHH} maintains entity and population state through operations that \textit{proxy} update steps from different heuristics (perturbation), as is required. These proxy operations ensure that heuristic requirements are satisfied even when different heuristics are used for different entities throughout the training process.
 
@@ -124,7 +112,7 @@ A \index{heuristic}heuristic's eligibility for inclusion in the \index{heuristic
 
 \subsection{Heuristic Pool Size}\label{sec:bhh:heuristic_pool:pool_size}
 
-Another design decision in the heuristic pool is heuristic pool size. Since the \acs{BHH} is a \textit{learning} \acs{HH}, every heuristic that is included in the heuristic pool increases the requirement of more statistical evidence of heuristic performance. Not only does a large \index{heuristic pool}heuristic pool drastically complicate the learning process that is required by the \ac{BHH}, but it also drastically complicates the process of maintaining \textit{state}. State is the term used to describe data that is relevant to the training process, and is maintained between training steps. An example of \textit{local} state is an entity's position, while an example of \textit{global} state is the global best solution found thus far. The following section presents the concept of \textit{proxies} and their role in maintaining state.
+Another design decision in the heuristic pool is heuristic pool size. Since the \acs{BHH} is a \textit{learning} \acs{HH}, every heuristic that is included in the heuristic pool increases the requirement of more statistical evidence of heuristic performance. Not only does a large \index{heuristic pool}heuristic pool drastically complicate the learning process that is required by the \acs{BHH}, but it also drastically complicates the process of maintaining \textit{state}. State is the term used to describe data that is relevant to the training process, and is maintained between training steps. An example of \textit{local} state is an entity's position, while an example of \textit{global} state is the global best solution found thus far. The following section presents the concept of \textit{proxies} and their role in maintaining state.
 
 \subsection{Proxies}\label{sec:bhh:heuristic:proxies}
 
@@ -137,7 +125,7 @@ The concept of proxies arise from the sparsity of state as maintained by differe
 \end{itemize}
 
 \noindent
-Primary and proxied state parameters must be maintained together. Since entities represent candidate solutions, which are forms of state, entities are ideal candidates to store and maintain these state parameters. Entities are extended to include the primary state elements of \textit{all} the underlying low-level heuristics, as well as the candidate solution (weights) for the \acs{FFNN}. At each heuristic-entity application step, all state elements per entity are updated either by primary method or by proxied method. The \ac{BHH} thus incorporates a mapping of proxied state update operation as given in the example in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example} below.
+Primary and proxied state parameters must be maintained together. Since entities represent candidate solutions, which are forms of state, entities are ideal candidates to store and maintain these state parameters. Entities are extended to include the primary state elements of \textit{all} the underlying low-level heuristics, as well as the candidate solution (weights) for the \acs{FFNN}. At each heuristic-entity application step, all state elements per entity are updated either by primary method or by proxied method. The \acs{BHH} thus incorporates a mapping of proxied state update operation as given in the example in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example} below.
 
 \begin{table}[htbp]
       \centering
@@ -171,120 +159,84 @@ The \index{entity pool}entity pool maintains two different types of state. These
 
 \subsection{Entity State}\label{sec:bhh:entity_pool:entity_state}
 
-Entities represent candidate solutions to the model's trainable parameters (weights) and other heuristic-specific state parameters, as was discussed in Section \ref{sec:bhh:heuristic:proxies}. It can be said that entities implement \textit{local} state. It was mentioned that these entities can be treated as physical \index{particle}\textit{particles} in a hyper-dimensional search environment. Entities model concepts from physics. For example, the candidate solution is represented as the entity's position, and an entity's velocity and acceleration is analogous to the gradient and momentum of the entity respectfully. Examples of \index{Entity State}entity state parameters, as derived from various low-level heuristics, is given as follows.
+Entities represent candidate solutions to the model's trainable parameters (weights) and other \index{heuristic}heuristic-specific state parameters, as was discussed in Section \ref{sec:bhh:heuristic:proxies}. It can be said that entities implement \textit{local} state. It was mentioned that these entities can be treated as physical \textit{particles} in a hyper-dimensional search environment. Entities model concepts from physics. For example, the candidate solution is represented as the entity's position, and an entity's velocity and acceleration is analogous to the gradient and momentum of the entity respectfully. Examples of entity state parameters, as derived from various low-level \index{heuristic}heuristics, is given as follows.
 
 \begin{itemize}
-      \item \textbf{position}: General parameter that represents the actual candidate solution and is thus a primary state parameter for all heuristics.
+      \item \textbf{position}: General parameter that represents the actual candidate solution and is thus a primary state parameter for all \index{heuristic}heuristics.
 
-      \item \textbf{velocity}: Directly implemented by heuristics such as \acp{PSO} and is analogous to the gradient for gradient-based heuristics such as \ac{Momentum}.
+      \item \textbf{velocity}: Directly implemented by \index{heuristic}heuristics such as \acp{PSO} and is analogous to the gradient for gradient-based \index{heuristic}heuristics such as \ac{Momentum}.
 
-      \item \textbf{gradient}: The last known gradient, as derived from gradient-based heuristics.
+      \item \textbf{gradient}: The last known gradient, as derived from gradient-based \index{heuristic}heuristics.
 
       \item \textbf{position delta}: The last computed position delta between the current timestep and the previous timestep.
 
-      \item \textbf{sum of the gradients squared}: As required and maintained by heuristics such as \acs{Adagrad}.
+      \item \textbf{sum of the gradients squared}: As required and maintained by \index{heuristic}heuristics such as \acs{Adagrad}.
 
-      \item \textbf{expected position delta variance}: As required and maintained by heuristics such as \acs{Adadelta}.
+      \item \textbf{expected position delta variance}: As required and maintained by \index{heuristic}heuristics such as \acs{Adadelta}.
 
-      \item \textbf{expected gradient mean}: As required and maintained by heuristics such as \acs{Momentum}, \acs{NAG} and \acs{Adam}.
+      \item \textbf{expected gradient mean}: As required and maintained by \index{heuristic}heuristics such as \acs{Momentum}, \acs{NAG} and \acs{Adam}.
 
-      \item \textbf{expected gradient variance}: As required and maintained by heuristics such as \acs{RMSProp}, \acs{Adadelta} and \acs{Adam}.
+      \item \textbf{expected gradient variance}: As required and maintained by \index{heuristic}heuristics such as \acs{RMSProp}, \acs{Adadelta} and \acs{Adam}.
 
-      \item \textbf{personal best position}: Parameter that tracks that best known position by the entity thus far. As required and maintained by heuristics such as \acs{PSO}.
+      \item \textbf{personal best position}: Parameter that tracks that best known position by the entity thus far. As required and maintained by \index{heuristic}heuristics such as \acs{PSO}.
 
-      \item \textbf{personal best loss}: Parameter that tracks that best known loss by the entity thus far. As required and maintained by heuristics such as \acs{PSO}.
+      \item \textbf{personal best loss}: Parameter that tracks that best known loss by the entity thus far. As required and maintained by \index{heuristic}heuristics such as \acs{PSO}.
 
       \item \textbf{loss}: Parameter that tracks the loss as achieved by the the entity throughout training.
 \end{itemize}
 
 \noindent
-From the list above, it should be clear that entity state becomes increasingly complicated as the number of distinct \index{heuristic}heuristics, included in the \index{heuristic pool}heuristic pool, increases.
+From the list above, it should be clear that entity state becomes increasingly complicated with the increase of the number of distinct \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool with unique state parameters.
 
 \subsection{Population State}\label{sec:bhh:entity_pool:population_state}
 
-The population state refers to a collection of parameters that are shared between the entities in the population. Population state is also referred to as \textit{global} state and represents the population's memory. The population state generally contains state parameters that are of importance to multiple \index{heuristic}heuristics, and usually tracks the state of the population and not individual heuristic. Some examples of population state that can arise from different \index{heuristic}heuristics is given below:
+The population state refers to a collection of parameters that are shared between the entities in the population. Population state is also referred to as \textit{global} state and represents the population's memory. The population state generally contains state parameters that are of importance to multiple \index{heuristic}heuristics, and usually tracks the state of the population and not individual \index{heuristic}heuristic. Some examples of population state that can arise from different \index{heuristic}heuristics is given below.
 
 \begin{itemize}
       \item \textbf{entities}: Naturally, the population state contains the list of entities in the population.
 
-      \item \textbf{ibest} and \textbf{ibest loss}: Refers to the best position and loss achieved by the population for the current iteration/step. This parameter is introduced by the \ac{BHH} itself through the requirements of the \textit{ibest} credit assignment strategy.
+      \item \textbf{ibest} and \textbf{ibest loss}: Refers to the best position and loss achieved by the population for the current iteration/step.
 
-      \item \textbf{rbest} and \textbf{rbest loss}: Refers to the best position and loss achieved by the population for the current replay buffer/window size. This parameter is introduced by the \ac{BHH} itself through the requirements of the \textit{rbest} credit assignment strategy.
+      \item \textbf{rbest} and \textbf{rbest loss}: Refers to the best position and loss achieved by the population for the current replay buffer/window size.
 
-      \item \textbf{gbest} and \textbf{gbest loss}: Refers to the overall/global best position and loss achieved by the population for the entire training process. This parameter is introduced by heuristics such as \acp{PSO}, and is also introduced by the \ac{BHH} itself through the requirements of the \textit{gbest} credit assignment strategy.
+      \item \textbf{gbest} and \textbf{gbest loss}: Refers to the overall/global best position and loss achieved by the population for the entire training process. This parameter is introduced by \index{heuristic}heuristics such as \acp{PSO}.
 \end{itemize}
 
 \noindent
-Entities in the entity pool are each assigned an associated \index{heuristic}heuristic. The following section provides details around the heuristic-entity selection process.
+Entities in the entity pool are each assigned an associated \index{heuristic}heuristic. The \acs{BHH} selects from the \index{heuristic pool}heuristic pool a low-level \index{heuristic}heuristic to be applied to an individual entity. The outcome of this selection process is a mapping table that tracks which \index{heuristic}heuristic has been selected for which entity. The selection process is executed by the selection mechanism of the \acs{BHH}. These \index{heuristic}heuristic-entity combinations are applied to the underlying \acs{FFNN}. The \acs{BHH} tracks the performance of each of these combinations throughout the training process in a performance log. The performance log is presented in the following section.
 
-\section{Heuristic-Entity Selections}
-\label{sec:bhh:heuristic_entity_selections}
 
-The \ac{BHH} selects from the \index{heuristic pool}heuristic pool a low-level heuristic to be applied to an entity. The outcome of this selection process is a table that tracks which heuristic has been selected for which entity. The selection process is executed by the selection mechanism of the \ac{BHH} and is discussed later in Section \ref{sec:bhh:selection_mechanism}. These heuristic-entity combinations are applied to an underlying model. The next section provides clarity on the model component from the architecture of the \ac{BHH}.
+\section{Performance Log}\label{sec:bhh:performance_log}
 
-\index{Model}
-\section{Model}
-\label{sec:bhh:model}
-
-The \index{Model}model refers to the target model to be optimised and is usually expressed as a complex mathematical function. For this dissertation, the authors focused specifically on shallow \acp{FFNN} (only one hidden layer). Figure \ref{fig:shallow_ffnn} below presents such a shallow \acp{FFNN}.
-
-\begin{figure}[htbp]
-      \centering
-      \includegraphics[width=0.4\textwidth]{shallow_ffnn.pdf}
-      \caption[Shallow \index{Feedforward Neural Network}Feedforward Neural Network]{An illustration of
-            a shallow \index{Feedforward Neural Network}Feedforward Neural Network.}
-      \label{fig:shallow_ffnn}
-\end{figure}
-
-\section{Train and Test Datasets}
-\label{sec:bhh:train_test_datasets}
-
-The training of \ac{FFNN} is a supervised learning problem as was highlighted in Chapter \ref{chap:anns}. Therefore, the \ac{BHH} trains the model on training data from the training set, while is reserves an unseen set of test data in the test dataset for evaluation. It should be mentioned that the goal of the \ac{BHH} is to generalise well to the test set across a number of problem domains. As was previously mentioned, the test set should be sufficiently large to truly evaluate for generalisation capabilities. For the \ac{BHH}, it is proposed to have a 80-20\% split between the training and test set.
-
-\section{Loss/Cost Function}
-\label{sec:bhh:loss_function}
-
-Chapter \ref{chap:anns} presented the concept of a loss/cost function that is used to evaluate the performance of \acp{ANN}. The \ac{BHH} uses this loss/cost function to evaluate the performance of a heuristic-entity combination. For classification problems, generally some entropy loss is used. For classification problems with 2 classes, \ac{BinXE} is used and for classification problems with more than 2 classes, the \ac{SparseCatXE} is used. For regression problems it is recommended to use some mean error measurement such as \ac{MSE} or \ac{RMSE}.
-
-The loss/cost function is very important as this metric is used to evaluate model performance as a result of the application of a heuristic to an entity's candidate solution. The \ac{BHH} used this performance metric to bias towards good heuristic-entity combinations.  The continuous valued cost/loss function is translated into a discrete valued representation through a credit assignment strategy that is implemented in the \ac{BHH}. The credit assignment strategies is discussed in Section \ref{sec:bhh:credit_assignment_strategy}.
-
-\section{Domain Barrier}
-\label{sec:bhh:domain_barrier}
-
-The domain barrier presents the boundary of information flow between the heuristic space and the solution space. It is mentioned in Section \ref{sec:bhh:loss_function} that the heuristic-entity loss is used by the \ac{BHH}. Notice that the \ac{BHH} uses this performance information and no information from the solution space itself. Furthermore, the \ac{BHH} maps this loss to a credit assignment problem as is mentioned by Burke et al.~\cite{ref:burke:2010}. The \ac{BHH} at a high level, is not aware of the actual candidate solution that is represented by the entity, but rather just that there is a candidate solution with a unique identifier that, together with a heuristic, produced a certain level of performance. The domain barrier is a feature that occurs in al \acp{HH}.  Burke et al.~\cite{ref:burke:2010} states that the \ac{HH} collects domain-independent information from the domain barrier. A number of examples of domain independent information is given, these include the number of heuristics, the changes in evaluation function, whether a new solution was found or generated, the distance between two solutions, whether it has become stuck.
-
-\index{Performance Log}
-\section{Performance Log}
-\label{sec:bhh:performance_log}
-
-Recall that the \ac{BHH} incorporates a Bayesian probabilistic implementation. Evidence is required to train the \ac{BHH}. The performance log is used to keep memory of a slice of the performance history. The performance log is simply a tabular implementation that tracks random events. The \ac{BHH} suggests the following metrics to keep track of in the performance log:
+The \acs{BHH} incorporates a form of probabilistic modeling in its selection mechanism. Probability is calculated based on \index{heuristic}heuristic-entity performance over time. Evidence of \index{heuristic}heuristic-entity performance is thus required for the \acs{BHH} to learn. Since the performance log can become very big, only a sliding window of the performance history is maintained at each step in the learning process. The sliding window is also referred to as a \textit{replay} buffer, a term borrowed from the field of \acf{RL}. The replay window size is defined as a hyper-parameter of the \acs{BHH}. The performance log is then simply a table of events and metrics. The \acs{BHH} tracks the following metrics in the performance log.
 
 \begin{itemize}
       \item \textbf{step}: The current mini-batch step.
 
-      \item \textbf{heuristic}: The selected heuristics' index.
+      \item \textbf{\index{heuristic}heuristic}: The selected heuristic's index.
 
-      \item \textbf{entity}: The applied entity's index.
+      \item \textbf{entity}: The entity's index to whom the \index{heuristic}heuristic is applied.
 
-      \item \textbf{loss}: The heuristic-entity performance metric.
+      \item \textbf{loss}: The \index{heuristic}heuristic-entity performance metric. The loss is retrieved from the loss function.
 
-      \item \textbf{ibest loss}: Keeps track of the \textit{iteration} best loss. Thus, the best loss value achieved by all all entity-heuristic combinations for a single mini-batch step.
+      \item \textbf{ibest loss}: Keeps track of the \textit{iteration} best loss. Thus, the best loss value achieved by all entity-\index{heuristic}heuristic combinations, for a single mini-batch step.
 
-      \item \textbf{rbest loss}:  Keeps track of the \textit{replay} best loss. Thus, the best loss value achieved by all all entity-heuristic combinations over all mini-batch steps currently in the performance log.
+      \item \textbf{rbest loss}:  Keeps track of the \textit{replay} best loss. Thus, the best loss value achieved by all entity-\index{heuristic}heuristic combinations, over all mini-batch steps currently in the performance log/replay buffer.
 
-      \item \textbf{gbest loss}:  Keeps track of the \textit{global} best loss. Thus, the best loss value achieved by all all entity-heuristic combinations over all mini-batch steps thus far.
+      \item \textbf{gbest loss}:  Keeps track of the \textit{global} best loss. Thus, the best loss value achieved by all entity-\index{heuristic}heuristic combinations over all mini-batch steps thus far.
 \end{itemize}
 
-The performance log as implemented by the \ac{BHH} is given in Table \ref{tab:bhh:performance_log:performance_log_example} below.
+\noindent
+An example of the performance log implemented by the \acs{BHH} is given in Table \ref{tab:bhh:performance_log:performance_log_example} below.
 
 \begin{table}[htbp]
       \centering
-      \caption{Performance log example showing the first 5 entity's selected heuristics for step 1 and their resulting performance measurements.}
+      \caption{An example of the performance log implemented by the \acs{BHH}, showing the first 5 entities, their allocated \index{heuristic}heuristics and their resulting performance measurements for step 1 of the training process.}
       \label{tab:bhh:performance_log:performance_log_example}%
       \par\bigskip
       \resizebox{\textwidth}{!}{
             \begin{tabular}{cccccccc}
-                  \textbf{step} & \textbf{entity} & \textbf{heuristic} & \textbf{loss} & \textbf{ibest loss} & \textbf{pbest Loss} & \textbf{rbest loss} & \textbf{gbest loss} \\
+                  \textbf{step} & \textbf{entity} & \textbf{heuristic} & \textbf{loss} & \textbf{ibest loss} & \textbf{pbest loss} & \textbf{rbest loss} & \textbf{gbest loss} \\
                   \midrule
                   1             & 1               & 1                  & 0.016444      & 0.016444            & 0.016444            & 0.016444            & 0.016444            \\
                   1             & 2               & 2                  & 0.337965      & 0.016444            & 0.337965            & 0.016444            & 0.016444            \\
@@ -295,41 +247,33 @@ The performance log as implemented by the \ac{BHH} is given in Table \ref{tab:bh
       }
 \end{table}%
 
-The performance log itself introduces a number of design considerations as well. Since the log contains a slice of memory, there should exists a trade-off between the following parameters:
-
-\begin{itemize}
-      \item \textbf{performance log size}: The larger the performance log, the longer memory is retained.The performance log size controls the recency of evidence from which new beliefs must be derived. This parameter is called the \textit{replay} window size, a term borrowed from \ac{RL} and should be empirically tested. If the replay window size is too small, it does not accumulate enough samples/evidence to really statistically make accurate classifications. If the replay window size is too back, the \ac{BHH} might remember too much of past performance and it could be that past performance is not indicative of future performance during the training process. Notice then that the performance log must be pruned to maintain a fixed replay window size. Dynamic replay window sizes is left as a research component for the future.
-
-      \item \textbf{performance log reanalysis}: Consider the temporal nature of the performance log. Since it tracks all random events across all steps in the training process, it is needed to reanalyse the performance log appropriately in order to update the past information in the performance log with newly added data. An example of this is when a new rbest value has been found. Then the entire performance log's rbest loss must be updated.
-\end{itemize}
-
-The performance log should be considered along with the selection of credit assignment strategy used. These are discussed next.
+\noindent
+The performance log itself introduces a number of design considerations as well. The larger the performance log, the longer memory is retained throughout the training process. The performance log size, referred to as the \textit{replay window size}, controls the recency of evidence from which the \acs{BHH} must learn. If the replay window size is too small, it does not accumulate enough samples/evidence to statistically make accurate selections. If the replay window size is too big, a bias could exist for selecting \index{heuristic}heuristics that performed well in the past. Furthermore, it is not guaranteed that past performance is indicative of future performance during the training process. The performance log should be considered along with the selection of a credit assignment strategy. Credit assignment strategies are presented in the following section.
 
 
-\index{Credit Assignment Strategy}
 \section{Credit Assignment Strategy}
 \label{sec:bhh:credit_assignment_strategy}
 
-The credit assignment strategy is an implementation that maps a continuous performance metric into a discrete credit metric. This component implements the ``move acceptance'' process as proposed by Özcan et al.~\cite{ref:ozcan:2006,ref:ozcan:2008}. It determines if a given performance is deemed good or not. This simple discrete transformation is subject to the credit assignment problem as discussed by Burke et al.~\cite{ref:burke:2010}. A good credit assignment strategy will correctly allocate credit to the appropriate heuristic-entity combination. THe magnitude of this credit is to be empirically tested.  It is later shown how these credit metrics are used to accumulate ``pseudo counts'' which concentrates/biases heuristic selection towards good performing heuristics. The \ac{BHH} propose the following initial credit assignment strategies.
+The credit assignment strategy is a mechanism that assigns a discrete credit indicator to \index{heuristic}heuristics that perform well, based on their performance metrics such as loss. The credit assignment strategy implements the ``move acceptance'' process as proposed by~\citeauthor{ref:ozcan:2006}~\cite{ref:ozcan:2006,ref:ozcan:2008} and addresses the credit assignment problem as discussed by~\citeauthor{ref:burke:2010}~\cite{ref:burke:2010}. A good credit assignment strategy will correctly allocate credit to the appropriate \index{heuristic}heuristic-entity combination. The credit assignment strategy to use is defined as a hyper-parameter. The \acs{BHH} implements the following credit assignment strategies to choose from.
 
 \begin{itemize}
-      \item \textbf{ibest}: Credit is assigned to the heuristic-entity combination that set the \textit{ibest} loss value, meaning that it is the entity-heuristic combination that achieved the best performance in the current mini-batch iteration.
+      \item \textbf{ibest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{ibest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that achieved the best performance in the current mini-batch iteration.
 
-      \item \textbf{pbest}: Credit is assigned to the heuristic-entity combination that set the \textit{pbest} loss value, meaning that it is the entity-heuristic combination that was able to improve on it's personal best past performance loss.
+      \item \textbf{pbest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{pbest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that was able to improve on its personal best past performance loss.
 
-      \item \textbf{rbest}: Credit is assigned to the heuristic-entity combination that set the \textit{rbest} loss value, meaning that it is the entity-heuristic combination that achieved the best performance in the current replay window.
+      \item \textbf{rbest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{rbest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that achieved the best performance in the current replay window.
 
-      \item \textbf{gbest}: Credit is assigned to the heuristic-entity combination that set the \textit{gbest} loss value, meaning that it is the entity-heuristic combination that achieved the overall best performance so far.
+      \item \textbf{gbest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{gbest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that achieved the overall best performance so far.
 
-      \item \textbf{symmetric}: A credit assignment strategy that gives credit to all entity-heuristic combinations regardless of performance. This credit assignment strategy suggests that ``symmetric'' credit assignment be given. As a result, any bias that arise from uncertainty or as a result of an untrained \ac{BHH} model, in the beginning, is maintained and further strengthened throughout the training process . Notice that this credit assignment strategy does not randomly assign credit, it simply assigns credit to the all events that are a result of random selection, which could be possibly be biased.
+      \item \textbf{symmetric}: Credit is assigned to all entity-\index{heuristic}heuristic combinations, regardless of their performance. The symmetric credit assignment strategy does not randomly assign credit, but rather assigns credit to all events. In effect, no learning and performance-bias is achieved with the symmetric credit assignment strategy and thus, the symmetric credit assignment strategy is implemented as a basis for comparison. Comparing a credit assignment staretegy to the symmetric credit assignment indicates the ability of the other credit assignment strategy to have an effect on the learning process and performance of the \acs{BHH}.
 \end{itemize}
 
-The implementation of a credit assignment strategy is a pure, stateless function that translates input $P$ from the performance log into output $C$ as is given in Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example} below.
-
+\noindent
+The implementation of a credit assignment strategy is simply a function that translates the performance log from Table \ref{tab:bhh:performance_log:performance_log_example}, into Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example} below.
 
 \begin{table}[htbp]
       \centering
-      \caption{Credit assignment strategy output table showing \textit{ibest} credit assignment for the first 5 entity's and their selected heuristics for step 1 of the training process.}
+      \caption{Credit assignment strategy output table showing \textit{ibest} credit assignment for the first 5 entities and their selected heuristics, for step 1 of the training process.}
       \label{tab:bhh:credit_assignment_strategy:credit_assignment_example}%
       \par\bigskip
       \resizebox{0.4\textwidth}{!}{
@@ -345,60 +289,60 @@ The implementation of a credit assignment strategy is a pure, stateless function
       }
 \end{table}%
 
-Credit assignment is a key component of the \ac{BHH} is it will later be shown in Section \ref{sec:bhh:optimisation_step} how these credit assignments are used to optimise the \ac{BHH}. First, it is necessary to present the selection mechanism.
+\noindent
+Credit is used by the selection mechanism of the \acs{BHH}. The selection mechanism is presented in the following section.
 
 
-\index{Selection Mechanism}
-\section{Selection Mechanism}
-\label{sec:bhh:selection_mechanism}
+\section{Selection Mechanism}\label{sec:bhh:selection_mechanism}
 
-This section aims to provide the reader with the detail around the selection mechanism as it is implemented by the \ac{BHH}. It is mentioned throughout this document that the \ac{BHH} implements a predictive model based on Bayesian probabilistic concepts. In probabilistic modeling it is necessary to identify all the random events that can occur.
+This section aims to provide the reader with the detail around the selection mechanism as it is implemented by the \acs{BHH}. It is mentioned throughout this document that the \acs{BHH} implements a predictive model based on Bayesian probabilistic concepts. In probabilistic modeling it is necessary to identify all the random events that can occur.
 
-\index{Random Events}
 \subsection{Random Events}
 \label{sec:bhh:selection_mechanism:random_events}
 
-Observation of random events is treated as evidence. In the context of a Bayesian approach, this evidence is used to update prior beliefs. The \ac{BHH} distinguishes between the following events:
+Observation of random events is treated as evidence. In the context of a Bayesian approach, this evidence is used to update prior beliefs. The \acs{BHH} distinguishes between the following events.
 
 \begin{itemize}
       \item \textbf{$H$}: The event of observing \textit{heuristics}.
       \item \textbf{$E$}: The event of observing \textit{entities}.
-      \item \textbf{$C$}: The event of observing \textit{credit assignments}.
+      \item \textbf{$C$}: The event of observing \textit{credit assignments} that indicate that the credit assignment \textit{performance criteria} is met.
 \end{itemize}
 
-It should be noted that this information is observed direclty from the performance log presented in Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example} above. From the above list, the event $C$ is dependent on the occurrence of $H$ and $E$. However, for simplification, an argument for independence can be made.
+\noindent
+It should be noted that event information is stored and observed direclty from the performance log as presented in Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}. From the above list of events, the event $C$ is dependent on the occurrence of $H$ and $E$ and a credit assignment strategy.
 
-\index{Independence}
-\subsection{Independence}
-\label{sec:bhh:selection_mechanism:independence}
+\subsection{Independence}\label{sec:bhh:selection_mechanism:independence}
 
-The dependence between random events can have a drastic impact on the probabilistic model that is implemented. For simplicity, the \ac{BHH} assumes independence between events, although the event $C$ is clearly dependent on the occurrence of $H$ and $E$. Notice that the \ac{BHH} is fundamentally a classifier, classifying which heuristic to select given an entity and performance criteria. It is later shown in Section \ref{sec:bhh:selection_mechanism:naive_bayes} that the \ac{BHH} implements a Naïve Bayes classifier. Domingos et al.~\cite{ref:domingos:1997} mentions that although Bayesian classifiers’ probability estimates are only optimal under quadratic loss if the independence assumption holds, the classifier itself can be optimal under zero-one loss (misclassification rate) even when this assumption is violated by a wide margin. This means that independence can be assumed when the probabilistic model is used as a classifier and not to get real probabilities. Evaluating for proportionality and not precision allows for the assumption of independence.
+The dependence between random events can have an impact on the probabilistic model that is implemented. For simplicity, the \acs{BHH} assumes independence between events, although the event $C$ is clearly dependent on the occurrence of $H$ and $E$. Furthermore, the \acs{BHH} assumes independence between steps  and treats each training step as if training has restarted. The \acs{BHH} implements a form of Naïve Bayes classifier, where the appropriate heuristic to assign to an entity is a classification problem. \citeauthor{ref:domingos:1997}~\cite{ref:domingos:1997} mentions that although Bayesian classifiers’ probability estimates are only optimal under quadratic loss if the independence assumption holds, the classifier itself can still be optimal under zero-one loss (misclassification rate), even when this assumption is violated by a wide margin. This means that independence can be assumed when the probabilistic model is used as a classifier.
 
 \index{Bayes' Theorem}
-\subsection{Bayes' Theorem}
-\label{sec:bhh:selection_mechanism:bayes_theorem}
+\subsection{Bayes' Theorem}\label{sec:bhh:selection_mechanism:bayes_theorem}
 
-Section \ref{sec:bhh:selection_mechanism:random_events} presented the reader with the random events that are observed by the \ac{BHH} and Section \ref{sec:bhh:selection_mechanism:independence} provided an argument for independence between events. Chapter \ref{chap:probability} presented Bayes Theorem, but for convenience, it is given again in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} below.
+Chapter \ref{chap:probability} presented \index{Bayes' Theorem}Bayes' Theorem, but for convenience, it is given again in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:bayes_theorem}
       P(A \vert B) = \frac{P(B \vert A)P(A)}{P(B)}
 \end{equation}
 
-As was indicated in Section \ref{sec:bhh:selection_mechanism:independence}, Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} can be evaluated for proportionality since the \ac{BHH} is not concerned with actual accurate selection probabilities, but rather implements a Bayesian classifier. The resulting proportionality is expressed in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem_prop_to} below
+\noindent
+Since the \acs{BHH} implements a Bayesian classifier, the \acs{BHH} is not concerned with actual probabilities. Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} can thus be evaluated for proportionality. The resulting proportionality is expressed in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem_prop_to} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:bayes_theorem_prop_to}
       P(A \vert B) \propto P(B \vert A)P(A)
 \end{equation}
 
-Notice how the Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem_prop_to} implements a Bayesian conditionally. This conditionality can be extended to include multiple criteria. The next section shows how the Bayesian classifier is implemented by providing the detail around the implemented predictive model.
+\noindent
+The conditionality implemented by \index{Bayes' Theorem}Bayes' Theorem can be extended to include multiple criteria. \index{Bayes' Theorem}Bayes' Theorem is used by the selection mechanism of the \acs{BHH}. The predictive model that is used by the selection mechanism of the \acs{BHH} is presented in the following section.
 
+\subsection{Predictive Model}\label{sec:bhh:selection_mechanism:predictive_model}
 
-\subsection{Predictive Model}
-\label{sec:bhh:selection_mechanism:predictive_model}
-
-Finally the reader is presented with the underlying predictive model as implemented by the \ac{BHH}. This component is arguably the most important component of the entire \ac{BHH} as it fundamentally drives the output of the \ac{BHH}. Bayes Theorem as was shown again in Section \ref{sec:bhh:selection_mechanism:bayes_theorem} above can be used to implement a predictive model to predict which heuristic to select, given the conditionality of a particular entity and a particular credit assignment criteria is met. Consider the following setup. Let
+This section presents the predictive model as implemented by the selection mechanism of the \acs{BHH}. The predictive model is arguably the most important component of the \acs{BHH}, as it drives heuristic selection process. The \acs{BHH} implements a predictive model that predicts which heuristic to select, given the conditionality that a particular entity is used and a particular credit assignment criteria is met. The predictive model can be derived as follows.\\\\
+\textbf{Setup}:
+\\
+\noindent
+Let
 
 \begin{itemize}
       \item $I$: Denote the maximum number of instances in the replay window.
@@ -410,16 +354,21 @@ Finally the reader is presented with the underlying predictive model as implemen
       \item $\beta = (\beta_{1}, \dots, \beta_{K})^{J}$: Denote the concentration parameters for the entity-heuristic probability distributions.
       \item $\gamma = (\gamma_{1}, \dots, \gamma_{K})^{L}$: Denote the concentration parameters for the credit-heuristic probability distribution.
 
-      \item $\theta \vert \alpha \sim Dir(\alpha; K)$: Denote the heuristic probability distribution, implementing a Dirichlet probability distribution parameterised by $\alpha$ and $K$. Heuristic selection probabilities are sampled from this distribution.
-      \item $\phi \vert \beta \sim Dir(\beta; K)^{J}$: Denote the entity-heuristic probability distribution, implementing a Dirichlet probability distribution parameterised by $\beta$ and $K$ for each entity in the \index{entity pool}entity pool with population size $J$. Entity-heuristic probabilities are sampled from this distribution.
+      \item $\theta \vert \alpha \sim Dir(\alpha; K)$: Denote the heuristic probability distribution, implementing a \index{Dirichlet probability distribution}Dirichlet probability distribution parameterised by $\alpha$ and $K$. Heuristic selection probabilities are sampled from this distribution.
+
+      \item $\phi \vert \beta \sim Dir(\beta; K)^{J}$: Denote the entity-heuristic probability distribution, implementing a \index{Dirichlet probability distribution}Dirichlet probability distribution parameterised by $\beta$ and $K$ for each entity in the \index{entity pool}entity pool with population size $J$. Entity-heuristic probabilities are sampled from this distribution.
+
       \item $\psi \vert \gamma_{1}, \gamma_{0}  \sim Beta(\gamma_{1}, \gamma_{0})$: Denote the credit-heuristic probability distribution, implementing a Beta probability distribution parameterised by $\gamma_{1}$ and $\gamma_{0}$. Credit-heuristic probabilities are sampled from this distribution.
 
-      \item $H \vert \theta \sim Mult(\theta; I, K)$: Denote the distribution of heuristics (event $H$), implementing a Multinomial distribution, parameterised by the sampled heuristic selection probability $\theta$, the \index{heuristic pool}heuristic pool size $K$ and maximum number of instances $I$.
-      \item $E \vert \phi \sim Mult(\phi; I, K)^{J}$: Denote the distribution of entity-heuristic combinations (event $E$), implementing a Multinomial distribution, parameterised by the sampled entity-heuristic selection probability $\phi$, the \index{heuristic pool}heuristic pool size $K$ and maximum number of instances $I$, for each entity in $J$.
-      \item $C \vert \psi \sim Bin(\psi, I)$: Denote the distribution of credit-heuristic combinations (event $C$), implementing a\index{Binomial probability distribution}Binomial probability distribution, parameterised by the sampled credit-heuristic selection probability $\psi$ and the maximum number of instances $I$.
+      \item $H \vert \theta \sim Mult(\theta; I, K)$: Denote the distribution of heuristics (event $H$), implementing a \index{Multinomial probability distribution}Multinomial distribution, parameterised by the sampled heuristic selection probability $\theta$, the \index{heuristic pool}heuristic pool size $K$ and maximum number of instances $I$.
+
+      \item $E \vert \phi \sim Mult(\phi; I, K)^{J}$: Denote the distribution of entity-heuristic combinations (event $E$), implementing a \index{Multinomial probability distribution}Multinomial distribution, parameterised by the sampled entity-heuristic selection probability $\phi$, the \index{heuristic pool}heuristic pool size $K$ and maximum number of instances $I$, for each entity in $J$.
+
+      \item $C \vert \psi \sim Bin(\psi, I)$: Denote the distribution of credit-heuristic combinations (event $C$), implementing a \index{Binomial probability distribution}Binomial probability distribution, parameterised by the sampled credit-heuristic selection probability $\psi$ and the maximum number of instances $I$.
 \end{itemize}
 
-The parameterised predictive model, as derived from Bayes theorem presented in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} is then given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model} below.
+\noindent
+Vector notation is dropped for sake of convenience, simplicity and readability. The parameterised predictive model, as derived from \index{Bayes' Theorem}Bayes' theorem, is then given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:predictive_model}
@@ -438,17 +387,18 @@ The parameterised predictive model, as derived from Bayes theorem presented in E
             &= \frac{
                   P(E \vert H;  \phi)  P(C \vert H;  \psi) P(H \vert \theta)
             }{
-                  \left[ \sum_{k}^{K} P(E, H=k \vert \theta, \psi) \right] \left[ \sum_{k}^{K}  P(C, H=k \vert \theta, \phi) \right]
+                  \left[ \sum_{k}^{K} P(E, H=k \vert \theta, \phi) \right] \left[ \sum_{k}^{K}  P(C, H=k \vert \theta, \psi) \right]
             } \\
             &= \frac{
                   P(E \vert H;  \phi)  P(C \vert H;  \psi) P(H \vert \theta)
             }{
-                  \left[ \sum_{k}^{K} P(E \vert H=k \vert \phi) P(H=k \vert \theta) \right] \left[ \sum_{k}^{K} P(C \vert H=k \vert \psi) P(H=k \vert \theta) \right]
+                  \left[ \sum_{k}^{K} P(E \vert H=k, \phi) P(H=k \vert \theta) \right] \left[ \sum_{k}^{K} P(C \vert H=k, \psi) P(H=k \vert \theta) \right]
             }
       \end{split}
 \end{equation}
 
-Notice the joint probability over events $E$ and $C$ given the selection of a heuristic $H$ denoted by the sums of the products of the separate parts, for $E$ and $C$, in the denominator. The calculation in the denominator can be intractable as has been previously indicated. However, in order to derive the posterior distribution as given in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem}), one only has to evaluate to proportionality as is given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} below.
+\noindent
+Notice the joint probability over events $E$ and $C$, given the selection of a heuristic $H$, denoted by the sums of the products of the separate parts, for $E$ and $C$, in the denominator. The calculation in the denominator can be intractable. Since the \acs{BHH} selection mechanism uses the predictive model as a classifier, the posterior distribution as given in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem}), can be evaluated for proportionality, as is given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:predictive_model_prop_to}
@@ -457,16 +407,16 @@ Notice the joint probability over events $E$ and $C$ given the selection of a he
       \end{split}
 \end{equation}
 
-The predictive model thus models the \textit{proportional} probability of the event (selection of) heuristic $H$, given allocation to entity $E$ and credit $C$, parameterised by sampled $\theta$, $\phi$ and $\psi$. These parameters are in turn parameterised by concentrations $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$ which denote the prior beliefs of the \ac{BHH}.
+\noindent
+The predictive model thus models the \textit{proportional} probability of the event (selection of) heuristic $H$, given allocation to entity $E$ and credit $C$, parameterised by sampled $\theta$, $\phi$ and $\psi$. These parameters are in turn parameterised by concentrations $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$, which denote the prior beliefs of the \acs{BHH}.
 
 
 \index{Naïve Bayes}
-\subsection{Naïve Bayes}
-\label{sec:bhh:selection_mechanism:naive_bayes}
+\subsection{Naïve Bayes}\label{sec:bhh:selection_mechanism:naive_bayes}
 
-This section aims to dissect the probabilistic model that is presented in Equestion \ref{eq:bhh:selection_mechanism:predictive_model_prop_to}. It has been established in Section \ref{sec:bhh:selection_mechanism:independence} that for \index{Naïve Bayes} naïve Bayes classifiers, independence between events can be assumed. The following derived \acp{PMF} are provided as fundamental building blocks that are later shown to be used in the optimisation process of the \ac{BHH} as is shown in Section \ref{sec:bhh:optimisation_step}.
+This section aims to dissect the probabilistic model that is presented in Equestion~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to}. The \acs{BHH} implements a form of Naïve Bayes classifier and thus, independence between events can be assumed. The following derived \acp{PMF} are provided as fundamental building blocks to show the mechanism by which the \acs{BHH} learns.
 
-The independence between events for the class label $H$ simply yields the \ac{PMF} of the Multinomial distribution as presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf} below.
+The independence between events for class label $H$, simply yields the \ac{PMF} of the \index{Multinomial probability distribution}Multinomial distribution as presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:h_pmf}
@@ -479,14 +429,11 @@ The independence between events for the class label $H$ simply yields the \ac{PM
       \end{split}
 \end{equation}
 
-Where $N_{k}$ is a summary variable such that $N_{k} = \sum_{i=i}^{I}
-      \mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the event
-$h_{i}$ taking on class $k$, i.e. the count of occurrences of heuristic $k$ in
-$I$ independent, identical runs.
+\noindent
+In Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf} above, $N_{k}$ is a summary variable such that $N_{k} = \sum_{i=i}^{I} \mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the event $h_{i}$ taking on class $k$ in $I$ independent, identical runs.
 
-The independence between events $E$ given class label $H$ is denoted by the likelihood of $E$
-conditional to the occurrence of heuristic $k$ and model parameter $\phi$ as
-presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} below.
+The independence between events $E$, given class label $H$, is denoted by the likelihood of $E$,
+conditional to the occurrence of heuristic $k$ and model parameter $\phi$ as is given in in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf}
@@ -499,15 +446,10 @@ presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} bel
       \end{split}
 \end{equation}
 
-Where $N_{j,k}$ is a summary variable such that $N_{j,k} = \sum_{i=i}^{I}
-      \mathbbm{1}_{1}(e_{i,j,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of
-occurrences of the events $e_{i}$ taking on class $j$ and $h_{i}$ taking on
-class $k$, i.e. the count of occurrences of both entity entity $e$ and heuristic
-$k$ occurring together in $I$ independent, identical runs.
+\noindent
+In Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} above, $N_{j,k}$ is a summary variable such that $N_{j,k} = \sum_{i=i}^{I} \mathbbm{1}_{1}(e_{i,j,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the events $e_{i}$ taking on class $j$ and $h_{i}$ taking on class $k$, i.e. the count of occurrences of both entity entity $e$ and heuristic $k$ occurring together in $I$ independent, identical runs.
 
-Finally, the independence between events for the performance criteria feature $C$ given class
-label $H$ is denoted by the likelihood of $C$ conditional to the occurrence of
-heuristic $k$ and model parameter $\psi$ as given in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} below.
+Finally, the independence between events for the performance criteria $C$, given class label $H$, is denoted by the likelihood of $C$, conditional to the occurrence of heuristic $k$ and model parameter $\psi$ as given in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf}
@@ -521,18 +463,11 @@ heuristic $k$ and model parameter $\psi$ as given in Equation~\eqref{eq:bhh:sele
       \end{split}
 \end{equation}
 
-Where $N_{k}$ is the summary variable as described for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} above.
-$N_{1,k}$ is a summary variable such that $N_{1,k} = \sum_{i=1}^{I}
-      \mathbbm{1}_{1}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of
-occurrences of the events $c_{i}$ taking on a success $(c_{i}=1)$ and $h_{i}$
-taking on class $k$, i.e. the count of occurrences of both succeeding in the
-performance criteria and heuristic $k$ occurring together in $I$ independent,
-identical runs. Similarly $N_{0,k} = N_{k} - N_{1,k}$ would denote the count of
-occurrences of the events $c_{i}$ taking on a failure $(c_{i}=0)$ and $h_{i}$
+\noindent
+In Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} above, $N_{k}$ is the same summary variable as described for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}. $N_{1,k}$ is a summary variable such that $N_{1,k} = \sum_{i=1}^{I} \mathbbm{1}_{1}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the events $c_{i}$ taking on a success $(c_{i}=1)$ and $h_{i}$ taking on class $k$, i.e. the count of occurrences of both succeeding in the performance criteria and heuristic $k$ occurring together in $I$ independent, identical runs. Similarly $N_{0,k} = N_{k} - N_{1,k}$ would denote the count of occurrences of the events $c_{i}$ taking on a failure $(c_{i}=0)$ and $h_{i}$
 taking on class $k$.
 
-
-Given the assumptions of the naïve Bayes classifier, one could supplement Equations \ref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}, \ref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} and \ref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} above into the proportional evaluation of the predictive model as given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to}. This is presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} below.
+Equations~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}, \eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} and \eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} can be supplemented into the proportional evaluation of the predictive model as given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} and is given in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} below.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}
@@ -543,14 +478,12 @@ Given the assumptions of the naïve Bayes classifier, one could supplement Equat
       \end{split}
 \end{equation}
 
-Computationally the equation presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} will underflow if the resulting probabilities are very small.
+\noindent
+Consider the practical implementation of the predictive model as shown in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} above. Computationally the equation presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} will underflow on a real computer if the resulting probabilities are very small. Discussions follow on numerical stability as it relates to practical implementation.
 
+\subsection{Numerical Stability}\label{sec:bhh:selection_mechanism:numerical_stability}
 
-\index{Numerical Stability}
-\subsection{Numerical Stability}
-\label{sec:bhh:selection_mechanism:numerical_stability}
-
-When evaluating for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplying multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfills a credit assignment, yielding an extremely small probability for $\psi$. A solution to this problem is to apply the \textit{log-sum-exp trick}, parameterising distributions no longer using logits rather than probabilities. The transformation of Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given below in Equation~\eqref{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}.
+When evaluating for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplying multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfills a credit assignment, yielding an extremely small probability for $\psi$. A solution to the aforementioned problem is to apply the \textit{log-sum-exp} trick. The transformation of Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given below in Equation~\eqref{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}.
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}
@@ -559,15 +492,12 @@ When evaluating for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_
       \end{split}
 \end{equation}
 
+\noindent
 The log-sum-exp trick as shown above caters for very small probabilities, however, there might be a situation where  a random event is never seen, purely by chance. This results in a scenario referred to as \textit{mode collapse} and is discussed next.
 
-\index{Mode Collapse}
-\subsection{Mode Collapse}
-\label{sec:bhh:selection_mechanism:mode_collapse}
+\subsection{Mode Collapse}\label{sec:bhh:selection_mechanism:mode_collapse}
 
-Mode collapse is the situation that occurs where the selective pressure towards a heuristic is close to zero, as a results of random sampling, low initial bias or bad performance. This leads to a situation where to probabilistic model continually decrease the selective pressure until the selection probability of that heuristic is 0, yielding no further observations of that particular random event. This could be problematic and should be addressed.
-
-The \ac{BHH} addresses this issue by:
+Mode collapse is the situation that occurs where the selective pressure towards a heuristic is close to zero as a results of random sampling, low initial bias or bad performance. This leads to a situation where the probabilistic model continually decreases the selective pressure, until the selection probability of that heuristic is 0, yielding no further observations of that particular random event. The \acs{BHH} addresses the aforementioned issue by:
 
 \begin{itemize}
       \item Using \textit{symmetric} initialisation of the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$.
@@ -577,52 +507,24 @@ The \ac{BHH} addresses this issue by:
       \item Continuously resampling heuristics throughout the training process, before and after optimisation, eliminating mode collapse as a result of just random sampling.
 \end{itemize}
 
-Another suggestion is to ensure that at least one of every heuristic is always selected during training. The \ac{BHH} does not incorporate this model as this could result in a situation where a bad choice of heuristic is continually used throughout the training process, possibly resulting in bad update steps/selections. Instead the \ac{BHH} relies on the underlying learning process to control the selective pressure according to performance and nothing else. If this leads to a situation where mode collapse occurs, the \ac{BHH} accepts this outcome.
+\noindent
+Another suggestion is to ensure that at least one of every heuristic is always selected during training. The \acs{BHH} does not incorporate this model as this could result in a situation where a bad choice of heuristic is continually used throughout the training process, possibly resulting in bad update steps/selections. Instead, the \acs{BHH} relies on the underlying learning process to control the selective pressure according to performance and nothing else. If this leads to a situation where mode collapse occurs, the \acs{BHH} accepts the outcome.
 
-This section briefly touched on parameter initialisation. The next section discusses the initialisation process of the \ac{BHH} in detail.
+\section{Optimisation Step}\label{sec:bhh:optimisation_step}
 
-\section{Initialisation Step}
-\label{sec:bhh:initialisation_step}
+Thus far all the fundamental components of the \acs{BHH} has been presented. The final step that is missing is to present the optimisation step by which the learning process takes place. This section aims to provide a solid mathematical explanation to show exactly how the \acs{BHH} is able to learn.
 
-This section sheds light into the initialisation of the \ac{BHH} and how it applies to the heuristic and \index{entity pool}entity pools. Since the \index{heuristic pool}heuristic pool is a collection of stateless heuristic proxy operations, there is no explicit initialisation that is applied to the \index{heuristic pool}heuristic pool itself. On the contrary, the \index{entity pool}entity pool is stateful and maintain candidate solutions. Chapter \ref{chap:anns} presented various initialisation strategies to randomly place candidate solutions in the solution space. The \ac{BHH} can make use of any of these initialisation strategies and as such, by default makes use of \index{Glorot uniform sampling}Glorot uniform sampling. All other entity state parameters are initialised to be zero.
+The intent of the \acs{BHH} is to gather evidence that can be use to update prior beliefs about which heuristics perform well during training. These beliefs are represented by the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$. A change in prior beliefs is represented by a change in these concentration parameters. Specifically, it can be said, that the optimisation process implemented by the \acs{BHH}, updates \textit{pseudo counts} of events that are observed in the performance logs. These pseudo counts track the occurrence of a heuristic, an entity and resulting performance of these two elements. Through the credit assignment strategy, these pseudo counts are biased towards entity-heuristic combinations that meet performance requirements and yield credit allocations.
 
-The selection mechanism also requires initialisation. Section \ref{sec:bhh:selection_mechanism:predictive_model} introduces the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$. These parameters \textit{symmetrically} initialised, meaning that they are all initialised to the value of one in all dimensions. Section \ref{sec:bhh:optimisation_step:a_priori_bias} shows that these concentration parameters can be used to introduce \textit{a priori} biases based on expert knowledge. The next section provides the detail around the selection mechanism that is implemented by the \ac{BHH}.
+The \acs{BHH} is an adaptive \ac{HH}, meaning that it implements online learning. Online learning refers to a process where learning happens during the training process. Throughout the training process, concentration parameters are updated strategically to guide the selection mechanism towards heuristics that perform well. The learning capability of the \acs{BHH} lies in carefully updating these concentration parameters. Another possibility is to introduce \textit{a priori} information in the form of expert knowledge. A priori biases can be introduced by carefully setting the concentration parameters to values that are known to be good.
+
+Generally, there are two different techniques that are used to train Naïve Bayes classifiers. The frequentist approach implements \acf{MLE} and the Bayesian approach implements \acf{MAP}. These methods are provided in Sections \ref{sec:bhh:optimisation_step:mle} and \ref{sec:bhh:optimisation_step:map} respectively and show how the concentration parameters are updated throughout the training process, yielding the mechanism by which optimisation and learning takes place. It should be mentioned that the \acs{BHH} makes use of \acs{MAP} to optimise the predictive model. However, the details of \acs{MLE} is provided as well as it contains fundamental mathematical building blocks that are required to present \acs{MAP}.
 
 
-\section{Optimisation Step}
-\label{sec:bhh:optimisation_step}
+\index{maximum likelihood estimation}
+\subsection{Maximum Likelihood Estimation}\label{sec:bhh:optimisation_step:mle}
 
-Thus far the reader has been presented with all the fundamental components of the \ac{BHH}. The final step that is missing is to present the optimisation step by which the optimisation process takes place. This section aims to provide a solid  mathematical explanation to show exactly how the \ac{BHH} is able to learn.
-
-The \ac{BHH} is an adaptive \ac{HH}, meaning that it implements online learning. Online learning refers to the continuous learning process that is executed by the \ac{BHH} while training is taking place. Throughout the training process, concentration parameters are updated strategically to guide the selection mechanism towards heuristics that perform well. The learning capability of the \ac{BHH} lies in the careful updating of these concentration parameters.
-
-Generally there are two different techniques that are used to train naïve Bayes classifiers. The frequentist approach implements \ac{MLE} and the Bayesian approach implements \ac{MAP}. These methods are provided in Sections \ref{sec:bhh:optimisation_step:mle} and \ref{sec:bhh:optimisation_step:map} respectively. It should be mentioned that the \ac{BHH} makes use of \ac{MAP} to optimise the underlying model, however, the authors deem it necessary to provide the details of \ac{MLE} as it contains fundamental mathematical building blocks that are required to understand \ac{MAP}.
-
-It has been established that the \ac{BHH} is a selective \ac{HH} that biases heuristic selection towards a certain performance bias. The concept of performance biases is discussed next.
-
-\index{Performance Bias}
-\subsection{Performance Bias}
-\label{sec:bhh:optimisation_step:performance_bias}
-
-The intent of the \ac{BHH} is to gather evidence that is can use to update its prior beliefs about which heuristics perform well during training. These beliefs are represented by the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$. A change in prior beliefs is represented by a change in these concentration parameters. Sections \ref{sec:bhh:optimisation_step:mle} and \ref{sec:bhh:optimisation_step:map} show how the concentration parameters are updated throughout the training process, yielding the mechanism by which optimisation takes place.
-
-Specifically, it can be said, that the optimisation process employed by the \ac{BHH} updates \textit{pseudo counts} of events that it observes in its performance logs. These pseudo counts track the occurrence of a heuristic, an entity and resulting performance of these two elements. Through the credit assignment strategy that was discussed in Section \ref{sec:bhh:credit_assignment_strategy}, these pseudo counts are biased towards entity-heuristic combinations that meet credit requirements and yield credit allocations i.e. credit pseudo counts. It is through this concept that the \ac{BHH} is able to bias selection towards performance.
-
-The above mentioned concepts discuss heuristic selection bias by means of online learning. Another possibility is to introduce \textit{a priori} information in the form of expert knowledge. This concept is discussed next.
-
-\index{A Priori Bias}
-\subsection{A Priori Bias}
-\label{sec:bhh:optimisation_step:a_priori_bias}
-
-Section \ref{sec:bhh:optimisation_step:performance_bias} above discusses the role of concentration parameters on the \ac{BHH}. It is further mentioned in Section \ref{sec:bhh:initialisation_step} that these concentration parameters are symmetrically initialised. This simply means that they are uniformly initialised to all have the value of one in all dimensions.
-
-Consider that the intent of the \ac{BHH} is to learn which heuristics to select during training. An expert can inject expert knowledge into the \ac{BHH} by means of these concentration parameters. An example of this is given as follows. It might be well known that a particular heuristic will perform well on a given problem domain. This could be through empirical analysis, part experiences, logical reasoning and deduction or simply by nature of the heuristic itself. A slight bias can be introduced to this heuristic before training starts but slightly scaling the initialised concentration parameter for that particular heuristic so that is more than the other concentration parameters. The \ac{BHH} interprets this encoded concentration parameter as a prior belief and aims to update this parameter as new evidence is collected. The next section introduces the mathematics behind \ac{MLE}.
-
-\index{Maximum Likelihood Estimation}
-\subsection{Maximum Likelihood Estimation}
-\label{sec:bhh:optimisation_step:mle}
-
-In probability theory and statistics, \ac{MLE} is a method that estimates the parameters of some assumed prior probability distribution given newly observed data and evidence. This section shows that the values for $\theta$, $\phi$ and $\psi$ can be estimated by \ac{MLE} to yield equations \ref{eq:bhh:optimisation_step:mle:theta}, \ref{eq:bhh:optimisation_step:mle:phi} and \ref{eq:bhh:optimisation_step:mle:psi} below.
+In probability theory and statistics, \acf{MLE} is a method that estimates the parameters of a prior probability distribution given newly observed data and evidence. This section shows that the values for $\theta$, $\phi$ and $\psi$ can be estimated by \ac{MLE} and is given in Equations \eqref{eq:bhh:optimisation_step:mle:theta}, \eqref{eq:bhh:optimisation_step:mle:phi} and \eqref{eq:bhh:optimisation_step:mle:psi} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:theta}
@@ -645,9 +547,9 @@ In probability theory and statistics, \ac{MLE} is a method that estimates the pa
       \end{split}
 \end{equation}
 
-The calculations of the \ac{MLE} for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and
-$\hat{\psi}_{k}$ are now presented. The log likelihood of $\hat{\theta}$, $\hat{\phi}$ and $\hat{\psi}$ as derived
-from the Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} is given in Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} below.
+\noindent
+The derivations of the \acs{MLE} for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and
+$\hat{\psi}_{k}$ are presented as follows. The log likelihood of $\hat{\theta}$, $\hat{\phi}$ and $\hat{\psi}$ as derived from the Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} is given in Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:log_likelihood_all}
@@ -661,7 +563,8 @@ from the Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} is
       \end{split}
 \end{equation}
 
-Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} can be broken down into each of its factors. Consider the log likelihood of $\psi$  as denoted by Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_psi} below.
+\noindent
+Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} can be broken down into each of its components. Consider the log likelihood of $\psi$ as denoted by Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_psi} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:log_likelihood_psi}
@@ -670,7 +573,8 @@ Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} can be broken d
       \end{split}
 \end{equation}
 
-The MLE for $\hat{\psi_{k}} $ can be calculated by taking the derivative of Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_psi} with respect to $\psi_{k}$ and equating to zero as presented in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_psi} as follows.
+\noindent
+The \acs{MLE} for $\hat{\psi_{k}} $ can be calculated by taking the partial derivative of Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_psi} with respect to $\psi_{k}$ and equating to zero as presented in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_psi} as follows.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_psi}
@@ -685,8 +589,8 @@ The MLE for $\hat{\psi_{k}} $ can be calculated by taking the derivative of Equa
       \end{split}
 \end{equation}
 
-
-The value for $\hat{\theta_{k}} $ can be calculated similarly. However, one has to compensate for the $K-1$ simplex $S$ by adding error factor $\epsilon$ to correct values for  $\theta$ where $\sum_{k}^{K} \theta_{k} \neq 1$. The new log likelihood function is then given in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_1} below.
+\noindent
+The \acs{MLE} for $\hat{\theta_{k}} $ can be calculated similarly. However, one has to compensate for the $K-1$ simplex $S$ by adding error factor $\epsilon$, to correct values for $\theta$, where $\sum_{k}^{K} \theta_{k} \neq 1$. The new log likelihood function is then given in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_1} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_1}
@@ -697,6 +601,7 @@ The value for $\hat{\theta_{k}} $ can be calculated similarly. However, one has 
       \end{split}
 \end{equation}
 
+\noindent
 Solving first for $\epsilon$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_2} below.
 
 \begin{equation}
@@ -707,6 +612,7 @@ Solving first for $\epsilon$ yields Equation~\eqref{eq:bhh:optimisation_step:mle
       \end{split}
 \end{equation}
 
+\noindent
 Then solving for $\theta_{k}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_3} as presented below.
 
 \begin{equation}
@@ -721,7 +627,8 @@ Then solving for $\theta_{k}$ yields Equation~\eqref{eq:bhh:optimisation_step:ml
       \end{split}
 \end{equation}
 
-Substituting back into the Equation yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_4} below.
+\noindent
+Substituting $N = \epsilon$ back into Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_3} yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_4} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_4}
@@ -732,7 +639,8 @@ Substituting back into the Equation yields Equation~\eqref{eq:bhh:optimisation_s
       \end{split}
 \end{equation}
 
-The value for $\hat{\phi}_{j, k} $ is calculated very similarly. To compensate for the $K-1$ simplex $S$ an error factor $\lambda = (\lambda_{1}, \dots, \lambda_{J})$ is added. This follows in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1} as is presented below.
+\noindent
+The \acs{MLE} for $\hat{\phi}_{j, k} $ is calculated similarly. To compensate for the $K-1$ simplex $S$ an error $\lambda = (\lambda_{1}, \dots, \lambda_{J})$ is added as is shown in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1}
@@ -743,6 +651,7 @@ The value for $\hat{\phi}_{j, k} $ is calculated very similarly. To compensate f
       \end{split}
 \end{equation}
 
+\noindent
 Solving first for $\lambda_{j}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_2} as is given below.
 
 \begin{equation}
@@ -753,6 +662,7 @@ Solving first for $\lambda_{j}$ yields Equation~\eqref{eq:bhh:optimisation_step:
       \end{split}
 \end{equation}
 
+\noindent
 Then solving for $\phi_{j,k}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_3} below.
 
 \begin{equation}
@@ -767,7 +677,8 @@ Then solving for $\phi_{j,k}$ yields Equation~\eqref{eq:bhh:optimisation_step:ml
       \end{split}
 \end{equation}
 
-Substituting back into the Equation yields equation \ref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_4} below.
+\noindent
+Substituting $N_{j} = \lambda_{j}$ back into Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_3} yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_4} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_4}
@@ -778,24 +689,22 @@ Substituting back into the Equation yields equation \ref{eq:bhh:optimisation_ste
       \end{split}
 \end{equation}
 
-This section provided the mathematical derivations of the MLE equations for $\theta$, $\phi$ and $\psi$. The next section provides the detail around \ac{MAP}, the optimisation process utilised by the \ac{BHH}.
+\index{maximum a posteriori estimation}
+\subsection{Maximum A Posteriori Estimation}\label{sec:bhh:optimisation_step:map}
 
-\index{Maximum a Posteriori Estimation}
-\subsection{Maximum a Posteriori Estimation}
-\label{sec:bhh:optimisation_step:map}
+Another approach to optimising the values for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and $\hat{\psi}_{k}$ is to optimise the parameters by their probability distributions' parameters. This process is referred to as \index{Bayesian analysis}\textit{Bayesian analysis}. This section provides the mathematical details of Bayesian analysis and \acf{MAP} as it is implemented by the \acs{BHH}.
 
-Another approach to optimising the values for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and $\hat{\psi}_{k}$ is to optimise the parameters by their probability distributions' parameters. This process is referred to as \index{Bayesian analysis}\textit{Bayesian analysis}. This section provides the mathematical details of the Bayesian analysis and \ac{MAP} as it is implemented by the \ac{BHH}.
+Bayesian analysis makes use of the \textit{posterior} probability distribution. The posterior distribution is simply expressed proportionally as follows.
 
-Bayesian analysis makes use of the \textit{posterior} probability distribution. The posterior distribution is simply expressed as:
-
-\begin{equation*}
+\begin{equation}
       \label{eq:bhh:optimisation_step:map:bayesian_analysis_lamens}
       \begin{split}
             POSTERIOR \propto LIKELIHOOD \times PRIOR
       \end{split}
-\end{equation*}
+\end{equation}
 
-The likelihood is presented in Equation~\eqref{eq:bhh:optimisation_step:map:bayesian_analysis_lamens} above. The event $H$ is a multinomial distribution with parameter $\theta$. It is known that the conjugate prior to a multinomial distribution is a Dirichlet probability distribution (see Chapter \ref{chap:probability}. The \textit{prior} probability distribution for  $\theta_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_theta_prior} below.
+\noindent
+The event $H$ is a multinomial distribution with probability parameter $\theta$. It is known that the conjugate prior to a multinomial distribution is a \index{Dirichlet probability distribution}Dirichlet probability distribution. The \textit{prior} probability distribution for $\theta_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_theta_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_theta_prior}
@@ -805,6 +714,7 @@ The likelihood is presented in Equation~\eqref{eq:bhh:optimisation_step:map:baye
       \end{split}
 \end{equation}
 
+\noindent
 Furthermore, the event $E$ is also a multinomial distribution with parameter $\phi$. The \textit{prior} probability distribution for $\phi_{j,k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_phi_prior} below.
 
 \begin{equation}
@@ -815,7 +725,8 @@ Furthermore, the event $E$ is also a multinomial distribution with parameter $\p
       \end{split}
 \end{equation}
 
-Finally, the event $C$ is a\index{Binomial probability distribution}Binomial probability distribution with parameter $\psi$. It is known that the conjugate prior to a\index{Binomial probability distribution}Binomial probability distribution is a Beta probability distribution (see Chapter \ref{chap:probability}). The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
+\noindent
+Finally, the event $C$ is a \index{Binomial probability distribution}Binomial probability distribution with probability parameter $\psi$. It is known that the conjugate prior to a\index{Binomial probability distribution}Binomial probability distribution is a Beta probability distribution. The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_psi_prior}
@@ -825,23 +736,27 @@ Finally, the event $C$ is a\index{Binomial probability distribution}Binomial pro
       \end{split}
 \end{equation}
 
+\noindent
 Putting the likelihood and priors together yields the posterior distribution as given in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:posterior}
       \begin{split}
-            & P(\theta, \phi, \psi \vert H, E, C;  \alpha, \beta, \gamma_{1}, \gamma_{0}) \\
+            P(\theta, \phi, \psi \vert H, E, C;  \alpha, \beta, \gamma_{1}, \gamma_{0})
             &\propto P(H \vert E, C; \theta, \phi, \psi)P(\theta, \phi, \psi \vert \alpha, \beta, \gamma_{1}, \gamma_{0}) \\
-            &\propto P(E \vert H; \phi) P(C \vert H; \psi) P(H \vert \theta) P(\phi \vert \beta) P(\psi \vert \gamma_{1}, \gamma_{0}) P(\theta \vert \alpha)  \\
-            &\propto \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{N_{j,k}} \right] \left[ \prod_{k=1}^{K} \psi_{k}^{N_{1,k}} (1 - \psi_{k})^{(N_{k} - N_{1,k})} \right] \left[ \prod_{k=1}^{K} \theta_{k}^{N_{k}} \right] \\
-            &\times \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{\beta_{j,k} - 1} \right] \left[ \prod_{k=1}^{K} \psi_{k}^{\gamma_{1,k} - 1} (1 - \psi_{k})^{\gamma_{2,k} - 1} \right] \left[ \prod_{k=1}^{K} \theta_{k}^{\alpha_{k} - 1} \right] \\
-            &\propto \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{(N_{j,k} + \beta_{j,k}) - 1} \right] \\
+            &= P(E \vert H; \phi) P(C \vert H; \psi) P(H \vert \theta) P(\phi \vert \beta) \\
+            &\times P(\psi \vert \gamma_{1}, \gamma_{0}) P(\theta \vert \alpha)  \\
+            &= \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{N_{j,k}} \right] \left[ \prod_{k=1}^{K} \psi_{k}^{N_{1,k}} (1 - \psi_{k})^{(N_{k} - N_{1,k})} \right] \left[ \prod_{k=1}^{K} \theta_{k}^{N_{k}} \right] \\
+            &\times \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{\beta_{j,k} - 1} \right] \left[ \prod_{k=1}^{K} \psi_{k}^{\gamma_{1,k} - 1} (1 - \psi_{k})^{\gamma_{2,k} - 1} \right] \\
+            &\times \left[ \prod_{k=1}^{K} \theta_{k}^{\alpha_{k} - 1} \right] \\
+            &= \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{(N_{j,k} + \beta_{j,k}) - 1} \right] \\
             &\times \left[ \prod_{k=1}^{K} \psi_{k}^{(N_{1,k} + \gamma_{1,k}) - 1} (1 - \psi_{k})^{(N_{0,k} + \gamma_{2,k} )- 1} \right] \\
             &\times \left[ \prod_{k=1}^{K} \theta_{k}^{(N_{k} + \alpha_{k}) - 1} \right]
       \end{split}
 \end{equation}
 
-From Equation~\eqref{eq:bhh:optimisation_step:map:posterior} above, it can be seen that the posterior distribution has the same form $\mathcal{A}(v)$ as the prior distribution. The concentration update operations can then be given in equations \ref{eq:bhh:optimisation_step:map:alpha_update_operation}, \ref{eq:bhh:optimisation_step:map:beta_update_operation}, \ref{eq:bhh:optimisation_step:map:gamma1_update_operation} and \ref{eq:bhh:optimisation_step:map:gamma2_update_operation} below.
+\noindent
+From Equation~\eqref{eq:bhh:optimisation_step:map:posterior} above, it can be seen that the posterior distribution has the same form $\mathcal{A}(v)$ as the prior distribution. The concentration update operations can then be given in Equations \eqref{eq:bhh:optimisation_step:map:alpha_update_operation}, \eqref{eq:bhh:optimisation_step:map:beta_update_operation}, \eqref{eq:bhh:optimisation_step:map:gamma1_update_operation} and \eqref{eq:bhh:optimisation_step:map:gamma2_update_operation} below.
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:alpha_update_operation}
@@ -871,132 +786,124 @@ From Equation~\eqref{eq:bhh:optimisation_step:map:posterior} above, it can be se
       \end{split}
 \end{equation}
 
-It can be seen that the prior and posterior probability distributions are of the same shape $\mathcal{A}(v)$. It can therefore be said that the \ac{BHH} implements a Gaussian process. Since the reselection of heuristics happen at regular intervals, the outcome of a selection in one iteration may influence the outcome of another in the next iteration. It can thus be said that the \ac{BHH} implements a \ac{HMM}.
+\noindent
+It can be seen that the prior and posterior probability distributions are of the same shape $\mathcal{A}(v)$. It can therefore be said that the \acs{BHH} implements a Gaussian process. Since the reselection of heuristics happen at regular intervals, the outcome of a selection in one iteration may influence the outcome of another in the next iteration, making the implementation of the \acs{BHH} a \acf{HMM}.
 
-The section concludes the optimisation process that is implemented by the \ac{BHH}. Throughout this chapter a number of hyper-parameters have been identified. These are summarised and discussed in the next section.
+Throughout this chapter a number of hyper-parameters have been identified. These are summarised and discussed in the next section.
 
 
-\index{Hyper-Parameters}
-\section{Hyper-Parameters}
-\label{sec:bhh:hyper_parameters}
+\section{Hyper-Parameters}\label{sec:bhh:hyper_parameters}
 
-This section provides the reader with a breakdown of all the hyper-parameters that were identified and briefly mentioned in this chapter. Some logical arguments can be made as to what their values should be, however it is still up to empirical analysis to determine the effects of certain hyper-parameter design decisions. Were possible, a range of possible values is provided. Each of the hyper-parameters are discussed in their own sections next.
+This section provides a breakdown of all the hyper-parameters that were identified and briefly mentioned in this chapter. Some logical arguments can be made as to what their values should be, however it is still up to empirical analysis to determine the effects of certain hyper-parameter design decisions. Were possible, a range of possible values is provided.
 
-\index{Heuristic Pool}
-\subsection{Heuristic Pool}
-\label{sec:bhh:hyper_parameters:heuristic_pool}
+\index{heuristic pool}
+\subsection{Heuristic Pool}\label{sec:bhh:hyper_parameters:heuristic_pool}
 
-Section \ref{sec:bhh:heuristic_pool} provided the reader with the context and detail of the \index{heuristic pool}heuristic pool as it is included in the architecture of the \ac{BHH}. A detailed discussion was given around the importance of diversity and balancing exploration and exploitation capabilities. The \index{heuristic pool}heuristic pool hyper-parameter refers to the heuristic-pool configuration that is used. This configuration should account for the following factors.
+Section \ref{sec:bhh:heuristic_pool} provided the reader with the context and detail of the \index{heuristic pool}heuristic pool as it is included in the architecture of the \acs{BHH}. A detailed discussion was given around the importance of diversity and balancing exploration and exploitation capabilities. The \index{heuristic pool}heuristic pool hyper-parameter refers to the heuristic-pool configuration that is used. The configuration of the \index{heuristic pool}heuristic pool should account for the following factors.
 
 \begin{itemize}
-      \item The type of low-level heuristics to include in the \index{heuristic pool}heuristic pool. This dissertation investigates two main groups including gradient-based and meta-heuristics.
-      \item The low-level heuristic's hyper-parameters. At a lower-level, each of these heuristics have their own set of hyper-parameters.
+      \item The type of low-level heuristics to include in the \index{heuristic pool}heuristic pool. This dissertation investigates two main groups, including gradient-based \index{heuristic}heuristics and meta-heuristics.
+
+      \item The low-level heuristics' hyper-parameters. At a lower-level, each of these heuristics have their own set of hyper-parameters.
+
       \item The \index{heuristic pool}heuristic pool size. This refers to the number of heuristics in the \index{heuristic pool}heuristic pool.
 \end{itemize}
 
-The granularity of design choices at a high level is not as strict for the \ac{BHH} as it is for low-level heuristics. If one is unsure as to which low-level hyper-parameters to use, one could simply include multiple configurations of that low-level heuristic, each just with its own unique hyper-parameter configurations. Take note that it has not been established yet if this is to the benefit or detriment of \ac{BHH}. These configurations increase the \index{heuristic pool}heuristic pool size and could also counteract eachother.  It is thus still important to include relevant heuristics that is appropriate to the underlying problem being solved. These heuristics should contain a balance between exploration and exploitation, either through the nature of their implementation or through careful hyper-parameter selection. Often times hyper-parameter schedules are used. This is also possible with the \ac{BHH}.
+\noindent
+The granularity of design choices at a high level is not as strict for the \acs{BHH} as it is for low-level heuristics. If one is unsure as to which low-level hyper-parameters to use, one could simply include multiple configurations of a low-level heuristic, each with its own unique hyper-parameter configurations.
 
 
+\subsection{Population Size}\label{sec:bhh:hyper_parameters:population_size}
 
-\subsection{Population Size}
-\label{sec:bhh:hyper_parameters:population_size}
-
-\textit{Population size} refers to the number of entities included in the \index{entity pool}entity pool/population. The exact population size to use is to be determined empirically. Naturely, an assumption is made that a larger population could lead to better results, assuming that entities are initialised to be spread uniformly across the solution search space. Oldewage~\cite{ref:oldewage:2017} mentions that a large number of particles (entities) may be able to traverse a greater portion of the search space as every particle provides additional information about the search space. However, it is to be determined if this is indeed the case for the \ac{BHH}. The authors propose the following considerations when picking a \index{population size}population size:
-
-\begin{itemize}
-      \item When considering the lower bound of possible \index{population size}population sizes, take into account the highest, minimum \index{population size}population size required by all low-level \index{heuristic}heuristics. For example, if one includes \Ac{DE} into the \index{heuristic}heuristic pool, one needs a \index{population size}population size of at least 4. For \acp{PSO}, the minimum population size is 3.
-      \item When considering the upper bound of possible \index{population size}population sizes, take into account that the bigger the \index{population size}population size, the more computationally expensive it is to execute the training process. Furthermore, there could exists a point of \index{diminishing returns}\textit{diminishing returns} where an increase in \index{population size}population size does not yield any better outcome. Once again, this is to be empirically tested. To extend on this, consider that the \Ac{BHH} is a \Ac{HH} that utilises a \index{Bayesian}Bayesian probabilistic approach in it's selection mechanism. This means that a larger observed sample size (of entity and heuristic selection events) is needed to statistically and reliably update the selection mechanism's trainable parameters.
-\end{itemize}
-
-\subsection{Credit}
-\label{sec:bhh:hyper_parameters:credit}
-
-The credit hyper-parameter refers to the credit assignment strategy that is used. This dissertation proposed 5 different credit assignment strategies that were presented in Section \ref{sec:bhh:credit_assignment_strategy}. The choice of credit assignment is assumed to be problem-dependent, however, this is to be empirically tested. Apart from the credit assignment strategy itself, one has to consider the following components related to credit assignment:
+Population size refers to the number of entities included in the \index{entity pool}entity pool. The population size to use is to be determined empirically. Naturely, an assumption is made that a larger population could lead to better results, assuming that entities are initialised uniformly across the solution search space. \citeauthor{ref:oldewage:2017}~\cite{ref:oldewage:2017} mentions that a large number of particles (entities) may be able to traverse a greater portion of the search space as every particle provides additional information about the search space. However, it is to be determined if this is indeed the case for the \acs{BHH}. The following factors need to be considered when picking a population size.
 
 \begin{itemize}
-      \item When to apply credit?
-      \item What should the credit assignment score be (default = 1)
-      \item To what degree should credit assignment be allocated to past results in the performance log
+      \item When considering the lower bound of possible population sizes, take into account the highest, minimum population size required by all low-level \index{heuristic}heuristics. For example, if one includes \Acs{DE} into the \index{heuristic}heuristic pool, one needs a population size of at least 4. For \acs{PSO}, the minimum population size is 3.
+
+      \item When considering the upper bound of possible population sizes, take into account that a bigger population size results in a more computationally expensive training process. Furthermore, there could exists a point of \textit{diminishing returns} where an increase in population size does not yield any better outcome.
 \end{itemize}
 
-It should be noted that this dissertation proposed an initial set of credit assignment strategies that are discrete in outcome. Perhaps an alternative is to include some measure of success, not just an indicator of success. This allows for the implementation of continuous valued outcomes from the credit assignment strategies. Take into account that this could also drastically increase the complexity of the underlying predictive model implemented by the \ac{BHH}.
+\subsection{Credit}\label{sec:bhh:hyper_parameters:credit}
 
-A number of other hyper-parameters are specifically included to address the above challenges. These include \textit{reselection}, \textit{replay} and \textit{reanalysis window sizes} along with \textit{burn in}, \textit{discounted rewards} and \textit{normalisation}. These are discussed next.
+The credit hyper-parameter refers to the credit assignment strategy that is used. This dissertation proposed 5 different credit assignment strategies that were presented in Section \ref{sec:bhh:credit_assignment_strategy}. The choice of credit assignment is assumed to be problem-dependent, however, this is to be empirically tested. Along from the credit assignment strategy itself, the following factors related to the credit assignment strategy should be considered.
 
-\index{Reselection}
-\subsection{Reselection}
-\label{sec:bhh:hyper_parameters:reselection}
+\begin{itemize}
+      \item When to apply credit assignment during the training process.
+      \item What should the credit assignment score/value be (default = 1).
+      \item To what degree should credit assignment be allocated to past results in the performance log.
+\end{itemize}
 
-The reselection window size is a hyper-parameter that controls how often heuristic selections are resampled from the heuristic distribution, parameterised by the heuristic selection probability that is learnt as was discussed in Section \ref{sec:bhh:selection_mechanism:predictive_model}. The choice of reselection should be influenced by the following considerations. If reselection happens too frequently, it does not allow heuristics sufficient time to smooth out update steps which could be detrimental to the outcomes of the \ac{BHH}. If reselection happens too infrequently, it does not allow for sufficient room to collect samples/evidence from which learning is done. Naturally, the correct reselection window size to use is to be determined empirically.
+\noindent
+A number of other hyper-parameters are specifically included to address the list of considerations as given above. These include \textit{reselection}, \textit{replay} and \textit{reanalysis window sizes},\textit{burn in}, \textit{discounted rewards} and \textit{normalisation}. Each of these are presented next.
 
-\index{Replay}
-\subsection{Replay}
-\label{sec:bhh:hyper_parameters:replay}
+\subsection{Reselection}\label{sec:bhh:hyper_parameters:reselection}
 
-The replay window size is a hyper-parameter that controls how much historical performance information is kept in memory for the \ac{BHH} to learn from. This is a parameter that is borrowed from \ac{RL} and aims to control the effect that past performances has on the \ac{BHH}. An assumption is made that the correct replay window size  to use could be problem dependent. However, logical arguments can be deduced. A replay window size that is too small includes little to no memory. This results in a situation where the \ac{BHH} simply looks at the most recent evidence that is collected and nothing more. This could be a beneficial or detrimental to the \ac{BHH}. On the contrary, if the replay window size is big, then the \ac{BHH} tracks a longer history of past performances. Once again, the this could be beneficial or detrimental to the \ac{BHH}.
+The reselection window size is a hyper-parameter that controls how often heuristic selections are resampled from the heuristic distribution, parameterised by the heuristic selection probability that is learnt. The choice of reselection should be influenced by the following considerations. If reselection happens too frequently, it does not allow heuristics sufficient time to achieve their goals and smooth out update steps. If reselection happens too infrequently, it does not allow for sufficient collection of samples/evidence from which learning is done. Naturally, the correct reselection window size to use is to be determined empirically.
 
-\index{Reanalysis}
-\subsection{Reanalysis}
-\label{sec:bhh:hyper_parameters:reanalysis}
+\subsection{Replay}\label{sec:bhh:hyper_parameters:replay}
 
-The reanalysis window size is a hyper-parameter that controls how often the \ac{BHH} updates its past beliefs (priors). Consider that this parameter goes hand in hand with the reselection and replay window sizes. If the reanalysis window is too small, the \ac{BHH} prematurely updates its priors. Similar to other hyper-parameters discussed thus far, the correct value to use for the reanalysis window size is to be determined empirically. However, some logical exclusions can be made. A reanalysis window size that is smaller than the reselection window size does not make sense, since the effects of reanalysis is only realised during reselection. A reanalysis window size that is too big could lead to a situation where the delay in updating priors could be detrimental to the outcomes of the \ac{BHH}.
+The replay window size is a hyper-parameter that controls how much historical performance information is kept in the performance log for the \acs{BHH} to learn from and was introduced in Section \ref{sec:bhh:performance_log}. The replay window size is a parameter that is borrowed from \acf{RL} and aims to control the effect that past performances have on the \acs{BHH}. A replay window size that is too small includes little to no memory, resulting in a situation where the \acs{BHH} simply looks at the most recent evidence that is collected and nothing more. On the contrary, if the replay window size is big, the \acs{BHH} tracks a longer history of past performances, leading to a situation where previously well-performing heuristics that are not relevant later in the training process is still selected often.
 
-\index{Burn In}
-\subsection{Burn In}
-\label{sec:bhh:hyper_parameters:burn_in}
+\subsection{Reanalysis}\label{sec:bhh:hyper_parameters:reanalysis}
 
-Burn in is a hyper-parameter that is borrowed from \ac{MCMC} and aims to delay the learning process of the \ac{BHH}. The intent of this hyper-parameter is to determine if heuristics need time to execute before reselection starts. Notice that a delay in the learning process does not mean that reselection doesn't occur or performance information is not collected in the replay window. Therefore, it should be noted that the burn in window size, reselection window size and replay window size should be considered together. If the replay size is smaller than the burn in window size, no performance information is accumulated and the \ac{BHH} essentially starts with a prior that is no better than the initial symmetric initialisation that was done.
+The reanalysis window size is a hyper-parameter that controls how often the \acs{BHH} updates its past beliefs (priors). The reanalysis window size goes hand in hand with the reselection and replay window sizes. If the reanalysis window is too small, the \acs{BHH} prematurely updates its priors. Similar to other hyper-parameters discussed thus far, the correct value to use for the reanalysis window size is to be determined empirically. However, some logical exclusions can be made. A reanalysis window size that is smaller than the reselection window size does not make sense, since the effects of reanalysis are only realised during reselection. A reanalysis window size that is too big could lead to a situation where the delay in updating priors could be detrimental to the outcomes of the \acs{BHH}.
 
-\index{Discounted Rewards}
-\subsection{Discounted Rewards}
-\label{sec:bhh:hyper_parameters:discounted_rewards}
+\subsection{Burn In}\label{sec:bhh:hyper_parameters:burn_in}
 
-Discounted rewards is another hyper-parameter that is borrowed from \ac{RL}. This hyper-parameter is a flag that determines if discounted rewards is enabled or not. Discounted rewards refers to an operation where the credit assignments for past performance is exponentially decreased further into the past. An exponential decay factor or 0.5 is proposed. The intent of the discounted rewards flag is to scale the effect of past performances that are further back into the performance log such that they have a smaller impact than more recent evidence on the performance achieved by the \ac{BHH}.
+Burn in is a hyper-parameter that is borrowed from \acf{MCMC} and aims to delay the learning process of the \acs{BHH}. The intent of the burn in hyper-parameter is to determine if heuristics need time to execute before reselection starts. Notice that a delay in the learning process does not mean that reselection doesn't occur or performance information is not collected in the replay window. Therefore, it should be noted that the burn in window size, reselection window size and replay window size should be considered together. If the replay window size is smaller than the burn in window size, performance information is discarded and an opportunity to learn is lost.
 
-\index{Normalisation}
-\subsection{Normalisation}
-\label{sec:bhh:hyper_parameters:normalisation}
+\index{discounted rewards}
+\subsection{Discounted Rewards}\label{sec:bhh:hyper_parameters:discounted_rewards}
 
-Normalisation is a hyper-parameter that aims to provide a mechanism of control for the degree to which exploration is allowed. Figure \ref{sec:bhh:hyper_parameters:discounted_rewards:normalisation} shows the effect of different concentrations ($\alpha$ and $\beta$) on the Beta probability distribution. By normalising the concentration parameters for the \ac{BHH} ($\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$), the variance of the selection probability distributions increase, allowing for sampled probabilities further from the mean and thus allowing for more exploration.
+\index{discounted rewards}Discounted rewards is another hyper-parameter that is borrowed from \acs{RL} and is a flag that determines if discounted rewards are applied or not. \index{discounted rewards}Discounted rewards refers to an implementation where credit assignments for past performances are exponentially decreased further into the past. An exponential decay factor of 0.5 is proposed. The intent of the discounted rewards flag is to scale the effect of past performances that are further back in the performance log, such that they have a smaller impact than more recent evidence on the learning process of the \acs{BHH}.
 
+\subsection{Normalisation}\label{sec:bhh:hyper_parameters:normalisation}
+
+Normalisation is a hyper-parameter that aims to provide a mechanism of control for the degree to which exploration is allowed. Figure \ref{sec:bhh:hyper_parameters:discounted_rewards:normalisation} shows the effect of different concentrations ($\alpha$ and $\beta$) on the Beta probability distribution. By normalising the concentration parameters for the \acs{BHH} ($\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$), the variance of the selection probability distributions increases, allowing for sampled probabilities further from the mean and thus allowing for more exploration.
 
 \begin{figure}[htbp]
-      \begin{subfigure}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{images/beta_1_1.png}
+      \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/beta_1_1.pdf}
             \caption{$\alpha=1$, $\beta=1$}
             \label{sec:bhh:hyper_parameters:normalisation_beta_1_1}
       \end{subfigure}
-      \begin{subfigure}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{images/beta_5_5.png}
+      \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/beta_5_5.pdf}
             \caption{$\alpha=5$, $\beta=5$}
             \label{sec:bhh:hyper_parameters:normalisation_beta_5_5}
       \end{subfigure}
       \par\bigskip
-      \begin{subfigure}{0.5\textwidth}
+      \begin{subfigure}{0.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{images/beta_20_20.png}
+            \centering
+            \includegraphics[width=\textwidth]{images/beta_20_20.pdf}
             \caption{$\alpha=20$, $\beta=20$}
             \label{sec:bhh:hyper_parameters:normalisation_beta_20_20}
       \end{subfigure}
       \par\bigskip
-      \caption{Beta probability distribution with varying $\alpha$ and $\beta$ values.}
+      \caption{The \index{Beta probability distribution}Beta probability distribution with varying $\alpha$ and $\beta$ values.}
       \label{sec:bhh:hyper_parameters:discounted_rewards:normalisation}
 \end{figure}
 
-This concludes the hyper-parameters that are used by the \ac{BHH}. The following section discusses the default value for proxied update step operations.
+\noindent
+The following section discusses the default values for proxied update step operations.
 
 \subsection{Defaults}
 \label{sec:bhh:hyper_parameters:defaults}
 
-Section \ref{sec:bhh:heuristic:proxies} provided the reader with the concept of proxied heuristic update step operations. As was mentioned in Section \ref{sec:bhh:hyper_parameters:heuristic_pool}, low-level heuristics each have their own set of hyper-parameters as well. This means that a set of default low-level parameters must be allocated specifically for these proxies. Consider a scenario where two instances of \ac{Adam} is included in the \index{heuristic pool}heuristic pool. Each has its own set of hyper-parameters that (should) differ from each other. In the case of \ac{Adam}, there are 4 hyper-parameters that include learning rate, $\beta1$, $\beta2$ and $\epsilon$. If another heuristic needs to proxy \ac{Adam}'s ``expected gradient mean operation'', a default $\beta1$ parameter must be supplied. Notice that this is only the case where multiple instances of a heuristic is included and there is uncertainty about which instance's hyper-parameters to use for the proxied heuristic update steps. If there is only one instance of a particular heuristic, that instance's hyper-parameters are used. The next section provides the reader with the pseudo-code algorithm for the \ac{BHH}.
+Section \ref{sec:bhh:heuristic:proxies} provided the reader with the concept of proxied heuristic update step operations. As was mentioned in Section \ref{sec:bhh:hyper_parameters:heuristic_pool}, low-level heuristics each have their own set of hyper-parameters as well. A set of default low-level parameters must be allocated specifically for these proxies. Consider a scenario where two instances of \acs{Adam} is included in the \index{heuristic pool}heuristic pool. Each has its own set of hyper-parameters that differ from each other. In the case of \acs{Adam}, there are 4 hyper-parameters that include learning rate, $\beta1$, $\beta2$ and $\epsilon$. If another heuristic needs to proxy \acs{Adam}'s expected gradient mean operation, a default $\beta1$ parameter must be supplied that is applied by the proxy mechanism. This is only the case when multiple instances of a heuristic is included and there is uncertainty about which instance's hyper-parameters to use for the proxied heuristic update steps. If there is only one instance of a particular heuristic, that instance's hyper-parameters are used.
+
+The next section provides the reader with the pseudo-code algorithm for the \acs{BHH}.
 
 \section{Algorithm}
 \label{sec:bhh:algorithm}
 
-This section provides the reader with a high level pseudo-code implementation of the \ac{BHH}. This is given in Algorithm \ref{algo:bhh} below.
+The high level pseudo-code implementation of the \acs{BHH} is given in Algorithm \ref{algo:bhh}.
 
 \begin{algorithm}[H]
-      \caption{The pseudo code for the \index{Bayesian Hyper-Heuristic} Bayesian Hyper-Heuristic optimiser}
+      \caption{The pseudo-code for the implementation of the \acf{BHH}}
       \label{algo:bhh}
       \begin{algorithmic}
             \State step $\gets 0$
@@ -1014,7 +921,7 @@ This section provides the reader with a high level pseudo-code implementation of
 
             \State apply low-level heuristic and proxy operations
             \State update population state
-            \State log performance to performance log
+            \State log performance metrics to performance log
 
             \If {step < burn-in window size}
             \State select heuristic
@@ -1040,6 +947,6 @@ This section provides the reader with a high level pseudo-code implementation of
 \section{Summary}
 \label{sec:bhh:summary}
 
-This chapter provided the reader with extensive detail on the inner workings and design of the \ac{BHH}. The \ac{BHH} was formally classified and the details around various components of the \ac{BHH}'s architecture was presented. Formal mathematical descriptions of the Bayesian selection method have been provided. The optimisation process, by means of Bayesian analysis has been presented and a pseudo code implementation of the \ac{BHH} was presented.
+This chapter provided extensive detail on the inner workings and design of the \acs{BHH}. The \acs{BHH} was formally classified and the details around various components of the \acs{BHH}'s architecture was presented. Formal mathematical descriptions of the Bayesian selection method have been provided. The selection mechanism was presented as a probabilistic, predictive classifier. The optimisation process, by means of Bayesian analysis, has also been presented. Hyper-parameters were discussed in detail and a pseudo code implementation of the \acs{BHH} was presented.
 
-This concludes the background information and literature studies that is required to propose a methodology for an empirical process. This methodology is provided in the next chapter.
+This methodology for the empirical process is provided in the following chapter.
