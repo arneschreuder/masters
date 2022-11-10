@@ -30,6 +30,7 @@ COLUMNS = [
 	'tag',
 	'value'
 ]
+ALLOWED_TAGS = r'(^alpha\[\d\]$|^theta\[\d\]$|^train_accuracy$|^train_loss$|^test_accuracy$|^test_loss$|^p_H\[\d\]$|^p_HgEC\[0\]\[\d\]$|^HgEC\[\d\]$)'
 DATA_DIR = None
 PATH = None
 
@@ -39,7 +40,7 @@ def parse_arguments():
 
 	# Parser
 	parser = argparse.ArgumentParser(
-			description="Export experiments TensorBoard data to csv"
+			description="Export case study TensorBoard data to csv"
 	)
 
 	# Basic Params
@@ -58,7 +59,7 @@ def print_banner():
 
     print("")
     print("====================================================================")
-    print("Export experiments TensorBoard data to csv")
+    print("Export case study TensorBoard data to csv")
     print("====================================================================")
     print("Data Directory: {}".format(DATA_DIR))
     print("====================================================================")
@@ -69,7 +70,9 @@ def my_summary_iterator(path):
 		yield event_pb2.Event.FromString(r)
 
 def export_events(path):
+	global DATA_DIR
 	global COLUMNS
+	global ALLOWED_TAGS
 
 	directory = os.path.abspath(os.path.join(path, os.pardir))
 	filename = os.path.basename(path)
@@ -77,9 +80,8 @@ def export_events(path):
 
 	if os.path.isfile(data_filepath):
 		print("Skipped: {}".format(data_filepath))
-		return
 
-	experiment = str(directory).replace(os.getcwd() + '/data/', '')
+	experiment = str(directory).replace(os.getcwd() + f"/{DATA_DIR}/", '')
 	experiment_parts = experiment.split('/')
 	dataset = experiment_parts[0]
 	heuristic = experiment_parts[1]
@@ -119,31 +121,32 @@ def export_events(path):
 		for data in event.summary.value:
 			id = cuid.cuid()
 			tag = data.tag
-			value = tensor_util.MakeNdarray(data.tensor)
 
-			row = {
-				'id': id,
-				'dataset': dataset,
-				'heuristic': heuristic,
-				'heuristic_pool': heuristic_pool,
-				'population': population,
-				'burn_in': burn_in,
-				'replay': replay,
-				'reselection': reselection,
-				'reanalysis': reanalysis,
-				'normalisation': normalisation,
-				'credit': credit,
-				'discounted_rewards': discounted_rewards,
-				'run': run,
-				'step': step,
-				'wall_time': wall_time,
-				'tag': tag,
-				'value': value
-			}
+			if re.search(ALLOWED_TAGS, tag):
+				value = tensor_util.MakeNdarray(data.tensor)
 
-			df = df.append(row, ignore_index=True)
+				row = {
+					'id': id,
+					'dataset': dataset,
+					'heuristic': heuristic,
+					'heuristic_pool': heuristic_pool,
+					'population': population,
+					'burn_in': burn_in,
+					'replay': replay,
+					'reselection': reselection,
+					'reanalysis': reanalysis,
+					'normalisation': normalisation,
+					'credit': credit,
+					'discounted_rewards': discounted_rewards,
+					'run': run,
+					'step': step,
+					'wall_time': wall_time,
+					'tag': tag,
+					'value': value
+				}
 
-	
+				df = df.append(row, ignore_index=True)
+
 	print(data_filepath)
 	df.to_csv(data_filepath, index=False, header=False)
 		
@@ -154,8 +157,8 @@ def export_data():
 	for subdir, dirs, files in os.walk(PATH):
 		for file in files:
 			FILEPATH = os.path.join(subdir, file)
-			
-			if not re.search('ibest_dr:(False|True)\/1[0-9]+[0-9]+', str(FILEPATH)) and file.endswith('.v2'):
+			if FILEPATH and file.endswith('.v2'):
+				print(FILEPATH)
 				export_events(FILEPATH)
 			
 def main():
