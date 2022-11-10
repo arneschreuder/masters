@@ -16,70 +16,90 @@ ANALYSIS_CONFIG = {
 		'friendly': 'Burn In',
 		'column': 'burn_in',
 		'param_count': 5,
-		'order': [0, 5, 10, 15, 20]
+		'order': [0, 5, 10, 15, 20],
+		'fig_size_x': 12,
+		'fig_size_y': 6,
 	},
 	'bhh_credit': {
 		'view': 'bhh_credit',
 		'friendly': 'Credit',
 		'column': 'credit',
 		'param_count': 5,
-		'order': ['ibest', 'pbest', 'rbest', 'gbest', 'symmetric']
+		'order': ['ibest', 'pbest', 'rbest', 'gbest', 'symmetric'],
+		'fig_size_x': 12,
+		'fig_size_y': 6,
 	},
 	'bhh_discounted_rewards': {
 		'view': 'bhh_discounted_rewards',
 		'friendly': 'Discounted Rewards',
 		'column': 'discounted_rewards',
 		'param_count': 2,
-		'order': [True, False]
+		'order': [True, False],
+		'fig_size_x': 12,
+		'fig_size_y': 5,
 	},
 	'bhh_heuristic_pool': {
 		'view': 'bhh_heuristic_pool',
 		'friendly': 'Heuristic Pool',
 		'column': 'heuristic_pool',
 		'param_count': 3,
-		'order': ['all', 'gd', 'mh']
+		'order': ['all', 'gd', 'mh'],
+		'fig_size_x': 12,
+		'fig_size_y': 5,
 	},
 	'bhh_normalise': {
 		'view': 'bhh_normalise',
 		'friendly': 'Normalisation',
 		'column': 'normalisation',
 		'param_count': 2,
-		'order': [True, False]
+		'order': [True, False],
+		'fig_size_x': 12,
+		'fig_size_y': 5,
 	},
 	'bhh_population': {
 		'view': 'bhh_population',
 		'friendly': 'Population',
 		'column': 'population',
 		'param_count': 5,
-		'order': [5, 10, 15, 20, 25]
+		'order': [5, 10, 15, 20, 25],
+		'fig_size_x': 12,
+		'fig_size_y': 6,
 	},
 	'bhh_reanalysis': {
 		'view': 'bhh_reanalysis',
 		'friendly': 'Reanalysis',
 		'column': 'reanalysis',
 		'param_count': 5,
-		'order': [1, 5, 10, 15, 20]
+		'order': [1, 5, 10, 15, 20],
+		'fig_size_x': 12,
+		'fig_size_y': 6,
 	},
 	'bhh_replay': {
 		'view': 'bhh_replay',
 		'friendly': 'Replay',
 		'column': 'replay',
 		'param_count': 5,
-		'order': [1, 5, 10, 15, 20]
+		'order': [1, 5, 10, 15, 20],
+		'fig_size_x': 12,
+		'fig_size_y': 6,
 	},
 	'bhh_reselection': {
 		'view': 'bhh_reselection',
 		'friendly': 'Reselection',
 		'column': 'reselection',
 		'param_count': 5,
-		'order': [1, 5, 10, 15, 20]
+		'order': [1, 5, 10, 15, 20],
+		'fig_size_x': 12,
+		'fig_size_y': 6,
 	},
 	'standalone': {
 		'view': 'standalone',
 		'friendly': 'Heuristics',
 		'column': 'heuristic',
 		'param_count': 13,
-		'order': ['adam', 'adadelta', 'adagrad', 'bhh_all', 'bhh_gd', 'bhh_mh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd']
+		'order': ['adam', 'adadelta', 'adagrad', 'bhh_all', 'bhh_gd', 'bhh_mh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd'],
+		'fig_size_x': 12,
+		'fig_size_y': 9,
 	},
 }
 
@@ -118,6 +138,8 @@ COLUMN = None
 ORDER = None
 PARAM_COUNT = None
 PALETTE = None
+FIG_SIZE_X = None
+FIG_SIZE_Y = None
 
 def parse_arguments():
 	global ANALYSIS
@@ -127,6 +149,8 @@ def parse_arguments():
 	global COLUMN
 	global ORDER
 	global PARAM_COUNT
+	global FIG_SIZE_X
+	global FIG_SIZE_Y
 
 	# Parser
 	parser = argparse.ArgumentParser(
@@ -149,6 +173,8 @@ def parse_arguments():
 	COLUMN = ANALYSIS_CONFIG[ANALYSIS]['column']
 	ORDER = ANALYSIS_CONFIG[ANALYSIS]['order']
 	PARAM_COUNT = ANALYSIS_CONFIG[ANALYSIS]['param_count']
+	FIG_SIZE_X = ANALYSIS_CONFIG[ANALYSIS]['fig_size_x']
+	FIG_SIZE_Y = ANALYSIS_CONFIG[ANALYSIS]['fig_size_y']
 
 def print_banner():
     global ANALYSIS_PATH
@@ -247,17 +273,19 @@ def setup_seaborn():
 	PALETTE = sns.color_palette('mako_r', PARAM_COUNT)
 
 def plot(train: bool = False, accuracy = False):
-	DS = 'Train' if train else 'Test'
-	TYPE = 'Accuracy' if accuracy else 'Log Loss'
-	print("Plotting {} {}".format(DS, TYPE))
-	Y_DATA = 'accuracy' if TYPE == 'Accuracy' else 'loss'
-
 	global DATA
 	global COLUMN
 	global ORDER
 	global COLUMN
 	global FRIENDLY
 	global PALETTE
+	global FIG_SIZE_X
+	global FIG_SIZE_Y
+
+	DS = 'Train' if train else 'Test'
+	TYPE = 'Accuracy' if accuracy else 'Log Loss'
+	print("Plotting {} {}".format(DS, TYPE))
+	Y_DATA = 'accuracy' if TYPE == 'Accuracy' else 'loss'
 
 	DATASETS_SUBSET = CATEGORICAL_DATASETS if accuracy else DATASETS
 
@@ -267,7 +295,7 @@ def plot(train: bool = False, accuracy = False):
 			query = 'dataset == "{}"'.format(dataset)
 			subset = DATA.query(query)
 
-			fig, ax = plt.subplots(figsize=(12,9))
+			fig, ax = plt.subplots(figsize=(FIG_SIZE_X,FIG_SIZE_Y))
 			fig.suptitle('BHH {} - {} {} - Dataset: {}'.format(FRIENDLY, DS, TYPE, dataset))
 
 			plot = sns.lineplot(
@@ -278,8 +306,8 @@ def plot(train: bool = False, accuracy = False):
 				hue=COLUMN,
 				style_order=ORDER,
 				style=COLUMN,
-				markers=True,
-				dashes=True,
+				markers=False,
+				dashes=False,
 				ax=ax,
 				palette=PALETTE
 			)

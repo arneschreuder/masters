@@ -14,23 +14,77 @@ ANALYSIS_CONFIG = {
 	'params': {
 		'column': 'heuristic',
 		'param_count': 3,
+		'params': {
+			'alphas': [
+				'alpha[0]',
+				'alpha[1]',
+				'alpha[2]',
+				'alpha[3]',
+				'alpha[4]',
+				'alpha[5]',
+				'alpha[6]',
+				'alpha[7]',
+				'alpha[8]',
+				'alpha[9]'
+			],
+			'thetas': [
+				'theta[0]',
+				'theta[1]',
+				'theta[2]',
+				'theta[3]',
+				'theta[4]',
+				'theta[5]',
+				'theta[6]',
+				'theta[7]',
+				'theta[8]',
+				'theta[9]'
+			],
+			'p_H': [
+				'p_H[0]',
+				'p_H[1]',
+				'p_H[2]',
+				'p_H[3]',
+				'p_H[4]',
+				'p_H[5]',
+				'p_H[6]',
+				'p_H[7]',
+				'p_H[8]',
+				'p_H[9]'
+			],
+			'p_HgEC': [
+				'p_HgEC[0][0]',
+				'p_HgEC[0][1]',
+				'p_HgEC[0][2]',
+				'p_HgEC[0][3]',
+				'p_HgEC[0][4]',
+				'p_HgEC[0][5]',
+				'p_HgEC[0][6]',
+				'p_HgEC[0][7]',
+				'p_HgEC[0][8]',
+				'p_HgEC[0][9]'
+			]
+		},
 		'order': ['bhh_baseline', 'bhh_replay_250', 'bhh_credit_symmetric'],
 	},
 }
 ANALYSIS = None
 ANALYSIS_PATH = None
 METRICS_DATA = None
+PARAMS_DATA = None
 PALETTE = None
-PARAM_COUNT = None
-COLUMN = None
+HEURISTIC_COUNT = None
+HEURISTIC = None
 ORDER = None
+PARAM_GROUPS = None
+
 
 def parse_arguments():
 	global ANALYSIS
 	global ANALYSIS_PATH
-	global PARAM_COUNT
-	global COLUMN
+	global HEURISTIC_COUNT
+	global HEURISTIC
 	global ORDER
+	global PARAM_GROUPS
 
 	# Parser
 	parser = argparse.ArgumentParser(
@@ -48,9 +102,12 @@ def parse_arguments():
 	args = parser.parse_args()
 	ANALYSIS = args.analysis
 	ANALYSIS_PATH = os.path.join(os.getcwd(), 'analysis/case_study', ANALYSIS)
-	COLUMN = ANALYSIS_CONFIG[ANALYSIS]['column']
-	PARAM_COUNT = ANALYSIS_CONFIG[ANALYSIS]['param_count']
+	HEURISTIC = ANALYSIS_CONFIG[ANALYSIS]['column']
+	HEURISTIC_COUNT = ANALYSIS_CONFIG[ANALYSIS]['param_count']
 	ORDER = ANALYSIS_CONFIG[ANALYSIS]['order']
+
+	if ANALYSIS == 'params':
+		PARAM_GROUPS = list(ANALYSIS_CONFIG[ANALYSIS]['params'].keys())
 
 def print_banner():
     global ANALYSIS_PATH
@@ -65,11 +122,11 @@ def print_banner():
 
 def setup_seaborn():
 	global PALETTE
-	global PARAM_COUNT
+	global HEURISTIC_COUNT
 	# Setup Plots
 	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 2, 'lines.markersize': 5})
-	# PALETTE = sns.color_palette('viridis', PARAM_COUNT)
-	PALETTE = sns.color_palette('mako_r', PARAM_COUNT)
+	PALETTE = sns.color_palette('viridis', HEURISTIC_COUNT)
+	# PALETTE = sns.color_palette('mako_r', HEURISTIC_COUNT)
 
 def create_metrics_dirs():
 	global ANALYSIS_PATH
@@ -79,12 +136,27 @@ def create_metrics_dirs():
 	os.makedirs('{}/figures/train'.format(ANALYSIS_PATH), exist_ok=True)
 	os.makedirs('{}/figures/test'.format(ANALYSIS_PATH), exist_ok=True)
 
+def create_params_dirs():
+	global ANALYSIS_PATH
+	global PARAM_GROUPS
+	print('Creating params directories')
+	os.makedirs('{}'.format(ANALYSIS_PATH), exist_ok=True)
+	os.makedirs('{}/figures'.format(ANALYSIS_PATH), exist_ok=True)
+
+	for param_group in PARAM_GROUPS:
+		os.makedirs('{}/figures/{}'.format(ANALYSIS_PATH, param_group), exist_ok=True)
+
 def read_metrics_data_from_csv():
 	print('Reading metrics data from CSV')
 	global METRICS_DATA
 	METRICS_DATA = pd.read_csv(os.path.join(ANALYSIS_PATH, 'case_study_metrics.csv'))
 	METRICS_DATA = METRICS_DATA.reindex(sorted(METRICS_DATA.columns), axis=1)
-	print(METRICS_DATA)
+
+def read_params_data_from_csv():
+	print('Reading params data from CSV')
+	global PARAMS_DATA
+	PARAMS_DATA = pd.read_csv(os.path.join(ANALYSIS_PATH, 'case_study_params.csv'))
+	PARAMS_DATA = PARAMS_DATA.reindex(sorted(PARAMS_DATA.columns), axis=1)
 
 def plot_metrics(train: bool = False, accuracy = False):
 	DS = 'Train' if train else 'Test'
@@ -92,28 +164,28 @@ def plot_metrics(train: bool = False, accuracy = False):
 	print("Plotting {} {}".format(DS, TYPE))
 	Y_DATA = 'accuracy' if TYPE == 'Accuracy' else 'loss'
 
-	global COLUMN
+	global HEURISTIC
 	global ORDER
-	global COLUMN
+	global HEURISTIC
 	global PALETTE
 	global METRICS_DATA
 	global plt
 
 	print('Processing metrics')
 	try:
-		fig, ax = plt.subplots(figsize=(12,9))
-		fig.suptitle('BHH Case Study - {} {}'.format(DS, TYPE))
+		fig, ax = plt.subplots(figsize=(12,5))
+		fig.suptitle('BHH Case Study - {} {} - Dataset: Iris'.format(DS, TYPE))
 
 		plot = sns.lineplot(
 			data=METRICS_DATA,
 			x='step',
 			y='{}_{}'.format(DS.lower(), Y_DATA.lower()),
 			hue_order=ORDER,
-			hue=COLUMN,
+			hue=HEURISTIC,
 			style_order=ORDER,
-			style=COLUMN,
-			markers=True,
-			dashes=True,
+			style=HEURISTIC,
+			markers=False,
+			dashes=False,
 			ax=ax,
 			palette=PALETTE
 		)
@@ -129,6 +201,53 @@ def plot_metrics(train: bool = False, accuracy = False):
 		print(e)
 		print("-> error")
 
+def plot_params():
+	global ANALYSIS_CONFIG
+	global HEURISTIC
+	global ORDER
+	global HEURISTIC
+	global PALETTE
+	global PARAMS_DATA
+	global PARAM_GROUPS
+	global plt
+
+	print('Processing params')
+
+	for param_group in PARAM_GROUPS:
+		PARAMS = PARAM_GROUPS = ANALYSIS_CONFIG[ANALYSIS]['params'][param_group]
+
+		for param in PARAMS:
+			print('Processing: {} - {}'.format(param_group, param))
+			COLUMN_NAME = param.replace('][','_').replace('[','_').replace(']','_')[:-1]
+			try:
+				fig, ax = plt.subplots(figsize=(12,5))
+				fig.suptitle('BHH Case Study - {} - Dataset: Iris'.format(param))
+
+				plot = sns.lineplot(
+					data=PARAMS_DATA,
+					x='step',
+					y=COLUMN_NAME,
+					hue_order=ORDER,
+					hue=HEURISTIC,
+					style_order=ORDER,
+					style=HEURISTIC,
+					markers=False,
+					dashes=False,
+					ax=ax,
+					palette=PALETTE
+				)
+
+				plot.set_xlabel("Step")
+				plot.set_ylabel('Log {}'.format(param))
+				plot.set_yscale('log') # Logarithmic plot
+
+				OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/{}/{}.pdf'.format(param_group, param))
+				fig.savefig(OUTPUT, transparent=True)
+				plt.close()
+			except Exception as e:
+				print(e)
+				print("-> error")
+
 def main():
 	global ANALYSIS
 	parse_arguments()
@@ -143,175 +262,10 @@ def main():
 		plot_metrics(train=False,accuracy=False)
 		plot_metrics(train=False,accuracy=True)
 
+	if ANALYSIS == 'params':
+		create_params_dirs()
+		read_params_data_from_csv()
+		plot_params()
+
 if __name__ == '__main__':
 	main()
-
-
-# import argparse
-# import os
-
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import Orange
-# import pandas as pd
-# import seaborn as sns
-
-# ANALYSIS = None
-# ANALYSIS_PATH = None
-
-# ANALYSIS_CONFIG = {
-# 	'case_study': {
-# 		'view': 'bhh_burn_in',
-# 		'friendly': 'Burn In',
-# 		'column': 'burn_in',
-# 		'param_count': 5,
-# 		'order': [0, 5, 10, 15, 20]
-# 	},
-# }
-
-# DATASETS = [
-# 	'iris'
-# ]
-# CATEGORICAL_DATASETS = [
-# 	'iris'
-# ]
-
-# METRICS_DATA = None
-# VIEW = None
-# FRIENDLY = None
-# COLUMN = None
-# ORDER = None
-# PARAM_COUNT = None
-# PALETTE = None
-
-# def parse_arguments():
-# 	global ANALYSIS
-# 	global ANALYSIS_PATH
-# 	global VIEW
-# 	global FRIENDLY
-# 	global COLUMN
-# 	global ORDER
-# 	global PARAM_COUNT
-
-# 	# Parser
-# 	parser = argparse.ArgumentParser(
-# 			description='Analyse Case Study Data'
-# 	)
-
-# 	# Basic Params
-# 	parser.add_argument(
-# 			'--analysis',
-# 			type=str,
-# 			choices=ANALYSIS_CONFIG.keys(),
-# 			required=True,
-# 			help='The analysis output directory'
-# 	)
-# 	args = parser.parse_args()
-# 	ANALYSIS = args.analysis
-# 	ANALYSIS_PATH = os.path.join(os.getcwd(), 'analysis', ANALYSIS)
-# 	VIEW = ANALYSIS_CONFIG[ANALYSIS]['view']
-# 	FRIENDLY = ANALYSIS_CONFIG[ANALYSIS]['friendly']
-# 	COLUMN = ANALYSIS_CONFIG[ANALYSIS]['column']
-# 	ORDER = ANALYSIS_CONFIG[ANALYSIS]['order']
-# 	PARAM_COUNT = ANALYSIS_CONFIG[ANALYSIS]['param_count']
-
-# def print_banner():
-#     global ANALYSIS_PATH
-
-#     print('')
-#     print('====================================================================')
-#     print('Analyse Case Study Data')
-#     print('====================================================================')
-#     print('Analysis Directory: {}'.format(ANALYSIS_PATH))
-#     print('====================================================================')
-#     print('')
-
-# def create_dirs():
-# 	global ANALYSIS_PATH
-# 	print('Creating directories')
-# 	os.makedirs('{}'.format(ANALYSIS_PATH), exist_ok=True)
-# 	os.makedirs('{}/figures/metrics'.format(ANALYSIS_PATH), exist_ok=True)
-# 	os.makedirs('{}/figures/alphas'.format(ANALYSIS_PATH), exist_ok=True)
-# 	os.makedirs('{}/figures/thetas'.format(ANALYSIS_PATH), exist_ok=True)
-# 	os.makedirs('{}/figures/p_H'.format(ANALYSIS_PATH), exist_ok=True)
-# 	os.makedirs('{}/figures/p_HgEC'.format(ANALYSIS_PATH), exist_ok=True)
-
-# def read_metrics_data_from_csv():
-# 	print('Reading metrics data from CSV')
-# 	global METRICS_DATA
-# 	METRICS_DATA = pd.read_csv(os.path.join(ANALYSIS_PATH, '{}.csv'.format(ANALYSIS)))
-# 	METRICS_DATA = METRICS_DATA.reindex(sorted(DATA.columns), axis=1)
-
-# def setup_seaborn():
-# 	global PALETTE
-# 	global PARAM_COUNT
-# 	# Setup Plots
-# 	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 2, 'lines.markersize': 5})
-# 	# PALETTE = sns.color_palette('viridis', PARAM_COUNT)
-# 	PALETTE = sns.color_palette('mako_r', PARAM_COUNT)
-
-# def plot_metrics(train: bool = False, accuracy = False):
-# 	DS = 'Train' if train else 'Test'
-# 	TYPE = 'Accuracy' if accuracy else 'Log Loss'
-# 	print("Plotting {} {}".format(DS, TYPE))
-# 	Y_DATA = 'accuracy' if TYPE == 'Accuracy' else 'loss'
-
-# 	global DATA
-# 	global COLUMN
-# 	global ORDER
-# 	global COLUMN
-# 	global FRIENDLY
-# 	global PALETTE
-
-# 	DATASETS_SUBSET = CATEGORICAL_DATASETS if accuracy else DATASETS
-
-# 	for dataset in DATASETS_SUBSET:
-# 		print('Processing: {}...'.format(dataset))
-# 		try:
-# 			query = 'dataset == "{}"'.format(dataset)
-# 			subset = DATA.query(query)
-
-# 			fig, ax = plt.subplots(figsize=(12,9))
-# 			fig.suptitle('BHH {} - {} {} - Dataset: {}'.format(FRIENDLY, DS, TYPE, dataset))
-
-# 			plot = sns.lineplot(
-# 				data=subset,
-# 				x='step',
-# 				y='{}_{}'.format(DS.lower(), Y_DATA.lower()),
-# 				hue_order=ORDER,
-# 				hue=COLUMN,
-# 				style_order=ORDER,
-# 				style=COLUMN,
-# 				markers=True,
-# 				dashes=True,
-# 				ax=ax,
-# 				palette=PALETTE
-# 			)
-
-# 			plot.set_xlabel("Epoch")
-# 			plot.set_ylabel('{} {}'.format(DS, TYPE))
-# 			plot.set_yscale('log') # Logarithmic plot
-
-# 			OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/{}/{}/{}.pdf'.format(DS.lower(), Y_DATA.lower(), dataset))
-# 			fig.savefig(OUTPUT, transparent=True)
-# 			plt.close()
-# 		except Exception as e:
-# 			print(e)
-# 			print("-> error")
-
-
-# def main():
-# 	parse_arguments()
-# 	print_banner()
-# 	create_dirs()
-
-# 	# Metrics
-# 	read_metrics_data_from_csv()
-# 	# setup_seaborn()
-# 	# plot_metrics(train=True,accuracy=False)
-# 	# plot_metrics(train=True,accuracy=True)
-# 	# plot_metrics(train=False,accuracy=False)
-# 	# plot_metrics(train=False,accuracy=True)
-
-# if __name__ == '__main__':
-# 	main()
