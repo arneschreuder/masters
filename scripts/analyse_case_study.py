@@ -160,9 +160,9 @@ def read_params_data_from_csv():
 
 def plot_metrics(train: bool = False, accuracy = False):
 	DS = 'Train' if train else 'Test'
-	TYPE = 'Accuracy' if accuracy else 'Log Loss'
+	TYPE = 'Log Accuracy' if accuracy else 'Log Loss'
 	print("Plotting {} {}".format(DS, TYPE))
-	Y_DATA = 'accuracy' if TYPE == 'Accuracy' else 'loss'
+	Y_DATA = 'accuracy' if TYPE == 'Log Accuracy' else 'loss'
 
 	global HEURISTIC
 	global ORDER
@@ -195,7 +195,7 @@ def plot_metrics(train: bool = False, accuracy = False):
 		plot.set_yscale('log') # Logarithmic plot
 
 		OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/{}/{}_{}.pdf'.format(DS.lower(), DS.lower(), Y_DATA.lower()))
-		fig.savefig(OUTPUT, transparent=True)
+		fig.savefig(OUTPUT, transparent=True, bbox_inches='tight')
 		plt.close()
 	except Exception as e:
 		print(e)
