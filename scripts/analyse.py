@@ -94,7 +94,7 @@ ANALYSIS_CONFIG = {
 	},
 	'standalone': {
 		'view': 'standalone',
-		'friendly': 'Heuristics',
+		'friendly': 'vs. Low-Level Heuristics',
 		'column': 'heuristic',
 		'param_count': 13,
 		'order': ['adam', 'adadelta', 'adagrad', 'bhh_all', 'bhh_gd', 'bhh_mh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd'],

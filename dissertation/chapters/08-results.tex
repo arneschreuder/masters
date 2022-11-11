@@ -16,25 +16,25 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 \begin{itemize}
 	\item \textbf{Section \ref{sec:results:case_study}} provides detailed discussions on the outcomes of the case study on the behaviour of the \acs{BHH}. Illustrations are provided to show the outcomes of the learning process of the \acs{BHH}, while training the underlying \acf{FFNN}.
 
-	\item \textbf{Section \ref{sec:results:bhh_vs_low_level_heuristics}} provides the results of the performance of the \acs{BHH} compared to individual low-level \index{heuristic}heuristics as it relates to all datasets. Three variants of the \acs{BHH} are included in these results. These include the baseline configuration, as well as a configuration that only includes gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and a configuration that only includes meta-heuristics in the \index{heuristic pool}heuristic pool.
+	\item \textbf{Section \ref{sec:results:standalone}} provides the results of the performance of the \acs{BHH} compared to individual low-level \index{heuristic}heuristics as it relates to all datasets. Three variants of the \acs{BHH} are included in these results. These include the baseline configuration, as well as a configuration that only includes gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and a configuration that only includes meta-heuristics in the \index{heuristic pool}heuristic pool.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_hp}} provides the results for the experimental group that analyses the effects of the \index{heuristic pool}\textit{heuristic pool} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:heuristic_pool}} provides the results for the experimental group that analyses the effects of the \index{heuristic pool}\textit{heuristic pool} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_population}} provides the results for the experimental group that analyses the effects of the \textit{population size} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:population}} provides the results for the experimental group that analyses the effects of the \textit{population size} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_credit}} provides the results for the experimental group that analyses the effects of the \textit{credit assignment strategy} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:credit}} provides the results for the experimental group that analyses the effects of the \textit{credit assignment strategy} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_reselection}} provides the results for the experimental group that analyses the effects of the \textit{reselection interval} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:reselection}} provides the results for the experimental group that analyses the effects of the \textit{reselection interval} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_replay}} provides the results for the experimental group that analyses the effects of the \textit{replay window size} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:replay}} provides the results for the experimental group that analyses the effects of the \textit{replay window size} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_reanalysis}} provides the results for the experimental group that analyses the effects of the \textit{reanalysis interval} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:reanalysis}} provides the results for the experimental group that analyses the effects of the \textit{reanalysis interval} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_burn_in}} provides the results for the experimental group that analyses the effects of the \textit{burn in window size} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:burn_in}} provides the results for the experimental group that analyses the effects of the \textit{burn in window size} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_normalise}} provides the results for the experimental group that analyses the effects of the \textit{normalisation} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:normalise}} provides the results for the experimental group that analyses the effects of the \textit{normalisation} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:bhh_variant_discounted_rewards}} provides the results for the experimental group that analyses the effects of the \textit{discounted rewards} hyper-parameter on the outcomes of the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:discounted_rewards}} provides the results for the experimental group that analyses the effects of the \textit{discounted rewards} hyper-parameter on the outcomes of the \acs{BHH}.
 
 	\item \textbf{Section \ref{sec:results:overfitting}} provides a brief discussion on overfitting as it is observed for some of the empirical tests.
 
@@ -53,28 +53,28 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/train/train_loss.pdf}
-	\caption{The average training loss over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average training loss over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:train_loss}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/test/test_loss.pdf}
-	\caption{The average test loss over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average test loss over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:test_loss}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/train/train_accuracy.pdf}
-	\caption{The average training accuracy over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average training accuracy over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:train_accuracy}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/test/test_accuracy.pdf}
-	\caption{The average test accuracy over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average test accuracy over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:test_accuracy}
 \end{figure}
 
@@ -87,28 +87,28 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[0].pdf}
-	\caption{The average value of the concentration parameter $\alpha_{0}$ (\acs{SGD}) over 250 training steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average value of the concentration parameter $\alpha_{0}$ (\acs{SGD}) over 250 training steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:alpha:0}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[6].pdf}
-	\caption{The average value of the concentration parameter $\alpha_{6}$ (\acs{Adam}) over 250 training steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average value of the concentration parameter $\alpha_{6}$ (\acs{Adam}) over 250 training steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:alpha:6}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[7].pdf}
-	\caption{The average value of the concentration parameter $\alpha_{7}$ (\acs{PSO}) over 250 training steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average value of the concentration parameter $\alpha_{7}$ (\acs{PSO}) over 250 training steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:alpha:7}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[8].pdf}
-	\caption{The average value of the concentration parameter $\alpha_{8}$ (\acs{GA}) over 250 training steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average value of the concentration parameter $\alpha_{8}$ (\acs{GA}) over 250 training steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:alpha:8}
 \end{figure}
 
@@ -121,28 +121,28 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[0].pdf}
-	\caption{The average unnormalised sampled probability of the selection probability, denoted $\theta_{0}$ (\acs{SGD}), given concentration parameter $\alpha_{0}$, sampled from the probability distribution $P(\theta_{0} \vert \alpha_{0})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled probability of the selection probability, denoted $\theta_{0}$ (\acs{SGD}), given concentration parameter $\alpha_{0}$, sampled from the probability distribution $P(\theta_{0} \vert \alpha_{0})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:theta:0}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[6].pdf}
-	\caption{The average unnormalised sampled probability of the selection probability, denoted $\theta_{6}$ (\acs{Adam}), given concentration parameter $\alpha_{6}$, sampled from the probability distribution $P(\theta_{6} \vert \alpha_{6})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled probability of the selection probability, denoted $\theta_{6}$ (\acs{Adam}), given concentration parameter $\alpha_{6}$, sampled from the probability distribution $P(\theta_{6} \vert \alpha_{6})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:theta:6}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[7].pdf}
-	\caption{The average unnormalised sampled probability of the selection probability, denoted $\theta_{7}$ (\acs{PSO}), given concentration parameter $\alpha_{7}$, sampled from the probability distribution $P(\theta_{7} \vert \alpha_{7})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled probability of the selection probability, denoted $\theta_{7}$ (\acs{PSO}), given concentration parameter $\alpha_{7}$, sampled from the probability distribution $P(\theta_{7} \vert \alpha_{7})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:theta:7}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[8].pdf}
-	\caption{The average unnormalised sampled probability of the selection probability, denoted $\theta_{8}$ (\acs{GA}), given concentration parameter $\alpha_{8}$, sampled from the probability distribution $P(\theta_{8} \vert \alpha_{8})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled probability of the selection probability, denoted $\theta_{8}$ (\acs{GA}), given concentration parameter $\alpha_{8}$, sampled from the probability distribution $P(\theta_{8} \vert \alpha_{8})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:theta:8}
 \end{figure}
 
@@ -153,28 +153,28 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[0].pdf}
-	\caption{The average unnormalised sampled prior selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the probability of the selection probability, denoted by $\theta_{0}$, sampled from the prior selection probability distribution $P(h_{0} \vert \theta_{0})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled prior selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the probability of the selection probability, denoted by $\theta_{0}$, sampled from the prior selection probability distribution $P(h_{0} \vert \theta_{0})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_H:0}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[6].pdf}
-	\caption{The average unnormalised sampled prior selection probability for \index{heuristic}heuristic $h_{6}$ (\acs{Adam}), given the probability of the selection probability, denoted by $\theta_{6}$, sampled from the prior selection probability distribution $P(h_{6} \vert \theta_{6})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled prior selection probability for \index{heuristic}heuristic $h_{6}$ (\acs{Adam}), given the probability of the selection probability, denoted by $\theta_{6}$, sampled from the prior selection probability distribution $P(h_{6} \vert \theta_{6})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_H:6}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[7].pdf}
-	\caption{The average unnormalised sampled prior selection probability for \index{heuristic}heuristic $h_{7}$ (\acs{PSO}), given the probability of the selection probability, denoted by $\theta_{7}$, sampled from the prior selection probability distribution $P(h_{7} \vert \theta_{7})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled prior selection probability for \index{heuristic}heuristic $h_{7}$ (\acs{PSO}), given the probability of the selection probability, denoted by $\theta_{7}$, sampled from the prior selection probability distribution $P(h_{7} \vert \theta_{7})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_H:7}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[8].pdf}
-	\caption{The average unnormalised sampled prior selection probability for \index{heuristic}heuristic $h_{8}$ (\acs{GA}), given the probability of the selection probability, denoted by $\theta_{8}$, sampled from the prior selection probability distribution $P(h_{8} \vert \theta_{8})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled prior selection probability for \index{heuristic}heuristic $h_{8}$ (\acs{GA}), given the probability of the selection probability, denoted by $\theta_{8}$, sampled from the prior selection probability distribution $P(h_{8} \vert \theta_{8})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_H:8}
 \end{figure}
 
@@ -185,7 +185,7 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][0].pdf}
-	\caption{The average unnormalised sampled posterior selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy, sampled from the posterior selection probability distribution $P(h_{0} \vert e_{0}, \gamma_{1})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled posterior selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy, sampled from the posterior selection probability distribution $P(h_{0} \vert e_{0}, \gamma_{1})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_HgEC:0:0}
 \end{figure}
 
@@ -193,25 +193,25 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][6].pdf}
-	\caption{The average unnormalised sampled posterior selection probability for \index{heuristic}heuristic $h_{6}$ (\acs{Adam}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy, sampled from the posterior selection probability distribution $P(h_{6} \vert e_{0}, \gamma_{1})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled posterior selection probability for \index{heuristic}heuristic $h_{6}$ (\acs{Adam}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy, sampled from the posterior selection probability distribution $P(h_{6} \vert e_{0}, \gamma_{1})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_HgEC:0:6}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][7].pdf}
-	\caption{The average unnormalised sampled posterior selection probability for \index{heuristic}heuristic $h_{7}$ (\acs{PSO}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy, sampled from the posterior selection probability distribution $P(h_{7} \vert e_{0}, \gamma_{1})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled posterior selection probability for \index{heuristic}heuristic $h_{7}$ (\acs{PSO}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy, sampled from the posterior selection probability distribution $P(h_{7} \vert e_{0}, \gamma_{1})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_HgEC:0:7}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][8].pdf}
-	\caption{The average unnormalised sampled posterior selection probability for \index{heuristic}heuristic $h_{8}$ (\acs{GA}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy, sampled from the posterior selection probability distribution $P(h_{8} \vert e_{0}, \gamma_{1})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the Iris dataset, illustrated in log scale.}
+	\caption{The average unnormalised sampled posterior selection probability for \index{heuristic}heuristic $h_{8}$ (\acs{GA}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy, sampled from the posterior selection probability distribution $P(h_{8} \vert e_{0}, \gamma_{1})$ over 250 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_HgEC:0:8}
 \end{figure}
 
-\section{BHH vs. Low-Level Heuristics}\label{sec:results:bhh_vs_low_level_heuristics}
+\section{BHH vs. Low-Level Heuristics}\label{sec:results:standalone}
 
 % Table generated by Excel2LaTeX from sheet 'results - test - loss'
 \begin{table}[htbp]
@@ -356,7 +356,145 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 	\label{fig:results:standalone:descriptive:cd}
 \end{figure}
 
-\section{Heuristic Pool}\label{sec:results:bhh_variant_hp}
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/train/loss/iris.pdf}
+		\caption{Train log loss}
+		\label{fig:results:standalone:figures:loss:train:iris}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/test/loss/iris.pdf}
+		\caption{Test log loss}
+		\label{fig:results:standalone:figures:loss:test:iris}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/train/accuracy/iris.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:standalone:figures:accuracy:train:iris}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/test/accuracy/iris.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:standalone:figures:accuracy:test:iris}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} to individual, standalone, low-level \index{heuristic}heuristics on the iris dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:standalone:figures:iris}
+\end{figure}
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/train/loss/bank.pdf}
+		\caption{Train log loss}
+		\label{fig:results:standalone:figures:loss:train:bank}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/test/loss/bank.pdf}
+		\caption{Test log loss}
+		\label{fig:results:standalone:figures:loss:test:bank}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/train/accuracy/bank.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:standalone:figures:accuracy:train:bank}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/test/accuracy/bank.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:standalone:figures:accuracy:test:bank}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} to individual, standalone, low-level \index{heuristic}heuristics on the bank dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:standalone:figures:bank}
+\end{figure}
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/train/loss/car.pdf}
+		\caption{Train log loss}
+		\label{fig:results:standalone:figures:loss:train:car}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/test/loss/car.pdf}
+		\caption{Test log loss}
+		\label{fig:results:standalone:figures:loss:test:car}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/train/accuracy/car.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:standalone:figures:accuracy:train:car}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/test/accuracy/car.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:standalone:figures:accuracy:test:car}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} to individual, standalone, low-level \index{heuristic}heuristics on the car dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:standalone:figures:car}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/train/loss/fish_toxicity.pdf}
+		\caption{Train log loss}
+		\label{fig:results:standalone:figures:loss:train:fish_toxicity}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/test/loss/fish_toxicity.pdf}
+		\caption{Test log loss}
+		\label{fig:results:standalone:figures:loss:test:fish_toxicity}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test loss plot for the experimental group comparing the performance of the \acs{BHH} to individual, standalone, low-level \index{heuristic}heuristics on the fish toxicity dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:standalone:figures:fish_toxicity}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/train/loss/parkinsons.pdf}
+		\caption{Train log loss}
+		\label{fig:results:standalone:figures:loss:train:parkinsons}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{standalone/figures/test/loss/parkinsons.pdf}
+		\caption{Test log loss}
+		\label{fig:results:standalone:figures:loss:test:parkinsons}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test loss plot for the experimental group comparing the performance of the \acs{BHH} to individual, standalone, low-level \index{heuristic}heuristics on the parkinsons dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:standalone:figures:parkinsons}
+\end{figure}
+
+
+
+
+\section{Heuristic Pool}\label{sec:results:heuristic_pool}
 
 \begin{table}[htbp]
 	\centering
@@ -408,8 +546,60 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 \end{figure}
 
 
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/train/loss/abalone.pdf}
+		\caption{Train log loss}
+		\label{fig:results:heuristic_pool:figures:loss:train:abalone}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/test/loss/abalone.pdf}
+		\caption{Test log loss}
+		\label{fig:results:heuristic_pool:figures:loss:test:abalone}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/train/accuracy/abalone.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:heuristic_pool:figures:accuracy:train:abalone}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/test/accuracy/abalone.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:heuristic_pool:figures:accuracy:test:abalone}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the \index{heuristic pool}heuristic pool hyper-parameter on the abalone dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:heuristic_pool:figures:abalone}
+\end{figure}
 
-\section{Population Size}\label{sec:results:bhh_variant_population}
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/train/loss/forest_fires.pdf}
+		\caption{Train log loss}
+		\label{fig:results:heuristic_pool:figures:loss:train:forest_fires}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/test/loss/forest_fires.pdf}
+		\caption{Test log loss}
+		\label{fig:results:heuristic_pool:figures:loss:test:forest_fires}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test loss plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the \index{heuristic pool}heuristic pool hyper-parameter on the forest fires dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:heuristic_pool:figures:forest_fires}
+\end{figure}
+
+
+
+\section{Population Size}\label{sec:results:population}
 
 \begin{table}[htbp]
 	\centering
@@ -459,7 +649,59 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 	\label{fig:results:population:descriptive:cd}
 \end{figure}
 
-\section{Credit Assignment Strategy}\label{sec:results:bhh_variant_credit}
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_population/figures/train/loss/mushroom.pdf}
+		\caption{Train log loss}
+		\label{fig:results:population:figures:loss:train:mushroom}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_population/figures/test/loss/mushroom.pdf}
+		\caption{Test log loss}
+		\label{fig:results:population:figures:loss:test:mushroom}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_population/figures/train/accuracy/mushroom.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:population:figures:accuracy:train:mushroom}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_population/figures/test/accuracy/mushroom.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:population:figures:accuracy:test:mushroom}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the population size hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:population:figures:mushroom}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_population/figures/train/loss/student_performance.pdf}
+		\caption{Train log loss}
+		\label{fig:results:population:figures:loss:train:student_performance}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_population/figures/test/loss/student_performance.pdf}
+		\caption{Test log loss}
+		\label{fig:results:population:figures:loss:test:student_performance}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the population size hyper-parameter on the student performance dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:population:figures:student_performance}
+\end{figure}
+
+\section{Credit Assignment Strategy}\label{sec:results:credit}
 
 \begin{table}[htbp]
 	\centering
@@ -509,7 +751,58 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 	\label{fig:results:credit:descriptive:cd}
 \end{figure}
 
-\section{Reselection Interval}\label{sec:results:bhh_variant_reselection}
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_credit/figures/train/loss/bank.pdf}
+		\caption{Train log loss}
+		\label{fig:results:credit:figures:loss:train:bank}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_credit/figures/test/loss/bank.pdf}
+		\caption{Test log loss}
+		\label{fig:results:credit:figures:loss:test:bank}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_credit/figures/train/accuracy/bank.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:credit:figures:accuracy:train:bank}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_credit/figures/test/accuracy/bank.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:credit:figures:accuracy:test:bank}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the credit assignment strategy hyper-parameter on the bank dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:credit:figures:bank}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_credit/figures/train/loss/housing.pdf}
+		\caption{Train log loss}
+		\label{fig:results:credit:figures:loss:train:housing}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_credit/figures/test/loss/housing.pdf}
+		\caption{Test log loss}
+		\label{fig:results:credit:figures:loss:test:housing}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the credit assignment strategy hyper-parameter on the housing dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:credit:figures:housing}
+\end{figure}
+
+\section{Reselection Interval}\label{sec:results:reselection}
 
 \begin{table}[htbp]
 	\centering
@@ -559,8 +852,59 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 	\label{fig:results:reselection:descriptive:cd}
 \end{figure}
 
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reselection/figures/train/loss/car.pdf}
+		\caption{Train log loss}
+		\label{fig:results:reselection:figures:loss:train:car}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reselection/figures/test/loss/car.pdf}
+		\caption{Test log loss}
+		\label{fig:results:reselection:figures:loss:test:car}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reselection/figures/train/accuracy/car.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:reselection:figures:accuracy:train:car}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reselection/figures/test/accuracy/car.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:reselection:figures:accuracy:test:car}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the reselection interval hyper-parameter on the car dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:reselection:figures:car}
+\end{figure}
 
-\section{Replay Window Size}\label{sec:results:bhh_variant_replay}
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reselection/figures/train/loss/bike.pdf}
+		\caption{Train log loss}
+		\label{fig:results:reselection:figures:loss:train:bike}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reselection/figures/test/loss/bike.pdf}
+		\caption{Test log loss}
+		\label{fig:results:reselection:figures:loss:test:bike}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the reselection interval hyper-parameter on the bike dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:reselection:figures:bike}
+\end{figure}
+
+
+\section{Replay Window Size}\label{sec:results:replay}
 
 \begin{table}[htbp]
 	\centering
@@ -610,7 +954,58 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 	\label{fig:results:replay:descriptive:cd}
 \end{figure}
 
-\section{Reanalysis Interval}\label{sec:results:bhh_variant_reanalysis}
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_replay/figures/train/loss/diabetic.pdf}
+		\caption{Train log loss}
+		\label{fig:results:replay:figures:loss:train:diabetic}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_replay/figures/test/loss/diabetic.pdf}
+		\caption{Test log loss}
+		\label{fig:results:replay:figures:loss:test:diabetic}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_replay/figures/train/accuracy/diabetic.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:replay:figures:accuracy:train:diabetic}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_replay/figures/test/accuracy/diabetic.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:replay:figures:accuracy:test:diabetic}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the replay window size hyper-parameter on the diabetic dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:replay:figures:diabetic}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_replay/figures/train/loss/fish_toxicity.pdf}
+		\caption{Train log loss}
+		\label{fig:results:replay:figures:loss:train:fish_toxicity}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_replay/figures/test/loss/fish_toxicity.pdf}
+		\caption{Test log loss}
+		\label{fig:results:replay:figures:loss:test:fish_toxicity}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the replay window size hyper-parameter on the fish toxicity dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:replay:figures:fish_toxicity}
+\end{figure}
+
+\section{Reanalysis Interval}\label{sec:results:reanalysis}
 
 \begin{table}[htbp]
 	\centering
@@ -661,8 +1056,59 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 	\label{fig:results:reanalysis:descriptive:cd}
 \end{figure}
 
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/train/loss/mushroom.pdf}
+		\caption{Train log loss}
+		\label{fig:results:reanalysis:figures:loss:train:mushroom}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/test/loss/mushroom.pdf}
+		\caption{Test log loss}
+		\label{fig:results:reanalysis:figures:loss:test:mushroom}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/train/accuracy/mushroom.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:reanalysis:figures:accuracy:train:mushroom}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/test/accuracy/mushroom.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:reanalysis:figures:accuracy:test:mushroom}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations for the reanalysis interval hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:reanalysis:figures:mushroom}
+\end{figure}
 
-\section{Burn In}\label{sec:results:bhh_variant_burn_in}
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/train/loss/parkinsons.pdf}
+		\caption{Train log loss}
+		\label{fig:results:reanalysis:figures:loss:train:parkinsons}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/test/loss/parkinsons.pdf}
+		\caption{Test log loss}
+		\label{fig:results:reanalysis:figures:loss:test:parkinsons}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations for the reanalysis interval hyper-parameter on the parkinsons dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:reanalysis:figures:parkinsons}
+\end{figure}
+
+
+\section{Burn In}\label{sec:results:burn_in}
 
 \begin{table}[htbp]
 	\centering
@@ -704,9 +1150,6 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 	\label{fig:results:burn_in:descriptive:descriptive}
 \end{figure}
 
-The critical difference plot as presented in Figure \ref{fig:results:burn_in:descriptive:cd} shows the statistical significance between burn in window sizes overall, across all datasets. One can clearly see from this plot that little to no burn in is preferred in most of the cases.
-
-
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_burn_in/figures/cd/overall.pdf}
@@ -714,7 +1157,58 @@ The critical difference plot as presented in Figure \ref{fig:results:burn_in:des
 	\label{fig:results:burn_in:descriptive:cd}
 \end{figure}
 
-\section{Normalisation}\label{sec:results:bhh_variant_normalise}
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_burn_in/figures/train/loss/mushroom.pdf}
+		\caption{Train log loss}
+		\label{fig:results:burn_in:figures:loss:train:mushroom}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_burn_in/figures/test/loss/mushroom.pdf}
+		\caption{Test log loss}
+		\label{fig:results:burn_in:figures:loss:test:mushroom}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_burn_in/figures/train/accuracy/mushroom.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:burn_in:figures:accuracy:train:mushroom}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_burn_in/figures/test/accuracy/mushroom.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:burn_in:figures:accuracy:test:mushroom}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations for the burn in window size hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:burn_in:figures:mushroom}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_burn_in/figures/train/loss/parkinsons.pdf}
+		\caption{Train log loss}
+		\label{fig:results:burn_in:figures:loss:train:parkinsons}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_burn_in/figures/test/loss/parkinsons.pdf}
+		\caption{Test log loss}
+		\label{fig:results:burn_in:figures:loss:test:parkinsons}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations for the burn in window size hyper-parameter on the parkinsons dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:burn_in:figures:parkinsons}
+\end{figure}
+
+\section{Normalisation}\label{sec:results:normalise}
 
 \begin{table}[htbp]
 	\centering
@@ -764,7 +1258,59 @@ The critical difference plot as presented in Figure \ref{fig:results:burn_in:des
 	\label{fig:results:normalise:descriptive:cd}
 \end{figure}
 
-\section{Discounted Rewards}\label{sec:results:bhh_variant_discounted_rewards}
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_normalise/figures/train/loss/abalone.pdf}
+		\caption{Train log loss}
+		\label{fig:results:normalise:figures:loss:train:abalone}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_normalise/figures/test/loss/abalone.pdf}
+		\caption{Test log loss}
+		\label{fig:results:normalise:figures:loss:test:abalone}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_normalise/figures/train/accuracy/abalone.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:normalise:figures:accuracy:train:abalone}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_normalise/figures/test/accuracy/abalone.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:normalise:figures:accuracy:test:abalone}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with the normalisation hyper-parameter toggled on the abalone dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:normalise:figures:abalone}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_normalise/figures/train/loss/bike.pdf}
+		\caption{Train log loss}
+		\label{fig:results:normalise:figures:loss:train:bike}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_normalise/figures/test/loss/bike.pdf}
+		\caption{Test log loss}
+		\label{fig:results:normalise:figures:loss:test:bike}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with the normalisation hyper-parameter toggled on the bike dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:normalise:figures:bike}
+\end{figure}
+
+\section{Discounted Rewards}\label{sec:results:discounted_rewards}
 
 \begin{table}[htbp]
 	\centering
@@ -812,6 +1358,57 @@ The critical difference plot as presented in Figure \ref{fig:results:burn_in:des
 	\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with discounted rewards toggled across all datasets, runs and epochs.}
 	\label{fig:results:discounted_rewards:descriptive:cd}
+\end{figure}
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/train/loss/wine_quality.pdf}
+		\caption{Train log loss}
+		\label{fig:results:discounted_rewards:figures:loss:train:wine_quality}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/test/loss/wine_quality.pdf}
+		\caption{Test log loss}
+		\label{fig:results:discounted_rewards:figures:loss:test:wine_quality}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/train/accuracy/wine_quality.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:discounted_rewards:figures:accuracy:train:wine_quality}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/test/accuracy/wine_quality.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:discounted_rewards:figures:accuracy:test:wine_quality}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with the discounted rewards hyper-parameter toggled on the wine quality dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:discounted_rewards:figures:wine_quality}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/train/loss/housing.pdf}
+		\caption{Train log loss}
+		\label{fig:results:discounted_rewards:figures:loss:train:housing}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/test/loss/housing.pdf}
+		\caption{Test log loss}
+		\label{fig:results:discounted_rewards:figures:loss:test:housing}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with the discounted rewards hyper-parameter toggled on the housing dataset over 30 epochs, illustrated in log scale.}
+	\label{fig:results:discounted_rewards:figures:housing}
 \end{figure}
 
 \section{Overfitting}\label{sec:results:overfitting}
