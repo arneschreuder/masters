@@ -283,9 +283,9 @@ def plot(train: bool = False, accuracy = False):
 	global FIG_SIZE_Y
 
 	DS = 'Train' if train else 'Test'
-	TYPE = 'Accuracy' if accuracy else 'Log Loss'
+	TYPE = 'Log Accuracy' if accuracy else 'Log Loss'
 	print("Plotting {} {}".format(DS, TYPE))
-	Y_DATA = 'accuracy' if TYPE == 'Accuracy' else 'loss'
+	Y_DATA = 'accuracy' if TYPE == 'Log Accuracy' else 'loss'
 
 	DATASETS_SUBSET = CATEGORICAL_DATASETS if accuracy else DATASETS
 
@@ -317,7 +317,7 @@ def plot(train: bool = False, accuracy = False):
 			plot.set_yscale('log') # Logarithmic plot
 
 			OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/{}/{}/{}.pdf'.format(DS.lower(), Y_DATA.lower(), dataset))
-			fig.savefig(OUTPUT, transparent=True)
+			fig.savefig(OUTPUT, transparent=True, bbox_inches='tight')
 			plt.close()
 		except Exception as e:
 			print(e)

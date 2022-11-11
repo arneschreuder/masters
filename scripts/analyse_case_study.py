@@ -242,7 +242,7 @@ def plot_params():
 				plot.set_yscale('log') # Logarithmic plot
 
 				OUTPUT = os.path.join(ANALYSIS_PATH, 'figures/{}/{}.pdf'.format(param_group, param))
-				fig.savefig(OUTPUT, transparent=True)
+				fig.savefig(OUTPUT, transparent=True, bbox_inches='tight')
 				plt.close()
 			except Exception as e:
 				print(e)
