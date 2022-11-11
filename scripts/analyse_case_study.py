@@ -124,8 +124,9 @@ def setup_seaborn():
 	global PALETTE
 	global HEURISTIC_COUNT
 	# Setup Plots
-	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 2, 'lines.markersize': 5})
-	PALETTE = sns.color_palette('viridis', HEURISTIC_COUNT)
+	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 1, 'lines.markersize': 3})
+	PALETTE = sns.color_palette('hls', HEURISTIC_COUNT)
+	# PALETTE = sns.color_palette('viridis', HEURISTIC_COUNT)
 	# PALETTE = sns.color_palette('mako_r', HEURISTIC_COUNT)
 
 def create_metrics_dirs():
@@ -184,10 +185,11 @@ def plot_metrics(train: bool = False, accuracy = False):
 			hue=HEURISTIC,
 			style_order=ORDER,
 			style=HEURISTIC,
-			markers=False,
+			markers=True,
 			dashes=False,
 			ax=ax,
-			palette=PALETTE
+			palette=PALETTE,
+			markeredgecolor=None
 		)
 
 		plot.set_xlabel("Epoch")
@@ -234,7 +236,8 @@ def plot_params():
 					markers=False,
 					dashes=False,
 					ax=ax,
-					palette=PALETTE
+					palette=PALETTE,
+					markeredgecolor=None
 				)
 
 				plot.set_xlabel("Step")

@@ -268,9 +268,10 @@ def setup_seaborn():
 	global PALETTE
 	global PARAM_COUNT
 	# Setup Plots
-	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 2, 'lines.markersize': 5})
+	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 1, 'lines.markersize': 3})
+	PALETTE = sns.color_palette('hls', PARAM_COUNT)
 	# PALETTE = sns.color_palette('viridis', PARAM_COUNT)
-	PALETTE = sns.color_palette('mako_r', PARAM_COUNT)
+	# PALETTE = sns.color_palette('mako_r', PARAM_COUNT)
 
 def plot(train: bool = False, accuracy = False):
 	global DATA
@@ -306,10 +307,11 @@ def plot(train: bool = False, accuracy = False):
 				hue=COLUMN,
 				style_order=ORDER,
 				style=COLUMN,
-				markers=False,
+				markers=True,
 				dashes=False,
 				ax=ax,
-				palette=PALETTE
+				palette=PALETTE,
+				markeredgecolor=None
 			)
 
 			plot.set_xlabel("Epoch")
