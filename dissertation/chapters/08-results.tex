@@ -194,37 +194,37 @@ Finally, despite divergence in behaviour, the bhh\_baseline configuration and th
 
 \subsection{Prior Selection Probabilities}\label{sec:results:case_study:prior_selec_prob}
 
-This section provides a brief investigation into the \textit{prior selection probabilities}, that results from the probabilistic model implemented by the \acs{BHH}. The prior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{\theta})$.
+This section provides a brief investigation into the \textit{prior \index{heuristic}heuristic selection probabilities}, that results from the probabilistic model implemented by the \acs{BHH}. The prior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{\theta})$.
 
-Figures~\ref{fig:results:case_study:p_H:0}-\ref{fig:results:case_study:p_H:8} provide illustrations of the \index{heuristic}heuristic selection probabilities, sampled from the \index{heuristic}heuristic selection probability distribution $P(\boldsymbol{H} \vert \boldsymbol{\theta})$ throughout the training process, and averaged over all 30 runs. Similar to before, these illustrations are also presented in log scale. The main observation to make from these figures is that they are much less sporafic than the figures presented for the probabilities of selection probabilities. This is because of the \textit{reselection} interval hyper-parameter. A reselection interval hyper-parameter is introduces to control the frequency by which new heuristics are allocated to each entity. Since the default \textit{reselection} interval is set to 10, the \index{heuristic}heuristic selection probabilities are only resampled at intervals of 10. These illustrations then simply yield rough approximations of the illustrations provided in Figures~\ref{fig:results:case_study:theta:0}-\ref{fig:results:case_study:theta:8} for the probabilities of selection probabilities. As such, the same observations and conclusions that are made in Section \ref{sec:results:case_study:probs_of_select_probs} also apply in this section.
+Figures~\ref{fig:results:case_study:p_H:0}-\ref{fig:results:case_study:p_H:8} provide illustrations of the prior\index{heuristic}heuristic selection probabilities, sampled from the \index{heuristic}heuristic selection probability distribution $P(\boldsymbol{H} \vert \boldsymbol{\theta})$ throughout the training process, and averaged over all 30 runs. Similar to before, these illustrations are also presented in log scale. The main observation to make from these figures is that they are much less sporadic than the figures presented for the probabilities of selection probabilities. This is because of the \textit{reselection} interval hyper-parameter. A reselection interval hyper-parameter is introduces to control the frequency by which new heuristics are allocated to each entity. Since the default \textit{reselection} interval is set to 10, the \index{heuristic}heuristic selection probabilities are only resampled at intervals of 10. These illustrations then simply yield rough approximations of the illustrations provided in Figures~\ref{fig:results:case_study:theta:0}-\ref{fig:results:case_study:theta:8} for the probabilities of selection probabilities. As such, the same observations and conclusions that are made in Section \ref{sec:results:case_study:probs_of_select_probs} also apply in this section.
 
-Finally, it should be mentioned that at each step, the goal of the \acs{BHH} is to update these prior ``beliefs'' based on newly observed evidence of \index{heuristic}heuristic performances. Since these prior selection probabilities change over time, it can be concludes that the change in prior selection probabilities is a result of the learning mechanism of the \acs{BHH}. Furthermore, these prior selection probability distributions provide an opportunity to utilise prior knowledge by some expert to inject heuristic selection biases, even before training starts.
+Finally, it should be mentioned that at each step, the goal of the \acs{BHH} is to update these prior ``beliefs'' based on newly observed evidence of \index{heuristic}heuristic performances. Since these prior \index{heuristic}heuristic selection probabilities change over time, it can be concludes that the change in prior \index{heuristic}heuristic selection probabilities is a result of the learning mechanism of the \acs{BHH}. Furthermore, these prior \index{heuristic}heuristic selection probability distributions provide an opportunity to utilise prior knowledge by some expert to inject heuristic selection biases, even before training starts.
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[0].pdf}
-	\caption{The average sampled prior selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the probability of the selection probability, denoted by $\theta_{0}$. The prior selection probability is sampled from the prior selection probability distribution, denoted $P(h_{0} \vert \theta_{0})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\caption{The average sampled prior \index{heuristic}heuristic selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the probability of the selection probability, denoted by $\theta_{0}$. The prior \index{heuristic}heuristic selection probability is sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(h_{0} \vert \theta_{0})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_H:0}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[6].pdf}
-	\caption{The average sampled prior selection probability for \index{heuristic}heuristic $h_{6}$ (\acs{Adam}), given the probability of the selection probability, denoted by $\theta_{6}$. The prior selection probability is sampled from the prior selection probability distribution, denoted $P(h_{6} \vert \theta_{6})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\caption{The average sampled prior \index{heuristic}heuristic selection probability for \index{heuristic}heuristic $h_{6}$ (\acs{Adam}), given the probability of the selection probability, denoted by $\theta_{6}$. The prior \index{heuristic}heuristic selection probability is sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(h_{6} \vert \theta_{6})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_H:6}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[7].pdf}
-	\caption{The average sampled prior selection probability for \index{heuristic}heuristic $h_{7}$ (\acs{PSO}), given the probability of the selection probability, denoted by $\theta_{7}$. The prior selection probability is sampled from the prior selection probability distribution, denoted $P(h_{7} \vert \theta_{7})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\caption{The average sampled prior \index{heuristic}heuristic selection probability for \index{heuristic}heuristic $h_{7}$ (\acs{PSO}), given the probability of the selection probability, denoted by $\theta_{7}$. The prior \index{heuristic}heuristic selection probability is sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(h_{7} \vert \theta_{7})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_H:7}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[8].pdf}
-	\caption{The average sampled prior selection probability for \index{heuristic}heuristic $h_{8}$ (\acs{GA}), given the probability of the selection probability, denoted by $\theta_{8}$. The prior selection probability is sampled from the prior selection probability distribution, denoted $P(h_{8} \vert \theta_{8})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\caption{The average sampled prior \index{heuristic}heuristic selection probability for \index{heuristic}heuristic $h_{8}$ (\acs{GA}), given the probability of the selection probability, denoted by $\theta_{8}$. The prior \index{heuristic}heuristic selection probability is sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(h_{8} \vert \theta_{8})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_H:8}
 \end{figure}
 
@@ -234,7 +234,15 @@ Finally, it should be mentioned that at each step, the goal of the \acs{BHH} is 
 
 \subsection{Posterior Selection Probabilities}\label{sec:results:case_study:posterior_selec_prob}
 
-TODO
+This section provides a brief investigation into the outcomes of the \textit{posterior heuristic selection probabilities} that forms the probabilistic model implemented by the \acs{BHH} from which new \index{heuristic}heuristics selections are sampled. The posterior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{E}, \boldsymbol{C}; \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})$, where $\boldsymbol{E}$ represents the vector representing the entities in the entity pool, and $\boldsymbol{C}$ represents the vector of performance criteria outcomes as implemented by the credit assignment strategy. Furthermore $\boldsymbol{\theta}, \boldsymbol{\phi}$ represent the probabilities of selection probabilities for the heuristics and entities respectively, and $\boldsymbol{\psi}$ represents the probability of observing a succesful credit allocation from the credit assignment strategy.
+
+Figures~\ref{fig:results:case_study:p_HgEC:0:0}-\ref{fig:results:case_study:p_HgEC:0:8} provide illustrations of the calculated posterior \index{heuristic}heuristic selection probabilities, throughout the training process, and averaged over all 30 runs. Similar to before, these illustrations are also presented in log scale. The main observation to make from these figures is that these values do not actually yield probabilities. The reasons for this is because the probablistic model, defined by $P(\boldsymbol{H} \vert \boldsymbol{E}, \boldsymbol{C}; \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})$, is evaluated for proportionality i.e. they are not normalised, and the log-sum-exp trick is used in order to maintain numerical stability. Instead, these values are used to parameterise a \index{Categorical probability distribution}Categorical probability distribution from which new \index{heuristic}heuristic selections are sampled.
+
+The first noteworthy observation to make is for the bhh\_replay\_250 configuration. From Figures~\ref{fig:results:case_study:p_HgEC:0:0}-\ref{fig:results:case_study:p_HgEC:0:8}, it can be seen that the posterior heuristic selection probabilities stagnate. As previously mentioned, this is a result of training stagnation later in the training process. As a result, fewer and fewer improvements to the current best solutions are found, thus yielding a case where heuristic selection bias is based mostly on past performances obtained from a large reanalysis window.
+
+Furthermore, the posterior heuristic selection probability distribution is conditional on the occurance of a specific entity that the potential \index{heuristic}heuristic will be applied to, as well as a specific performance criteria enforced by a specific credit assignment strategy. This means that \index{heuristic}heuristic selection is specific to each entity. A particular \index{heuristic}heuristic might be good for one entity, but not for another. This is a strong characteristic of the \acs{BHH}, as it learns to apply the correct \index{heuristic}heuristic to the correct entity at the correct point in the training process.
+
+Finally, the posterior heuristic selection probabilities oscillate much less and are much less sporadic than their prior heuristic selection probability equivalents. This is a result of the information that is added by the conditionality on entity and performance criteria.
 
 \begin{figure}[htpb]
 	\centering
@@ -242,7 +250,6 @@ TODO
 	\caption{The average proportional posterior selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy. The proportional posterior selection probability is calculated from the probabilistic model, denoted $P(h_{0} \vert e_{0}, \gamma_{1})$, over 240 steps, and obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
 	\label{fig:results:case_study:p_HgEC:0:0}
 \end{figure}
-
 
 \begin{figure}[htpb]
 	\centering
@@ -265,7 +272,12 @@ TODO
 	\label{fig:results:case_study:p_HgEC:0:8}
 \end{figure}
 
-% \section{BHH vs. Low-Level Heuristics}\label{sec:results:standalone}
+From the observations made in Sections~\ref{sec:results:case_study:performance_metrics}-\ref{sec:results:case_study:posterior_selec_prob}, it can be concluded that the \acs{BHH} is able to succesfully train the underlying \acs{FFNN}. Furthermore it can be concluded that the learning mechanism implemented by the \acs{BHH} is able to exploit minor performance biases and thus, the \acs{BHH} is able to correctly allocate the correct heuristic to the correct entity at the correct time in the training process.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+% BHH vs. Low-Level Heuristics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section{BHH vs. Low-Level Heuristics}\label{sec:results:standalone}
 
 % % Table generated by Excel2LaTeX from sheet 'results - test - loss'
 % \begin{table}[htbp]
