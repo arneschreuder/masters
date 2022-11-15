@@ -116,7 +116,6 @@ DATASETS = [
 	'bank',
 	'bike',
 	'student_performance',
-	'adult',
 	'mushroom',
 	'diabetic'
 ]
@@ -126,7 +125,6 @@ CATEGORICAL_DATASETS = [
 	'wine_quality',
 	'car',
 	'bank',
-	'adult',
 	'mushroom',
 	'diabetic'
 ]
@@ -333,11 +331,11 @@ def main():
 	read_data_from_csv()
 	create_cd_plots_per_dataset()
 	create_cd_plots_overall()
-	setup_seaborn()
-	plot(train=True,accuracy=False)
-	plot(train=True,accuracy=True)
-	plot(train=False,accuracy=False)
-	plot(train=False,accuracy=True)
+	# setup_seaborn()
+	# plot(train=True,accuracy=False)
+	# plot(train=True,accuracy=True)
+	# plot(train=False,accuracy=False)
+	# plot(train=False,accuracy=True)
 
 if __name__ == '__main__':
 	main()
