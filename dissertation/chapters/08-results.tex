@@ -336,7 +336,7 @@ From the observations made in Sections~\ref{sec:results:case_study:performance_m
 
 This section provides the empirical results for the experimental group that compares the performance of the \acs{BHH} to the performance of the individual, standalone, low-level heuristics. Detailed discussions and illustrations follow. As a reminder, the set of low-level heuristics includes a number of gradient-based heuristics and a number of meta-heuristics. Three variants of the \acs{BHH} is included in the experiment, including the \acs{BHH} baseline configuration with a \index{heuristic pool}heuristic pool that contains all the low-level heuristics (denoted bhh\_all), the \acs{BHH} configuration with a \index{heuristic pool}heuristic pool that contains only gradient-based \index{heuristic}heuristics (denoted bhh\_gd), and finally, the \acs{BHH} configuration with a \index{heuristic pool}heuristics pool that contains only \index{meta-heuristic}meta-heuristics (denoted bhh\_mh).
 
-Table~\ref{tab:results:standalone:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the low-level heuristics, compared to the three variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all indepedent runs.
+Table~\ref{tab:results:standalone:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the low-level heuristics, compared to the three variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all independent runs.
 
 \begin{sidewaystable}[htbp]
 	\centering
@@ -571,16 +571,48 @@ Figures~\ref{fig:results:standalone:figures:fish_toxicity}-\ref{fig:results:stan
 
 \section{Heuristic Pool}\label{sec:results:heuristic_pool}
 
-This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \index{heuristic pool}\textit{heuristic pool} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. This experimental group utilises the same three variants of the \acs{BHH} as was utilised in Section \ref{sec:results:standalone}, but provides an opportunity to look at the \acs{BHH} \index{heuristic pool}heuristic pool hyper-parameter in more depth.
+This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \index{heuristic pool}\textit{heuristic pool} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. This experimental group utilises the same three variants of the \acs{BHH} as was utilised in Section \ref{sec:results:standalone}, but provides an opportunity to look at the \acs{BHH} \index{heuristic pool}heuristic pool hyper-parameter in more depth. These variants are denoted as follows. The \acs{BHH} baseline configuration with a \index{heuristic pool}heuristic pool that contains all the low-level heuristics is denoted as \textit{all}, the \acs{BHH} configuration with a \index{heuristic pool}heuristic pool that contains only gradient-based \index{heuristic}heuristics is denoted as \textit{gd}, and finally, the \acs{BHH} configuration with a \index{heuristic pool}heuristics pool that contains only \index{meta-heuristic}meta-heuristics is denoted as \textit{mh}.
 
-Table \ref{tab:results:heuristic_pool:metrics} provides the ranked performance, per dataset, of each of the \acs{BHH} \index{heuristic pool}heuristic pool configurations. Similar to before, the performance rank is calculated as the average rank produced by each \index{heuristic pool}heuristic pool configuration, for all datasets, over all runs and all training epochs.
+Table~\ref{tab:results:heuristic_pool:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the heuristic pool variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all independent runs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Empirical results showing average test loss and statistics for all heuristic pool configurations used by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
+	\label{tab:results:heuristic_pool:metrics:loss}%
+	\par\bigskip
+	\resizebox{0.8\textwidth}{!}{
+		\begin{tabular}{r|lll}
+			                             & \multicolumn{3}{c}{\textbf{Heuristic Pool - Average Loss}}                                                                                                                     \\
+			\midrule
+			\textbf{dataset}             & \multicolumn{1}{c}{\textbf{all}}                           & \multicolumn{1}{c}{\textbf{gd}}                         & \multicolumn{1}{c}{\textbf{mh}}                         \\
+			\midrule
+			\textbf{abalone}             & \cellcolor[rgb]{ 1,  .922,  .518}2.0587 ($\pm$0.088)       & \cellcolor[rgb]{ .388,  .745,  .482}2.0125 ($\pm$0.068) & \cellcolor[rgb]{ .973,  .412,  .42}2.2942 ($\pm$0.055)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)     & \cellcolor[rgb]{ 1,  .922,  .518}0.2642 ($\pm$0.011)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2637 ($\pm$0.007) \\
+			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)       & \cellcolor[rgb]{ .388,  .745,  .482}0.2164 ($\pm$0.005) & \cellcolor[rgb]{ .973,  .412,  .42}0.2562 ($\pm$0.011)  \\
+			\textbf{bike}                & \cellcolor[rgb]{ 1,  .922,  .518}0.0651 ($\pm$0.02)        & \cellcolor[rgb]{ .388,  .745,  .482}0.0545 ($\pm$0.005) & \cellcolor[rgb]{ .973,  .412,  .42}0.1179 ($\pm$0.006)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)    & \cellcolor[rgb]{ 1,  .922,  .518}0.169 ($\pm$0.025)     & \cellcolor[rgb]{ .973,  .412,  .42}0.4891 ($\pm$0.077)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)      & \cellcolor[rgb]{ .388,  .745,  .482}0.8976 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .922,  .518}0.9137 ($\pm$0.008)    \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ 1,  .922,  .518}0.1046 ($\pm$0.008)       & \cellcolor[rgb]{ .973,  .412,  .42}0.1056 ($\pm$0.008)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1043 ($\pm$0.009) \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.081 ($\pm$0.069)      & \cellcolor[rgb]{ .388,  .745,  .482}0.0586 ($\pm$0.034) & \cellcolor[rgb]{ 1,  .922,  .518}0.0621 ($\pm$0.038)    \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)    & \cellcolor[rgb]{ 1,  .922,  .518}0.0951 ($\pm$0.015)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1169 ($\pm$0.019)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2411 ($\pm$0.295)       & \cellcolor[rgb]{ .973,  .412,  .42}0.3729 ($\pm$1.119)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1809 ($\pm$0.164) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ 1,  .922,  .518}0.0052 ($\pm$0.012)       & \cellcolor[rgb]{ .388,  .745,  .482}0.0009 ($\pm$0.001) & \cellcolor[rgb]{ .973,  .412,  .42}0.0774 ($\pm$0.02)   \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ 1,  .922,  .518}0.0587 ($\pm$0.003)       & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.0658 ($\pm$0.003)  \\
+			\textbf{student performance} & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 ($\pm$0.102)       & \cellcolor[rgb]{ .973,  .412,  .42}0.2454 ($\pm$0.134)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1947 ($\pm$0.014) \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)    & \cellcolor[rgb]{ 1,  .922,  .518}1.1028 ($\pm$0.039)    & \cellcolor[rgb]{ .973,  .412,  .42}1.1666 ($\pm$0.03)   \\
+		\end{tabular}%
+
+	}
+\end{table}%
+
+Similar to before, Table \ref{tab:results:heuristic_pool:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} \index{heuristic pool}heuristic pool configurations. The performance rank is calculated as the average rank produced by each \index{heuristic pool}heuristic pool configuration, for all datasets, over all runs and all epochs.
 
 \begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for all heuristic pool configurations used by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
 	\label{tab:results:heuristic_pool:metrics:rank}%
 	\par\bigskip
-	\resizebox{\textwidth}{!}{
+	\resizebox{0.8\textwidth}{!}{
 		\begin{tabular}{r|ccc}
 			                             & \multicolumn{3}{c}{\textbf{Heuristic Pool - Average Rank}}                                                                                                                    \\
 			\midrule
@@ -608,37 +640,9 @@ Table \ref{tab:results:heuristic_pool:metrics} provides the ranked performance, 
 	}
 \end{table}%
 
-\begin{table}[htb]
-	\centering
-	\caption{Empirical results showing average rank and statistics for all heuristic pool configurations used by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
-	\label{tab:results:heuristic_pool:metrics:loss}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{r|lll}
-			                             & \multicolumn{3}{c}{\textbf{Heuristic Pool - Average Loss}}                                                                                                                     \\
-			\midrule
-			\textbf{dataset}             & \multicolumn{1}{c}{\textbf{all}}                           & \multicolumn{1}{c}{\textbf{gd}}                         & \multicolumn{1}{c}{\textbf{mh}}                         \\
-			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ 1,  .922,  .518}2.0587 ($\pm$0.088)       & \cellcolor[rgb]{ .388,  .745,  .482}2.0125 ($\pm$0.068) & \cellcolor[rgb]{ .973,  .412,  .42}2.2942 ($\pm$0.055)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)     & \cellcolor[rgb]{ 1,  .922,  .518}0.2642 ($\pm$0.011)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2637 ($\pm$0.007) \\
-			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)       & \cellcolor[rgb]{ .388,  .745,  .482}0.2164 ($\pm$0.005) & \cellcolor[rgb]{ .973,  .412,  .42}0.2562 ($\pm$0.011)  \\
-			\textbf{bike}                & \cellcolor[rgb]{ 1,  .922,  .518}0.0651 ($\pm$0.02)        & \cellcolor[rgb]{ .388,  .745,  .482}0.0545 ($\pm$0.005) & \cellcolor[rgb]{ .973,  .412,  .42}0.1179 ($\pm$0.006)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)    & \cellcolor[rgb]{ 1,  .922,  .518}0.169 ($\pm$0.025)     & \cellcolor[rgb]{ .973,  .412,  .42}0.4891 ($\pm$0.077)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)      & \cellcolor[rgb]{ .388,  .745,  .482}0.8976 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .922,  .518}0.9137 ($\pm$0.008)    \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ 1,  .922,  .518}0.1046 ($\pm$0.008)       & \cellcolor[rgb]{ .973,  .412,  .42}0.1056 ($\pm$0.008)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1043 ($\pm$0.009) \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.081 ($\pm$0.069)      & \cellcolor[rgb]{ .388,  .745,  .482}0.0586 ($\pm$0.034) & \cellcolor[rgb]{ 1,  .922,  .518}0.0621 ($\pm$0.038)    \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)    & \cellcolor[rgb]{ 1,  .922,  .518}0.0951 ($\pm$0.015)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1169 ($\pm$0.019)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2411 ($\pm$0.295)       & \cellcolor[rgb]{ .973,  .412,  .42}0.3729 ($\pm$1.119)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1809 ($\pm$0.164) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ 1,  .922,  .518}0.0052 ($\pm$0.012)       & \cellcolor[rgb]{ .388,  .745,  .482}0.0009 ($\pm$0.001) & \cellcolor[rgb]{ .973,  .412,  .42}0.0774 ($\pm$0.02)   \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ 1,  .922,  .518}0.0587 ($\pm$0.003)       & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.0658 ($\pm$0.003)  \\
-			\textbf{student performance} & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 ($\pm$0.102)       & \cellcolor[rgb]{ .973,  .412,  .42}0.2454 ($\pm$0.134)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1947 ($\pm$0.014) \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)    & \cellcolor[rgb]{ 1,  .922,  .518}1.1028 ($\pm$0.039)    & \cellcolor[rgb]{ .973,  .412,  .42}1.1666 ($\pm$0.03)   \\
-		\end{tabular}%
+Similar to the outcomes provided in Section \ref{sec:results:standalone}, by ranked performance over all epochs, it is found that the \textit{gd} configuration yielded the best overall performance compared to the \textit{all} and \textit{mh} configurations. However, when considering the test loss measured at the last epoch, there is no clear difference in performance overall. This illustrates the reasoning behind the use of the rank metric over all epochs to evaluate the overall training process, as the test loss outcome differs at different epochs and early stopping of the training process was not used.
 
-	}
-\end{table}%
-
-Similar to the outcomes provided in Section \ref{sec:results:standalone}, it is found that the bhh\_gd configuration yielded the best overall performance compared to the bhh\_all and bhh\_mh configurations. Figure~\ref{fig:results:heuristic_pool:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different \index{heuristic pool}heuristic pool configurations, per dataset.
+Figure~\ref{fig:results:heuristic_pool:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different \index{heuristic pool}heuristic pool configurations, per dataset. From this illustration it can clearly be seen that, by ranked performance, the \textit{gd} configuration produced better results overall, considering the entire training process.
 
 \begin{figure}[htb]
 	\centering
@@ -647,7 +651,7 @@ Similar to the outcomes provided in Section \ref{sec:results:standalone}, it is 
 	\label{fig:results:heuristic_pool:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:heuristic_pool:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each \index{heuristic pool}heuristic pool configuration as it relates to all datasets, across all runs.
+Figure~\ref{fig:results:heuristic_pool:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each \index{heuristic pool}heuristic pool configuration as it relates to all datasets, across all independent runs and epochs.
 
 \begin{figure}[htb]
 	\centering
@@ -656,11 +660,11 @@ Figure~\ref{fig:results:heuristic_pool:descriptive:cd} provides an illustration 
 	\label{fig:results:heuristic_pool:descriptive:cd}
 \end{figure}
 
-From Figures~\ref{fig:results:heuristic_pool:descriptive:descriptive} and Figure~\ref{fig:results:heuristic_pool:descriptive:cd}, it is clear that the bhh\_gd configuration performs best overall, with statistically insignificant exceptions for the parkinsons and housing datasets.
+From Figures~\ref{fig:results:heuristic_pool:descriptive:descriptive} and~\ref{fig:results:heuristic_pool:descriptive:cd}, it is clear that the \textit{gd} configuration configuration performs best overall, with exceptions to the parkinsons and housing datasets, where the \textit{all} and \textit{gd} configurations performed equally well with statistically insignificant differences in their outcomes.
 
-From the results show in Section \ref{sec:results:standalone}, the gradient-based methods outperformed the \index{meta-heuristic}meta-heuristics in all cases. It then logically makes sense that the bhh\_gd configuration yields the best performance. However, the inclusion of \index{meta-heuristic}meta-heuristics is done as an attempt to provide a mechanism that could provide even better performance, as well as generalisation capabilities to other datasets. The benefits of a generalisation capability is not realised in this dissertation, since the gradient-based \index{heuristic}heuristics provided the best performance across datasets and overall. Furthermore, the gradient-based \index{heuristic}heuristics already produce good performance results, and improvement on those results are hard. Faster convergence is also difficult to achieve, since the \acs{BHH} needs sufficient time to explore the heuristic space. The benefit that the \acs{BHH} then brings is that it provides a mechanism where prior expert knowledge can be injected, before training starts. Since gradient-based \index{heuristic}heuristics perform well, future research can exploit this knowledge and provide a significant bias towards these gradient-based \index{heuristic}heuristics through the initialisation of the concentration parameters as is mentioned previously.
+From the results shown in this section and Section \ref{sec:results:standalone}, the gradient-based \index{heuristic}heuristics outperformed the \index{meta-heuristic}meta-heuristics in almost all cases. It can then logically be concluded that the \acs{BHH} baseline configuration with only gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool yields the best performance. The inclusion of \index{meta-heuristic}meta-heuristics is done as an attempt to provide a mechanism that could provide even better performance, as well as generalisation capabilities to other datasets. The benefits of using \index{meta-heuristic}meta-heuristics in the \index{heuristic pool}heuristic pool is not realised in this dissertation, since the gradient-based \index{heuristic}heuristics provided the best overall performance across  all datasets. Furthermore, the standalone gradient-based \index{heuristic}heuristics already produce good performance results, and improvement on those results are hard. Faster convergence is also difficult to achieve, since the \acs{BHH} needs sufficient time to explore the heuristic space. The benefit that the \acs{BHH} then brings is that it provides a mechanism whereby prior expert knowledge can be injected, before training starts. Since gradient-based \index{heuristic}heuristics perform well, future research can exploit this knowledge and provide a significant bias towards these gradient-based \index{heuristic}heuristics through the initialisation of the concentration parameters related to these \index{heuristic}heuristics as mentioned previously.
 
-Similar to before, Figure~\ref{fig:results:heuristic_pool:figures:abalone} provides the train and test, loss and accuracy plot for an example classification dataset (abalone) as it relates to the heuristic pool experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:heuristic_pool:figures:abalone} provides an illustration of the train and test, loss and accuracy plots for an example classification dataset (abalone) as it relates to the \index{heuristic pool}heuristic pool experimental group. As before, the illustration is provided in log scale and illustrations for the other classification datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -693,7 +697,7 @@ Similar to before, Figure~\ref{fig:results:heuristic_pool:figures:abalone} provi
 	\label{fig:results:heuristic_pool:figures:abalone}
 \end{figure}
 
-Figure~\ref{fig:results:heuristic_pool:figures:forest_fires} provides the train and test loss plot for an example regression dataset (forest fires) as it relates to the heuristic pool experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:heuristic_pool:figures:forest_fires} provides the train and test loss plot for an example regression dataset (forest fires) as it relates to the heuristic pool experimental group. As before, the illustration is provided in log scale and illustrations for the other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -787,7 +791,7 @@ Table \ref{tab:results:population:metrics} provides the ranked performance, per 
 
 Table \ref{tab:results:population:metrics} show that that a smaller population size mostly produces the best results, with statistically significant differences on the adult, bike and car datasets. A population size of 10, slightly higher than the default of 5 is preferred for the forest fires and housing datasets.
 
-Figure~\ref{fig:results:population:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different population size configurations, per dataset.
+Figure~\ref{fig:results:population:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different population size configurations, per dataset.
 
 \begin{figure}[htb]
 	\centering
@@ -840,7 +844,7 @@ Similar to before, Figure~\ref{fig:results:population:figures:mushroom} provides
 
 As a reminder, the experimental group for population sizes only varies the population size hyper-parameter and all other hyper-parameters remain the same between configurations. As such, all population size configurations make use of the \index{heuristic pool}heuristic pool configuration that includes all the low-level heuristics, including gradient-based \index{heuristic}heuristics and \index{meta-heuristic}meta-heuristics. This explains the sporadic results in Figure \ref{fig:results:population:figures:loss:test:mushroom}. Note that the accuracy is almost 100\% and that these sporadic results are simply a result of an attempt to further improve performance even more, by exploring the heuristic space more. Since there is not much room for more improvement, the \acs{BHH} is bound to try different heuristic that yield sub-optimal results.
 
-Figure~\ref{fig:results:population:figures:student_performance} provides the train and test loss plot for an example regression dataset (student performance) as it relates to the population size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:population:figures:student_performance} provides the train and test loss plot for an example regression dataset (student performance) as it relates to the population size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -936,7 +940,7 @@ Table \ref{tab:results:credit:metrics} provides the ranked performance, per data
 
 Table \ref{tab:results:credit:metrics} show that different credit assignment strategies perform best for different datasets, from which it can be concluded that the credit assignment strategy hyper-parameter is problem specific. It should be noted that the symmetric credit assignment strategy yielded the best results for the forest fires dataset. This does not necessarily suggest that random search in the heuristic space yields the best performance for this dataset. Instead, it could be the case that the initial selection of heuristics is good enough and that it is difficult to find a performance bias that results in better performance, as all \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool provide good results. For all other datasets, it is found that a particular non-symmetric credit assignment strategy yields better results than random search.
 
-Figure~\ref{fig:results:credit:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different credit assignment strategy configurations, per dataset.
+Figure~\ref{fig:results:credit:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different credit assignment strategy configurations, per dataset.
 
 \begin{figure}[htb]
 	\centering
@@ -989,7 +993,7 @@ Similar to before, Figure~\ref{fig:results:credit:figures:bank} provides the tra
 
 From Figure~\ref{fig:results:credit:figures:bank} it can be seen that the \textit{pbest} credit assignment strategy (green) diverged away from the current best solution, but was able to return to the current best solution. Since the solution found by the \acs{BHH} with the \textit{pbest} credit assignment strategy was already optimal before divergence, it stands to reason that this divergence is a result of the \acs{BHH} exploring other solutions in the heuristic space that yield sub-optimal solutions. As mentioned before, a move-acceptance strategy can be incorporated to counteract this effect.
 
-Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss plot for an example regression dataset (housing) as it relates to the credit assignment strategy experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss plot for an example regression dataset (housing) as it relates to the credit assignment strategy experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1084,7 +1088,7 @@ Table \ref{tab:results:reselection:metrics} provides the ranked performance, per
 
 Table \ref{tab:results:reselection:metrics} show that larger reselection intervals are mostly preferred, with the exception of the adult dataset. This outcome can be explained as follows. A larger reselection interval gives the low-level \index{heuristic}heuristics more time to execute, resulting in smoother update steps. This is further supported by the findings from Sections \ref{sec:results:standalone} and \ref{sec:results:heuristic_pool}, that show that gradient-based \index{heuristic}heuristics generally yield the best performance. Gradient-based \index{heuristic}heuristics rely on exponentially averaged state parameters in order to produce smooth update steps. If reselection occurs too frequently these exponentially averaged state parameters do not yield smooth update steps. Finally, it should be noted that the default reanalysis interval is 10. At every reanalysis interval, the concentrations for low-level \index{heuristic}heuristics is reset to the default, symmetrical value of 1. As such, \acs{BHH} configurations with reselection intervals that are larger than the reanalysis interval only consider performance samples from the last reanalysis window size. This suggests that exploitation of low-level \index{heuristic}heuristics is more important than exploration of low-level \index{heuristic}heuristics.
 
-Figure~\ref{fig:results:credit:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reselection interval configurations, per dataset.
+Figure~\ref{fig:results:credit:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reselection interval configurations, per dataset.
 
 \begin{figure}[htb]
 	\centering
@@ -1137,7 +1141,7 @@ Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the
 	\label{fig:results:reselection:figures:car}
 \end{figure}
 
-Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plot for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plot for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1232,7 +1236,7 @@ Table \ref{tab:results:replay:metrics} shows that there is no clear best perform
 
 Furthermore, it can be concluded that some problem sets require more exploration of the \index{heuristic}heuristic space, while other problem sets require more exploitation of low-level \index{heuristic}heuristics.
 
-Figure~\ref{fig:results:replay:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different replay window size configurations, per dataset.
+Figure~\ref{fig:results:replay:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different replay window size configurations, per dataset.
 
 \begin{figure}[htb]
 	\centering
@@ -1285,7 +1289,7 @@ Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the
 	\label{fig:results:replay:figures:diabetic}
 \end{figure}
 
-Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and test loss plot for an example regression dataset (fish toxicity) as it relates to the replay window size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and test loss plot for an example regression dataset (fish toxicity) as it relates to the replay window size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1385,7 +1389,7 @@ Table \ref{tab:results:reanalysis:metrics} shows that there is no clear best per
 
 It should be noted that the configuration and results for the reanalysis interval configurations should be considered along with the reselection interval configurations as reselection is based on the outcome of the reanalysis step. For the \acs{BHH} baseline configuration, both the reselection and reanalysis interval hyper-parameters have default value of 10. Furthermore, the smaller the reanalysis interval, the more frequently the \acs{BHH} resets concentration parameters. A reanalysis interval of 1 provides a case where only the last executed step is considered for reanalysis and thus provides a shortsighted view on the relevance of past performance, and thus, reselection is based only on the most recent performance of each selected \index{heuristic}heuristic.
 
-Figure~\ref{fig:results:reanalysis:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reanalysis interval configurations, per dataset.
+Figure~\ref{fig:results:reanalysis:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reanalysis interval configurations, per dataset.
 
 \begin{figure}[htb]
 	\centering
@@ -1438,7 +1442,7 @@ Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides
 	\label{fig:results:reanalysis:figures:mushroom}
 \end{figure}
 
-Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plot for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plot for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1532,7 +1536,7 @@ Table \ref{tab:results:burn_in:metrics} provides the ranked performance, per dat
 
 Table \ref{tab:results:burn_in:metrics} shows that, in general, a configuration where there is no burn in produces the best results. This can be explains from the fact that most of the training progress that is made is done early in the training process. The faster the \acs{BHH} is able to start learning, the better. Note that reselection still occurs during a burn in window, but burn in overrides the reanalysis interval is the burn in window size is larger than the reanalysis window.
 
-Figure~\ref{fig:results:burn_in:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the burn in window size configurations, per dataset.
+Figure~\ref{fig:results:burn_in:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the burn in window size configurations, per dataset.
 
 \begin{figure}[htb]
 	\centering
@@ -1586,7 +1590,7 @@ Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides th
 	\label{fig:results:burn_in:figures:mushroom}
 \end{figure}
 
-Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plot for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plot for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1677,7 +1681,7 @@ Table \ref{tab:results:normalise:metrics} provides the ranked performance, per d
 
 Table \ref{tab:results:normalise:metrics} shows that, in general, there is no obvious difference in the outcomes of the \acs{BHH} when normalisation is enabled or disabled. For some datasets such as bank, fish toxicity, forest fires, iris, and wine quality, enabling normalisation provided the best results, while disabling of the normalisation flag provided the best results for the other datasets. This suggests that the normalisation flag is problem specific. Since the normalisation hyper-parameter provides a mechanism for the \acs{BHH} to explore more in the \index{heuristic}heuristic space, with the intent of finding better solutions, it can be concluded that some datasets require more exploration, while others require more exploitation.
 
-Figure~\ref{fig:results:normalise:descriptive:descriptive} provides a illustration of the descriptive plots for the \acs{BHH} configurations with the normalisation hyper-parameter enabled and disabled, per dataset.
+Figure~\ref{fig:results:normalise:descriptive:descriptive} provides an illustration of the descriptive plots for the \acs{BHH} configurations with the normalisation hyper-parameter enabled and disabled, per dataset.
 
 \begin{figure}[htb]
 	\centering
@@ -1731,7 +1735,7 @@ Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides t
 \end{figure}
 
 
-Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plot for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plot for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 
 \begin{figure}[htb]
@@ -1830,7 +1834,7 @@ Table \ref{tab:results:discounted_rewards:metrics} provides the ranked performan
 
 Table \ref{tab:results:discounted_rewards:metrics} shows that, in general, there is no obvious difference in the outcomes of the \acs{BHH} when discounted rewards is enabled or disabled.
 
-Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} provides a illustration of the descriptive plots for the \acs{BHH} configurations with the discounted rewards hyper-parameter enabled and disabled, per dataset.
+Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} provides an illustration of the descriptive plots for the \acs{BHH} configurations with the discounted rewards hyper-parameter enabled and disabled, per dataset.
 
 \begin{figure}[htb]
 	\centering
@@ -1883,7 +1887,7 @@ Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quali
 	\label{fig:results:discounted_rewards:figures:wine_quality}
 \end{figure}
 
-Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train and test loss plot for an example regression dataset (housing) as it relates to the discounted rewards experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
+Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train and test loss plot for an example regression dataset (housing) as it relates to the discounted rewards experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
