@@ -98,6 +98,7 @@ ANALYSIS_CONFIG = {
 		'column': 'heuristic',
 		'param_count': 13,
 		'order': ['adam', 'adadelta', 'adagrad', 'bhh_all', 'bhh_gd', 'bhh_mh', 'de', 'ga', 'momentum','nag', 'pso', 'rmsprop', 'sgd'],
+		# 'order': ['adagrad', 'adam', 'rmsprop', 'bhh_gd', 'nag', 'bhh_all', 'adadelta', 'bhh_mh', 'ga', 'pso', 'sgd', 'momentum', 'de'],
 		'fig_size_x': 12,
 		'fig_size_y': 9,
 	},
@@ -266,8 +267,19 @@ def setup_seaborn():
 	global PALETTE
 	global PARAM_COUNT
 	# Setup Plots
-	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 1, 'lines.markersize': 3})
-	PALETTE = sns.color_palette('hls', PARAM_COUNT)
+	rc_config = {
+		'figure.titlesize': 24,
+		'axes.labelsize': 20,
+		'axes.titlesize': 20,
+		'xtick.labelsize': 20,
+		'ytick.labelsize': 20,
+		'legend.fontsize': 12,
+		'lines.linewidth': 2,
+		'lines.markersize': 7,
+	}
+	sns.set_context('paper', rc=rc_config)
+	PALETTE = sns.color_palette('husl', PARAM_COUNT)
+	# PALETTE = sns.color_palette('hls', PARAM_COUNT)
 	# PALETTE = sns.color_palette('viridis', PARAM_COUNT)
 	# PALETTE = sns.color_palette('mako_r', PARAM_COUNT)
 
@@ -295,7 +307,7 @@ def plot(train: bool = False, accuracy = False):
 			subset = DATA.query(query)
 
 			fig, ax = plt.subplots(figsize=(FIG_SIZE_X,FIG_SIZE_Y))
-			fig.suptitle('BHH {} - {} {} - Dataset: {}'.format(FRIENDLY, DS, TYPE, dataset))
+			fig.suptitle('BHH {} - {} {} - Dataset: {}'.format(FRIENDLY, DS, TYPE, dataset), fontsize=24)
 
 			plot = sns.lineplot(
 				data=subset,
@@ -331,11 +343,11 @@ def main():
 	read_data_from_csv()
 	create_cd_plots_per_dataset()
 	create_cd_plots_overall()
-	# setup_seaborn()
-	# plot(train=True,accuracy=False)
-	# plot(train=True,accuracy=True)
-	# plot(train=False,accuracy=False)
-	# plot(train=False,accuracy=True)
+	setup_seaborn()
+	plot(train=True,accuracy=False)
+	plot(train=True,accuracy=True)
+	plot(train=False,accuracy=False)
+	plot(train=False,accuracy=True)
 
 if __name__ == '__main__':
 	main()

@@ -123,9 +123,19 @@ def print_banner():
 def setup_seaborn():
 	global PALETTE
 	global HEURISTIC_COUNT
-	# Setup Plots
-	sns.set_context('paper',  font_scale=1.5, rc={'lines.linewidth': 1, 'lines.markersize': 3})
-	PALETTE = sns.color_palette('hls', HEURISTIC_COUNT)
+	rc_config = {
+		'figure.titlesize': 24,
+		'axes.labelsize': 20,
+		'axes.titlesize': 20,
+		'xtick.labelsize': 20,
+		'ytick.labelsize': 20,
+		'legend.fontsize': 12,
+		'lines.linewidth': 2,
+		'lines.markersize': 7,
+	}
+	sns.set_context('paper', rc=rc_config)
+	PALETTE = sns.color_palette('husl', HEURISTIC_COUNT)
+	# PALETTE = sns.color_palette('hls', HEURISTIC_COUNT)
 	# PALETTE = sns.color_palette('viridis', HEURISTIC_COUNT)
 	# PALETTE = sns.color_palette('mako_r', HEURISTIC_COUNT)
 
@@ -175,7 +185,7 @@ def plot_metrics(train: bool = False, accuracy = False):
 	print('Processing metrics')
 	try:
 		fig, ax = plt.subplots(figsize=(12,5))
-		fig.suptitle('BHH Case Study - {} {} - Dataset: Iris'.format(DS, TYPE))
+		fig.suptitle('BHH Case Study - {} {} - Dataset: Iris'.format(DS, TYPE), fontsize=24)
 
 		plot = sns.lineplot(
 			data=METRICS_DATA,

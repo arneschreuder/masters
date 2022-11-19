@@ -8,14 +8,16 @@
 	- W. Edwards Deming
 \end{flushright}
 
-The required background information on all the elements relevant to the empirical process have been presented in Chapters~\ref{chap:anns}-\ref{chap:probability}. The proposed \acf{BHH} was presented in Chapter~\ref{chap:bhh} and the design and methodology of the empirical process was presented in Chapter~\ref{chap:methodology}. The methodology presented a number of experimental groups to conduct, including a case study on the behaviour of the \acs{BHH} during training, and a comparison to the performance of state-of-the-art, standalone, low-level \index{heuristic}heuristics. The methodology also defined a number of experiments related to the empirical testing of the effects of hyper-parameters on the outcomes of the \acs{BHH}.
+The last step in the scientific process requires the presentation of the outcomes of the empirical process. Objective discussions based on statistical analysis of the findings is required. The design and methodology of the empirical process was presented in Chapter~\ref{chap:methodology}. The methodology presented a number of experimental groups to conduct. The experimental groups that were identified include a case study on the behaviour of the \acs{BHH} during training, an empirical comparison to the performance of state-of-the-art, standalone, low-level \index{heuristic}heuristics, and a number of experiments related to the empirical testing of the effects of hyper-parameters on the outcomes of the \acs{BHH}.
 
-Finally, this chapter provides the outcome of these empirical processes and provides results on all the experiments that have been conducted. Detailed discussions follow on the outcomes of each experiment. Discussions are accompanied by figures and plots to help provide visual aid for the discussions. The output of the statistical analysis that yielded the results that is presented in the chapter is provided in Appendix~\ref{app:statistical_analysis}. The remainder of the chapter is structured as follows.
+This chapter provides the outcomes of the empirical processes and provides results on all the experiments that have been conducted. Detailed discussions follow on the outcomes of each experiment. Discussions are accompanied by figures and plots to help provide visual aid for discussions. The output of the statistical analysis that yielded the results is provided in Appendix~\ref{app:statistical_analysis}. The remainder of the chapter is structured as follows.
 
 \begin{itemize}
+	\item \textbf{Section \ref{sec:results:overview}} provides a brief overview of the outcomes of the empirical process and highlights key aspects to observe in the results.
+
 	\item \textbf{Section \ref{sec:results:case_study}} provides detailed discussions on the outcomes of the case study on the behaviour of the \acs{BHH}. Illustrations are provided to show the change in parameter values to illustrate the outcomes of the learning process of the \acs{BHH}, while training the underlying \acf{FFNN}.
 
-	\item \textbf{Section \ref{sec:results:standalone}} provides the results of the performance of the \acs{BHH} compared to individual low-level \index{heuristic}heuristics as it relates to all datasets. Three variants of the \acs{BHH} are included in these results. These include the baseline configuration, as well as a configuration that only includes gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and a configuration that only includes meta-heuristics in the \index{heuristic pool}heuristic pool.
+	\item \textbf{Section \ref{sec:results:standalone}} provides the results of the performance of the \acs{BHH} compared to individual low-level \index{heuristic}heuristics on all datasets. Three variants of the \acs{BHH} are included in these results. These include the baseline configuration, as well as a configuration that only includes gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and a configuration that only includes meta-heuristics in the \index{heuristic pool}heuristic pool.
 
 	\item \textbf{Section \ref{sec:results:heuristic_pool}} provides the results for the experimental group that analyses the effects of the \index{heuristic pool}\textit{heuristic pool} hyper-parameter on the outcomes of the \acs{BHH}.
 
@@ -35,27 +37,41 @@ Finally, this chapter provides the outcome of these empirical processes and prov
 
 	\item \textbf{Section \ref{sec:results:discounted_rewards}} provides the results for the experimental group that analyses the effects of the \textit{discounted rewards} hyper-parameter on the outcomes of the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:practical_applications}} provides a brief discussion on the practical application of the \acs{BHH} to real-world problems.
-
 	\item \textbf{Section \ref{sec:results:summary}} provides a brief summary of the chapter.
 \end{itemize}
 
+\section{Overview}\label{sec:results:overview}
+
+This section provides a brief discussion on the general outcome of the empirical process as a whole. Overall the \acs{BHH} is shown to successfully train the underlying \acp{FFNN} for all datasets. In general, the \acs{BHH} performs well and the empirical process provides key insights into the workings of the \acs{BHH}. Where possible, a number of improvements to the \acs{BHH} are identified and recommended as it relates to the outcomes of the results.
+
+Given the nature of the \acs{BHH}, it is recommended that the following aspects be kept in mind when observing the results. The \acs{BHH} applies a form of \index{online learning}online learning. As such, the \acs{BHH} applies the learning mechanism during training in a single run of the training process. The training process is not repeated iteratively. All experiments conducted are executed for 30 epochs. The number of training steps executed is dependent on the batch size applied for each dataset.
+
+All of the underlying \acp{FFNN} trained in the empirical process are relatively small. As such, most of the training progress is observed to occur withing the first five epochs. As a result, the \acs{BHH} should apply most learning at the early stages of the training process. After five epochs, the training of most of the underlying \acp{FFNN} converges and little performance gain is observed after that point. Since this empirical process does not apply early stopping of the training process, the \acs{BHH} will continue to explore the \index{heuristic}heuristic space beyond the five epoch mark.
+
+The \acs{BHH} does not implement a move acceptance strategy, where the application of a heuristic to an entity is only accepted if it leads to a better solution. In some cases the \acs{BHH} then selects heuristics that yield sub-optimal results, but is shown to mostly return to optimal solutions over a number of steps.
+
+Given the stochastic nature of the \index{heuristic}heuristic selection mechanism, sufficient samples of the performance of each heuristics-entity combination in the performance log is required for the \acs{BHH} to learn. This requirement is further strengthened by the Bayesian nature of the probabilistic model implemented by the \acs{BHH}. The probabilistic model implements \textit{probabilities of heuristic selection probabilities} and as such, insufficient samples in the performance log could render a form of random search.
+
+The \textit{reanalysis interval} defines intervals at which the \acs{BHH} reanalyses the performance log, in effect, resetting the concentration parameters to their default values and reapplying the underlying Bayesian analysis process on the performance log. Furthermore, the \textit{replay window size} defines the amount of performance evidence in the performance log. By default, the \acs{BHH} baseline configuration has a reanalysis interval of 10, and a replay window size of 10, which is a small window to learn from. Despite the small reanalysis interval and the small replay window size, it should be observed that the \acs{BHH} exploits small performance biases regardless and does find small performance gains throughout.
+
 \section{Behavioural Case Study}\label{sec:results:case_study}
 
-This section provides the empirical results of the case study on the behaviour of the \acs{BHH} as it is used to train a \acs{FFNN} on the iris dataset. As a reminder, the iris dataset contains 150 records, split into a training dataset containing 120 records, and a test dataset that contains 30 records. The test dataset is treated like a validation dataset, and is evaluated at every training step to illustrate the outcomes of the \acs{BHH} throughout the training process. Some noisiness can be expected as mini-batch training is executed with batch sizes of 30. The results that are presented are averaged over 30 independent runs.
+This section provides the empirical results of the case study on the behaviour of the \acs{BHH} as it is used to train a \acs{FFNN} on the iris dataset. As a reminder, the iris dataset contains 150 records, split into a training dataset containing 120 records, and a test dataset that contains 30 records. The test dataset is treated like a validation dataset, and is evaluated at every training step to illustrate the outcomes of the \acs{BHH} throughout the training process. Mini-batch training is executed with a batch size of 30. The results that are presented are averaged over 30 independent runs.
 
-Furthermore, the case study focuses on three different variants of the \acs{BHH}. These include the baseline configuration as was provided in Chapter~\ref{chap:bhh}, as well as a configuration that includes a ``long memory'' by setting the replay window size to 250, and a configuration that makes use of the \textit{symmetric} credit assignment strategy. These configurations were specifically chosen for the following reasons: the large replay window size configuration is chosen to illustrate a case where the \acs{BHH} does not ``forget'' past performances of the low-level \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and the configuration that utilises the symmetric credit assignment is chosen to illustrate a case where there \acs{BHH} does not reward good performance and does not yield a bias towards \index{heuristic}heuristics that perform well. This section is structured as follows.
+Furthermore, the case study focuses on three variants of the \acs{BHH}. These include the baseline configuration, as was provided in Chapter~\ref{chap:bhh} and is denoted as bhh\_baseline (illustrated throughout in \textcolor{red}{red}). Furthermore, the case study also includes a configuration of the \acs{BHH} that has a ``long memory'' by setting the \textit{replay window size} hyper-parameter to 250, and is denoted as bhh\_replay\_250 (illustrated throughout in \textcolor{green}{green}). Finally, the case study includes a configuration that makes use of the \textit{symmetric} credit assignment strategy hyper-parameter, and is denoted as bhh\_credit\_symmetric (illustrated throughout in \textcolor{blue}{blue}).
+
+These configurations were specifically chosen for the following reasons: the large replay window size configuration is chosen to illustrate a case where the \acs{BHH} does not ``forget'' past performances of the low-level \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and the configuration that utilises the symmetric credit assignment strategy is chosen to illustrate a case where there \acs{BHH} does not reward good performance, and does not yield a bias towards \index{heuristic}heuristics that perform well at all. This section is structured as follows.
 
 \begin{itemize}
 	\item \textbf{Section \ref{sec:results:case_study:performance_metrics}} provides illustrations and discussions around the outcomes of the performance metrics as obtained by the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:case_study:concentration_parameters}} provides illustrations and discussions around the changes in concentration parameter values as a result of the learning process implemented by the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:case_study:concentration_parameters}} provides illustrations and discussions around the changes in concentration parameter values as a result of the learning mechanism implemented by the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:case_study:probs_of_select_probs}} provides illustrations and discussions around the changes in the \textit{probabilities of \index{heuristic}heuristic selection probabilities} as a result of the learning process implemented by the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:case_study:probs_of_select_probs}} provides illustrations and discussions around the changes in the \textit{probabilities of \index{heuristic}heuristic selection probabilities} as a result of the learning mechanism implemented by the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:case_study:prior_selec_prob}} provides illustrations and discussions around the changes in the \textit{prior \index{heuristic}heuristic selection probabilities} as a result of the learning process implemented by the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:case_study:prior_selec_prob}} provides illustrations and discussions around the changes in the \textit{prior \index{heuristic}heuristic selection probabilities} as a result of the learning mechanism implemented by the \acs{BHH}.
 
-	\item \textbf{Section \ref{sec:results:case_study:posterior_selec_prob}} provides illustrations and discussions around the changes in the \textit{posterior \index{heuristic}heuristic selection probabilities} as a result of the learning process implemented by the \acs{BHH}.
+	\item \textbf{Section \ref{sec:results:case_study:posterior_selec_prob}} provides illustrations and discussions around the changes in the \textit{posterior \index{heuristic}heuristic selection probabilities} as a result of the learning mechanism implemented by the \acs{BHH}.
 
 
 \end{itemize}
@@ -63,39 +79,50 @@ Furthermore, the case study focuses on three different variants of the \acs{BHH}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % METRICS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Performance metrics}\label{sec:results:case_study:performance_metrics}
+\subsection{Performance Metrics}\label{sec:results:case_study:performance_metrics}
 
-Figures~\ref{fig:results:case_study:train_loss}-\ref{fig:results:case_study:test_accuracy} provide illustrations of the train and test, loss and accuracy plots over 30 epochs and is illustrated in log scale. The first logical observation that can be made is that the \acs{BHH} was indeed able to successfully train the underlying \acs{FFNN}. The noisiness that results from mini-batch training can be observed in Figure~\ref{fig:results:case_study:test_loss}. Figures~\ref{fig:results:case_study:train_accuracy} and~\ref{fig:results:case_study:test_accuracy} show that the trained \acs{FFNN} achieved an accuracy of almost 100\%. Although the \acs{BHH} was able to succesfully train the underlying \acs{FFNN}, in this particular case, there is no clear distinction between the performance of any of the configurations under consideration. However, it should be noted from epochs 5 and onwards presented in Figure~\ref{fig:results:case_study:test_accuracy} that all the configurations of the \acs{BHH} was able to ``undo'' selections that yielded worse test loss results in the previous epoch. The sporadic, oscillating nature of the results later in the training process is simply a result of momentum that is maintained between low-level \index{heuristic}heuristics. For example, momentum can be built up by one of the gradient-based heuristics, after which the \acs{BHH} switches to another heuristic in an attempt to find better solutions. The \acs{BHH} does not incorporate a \textit{move acceptance} strategy, whereby a heuristic's outcome is rejected if it does not improve on previous results, yielding a possibly worse loss measurement. A move acceptance strategy can be utilised on a validation set as a mechanism to approve or reject heuristic progressions from one step to the other.
+This section provides illustrations and discussions around the outcomes of the train and test performance metrics as obtained by the \acs{BHH}. Figures~\ref{fig:results:case_study:metrics:train_loss}-\ref{fig:results:case_study:metrics:test_accuracy} provide illustrations of the train and test, loss and accuracy plots of the \acs{BHH} over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.
 
-Finally, it should be noted that the \acs{BHH} implements learning at every mini-batch step, while Figures~\ref{fig:results:case_study:train_loss}-\ref{fig:results:case_study:test_accuracy} only provide the outcomes of performance metrics at the end of each epoch. Further investigation is required at a mini-batch step level.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/train/train_loss.pdf}
-	\caption{The average training loss over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:train_loss}
+\begin{figure}[htb]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/train/train_loss.pdf}
+		\caption{Train log loss}
+		\label{fig:results:case_study:metrics:train_loss}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/test/test_loss.pdf}
+		\caption{Test log loss}
+		\label{fig:results:case_study:metrics:test_loss}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/train/train_accuracy.pdf}
+		\caption{Train log accuracy}
+		\label{fig:results:case_study:metrics:train_accuracy}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/test/test_accuracy.pdf}
+		\caption{Test log accuracy}
+		\label{fig:results:case_study:metrics:test_accuracy}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The average train and test, loss and accuracy plots over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\label{fig:results:case_study:metrics}
 \end{figure}
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/test/test_loss.pdf}
-	\caption{The average test loss over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:test_loss}
-\end{figure}
+The first logical observation that can be made is that the \acs{BHH} was indeed able to successfully train the underlying \acs{FFNN}, observed by the convergence of the training process, yielding good results. Figures~\ref{fig:results:case_study:metrics:train_accuracy} and~\ref{fig:results:case_study:metrics:test_accuracy} show that the trained \acs{FFNN} achieved an accuracy of almost 100\%.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/train/train_accuracy.pdf}
-	\caption{The average training accuracy over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:train_accuracy}
-\end{figure}
+Although the different configurations of the \acs{BHH} are all able to succesfully train the underlying \acs{FFNN}, in this particular case, there is no clear distinction between the performance of any of the configurations under consideration.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/metrics/figures/test/test_accuracy.pdf}
-	\caption{The average test accuracy over 30 epochs, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:test_accuracy}
-\end{figure}
+The volatility observed in Figure~\ref{fig:results:case_study:metrics:test_loss} is due to overfitting and partly due to the noisiness that results from mini-batch training. Early stopping can be applied to the training process to hault training before the model overfits on the training data. The training dataset is also very small, with just 120 samples. As such, overfitting can be expected.
+
+From Figure~\ref{fig:results:case_study:metrics:train_loss}, at the 22nd epoch, a small divergence of the train loss can be observed. This could simply be a result of momentum that is maintained when switching between low-level \index{heuristic}heuristics in an attempt to find better solutions. For example, momentum can be built up by one of the gradient-based heuristics, after which the \acs{BHH} switches to another heuristic in an attempt to find better solutions. The \acs{BHH} does not incorporate a \textit{move acceptance strategy}, whereby a heuristic's outcome is rejected if it does not improve on previous solutions, yielding a possibly worse loss measurement as it relates to the test set. A move acceptance strategy can be utilised on a validation set as a mechanism to accept or reject heuristic progressions from one step to the other.
+
+Finally, it should be noted that the \acs{BHH} implements learning at every mini-batch step, while Figure~\ref{fig:results:case_study:metrics} only provides the outcomes of performance metrics at the end of each epoch. Further investigation is required at a mini-batch step level and is provided in the following sections.
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -104,41 +131,46 @@ Finally, it should be noted that the \acs{BHH} implements learning at every mini
 
 \subsection{Concentration Parameters}\label{sec:results:case_study:concentration_parameters}
 
-To illustrate the learning process undergone by the \acs{BHH}, further investigation is required. Consider the concentration parameter $\boldsymbol{\alpha}$ that parameterises the \index{Dirichelet probability distribution}Dirichelet probability distribution, denoted $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, from which prior \textit{probabilities of selection probabilities} are sampled. Figures~\ref{fig:results:case_study:alpha:0}-\ref{fig:results:case_study:alpha:8} provide illustrations that show that change in values of the concentration parameter $\boldsymbol{\alpha}$, at indices 0, 6, 7, 8 respectively. Index 0, 6, 7, 8 represent the concentration parameters for the \acs{SGD}, \acs{Adam}, \acs{PSO} and \acs{GA} low-level heuristics respectively and only represent a subset of the concentration parameters in $\boldsymbol{\alpha}$ and the \index{heuristic pool}heuristic pool. Simular illustrations for the other indices in $\boldsymbol{\alpha}$ are left out for brevity as they contain similar illustrations.
+To illustrate the learning process undergone by the \acs{BHH}, further investigation is required. Consider the concentration parameter $\boldsymbol{\alpha}$ that parameterises the \index{Dirichelet probability distribution}Dirichelet probability distribution, denoted $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$. The probability distribution, $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, is used to sample prior \textit{probabilities of selection probabilities}. Figures~\ref{fig:results:case_study:alphas:0}-\ref{fig:results:case_study:alphas:8} provide illustrations that show that change in values of the concentration parameter $\boldsymbol{\alpha}$, at index 0, 6, 7, and 8 respectively. Index 0, 6, 7, and 8 represent the concentration parameters for the \acs{SGD}, \acs{Adam}, \acs{PSO} and \acs{GA} low-level heuristics respectively, and only represent a subset of the elements in $\boldsymbol{\alpha}$ and thus, the \index{heuristic pool}heuristic pool. Similar illustrations for the other elements in $\boldsymbol{\alpha}$ are left out for brevity as they contain similar illustrations.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[0].pdf}
-	\caption{The average value of the concentration parameter $\alpha_{0}$ (\acs{SGD}) over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:alpha:0}
+\begin{figure}[htb]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[0].pdf}
+		\caption{$\alpha_{0}$ - \acs{SGD}}
+		\label{fig:results:case_study:alphas:0}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[6].pdf}
+		\caption{$\alpha_{6}$ - \acs{Adam}}
+		\label{fig:results:case_study:alphas:6}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[7].pdf}
+		\caption{$\alpha_{7}$ - \acs{PSO}}
+		\label{fig:results:case_study:alphas:7}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[8].pdf}
+		\caption{$\alpha_{8}$ - \acs{GA}}
+		\label{fig:results:case_study:alphas:8}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The average value of the concentration parameter $\boldsymbol{\alpha}$, at indices 0,6,7, and 8 over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\label{fig:results:case_study:alphas}
 \end{figure}
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[6].pdf}
-	\caption{The average value of the concentration parameter $\alpha_{6}$ (\acs{Adam}) over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:alpha:6}
-\end{figure}
+The first logical observation to be made from Figures~\ref{fig:results:case_study:alphas:0}-\ref{fig:results:case_study:alphas:8} is the step-wise, increasing nature of $\boldsymbol{\alpha}$ for the bhh\_replay\_250 configuration, illustrated in \textcolor{green}{green}. Since the replay window size is sufficienty large to contain the performance log for all the steps executed in the training process, the \acs{BHH} does not forget past performances of low-level heuristics at all. The value for $\boldsymbol{\alpha}$ is never reset to its initial value of 1.0, and thus, $\boldsymbol{\alpha}$ continues to increase throughout the training process. However, it should be noted that the rate and degree of change is different for different indices of $\boldsymbol{\alpha}$. The aforementioned observation is the first indicator of the learning process yielded by the \acs{BHH}. Heuristics that perform well will see their corresponding element in $\boldsymbol{\alpha}$ increase more rapidly that other heuristics that do not perform well.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[7].pdf}
-	\caption{The average value of the concentration parameter $\alpha_{7}$ (\acs{PSO}) over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:alpha:7}
-\end{figure}
+The next observations that can be made are for the bhh\_baseline configuration, illustrated in \textcolor{red}{red}, and the bhh\_credit\_symmetric configuration in \textcolor{blue}{blue}. Both these configurations see $\boldsymbol{\alpha}$ being reset to its initial value of 1.0 as regular intervals. This interval is defined by the \textit{reanalysis interval} hyper-parameter. The reanalysis interval dictates the frequency at which Bayesian analysis is conducated on the performance log, mainted by the \acs{BHH}. Bayesian analysis is used to update $\boldsymbol{\alpha}$ only at the reanalysis interval. As a result, small plateaus appear where $\boldsymbol{\alpha}$ does not change.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/alphas/alpha[8].pdf}
-	\caption{The average value of the concentration parameter $\alpha_{8}$ (\acs{GA}) over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:alpha:8}
-\end{figure}
+Notice from Figure~\ref{fig:results:case_study:alphas} that $\boldsymbol{\alpha} \geq 1.0$ for multiple elements. This is due to the accumulation of pseudo counts for $\boldsymbol{\alpha}$ by the Bayesian analysis process. Furthermore, this is also because the same heuristic can be allocated to multiple entities, each contributing a minimum pseudo-count gain of 1.0 to the corresponding element in $\boldsymbol{\alpha}$ through the Bayesian analysis process. In a case where all five entities in the entity pool are allocated the same heuristic, for all ten samples defined in the performance log, defined by the replay window size, $\alpha_{i} = 50$, where $i$ is the index of the $i$-th \index{heuristic}heuristic in the \index{heuristic pool}heuristic pool.
 
-The first logical observation to be made from Figures~\ref{fig:results:case_study:alpha:0}-\ref{fig:results:case_study:alpha:8} is the step-wise increasing nature of $\boldsymbol{\alpha}$ for the long memory configuration (denoted \textit{bhh\_replay\_250}), illustrated in green. Since the replay window size is sufficienty large to contain the performance log for all the steps executed in the training process, the \acs{BHH} does not forget past performances of low-level heuristics. The values in $\boldsymbol{\alpha}$ is never reset to its initial value of 1, and thus $\boldsymbol{\alpha}$ continues to increase throughout the training process. However, it should be noted that the rate and degree of change is different for different indices of $\boldsymbol{\alpha}$. The aforementioned observation is the first indicator of the learning process yielded by the \acs{BHH}. Heuristics that perform will will see their corresponding element in $\boldsymbol{\alpha}$ increase more rapidly that other heuristics that do not perform well.
-
-The next observation that can be made is for the baseline configuration (denoted \textit{bhh\_baseline}) in red, and the symmetric credit assignment strategy configuration (denoted \textit{bhh\_credit\_symmetric}) in blue. Both these configurations see $\boldsymbol{\alpha}$ being reset to its initial value of 1 as regular intervals. This interval is represented by the \textit{reanalysis} window size. The reanalysis interval dictates the frequency at which Bayesian analysis is conducated on the performance log, mainted by the \acs{BHH}. Bayesian analysis is used to update $\boldsymbol{\alpha}$. As a result, small plateaus appear where $\boldsymbol{\alpha}$ does not change. Notice that $\boldsymbol{\alpha} \geq 1$ for multiple indices, even after reanalysis. This is because the same heuristic can be allocated to multiple entities, each contributing a minimum pseudo-count gain of 1 at the corresponding index in $\boldsymbol{\alpha}$ through the Bayesian analysis process. In a case where all 5 entities in the entity pool are allocated the same heuristic, for all 10 steps in the reanalysis windown, $\boldsymbol{\alpha} = 50$.
-
-Furthermore, it is important to mention that a change in $\boldsymbol{\alpha}$ between reanalysis windows does not yet necessarily indicate that the \acs{BHH} is learning. The concentration parameter $\boldsymbol{\alpha}$ tracks the \textit{occurance} of the random event of observing heuristics (denoted $\boldsymbol{{H}}$). \index{heuristic}Heuristics can be observed as a result of good performance, by which the \acs{BHH} then learns to frequenctly reselect these \index{heuristic}heuristics again, or just by chance through the probabilistic sampling nature of the \acs{BHH}. Further investigation is required to illustrate the learning mechanism of the \acs{BHH}.
+Furthermore, it is important to mention that a change in $\boldsymbol{\alpha}$ between reanalysis windows does not yet necessarily indicate that the \acs{BHH} is learning. The concentration parameter $\boldsymbol{\alpha}$ tracks the \textit{occurance} of the random event of observing heuristics (denoted $\boldsymbol{{H}}$). \index{heuristic}Heuristics can be observed as a result of good performance, by which the \acs{BHH} then learns to frequenctly reselect these \index{heuristic}heuristics again, or just by chance through the stochastic nature of probabilistic sampling as implemented by the \acs{BHH}. Further investigation is required to illustrate the learning mechanism of the \acs{BHH}.
 
 
 
@@ -148,129 +180,154 @@ Furthermore, it is important to mention that a change in $\boldsymbol{\alpha}$ b
 
 \subsection{Probabilities of Selection Probabilities}\label{sec:results:case_study:probs_of_select_probs}
 
-This section provides a detailed investigation into the \textit{probabilities of selection probabilities}, denoted by $\boldsymbol{\theta}$, as it changes throughout the training process. As a reminder, the \acs{BHH} implements a Bayesian view of probabilistic modeling and thus, \index{heuristic}heuristic selection probabilities are defined by an underlying probablistic distribution themselves. The probability distribution of \index{heuristic}heuristic selection probabilities is denoted $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$ and the prior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{\theta})$.
+This section provides a detailed investigation into the \textit{probabilities of selection probabilities}, denoted by $\boldsymbol{\theta}$, as it changes throughout the training process. As a reminder, the \acs{BHH} implements a Bayesian view of probabilistic modeling and thus, \index{heuristic}heuristic selection probabilities are defined by an underlying probablistic distribution themselves. The probability distribution of \index{heuristic}heuristic selection probabilities is denoted by $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, and the prior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{\theta})$.
 
-Figures~\ref{fig:results:case_study:theta:0}-\ref{fig:results:case_study:theta:8} provide illustrations of the probabilities of the selection probabilities, sampled from the probability distribution $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$ throughout the training process, and averaged over all 30 runs. These illustrations are presented in log scale. Similar to what is previously mentioned, \textit{probabilities of selection probabilities} at index 0, 6, 7, 8 represent the probabilities of selection probabilities for the \acs{SGD}, \acs{Adam}, \acs{PSO} and \acs{GA} low-level heuristics respectively and only represent a subset of the probabilities of selection probabilities in $\boldsymbol{\theta}$ and the \index{heuristic pool}heuristic pool. Once again, simular illustrations for the other indices in $\boldsymbol{\theta}$ are left out for brevity as they contain similar illustrations.
+Figures~\ref{fig:results:case_study:thetas:0}-\ref{fig:results:case_study:thetas:8} provide illustrations of the probabilities of the \index{heuristic}heuristic selection probabilities, sampled from the probability distribution $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$ throughout the training process, and averaged over all 30 runs. These illustrations are presented in log scale. Similar to what is previously mentioned, \textit{probabilities of selection probabilities} at index 0, 6, 7, and 8 represent the probabilities of \index{heuristic}heuristic selection probabilities for the \acs{SGD}, \acs{Adam}, \acs{PSO} and \acs{GA} low-level heuristics respectively, and only represent a subset of the probabilities of selection probabilities in $\boldsymbol{\theta}$ and thus, the \index{heuristic pool}heuristic pool. Once again, simular illustrations for the other elements in $\boldsymbol{\theta}$ are left out for brevity as they contain similar illustrations.
 
-From the illustrations presented in Figures~\ref{fig:results:case_study:theta:0}-\ref{fig:results:case_study:theta:8}, a clearer picture off the learning process of the \acs{BHH} is formed. The first important observation to make is for the bhh\_replay\_250 configuration, presented in green. As a reminder, 10 low-level \index{heuristic}heuristics are included in the heuristic pool, yielding a probability of selection probability of 0.1 for each \index{heuristic}heuristic by the frequentist view of probabilistic modeling. Towards the end of the training process, the probability of selection probability converges back to the symmetrical, uniform probability distribution, yielding a probability of selection probability of 0.1 per \index{heuristic}heuristic. This can be explained as follows: most of the training progress is made in the early stages of the training process, and training stagnates towards the end of the training process. Since training stagnates, all heuristics, no matter their past performances, struggle to yield better solutions towards the end of the training process. As a result of stagnation, heuristics then struggle to yield credit allocations by means of the credit assignment strategy. In the case study experimental group, both the bhh\_baseline and bhh\_replay\_250 configurations make use of the \textit{ibest} credit assignment strategy. The \textit{ibest} credit assignment strategy allocates credit to the heuristic that provided the best performance for the current iteration/step and thus, towards the end of the training process, any random heuristic can yield the best iteration performance. However, since the bhh\_baseline has a short reanalysis interval, the concentration parameter $\boldsymbol{\alpha}$ gets reset to its default value of 1 more often than the bhh\_replay\_250 configuration, resulting in a probability distribution that is less narrow and thus explaining the larger variance of $\boldsymbol{\theta}$ throughout.
-
-Another observation to make occurs in the first 30 steps of the training process. Notice how all three configurations mostly yield the same probabilities of selection probabilities in these first 30 steps. This can be explained as follows: all three configurations use a different random seed per run, but use the same random seed across configurations for the same runs. This is done so that any difference in the behaviour of the different \acs{BHH} configurations are then not a result of random sampling, but solely because of differences in their approaches. This is especially applicable to the initialisation process, where entities are randomly placed in the search space, as well as the early stages of training, where most of the training progress is made. It should be noted that, despite using the same random seed across configurations for the same runs, after about 30 steps, the behavioural changes between the configurations start the show. As a reminder, the bhh\_credit\_symmetric configuration, does not bias towards best performing \index{heuristic}heuristics and thus, where the bhh\_baseline and bhh\_replay\_250 configurations diverge from the behaviour of the bhh\_credit\_symmetric configuration, the difference in behaviour is proof of the effect of performance bias.
-
-Finally, despite divergence in behaviour, the bhh\_baseline configuration and the bhh\_credit\_symmetric configuration both yield similar sporadic behaviour, much more so than with the bhh\_replay\_250 configuration. This can be attributed to a very small reanalysis window that contains very few samples to learn from (N=10). A small reanalysis window allows for more exploration, but can also yield greater variance of the probabilities of selection probabilities. Once again, any differences then in the behaviour of the  bhh\_baseline compared to the bhh\_credit\_symmetric configurations is proof of small performance exploitations.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[0].pdf}
-	\caption{The average sampled probability of the selection probability, denoted $\theta_{0}$ (\acs{SGD}), given concentration parameter $\alpha_{0}$. The probability of the selection probability is sampled from the probability distribution, denoted $P(\theta_{0} \vert \alpha_{0})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:theta:0}
+\begin{figure}[htb]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[0].pdf}
+		\caption{P($\theta_{0} \vert \alpha_{0})$ - \acs{SGD}}
+		\label{fig:results:case_study:thetas:0}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[6].pdf}
+		\caption{P($\theta_{6} \vert \alpha_{6})$ - \acs{Adam}}
+		\label{fig:results:case_study:thetas:6}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[7].pdf}
+		\caption{P($\theta_{7} \vert \alpha_{7})$ - \acs{PSO}}
+		\label{fig:results:case_study:thetas:7}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[8].pdf}
+		\caption{P($\theta_{8} \vert \alpha_{8})$ - \acs{GA}}
+		\label{fig:results:case_study:thetas:8}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The average sampled probabilities of \index{heuristic}heuristic selection probabilities, denoted $\boldsymbol{\theta}$, at indices 0, 6, 7, and 8. The probabilities of the \index{heuristic}heuristic selection probabilities are sampled from the probability distribution, denoted $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\label{fig:results:case_study:thetas}
 \end{figure}
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[6].pdf}
-	\caption{The average sampled probability of the selection probability, denoted $\theta_{6}$ (\acs{Adam}), given concentration parameter $\alpha_{6}$. The probability of the selection probability is sampled from the probability distribution, denoted $P(\theta_{6} \vert \alpha_{6})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:theta:6}
-\end{figure}
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[7].pdf}
-	\caption{The average sampled probability of the selection probability, denoted $\theta_{7}$ (\acs{PSO}), given concentration parameter $\alpha_{7}$. The probability of the selection probability is sampled from the probability distribution, denoted $P(\theta_{7} \vert \alpha_{7})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:theta:7}
-\end{figure}
+From the illustrations presented in Figures~\ref{fig:results:case_study:thetas:0}-\ref{fig:results:case_study:thetas:8}, a clearer picture off the learning process of the \acs{BHH} is formed. The first important observation to make is for the bhh\_replay\_250 configuration, presented in \textcolor{green}{green}. As a reminder, ten low-level \index{heuristic}heuristics are included in the heuristic pool, yielding an expected probability of \index{heuristic}heuristics selection probability of 0.1, for each \index{heuristic}heuristic, by the frequentist view of probabilistic modeling.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/thetas/theta[8].pdf}
-	\caption{The average sampled probability of the selection probability, denoted $\theta_{8}$ (\acs{GA}), given concentration parameter $\alpha_{8}$. The probability of the selection probability is sampled from the probability distribution, denoted $P(\theta_{8} \vert \alpha_{8})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:theta:8}
-\end{figure}
+Towards the end of the training process, the probability of \index{heuristic}heuristic selection probability converges back to the symmetrical, uniform probability distribution, yielding a probability of \index{heuristic}heuristic selection probability of 0.1, for all \index{heuristic}heuristics. This can be explained as follows: most of the training progress is made in the early stages of the training process, and training converges towards the end of the training process. Since training converges, all heuristics, no matter their past performances, fail to yield better solutions towards the end of the training process. As a result of training convergence, heuristics then fail to meet the performance criteria and credit allocations by means of the credit assignment strategy.
+
+Both the bhh\_baseline (\textcolor{red}{red}) and the bhh\_replay\_250 (\textcolor{green}{green}) configurations make use of the \textit{ibest} credit assignment strategy. The \textit{ibest} credit assignment strategy allocates credit to the heuristic that yield the best performance for the current iteration/step and thus, towards the end of the training process, any random heuristic can yield the best iteration performance. However, since the bhh\_baseline is configured with a small replay window size of 10, and a reanalysis interval of 10, the concentration parameter $\boldsymbol{\alpha}$ gets reset to its default value of 1.0 more often than the bhh\_replay\_250 configuration, resulting in a probability distribution that is broader, and thus, explaining the larger variance of $\boldsymbol{\theta}$ throughout.
+
+Another observation to make occurs in the first 30 steps of the training process. In Figure~\ref{fig:results:case_study:thetas}, notice how all three configurations mostly yield the same probabilities of \index{heuristic}heuristic selection probabilities in these first 30 steps. This can be explained as follows: all three configurations use a different random seed per run, but use the same random seed across configurations for the same run number. This is done so that any difference in the behaviour of the different \acs{BHH} configurations are then not a result of random sampling, but solely because of differences in their approaches. This is especially applicable to the initialisation process, where entities are randomly placed in the search space, as well as the early stages of training, where most of the training progress is made.
+
+It should be noted that, despite using the same random seed across configurations for the same run number, after about 30 steps, the behavioural changes between the configurations start the show. As a reminder, the bhh\_credit\_symmetric (\textcolor{blue}{blue}) configuration, does not bias towards best performing \index{heuristic}heuristics and thus, where the bhh\_baseline and bhh\_replay\_250 configurations diverge from the behaviour of the bhh\_credit\_symmetric configuration. The difference in behaviour is proof of the effect of performance bias.
+
+Furthermore, the variance of $\boldsymbol{\theta}$, for the bhh\_baseline configuration and the bhh\_credit\_symmetric configuration, with means not equal to the expected probabilities of \index{heuristic}heuristic selection probabilities of 0.1, observed for small windows, at various steps for multiple runs, is proof that the \acs{BHH} does not just implement a form of random search, despite having small reanalysis interval and replay window size configurations. This is also true for the bhh\_credit\_symmetric configuration, as the bhh\_credit\_symmetric configuration biases towards heuristics that happen to be sampled, despite not biasing towards good performance.
+
+Finally, the bhh\_baseline configuration and the bhh\_credit\_symmetric configuration both yield similar volatile behaviour, much more so than with the bhh\_replay\_250 configuration. This can be attributed to a very small reanalysis window combined with a small replay window size of 10, that contains very few samples to learn from. A small reanalysis interval and a small replay window size allows for more exploration of the \index{heuristic}heuristic space, but can also yield greater variance of the probabilities of \index{heuristic}heuristic selection probabilities. Once again, any differences then in the behaviour of the bhh\_baseline compared to the bhh\_credit\_symmetric configurations is proof of small performance exploitations and biases by the bhh\_baseline configuration.
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % PARAMS P_H (Priors)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Prior Selection Probabilities}\label{sec:results:case_study:prior_selec_prob}
+\subsection{Prior Heuristic Selection Probabilities}\label{sec:results:case_study:prior_selec_prob}
 
-This section provides a brief investigation into the \textit{prior \index{heuristic}heuristic selection probabilities}, that results from the probabilistic model implemented by the \acs{BHH}. The prior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{\theta})$.
+This section provides a brief investigation into the \textit{prior \index{heuristic}heuristic selection probabilities}, that result from the probabilistic model implemented by the \acs{BHH}. The prior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{\theta})$.
 
-Figures~\ref{fig:results:case_study:p_H:0}-\ref{fig:results:case_study:p_H:8} provide illustrations of the prior\index{heuristic}heuristic selection probabilities, sampled from the \index{heuristic}heuristic selection probability distribution $P(\boldsymbol{H} \vert \boldsymbol{\theta})$ throughout the training process, and averaged over all 30 runs. Similar to before, these illustrations are also presented in log scale. The main observation to make from these figures is that they are much less sporadic than the figures presented for the probabilities of selection probabilities. This is because of the \textit{reselection} interval hyper-parameter. A reselection interval hyper-parameter is introduces to control the frequency by which new heuristics are allocated to each entity. Since the default \textit{reselection} interval is set to 10, the \index{heuristic}heuristic selection probabilities are only resampled at intervals of 10. These illustrations then simply yield rough approximations of the illustrations provided in Figures~\ref{fig:results:case_study:theta:0}-\ref{fig:results:case_study:theta:8} for the probabilities of selection probabilities. As such, the same observations and conclusions that are made in Section \ref{sec:results:case_study:probs_of_select_probs} also apply in this section.
+Figures~\ref{fig:results:case_study:p_H:0}-\ref{fig:results:case_study:p_H:8} provide illustrations of the prior \index{heuristic}heuristic selection probabilities, sampled from the \index{heuristic}heuristic selection probability distribution $P(\boldsymbol{H} \vert \boldsymbol{\theta})$, at index 0, 6, 7, and 8, throughout the training process, and averaged over all 30 runs. Similar to before, these illustrations are also presented in log scale.
 
-Finally, it should be mentioned that at each step, the goal of the \acs{BHH} is to update these prior ``beliefs'' based on newly observed evidence of \index{heuristic}heuristic performances. Since these prior \index{heuristic}heuristic selection probabilities change over time, it can be concludes that the change in prior \index{heuristic}heuristic selection probabilities is a result of the learning mechanism of the \acs{BHH}. Furthermore, these prior \index{heuristic}heuristic selection probability distributions provide an opportunity to utilise prior knowledge by some expert to inject heuristic selection biases, even before training starts.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[0].pdf}
-	\caption{The average sampled prior \index{heuristic}heuristic selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the probability of the selection probability, denoted by $\theta_{0}$. The prior \index{heuristic}heuristic selection probability is sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(h_{0} \vert \theta_{0})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:p_H:0}
+\begin{figure}[htb]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[0].pdf}
+		\caption{P($h_{0} \vert \theta_{0})$ - \acs{SGD}}
+		\label{fig:results:case_study:p_H:0}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[6].pdf}
+		\caption{P($h_{6} \vert \theta_{6})$ - \acs{Adam}}
+		\label{fig:results:case_study:p_H:6}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[7].pdf}
+		\caption{P($h_{7} \vert \theta_{7})$ - \acs{PSO}}
+		\label{fig:results:case_study:p_H:7}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[8].pdf}
+		\caption{P($h_{8} \vert \theta_{8})$ - \acs{GA}}
+		\label{fig:results:case_study:p_H:8}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The average sampled prior \index{heuristic}heuristic selection probabilities, given the probabilities of \index{heuristic}heuristic selection probabilities, denoted by $\boldsymbol{H}$, at indices 0, 6, 7, and 8. The prior \index{heuristic}heuristic selection probabilities are sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(\boldsymbol{H} \vert \theta)$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\label{fig:results:case_study:p_H}
 \end{figure}
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[6].pdf}
-	\caption{The average sampled prior \index{heuristic}heuristic selection probability for \index{heuristic}heuristic $h_{6}$ (\acs{Adam}), given the probability of the selection probability, denoted by $\theta_{6}$. The prior \index{heuristic}heuristic selection probability is sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(h_{6} \vert \theta_{6})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:p_H:6}
-\end{figure}
+The main observation to make from these figures is that they are much less volatile and noisy than the figures presented for the probabilities of \index{heuristic}heuristic selection probabilities presented in the previous section in Figure~\ref{fig:results:case_study:thetas}. This is because of the \textit{reselection} interval hyper-parameter. The reselection interval hyper-parameter is implemented as a way to control the frequency by which new heuristics are selected and allocated to each entity. Since the default \textit{reselection} interval is set to 10, the \index{heuristic}heuristic selection probabilities are only resampled at intervals of 10. These illustrations then simply yield rough approximations of the illustrations provided in Figures~\ref{fig:results:case_study:thetas:0}-\ref{fig:results:case_study:thetas:8} for the probabilities of \index{heuristic}heuristic selection probabilities. As such, the same observations and conclusions that are made in Section \ref{sec:results:case_study:probs_of_select_probs} also apply in this section.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[7].pdf}
-	\caption{The average sampled prior \index{heuristic}heuristic selection probability for \index{heuristic}heuristic $h_{7}$ (\acs{PSO}), given the probability of the selection probability, denoted by $\theta_{7}$. The prior \index{heuristic}heuristic selection probability is sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(h_{7} \vert \theta_{7})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:p_H:7}
-\end{figure}
+Finally, it should be mentioned that at each step, the goal of the \acs{BHH} is to update these prior ``beliefs'' based on newly observed evidence of \index{heuristic}heuristic performances. Since these prior \index{heuristic}heuristic selection probabilities change over time, it can be concluded that the change in prior \index{heuristic}heuristic selection probabilities is a result of the learning mechanism of the \acs{BHH}. Furthermore, the prior \index{heuristic}heuristic selection probability distribution provides an opportunity to utilise prior knowledge by some expert before training starts, by injecting heuristic selection biases, by means of the initial values for the concentration parameter $\boldsymbol{\alpha}$.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_H/p_H[8].pdf}
-	\caption{The average sampled prior \index{heuristic}heuristic selection probability for \index{heuristic}heuristic $h_{8}$ (\acs{GA}), given the probability of the selection probability, denoted by $\theta_{8}$. The prior \index{heuristic}heuristic selection probability is sampled from the prior \index{heuristic}heuristic selection probability distribution, denoted $P(h_{8} \vert \theta_{8})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:p_H:8}
-\end{figure}
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % PARAMS P_HgEC (Posterior)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Posterior Selection Probabilities}\label{sec:results:case_study:posterior_selec_prob}
+\subsection{Posterior Heuristic Selection Probabilities}\label{sec:results:case_study:posterior_selec_prob}
 
-This section provides a brief investigation into the outcomes of the \textit{posterior heuristic selection probabilities} that forms the probabilistic model implemented by the \acs{BHH} from which new \index{heuristic}heuristics selections are sampled. The posterior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{E}, \boldsymbol{C}; \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})$, where $\boldsymbol{E}$ represents the vector representing the entities in the entity pool, and $\boldsymbol{C}$ represents the vector of performance criteria outcomes as implemented by the credit assignment strategy. Furthermore $\boldsymbol{\theta}, \boldsymbol{\phi}$ represent the probabilities of selection probabilities for the heuristics and entities respectively, and $\boldsymbol{\psi}$ represents the probability of observing a succesful credit allocation from the credit assignment strategy.
+This section provides a detailed discussion on the outcomes of the \textit{posterior heuristic selection probabilities}. These posterior heuristic selection probabilities form the basis of the probabilistic model implemented by the \acs{BHH}. The posterior \index{heuristic}heuristic selection probability distribution is defined as $P(\boldsymbol{H} \vert \boldsymbol{E}, \boldsymbol{C}; \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})$, where $\boldsymbol{E}$ represents the vector of entities in the entity pool, and $\boldsymbol{C}$ represents the generalised vector of credit allocation outcomes as implemented by the credit assignment strategy. Furthermore $\boldsymbol{\theta}$ and $\boldsymbol{\phi}$ represent the probabilities of \index{heuristic}heuristic selection probabilities and probabilities of entity selection probabilities respectively. Finally, $\boldsymbol{\psi}$ represents the generalised form of the probabilities of successful credit allocation probabilities. Since this dissertation implements credit allocation operations that yield discrete, binary outcomes, $\boldsymbol{\psi}$ can be used interchangeably by $\gamma_{0}$ and $\gamma_{1}$, where $\gamma_{0}$ represents the probabilities of failed credit allocation probabilities and $\gamma_{1}$ represents the probabilities of successful credit allocation probabilities.
 
-Figures~\ref{fig:results:case_study:p_HgEC:0:0}-\ref{fig:results:case_study:p_HgEC:0:8} provide illustrations of the calculated posterior \index{heuristic}heuristic selection probabilities, throughout the training process, and averaged over all 30 runs. Similar to before, these illustrations are also presented in log scale. The main observation to make from these figures is that these values do not actually yield probabilities. The reasons for this is because the probablistic model, defined by $P(\boldsymbol{H} \vert \boldsymbol{E}, \boldsymbol{C}; \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})$, is evaluated for proportionality i.e. they are not normalised, and the log-sum-exp trick is used in order to maintain numerical stability. Instead, these values are used to parameterise a \index{Categorical probability distribution}Categorical probability distribution from which new \index{heuristic}heuristic selections are sampled.
+Figures~\ref{fig:results:case_study:p_HgEC:0:0}-\ref{fig:results:case_study:p_HgEC:0:8} provide illustrations of the calculated posterior \index{heuristic}heuristic selection probabilities at index 0, 6, 7, and 8, throughout the training process, averaged over 30 runs. Similar to before, these illustrations are also presented in log scale. As before, illustrations for the other indices are left out for brevity as they yield simular illustrations.
 
-The first noteworthy observation to make is for the bhh\_replay\_250 configuration. From Figures~\ref{fig:results:case_study:p_HgEC:0:0}-\ref{fig:results:case_study:p_HgEC:0:8}, it can be seen that the posterior heuristic selection probabilities stagnate. As previously mentioned, this is a result of training stagnation later in the training process. As a result, fewer and fewer improvements to the current best solutions are found, thus yielding a case where heuristic selection bias is based mostly on past performances obtained from a large reanalysis window.
-
-Furthermore, the posterior heuristic selection probability distribution is conditional on the occurance of a specific entity that the potential \index{heuristic}heuristic will be applied to, as well as a specific performance criteria enforced by a specific credit assignment strategy. This means that \index{heuristic}heuristic selection is specific to each entity. A particular \index{heuristic}heuristic might be good for one entity, but not for another. This is a strong characteristic of the \acs{BHH}, as it learns to apply the correct \index{heuristic}heuristic to the correct entity at the correct point in the training process.
-
-Finally, the posterior heuristic selection probabilities oscillate much less and are much less sporadic than their prior heuristic selection probability equivalents. This is a result of the information that is added by the conditionality on entity and performance criteria.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][0].pdf}
-	\caption{The average proportional posterior selection probability for \index{heuristic}heuristic $h_{0}$ (\acs{SGD}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy. The proportional posterior selection probability is calculated from the probabilistic model, denoted $P(h_{0} \vert e_{0}, \gamma_{1})$, over 240 steps, and obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:p_HgEC:0:0}
+\begin{figure}[htb]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][0].pdf}
+		\caption{$P(h_{0} \vert e_{0}, c_{1})$ - \acs{SGD}}
+		\label{fig:results:case_study:p_HgEC:0:0}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][6].pdf}
+		\caption{$P(h_{6} \vert e_{0}, c_{1})$ - \acs{Adam}}
+		\label{fig:results:case_study:p_HgEC:0:6}
+	\end{subfigure}
+	\par\bigskip
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][7].pdf}
+		\caption{$P(h_{7} \vert e_{0}, c_{1})$ - \acs{PSO}}
+		\label{fig:results:case_study:p_HgEC:0:7}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][8].pdf}
+		\caption{$P(h_{8} \vert e_{0}, c_{1})$ - \acs{GA}}
+		\label{fig:results:case_study:p_HgEC:0:8}
+	\end{subfigure}
+	\par\bigskip
+	\caption{The average proportional posterior \index{heuristic}heuristic selection probabilities for \index{heuristic}heuristics $(\boldsymbol{H})$ at index 0, 6, 7, and 8, given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy. The proportional posterior \index{heuristic}heuristic selection probabilities are calculated from the probabilistic model, denoted $P(\boldsymbol{H} \vert e_{0}, \gamma_{1})$, over 240 steps, and obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+	\label{fig:results:case_study:p_HgEC:0}
 \end{figure}
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][6].pdf}
-	\caption{The average proportional posterior selection probability for \index{heuristic}heuristic $h_{6}$ (\acs{Adam}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy. The proportional posterior selection probability is calculated from the probabilistic model, denoted $P(h_{6} \vert e_{0}, \gamma_{1})$, over 240 steps, and obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:p_HgEC:0:6}
-\end{figure}
+The main observation to make from Figures~\ref{fig:results:case_study:p_HgEC:0:0}-\ref{fig:results:case_study:p_HgEC:0:8}, is that the implemented posterior heuristic selection distribution, defined by $P(\boldsymbol{H} \vert \boldsymbol{E}, \boldsymbol{C}; \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})$, does not yield normalised probabilities, but rather yield unnormalised \textit{logits}, which are used to parameterise a \index{Categorical probability distribution}Categorical probability distribution from which new \index{heuristic}heuristic selections are sampled. The reasons for the aforementioned, is because the probablistic model, is evaluated proportionaly as was discussed in Chapter~\ref{chap:bhh}. As a reminder, the log-sum-exp trick is used in order to maintain numerical stability, yielding \textit{logits} instead of probabilities.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][7].pdf}
-	\caption{The average proportional posterior selection probability for \index{heuristic}heuristic $h_{7}$ (\acs{PSO}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy. The proportional posterior selection probability is calculated from the probabilistic model, denoted $P(h_{7} \vert e_{0}, \gamma_{1})$, over 240 steps, and obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:p_HgEC:0:7}
-\end{figure}
+Another observation to make, is for the bhh\_replay\_250 configuration $(\textcolor{green}{green})$. From Figures~\ref{fig:results:case_study:p_HgEC:0:0}-\ref{fig:results:case_study:p_HgEC:0:8}, it can be seen that the posterior heuristic selection probabilities converge to the expected heuristic selection probabilities, later in the training stages. The aforementioned suggests that the \acs{BHH} is not able to find anymore performance biases and can not exploit better solutions. At this point, the \acs{BHH} starts to explore more as the concentration parameters are reanalysed more uniformly, resolving more and more to a random search in attempt to find better solutions.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=1.0\textwidth]{case_study/params/figures/p_HgEC/p_HgEC[0][8].pdf}
-	\caption{The average proportional posterior selection probability for \index{heuristic}heuristic $h_{8}$ (\acs{GA}), given the application to entity $e_{0}$ and requiring a successful credit allocation ($\gamma_{1}$) from the \textit{ibest} credit assignment strategy. The proportional posterior selection probability is calculated from the probabilistic model, denoted $P(h_{8} \vert e_{0}, \gamma_{1})$, over 240 steps, and obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
-	\label{fig:results:case_study:p_HgEC:0:8}
-\end{figure}
+Furthermore, the posterior heuristic selection probability distribution is conditional on the occurance of a specific entity that the potential \index{heuristic}heuristic will be applied to, as well as a specific performance criteria enforced by a specific credit assignment strategy. This means that \index{heuristic}heuristic selection is specific to each entity. A particular \index{heuristic}heuristic might be good for one entity, but not for another. This is a strong characteristic of the \acs{BHH}, as it learns to apply the correct \index{heuristic}heuristic to the correct entity at the correct time in the training process.
 
-From the observations made in Sections~\ref{sec:results:case_study:performance_metrics}-\ref{sec:results:case_study:posterior_selec_prob}, it can be concluded that the \acs{BHH} is able to succesfully train the underlying \acs{FFNN}. Furthermore it can be concluded that the learning mechanism implemented by the \acs{BHH} is able to exploit minor performance biases and thus, the \acs{BHH} is able to correctly allocate the correct heuristic to the correct entity at the correct time in the training process.
+Finally, the posterior heuristic selection probabilities are much less volatile than their prior heuristic selection probability equivalents. This is a result of the information that is added in the performance log by tracking the entity and credit allocation as well.
+
+From the observations made in Sections~\ref{sec:results:case_study:performance_metrics}-\ref{sec:results:case_study:posterior_selec_prob}, it can be concluded that the \acs{BHH} is able to successfully train the underlying \acs{FFNN} for the case study on the iris dataset. Furthermore it can be concluded that the learning mechanism implemented by the \acs{BHH} is able to exploit minor performance biases and thus, the \acs{BHH} is able to correctly allocate the correct heuristic to the correct entity at the correct time in the training process.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 % BHH vs. Low-Level Heuristics
@@ -314,6 +371,36 @@ Table~\ref{tab:results:standalone:metrics:test_loss} presents the empirical resu
 	}
 \end{sidewaystable}%
 
+\begin{sidewaystable}[htbp]
+	\centering
+	\caption{Empirical results showing normalised average rank and statistics for different low-level \index{heuristic}heuristics compared to 3 \index{heuristic pool}heuristic pool variants of the baseline \acs{BHH} across multiple datasets, for all runs and epochs.}
+	\label{tab:results:standalone:metrics:loss}%
+	\par\bigskip
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{r|lll|l|l|l|l|l|lllll}
+			                                    & \multicolumn{13}{c}{\textbf{BHH vs. Low-Level Heuristics - Average Loss}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\
+			\cmidrule{2-14}    \textbf{dataset} & \multicolumn{1}{c}{\textbf{adagrad}}                                      & \multicolumn{1}{c}{\textbf{adam}}                       & \multicolumn{1}{c|}{\textbf{rmsprop}}                   & \multicolumn{1}{c|}{\textbf{bhh\_gd}}                   & \multicolumn{1}{c|}{\textbf{nag}}                       & \multicolumn{1}{c|}{\textbf{bhh\_all}}                  & \multicolumn{1}{c|}{\textbf{adadelta}}                  & \multicolumn{1}{c|}{\textbf{bhh\_mh}}                   & \multicolumn{1}{c}{\textbf{ga}}                         & \multicolumn{1}{c}{\textbf{pso}}                        & \multicolumn{1}{c}{\textbf{sgd}}                        & \multicolumn{1}{c}{\textbf{momentum}}                   & \multicolumn{1}{c}{\textbf{de}}                         \\
+			\midrule
+			\textbf{abalone}                    & \cellcolor[rgb]{ .506,  .776,  .486}1.9678 ($\pm$0.032)                   & \cellcolor[rgb]{ .494,  .773,  .486}1.9651 ($\pm$0.035) & \cellcolor[rgb]{ .388,  .745,  .482}1.9455 ($\pm$0.035) & \cellcolor[rgb]{ .749,  .847,  .502}2.0125 ($\pm$0.068) & \cellcolor[rgb]{ .765,  .851,  .502}2.0156 ($\pm$0.035) & \cellcolor[rgb]{ 1,  .922,  .518}2.0587 ($\pm$0.088)    & \cellcolor[rgb]{ .788,  .859,  .502}2.0199 ($\pm$0.034) & \cellcolor[rgb]{ .996,  .827,  .502}2.2942 ($\pm$0.055) & \cellcolor[rgb]{ .984,  .612,  .459}2.8155 ($\pm$0.055) & \cellcolor[rgb]{ .98,  .522,  .443}3.0384 ($\pm$0.294)  & \cellcolor[rgb]{ .992,  .773,  .49}2.428 ($\pm$0.029)   & \cellcolor[rgb]{ .992,  .745,  .486}2.4942 ($\pm$0.029) & \cellcolor[rgb]{ .973,  .412,  .42}3.2959 ($\pm$0.016)  \\
+			\textbf{air quality}                & \cellcolor[rgb]{ .651,  .82,  .494}0.2569 ($\pm$0.007)                    & \cellcolor[rgb]{ .827,  .871,  .506}0.2606 ($\pm$0.009) & \cellcolor[rgb]{ .388,  .745,  .482}0.2513 ($\pm$0.008) & \cellcolor[rgb]{ 1,  .922,  .518}0.2642 ($\pm$0.011)    & \cellcolor[rgb]{ .647,  .82,  .494}0.2568 ($\pm$0.006)  & \cellcolor[rgb]{ .996,  .827,  .502}0.2729 ($\pm$0.016) & \cellcolor[rgb]{ .647,  .82,  .494}0.2568 ($\pm$0.006)  & \cellcolor[rgb]{ .976,  .914,  .514}0.2637 ($\pm$0.007) & \cellcolor[rgb]{ .996,  .792,  .494}0.2759 ($\pm$0.008) & \cellcolor[rgb]{ .984,  .608,  .459}0.2923 ($\pm$0.023) & \cellcolor[rgb]{ .988,  .69,  .475}0.2852 ($\pm$0.015)  & \cellcolor[rgb]{ .984,  .604,  .459}0.2929 ($\pm$0.016) & \cellcolor[rgb]{ .973,  .412,  .42}0.3097 ($\pm$0.017)  \\
+			\textbf{bank}                       & \cellcolor[rgb]{ .459,  .765,  .486}0.2096 ($\pm$0.005)                   & \cellcolor[rgb]{ .4,  .745,  .482}0.2065 ($\pm$0.004)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2058 ($\pm$0.006) & \cellcolor[rgb]{ .588,  .8,  .49}0.2164 ($\pm$0.005)    & \cellcolor[rgb]{ .588,  .8,  .49}0.2164 ($\pm$0.006)    & \cellcolor[rgb]{ 1,  .886,  .514}0.2456 ($\pm$0.065)    & \cellcolor[rgb]{ .627,  .812,  .494}0.2186 ($\pm$0.004) & \cellcolor[rgb]{ .996,  .839,  .502}0.2562 ($\pm$0.011) & \cellcolor[rgb]{ .988,  .686,  .475}0.2881 ($\pm$0.013) & \cellcolor[rgb]{ .973,  .412,  .42}0.3454 ($\pm$0.034)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2382 ($\pm$0.006)    & \cellcolor[rgb]{ 1,  .922,  .518}0.2386 ($\pm$0.005)    & \cellcolor[rgb]{ .976,  .424,  .424}0.3437 ($\pm$0.028) \\
+			\textbf{bike}                       & \cellcolor[rgb]{ .388,  .745,  .482}0.0458 ($\pm$0.002)                   & \cellcolor[rgb]{ .592,  .804,  .494}0.0682 ($\pm$0.068) & \cellcolor[rgb]{ 1,  .922,  .518}0.1123 ($\pm$0.103)    & \cellcolor[rgb]{ .467,  .765,  .486}0.0545 ($\pm$0.005) & \cellcolor[rgb]{ .882,  .886,  .51}0.0995 ($\pm$0.002)  & \cellcolor[rgb]{ .565,  .796,  .49}0.0651 ($\pm$0.02)   & \cellcolor[rgb]{ .588,  .8,  .49}0.0679 ($\pm$0.002)    & \cellcolor[rgb]{ 1,  .902,  .514}0.1179 ($\pm$0.006)    & \cellcolor[rgb]{ .992,  .761,  .486}0.1531 ($\pm$0.005) & \cellcolor[rgb]{ .992,  .773,  .49}0.1503 ($\pm$0.025)  & \cellcolor[rgb]{ .992,  .733,  .482}0.1599 ($\pm$0.003) & \cellcolor[rgb]{ .992,  .725,  .482}0.1614 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.2399 ($\pm$0.04)   \\
+			\textbf{car}                        & \cellcolor[rgb]{ .729,  .843,  .502}0.2027 ($\pm$0.018)                   & \cellcolor[rgb]{ .388,  .745,  .482}0.0972 ($\pm$0.024) & \cellcolor[rgb]{ .408,  .749,  .482}0.1039 ($\pm$0.031) & \cellcolor[rgb]{ .62,  .812,  .494}0.169 ($\pm$0.025)   & \cellcolor[rgb]{ .867,  .882,  .51}0.2454 ($\pm$0.029)  & \cellcolor[rgb]{ .58,  .8,  .49}0.1572 ($\pm$0.034)     & \cellcolor[rgb]{ 1,  .922,  .518}0.2859 ($\pm$0.027)    & \cellcolor[rgb]{ .992,  .733,  .482}0.4891 ($\pm$0.077) & \cellcolor[rgb]{ .98,  .502,  .439}0.7374 ($\pm$0.063)  & \cellcolor[rgb]{ .988,  .667,  .471}0.5632 ($\pm$0.158) & \cellcolor[rgb]{ .98,  .533,  .443}0.7035 ($\pm$0.052)  & \cellcolor[rgb]{ .98,  .506,  .439}0.7322 ($\pm$0.043)  & \cellcolor[rgb]{ .973,  .412,  .42}0.8332 ($\pm$0.074)  \\
+			\textbf{diabetic}                   & \cellcolor[rgb]{ .694,  .831,  .498}0.8895 ($\pm$0.004)                   & \cellcolor[rgb]{ 1,  .898,  .514}0.9193 ($\pm$0.01)     & \cellcolor[rgb]{ .918,  .894,  .51}0.8957 ($\pm$0.004)  & \cellcolor[rgb]{ .98,  .914,  .514}0.8976 ($\pm$0.011)  & \cellcolor[rgb]{ .388,  .745,  .482}0.8809 ($\pm$0.004) & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)   & \cellcolor[rgb]{ .49,  .773,  .486}0.8839 ($\pm$0.005)  & \cellcolor[rgb]{ 1,  .902,  .518}0.9137 ($\pm$0.008)    & \cellcolor[rgb]{ .996,  .843,  .506}0.9613 ($\pm$0.007) & \cellcolor[rgb]{ .996,  .835,  .502}0.9661 ($\pm$0.016) & \cellcolor[rgb]{ .976,  .914,  .514}0.8974 ($\pm$0.004) & \cellcolor[rgb]{ 1,  .922,  .518}0.898 ($\pm$0.003)     & \cellcolor[rgb]{ .988,  .694,  .475}1.0774 ($\pm$0.039) \\
+			\textbf{fish toxicity}              & \cellcolor[rgb]{ .588,  .8,  .49}0.0991 ($\pm$0.008)                      & \cellcolor[rgb]{ .451,  .761,  .482}0.0972 ($\pm$0.007) & \cellcolor[rgb]{ .388,  .745,  .482}0.0963 ($\pm$0.008) & \cellcolor[rgb]{ 1,  .91,  .518}0.1056 ($\pm$0.008)     & \cellcolor[rgb]{ .831,  .871,  .506}0.1023 ($\pm$0.008) & \cellcolor[rgb]{ 1,  .922,  .518}0.1046 ($\pm$0.008)    & \cellcolor[rgb]{ .773,  .855,  .502}0.1016 ($\pm$0.009) & \cellcolor[rgb]{ .976,  .914,  .514}0.1043 ($\pm$0.009) & \cellcolor[rgb]{ 1,  .863,  .506}0.1093 ($\pm$0.009)    & \cellcolor[rgb]{ 1,  .855,  .506}0.1099 ($\pm$0.012)    & \cellcolor[rgb]{ .976,  .475,  .435}0.1393 ($\pm$0.012) & \cellcolor[rgb]{ .973,  .412,  .42}0.1441 ($\pm$0.012)  & \cellcolor[rgb]{ .992,  .733,  .482}0.1193 ($\pm$0.013) \\
+			\textbf{forest fires}               & \cellcolor[rgb]{ 1,  .922,  .518}0.0643 ($\pm$0.04)                       & \cellcolor[rgb]{ .557,  .792,  .49}0.0527 ($\pm$0.039)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0626 ($\pm$0.039)    & \cellcolor[rgb]{ .824,  .871,  .506}0.0586 ($\pm$0.034) & \cellcolor[rgb]{ .851,  .878,  .506}0.0592 ($\pm$0.032) & \cellcolor[rgb]{ 1,  .89,  .514}0.081 ($\pm$0.069)      & \cellcolor[rgb]{ .388,  .745,  .482}0.0488 ($\pm$0.032) & \cellcolor[rgb]{ .976,  .914,  .514}0.0621 ($\pm$0.038) & \cellcolor[rgb]{ .553,  .792,  .49}0.0526 ($\pm$0.026)  & \cellcolor[rgb]{ 1,  .914,  .518}0.0692 ($\pm$0.047)    & \cellcolor[rgb]{ .992,  .722,  .482}0.1806 ($\pm$0.008) & \cellcolor[rgb]{ .992,  .706,  .478}0.1885 ($\pm$0.01)  & \cellcolor[rgb]{ .973,  .412,  .42}0.3598 ($\pm$0.09)   \\
+			\textbf{housing}                    & \cellcolor[rgb]{ .518,  .78,  .486}0.0889 ($\pm$0.012)                    & \cellcolor[rgb]{ .404,  .749,  .482}0.0848 ($\pm$0.011) & \cellcolor[rgb]{ .388,  .745,  .482}0.0842 ($\pm$0.015) & \cellcolor[rgb]{ .69,  .831,  .498}0.0951 ($\pm$0.015)  & \cellcolor[rgb]{ .612,  .808,  .494}0.0923 ($\pm$0.016) & \cellcolor[rgb]{ .663,  .824,  .498}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .922,  .518}0.106 ($\pm$0.019)     & \cellcolor[rgb]{ 1,  .867,  .51}0.1169 ($\pm$0.019)     & \cellcolor[rgb]{ .996,  .812,  .498}0.1279 ($\pm$0.02)  & \cellcolor[rgb]{ .992,  .722,  .482}0.1452 ($\pm$0.03)  & \cellcolor[rgb]{ .984,  .576,  .455}0.1735 ($\pm$0.023) & \cellcolor[rgb]{ .984,  .588,  .455}0.1713 ($\pm$0.018) & \cellcolor[rgb]{ .973,  .412,  .42}0.2057 ($\pm$0.036)  \\
+			\textbf{iris}                       & \cellcolor[rgb]{ .788,  .859,  .502}0.2161 ($\pm$0.059)                   & \cellcolor[rgb]{ .514,  .78,  .486}0.1203 ($\pm$0.098)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0753 ($\pm$0.046) & \cellcolor[rgb]{ 1,  .855,  .506}0.3729 ($\pm$1.119)    & \cellcolor[rgb]{ .416,  .753,  .482}0.085 ($\pm$0.042)  & \cellcolor[rgb]{ .859,  .878,  .506}0.2411 ($\pm$0.295) & \cellcolor[rgb]{ .996,  .808,  .498}0.426 ($\pm$0.072)  & \cellcolor[rgb]{ .686,  .831,  .498}0.1809 ($\pm$0.164) & \cellcolor[rgb]{ 1,  .922,  .518}0.2895 ($\pm$0.117)    & \cellcolor[rgb]{ .973,  .412,  .42}0.8965 ($\pm$0.844)  & \cellcolor[rgb]{ .992,  .773,  .49}0.4694 ($\pm$0.088)  & \cellcolor[rgb]{ .992,  .745,  .486}0.5028 ($\pm$0.072) & \cellcolor[rgb]{ .98,  .494,  .435}0.8027 ($\pm$0.684)  \\
+			\textbf{mushroom}                   & \cellcolor[rgb]{ .549,  .792,  .49}0.0026 ($\pm$0.001)                    & \cellcolor[rgb]{ .467,  .765,  .486}0.0013 ($\pm$0.005) & \cellcolor[rgb]{ .388,  .745,  .482}0.0001 ($\pm$0)     & \cellcolor[rgb]{ .439,  .757,  .482}0.0009 ($\pm$0.001) & \cellcolor[rgb]{ 1,  .922,  .518}0.0094 ($\pm$0.002)    & \cellcolor[rgb]{ .718,  .839,  .498}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ .655,  .82,  .494}0.0042 ($\pm$0.001)  & \cellcolor[rgb]{ 1,  .871,  .51}0.0774 ($\pm$0.02)      & \cellcolor[rgb]{ .984,  .561,  .451}0.4892 ($\pm$0.025) & \cellcolor[rgb]{ 1,  .886,  .514}0.0611 ($\pm$0.06)     & \cellcolor[rgb]{ .996,  .796,  .494}0.1797 ($\pm$0.009) & \cellcolor[rgb]{ .992,  .749,  .486}0.2418 ($\pm$0.013) & \cellcolor[rgb]{ .973,  .412,  .42}0.687 ($\pm$0.016)   \\
+			\textbf{parkinsons}                 & \cellcolor[rgb]{ .51,  .776,  .486}0.0563 ($\pm$0.001)                    & \cellcolor[rgb]{ .412,  .749,  .482}0.0545 ($\pm$0.002) & \cellcolor[rgb]{ .388,  .745,  .482}0.054 ($\pm$0.002)  & \cellcolor[rgb]{ .639,  .816,  .494}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .922,  .518}0.0655 ($\pm$0.002)    & \cellcolor[rgb]{ .639,  .816,  .494}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .69,  .831,  .498}0.0597 ($\pm$0.002)  & \cellcolor[rgb]{ 1,  .918,  .518}0.0658 ($\pm$0.003)    & \cellcolor[rgb]{ 1,  .898,  .514}0.0669 ($\pm$0.003)    & \cellcolor[rgb]{ 1,  .894,  .514}0.0671 ($\pm$0.005)    & \cellcolor[rgb]{ .976,  .467,  .431}0.0923 ($\pm$0.008) & \cellcolor[rgb]{ .973,  .412,  .42}0.0954 ($\pm$0.009)  & \cellcolor[rgb]{ .984,  .604,  .459}0.0843 ($\pm$0.009) \\
+			\textbf{student performance}        & \cellcolor[rgb]{ .388,  .745,  .482}0.1656 ($\pm$0.011)                   & \cellcolor[rgb]{ .98,  .522,  .443}0.4929 ($\pm$0.105)  & \cellcolor[rgb]{ .973,  .412,  .42}0.5724 ($\pm$0.054)  & \cellcolor[rgb]{ 1,  .855,  .506}0.2454 ($\pm$0.134)    & \cellcolor[rgb]{ .471,  .769,  .486}0.1697 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .871,  .51}0.2359 ($\pm$0.102)     & \cellcolor[rgb]{ .49,  .773,  .486}0.1708 ($\pm$0.01)   & \cellcolor[rgb]{ .969,  .91,  .514}0.1947 ($\pm$0.014)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1962 ($\pm$0.01)     & \cellcolor[rgb]{ .984,  .573,  .451}0.4565 ($\pm$0.049) & \cellcolor[rgb]{ .933,  .902,  .514}0.193 ($\pm$0.011)  & \cellcolor[rgb]{ .925,  .898,  .51}0.1925 ($\pm$0.011)  & \cellcolor[rgb]{ 1,  .918,  .518}0.2014 ($\pm$0.012)    \\
+			\textbf{wine quality}               & \cellcolor[rgb]{ .631,  .816,  .494}1.0651 ($\pm$0.024)                   & \cellcolor[rgb]{ .388,  .745,  .482}1.0395 ($\pm$0.018) & \cellcolor[rgb]{ .502,  .776,  .486}1.0514 ($\pm$0.021) & \cellcolor[rgb]{ 1,  .922,  .518}1.1028 ($\pm$0.039)    & \cellcolor[rgb]{ .698,  .831,  .498}1.0718 ($\pm$0.025) & \cellcolor[rgb]{ .804,  .863,  .506}1.0827 ($\pm$0.026) & \cellcolor[rgb]{ .788,  .859,  .502}1.0809 ($\pm$0.021) & \cellcolor[rgb]{ .996,  .839,  .502}1.1666 ($\pm$0.03)  & \cellcolor[rgb]{ .992,  .725,  .482}1.2516 ($\pm$0.046) & \cellcolor[rgb]{ .988,  .659,  .467}1.3046 ($\pm$0.114) & \cellcolor[rgb]{ .996,  .843,  .502}1.1648 ($\pm$0.023) & \cellcolor[rgb]{ .996,  .824,  .502}1.1774 ($\pm$0.019) & \cellcolor[rgb]{ .973,  .412,  .42}1.4896 ($\pm$0.093)  \\
+			\cmidrule{5-5}\cmidrule{7-7}\cmidrule{9-9}\end{tabular}%
+
+
+	}
+\end{sidewaystable}%
+
 From Table~\ref{tab:results:standalone:metrics:test_loss} it can be seen that the bhh\_gd configuration produced the best results of the \acs{BHH} variants and managed to perform well, producing generally good results across all datasets. The bhh\_gd configuration managed to produced results comparable to the best heuristics for each dataset, while the bhh\_all and bhh\_mh produced average results compared to all the \index{heuristic}heuristics. One exception stands out, and that is for the for bhh\_all configuration. The bhh\_all configuration produced bad results for the adult dataset, yielding an average loss far greater than any of the other implementations. More detailed discussions on this specific case is provided later in the Chapter.
 
 Table~\ref{tab:results:standalone:metrics:rank} provides the empirical results in ranking format. The performance rank is calculated as the average rank produced by each \index{heuristic}heuristic, for all datasets, over all runs and all training epochs. The average rank across all epochs produce a view on the performance of the \index{heuristic}heuristics as it relates to the entire training process. Finally, a normalised average rank is provided for the overall performance of all \index{heuristic}heuristics at the bottom of the table. From the normalised average ranks, it can be seen that the bhh\_gd configuration ranked fourth, while the bhh\_all and bhh\_mh configurations ranked sixth and 8th amongst all thirteen \index{heuristic}heuristic implementations respectively.
@@ -350,7 +437,7 @@ Table~\ref{tab:results:standalone:metrics:rank} provides the empirical results i
 
 Figure~\ref{fig:results:standalone:descriptive:descriptive} provides an illustration showing a descriptive plot of the average ranks across all runs for each \index{heuristic}heuristic, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{standalone/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of all low-level heuristics compared to 3 \index{heuristic pool}heuristic pool variants of the baseline \Acs{BHH} per dataset, across all runs and epochs.}
@@ -359,7 +446,7 @@ Figure~\ref{fig:results:standalone:descriptive:descriptive} provides an illustra
 
 Figure~\ref{fig:results:standalone:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each \index{heuristic}heuristic as it relates to all datasets, across all runs.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{standalone/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of all low-level \index{heuristic}heuristics compared to 3 \index{heuristic pool}heuristic pool variants of the baseline \acs{BHH}, across all datasets, runs and epochs.}
@@ -373,7 +460,7 @@ Another observation that can be made is that the gradient-based \index{heuristic
 Figures~\ref{fig:results:standalone:figures:iris}-\ref{fig:results:standalone:figures:car} provide illustrations of the train and test, loss and accuracy plots for each heuristics as it relates to a selection of classification datasets. The train and test, loss and accuracy plots provided are illustrated in log scale. The other classification datasets are left out for brevity as they produce similar illustrations.
 
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{standalone/figures/train/loss/iris.pdf}
@@ -404,7 +491,7 @@ Figures~\ref{fig:results:standalone:figures:iris}-\ref{fig:results:standalone:fi
 	\label{fig:results:standalone:figures:iris}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{standalone/figures/train/loss/bank.pdf}
@@ -435,7 +522,7 @@ Figures~\ref{fig:results:standalone:figures:iris}-\ref{fig:results:standalone:fi
 	\label{fig:results:standalone:figures:bank}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{standalone/figures/train/loss/car.pdf}
@@ -468,7 +555,7 @@ Figures~\ref{fig:results:standalone:figures:iris}-\ref{fig:results:standalone:fi
 
 Figures~\ref{fig:results:standalone:figures:fish_toxicity}-\ref{fig:results:standalone:figures:parkinsons} provide illustrations of the train and test loss plots for each heuristics as it relates to a selection of regression datasets. The train and test loss plots provided are illustrated in log scale. Similar to before, the other regression datasets are left out for brevity as they produce similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{standalone/figures/train/loss/fish_toxicity.pdf}
@@ -487,7 +574,7 @@ Figures~\ref{fig:results:standalone:figures:fish_toxicity}-\ref{fig:results:stan
 \end{figure}
 
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{standalone/figures/train/loss/parkinsons.pdf}
@@ -507,15 +594,13 @@ Figures~\ref{fig:results:standalone:figures:fish_toxicity}-\ref{fig:results:stan
 
 
 
-
 \section{Heuristic Pool}\label{sec:results:heuristic_pool}
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \index{heuristic pool}\textit{heuristic pool} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. This experimental group utilises the same three variants of the \acs{BHH} as was utilised in Section \ref{sec:results:standalone}, but provides an opportunity to look at the \acs{BHH} \index{heuristic pool}heuristic pool hyper-parameter in more depth.
 
 Table \ref{tab:results:heuristic_pool:metrics} provides the ranked performance, per dataset, of each of the \acs{BHH} \index{heuristic pool}heuristic pool configurations. Similar to before, the performance rank is calculated as the average rank produced by each \index{heuristic pool}heuristic pool configuration, for all datasets, over all runs and all training epochs.
 
-
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for all heuristic pool configurations used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:heuristic_pool:metrics:rank}%
@@ -548,7 +633,7 @@ Table \ref{tab:results:heuristic_pool:metrics} provides the ranked performance, 
 	}
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for all heuristic pool configurations used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:heuristic_pool:metrics:loss}%
@@ -580,7 +665,7 @@ Table \ref{tab:results:heuristic_pool:metrics} provides the ranked performance, 
 
 Similar to the outcomes provided in Section \ref{sec:results:standalone}, it is found that the bhh\_gd configuration yielded the best overall performance compared to the bhh\_all and bhh\_mh configurations. Figure~\ref{fig:results:heuristic_pool:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different \index{heuristic pool}heuristic pool configurations, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying heuristic pools per dataset, across all runs and epochs.}
@@ -589,7 +674,7 @@ Similar to the outcomes provided in Section \ref{sec:results:standalone}, it is 
 
 Figure~\ref{fig:results:heuristic_pool:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each \index{heuristic pool}heuristic pool configuration as it relates to all datasets, across all runs.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with varying heuristic pools across all datasets, runs and epochs.}
@@ -602,7 +687,7 @@ From the results show in Section \ref{sec:results:standalone}, the gradient-base
 
 Similar to before, Figure~\ref{fig:results:heuristic_pool:figures:abalone} provides the train and test, loss and accuracy plot for an example classification dataset (abalone) as it relates to the heuristic pool experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/train/loss/abalone.pdf}
@@ -635,7 +720,7 @@ Similar to before, Figure~\ref{fig:results:heuristic_pool:figures:abalone} provi
 
 Figure~\ref{fig:results:heuristic_pool:figures:forest_fires} provides the train and test loss plot for an example regression dataset (forest fires) as it relates to the heuristic pool experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/train/loss/forest_fires.pdf}
@@ -661,7 +746,7 @@ This section provides the empirical results for the experimental group that comp
 
 Table \ref{tab:results:population:metrics} provides the ranked performance, per dataset, of each of the \acs{BHH} population size configurations. Similar to before, the performance rank is calculated as the average rank produced by each population size configuration, for all datasets, over all runs and all training epochs.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different population sizes used by the \acs{BHH} across multiple datasets, for all runs and all epochs.}
 	\label{tab:results:population:metrics:rank}%
@@ -695,7 +780,7 @@ Table \ref{tab:results:population:metrics} provides the ranked performance, per 
 	}
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different population sizes used by the \acs{BHH} across multiple datasets, for all runs and all epochs.}
 	\label{tab:results:population:metrics:loss}%
@@ -729,7 +814,7 @@ Table \ref{tab:results:population:metrics} show that that a smaller population s
 
 Figure~\ref{fig:results:population:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different population size configurations, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_population/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of \acs{BHH} with varying population sizes per dataset, across all runs and epochs.}
@@ -738,7 +823,7 @@ Figure~\ref{fig:results:population:descriptive:descriptive} provides a illustrat
 
 Figure~\ref{fig:results:population:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each population size configuration as it relates to all datasets, across all runs. It is shown that there is no overall statistical significant difference between population sizes and the population size hyper-parameter is problem specific.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_population/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of \acs{BHH} with varying population sizes across all datasets, runs and epochs.}
@@ -747,7 +832,7 @@ Figure~\ref{fig:results:population:descriptive:cd} provides an illustration of t
 
 Similar to before, Figure~\ref{fig:results:population:figures:mushroom} provides the train and test, loss and accuracy plot for an example classification dataset (mushroom) as it relates to the population size experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_population/figures/train/loss/mushroom.pdf}
@@ -782,7 +867,7 @@ As a reminder, the experimental group for population sizes only varies the popul
 
 Figure~\ref{fig:results:population:figures:student_performance} provides the train and test loss plot for an example regression dataset (student performance) as it relates to the population size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_population/figures/train/loss/student_performance.pdf}
@@ -808,7 +893,7 @@ This section provides the empirical results for the experimental group that comp
 
 Table \ref{tab:results:credit:metrics} provides the ranked performance, per dataset, of each of the \acs{BHH} credit assignment strategy configurations. Similar to before, the performance rank is calculated as the average rank produced by each credit assignment strategy configuration, for all datasets, over all runs and all training epochs.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different credit assignment strategies used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:credit:metrics:rank}%
@@ -842,7 +927,7 @@ Table \ref{tab:results:credit:metrics} provides the ranked performance, per data
 	}
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different credit assignment strategies used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:credit:metrics:loss}%
@@ -878,7 +963,7 @@ Table \ref{tab:results:credit:metrics} show that different credit assignment str
 
 Figure~\ref{fig:results:credit:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different credit assignment strategy configurations, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_credit/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying credit assignment strategies per dataset, across all runs and epochs.}
@@ -887,7 +972,7 @@ Figure~\ref{fig:results:credit:descriptive:descriptive} provides a illustration 
 
 Figure~\ref{fig:results:credit:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each credit assignment strategy configuration as it relates to all datasets, across all runs. It is shown that there is no overall statistical significant difference between credit assignment strategies and that the credit assignment strategy hyper-parameter is problem specific.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_credit/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with varying credit assignment strategies across all datasets, runs and epochs.}
@@ -896,7 +981,7 @@ Figure~\ref{fig:results:credit:descriptive:cd} provides an illustration of the o
 
 Similar to before, Figure~\ref{fig:results:credit:figures:bank} provides the train and test, loss and accuracy plot for an example classification dataset (bank) as it relates to the credit assignment strategy experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_credit/figures/train/loss/bank.pdf}
@@ -931,7 +1016,7 @@ From Figure~\ref{fig:results:credit:figures:bank} it can be seen that the \texti
 
 Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss plot for an example regression dataset (housing) as it relates to the credit assignment strategy experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_credit/figures/train/loss/housing.pdf}
@@ -957,7 +1042,7 @@ This section provides the empirical results for the experimental group that comp
 
 Table \ref{tab:results:reselection:metrics} provides the ranked performance, per dataset, of each of the \acs{BHH} reselection interval configurations. Similar to before, the performance rank is calculated as the average rank produced by reselection interval configuration, for all datasets, over all runs and all training epochs.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different reselection intervals used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:reselection:metrics:rank}%
@@ -991,7 +1076,7 @@ Table \ref{tab:results:reselection:metrics} provides the ranked performance, per
 	}
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different reselection intervals used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:reselection:metrics:loss}%
@@ -1026,7 +1111,7 @@ Table \ref{tab:results:reselection:metrics} show that larger reselection interva
 
 Figure~\ref{fig:results:credit:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reselection interval configurations, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_reselection/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying reselection interval values per dataset, across all runs and epochs.}
@@ -1035,7 +1120,7 @@ Figure~\ref{fig:results:credit:descriptive:descriptive} provides a illustration 
 
 Figure~\ref{fig:results:reselection:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reselection interval configuration as it relates to all datasets, across all runs.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_reselection/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with varying reselection interval values across all datasets, runs and epochs.}
@@ -1046,7 +1131,7 @@ Figure~\ref{fig:results:reselection:descriptive:cd} shows the statistically sign
 
 Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the train and test, loss and accuracy plot for an example classification dataset (car) as it relates to the reselection interval experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_reselection/figures/train/loss/car.pdf}
@@ -1079,7 +1164,7 @@ Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the
 
 Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plot for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_reselection/figures/train/loss/bike.pdf}
@@ -1105,7 +1190,7 @@ This section provides the empirical results for the experimental group that comp
 
 Table \ref{tab:results:replay:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} replay window size configurations. Similar to before, the performance rank is calculated as the average rank produced by the replay window size configurations, for all datasets, over all runs and all training epochs.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different replay window sizes used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:replay:metrics:rank}%
@@ -1139,7 +1224,7 @@ Table \ref{tab:results:replay:metrics} provides the ranked performance, per data
 	}
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different replay window sizes used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:replay:metrics:loss}%
@@ -1174,7 +1259,7 @@ Furthermore, it can be concluded that some problem sets require more exploration
 
 Figure~\ref{fig:results:replay:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different replay window size configurations, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_replay/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying replay window sizes per dataset, across all runs and epochs.}
@@ -1183,7 +1268,7 @@ Figure~\ref{fig:results:replay:descriptive:descriptive} provides a illustration 
 
 Figure~\ref{fig:results:replay:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each replay window size configuration as it relates to all datasets, across all runs.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_replay/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with varying replay window sizes across all datasets, runs and epochs.}
@@ -1194,7 +1279,7 @@ Figure~\ref{fig:results:replay:descriptive:cd} shows no statistically significan
 
 Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the train and test, loss and accuracy plot for an example classification dataset (diabetic) as it relates to the replay window size experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_replay/figures/train/loss/diabetic.pdf}
@@ -1227,7 +1312,7 @@ Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the
 
 Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and test loss plot for an example regression dataset (fish toxicity) as it relates to the replay window size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_replay/figures/train/loss/fish_toxicity.pdf}
@@ -1253,7 +1338,7 @@ This section provides the empirical results for the experimental group that comp
 
 Table \ref{tab:results:reanalysis:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} reanalysis interval configurations. Similar to before, the performance rank is calculated as the average rank produced by the reanalysis interval configurations, for all datasets, over all runs and all training epochs.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different reanalysis intervals used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:reanalysis:metrics:rank}%
@@ -1289,7 +1374,7 @@ Table \ref{tab:results:reanalysis:metrics} provides the ranked performance, per 
 \end{table}%
 
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different reanalysis intervals used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:reanalysis:metrics:loss}%
@@ -1327,7 +1412,7 @@ It should be noted that the configuration and results for the reanalysis interva
 
 Figure~\ref{fig:results:reanalysis:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reanalysis interval configurations, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_reanalysis/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying reanalysis intervals per dataset, across all runs and epochs.}
@@ -1336,7 +1421,7 @@ Figure~\ref{fig:results:reanalysis:descriptive:descriptive} provides a illustrat
 
 Figure~\ref{fig:results:reanalysis:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all runs.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_reanalysis/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with varying reanalysis intervals across all datasets, runs and epochs.}
@@ -1347,7 +1432,7 @@ Figure~\ref{fig:results:reanalysis:descriptive:cd} shows no statistically signif
 
 Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides the train and test, loss and accuracy plot for an example classification dataset (mushroom) as it relates to the reanalysis interval experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/train/loss/mushroom.pdf}
@@ -1380,7 +1465,7 @@ Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides
 
 Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plot for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/train/loss/parkinsons.pdf}
@@ -1405,7 +1490,7 @@ This section provides the empirical results for the experimental group that comp
 
 Table \ref{tab:results:burn_in:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} burn in configurations. Similar to before, the performance rank is calculated as the average rank produced by the burn in configurations, for all datasets, over all runs and all training epochs.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different burn in window sizes used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:burn_in:metrics:rank}%
@@ -1440,7 +1525,7 @@ Table \ref{tab:results:burn_in:metrics} provides the ranked performance, per dat
 	}
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different burn in window sizes used by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:burn_in:metrics:loss}%
@@ -1474,7 +1559,7 @@ Table \ref{tab:results:burn_in:metrics} shows that, in general, a configuration 
 
 Figure~\ref{fig:results:burn_in:descriptive:descriptive} provides a illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the burn in window size configurations, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_burn_in/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying burn in values per dataset, across all runs and epochs.}
@@ -1483,7 +1568,7 @@ Figure~\ref{fig:results:burn_in:descriptive:descriptive} provides a illustration
 
 Figure~\ref{fig:results:burn_in:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all runs.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_burn_in/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with varying burn in values across all datasets, runs and epochs.}
@@ -1495,7 +1580,7 @@ Figure~\ref{fig:results:burn_in:descriptive:cd} shows with statistical certainty
 
 Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides the train and test, loss and accuracy plot for an example classification dataset (mushroom) as it relates to the burn in window  size experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_burn_in/figures/train/loss/mushroom.pdf}
@@ -1528,7 +1613,7 @@ Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides th
 
 Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plot for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_burn_in/figures/train/loss/parkinsons.pdf}
@@ -1552,7 +1637,7 @@ This section provides the empirical results for the experimental group that comp
 
 Table \ref{tab:results:normalise:metrics} provides the ranked performance, per dataset, with normalisation enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the normalisation configurations, for all datasets, over all runs and all training epochs.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for normalisation toggled by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:normalise:metrics:rank}%
@@ -1586,7 +1671,7 @@ Table \ref{tab:results:normalise:metrics} provides the ranked performance, per d
 	}
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for normalisation toggled by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:normalise:metrics:loss}%
@@ -1619,7 +1704,7 @@ Table \ref{tab:results:normalise:metrics} shows that, in general, there is no ob
 
 Figure~\ref{fig:results:normalise:descriptive:descriptive} provides a illustration of the descriptive plots for the \acs{BHH} configurations with the normalisation hyper-parameter enabled and disabled, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_normalise/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of the \acs{BHH} with normalisation toggled per dataset, across all runs and epochs.}
@@ -1628,7 +1713,7 @@ Figure~\ref{fig:results:normalise:descriptive:descriptive} provides a illustrati
 
 Figure~\ref{fig:results:normalise:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for normalisation configurations that are enabled and disabled, as it relates to all datasets, across all runs.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_normalise/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with normalisation toggled across all datasets, runs and epochs.}
@@ -1639,7 +1724,7 @@ Figure~\ref{fig:results:normalise:descriptive:descriptive} shows no statistical 
 
 Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides the train and test, loss and accuracy plot for an example classification dataset (abalone) as it relates to the normalisation experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_normalise/figures/train/loss/abalone.pdf}
@@ -1674,7 +1759,7 @@ Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides t
 Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plot for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_normalise/figures/train/loss/bike.pdf}
@@ -1703,7 +1788,7 @@ This section provides the empirical results for the experimental group that comp
 
 Table \ref{tab:results:discounted_rewards:metrics} provides the ranked performance, per dataset, with discounted rewards enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the discounted rewards configurations, for all datasets, over all runs and all training epochs.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for discounted rewards toggled by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:discounted_rewards:metrics:rank}%
@@ -1737,7 +1822,7 @@ Table \ref{tab:results:discounted_rewards:metrics} provides the ranked performan
 	}
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for discounted rewards toggled by the \acs{BHH} across multiple datasets, for all runs and epochs.}
 	\label{tab:results:discounted_rewards:metrics:loss}%
@@ -1772,7 +1857,7 @@ Table \ref{tab:results:discounted_rewards:metrics} shows that, in general, there
 
 Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} provides a illustration of the descriptive plots for the \acs{BHH} configurations with the discounted rewards hyper-parameter enabled and disabled, per dataset.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/descriptive/descriptive.pdf}
 	\caption{Descriptive plots for the average ranks of the \acs{BHH} with discounted rewards toggled per datasets, across all runs and epochs.}
@@ -1781,7 +1866,7 @@ Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} provides a i
 
 Figure~\ref{fig:results:discounted_rewards:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for discounted rewards configurations that are enabled and disabled, as it relates to all datasets, across all runs.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/cd/overall.pdf}
 	\caption{Critical difference plots for the average ranks of the \acs{BHH} with discounted rewards toggled across all datasets, runs and epochs.}
@@ -1792,7 +1877,7 @@ Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} shows no sta
 
 Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quality} provides the train and test, loss and accuracy plot for an example classification dataset (wine quality) as it relates to the discounted rewards experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/train/loss/wine_quality.pdf}
@@ -1825,7 +1910,7 @@ Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quali
 
 Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train and test loss plot for an example regression dataset (housing) as it relates to the discounted rewards experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression databases are left out for brevity.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/train/loss/housing.pdf}
