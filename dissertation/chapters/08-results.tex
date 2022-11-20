@@ -815,7 +815,7 @@ Figure~\ref{fig:results:population:descriptive:cd} provides an illustration of t
 	\label{fig:results:population:descriptive:cd}
 \end{figure}
 
-Similar to before, Figure~\ref{fig:results:population:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the population size experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for the other classification datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:population:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the population size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for the other classification datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
@@ -852,7 +852,7 @@ As a reminder, the experimental group for population sizes only varies the popul
 
 Divergence of the training loss can be observed in Figure \ref{fig:results:population:figures:loss:test:mushroom}. Note that, despite the divergence of training loss, the accuracy is still almost 100\% and that these divergent behaviours are simply a result of an attempt to further improve performance, by exploring the heuristic space more. For example, heuristics could have momentum as a result of good training progression thus far, but then overshoot good solutions after \index{heuristic}heuristic reselection. Overshooting good solutions then causes the \index{heuristic}heuristics to struggle to converge back to good solutions, especially if many different \index{heuristic}heuristics are selected in quick succession. A suggestion to this problem is to implement a move-acceptance strategy as was mentioned before. At the nineth epoch, the \acs{BHH} fails to produce better solutions on the training set. Since there is not much room for more improvement, the \acs{BHH} is bound to try different \index{heuristic}heuristics that yield sub-optimal results. From this point onwards, the \acs{BHH} finds slightly better results on the train set, and as a result, produces volatile performance on the test set.
 
-Figure~\ref{fig:results:population:figures:student_performance} provides the train and test loss plots for an example regression dataset (student performance) as it relates to the population size experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for the other regression datasets are left out for brevity.
+Figure~\ref{fig:results:population:figures:student_performance} provides the train and test loss plots for an example regression dataset (student performance) as it relates to the population size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for the other regression datasets are left out for brevity.
 
 \begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
@@ -877,9 +877,40 @@ From Figure~\ref{fig:results:population:figures:loss:train:student_performance} 
 
 \section{Credit Assignment Strategy}\label{sec:results:credit}
 
-This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{credit assignment strategy} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different credit assignment strategies are considered. These include the \textit{ibest}, \textit{pbest}, \textit{rbest}, \textit{gbest}, and \textit{symmetric} credit assignment strategies as presented in Chapter \ref{chap:bhh}.
+This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{credit assignment strategy} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different credit assignment strategies are considered. These include the \textit{ibest}, \textit{pbest}, \textit{rbest}, \textit{gbest}, and \textit{symmetric} credit assignment strategies as presented in Chapter \ref{chap:bhh} and experiments are denoted as such.
 
-Table \ref{tab:results:credit:metrics} provides the ranked performance, per dataset, of each of the \acs{BHH} credit assignment strategy configurations. Similar to before, the performance rank is calculated as the average rank produced by each credit assignment strategy configuration, for all datasets, over all runs and all training epochs.
+Table~\ref{tab:results:credit:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the credit assignment strategy variants of the \acs{BHH} that was implemented. As before, the test loss is measured at the last epoch for each dataset, over all independent runs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Empirical results showing average test loss and statistics for different credit assignment strategies used by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
+	\label{tab:results:credit:metrics:loss}%
+	\par\bigskip
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{r|ccccc}
+			                             & \multicolumn{5}{c}{\textbf{Credit - Average Loss}}                                                                                                                                                                                                                               \\
+			\midrule
+			\textbf{dataset}             & \textbf{ibest}                                       & \textbf{pbest}                                       & \textbf{rbest}                                       & \textbf{gbest}                                       & \textbf{symmetric}                                   \\
+			\midrule
+			\textbf{abalone}             & \cellcolor[rgb]{ .631,  .816,  .494}2.0587 (+-0.088) & \cellcolor[rgb]{ .388,  .745,  .482}2.0422 (+-0.094) & \cellcolor[rgb]{ .996,  .792,  .494}2.0922 (+-0.152) & \cellcolor[rgb]{ 1,  .922,  .518}2.0833 (+-0.136)    & \cellcolor[rgb]{ .973,  .412,  .42}2.1177 (+-0.259)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 (+-0.016)  & \cellcolor[rgb]{ .902,  .89,  .51}0.2678 (+-0.015)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2644 (+-0.015) & \cellcolor[rgb]{ 1,  .922,  .518}0.2684 (+-0.013)    & \cellcolor[rgb]{ 1,  .882,  .51}0.2688 (+-0.017)     \\
+			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 (+-0.065)    & \cellcolor[rgb]{ .973,  .412,  .42}0.2645 (+-0.171)  & \cellcolor[rgb]{ .51,  .78,  .486}0.238 (+-0.047)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2361 (+-0.031) & \cellcolor[rgb]{ .996,  .812,  .498}0.2498 (+-0.047) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .988,  .647,  .467}0.0651 (+-0.02)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0634 (+-0.023)    & \cellcolor[rgb]{ .871,  .882,  .51}0.0633 (+-0.02)   & \cellcolor[rgb]{ .388,  .745,  .482}0.063 (+-0.021)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0666 (+-0.021)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ 1,  .91,  .518}0.1572 (+-0.034)     & \cellcolor[rgb]{ 1,  .922,  .518}0.1569 (+-0.029)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1665 (+-0.03)   & \cellcolor[rgb]{ .388,  .745,  .482}0.1504 (+-0.03)  & \cellcolor[rgb]{ .945,  .906,  .514}0.1564 (+-0.037) \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .878,  .886,  .51}1.2983 (+-0.66)   & \cellcolor[rgb]{ .988,  .651,  .467}1.4981 (+-2.41)  & \cellcolor[rgb]{ .973,  .412,  .42}1.6172 (+-1.527)  & \cellcolor[rgb]{ .388,  .745,  .482}1.0347 (+-0.231) & \cellcolor[rgb]{ 1,  .922,  .518}1.3627 (+-1.145)    \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .988,  .647,  .467}0.1046 (+-0.008) & \cellcolor[rgb]{ 1,  .922,  .518}0.1028 (+-0.008)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1024 (+-0.009) & \cellcolor[rgb]{ .973,  .412,  .42}0.1061 (+-0.009)  & \cellcolor[rgb]{ .643,  .816,  .494}0.1026 (+-0.009) \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .914,  .514}0.081 (+-0.069)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0819 (+-0.062)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0591 (+-0.046) & \cellcolor[rgb]{ .973,  .412,  .42}0.0845 (+-0.077)  & \cellcolor[rgb]{ 1,  .867,  .51}0.0822 (+-0.07)      \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 (+-0.017) & \cellcolor[rgb]{ .996,  .82,  .498}0.0974 (+-0.021)  & \cellcolor[rgb]{ .835,  .875,  .506}0.0961 (+-0.018) & \cellcolor[rgb]{ .973,  .412,  .42}0.0995 (+-0.016)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0969 (+-0.018)    \\
+			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 (+-0.295)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1441 (+-0.131) & \cellcolor[rgb]{ 1,  .922,  .518}0.1547 (+-0.111)    & \cellcolor[rgb]{ 1,  .882,  .51}0.1616 (+-0.187)     & \cellcolor[rgb]{ .765,  .851,  .502}0.1507 (+-0.142) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .404,  .749,  .482}0.0052 (+-0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0289 (+-0.107)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0044 (+-0.011) & \cellcolor[rgb]{ 1,  .91,  .518}0.1835 (+-0.949)     & \cellcolor[rgb]{ .973,  .412,  .42}5.3926 (+-29.503) \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 (+-0.003) & \cellcolor[rgb]{ 1,  .867,  .51}0.0594 (+-0.002)     & \cellcolor[rgb]{ .973,  .412,  .42}0.0602 (+-0.002)  & \cellcolor[rgb]{ .898,  .89,  .51}0.0592 (+-0.002)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0593 (+-0.003)    \\
+			\textbf{student performance} & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 (+-0.102)    & \cellcolor[rgb]{ .678,  .827,  .498}0.2303 (+-0.095) & \cellcolor[rgb]{ .988,  .69,  .475}0.2551 (+-0.109)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2251 (+-0.088) & \cellcolor[rgb]{ .973,  .412,  .42}0.2777 (+-0.116)  \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .98,  .525,  .443}1.0827 (+-0.026)  & \cellcolor[rgb]{ 1,  .922,  .518}1.0799 (+-0.031)    & \cellcolor[rgb]{ .925,  .898,  .51}1.0794 (+-0.021)  & \cellcolor[rgb]{ .388,  .745,  .482}1.0757 (+-0.027) & \cellcolor[rgb]{ .973,  .412,  .42}1.0835 (+-0.029)  \\
+		\end{tabular}%
+	}
+\end{table}%
+
+From Table~\ref{tab:results:credit:metrics:loss}, it is not clear which credit assignment strategy yields the best performance for the entire training process. As such, Table \ref{tab:results:credit:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} credit assignment strategy configurations. Similar to before, the performance rank is calculated as the average rank produced by each credit assignment strategy configuration, for all datasets, over all runs and all training epochs.
 
 \begin{table}[htb]
 	\centering
@@ -915,39 +946,7 @@ Table \ref{tab:results:credit:metrics} provides the ranked performance, per data
 	}
 \end{table}%
 
-\begin{table}[htb]
-	\centering
-	\caption{Empirical results showing average rank and statistics for different credit assignment strategies used by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
-	\label{tab:results:credit:metrics:loss}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{r|ccccc}
-			                             & \multicolumn{5}{c}{\textbf{Credit - Average Loss}}                                                                                                                                                                                                                               \\
-			\midrule
-			\textbf{dataset}             & \textbf{ibest}                                       & \textbf{pbest}                                       & \textbf{rbest}                                       & \textbf{gbest}                                       & \textbf{symmetric}                                   \\
-			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .631,  .816,  .494}2.0587 (+-0.088) & \cellcolor[rgb]{ .388,  .745,  .482}2.0422 (+-0.094) & \cellcolor[rgb]{ .996,  .792,  .494}2.0922 (+-0.152) & \cellcolor[rgb]{ 1,  .922,  .518}2.0833 (+-0.136)    & \cellcolor[rgb]{ .973,  .412,  .42}2.1177 (+-0.259)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 (+-0.016)  & \cellcolor[rgb]{ .902,  .89,  .51}0.2678 (+-0.015)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2644 (+-0.015) & \cellcolor[rgb]{ 1,  .922,  .518}0.2684 (+-0.013)    & \cellcolor[rgb]{ 1,  .882,  .51}0.2688 (+-0.017)     \\
-			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 (+-0.065)    & \cellcolor[rgb]{ .973,  .412,  .42}0.2645 (+-0.171)  & \cellcolor[rgb]{ .51,  .78,  .486}0.238 (+-0.047)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2361 (+-0.031) & \cellcolor[rgb]{ .996,  .812,  .498}0.2498 (+-0.047) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .988,  .647,  .467}0.0651 (+-0.02)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0634 (+-0.023)    & \cellcolor[rgb]{ .871,  .882,  .51}0.0633 (+-0.02)   & \cellcolor[rgb]{ .388,  .745,  .482}0.063 (+-0.021)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0666 (+-0.021)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ 1,  .91,  .518}0.1572 (+-0.034)     & \cellcolor[rgb]{ 1,  .922,  .518}0.1569 (+-0.029)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1665 (+-0.03)   & \cellcolor[rgb]{ .388,  .745,  .482}0.1504 (+-0.03)  & \cellcolor[rgb]{ .945,  .906,  .514}0.1564 (+-0.037) \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .878,  .886,  .51}1.2983 (+-0.66)   & \cellcolor[rgb]{ .988,  .651,  .467}1.4981 (+-2.41)  & \cellcolor[rgb]{ .973,  .412,  .42}1.6172 (+-1.527)  & \cellcolor[rgb]{ .388,  .745,  .482}1.0347 (+-0.231) & \cellcolor[rgb]{ 1,  .922,  .518}1.3627 (+-1.145)    \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .988,  .647,  .467}0.1046 (+-0.008) & \cellcolor[rgb]{ 1,  .922,  .518}0.1028 (+-0.008)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1024 (+-0.009) & \cellcolor[rgb]{ .973,  .412,  .42}0.1061 (+-0.009)  & \cellcolor[rgb]{ .643,  .816,  .494}0.1026 (+-0.009) \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .914,  .514}0.081 (+-0.069)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0819 (+-0.062)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0591 (+-0.046) & \cellcolor[rgb]{ .973,  .412,  .42}0.0845 (+-0.077)  & \cellcolor[rgb]{ 1,  .867,  .51}0.0822 (+-0.07)      \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 (+-0.017) & \cellcolor[rgb]{ .996,  .82,  .498}0.0974 (+-0.021)  & \cellcolor[rgb]{ .835,  .875,  .506}0.0961 (+-0.018) & \cellcolor[rgb]{ .973,  .412,  .42}0.0995 (+-0.016)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0969 (+-0.018)    \\
-			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 (+-0.295)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1441 (+-0.131) & \cellcolor[rgb]{ 1,  .922,  .518}0.1547 (+-0.111)    & \cellcolor[rgb]{ 1,  .882,  .51}0.1616 (+-0.187)     & \cellcolor[rgb]{ .765,  .851,  .502}0.1507 (+-0.142) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .404,  .749,  .482}0.0052 (+-0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0289 (+-0.107)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0044 (+-0.011) & \cellcolor[rgb]{ 1,  .91,  .518}0.1835 (+-0.949)     & \cellcolor[rgb]{ .973,  .412,  .42}5.3926 (+-29.503) \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 (+-0.003) & \cellcolor[rgb]{ 1,  .867,  .51}0.0594 (+-0.002)     & \cellcolor[rgb]{ .973,  .412,  .42}0.0602 (+-0.002)  & \cellcolor[rgb]{ .898,  .89,  .51}0.0592 (+-0.002)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0593 (+-0.003)    \\
-			\textbf{student performance} & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 (+-0.102)    & \cellcolor[rgb]{ .678,  .827,  .498}0.2303 (+-0.095) & \cellcolor[rgb]{ .988,  .69,  .475}0.2551 (+-0.109)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2251 (+-0.088) & \cellcolor[rgb]{ .973,  .412,  .42}0.2777 (+-0.116)  \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .98,  .525,  .443}1.0827 (+-0.026)  & \cellcolor[rgb]{ 1,  .922,  .518}1.0799 (+-0.031)    & \cellcolor[rgb]{ .925,  .898,  .51}1.0794 (+-0.021)  & \cellcolor[rgb]{ .388,  .745,  .482}1.0757 (+-0.027) & \cellcolor[rgb]{ .973,  .412,  .42}1.0835 (+-0.029)  \\
-		\end{tabular}%
-
-
-
-	}
-\end{table}%
-
-Table \ref{tab:results:credit:metrics} show that different credit assignment strategies perform best for different datasets, from which it can be concluded that the credit assignment strategy hyper-parameter is problem specific. It should be noted that the symmetric credit assignment strategy yielded the best results for the forest fires dataset. This does not necessarily suggest that random search in the heuristic space yields the best performance for this dataset. Instead, it could be the case that the initial selection of heuristics is good enough and that it is difficult to find a performance bias that results in better performance, as all \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool provide good results. For all other datasets, it is found that a particular non-symmetric credit assignment strategy yields better results than random search.
+Table \ref{tab:results:credit:metrics:rank} shows that different credit assignment strategies perform best for different datasets, from which it can be concluded that the credit assignment strategy hyper-parameter is problem specific. Furthermore, the overall normalised average rank across all datasets is provided at the bottom of the table. It should be noted that the \textit{symmetric} credit assignment strategy yielded the best results for the forest fires dataset. This does not necessarily suggest that random search in the heuristic space yields the best performance for this dataset. As a reminder, the \textit{symmetric} credit assignment strategy does not bias towards performance, but rather uniformly assigns credit to any heuristic that happens to be selected. For the particular case where the \textit{symmetric} credit assignment strategy yielded the best results, it could be the case that the initial selection of heuristics is good enough and that it is difficult to find a performance bias that results in better performance, as all \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool provide good results. For all other datasets, it is found that a particular non-\textit{symmetric} credit assignment strategy yields better results.
 
 Figure~\ref{fig:results:credit:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different credit assignment strategy configurations, per dataset.
 
@@ -958,7 +957,7 @@ Figure~\ref{fig:results:credit:descriptive:descriptive} provides an illustration
 	\label{fig:results:credit:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:credit:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each credit assignment strategy configuration as it relates to all datasets, across all runs. It is shown that there is no overall statistical significant difference between credit assignment strategies and that the credit assignment strategy hyper-parameter is problem specific.
+Figure~\ref{fig:results:credit:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each credit assignment strategy configuration as it relates to all datasets, across all runs. It is shown that there is no overall statistical significant difference between credit assignment strategies and that the credit assignment strategy hyper-parameter is problem specific. At this point it should be mentioned that the credit assignment strategies implemented in this dissertation yield a discrete credit value and that future research should consider a continuous credit value in an attempt to provide a more fine grained indicator of performance, which should be easier to exploit.
 
 \begin{figure}[htb]
 	\centering
@@ -967,9 +966,10 @@ Figure~\ref{fig:results:credit:descriptive:cd} provides an illustration of the o
 	\label{fig:results:credit:descriptive:cd}
 \end{figure}
 
-Similar to before, Figure~\ref{fig:results:credit:figures:bank} provides the train and test, loss and accuracy plots for an example classification dataset (bank) as it relates to the credit assignment strategy experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:credit:figures:bank} provides the train and test, loss and accuracy plots for an example classification dataset (bank) as it relates to the credit assignment strategy experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for the other classification datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htb]
+
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_credit/figures/train/loss/bank.pdf}
@@ -1000,11 +1000,7 @@ Similar to before, Figure~\ref{fig:results:credit:figures:bank} provides the tra
 	\label{fig:results:credit:figures:bank}
 \end{figure}
 
-From Figure~\ref{fig:results:credit:figures:bank} it can be seen that the \textit{pbest} credit assignment strategy (green) diverged away from the current best solution, but was able to return to the current best solution. Since the solution found by the \acs{BHH} with the \textit{pbest} credit assignment strategy was already optimal before divergence, it stands to reason that this divergence is a result of the \acs{BHH} exploring other solutions in the heuristic space that yield sub-optimal solutions. As mentioned before, a move-acceptance strategy can be incorporated to counteract this effect.
-
-Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss plots for an example regression dataset (housing) as it relates to the credit assignment strategy experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
-
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_credit/figures/train/loss/housing.pdf}
@@ -1022,6 +1018,9 @@ Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss
 	\label{fig:results:credit:figures:housing}
 \end{figure}
 
+From Figure~\ref{fig:results:credit:figures:bank} it can be seen that the \textit{pbest} credit assignment strategy diverged away from the current best solution, but was able to return to the current best solution. Since the solution found by the \acs{BHH} with the \textit{pbest} credit assignment strategy was already optimal before divergence, it stands to reason that this divergence is a result of the \acs{BHH} exploring other \index{heuristic}heuristics in the heuristic space that yield sub-optimal solutions. As mentioned before, a move-acceptance strategy can be incorporated to counteract this effect.
+
+Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss plots for an example regression dataset (housing) as it relates to the credit assignment strategy experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for the other regression datasets are left out for brevity.
 
 
 \section{Reselection Interval}\label{sec:results:reselection}
@@ -1117,7 +1116,7 @@ Figure~\ref{fig:results:reselection:descriptive:cd} provides an illustration of 
 
 Figure~\ref{fig:results:reselection:descriptive:cd} shows the statistically significant difference in results for the various reselection intervals. It can be seen that larger reselection intervals statistically perform better than smaller reselection intervals.
 
-Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the train and test, loss and accuracy plots for an example classification dataset (car) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the train and test, loss and accuracy plots for an example classification dataset (car) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1150,7 +1149,7 @@ Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the
 	\label{fig:results:reselection:figures:car}
 \end{figure}
 
-Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1265,7 +1264,7 @@ Figure~\ref{fig:results:replay:descriptive:cd} provides an illustration of the o
 
 Figure~\ref{fig:results:replay:descriptive:cd} shows no statistically significant difference in results for the various replay window size configurations as it relates to all datasets.
 
-Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the train and test, loss and accuracy plots for an example classification dataset (diabetic) as it relates to the replay window size experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the train and test, loss and accuracy plots for an example classification dataset (diabetic) as it relates to the replay window size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1298,7 +1297,7 @@ Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the
 	\label{fig:results:replay:figures:diabetic}
 \end{figure}
 
-Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and test loss plots for an example regression dataset (fish toxicity) as it relates to the replay window size experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and test loss plots for an example regression dataset (fish toxicity) as it relates to the replay window size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1418,7 +1417,7 @@ Figure~\ref{fig:results:reanalysis:descriptive:cd} provides an illustration of t
 
 Figure~\ref{fig:results:reanalysis:descriptive:cd} shows no statistically significant difference in results for the various reanalysis interval configurations as it relates to all datasets.
 
-Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the reanalysis interval experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the reanalysis interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1451,7 +1450,7 @@ Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides
 	\label{fig:results:reanalysis:figures:mushroom}
 \end{figure}
 
-Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1566,7 +1565,7 @@ Figure~\ref{fig:results:burn_in:descriptive:cd} provides an illustration of the 
 Figure~\ref{fig:results:burn_in:descriptive:cd} shows with statistical certainty that a small burn in configuration of the \acs{BHH} (burn in values 0 and 5) generally produce better results than larger burn in configurations.
 
 
-Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the burn in window  size experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the burn in window  size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1599,7 +1598,7 @@ Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides th
 	\label{fig:results:burn_in:figures:mushroom}
 \end{figure}
 
-Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1710,7 +1709,7 @@ Figure~\ref{fig:results:normalise:descriptive:cd} provides an illustration of th
 
 Figure~\ref{fig:results:normalise:descriptive:descriptive} shows no statistical difference in the outcomes of the normalisation configurations of the \acs{BHH}. This further supports the suggestion that the use of the normalisation hyper-parameter is problem specific.
 
-Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides the train and test, loss and accuracy plots for an example classification dataset (abalone) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides the train and test, loss and accuracy plots for an example classification dataset (abalone) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1744,7 +1743,7 @@ Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides t
 \end{figure}
 
 
-Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
 
 
 \begin{figure}[htb]
@@ -1863,7 +1862,7 @@ Figure~\ref{fig:results:discounted_rewards:descriptive:cd} provides an illustrat
 
 Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} shows no statistical difference in the outcomes of the discounted rewards configurations of the \acs{BHH}. This further supports the suggestion that the use of the discounted rewards hyper-parameter is problem specific.
 
-Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quality} provides the train and test, loss and accuracy plots for an example classification dataset (wine quality) as it relates to the discounted rewards experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quality} provides the train and test, loss and accuracy plots for an example classification dataset (wine quality) as it relates to the discounted rewards experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1896,7 +1895,7 @@ Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quali
 	\label{fig:results:discounted_rewards:figures:wine_quality}
 \end{figure}
 
-Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train and test loss plots for an example regression dataset (housing) as it relates to the discounted rewards experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train and test loss plots for an example regression dataset (housing) as it relates to the discounted rewards experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
