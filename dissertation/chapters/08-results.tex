@@ -605,7 +605,7 @@ Table~\ref{tab:results:heuristic_pool:metrics:loss} presents the empirical resul
 	}
 \end{table}%
 
-Similar to before, Table \ref{tab:results:heuristic_pool:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} \index{heuristic pool}heuristic pool configurations. The performance rank is calculated as the average rank produced by each \index{heuristic pool}heuristic pool configuration, for all datasets, over all independent runs and epochs.
+Similar to before, Table \ref{tab:results:heuristic_pool:metrics:rank} provides the average ranked performance, per dataset, of each of the \acs{BHH} \index{heuristic pool}heuristic pool configurations. The performance rank is calculated as the average rank produced by each \index{heuristic pool}heuristic pool configuration, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -757,7 +757,7 @@ Table~\ref{tab:results:population:metrics:loss} presents the empirical results f
 
 From Table \ref{tab:results:population:metrics:loss} it can be seen that the lowest population size produced mostly the best performance outcomes, yielding the best average test loss for eight of the fourteen datasets. However, the lowest population size also produced the worst performance outcomes for four of the fourteen datasets. From the empirical results that show the average test loss, measured at the last epoch, it is not clear which population size configuration produced the overall best results.
 
-As before, the performance of the different \acs{BHH} population size configurations need to be considered for the entire training process. As such, Table \ref{tab:results:population:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} population size configurations. Similar to before, the performance rank is calculated as the average rank produced by each population size configuration, for all datasets, over all independent runs and epochs.
+As before, the performance of the different \acs{BHH} population size configurations need to be considered for the entire training process. As such, Table \ref{tab:results:population:metrics:rank} provides the average ranked performance, per dataset, of each of the \acs{BHH} population size configurations. Similar to before, the performance rank is calculated as the average rank produced by each population size configuration, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -910,7 +910,7 @@ Table~\ref{tab:results:credit:metrics:loss} presents the empirical results for t
 	}
 \end{table}%
 
-From Table~\ref{tab:results:credit:metrics:loss}, it is not clear which credit assignment strategy yields the best performance for the entire training process. As such, Table \ref{tab:results:credit:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} credit assignment strategy configurations. Similar to before, the performance rank is calculated as the average rank produced by each credit assignment strategy configuration, for all datasets, over all independent runs and epochs.
+From Table~\ref{tab:results:credit:metrics:loss}, it is not clear which credit assignment strategy yields the best performance for the entire training process. As such, Table \ref{tab:results:credit:metrics:rank} provides the average ranked performance, per dataset, of each of the \acs{BHH} credit assignment strategy configurations. Similar to before, the performance rank is calculated as the average rank produced by each credit assignment strategy configuration, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1060,7 +1060,7 @@ Table~\ref{tab:results:reselection:metrics:loss} presents the empirical results 
 
 From Table~\ref{tab:results:reselection:metrics:loss}, a clear pattern can be observed. The empirical results show that, in general, a larger reselection interval is preferred, with the largest reselection intervals yielding the best performance outcomes in the majority of cases, and the lowest reselection interval of one, yielding the worst performance in the majority of cases.
 
-To illustrate the effects of the reselection interval hyper-paramter on the entire trianing, process, Table \ref{tab:results:reselection:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} reselection interval configurations. Similar to before, the performance rank is calculated as the average rank produced by reselection interval configuration, for all datasets, over all independent runs and epochs.
+To illustrate the effects of the reselection interval hyper-paramter on the entire trianing, process, Table \ref{tab:results:reselection:metrics:rank} provides the average ranked performance, per dataset, of each of the \acs{BHH} reselection interval configurations. Similar to before, the performance rank is calculated as the average rank produced by reselection interval configuration, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1212,7 +1212,7 @@ As before, Table~\ref{tab:results:replay:metrics:loss} presents the empirical re
 	}
 \end{table}%
 
-Table \ref{tab:results:replay:metrics:rank} provides the ranked performance, per dataset, for each of the \acs{BHH} replay window size configurations. Similar to before, the performance rank is calculated as the average rank produced by the replay window size configurations, for all datasets, over all independent runs and epochs. The overall normalised average rank is provided at the end of the table.
+Table \ref{tab:results:replay:metrics:rank} provides the average ranked performance, per dataset, for each of the \acs{BHH} replay window size configurations. Similar to before, the performance rank is calculated as the average rank produced by the replay window size configurations, for all datasets, over all independent runs and epochs. The overall normalised average rank is provided at the end of the table.
 
 \begin{table}[htb]
 	\centering
@@ -1363,7 +1363,7 @@ As before, Table~\ref{tab:results:reanalysis:metrics:loss} presents the empirica
 	}
 \end{table}%
 
-Table \ref{tab:results:reanalysis:metrics:rank} provides the ranked performance, per dataset, for each of the \acs{BHH} reanalysis interval configurations. Similar to before, the performance rank is calculated as the average rank produced by the reanalysis interval configurations, for all datasets, over all independent runs and epochs. The overall normalised average ranks are provided at the bottom of the table.
+Table \ref{tab:results:reanalysis:metrics:rank} provides the average ranked performance, per dataset, for each of the \acs{BHH} reanalysis interval configurations. Similar to before, the performance rank is calculated as the average rank produced by the reanalysis interval configurations, for all datasets, over all independent runs and epochs. The overall normalised average ranks are provided at the bottom of the table.
 
 \begin{table}[htb]
 	\centering
@@ -1480,12 +1480,47 @@ Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and te
 
 The divergence that can be seen in Figure~\ref{fig:results:reanalysis:figures:loss:train:mushroom} and \ref{fig:results:reanalysis:figures:loss:test:mushroom} is explained in previous sections and is simply a result of the \acs{BHH} considering new \index{heuristic}heuristics that yield sub-optimal results, when an optimal solution has already been found. As mentioned before, an early stopping strategy as well as a move-acceptance strategy can be incorporated to avoid this effect.
 
-
 \section{Burn In}\label{sec:results:burn_in}
 
-This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{burn in} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different burn ins are considered. These include burn ins of 0, 5, 10, 15, and 20.
+This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{burn in} window size hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. Five different burn in window sizes are considered. These include burn in window sizes of 0, 5, 10, 15, and 20. Experiments are denoted as such.
 
-Table \ref{tab:results:burn_in:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} burn in configurations. Similar to before, the performance rank is calculated as the average rank produced by the burn in configurations, for all datasets, over all independent runs and epochs.
+As a reminder, the burn in window size is a hyper-parameter that is borrowed from the \acs{MCMC} algorithm, and provides a window whereby exploration is encouraged in order to obtain sufficient samples of \index{heuristic}heuristic performance evidence for statistical inference.
+
+As before, Table~\ref{tab:results:burn_in:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the burn in window size variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all independent runs and epochs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Empirical results showing average test loss and statistics for different burn in window sizes used by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
+	\label{tab:results:burn_in:metrics:loss}%
+	\par\bigskip
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{r|ccccc}
+			                             & \multicolumn{5}{c}{\textbf{Burn In - Average Test Loss}}                                                                                                                                                                                                                             \\
+			\midrule
+			\textbf{dataset}             & \textbf{0}                                               & \textbf{5}                                           & \textbf{10}                                          & \textbf{15}                                          & \textbf{20}                                          \\
+			\midrule
+			\textbf{abalone}             & \cellcolor[rgb]{ .392,  .745,  .482}2.0587 (+-0.088)     & \cellcolor[rgb]{ .388,  .745,  .482}2.0583 (+-0.181) & \cellcolor[rgb]{ 1,  .922,  .518}2.0961 (+-0.168)    & \cellcolor[rgb]{ 1,  .878,  .51}2.1454 (+-0.365)     & \cellcolor[rgb]{ .973,  .412,  .42}2.6753 (+-2.18)   \\
+			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 (+-0.016)        & \cellcolor[rgb]{ .851,  .878,  .506}0.2719 (+-0.02)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2688 (+-0.014) & \cellcolor[rgb]{ .988,  .694,  .475}0.2784 (+-0.017) & \cellcolor[rgb]{ .973,  .412,  .42}0.2851 (+-0.029)  \\
+			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 (+-0.065)        & \cellcolor[rgb]{ .388,  .745,  .482}0.2373 (+-0.033) & \cellcolor[rgb]{ .996,  .804,  .498}0.2514 (+-0.109) & \cellcolor[rgb]{ .784,  .859,  .502}0.2427 (+-0.033) & \cellcolor[rgb]{ .973,  .412,  .42}0.2703 (+-0.056)  \\
+			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 (+-0.02)      & \cellcolor[rgb]{ .443,  .761,  .482}0.0678 (+-0.024) & \cellcolor[rgb]{ 1,  .922,  .518}0.0929 (+-0.047)    & \cellcolor[rgb]{ .992,  .722,  .482}0.1109 (+-0.043) & \cellcolor[rgb]{ .973,  .412,  .42}0.1383 (+-0.034)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 (+-0.034)     & \cellcolor[rgb]{ .627,  .812,  .494}0.164 (+-0.039)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1745 (+-0.037)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1883 (+-0.067)  & \cellcolor[rgb]{ .992,  .71,  .478}0.1803 (+-0.039)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .698,  .831,  .498}1.2983 (+-0.66)      & \cellcolor[rgb]{ .388,  .745,  .482}1.1216 (+-0.582) & \cellcolor[rgb]{ 1,  .922,  .518}1.4701 (+-1.161)    & \cellcolor[rgb]{ .984,  .604,  .459}1.9918 (+-3.645) & \cellcolor[rgb]{ .973,  .412,  .42}2.2996 (+-3.589)  \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .992,  .765,  .49}0.1046 (+-0.008)      & \cellcolor[rgb]{ .69,  .831,  .498}0.1026 (+-0.009)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1009 (+-0.01)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1043 (+-0.007)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1052 (+-0.009)  \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ 1,  .922,  .518}0.081 (+-0.069)         & \cellcolor[rgb]{ .753,  .851,  .502}0.0772 (+-0.057) & \cellcolor[rgb]{ .388,  .745,  .482}0.0714 (+-0.045) & \cellcolor[rgb]{ .973,  .412,  .42}0.1136 (+-0.059)  & \cellcolor[rgb]{ .98,  .557,  .451}0.1044 (+-0.093)  \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 (+-0.017)     & \cellcolor[rgb]{ .596,  .804,  .494}0.096 (+-0.015)  & \cellcolor[rgb]{ .992,  .757,  .486}0.1036 (+-0.037) & \cellcolor[rgb]{ 1,  .922,  .518}0.0997 (+-0.021)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1116 (+-0.034)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ .996,  .78,  .49}0.2411 (+-0.295)       & \cellcolor[rgb]{ .388,  .745,  .482}0.1472 (+-0.134) & \cellcolor[rgb]{ .973,  .412,  .42}0.2717 (+-0.462)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2291 (+-0.376)    & \cellcolor[rgb]{ .663,  .824,  .498}0.1842 (+-0.189) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 (+-0.012)     & \cellcolor[rgb]{ .976,  .42,  .424}0.1068 (+-0.3)    & \cellcolor[rgb]{ .616,  .808,  .494}0.0262 (+-0.057) & \cellcolor[rgb]{ .973,  .412,  .42}0.1075 (+-0.256)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0612 (+-0.108)    \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 (+-0.003)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0599 (+-0.003)    & \cellcolor[rgb]{ .745,  .847,  .502}0.0594 (+-0.003) & \cellcolor[rgb]{ .984,  .627,  .463}0.0644 (+-0.013) & \cellcolor[rgb]{ .973,  .412,  .42}0.0676 (+-0.015)  \\
+			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 (+-0.102)     & \cellcolor[rgb]{ .733,  .843,  .502}0.2801 (+-0.127) & \cellcolor[rgb]{ 1,  .922,  .518}0.314 (+-0.137)     & \cellcolor[rgb]{ .988,  .631,  .463}0.3623 (+-0.139) & \cellcolor[rgb]{ .973,  .412,  .42}0.3988 (+-0.133)  \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ 1,  .922,  .518}1.0827 (+-0.026)        & \cellcolor[rgb]{ .396,  .745,  .482}1.0791 (+-0.021) & \cellcolor[rgb]{ .388,  .745,  .482}1.079 (+-0.03)   & \cellcolor[rgb]{ .988,  .686,  .475}1.086 (+-0.029)  & \cellcolor[rgb]{ .973,  .412,  .42}1.0897 (+-0.034)  \\
+		\end{tabular}%
+
+	}
+\end{table}%
+
+From Table \ref{tab:results:burn_in:metrics:loss} a noticeable pattern can be observed. Generally it is found that a small burn in window size produces better results than larger burn in window sizes. The largest burn in window size of 20 produced the worst results in nine out of thirteen datasets. Some exceptions include the mushroom and the iris datasets. Notice that burn in window sizes smaller than the default reanalysis interval, reselection interval and replay window size of ten, generally produced the best results. However, Table \ref{tab:results:burn_in:metrics:loss} does not provide a clear view of the overall performance produced by different burn in window size configurations for the entire training process.
+
+In order to obtain a better view of the overall performance produced by different burn in window size configurations for the entire training process, Table \ref{tab:results:burn_in:metrics:rank} provides the average ranked performance, per dataset, for each of the \acs{BHH} burn in configurations. Similar to before, the performance rank is calculated as the average rank produced by the burn in window size configurations, for all datasets, over all independent runs and epochs. The overall normalised average rank is provided at the bottom of the table.
 
 \begin{table}[htb]
 	\centering
@@ -1518,43 +1553,16 @@ Table \ref{tab:results:burn_in:metrics} provides the ranked performance, per dat
 			\midrule
 			\textbf{normalised avg rank} & \cellcolor[rgb]{ .388,  .745,  .482}1                   & \cellcolor[rgb]{ .694,  .831,  .498}2                   & \cellcolor[rgb]{ 1,  .922,  .518}3                      & \cellcolor[rgb]{ .988,  .667,  .471}4                   & \cellcolor[rgb]{ .973,  .412,  .42}5                    \\
 		\end{tabular}%
-
 	}
 \end{table}%
 
-\begin{table}[htb]
-	\centering
-	\caption{Empirical results showing average rank and statistics for different burn in window sizes used by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
-	\label{tab:results:burn_in:metrics:loss}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{r|ccccc}
-			                             & \multicolumn{5}{c}{\textbf{Burn In - Average Test Loss}}                                                                                                                                                                                                                             \\
-			\midrule
-			\textbf{dataset}             & \textbf{0}                                               & \textbf{5}                                           & \textbf{10}                                          & \textbf{15}                                          & \textbf{20}                                          \\
-			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .392,  .745,  .482}2.0587 (+-0.088)     & \cellcolor[rgb]{ .388,  .745,  .482}2.0583 (+-0.181) & \cellcolor[rgb]{ 1,  .922,  .518}2.0961 (+-0.168)    & \cellcolor[rgb]{ 1,  .878,  .51}2.1454 (+-0.365)     & \cellcolor[rgb]{ .973,  .412,  .42}2.6753 (+-2.18)   \\
-			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 (+-0.016)        & \cellcolor[rgb]{ .851,  .878,  .506}0.2719 (+-0.02)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2688 (+-0.014) & \cellcolor[rgb]{ .988,  .694,  .475}0.2784 (+-0.017) & \cellcolor[rgb]{ .973,  .412,  .42}0.2851 (+-0.029)  \\
-			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 (+-0.065)        & \cellcolor[rgb]{ .388,  .745,  .482}0.2373 (+-0.033) & \cellcolor[rgb]{ .996,  .804,  .498}0.2514 (+-0.109) & \cellcolor[rgb]{ .784,  .859,  .502}0.2427 (+-0.033) & \cellcolor[rgb]{ .973,  .412,  .42}0.2703 (+-0.056)  \\
-			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 (+-0.02)      & \cellcolor[rgb]{ .443,  .761,  .482}0.0678 (+-0.024) & \cellcolor[rgb]{ 1,  .922,  .518}0.0929 (+-0.047)    & \cellcolor[rgb]{ .992,  .722,  .482}0.1109 (+-0.043) & \cellcolor[rgb]{ .973,  .412,  .42}0.1383 (+-0.034)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 (+-0.034)     & \cellcolor[rgb]{ .627,  .812,  .494}0.164 (+-0.039)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1745 (+-0.037)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1883 (+-0.067)  & \cellcolor[rgb]{ .992,  .71,  .478}0.1803 (+-0.039)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .698,  .831,  .498}1.2983 (+-0.66)      & \cellcolor[rgb]{ .388,  .745,  .482}1.1216 (+-0.582) & \cellcolor[rgb]{ 1,  .922,  .518}1.4701 (+-1.161)    & \cellcolor[rgb]{ .984,  .604,  .459}1.9918 (+-3.645) & \cellcolor[rgb]{ .973,  .412,  .42}2.2996 (+-3.589)  \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .992,  .765,  .49}0.1046 (+-0.008)      & \cellcolor[rgb]{ .69,  .831,  .498}0.1026 (+-0.009)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1009 (+-0.01)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1043 (+-0.007)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1052 (+-0.009)  \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ 1,  .922,  .518}0.081 (+-0.069)         & \cellcolor[rgb]{ .753,  .851,  .502}0.0772 (+-0.057) & \cellcolor[rgb]{ .388,  .745,  .482}0.0714 (+-0.045) & \cellcolor[rgb]{ .973,  .412,  .42}0.1136 (+-0.059)  & \cellcolor[rgb]{ .98,  .557,  .451}0.1044 (+-0.093)  \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 (+-0.017)     & \cellcolor[rgb]{ .596,  .804,  .494}0.096 (+-0.015)  & \cellcolor[rgb]{ .992,  .757,  .486}0.1036 (+-0.037) & \cellcolor[rgb]{ 1,  .922,  .518}0.0997 (+-0.021)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1116 (+-0.034)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ .996,  .78,  .49}0.2411 (+-0.295)       & \cellcolor[rgb]{ .388,  .745,  .482}0.1472 (+-0.134) & \cellcolor[rgb]{ .973,  .412,  .42}0.2717 (+-0.462)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2291 (+-0.376)    & \cellcolor[rgb]{ .663,  .824,  .498}0.1842 (+-0.189) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 (+-0.012)     & \cellcolor[rgb]{ .976,  .42,  .424}0.1068 (+-0.3)    & \cellcolor[rgb]{ .616,  .808,  .494}0.0262 (+-0.057) & \cellcolor[rgb]{ .973,  .412,  .42}0.1075 (+-0.256)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0612 (+-0.108)    \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 (+-0.003)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0599 (+-0.003)    & \cellcolor[rgb]{ .745,  .847,  .502}0.0594 (+-0.003) & \cellcolor[rgb]{ .984,  .627,  .463}0.0644 (+-0.013) & \cellcolor[rgb]{ .973,  .412,  .42}0.0676 (+-0.015)  \\
-			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 (+-0.102)     & \cellcolor[rgb]{ .733,  .843,  .502}0.2801 (+-0.127) & \cellcolor[rgb]{ 1,  .922,  .518}0.314 (+-0.137)     & \cellcolor[rgb]{ .988,  .631,  .463}0.3623 (+-0.139) & \cellcolor[rgb]{ .973,  .412,  .42}0.3988 (+-0.133)  \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ 1,  .922,  .518}1.0827 (+-0.026)        & \cellcolor[rgb]{ .396,  .745,  .482}1.0791 (+-0.021) & \cellcolor[rgb]{ .388,  .745,  .482}1.079 (+-0.03)   & \cellcolor[rgb]{ .988,  .686,  .475}1.086 (+-0.029)  & \cellcolor[rgb]{ .973,  .412,  .42}1.0897 (+-0.034)  \\
-		\end{tabular}%
+Table \ref{tab:results:burn_in:metrics:rank} shows that, in general, a configuration where there is no burn in produces the overall best ranked performance across all datasets. Furthermore, it can be observed that performance degrades with larger burn in window sizes. This can be explained from the fact that most of the training progress that is made, is done early in the training process. The faster the \acs{BHH} is able to start learning and exploiting \index{heuristic}heuristics and solutions, the better.
 
-	}
-\end{table}%
+Note that the \acs{BHH} is configured with a reselection interval of one, until the burn in window has been exhausted, after which the actual reselection interval applies. That means that reselection occurs at each step during the burn in window, but the reanalysis interval and replay window size remain intact. This observation agrees with previous results, where the \acs{BHH} prefers to start exploiting \index{heuristic}heuristics and solutions as soon as possible. Furthermore, this agrees with previous results, where large reselection intervals are found to produce the best results, giving \index{heuristic}heuristics sufficient time to progress and smooth out training steps.
 
-Table \ref{tab:results:burn_in:metrics} shows that, in general, a configuration where there is no burn in produces the best results. This can be explains from the fact that most of the training progress that is made is done early in the training process. The faster the \acs{BHH} is able to start learning, the better. Note that reselection still occurs during a burn in window, but burn in overrides the reanalysis interval is the burn in window size is larger than the reanalysis window.
+Recall that the gradient-based \index{heuristic}heuristics generally produce the best results overall. Most of the gradient-based \index{heuristic}heuristics included in the \index{heuristic pool}heuristic pool implement some form of momentum and exponentially average state parameters. When reselection occurs frequently in succession, these gradient-based \index{heuristic}heuristics struggle to produce smooth update steps. As a result, the \acs{BHH} can produce delayed convergence and thus leads to worse performance when considering the entire training process.
 
-Figure~\ref{fig:results:burn_in:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the burn in window size configurations, per dataset.
+Figure~\ref{fig:results:burn_in:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the burn in window size configurations, per dataset. From Figure~\ref{fig:results:burn_in:descriptive:descriptive} is can be seen that there is mostly a linear correlation between performance results and burn in window sizes, with minor exceptions to some datasets.
 
 \begin{figure}[htb]
 	\centering
@@ -1563,7 +1571,7 @@ Figure~\ref{fig:results:burn_in:descriptive:descriptive} provides an illustratio
 	\label{fig:results:burn_in:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:burn_in:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all independent runs and epochs.
+Figure~\ref{fig:results:burn_in:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each burn in window size configuration as it relates to all datasets, across all independent runs and epochs.
 
 \begin{figure}[htb]
 	\centering
@@ -1572,12 +1580,11 @@ Figure~\ref{fig:results:burn_in:descriptive:cd} provides an illustration of the 
 	\label{fig:results:burn_in:descriptive:cd}
 \end{figure}
 
-Figure~\ref{fig:results:burn_in:descriptive:cd} shows with statistical certainty that a small burn in configuration of the \acs{BHH} (burn in values 0 and 5) generally produce better results than larger burn in configurations.
+Figure~\ref{fig:results:burn_in:descriptive:cd} shows with statistical certainty that a small burn in configuration of the \acs{BHH} generally produce overall better results than larger burn in configurations, as it relates to all datasets,
 
+Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the burn in window size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for the other classification datasets are left out for brevity as they yield similar illustrations.
 
-Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the burn in window  size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
-
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_burn_in/figures/train/loss/mushroom.pdf}
@@ -1608,9 +1615,9 @@ Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides th
 	\label{fig:results:burn_in:figures:mushroom}
 \end{figure}
 
-Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for the other regression datasets are left out for brevity.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_burn_in/figures/train/loss/parkinsons.pdf}
@@ -1628,11 +1635,13 @@ Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test 
 	\label{fig:results:burn_in:figures:parkinsons}
 \end{figure}
 
+The divergence that can be seen in Figures~\ref{fig:results:burn_in:figures:loss:train:mushroom} and \ref{fig:results:burn_in:figures:loss:test:mushroom} is explained in previous sections and is simply a result of the \acs{BHH} considering new \index{heuristic}heuristics that yield sub-optimal results, when an optimal solution has already been found. As mentioned before, an early stopping strategy as well as a move-acceptance strategy can be incorporated to avoid this effect.
+
 \section{Normalisation}\label{sec:results:normalise}
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{normalisation} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, the normalisation hyper-parameter is a flag that enables or disables normalisation of the concentration parameters in an attempt to provide more exploration in the \index{heuristic}heuristic space.
 
-Table \ref{tab:results:normalise:metrics} provides the ranked performance, per dataset, with normalisation enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the normalisation configurations, for all datasets, over all independent runs and epochs.
+Table \ref{tab:results:normalise:metrics} provides the average ranked performance, per dataset, with normalisation enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the normalisation configurations, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1783,7 +1792,7 @@ Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{discounted rewards} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, the discounted rewards hyper-parameter is a flag that enables or disables discounted rewards of the pseudo counts that are added to concentration parameters in an attempt to provide control over the effects of past performances of the low-level \index{heuristic}heuristics.
 
-Table \ref{tab:results:discounted_rewards:metrics} provides the ranked performance, per dataset, with discounted rewards enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the discounted rewards configurations, for all datasets, over all independent runs and epochs.
+Table \ref{tab:results:discounted_rewards:metrics} provides the average ranked performance, per dataset, with discounted rewards enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the discounted rewards configurations, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
