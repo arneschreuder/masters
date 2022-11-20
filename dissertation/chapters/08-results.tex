@@ -664,7 +664,7 @@ From Figures~\ref{fig:results:heuristic_pool:descriptive:descriptive} and~\ref{f
 
 From the results shown in this section and Section \ref{sec:results:standalone}, the gradient-based \index{heuristic}heuristics outperformed the \index{meta-heuristic}meta-heuristics in almost all cases. It can then logically be concluded that the \acs{BHH} baseline configuration with only gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool yields the best performance. The inclusion of \index{meta-heuristic}meta-heuristics is done as an attempt to provide a mechanism that could provide even better performance, as well as generalisation capabilities to other datasets. The benefits of using \index{meta-heuristic}meta-heuristics in the \index{heuristic pool}heuristic pool is not realised in this dissertation, since the gradient-based \index{heuristic}heuristics provided the best overall performance across  all datasets. Furthermore, the standalone gradient-based \index{heuristic}heuristics already produce good performance results, and improvement on those results are hard. Faster convergence is also difficult to achieve, since the \acs{BHH} needs sufficient time to explore the heuristic space. The benefit that the \acs{BHH} then brings is that it provides a mechanism whereby prior expert knowledge can be injected, before training starts. Since gradient-based \index{heuristic}heuristics perform well, future research can exploit this knowledge and provide a significant bias towards these gradient-based \index{heuristic}heuristics through the initialisation of the concentration parameters related to these \index{heuristic}heuristics as mentioned previously.
 
-Similar to before, Figure~\ref{fig:results:heuristic_pool:figures:abalone} provides an illustration of the train and test, loss and accuracy plots for an example classification dataset (abalone) as it relates to the \index{heuristic pool}heuristic pool experimental group. As before, the illustration is provided in log scale and illustrations for the other classification datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:heuristic_pool:figures:abalone} provides an illustration of the train and test, loss and accuracy plots for an example classification dataset (abalone) as it relates to the \index{heuristic pool}heuristic pool experimental group. As before, the illustrations are provided in log scale and illustrations for the other classification datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -697,7 +697,7 @@ Similar to before, Figure~\ref{fig:results:heuristic_pool:figures:abalone} provi
 	\label{fig:results:heuristic_pool:figures:abalone}
 \end{figure}
 
-Figure~\ref{fig:results:heuristic_pool:figures:forest_fires} provides the train and test loss plot for an example regression dataset (forest fires) as it relates to the heuristic pool experimental group. As before, the illustration is provided in log scale and illustrations for the other regression datasets are left out for brevity.
+Figure~\ref{fig:results:heuristic_pool:figures:forest_fires} provides the train and test loss plots for an example regression dataset (forest fires) as it relates to the heuristic pool experimental group. As before, the illustrations are provided in log scale and illustrations for the other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -721,9 +721,43 @@ Figure~\ref{fig:results:heuristic_pool:figures:forest_fires} provides the train 
 
 \section{Population Size}\label{sec:results:population}
 
-This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{population size} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different population sizes are considered. These include population sizes of 5, 10, 15, 20, and 25.
+This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{population size} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different population sizes are considered. These include population sizes of 5, 10, 15, 20, and 25, and experiments are denoted as such.
 
-Table \ref{tab:results:population:metrics} provides the ranked performance, per dataset, of each of the \acs{BHH} population size configurations. Similar to before, the performance rank is calculated as the average rank produced by each population size configuration, for all datasets, over all runs and all training epochs.
+Table~\ref{tab:results:population:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the population size variants of the \acs{BHH} that was implemented. Similar to before, the test loss is measured at the last epoch for each dataset, over all independent runs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Empirical results showing average test loss and statistics for all population size configurations used by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
+	\label{tab:results:population:metrics:loss}%
+	\par\bigskip
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{r|ccccc}
+			                             & \multicolumn{5}{c}{\textbf{Population - Average Loss}}                                                                                                                                                                                                                                         \\
+			\midrule
+			\textbf{dataset}             & \textbf{5}                                              & \textbf{10}                                             & \textbf{15}                                             & \textbf{20}                                            & \textbf{25}                                             \\
+			\midrule
+			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088) & \cellcolor[rgb]{ .612,  .808,  .494}2.1592 ($\pm$0.278) & \cellcolor[rgb]{ 1,  .922,  .518}2.3321 ($\pm$0.446)    & \cellcolor[rgb]{ 1,  .91,  .518}2.3345 ($\pm$0.357)    & \cellcolor[rgb]{ .973,  .412,  .42}2.4188 ($\pm$0.473)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 ($\pm$0.016)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2701 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .878,  .51}0.2736 ($\pm$0.014)     & \cellcolor[rgb]{ .973,  .412,  .42}0.2808 ($\pm$0.026) & \cellcolor[rgb]{ .702,  .835,  .498}0.2715 ($\pm$0.011) \\
+			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)  & \cellcolor[rgb]{ .992,  .729,  .482}0.2356 ($\pm$0.029) & \cellcolor[rgb]{ .388,  .745,  .482}0.2268 ($\pm$0.015) & \cellcolor[rgb]{ 1,  .922,  .518}0.2294 ($\pm$0.019)   & \cellcolor[rgb]{ .608,  .808,  .494}0.2278 ($\pm$0.012) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .973,  .412,  .42}0.0651 ($\pm$0.02)   & \cellcolor[rgb]{ .388,  .745,  .482}0.0527 ($\pm$0.002) & \cellcolor[rgb]{ .988,  .918,  .514}0.0535 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .898,  .514}0.0541 ($\pm$0.003)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0535 ($\pm$0.003)    \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034) & \cellcolor[rgb]{ .757,  .851,  .502}0.1595 ($\pm$0.035) & \cellcolor[rgb]{ 1,  .922,  .518}0.161 ($\pm$0.039)     & \cellcolor[rgb]{ .992,  .773,  .49}0.1636 ($\pm$0.04)  & \cellcolor[rgb]{ .973,  .412,  .42}0.17 ($\pm$0.048)    \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)   & \cellcolor[rgb]{ 1,  .922,  .518}0.9954 ($\pm$0.103)    & \cellcolor[rgb]{ .992,  .776,  .49}1.0826 ($\pm$0.3)    & \cellcolor[rgb]{ .525,  .784,  .49}0.9893 ($\pm$0.105) & \cellcolor[rgb]{ .388,  .745,  .482}0.9875 ($\pm$0.078) \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .388,  .745,  .482}0.1046 ($\pm$0.008) & \cellcolor[rgb]{ 1,  .922,  .518}0.1077 ($\pm$0.009)    & \cellcolor[rgb]{ .882,  .886,  .51}0.1071 ($\pm$0.011)  & \cellcolor[rgb]{ .973,  .412,  .42}0.1104 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .886,  .514}0.1079 ($\pm$0.008)    \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ 1,  .922,  .518}0.081 ($\pm$0.069)     & \cellcolor[rgb]{ .388,  .745,  .482}0.0694 ($\pm$0.059) & \cellcolor[rgb]{ .737,  .843,  .502}0.0761 ($\pm$0.056) & \cellcolor[rgb]{ .984,  .569,  .451}0.084 ($\pm$0.07)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0854 ($\pm$0.065)  \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .922,  .518}0.0985 ($\pm$0.026)    & \cellcolor[rgb]{ .412,  .749,  .482}0.0943 ($\pm$0.016) & \cellcolor[rgb]{ 1,  .906,  .518}0.0987 ($\pm$0.017)   & \cellcolor[rgb]{ .973,  .412,  .42}0.1038 ($\pm$0.017)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ .388,  .745,  .482}0.2411 ($\pm$0.295) & \cellcolor[rgb]{ .992,  .741,  .486}0.4212 ($\pm$0.671) & \cellcolor[rgb]{ .973,  .412,  .42}0.5905 ($\pm$1.043)  & \cellcolor[rgb]{ .651,  .82,  .494}0.2784 ($\pm$0.261) & \cellcolor[rgb]{ 1,  .922,  .518}0.327 ($\pm$0.381)     \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ .973,  .412,  .42}1.9037 ($\pm$10.345) & \cellcolor[rgb]{ 1,  .898,  .514}0.3366 ($\pm$1.559)    & \cellcolor[rgb]{ .69,  .831,  .498}0.1311 ($\pm$0.486) & \cellcolor[rgb]{ 1,  .922,  .518}0.2602 ($\pm$1.115)    \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .82,  .867,  .506}0.0598 ($\pm$0.003)  & \cellcolor[rgb]{ .988,  .694,  .475}0.0606 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .922,  .518}0.0602 ($\pm$0.003)   & \cellcolor[rgb]{ .973,  .412,  .42}0.0612 ($\pm$0.003)  \\
+			\textbf{student performance} & \cellcolor[rgb]{ .973,  .412,  .42}0.2359 ($\pm$0.102)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2007 ($\pm$0.032) & \cellcolor[rgb]{ 1,  .922,  .518}0.2092 ($\pm$0.039)    & \cellcolor[rgb]{ .573,  .796,  .49}0.2033 ($\pm$0.037) & \cellcolor[rgb]{ 1,  .922,  .518}0.2091 ($\pm$0.054)    \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026) & \cellcolor[rgb]{ .553,  .792,  .49}1.0864 ($\pm$0.034)  & \cellcolor[rgb]{ .973,  .412,  .42}1.1083 ($\pm$0.054)  & \cellcolor[rgb]{ 1,  .922,  .518}1.0961 ($\pm$0.027)   & \cellcolor[rgb]{ .976,  .463,  .431}1.1071 ($\pm$0.039) \\
+		\end{tabular}%
+
+	}
+\end{table}%
+
+From Table \ref{tab:results:population:metrics:loss} it can be seen that the lowest population size produced mostly the best performance outcomes, yielding the best average test loss for eight of the fourteen datasets. However, the lowest population size also produced the worst performance outcomes for four of the fourteen datasets. From the empirical results that show the average test loss, measured at the last epoch, it is not clear which population size configuration produced the overall best results.
+
+As before, the performance of the different \acs{BHH} population size configurations need to be considered for the entire training process. As such, Table \ref{tab:results:population:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} population size configurations. Similar to before, the performance rank is calculated as the average rank produced by each population size configuration, for all datasets, over all runs and all training epochs.
 
 \begin{table}[htb]
 	\centering
@@ -759,37 +793,7 @@ Table \ref{tab:results:population:metrics} provides the ranked performance, per 
 	}
 \end{table}%
 
-\begin{table}[htb]
-	\centering
-	\caption{Empirical results showing average rank and statistics for different population sizes used by the \acs{BHH} across multiple datasets, for all independent runs and all epochs.}
-	\label{tab:results:population:metrics:loss}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{r|ccccc}
-			                             & \multicolumn{5}{c}{\textbf{Population - Average Loss}}                                                                                                                                                                                                                                         \\
-			\midrule
-			\textbf{dataset}             & \textbf{5}                                              & \textbf{10}                                             & \textbf{15}                                             & \textbf{20}                                            & \textbf{25}                                             \\
-			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088) & \cellcolor[rgb]{ .612,  .808,  .494}2.1592 ($\pm$0.278) & \cellcolor[rgb]{ 1,  .922,  .518}2.3321 ($\pm$0.446)    & \cellcolor[rgb]{ 1,  .91,  .518}2.3345 ($\pm$0.357)    & \cellcolor[rgb]{ .973,  .412,  .42}2.4188 ($\pm$0.473)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 ($\pm$0.016)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2701 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .878,  .51}0.2736 ($\pm$0.014)     & \cellcolor[rgb]{ .973,  .412,  .42}0.2808 ($\pm$0.026) & \cellcolor[rgb]{ .702,  .835,  .498}0.2715 ($\pm$0.011) \\
-			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)  & \cellcolor[rgb]{ .992,  .729,  .482}0.2356 ($\pm$0.029) & \cellcolor[rgb]{ .388,  .745,  .482}0.2268 ($\pm$0.015) & \cellcolor[rgb]{ 1,  .922,  .518}0.2294 ($\pm$0.019)   & \cellcolor[rgb]{ .608,  .808,  .494}0.2278 ($\pm$0.012) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .973,  .412,  .42}0.0651 ($\pm$0.02)   & \cellcolor[rgb]{ .388,  .745,  .482}0.0527 ($\pm$0.002) & \cellcolor[rgb]{ .988,  .918,  .514}0.0535 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .898,  .514}0.0541 ($\pm$0.003)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0535 ($\pm$0.003)    \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034) & \cellcolor[rgb]{ .757,  .851,  .502}0.1595 ($\pm$0.035) & \cellcolor[rgb]{ 1,  .922,  .518}0.161 ($\pm$0.039)     & \cellcolor[rgb]{ .992,  .773,  .49}0.1636 ($\pm$0.04)  & \cellcolor[rgb]{ .973,  .412,  .42}0.17 ($\pm$0.048)    \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)   & \cellcolor[rgb]{ 1,  .922,  .518}0.9954 ($\pm$0.103)    & \cellcolor[rgb]{ .992,  .776,  .49}1.0826 ($\pm$0.3)    & \cellcolor[rgb]{ .525,  .784,  .49}0.9893 ($\pm$0.105) & \cellcolor[rgb]{ .388,  .745,  .482}0.9875 ($\pm$0.078) \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .388,  .745,  .482}0.1046 ($\pm$0.008) & \cellcolor[rgb]{ 1,  .922,  .518}0.1077 ($\pm$0.009)    & \cellcolor[rgb]{ .882,  .886,  .51}0.1071 ($\pm$0.011)  & \cellcolor[rgb]{ .973,  .412,  .42}0.1104 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .886,  .514}0.1079 ($\pm$0.008)    \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ 1,  .922,  .518}0.081 ($\pm$0.069)     & \cellcolor[rgb]{ .388,  .745,  .482}0.0694 ($\pm$0.059) & \cellcolor[rgb]{ .737,  .843,  .502}0.0761 ($\pm$0.056) & \cellcolor[rgb]{ .984,  .569,  .451}0.084 ($\pm$0.07)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0854 ($\pm$0.065)  \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .922,  .518}0.0985 ($\pm$0.026)    & \cellcolor[rgb]{ .412,  .749,  .482}0.0943 ($\pm$0.016) & \cellcolor[rgb]{ 1,  .906,  .518}0.0987 ($\pm$0.017)   & \cellcolor[rgb]{ .973,  .412,  .42}0.1038 ($\pm$0.017)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ .388,  .745,  .482}0.2411 ($\pm$0.295) & \cellcolor[rgb]{ .992,  .741,  .486}0.4212 ($\pm$0.671) & \cellcolor[rgb]{ .973,  .412,  .42}0.5905 ($\pm$1.043)  & \cellcolor[rgb]{ .651,  .82,  .494}0.2784 ($\pm$0.261) & \cellcolor[rgb]{ 1,  .922,  .518}0.327 ($\pm$0.381)     \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ .973,  .412,  .42}1.9037 ($\pm$10.345) & \cellcolor[rgb]{ 1,  .898,  .514}0.3366 ($\pm$1.559)    & \cellcolor[rgb]{ .69,  .831,  .498}0.1311 ($\pm$0.486) & \cellcolor[rgb]{ 1,  .922,  .518}0.2602 ($\pm$1.115)    \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .82,  .867,  .506}0.0598 ($\pm$0.003)  & \cellcolor[rgb]{ .988,  .694,  .475}0.0606 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .922,  .518}0.0602 ($\pm$0.003)   & \cellcolor[rgb]{ .973,  .412,  .42}0.0612 ($\pm$0.003)  \\
-			\textbf{student performance} & \cellcolor[rgb]{ .973,  .412,  .42}0.2359 ($\pm$0.102)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2007 ($\pm$0.032) & \cellcolor[rgb]{ 1,  .922,  .518}0.2092 ($\pm$0.039)    & \cellcolor[rgb]{ .573,  .796,  .49}0.2033 ($\pm$0.037) & \cellcolor[rgb]{ 1,  .922,  .518}0.2091 ($\pm$0.054)    \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026) & \cellcolor[rgb]{ .553,  .792,  .49}1.0864 ($\pm$0.034)  & \cellcolor[rgb]{ .973,  .412,  .42}1.1083 ($\pm$0.054)  & \cellcolor[rgb]{ 1,  .922,  .518}1.0961 ($\pm$0.027)   & \cellcolor[rgb]{ .976,  .463,  .431}1.1071 ($\pm$0.039) \\
-		\end{tabular}%
-
-	}
-\end{table}%
-
-Table \ref{tab:results:population:metrics} show that that a smaller population size mostly produces the best results, with statistically significant differences on the adult, bike and car datasets. A population size of 10, slightly higher than the default of 5 is preferred for the forest fires and housing datasets.
+From Table \ref{tab:results:population:metrics:rank} it can be seen that a lower population size of five, mostly produced the best results, with exception to the bike and car datasets, for which the lowest population size configuration produced the worst performance, yielding statistically significant differences in outcomes from the other datasets. A larger population size configuration is prefered for the bike and car datasets. Furthermore, a population size configuration of ten, slightly higher than the default of five, is preferred for the forest fires and housing datasets. Finally, the overall normalised average rank is provided at the bottom of the table, showing that a population size of five produced the best performance outcome across all datasets on average.
 
 Figure~\ref{fig:results:population:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of the different population size configurations, per dataset.
 
@@ -800,7 +804,9 @@ Figure~\ref{fig:results:population:descriptive:descriptive} provides an illustra
 	\label{fig:results:population:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:population:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each population size configuration as it relates to all datasets, across all runs. It is shown that there is no overall statistical significant difference between population sizes and the population size hyper-parameter is problem specific.
+Figure~\ref{fig:results:population:descriptive:descriptive}, shows the correlation of performance with population size for each dataset. From these illustrations, it can be seen that the correlation between the population size configuration and performance is different for each dataset, suggesting that the population size hyper-parameter is problem specific. However, the overall performance related to each population configuration, across all datasets is not clear from these illustrations.
+
+Figure~\ref{fig:results:population:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each population size configuration as it relates to all datasets, across all runs and epochs. It is shown that there is no overall statistical significant difference between population sizes and thus, it can be concluded that the population size hyper-parameter is problem specific.
 
 \begin{figure}[htb]
 	\centering
@@ -809,9 +815,9 @@ Figure~\ref{fig:results:population:descriptive:cd} provides an illustration of t
 	\label{fig:results:population:descriptive:cd}
 \end{figure}
 
-Similar to before, Figure~\ref{fig:results:population:figures:mushroom} provides the train and test, loss and accuracy plot for an example classification dataset (mushroom) as it relates to the population size experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:population:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the population size experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for the other classification datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_population/figures/train/loss/mushroom.pdf}
@@ -838,15 +844,17 @@ Similar to before, Figure~\ref{fig:results:population:figures:mushroom} provides
 		\label{fig:results:population:figures:accuracy:test:mushroom}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the population size hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations of the population size hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:population:figures:mushroom}
 \end{figure}
 
-As a reminder, the experimental group for population sizes only varies the population size hyper-parameter and all other hyper-parameters remain the same between configurations. As such, all population size configurations make use of the \index{heuristic pool}heuristic pool configuration that includes all the low-level heuristics, including gradient-based \index{heuristic}heuristics and \index{meta-heuristic}meta-heuristics. This explains the sporadic results in Figure \ref{fig:results:population:figures:loss:test:mushroom}. Note that the accuracy is almost 100\% and that these sporadic results are simply a result of an attempt to further improve performance even more, by exploring the heuristic space more. Since there is not much room for more improvement, the \acs{BHH} is bound to try different heuristic that yield sub-optimal results.
+As a reminder, the experimental group for population sizes only varies the population size hyper-parameter and all other hyper-parameters remain the same between configurations. As such, all population size configurations make use of the \index{heuristic pool}heuristic pool configuration that includes all the low-level heuristics, including gradient-based \index{heuristic}heuristics and \index{meta-heuristic}meta-heuristics.
 
-Figure~\ref{fig:results:population:figures:student_performance} provides the train and test loss plot for an example regression dataset (student performance) as it relates to the population size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Divergence of the training loss can be observed in Figure \ref{fig:results:population:figures:loss:test:mushroom}. Note that, despite the divergence of training loss, the accuracy is still almost 100\% and that these divergent behaviours are simply a result of an attempt to further improve performance, by exploring the heuristic space more. For example, heuristics could have momentum as a result of good training progression thus far, but then overshoot good solutions after \index{heuristic}heuristic reselection. Overshooting good solutions then causes the \index{heuristic}heuristics to struggle to converge back to good solutions, especially if many different \index{heuristic}heuristics are selected in quick succession. A suggestion to this problem is to implement a move-acceptance strategy as was mentioned before. At the nineth epoch, the \acs{BHH} fails to produce better solutions on the training set. Since there is not much room for more improvement, the \acs{BHH} is bound to try different \index{heuristic}heuristics that yield sub-optimal results. From this point onwards, the \acs{BHH} finds slightly better results on the train set, and as a result, produces volatile performance on the test set.
 
-\begin{figure}[htb]
+Figure~\ref{fig:results:population:figures:student_performance} provides the train and test loss plots for an example regression dataset (student performance) as it relates to the population size experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for the other regression datasets are left out for brevity.
+
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_population/figures/train/loss/student_performance.pdf}
@@ -860,11 +868,12 @@ Figure~\ref{fig:results:population:figures:student_performance} provides the tra
 		\label{fig:results:population:figures:loss:test:student_performance}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the population size hyper-parameter on the student performance dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations of the population size hyper-parameter on the student performance dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:population:figures:student_performance}
 \end{figure}
 
-From Figure~\ref{fig:results:population:figures:loss:train:student_performance} it can be seen that the \acs{BHH} with a small population size of 5 starts to diverge away from optimal results as it explores more options in attempt to provide better solutions. Divergence can be eliminated by means of an early stopping strategy.
+From Figure~\ref{fig:results:population:figures:loss:train:student_performance} it can be seen that the \acs{BHH} with a low population size of five starts to diverge away from optimal results as it explores different \index{heuristic}heuristics in an attempt to provide better solutions. Divergence can be eliminated by means of an early stopping strategy as well as a move-acceptance strategy as mentioned before.
+
 
 \section{Credit Assignment Strategy}\label{sec:results:credit}
 
@@ -958,7 +967,7 @@ Figure~\ref{fig:results:credit:descriptive:cd} provides an illustration of the o
 	\label{fig:results:credit:descriptive:cd}
 \end{figure}
 
-Similar to before, Figure~\ref{fig:results:credit:figures:bank} provides the train and test, loss and accuracy plot for an example classification dataset (bank) as it relates to the credit assignment strategy experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:credit:figures:bank} provides the train and test, loss and accuracy plots for an example classification dataset (bank) as it relates to the credit assignment strategy experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -987,13 +996,13 @@ Similar to before, Figure~\ref{fig:results:credit:figures:bank} provides the tra
 		\label{fig:results:credit:figures:accuracy:test:bank}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the credit assignment strategy hyper-parameter on the bank dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations of the credit assignment strategy hyper-parameter on the bank dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:credit:figures:bank}
 \end{figure}
 
 From Figure~\ref{fig:results:credit:figures:bank} it can be seen that the \textit{pbest} credit assignment strategy (green) diverged away from the current best solution, but was able to return to the current best solution. Since the solution found by the \acs{BHH} with the \textit{pbest} credit assignment strategy was already optimal before divergence, it stands to reason that this divergence is a result of the \acs{BHH} exploring other solutions in the heuristic space that yield sub-optimal solutions. As mentioned before, a move-acceptance strategy can be incorporated to counteract this effect.
 
-Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss plot for an example regression dataset (housing) as it relates to the credit assignment strategy experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss plots for an example regression dataset (housing) as it relates to the credit assignment strategy experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1009,7 +1018,7 @@ Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss
 		\label{fig:results:credit:figures:loss:test:housing}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the credit assignment strategy hyper-parameter on the housing dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations of the credit assignment strategy hyper-parameter on the housing dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:credit:figures:housing}
 \end{figure}
 
@@ -1108,7 +1117,7 @@ Figure~\ref{fig:results:reselection:descriptive:cd} provides an illustration of 
 
 Figure~\ref{fig:results:reselection:descriptive:cd} shows the statistically significant difference in results for the various reselection intervals. It can be seen that larger reselection intervals statistically perform better than smaller reselection intervals.
 
-Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the train and test, loss and accuracy plot for an example classification dataset (car) as it relates to the reselection interval experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the train and test, loss and accuracy plots for an example classification dataset (car) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1137,11 +1146,11 @@ Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the
 		\label{fig:results:reselection:figures:accuracy:test:car}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the reselection interval hyper-parameter on the car dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations of the reselection interval hyper-parameter on the car dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:reselection:figures:car}
 \end{figure}
 
-Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plot for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1157,7 +1166,7 @@ Figure~\ref{fig:results:reselection:figures:bike} provides the train and test lo
 		\label{fig:results:reselection:figures:loss:test:bike}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the reselection interval hyper-parameter on the bike dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations of the reselection interval hyper-parameter on the bike dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:reselection:figures:bike}
 \end{figure}
 
@@ -1256,7 +1265,7 @@ Figure~\ref{fig:results:replay:descriptive:cd} provides an illustration of the o
 
 Figure~\ref{fig:results:replay:descriptive:cd} shows no statistically significant difference in results for the various replay window size configurations as it relates to all datasets.
 
-Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the train and test, loss and accuracy plot for an example classification dataset (diabetic) as it relates to the replay window size experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the train and test, loss and accuracy plots for an example classification dataset (diabetic) as it relates to the replay window size experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1285,11 +1294,11 @@ Similar to before, Figure~\ref{fig:results:replay:figures:diabetic} provides the
 		\label{fig:results:replay:figures:accuracy:test:diabetic}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the replay window size hyper-parameter on the diabetic dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations of the replay window size hyper-parameter on the diabetic dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:replay:figures:diabetic}
 \end{figure}
 
-Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and test loss plot for an example regression dataset (fish toxicity) as it relates to the replay window size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and test loss plots for an example regression dataset (fish toxicity) as it relates to the replay window size experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1305,7 +1314,7 @@ Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and tes
 		\label{fig:results:replay:figures:loss:test:fish_toxicity}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations of the replay window size hyper-parameter on the fish toxicity dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations of the replay window size hyper-parameter on the fish toxicity dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:replay:figures:fish_toxicity}
 \end{figure}
 
@@ -1409,7 +1418,7 @@ Figure~\ref{fig:results:reanalysis:descriptive:cd} provides an illustration of t
 
 Figure~\ref{fig:results:reanalysis:descriptive:cd} shows no statistically significant difference in results for the various reanalysis interval configurations as it relates to all datasets.
 
-Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides the train and test, loss and accuracy plot for an example classification dataset (mushroom) as it relates to the reanalysis interval experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the reanalysis interval experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1438,11 +1447,11 @@ Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides
 		\label{fig:results:reanalysis:figures:accuracy:test:mushroom}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations for the reanalysis interval hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations for the reanalysis interval hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:reanalysis:figures:mushroom}
 \end{figure}
 
-Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plot for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1458,7 +1467,7 @@ Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and te
 		\label{fig:results:reanalysis:figures:loss:test:parkinsons}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations for the reanalysis interval hyper-parameter on the parkinsons dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations for the reanalysis interval hyper-parameter on the parkinsons dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:reanalysis:figures:parkinsons}
 \end{figure}
 
@@ -1557,7 +1566,7 @@ Figure~\ref{fig:results:burn_in:descriptive:cd} provides an illustration of the 
 Figure~\ref{fig:results:burn_in:descriptive:cd} shows with statistical certainty that a small burn in configuration of the \acs{BHH} (burn in values 0 and 5) generally produce better results than larger burn in configurations.
 
 
-Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides the train and test, loss and accuracy plot for an example classification dataset (mushroom) as it relates to the burn in window  size experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the burn in window  size experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1586,11 +1595,11 @@ Similar to before, Figure~\ref{fig:results:burn_in:figures:mushroom} provides th
 		\label{fig:results:burn_in:figures:accuracy:test:mushroom}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations for the burn in window size hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations for the burn in window size hyper-parameter on the mushroom dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:burn_in:figures:mushroom}
 \end{figure}
 
-Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plot for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the burn in window size experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1606,7 +1615,7 @@ Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test 
 		\label{fig:results:burn_in:figures:loss:test:parkinsons}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with different configurations for the burn in window size hyper-parameter on the parkinsons dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations for the burn in window size hyper-parameter on the parkinsons dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:burn_in:figures:parkinsons}
 \end{figure}
 
@@ -1701,7 +1710,7 @@ Figure~\ref{fig:results:normalise:descriptive:cd} provides an illustration of th
 
 Figure~\ref{fig:results:normalise:descriptive:descriptive} shows no statistical difference in the outcomes of the normalisation configurations of the \acs{BHH}. This further supports the suggestion that the use of the normalisation hyper-parameter is problem specific.
 
-Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides the train and test, loss and accuracy plot for an example classification dataset (abalone) as it relates to the normalisation experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides the train and test, loss and accuracy plots for an example classification dataset (abalone) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1730,12 +1739,12 @@ Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides t
 		\label{fig:results:normalise:figures:accuracy:test:abalone}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with the normalisation hyper-parameter toggled on the abalone dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with the normalisation hyper-parameter toggled on the abalone dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:normalise:figures:abalone}
 \end{figure}
 
 
-Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plot for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 
 \begin{figure}[htb]
@@ -1752,7 +1761,7 @@ Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss
 		\label{fig:results:normalise:figures:loss:test:bike}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with the normalisation hyper-parameter toggled on the bike dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with the normalisation hyper-parameter toggled on the bike dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:normalise:figures:bike}
 \end{figure}
 
@@ -1854,7 +1863,7 @@ Figure~\ref{fig:results:discounted_rewards:descriptive:cd} provides an illustrat
 
 Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} shows no statistical difference in the outcomes of the discounted rewards configurations of the \acs{BHH}. This further supports the suggestion that the use of the discounted rewards hyper-parameter is problem specific.
 
-Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quality} provides the train and test, loss and accuracy plot for an example classification dataset (wine quality) as it relates to the discounted rewards experimental group. As before, the illustration is provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quality} provides the train and test, loss and accuracy plots for an example classification dataset (wine quality) as it relates to the discounted rewards experimental group. As before, the illustrations are provided in log scale and illustrations of train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1883,11 +1892,11 @@ Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quali
 		\label{fig:results:discounted_rewards:figures:accuracy:test:wine_quality}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with the discounted rewards hyper-parameter toggled on the wine quality dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with the discounted rewards hyper-parameter toggled on the wine quality dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:discounted_rewards:figures:wine_quality}
 \end{figure}
 
-Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train and test loss plot for an example regression dataset (housing) as it relates to the discounted rewards experimental group. As before, the illustration is provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train and test loss plots for an example regression dataset (housing) as it relates to the discounted rewards experimental group. As before, the illustrations are provided in log scale and illustration of train and test loss plots for other regression datasets are left out for brevity.
 
 \begin{figure}[htb]
 	\begin{subfigure}{0.5\textwidth}
@@ -1903,7 +1912,7 @@ Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train a
 		\label{fig:results:discounted_rewards:figures:loss:test:housing}
 	\end{subfigure}
 	\par\bigskip
-	\caption{The train and test, loss and accuracy plot for the experimental group comparing the performance of the \acs{BHH} with the discounted rewards hyper-parameter toggled on the housing dataset over 30 epochs, illustrated in log scale.}
+	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with the discounted rewards hyper-parameter toggled on the housing dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:discounted_rewards:figures:housing}
 \end{figure}
 
