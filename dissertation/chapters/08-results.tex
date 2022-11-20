@@ -1183,7 +1183,6 @@ This section provides the empirical results for the experimental group that comp
 
 As before, Table~\ref{tab:results:replay:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the replay window size variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all independent runs.
 
-
 \begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average test loss and statistics for different replay window sizes used by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
@@ -1213,7 +1212,7 @@ As before, Table~\ref{tab:results:replay:metrics:loss} presents the empirical re
 	}
 \end{table}%
 
-Table \ref{tab:results:replay:metrics:rank} provides the ranked performance, per dataset, for each of the \acs{BHH} replay window size configurations. Similar to before, the performance rank is calculated as the average rank produced by the replay window size configurations, for all datasets, over all independent runs and all training epochs. The overall normalised average rank is provided at the end of the table.
+Table \ref{tab:results:replay:metrics:rank} provides the ranked performance, per dataset, for each of the \acs{BHH} replay window size configurations. Similar to before, the performance rank is calculated as the average rank produced by the replay window size configurations, for all datasets, over all independent runs and epochs. The overall normalised average rank is provided at the end of the table.
 
 \begin{table}[htb]
 	\centering
@@ -1327,11 +1326,44 @@ Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and tes
 
 The divergence that can be seen in Figure~\ref{fig:results:replay:figures:loss:train:diabetic} and \ref{fig:results:replay:figures:loss:test:diabetic} is explained in previous sections and is simply a result of the \acs{BHH} considering new \index{heuristic}heuristics that yield sub-optimal results, when an optimal solution has already been found. As mentioned before, an early stopping strategy as well as a move-acceptance strategy can be incorporated to avoid this effect.
 
+
+
 \section{Reanalysis Interval}\label{sec:results:reanalysis}
 
-This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{reanalysis interval} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different reanalysis intervals are considered. These include reanalysis intervals of 1, 5, 10, 15, and 20.
+This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{reanalysis interval} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different reanalysis intervals are considered. These include reanalysis intervals of 1, 5, 10, 15, and 20. Experiments are denoted as such.
 
-Table \ref{tab:results:reanalysis:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} reanalysis interval configurations. Similar to before, the performance rank is calculated as the average rank produced by the reanalysis interval configurations, for all datasets, over all independent runs and all training epochs.
+As before, Table~\ref{tab:results:reanalysis:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the reanalysis interval variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all independent runs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Empirical results showing average test loss and statistics for different reanalysis intervals used by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
+	\label{tab:results:reanalysis:metrics:loss}%
+	\par\bigskip
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{r|lllll}
+			                             & \multicolumn{5}{c}{\textbf{Reanalysis - Average Test Loss}}                                                                                                                                                                                                                                        \\
+			\midrule
+			\textbf{dataset}             & \multicolumn{1}{c}{\textbf{1}}                              & \multicolumn{1}{c}{\textbf{5}}                          & \multicolumn{1}{c}{\textbf{10}}                         & \multicolumn{1}{c}{\textbf{15}}                        & \multicolumn{1}{c}{\textbf{20}}                         \\
+			\midrule
+			\textbf{abalone}             & \cellcolor[rgb]{ 1,  .922,  .518}2.0571 ($\pm$0.102)        & \cellcolor[rgb]{ .388,  .745,  .482}2.0424 ($\pm$0.071) & \cellcolor[rgb]{ 1,  .898,  .514}2.0587 ($\pm$0.088)    & \cellcolor[rgb]{ .973,  .412,  .42}2.0879 ($\pm$0.226) & \cellcolor[rgb]{ .518,  .78,  .486}2.0456 ($\pm$0.079)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2682 ($\pm$0.014)        & \cellcolor[rgb]{ .388,  .745,  .482}0.2637 ($\pm$0.012) & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)  & \cellcolor[rgb]{ .98,  .525,  .443}0.2718 ($\pm$0.019) & \cellcolor[rgb]{ .584,  .8,  .49}0.2651 ($\pm$0.012)    \\
+			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2599 ($\pm$0.114)      & \cellcolor[rgb]{ .698,  .831,  .498}0.2406 ($\pm$0.023) & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)    & \cellcolor[rgb]{ .984,  .624,  .463}0.254 ($\pm$0.047) & \cellcolor[rgb]{ .388,  .745,  .482}0.2353 ($\pm$0.025) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0621 ($\pm$0.016)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0627 ($\pm$0.021)    & \cellcolor[rgb]{ .984,  .584,  .455}0.0651 ($\pm$0.02)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0663 ($\pm$0.023) & \cellcolor[rgb]{ .765,  .851,  .502}0.0625 ($\pm$0.02)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ 1,  .922,  .518}0.1597 ($\pm$0.042)        & \cellcolor[rgb]{ .388,  .745,  .482}0.1535 ($\pm$0.038) & \cellcolor[rgb]{ .749,  .847,  .502}0.1572 ($\pm$0.034) & \cellcolor[rgb]{ .973,  .412,  .42}0.1667 ($\pm$0.036) & \cellcolor[rgb]{ .984,  .58,  .455}0.1644 ($\pm$0.04)   \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.482 ($\pm$1.563)       & \cellcolor[rgb]{ .984,  .62,  .463}1.4074 ($\pm$1.558)  & \cellcolor[rgb]{ 1,  .922,  .518}1.2983 ($\pm$0.66)     & \cellcolor[rgb]{ .388,  .745,  .482}1.222 ($\pm$0.6)   & \cellcolor[rgb]{ .969,  .91,  .514}1.2944 ($\pm$0.832)  \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .961,  .91,  .514}0.1031 ($\pm$0.01)       & \cellcolor[rgb]{ 1,  .922,  .518}0.1033 ($\pm$0.008)    & \cellcolor[rgb]{ .988,  .694,  .475}0.1046 ($\pm$0.008) & \cellcolor[rgb]{ .973,  .412,  .42}0.1062 ($\pm$0.009) & \cellcolor[rgb]{ .388,  .745,  .482}0.1004 ($\pm$0.009) \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.1083 ($\pm$0.1)        & \cellcolor[rgb]{ .988,  .675,  .471}0.1003 ($\pm$0.069) & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0927 ($\pm$0.069)   & \cellcolor[rgb]{ .451,  .761,  .482}0.0822 ($\pm$0.059) \\
+			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.0998 ($\pm$0.017)      & \cellcolor[rgb]{ .745,  .847,  .502}0.0953 ($\pm$0.017) & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .918,  .518}0.0963 ($\pm$0.029)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0962 ($\pm$0.011)    \\
+			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.582 ($\pm$2.084)       & \cellcolor[rgb]{ .604,  .804,  .494}0.164 ($\pm$0.154)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2411 ($\pm$0.295)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1218 ($\pm$0.11) & \cellcolor[rgb]{ 1,  .882,  .514}0.2674 ($\pm$0.545)    \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .996,  .796,  .494}0.0548 ($\pm$0.241)     & \cellcolor[rgb]{ .973,  .412,  .42}0.1165 ($\pm$0.597)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0344 ($\pm$0.102)   & \cellcolor[rgb]{ .655,  .82,  .494}0.0181 ($\pm$0.059)  \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ 1,  .922,  .518}0.0597 ($\pm$0.003)        & \cellcolor[rgb]{ .769,  .855,  .502}0.0593 ($\pm$0.002) & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.06 ($\pm$0.004)   & \cellcolor[rgb]{ 1,  .918,  .518}0.0597 ($\pm$0.003)    \\
+			\textbf{student performance} & \cellcolor[rgb]{ .992,  .741,  .486}0.2331 ($\pm$0.083)     & \cellcolor[rgb]{ .725,  .839,  .498}0.2297 ($\pm$0.09)  & \cellcolor[rgb]{ .973,  .412,  .42}0.2359 ($\pm$0.102)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2315 ($\pm$0.063)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2274 ($\pm$0.098) \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0728 ($\pm$0.026)     & \cellcolor[rgb]{ 1,  .922,  .518}1.0818 ($\pm$0.028)    & \cellcolor[rgb]{ 1,  .871,  .51}1.0827 ($\pm$0.026)     & \cellcolor[rgb]{ .514,  .78,  .486}1.0747 ($\pm$0.026) & \cellcolor[rgb]{ .973,  .412,  .42}1.0909 ($\pm$0.042)  \\
+		\end{tabular}%
+	}
+\end{table}%
+
+Table \ref{tab:results:reanalysis:metrics:rank} provides the ranked performance, per dataset, for each of the \acs{BHH} reanalysis interval configurations. Similar to before, the performance rank is calculated as the average rank produced by the reanalysis interval configurations, for all datasets, over all independent runs and epochs. The overall normalised average ranks are provided at the bottom of the table.
 
 \begin{table}[htb]
 	\centering
@@ -1363,47 +1395,15 @@ Table \ref{tab:results:reanalysis:metrics} provides the ranked performance, per 
 			\midrule
 			\textbf{normalised avg rank} & \cellcolor[rgb]{ .973,  .412,  .42}5                    & \cellcolor[rgb]{ 1,  .922,  .518}3                      & \cellcolor[rgb]{ .388,  .745,  .482}1                   & \cellcolor[rgb]{ .694,  .831,  .498}2                   & \cellcolor[rgb]{ .988,  .667,  .471}4                   \\
 		\end{tabular}%
-
 	}
-
 \end{table}%
 
 
-\begin{table}[htb]
-	\centering
-	\caption{Empirical results showing average rank and statistics for different reanalysis intervals used by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
-	\label{tab:results:reanalysis:metrics:loss}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{r|lllll}
-			                             & \multicolumn{5}{c}{\textbf{Reanalysis - Average Test Loss}}                                                                                                                                                                                                                                        \\
-			\midrule
-			\textbf{dataset}             & \multicolumn{1}{c}{\textbf{1}}                              & \multicolumn{1}{c}{\textbf{5}}                          & \multicolumn{1}{c}{\textbf{10}}                         & \multicolumn{1}{c}{\textbf{15}}                        & \multicolumn{1}{c}{\textbf{20}}                         \\
-			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ 1,  .922,  .518}2.0571 ($\pm$0.102)        & \cellcolor[rgb]{ .388,  .745,  .482}2.0424 ($\pm$0.071) & \cellcolor[rgb]{ 1,  .898,  .514}2.0587 ($\pm$0.088)    & \cellcolor[rgb]{ .973,  .412,  .42}2.0879 ($\pm$0.226) & \cellcolor[rgb]{ .518,  .78,  .486}2.0456 ($\pm$0.079)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2682 ($\pm$0.014)        & \cellcolor[rgb]{ .388,  .745,  .482}0.2637 ($\pm$0.012) & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)  & \cellcolor[rgb]{ .98,  .525,  .443}0.2718 ($\pm$0.019) & \cellcolor[rgb]{ .584,  .8,  .49}0.2651 ($\pm$0.012)    \\
-			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2599 ($\pm$0.114)      & \cellcolor[rgb]{ .698,  .831,  .498}0.2406 ($\pm$0.023) & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)    & \cellcolor[rgb]{ .984,  .624,  .463}0.254 ($\pm$0.047) & \cellcolor[rgb]{ .388,  .745,  .482}0.2353 ($\pm$0.025) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0621 ($\pm$0.016)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0627 ($\pm$0.021)    & \cellcolor[rgb]{ .984,  .584,  .455}0.0651 ($\pm$0.02)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0663 ($\pm$0.023) & \cellcolor[rgb]{ .765,  .851,  .502}0.0625 ($\pm$0.02)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ 1,  .922,  .518}0.1597 ($\pm$0.042)        & \cellcolor[rgb]{ .388,  .745,  .482}0.1535 ($\pm$0.038) & \cellcolor[rgb]{ .749,  .847,  .502}0.1572 ($\pm$0.034) & \cellcolor[rgb]{ .973,  .412,  .42}0.1667 ($\pm$0.036) & \cellcolor[rgb]{ .984,  .58,  .455}0.1644 ($\pm$0.04)   \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.482 ($\pm$1.563)       & \cellcolor[rgb]{ .984,  .62,  .463}1.4074 ($\pm$1.558)  & \cellcolor[rgb]{ 1,  .922,  .518}1.2983 ($\pm$0.66)     & \cellcolor[rgb]{ .388,  .745,  .482}1.222 ($\pm$0.6)   & \cellcolor[rgb]{ .969,  .91,  .514}1.2944 ($\pm$0.832)  \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .961,  .91,  .514}0.1031 ($\pm$0.01)       & \cellcolor[rgb]{ 1,  .922,  .518}0.1033 ($\pm$0.008)    & \cellcolor[rgb]{ .988,  .694,  .475}0.1046 ($\pm$0.008) & \cellcolor[rgb]{ .973,  .412,  .42}0.1062 ($\pm$0.009) & \cellcolor[rgb]{ .388,  .745,  .482}0.1004 ($\pm$0.009) \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.1083 ($\pm$0.1)        & \cellcolor[rgb]{ .988,  .675,  .471}0.1003 ($\pm$0.069) & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0927 ($\pm$0.069)   & \cellcolor[rgb]{ .451,  .761,  .482}0.0822 ($\pm$0.059) \\
-			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.0998 ($\pm$0.017)      & \cellcolor[rgb]{ .745,  .847,  .502}0.0953 ($\pm$0.017) & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .918,  .518}0.0963 ($\pm$0.029)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0962 ($\pm$0.011)    \\
-			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.582 ($\pm$2.084)       & \cellcolor[rgb]{ .604,  .804,  .494}0.164 ($\pm$0.154)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2411 ($\pm$0.295)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1218 ($\pm$0.11) & \cellcolor[rgb]{ 1,  .882,  .514}0.2674 ($\pm$0.545)    \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .996,  .796,  .494}0.0548 ($\pm$0.241)     & \cellcolor[rgb]{ .973,  .412,  .42}0.1165 ($\pm$0.597)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0344 ($\pm$0.102)   & \cellcolor[rgb]{ .655,  .82,  .494}0.0181 ($\pm$0.059)  \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ 1,  .922,  .518}0.0597 ($\pm$0.003)        & \cellcolor[rgb]{ .769,  .855,  .502}0.0593 ($\pm$0.002) & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.06 ($\pm$0.004)   & \cellcolor[rgb]{ 1,  .918,  .518}0.0597 ($\pm$0.003)    \\
-			\textbf{student performance} & \cellcolor[rgb]{ .992,  .741,  .486}0.2331 ($\pm$0.083)     & \cellcolor[rgb]{ .725,  .839,  .498}0.2297 ($\pm$0.09)  & \cellcolor[rgb]{ .973,  .412,  .42}0.2359 ($\pm$0.102)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2315 ($\pm$0.063)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2274 ($\pm$0.098) \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0728 ($\pm$0.026)     & \cellcolor[rgb]{ 1,  .922,  .518}1.0818 ($\pm$0.028)    & \cellcolor[rgb]{ 1,  .871,  .51}1.0827 ($\pm$0.026)     & \cellcolor[rgb]{ .514,  .78,  .486}1.0747 ($\pm$0.026) & \cellcolor[rgb]{ .973,  .412,  .42}1.0909 ($\pm$0.042)  \\
-		\end{tabular}%
+Tables \ref{tab:results:reanalysis:metrics:loss} and \ref{tab:results:reanalysis:metrics:rank} shows that there is no clear overall best performing reanalysis interval configuration of the \acs{BHH} for all datasets.
 
+It should be noted that the configuration and results for the reanalysis interval configurations should be considered along with the reselection interval configurations as reselection is based on the outcome of the reanalysis step. Furthermore, the reanalysis interval configurations should also be considered along with the replay window size, as the replay window size determines the number of performance log samples to reanalyse. For the \acs{BHH} baseline configuration, the reselection and reanalysis interval hyper-parameters have default values of ten, and the replay window size also has a default value of ten. These values are deliberately chosen so that there is a balance between the different hyper-parameters from which empirical conclusions can be made.
 
-	}
-
-\end{table}%
-
-Table \ref{tab:results:reanalysis:metrics} shows that there is no clear best performing reanalysis interval configuration of the \acs{BHH} for all datasets. A reanalysis interval of 1 is best for the adult, forest fires and wine quality datasets. A reanalysis interval of 5 is best for the adult, air quality, bike and car datasets. A reanalysis interval of 10 is best for the adult, bank, diabetic, housing, mushroom, parkinsons and wine quality datasets. A reanalysis interval of 15 is best for the iris dataset. Finally, the largest reanalysis interval of 20 is best for the abalone and fish toxicity datasets.
-
-It should be noted that the configuration and results for the reanalysis interval configurations should be considered along with the reselection interval configurations as reselection is based on the outcome of the reanalysis step. For the \acs{BHH} baseline configuration, both the reselection and reanalysis interval hyper-parameters have default value of 10. Furthermore, the smaller the reanalysis interval, the more frequently the \acs{BHH} resets concentration parameters. A reanalysis interval of 1 provides a case where only the last executed step is considered for reanalysis and thus provides a shortsighted view on the relevance of past performance, and thus, reselection is based only on the most recent performance of each selected \index{heuristic}heuristic.
+Furthermore, the smaller the reanalysis interval, the more frequently the \acs{BHH} resets concentration parameters. The smaller the replay window size, the less performance samples in the performance log are considered for reanalysis. A replay window size of one yields a case where only the last executed step is considered for reanalysis and thus provides a shortsighted view on the relevance of past performance. As such, reselection is based only on the most recent performance of each selected \index{heuristic}heuristic. However, if the reanalysis interval is larger than the replay window size, the \acs{BHH} does not update its beliefs fast enough, and as a result, \index{heuristic}heuristic performance evidence is lost.
 
 Figure~\ref{fig:results:reanalysis:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reanalysis interval configurations, per dataset.
 
@@ -1414,7 +1414,7 @@ Figure~\ref{fig:results:reanalysis:descriptive:descriptive} provides an illustra
 	\label{fig:results:reanalysis:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:reanalysis:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all independent runs and epochs.
+Figure~\ref{fig:results:reanalysis:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all independent runs and epochs. From Figure~\ref{fig:results:reanalysis:descriptive:cd}, it can be concluded that the best reanalysis interval is problem specific.
 
 \begin{figure}[htb]
 	\centering
@@ -1423,11 +1423,11 @@ Figure~\ref{fig:results:reanalysis:descriptive:cd} provides an illustration of t
 	\label{fig:results:reanalysis:descriptive:cd}
 \end{figure}
 
-Figure~\ref{fig:results:reanalysis:descriptive:cd} shows no statistically significant difference in results for the various reanalysis interval configurations as it relates to all datasets.
+Figure~\ref{fig:results:reanalysis:descriptive:cd} shows no overall statistically significant difference in results for the various reanalysis interval configurations as it relates to all datasets.
 
-Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the reanalysis interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides the train and test, loss and accuracy plots for an example classification dataset (mushroom) as it relates to the reanalysis interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for the other classification datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/train/loss/mushroom.pdf}
@@ -1458,9 +1458,9 @@ Similar to before, Figure~\ref{fig:results:reanalysis:figures:mushroom} provides
 	\label{fig:results:reanalysis:figures:mushroom}
 \end{figure}
 
-Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and test loss plots for an example regression dataset (parkinsons) as it relates to the renalysis interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for the other regression datasets are left out for brevity.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_reanalysis/figures/train/loss/parkinsons.pdf}
@@ -1477,6 +1477,8 @@ Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and te
 	\caption{The train and test, loss and accuracy plots for the experimental group comparing the performance of the \acs{BHH} with different configurations for the reanalysis interval hyper-parameter on the parkinsons dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:reanalysis:figures:parkinsons}
 \end{figure}
+
+The divergence that can be seen in Figure~\ref{fig:results:reanalysis:figures:loss:train:mushroom} and \ref{fig:results:reanalysis:figures:loss:test:mushroom} is explained in previous sections and is simply a result of the \acs{BHH} considering new \index{heuristic}heuristics that yield sub-optimal results, when an optimal solution has already been found. As mentioned before, an early stopping strategy as well as a move-acceptance strategy can be incorporated to avoid this effect.
 
 
 \section{Burn In}\label{sec:results:burn_in}
