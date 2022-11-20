@@ -1486,7 +1486,7 @@ This section provides the empirical results for the experimental group that comp
 
 As a reminder, the burn in window size is a hyper-parameter that is borrowed from the \acs{MCMC} algorithm, and provides a window whereby exploration is encouraged in order to obtain sufficient samples of \index{heuristic}heuristic performance evidence for statistical inference.
 
-As before, Table~\ref{tab:results:burn_in:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the burn in window size variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all independent runs and epochs.
+As before, Table~\ref{tab:results:burn_in:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the burn in window size variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all independent runs.
 
 \begin{table}[htb]
 	\centering
@@ -1637,11 +1637,44 @@ Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test 
 
 The divergence that can be seen in Figures~\ref{fig:results:burn_in:figures:loss:train:mushroom} and \ref{fig:results:burn_in:figures:loss:test:mushroom} is explained in previous sections and is simply a result of the \acs{BHH} considering new \index{heuristic}heuristics that yield sub-optimal results, when an optimal solution has already been found. As mentioned before, an early stopping strategy as well as a move-acceptance strategy can be incorporated to avoid this effect.
 
+
 \section{Normalisation}\label{sec:results:normalise}
 
-This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{normalisation} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, the normalisation hyper-parameter is a flag that enables or disables normalisation of the concentration parameters in an attempt to provide more exploration in the \index{heuristic}heuristic space.
+This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{normalisation} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, the normalisation hyper-parameter is a flag that enables or disables normalisation of the concentration parameters in an attempt to provide more exploration in the \index{heuristic}heuristic space. The experiments are denoted as \textit{true} where normalisation is enabled, and \textit{false} where normalisation is disabled.
 
-Table \ref{tab:results:normalise:metrics} provides the average ranked performance, per dataset, with normalisation enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the normalisation configurations, for all datasets, over all independent runs and epochs.
+As before, Table~\ref{tab:results:normalise:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for variants of the \acs{BHH} that was implemented where normalisation is enabled and disabled. The test loss is measured at the last epoch for each dataset, over all independent runs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Empirical results showing average test loss and statistics for normalisation toggled by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
+	\label{tab:results:normalise:metrics:loss}%
+	\par\bigskip
+	\resizebox{0.6\textwidth}{!}{
+		\begin{tabular}{r|cc}
+			                             & \multicolumn{2}{c}{\textbf{Normalisation - Average Test Loss}}                                                           \\
+			\midrule
+			\textbf{dataset}             & \textbf{false}                                                 & \textbf{true}                                           \\
+			\midrule
+			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)        & \cellcolor[rgb]{ .973,  .412,  .42}2.0936 ($\pm$0.231)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2704 ($\pm$0.017) \\
+			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2374 ($\pm$0.042) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 ($\pm$0.02)         & \cellcolor[rgb]{ .973,  .412,  .42}0.0689 ($\pm$0.03)   \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)        & \cellcolor[rgb]{ .973,  .412,  .42}0.1721 ($\pm$0.038)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}1.2983 ($\pm$0.66)         & \cellcolor[rgb]{ .973,  .412,  .42}1.5051 ($\pm$1.93)   \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .973,  .412,  .42}0.1046 ($\pm$0.008)         & \cellcolor[rgb]{ .388,  .745,  .482}0.1021 ($\pm$0.009) \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)         & \cellcolor[rgb]{ .973,  .412,  .42}0.0868 ($\pm$0.069)  \\
+			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.0941 ($\pm$0.017)         & \cellcolor[rgb]{ .388,  .745,  .482}0.0931 ($\pm$0.019) \\
+			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2358 ($\pm$0.333) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)        & \cellcolor[rgb]{ .973,  .412,  .42}0.0455 ($\pm$0.216)  \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)        & \cellcolor[rgb]{ .973,  .412,  .42}0.0598 ($\pm$0.004)  \\
+			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 ($\pm$0.102)        & \cellcolor[rgb]{ .973,  .412,  .42}0.2522 ($\pm$0.098)  \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)        & \cellcolor[rgb]{ .973,  .412,  .42}1.0831 ($\pm$0.045)  \\
+		\end{tabular}%
+	}
+\end{table}%
+
+
+Table \ref{tab:results:normalise:metrics:rank} provides the average ranked performance, per dataset, with normalisation enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the normalisation configurations, for all datasets, over all independent runs and epochs. The overall normalised average ranks are provided at the bottom of the table.
 
 \begin{table}[htb]
 	\centering
@@ -1677,36 +1710,7 @@ Table \ref{tab:results:normalise:metrics} provides the average ranked performanc
 	}
 \end{table}%
 
-\begin{table}[htb]
-	\centering
-	\caption{Empirical results showing average rank and statistics for normalisation toggled by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
-	\label{tab:results:normalise:metrics:loss}%
-	\par\bigskip
-	\resizebox{0.6\textwidth}{!}{
-		\begin{tabular}{r|cc}
-			                             & \multicolumn{2}{c}{\textbf{Normalisation - Average Test Loss}}                                                           \\
-			\midrule
-			\textbf{dataset}             & \textbf{false}                                                 & \textbf{true}                                           \\
-			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)        & \cellcolor[rgb]{ .973,  .412,  .42}2.0936 ($\pm$0.231)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2704 ($\pm$0.017) \\
-			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2374 ($\pm$0.042) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 ($\pm$0.02)         & \cellcolor[rgb]{ .973,  .412,  .42}0.0689 ($\pm$0.03)   \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)        & \cellcolor[rgb]{ .973,  .412,  .42}0.1721 ($\pm$0.038)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}1.2983 ($\pm$0.66)         & \cellcolor[rgb]{ .973,  .412,  .42}1.5051 ($\pm$1.93)   \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .973,  .412,  .42}0.1046 ($\pm$0.008)         & \cellcolor[rgb]{ .388,  .745,  .482}0.1021 ($\pm$0.009) \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)         & \cellcolor[rgb]{ .973,  .412,  .42}0.0868 ($\pm$0.069)  \\
-			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.0941 ($\pm$0.017)         & \cellcolor[rgb]{ .388,  .745,  .482}0.0931 ($\pm$0.019) \\
-			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2358 ($\pm$0.333) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)        & \cellcolor[rgb]{ .973,  .412,  .42}0.0455 ($\pm$0.216)  \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)        & \cellcolor[rgb]{ .973,  .412,  .42}0.0598 ($\pm$0.004)  \\
-			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 ($\pm$0.102)        & \cellcolor[rgb]{ .973,  .412,  .42}0.2522 ($\pm$0.098)  \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)        & \cellcolor[rgb]{ .973,  .412,  .42}1.0831 ($\pm$0.045)  \\
-		\end{tabular}%
-	}
-\end{table}%
-
-Table \ref{tab:results:normalise:metrics} shows that, in general, there is no obvious difference in the outcomes of the \acs{BHH} when normalisation is enabled or disabled. For some datasets such as bank, fish toxicity, forest fires, iris, and wine quality, enabling normalisation provided the best results, while disabling of the normalisation flag provided the best results for the other datasets. This suggests that the normalisation flag is problem specific. Since the normalisation hyper-parameter provides a mechanism for the \acs{BHH} to explore more in the \index{heuristic}heuristic space, with the intent of finding better solutions, it can be concluded that some datasets require more exploration, while others require more exploitation.
+Table \ref{tab:results:normalise:metrics:rank} shows that, in general, there is no obvious difference in the outcomes of the \acs{BHH} when normalisation is enabled or disabled. This suggests that the normalisation flag is problem specific. Since the normalisation hyper-parameter provides a mechanism for the \acs{BHH} to explore more in the \index{heuristic}heuristic space, with the intent of finding better solutions, it can be concluded that some datasets require more exploration, while others require more exploitation. However, a better suggestion can be made from the observation of previous results. The \acs{BHH} has a default replay window size of ten, yielding a small window of memory to maintain \index{heuristic}heuristic performance evidence in the performance log. Normalisation of the concentration parameters then yield an insignificant difference in the outcome as the concentration parameters never reach high values. Furthermore, previous results have shown that the best results are obtained from exploitation of \index{heuristic}heuristics and solutions, in comparison to exploration.
 
 Figure~\ref{fig:results:normalise:descriptive:descriptive} provides an illustration of the descriptive plots for the \acs{BHH} configurations with the normalisation hyper-parameter enabled and disabled, per dataset.
 
@@ -1726,11 +1730,11 @@ Figure~\ref{fig:results:normalise:descriptive:cd} provides an illustration of th
 	\label{fig:results:normalise:descriptive:cd}
 \end{figure}
 
-Figure~\ref{fig:results:normalise:descriptive:descriptive} shows no statistical difference in the outcomes of the normalisation configurations of the \acs{BHH}. This further supports the suggestion that the use of the normalisation hyper-parameter is problem specific.
+Figure~\ref{fig:results:normalise:descriptive:cd} shows no statistical difference in the outcomes of the normalisation configurations of the \acs{BHH}. This further supports the suggestion that the use of the normalisation hyper-parameter is problem specific or that the effects of the normalisation hyper-parameter is not realised for small replay window sizes.
 
-Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides the train and test, loss and accuracy plots for an example classification dataset (abalone) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides the train and test, loss and accuracy plots for an example classification dataset (abalone) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for the other classification datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_normalise/figures/train/loss/abalone.pdf}
@@ -1762,10 +1766,10 @@ Similar to before, Figure~\ref{fig:results:normalise:figures:abalone} provides t
 \end{figure}
 
 
-Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the normalisation experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for the other regression datasets are left out for brevity.
 
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_normalise/figures/train/loss/bike.pdf}
