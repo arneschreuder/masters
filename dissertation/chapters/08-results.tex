@@ -410,13 +410,13 @@ Figure~\ref{fig:results:standalone:descriptive:descriptive} provides an illustra
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{standalone/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of all low-level heuristics compared to three \index{heuristic pool}heuristic pool variants of the \acs{BHH} baseline configuration, per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of all low-level heuristics compared to three \index{heuristic pool}heuristic pool variants of the \acs{BHH} baseline configuration, per dataset, across all independent runs and epochs.}
 	\label{fig:results:standalone:descriptive:descriptive}
 \end{figure}
 
 From Figure~\ref{fig:results:standalone:descriptive:descriptive} a few observations can be made. Firstly, both \acs{Adam} and \acs{RMSProp} achieved radically different average ranks for the student performance dataset, compared to the other datasets. This can also be see in Table~\ref{tab:results:standalone:metrics:rank}. Further investigation into the reasons for this is required as both these heuristics perform well on all other datasets, and the other heuristics perform well for the student performance dataset. A suggestions then leads to the possibility that an invalid learning rate or learning rate schedule leads to a scenario where good solutions are overshot, causing \acs{Adam} and \acs{RMSProp} to struggle to resolve back to good solutions. Furthermore, the bhh\_gd heuristic achieved the lowest variance in average rank across all datasets, compared to the other heuristics. The aforementioned shows the generalisation capabilities of the \acs{BHH} to multiple problems.
 
-Figure~\ref{fig:results:standalone:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each \index{heuristic}heuristic as it relates to all datasets, across all runs.
+Figure~\ref{fig:results:standalone:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each \index{heuristic}heuristic as it relates to all datasets, across all independent runs and epochs.
 
 \begin{figure}[htb]
 	\centering
@@ -582,30 +582,30 @@ Table~\ref{tab:results:heuristic_pool:metrics:loss} presents the empirical resul
 	\par\bigskip
 	\resizebox{0.8\textwidth}{!}{
 		\begin{tabular}{r|lll}
-			                             & \multicolumn{3}{c}{\textbf{Heuristic Pool - Average Loss}}                                                                                                                     \\
+			                             & \multicolumn{3}{c}{\textbf{Heuristic Pool - Average Test Loss}}                                                                                                                     \\
 			\midrule
-			\textbf{dataset}             & \multicolumn{1}{c}{\textbf{all}}                           & \multicolumn{1}{c}{\textbf{gd}}                         & \multicolumn{1}{c}{\textbf{mh}}                         \\
+			\textbf{dataset}             & \multicolumn{1}{c}{\textbf{all}}                                & \multicolumn{1}{c}{\textbf{gd}}                         & \multicolumn{1}{c}{\textbf{mh}}                         \\
 			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ 1,  .922,  .518}2.0587 ($\pm$0.088)       & \cellcolor[rgb]{ .388,  .745,  .482}2.0125 ($\pm$0.068) & \cellcolor[rgb]{ .973,  .412,  .42}2.2942 ($\pm$0.055)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)     & \cellcolor[rgb]{ 1,  .922,  .518}0.2642 ($\pm$0.011)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2637 ($\pm$0.007) \\
-			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)       & \cellcolor[rgb]{ .388,  .745,  .482}0.2164 ($\pm$0.005) & \cellcolor[rgb]{ .973,  .412,  .42}0.2562 ($\pm$0.011)  \\
-			\textbf{bike}                & \cellcolor[rgb]{ 1,  .922,  .518}0.0651 ($\pm$0.02)        & \cellcolor[rgb]{ .388,  .745,  .482}0.0545 ($\pm$0.005) & \cellcolor[rgb]{ .973,  .412,  .42}0.1179 ($\pm$0.006)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)    & \cellcolor[rgb]{ 1,  .922,  .518}0.169 ($\pm$0.025)     & \cellcolor[rgb]{ .973,  .412,  .42}0.4891 ($\pm$0.077)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)      & \cellcolor[rgb]{ .388,  .745,  .482}0.8976 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .922,  .518}0.9137 ($\pm$0.008)    \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ 1,  .922,  .518}0.1046 ($\pm$0.008)       & \cellcolor[rgb]{ .973,  .412,  .42}0.1056 ($\pm$0.008)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1043 ($\pm$0.009) \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.081 ($\pm$0.069)      & \cellcolor[rgb]{ .388,  .745,  .482}0.0586 ($\pm$0.034) & \cellcolor[rgb]{ 1,  .922,  .518}0.0621 ($\pm$0.038)    \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)    & \cellcolor[rgb]{ 1,  .922,  .518}0.0951 ($\pm$0.015)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1169 ($\pm$0.019)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2411 ($\pm$0.295)       & \cellcolor[rgb]{ .973,  .412,  .42}0.3729 ($\pm$1.119)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1809 ($\pm$0.164) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ 1,  .922,  .518}0.0052 ($\pm$0.012)       & \cellcolor[rgb]{ .388,  .745,  .482}0.0009 ($\pm$0.001) & \cellcolor[rgb]{ .973,  .412,  .42}0.0774 ($\pm$0.02)   \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ 1,  .922,  .518}0.0587 ($\pm$0.003)       & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.0658 ($\pm$0.003)  \\
-			\textbf{student performance} & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 ($\pm$0.102)       & \cellcolor[rgb]{ .973,  .412,  .42}0.2454 ($\pm$0.134)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1947 ($\pm$0.014) \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)    & \cellcolor[rgb]{ 1,  .922,  .518}1.1028 ($\pm$0.039)    & \cellcolor[rgb]{ .973,  .412,  .42}1.1666 ($\pm$0.03)   \\
+			\textbf{abalone}             & \cellcolor[rgb]{ 1,  .922,  .518}2.0587 ($\pm$0.088)            & \cellcolor[rgb]{ .388,  .745,  .482}2.0125 ($\pm$0.068) & \cellcolor[rgb]{ .973,  .412,  .42}2.2942 ($\pm$0.055)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)          & \cellcolor[rgb]{ 1,  .922,  .518}0.2642 ($\pm$0.011)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2637 ($\pm$0.007) \\
+			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)            & \cellcolor[rgb]{ .388,  .745,  .482}0.2164 ($\pm$0.005) & \cellcolor[rgb]{ .973,  .412,  .42}0.2562 ($\pm$0.011)  \\
+			\textbf{bike}                & \cellcolor[rgb]{ 1,  .922,  .518}0.0651 ($\pm$0.02)             & \cellcolor[rgb]{ .388,  .745,  .482}0.0545 ($\pm$0.005) & \cellcolor[rgb]{ .973,  .412,  .42}0.1179 ($\pm$0.006)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)         & \cellcolor[rgb]{ 1,  .922,  .518}0.169 ($\pm$0.025)     & \cellcolor[rgb]{ .973,  .412,  .42}0.4891 ($\pm$0.077)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)           & \cellcolor[rgb]{ .388,  .745,  .482}0.8976 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .922,  .518}0.9137 ($\pm$0.008)    \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ 1,  .922,  .518}0.1046 ($\pm$0.008)            & \cellcolor[rgb]{ .973,  .412,  .42}0.1056 ($\pm$0.008)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1043 ($\pm$0.009) \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.081 ($\pm$0.069)           & \cellcolor[rgb]{ .388,  .745,  .482}0.0586 ($\pm$0.034) & \cellcolor[rgb]{ 1,  .922,  .518}0.0621 ($\pm$0.038)    \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)         & \cellcolor[rgb]{ 1,  .922,  .518}0.0951 ($\pm$0.015)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1169 ($\pm$0.019)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2411 ($\pm$0.295)            & \cellcolor[rgb]{ .973,  .412,  .42}0.3729 ($\pm$1.119)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1809 ($\pm$0.164) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ 1,  .922,  .518}0.0052 ($\pm$0.012)            & \cellcolor[rgb]{ .388,  .745,  .482}0.0009 ($\pm$0.001) & \cellcolor[rgb]{ .973,  .412,  .42}0.0774 ($\pm$0.02)   \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ 1,  .922,  .518}0.0587 ($\pm$0.003)            & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.0658 ($\pm$0.003)  \\
+			\textbf{student performance} & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 ($\pm$0.102)            & \cellcolor[rgb]{ .973,  .412,  .42}0.2454 ($\pm$0.134)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1947 ($\pm$0.014) \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)         & \cellcolor[rgb]{ 1,  .922,  .518}1.1028 ($\pm$0.039)    & \cellcolor[rgb]{ .973,  .412,  .42}1.1666 ($\pm$0.03)   \\
 		\end{tabular}%
 
 	}
 \end{table}%
 
-Similar to before, Table \ref{tab:results:heuristic_pool:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} \index{heuristic pool}heuristic pool configurations. The performance rank is calculated as the average rank produced by each \index{heuristic pool}heuristic pool configuration, for all datasets, over all runs and all epochs.
+Similar to before, Table \ref{tab:results:heuristic_pool:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} \index{heuristic pool}heuristic pool configurations. The performance rank is calculated as the average rank produced by each \index{heuristic pool}heuristic pool configuration, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -647,7 +647,7 @@ Figure~\ref{fig:results:heuristic_pool:descriptive:descriptive} provides an illu
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_heuristic_pool/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying heuristic pools per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying heuristic pools per dataset, across all independent runs and epochs.}
 	\label{fig:results:heuristic_pool:descriptive:descriptive}
 \end{figure}
 
@@ -732,24 +732,24 @@ Table~\ref{tab:results:population:metrics:loss} presents the empirical results f
 	\par\bigskip
 	\resizebox{\textwidth}{!}{
 		\begin{tabular}{r|ccccc}
-			                             & \multicolumn{5}{c}{\textbf{Population - Average Loss}}                                                                                                                                                                                                                                         \\
+			                             & \multicolumn{5}{c}{\textbf{Population - Average Test Loss}}                                                                                                                                                                                                                                        \\
 			\midrule
-			\textbf{dataset}             & \textbf{5}                                              & \textbf{10}                                             & \textbf{15}                                             & \textbf{20}                                            & \textbf{25}                                             \\
+			\textbf{dataset}             & \textbf{5}                                                  & \textbf{10}                                             & \textbf{15}                                             & \textbf{20}                                            & \textbf{25}                                             \\
 			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088) & \cellcolor[rgb]{ .612,  .808,  .494}2.1592 ($\pm$0.278) & \cellcolor[rgb]{ 1,  .922,  .518}2.3321 ($\pm$0.446)    & \cellcolor[rgb]{ 1,  .91,  .518}2.3345 ($\pm$0.357)    & \cellcolor[rgb]{ .973,  .412,  .42}2.4188 ($\pm$0.473)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 ($\pm$0.016)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2701 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .878,  .51}0.2736 ($\pm$0.014)     & \cellcolor[rgb]{ .973,  .412,  .42}0.2808 ($\pm$0.026) & \cellcolor[rgb]{ .702,  .835,  .498}0.2715 ($\pm$0.011) \\
-			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)  & \cellcolor[rgb]{ .992,  .729,  .482}0.2356 ($\pm$0.029) & \cellcolor[rgb]{ .388,  .745,  .482}0.2268 ($\pm$0.015) & \cellcolor[rgb]{ 1,  .922,  .518}0.2294 ($\pm$0.019)   & \cellcolor[rgb]{ .608,  .808,  .494}0.2278 ($\pm$0.012) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .973,  .412,  .42}0.0651 ($\pm$0.02)   & \cellcolor[rgb]{ .388,  .745,  .482}0.0527 ($\pm$0.002) & \cellcolor[rgb]{ .988,  .918,  .514}0.0535 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .898,  .514}0.0541 ($\pm$0.003)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0535 ($\pm$0.003)    \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034) & \cellcolor[rgb]{ .757,  .851,  .502}0.1595 ($\pm$0.035) & \cellcolor[rgb]{ 1,  .922,  .518}0.161 ($\pm$0.039)     & \cellcolor[rgb]{ .992,  .773,  .49}0.1636 ($\pm$0.04)  & \cellcolor[rgb]{ .973,  .412,  .42}0.17 ($\pm$0.048)    \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)   & \cellcolor[rgb]{ 1,  .922,  .518}0.9954 ($\pm$0.103)    & \cellcolor[rgb]{ .992,  .776,  .49}1.0826 ($\pm$0.3)    & \cellcolor[rgb]{ .525,  .784,  .49}0.9893 ($\pm$0.105) & \cellcolor[rgb]{ .388,  .745,  .482}0.9875 ($\pm$0.078) \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .388,  .745,  .482}0.1046 ($\pm$0.008) & \cellcolor[rgb]{ 1,  .922,  .518}0.1077 ($\pm$0.009)    & \cellcolor[rgb]{ .882,  .886,  .51}0.1071 ($\pm$0.011)  & \cellcolor[rgb]{ .973,  .412,  .42}0.1104 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .886,  .514}0.1079 ($\pm$0.008)    \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ 1,  .922,  .518}0.081 ($\pm$0.069)     & \cellcolor[rgb]{ .388,  .745,  .482}0.0694 ($\pm$0.059) & \cellcolor[rgb]{ .737,  .843,  .502}0.0761 ($\pm$0.056) & \cellcolor[rgb]{ .984,  .569,  .451}0.084 ($\pm$0.07)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0854 ($\pm$0.065)  \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .922,  .518}0.0985 ($\pm$0.026)    & \cellcolor[rgb]{ .412,  .749,  .482}0.0943 ($\pm$0.016) & \cellcolor[rgb]{ 1,  .906,  .518}0.0987 ($\pm$0.017)   & \cellcolor[rgb]{ .973,  .412,  .42}0.1038 ($\pm$0.017)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ .388,  .745,  .482}0.2411 ($\pm$0.295) & \cellcolor[rgb]{ .992,  .741,  .486}0.4212 ($\pm$0.671) & \cellcolor[rgb]{ .973,  .412,  .42}0.5905 ($\pm$1.043)  & \cellcolor[rgb]{ .651,  .82,  .494}0.2784 ($\pm$0.261) & \cellcolor[rgb]{ 1,  .922,  .518}0.327 ($\pm$0.381)     \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ .973,  .412,  .42}1.9037 ($\pm$10.345) & \cellcolor[rgb]{ 1,  .898,  .514}0.3366 ($\pm$1.559)    & \cellcolor[rgb]{ .69,  .831,  .498}0.1311 ($\pm$0.486) & \cellcolor[rgb]{ 1,  .922,  .518}0.2602 ($\pm$1.115)    \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .82,  .867,  .506}0.0598 ($\pm$0.003)  & \cellcolor[rgb]{ .988,  .694,  .475}0.0606 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .922,  .518}0.0602 ($\pm$0.003)   & \cellcolor[rgb]{ .973,  .412,  .42}0.0612 ($\pm$0.003)  \\
-			\textbf{student performance} & \cellcolor[rgb]{ .973,  .412,  .42}0.2359 ($\pm$0.102)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2007 ($\pm$0.032) & \cellcolor[rgb]{ 1,  .922,  .518}0.2092 ($\pm$0.039)    & \cellcolor[rgb]{ .573,  .796,  .49}0.2033 ($\pm$0.037) & \cellcolor[rgb]{ 1,  .922,  .518}0.2091 ($\pm$0.054)    \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026) & \cellcolor[rgb]{ .553,  .792,  .49}1.0864 ($\pm$0.034)  & \cellcolor[rgb]{ .973,  .412,  .42}1.1083 ($\pm$0.054)  & \cellcolor[rgb]{ 1,  .922,  .518}1.0961 ($\pm$0.027)   & \cellcolor[rgb]{ .976,  .463,  .431}1.1071 ($\pm$0.039) \\
+			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)     & \cellcolor[rgb]{ .612,  .808,  .494}2.1592 ($\pm$0.278) & \cellcolor[rgb]{ 1,  .922,  .518}2.3321 ($\pm$0.446)    & \cellcolor[rgb]{ 1,  .91,  .518}2.3345 ($\pm$0.357)    & \cellcolor[rgb]{ .973,  .412,  .42}2.4188 ($\pm$0.473)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 ($\pm$0.016)        & \cellcolor[rgb]{ .388,  .745,  .482}0.2701 ($\pm$0.011) & \cellcolor[rgb]{ 1,  .878,  .51}0.2736 ($\pm$0.014)     & \cellcolor[rgb]{ .973,  .412,  .42}0.2808 ($\pm$0.026) & \cellcolor[rgb]{ .702,  .835,  .498}0.2715 ($\pm$0.011) \\
+			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)      & \cellcolor[rgb]{ .992,  .729,  .482}0.2356 ($\pm$0.029) & \cellcolor[rgb]{ .388,  .745,  .482}0.2268 ($\pm$0.015) & \cellcolor[rgb]{ 1,  .922,  .518}0.2294 ($\pm$0.019)   & \cellcolor[rgb]{ .608,  .808,  .494}0.2278 ($\pm$0.012) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .973,  .412,  .42}0.0651 ($\pm$0.02)       & \cellcolor[rgb]{ .388,  .745,  .482}0.0527 ($\pm$0.002) & \cellcolor[rgb]{ .988,  .918,  .514}0.0535 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .898,  .514}0.0541 ($\pm$0.003)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0535 ($\pm$0.003)    \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)     & \cellcolor[rgb]{ .757,  .851,  .502}0.1595 ($\pm$0.035) & \cellcolor[rgb]{ 1,  .922,  .518}0.161 ($\pm$0.039)     & \cellcolor[rgb]{ .992,  .773,  .49}0.1636 ($\pm$0.04)  & \cellcolor[rgb]{ .973,  .412,  .42}0.17 ($\pm$0.048)    \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.2983 ($\pm$0.66)       & \cellcolor[rgb]{ 1,  .922,  .518}0.9954 ($\pm$0.103)    & \cellcolor[rgb]{ .992,  .776,  .49}1.0826 ($\pm$0.3)    & \cellcolor[rgb]{ .525,  .784,  .49}0.9893 ($\pm$0.105) & \cellcolor[rgb]{ .388,  .745,  .482}0.9875 ($\pm$0.078) \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .388,  .745,  .482}0.1046 ($\pm$0.008)     & \cellcolor[rgb]{ 1,  .922,  .518}0.1077 ($\pm$0.009)    & \cellcolor[rgb]{ .882,  .886,  .51}0.1071 ($\pm$0.011)  & \cellcolor[rgb]{ .973,  .412,  .42}0.1104 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .886,  .514}0.1079 ($\pm$0.008)    \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ 1,  .922,  .518}0.081 ($\pm$0.069)         & \cellcolor[rgb]{ .388,  .745,  .482}0.0694 ($\pm$0.059) & \cellcolor[rgb]{ .737,  .843,  .502}0.0761 ($\pm$0.056) & \cellcolor[rgb]{ .984,  .569,  .451}0.084 ($\pm$0.07)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0854 ($\pm$0.065)  \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0985 ($\pm$0.026)    & \cellcolor[rgb]{ .412,  .749,  .482}0.0943 ($\pm$0.016) & \cellcolor[rgb]{ 1,  .906,  .518}0.0987 ($\pm$0.017)   & \cellcolor[rgb]{ .973,  .412,  .42}0.1038 ($\pm$0.017)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ .388,  .745,  .482}0.2411 ($\pm$0.295)     & \cellcolor[rgb]{ .992,  .741,  .486}0.4212 ($\pm$0.671) & \cellcolor[rgb]{ .973,  .412,  .42}0.5905 ($\pm$1.043)  & \cellcolor[rgb]{ .651,  .82,  .494}0.2784 ($\pm$0.261) & \cellcolor[rgb]{ 1,  .922,  .518}0.327 ($\pm$0.381)     \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)     & \cellcolor[rgb]{ .973,  .412,  .42}1.9037 ($\pm$10.345) & \cellcolor[rgb]{ 1,  .898,  .514}0.3366 ($\pm$1.559)    & \cellcolor[rgb]{ .69,  .831,  .498}0.1311 ($\pm$0.486) & \cellcolor[rgb]{ 1,  .922,  .518}0.2602 ($\pm$1.115)    \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)     & \cellcolor[rgb]{ .82,  .867,  .506}0.0598 ($\pm$0.003)  & \cellcolor[rgb]{ .988,  .694,  .475}0.0606 ($\pm$0.003) & \cellcolor[rgb]{ 1,  .922,  .518}0.0602 ($\pm$0.003)   & \cellcolor[rgb]{ .973,  .412,  .42}0.0612 ($\pm$0.003)  \\
+			\textbf{student performance} & \cellcolor[rgb]{ .973,  .412,  .42}0.2359 ($\pm$0.102)      & \cellcolor[rgb]{ .388,  .745,  .482}0.2007 ($\pm$0.032) & \cellcolor[rgb]{ 1,  .922,  .518}0.2092 ($\pm$0.039)    & \cellcolor[rgb]{ .573,  .796,  .49}0.2033 ($\pm$0.037) & \cellcolor[rgb]{ 1,  .922,  .518}0.2091 ($\pm$0.054)    \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)     & \cellcolor[rgb]{ .553,  .792,  .49}1.0864 ($\pm$0.034)  & \cellcolor[rgb]{ .973,  .412,  .42}1.1083 ($\pm$0.054)  & \cellcolor[rgb]{ 1,  .922,  .518}1.0961 ($\pm$0.027)   & \cellcolor[rgb]{ .976,  .463,  .431}1.1071 ($\pm$0.039) \\
 		\end{tabular}%
 
 	}
@@ -757,7 +757,7 @@ Table~\ref{tab:results:population:metrics:loss} presents the empirical results f
 
 From Table \ref{tab:results:population:metrics:loss} it can be seen that the lowest population size produced mostly the best performance outcomes, yielding the best average test loss for eight of the fourteen datasets. However, the lowest population size also produced the worst performance outcomes for four of the fourteen datasets. From the empirical results that show the average test loss, measured at the last epoch, it is not clear which population size configuration produced the overall best results.
 
-As before, the performance of the different \acs{BHH} population size configurations need to be considered for the entire training process. As such, Table \ref{tab:results:population:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} population size configurations. Similar to before, the performance rank is calculated as the average rank produced by each population size configuration, for all datasets, over all runs and all training epochs.
+As before, the performance of the different \acs{BHH} population size configurations need to be considered for the entire training process. As such, Table \ref{tab:results:population:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} population size configurations. Similar to before, the performance rank is calculated as the average rank produced by each population size configuration, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -800,13 +800,13 @@ Figure~\ref{fig:results:population:descriptive:descriptive} provides an illustra
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_population/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of \acs{BHH} with varying population sizes per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of \acs{BHH} with varying population sizes per dataset, across all independent runs and epochs.}
 	\label{fig:results:population:descriptive:descriptive}
 \end{figure}
 
 Figure~\ref{fig:results:population:descriptive:descriptive}, shows the correlation of performance with population size for each dataset. From these illustrations, it can be seen that the correlation between the population size configuration and performance is different for each dataset, suggesting that the population size hyper-parameter is problem specific. However, the overall performance related to each population configuration, across all datasets is not clear from these illustrations.
 
-Figure~\ref{fig:results:population:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each population size configuration as it relates to all datasets, across all runs and epochs. It is shown that there is no overall statistical significant difference between population sizes and thus, it can be concluded that the population size hyper-parameter is problem specific.
+Figure~\ref{fig:results:population:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each population size configuration as it relates to all datasets, across all independent runs and epochs. It is shown that there is no overall statistical significant difference between population sizes and thus, it can be concluded that the population size hyper-parameter is problem specific.
 
 \begin{figure}[htb]
 	\centering
@@ -888,29 +888,29 @@ Table~\ref{tab:results:credit:metrics:loss} presents the empirical results for t
 	\par\bigskip
 	\resizebox{\textwidth}{!}{
 		\begin{tabular}{r|ccccc}
-			                             & \multicolumn{5}{c}{\textbf{Credit - Average Loss}}                                                                                                                                                                                                                               \\
+			                             & \multicolumn{5}{c}{\textbf{Credit - Average Test Loss}}                                                                                                                                                                                                                             \\
 			\midrule
-			\textbf{dataset}             & \textbf{ibest}                                       & \textbf{pbest}                                       & \textbf{rbest}                                       & \textbf{gbest}                                       & \textbf{symmetric}                                   \\
+			\textbf{dataset}             & \textbf{ibest}                                          & \textbf{pbest}                                       & \textbf{rbest}                                       & \textbf{gbest}                                       & \textbf{symmetric}                                   \\
 			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .631,  .816,  .494}2.0587 (+-0.088) & \cellcolor[rgb]{ .388,  .745,  .482}2.0422 (+-0.094) & \cellcolor[rgb]{ .996,  .792,  .494}2.0922 (+-0.152) & \cellcolor[rgb]{ 1,  .922,  .518}2.0833 (+-0.136)    & \cellcolor[rgb]{ .973,  .412,  .42}2.1177 (+-0.259)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 (+-0.016)  & \cellcolor[rgb]{ .902,  .89,  .51}0.2678 (+-0.015)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2644 (+-0.015) & \cellcolor[rgb]{ 1,  .922,  .518}0.2684 (+-0.013)    & \cellcolor[rgb]{ 1,  .882,  .51}0.2688 (+-0.017)     \\
-			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 (+-0.065)    & \cellcolor[rgb]{ .973,  .412,  .42}0.2645 (+-0.171)  & \cellcolor[rgb]{ .51,  .78,  .486}0.238 (+-0.047)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2361 (+-0.031) & \cellcolor[rgb]{ .996,  .812,  .498}0.2498 (+-0.047) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .988,  .647,  .467}0.0651 (+-0.02)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0634 (+-0.023)    & \cellcolor[rgb]{ .871,  .882,  .51}0.0633 (+-0.02)   & \cellcolor[rgb]{ .388,  .745,  .482}0.063 (+-0.021)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0666 (+-0.021)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ 1,  .91,  .518}0.1572 (+-0.034)     & \cellcolor[rgb]{ 1,  .922,  .518}0.1569 (+-0.029)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1665 (+-0.03)   & \cellcolor[rgb]{ .388,  .745,  .482}0.1504 (+-0.03)  & \cellcolor[rgb]{ .945,  .906,  .514}0.1564 (+-0.037) \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .878,  .886,  .51}1.2983 (+-0.66)   & \cellcolor[rgb]{ .988,  .651,  .467}1.4981 (+-2.41)  & \cellcolor[rgb]{ .973,  .412,  .42}1.6172 (+-1.527)  & \cellcolor[rgb]{ .388,  .745,  .482}1.0347 (+-0.231) & \cellcolor[rgb]{ 1,  .922,  .518}1.3627 (+-1.145)    \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .988,  .647,  .467}0.1046 (+-0.008) & \cellcolor[rgb]{ 1,  .922,  .518}0.1028 (+-0.008)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1024 (+-0.009) & \cellcolor[rgb]{ .973,  .412,  .42}0.1061 (+-0.009)  & \cellcolor[rgb]{ .643,  .816,  .494}0.1026 (+-0.009) \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .914,  .514}0.081 (+-0.069)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0819 (+-0.062)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0591 (+-0.046) & \cellcolor[rgb]{ .973,  .412,  .42}0.0845 (+-0.077)  & \cellcolor[rgb]{ 1,  .867,  .51}0.0822 (+-0.07)      \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 (+-0.017) & \cellcolor[rgb]{ .996,  .82,  .498}0.0974 (+-0.021)  & \cellcolor[rgb]{ .835,  .875,  .506}0.0961 (+-0.018) & \cellcolor[rgb]{ .973,  .412,  .42}0.0995 (+-0.016)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0969 (+-0.018)    \\
-			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 (+-0.295)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1441 (+-0.131) & \cellcolor[rgb]{ 1,  .922,  .518}0.1547 (+-0.111)    & \cellcolor[rgb]{ 1,  .882,  .51}0.1616 (+-0.187)     & \cellcolor[rgb]{ .765,  .851,  .502}0.1507 (+-0.142) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .404,  .749,  .482}0.0052 (+-0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0289 (+-0.107)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0044 (+-0.011) & \cellcolor[rgb]{ 1,  .91,  .518}0.1835 (+-0.949)     & \cellcolor[rgb]{ .973,  .412,  .42}5.3926 (+-29.503) \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 (+-0.003) & \cellcolor[rgb]{ 1,  .867,  .51}0.0594 (+-0.002)     & \cellcolor[rgb]{ .973,  .412,  .42}0.0602 (+-0.002)  & \cellcolor[rgb]{ .898,  .89,  .51}0.0592 (+-0.002)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0593 (+-0.003)    \\
-			\textbf{student performance} & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 (+-0.102)    & \cellcolor[rgb]{ .678,  .827,  .498}0.2303 (+-0.095) & \cellcolor[rgb]{ .988,  .69,  .475}0.2551 (+-0.109)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2251 (+-0.088) & \cellcolor[rgb]{ .973,  .412,  .42}0.2777 (+-0.116)  \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .98,  .525,  .443}1.0827 (+-0.026)  & \cellcolor[rgb]{ 1,  .922,  .518}1.0799 (+-0.031)    & \cellcolor[rgb]{ .925,  .898,  .51}1.0794 (+-0.021)  & \cellcolor[rgb]{ .388,  .745,  .482}1.0757 (+-0.027) & \cellcolor[rgb]{ .973,  .412,  .42}1.0835 (+-0.029)  \\
+			\textbf{abalone}             & \cellcolor[rgb]{ .631,  .816,  .494}2.0587 (+-0.088)    & \cellcolor[rgb]{ .388,  .745,  .482}2.0422 (+-0.094) & \cellcolor[rgb]{ .996,  .792,  .494}2.0922 (+-0.152) & \cellcolor[rgb]{ 1,  .922,  .518}2.0833 (+-0.136)    & \cellcolor[rgb]{ .973,  .412,  .42}2.1177 (+-0.259)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 (+-0.016)     & \cellcolor[rgb]{ .902,  .89,  .51}0.2678 (+-0.015)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2644 (+-0.015) & \cellcolor[rgb]{ 1,  .922,  .518}0.2684 (+-0.013)    & \cellcolor[rgb]{ 1,  .882,  .51}0.2688 (+-0.017)     \\
+			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 (+-0.065)       & \cellcolor[rgb]{ .973,  .412,  .42}0.2645 (+-0.171)  & \cellcolor[rgb]{ .51,  .78,  .486}0.238 (+-0.047)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2361 (+-0.031) & \cellcolor[rgb]{ .996,  .812,  .498}0.2498 (+-0.047) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .988,  .647,  .467}0.0651 (+-0.02)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0634 (+-0.023)    & \cellcolor[rgb]{ .871,  .882,  .51}0.0633 (+-0.02)   & \cellcolor[rgb]{ .388,  .745,  .482}0.063 (+-0.021)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0666 (+-0.021)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ 1,  .91,  .518}0.1572 (+-0.034)        & \cellcolor[rgb]{ 1,  .922,  .518}0.1569 (+-0.029)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1665 (+-0.03)   & \cellcolor[rgb]{ .388,  .745,  .482}0.1504 (+-0.03)  & \cellcolor[rgb]{ .945,  .906,  .514}0.1564 (+-0.037) \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .878,  .886,  .51}1.2983 (+-0.66)      & \cellcolor[rgb]{ .988,  .651,  .467}1.4981 (+-2.41)  & \cellcolor[rgb]{ .973,  .412,  .42}1.6172 (+-1.527)  & \cellcolor[rgb]{ .388,  .745,  .482}1.0347 (+-0.231) & \cellcolor[rgb]{ 1,  .922,  .518}1.3627 (+-1.145)    \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .988,  .647,  .467}0.1046 (+-0.008)    & \cellcolor[rgb]{ 1,  .922,  .518}0.1028 (+-0.008)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1024 (+-0.009) & \cellcolor[rgb]{ .973,  .412,  .42}0.1061 (+-0.009)  & \cellcolor[rgb]{ .643,  .816,  .494}0.1026 (+-0.009) \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .914,  .514}0.081 (+-0.069)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0819 (+-0.062)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0591 (+-0.046) & \cellcolor[rgb]{ .973,  .412,  .42}0.0845 (+-0.077)  & \cellcolor[rgb]{ 1,  .867,  .51}0.0822 (+-0.07)      \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 (+-0.017)    & \cellcolor[rgb]{ .996,  .82,  .498}0.0974 (+-0.021)  & \cellcolor[rgb]{ .835,  .875,  .506}0.0961 (+-0.018) & \cellcolor[rgb]{ .973,  .412,  .42}0.0995 (+-0.016)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0969 (+-0.018)    \\
+			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 (+-0.295)     & \cellcolor[rgb]{ .388,  .745,  .482}0.1441 (+-0.131) & \cellcolor[rgb]{ 1,  .922,  .518}0.1547 (+-0.111)    & \cellcolor[rgb]{ 1,  .882,  .51}0.1616 (+-0.187)     & \cellcolor[rgb]{ .765,  .851,  .502}0.1507 (+-0.142) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .404,  .749,  .482}0.0052 (+-0.012)    & \cellcolor[rgb]{ 1,  .922,  .518}0.0289 (+-0.107)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0044 (+-0.011) & \cellcolor[rgb]{ 1,  .91,  .518}0.1835 (+-0.949)     & \cellcolor[rgb]{ .973,  .412,  .42}5.3926 (+-29.503) \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 (+-0.003)    & \cellcolor[rgb]{ 1,  .867,  .51}0.0594 (+-0.002)     & \cellcolor[rgb]{ .973,  .412,  .42}0.0602 (+-0.002)  & \cellcolor[rgb]{ .898,  .89,  .51}0.0592 (+-0.002)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0593 (+-0.003)    \\
+			\textbf{student performance} & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 (+-0.102)       & \cellcolor[rgb]{ .678,  .827,  .498}0.2303 (+-0.095) & \cellcolor[rgb]{ .988,  .69,  .475}0.2551 (+-0.109)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2251 (+-0.088) & \cellcolor[rgb]{ .973,  .412,  .42}0.2777 (+-0.116)  \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .98,  .525,  .443}1.0827 (+-0.026)     & \cellcolor[rgb]{ 1,  .922,  .518}1.0799 (+-0.031)    & \cellcolor[rgb]{ .925,  .898,  .51}1.0794 (+-0.021)  & \cellcolor[rgb]{ .388,  .745,  .482}1.0757 (+-0.027) & \cellcolor[rgb]{ .973,  .412,  .42}1.0835 (+-0.029)  \\
 		\end{tabular}%
 	}
 \end{table}%
 
-From Table~\ref{tab:results:credit:metrics:loss}, it is not clear which credit assignment strategy yields the best performance for the entire training process. As such, Table \ref{tab:results:credit:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} credit assignment strategy configurations. Similar to before, the performance rank is calculated as the average rank produced by each credit assignment strategy configuration, for all datasets, over all runs and all training epochs.
+From Table~\ref{tab:results:credit:metrics:loss}, it is not clear which credit assignment strategy yields the best performance for the entire training process. As such, Table \ref{tab:results:credit:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} credit assignment strategy configurations. Similar to before, the performance rank is calculated as the average rank produced by each credit assignment strategy configuration, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -953,11 +953,11 @@ Figure~\ref{fig:results:credit:descriptive:descriptive} provides an illustration
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_credit/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying credit assignment strategies per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying credit assignment strategies per dataset, across all independent runs and epochs.}
 	\label{fig:results:credit:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:credit:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each credit assignment strategy configuration as it relates to all datasets, across all runs. It is shown that there is no overall statistical significant difference between credit assignment strategies and that the credit assignment strategy hyper-parameter is problem specific. At this point it should be mentioned that the credit assignment strategies implemented in this dissertation yield a discrete credit value and that future research should consider a continuous credit value in an attempt to provide a more fine grained indicator of performance, which should be easier to exploit.
+Figure~\ref{fig:results:credit:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each credit assignment strategy configuration as it relates to all datasets, across all independent runs and epochs. It is shown that there is no overall statistical significant difference between credit assignment strategies and that the credit assignment strategy hyper-parameter is problem specific. At this point it should be mentioned that the credit assignment strategies implemented in this dissertation yield a discrete credit value and that future research should consider a continuous credit value in an attempt to provide a more fine grained indicator of performance, which should be easier to exploit.
 
 \begin{figure}[htb]
 	\centering
@@ -1025,9 +1025,42 @@ Figure~\ref{fig:results:credit:figures:housing} provides the train and test loss
 
 \section{Reselection Interval}\label{sec:results:reselection}
 
-This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{reselection interval} hyper-parameter. Detailed discussions follow and illustrations are provided for visual aid. As a reminder, five different reselection intervals are considered. These include reselection intervals of 1, 5, 10, 15, and 20.
+This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{reselection interval} hyper-parameter. Detailed discussions follow and illustrations are provided for visual aid. As a reminder, five different reselection intervals are considered. These include reselection intervals of 1, 5, 10, 15, and 20. Experiments are denoted as such.
 
-Table \ref{tab:results:reselection:metrics} provides the ranked performance, per dataset, of each of the \acs{BHH} reselection interval configurations. Similar to before, the performance rank is calculated as the average rank produced by reselection interval configuration, for all datasets, over all runs and all training epochs.
+Table~\ref{tab:results:reselection:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for all the reselection interval variants of the \acs{BHH} that was implemented. The test loss is measured at the last epoch for each dataset, over all independent runs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Empirical results showing average test loss and statistics for different reselection intervals used by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
+	\label{tab:results:reselection:metrics:loss}%
+	\par\bigskip
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{r|ccccc}
+			                             & \multicolumn{5}{c}{\textbf{Reselection - Average Test Loss}}                                                                                                                                                                                                                                         \\
+			\midrule
+			\textbf{dataset}             & \textbf{1}                                                   & \textbf{5}                                              & \textbf{10}                                             & \textbf{15}                                             & \textbf{20}                                             \\
+			\midrule
+			\textbf{abalone}             & \cellcolor[rgb]{ .973,  .412,  .42}2.737 ($\pm$0.507)        & \cellcolor[rgb]{ 1,  .922,  .518}2.0907 ($\pm$0.113)    & \cellcolor[rgb]{ .545,  .788,  .49}2.0587 ($\pm$0.088)  & \cellcolor[rgb]{ .388,  .745,  .482}2.0475 ($\pm$0.103) & \cellcolor[rgb]{ 1,  .906,  .518}2.1139 ($\pm$0.336)    \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.3003 ($\pm$0.046)       & \cellcolor[rgb]{ .992,  .725,  .482}0.2835 ($\pm$0.021) & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 ($\pm$0.016)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2619 ($\pm$0.013) & \cellcolor[rgb]{ .486,  .773,  .486}0.2637 ($\pm$0.016) \\
+			\textbf{bank}                & \cellcolor[rgb]{ .984,  .596,  .455}0.2933 ($\pm$0.033)      & \cellcolor[rgb]{ .973,  .412,  .42}0.3198 ($\pm$0.18)   & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)    & \cellcolor[rgb]{ .553,  .792,  .49}0.2299 ($\pm$0.032)  & \cellcolor[rgb]{ .388,  .745,  .482}0.224 ($\pm$0.018)  \\
+			\textbf{bike}                & \cellcolor[rgb]{ .973,  .412,  .42}0.1524 ($\pm$0.023)       & \cellcolor[rgb]{ .988,  .671,  .471}0.1084 ($\pm$0.025) & \cellcolor[rgb]{ 1,  .922,  .518}0.0651 ($\pm$0.02)     & \cellcolor[rgb]{ .6,  .804,  .494}0.0566 ($\pm$0.01)    & \cellcolor[rgb]{ .388,  .745,  .482}0.052 ($\pm$0.004)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ .973,  .412,  .42}0.2157 ($\pm$0.031)       & \cellcolor[rgb]{ 1,  .922,  .518}0.1591 ($\pm$0.026)    & \cellcolor[rgb]{ .91,  .894,  .51}0.1572 ($\pm$0.034)   & \cellcolor[rgb]{ 1,  .863,  .51}0.1659 ($\pm$0.064)     & \cellcolor[rgb]{ .388,  .745,  .482}0.1456 ($\pm$0.03)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}0.9624 ($\pm$0.043)      & \cellcolor[rgb]{ .973,  .412,  .42}3.7821 ($\pm$4.993)  & \cellcolor[rgb]{ 1,  .914,  .518}1.2983 ($\pm$0.66)     & \cellcolor[rgb]{ 1,  .922,  .518}1.2541 ($\pm$0.868)    & \cellcolor[rgb]{ .482,  .773,  .486}1.0085 ($\pm$0.251) \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .973,  .412,  .42}0.1091 ($\pm$0.01)        & \cellcolor[rgb]{ 1,  .922,  .518}0.1043 ($\pm$0.009)    & \cellcolor[rgb]{ 1,  .894,  .514}0.1046 ($\pm$0.008)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1013 ($\pm$0.008) & \cellcolor[rgb]{ .549,  .792,  .49}0.1021 ($\pm$0.008)  \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.1253 ($\pm$0.087)       & \cellcolor[rgb]{ .988,  .702,  .478}0.1002 ($\pm$0.064) & \cellcolor[rgb]{ 1,  .922,  .518}0.081 ($\pm$0.069)     & \cellcolor[rgb]{ .647,  .82,  .494}0.0681 ($\pm$0.055)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0586 ($\pm$0.056) \\
+			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.1268 ($\pm$0.025)       & \cellcolor[rgb]{ 1,  .902,  .514}0.0974 ($\pm$0.017)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .922,  .518}0.0961 ($\pm$0.026)    & \cellcolor[rgb]{ .729,  .843,  .502}0.0952 ($\pm$0.02)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ .714,  .839,  .498}0.1633 ($\pm$0.135)      & \cellcolor[rgb]{ .388,  .745,  .482}0.1376 ($\pm$0.138) & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)  & \cellcolor[rgb]{ .976,  .447,  .427}0.2373 ($\pm$0.361) & \cellcolor[rgb]{ 1,  .922,  .518}0.1853 ($\pm$0.235)    \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .973,  .412,  .42}1.8461 ($\pm$5.829)       & \cellcolor[rgb]{ .886,  .886,  .51}0.0283 ($\pm$0.099)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0388 ($\pm$0.111)    & \cellcolor[rgb]{ 1,  .922,  .518}0.0335 ($\pm$0.158)    \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .973,  .412,  .42}0.0872 ($\pm$0.018)       & \cellcolor[rgb]{ 1,  .886,  .514}0.0609 ($\pm$0.004)    & \cellcolor[rgb]{ 1,  .922,  .518}0.0587 ($\pm$0.003)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0584 ($\pm$0.002) & \cellcolor[rgb]{ .482,  .769,  .486}0.0585 ($\pm$0.003) \\
+			\textbf{student performance} & \cellcolor[rgb]{ .973,  .412,  .42}0.4376 ($\pm$0.108)       & \cellcolor[rgb]{ .98,  .518,  .443}0.397 ($\pm$0.13)    & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 ($\pm$0.102)    & \cellcolor[rgb]{ .784,  .859,  .502}0.223 ($\pm$0.098)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1991 ($\pm$0.064) \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .973,  .412,  .42}1.1183 ($\pm$0.031)       & \cellcolor[rgb]{ 1,  .922,  .518}1.081 ($\pm$0.023)     & \cellcolor[rgb]{ 1,  .898,  .514}1.0827 ($\pm$0.026)    & \cellcolor[rgb]{ .388,  .745,  .482}1.0711 ($\pm$0.028) & \cellcolor[rgb]{ .498,  .776,  .486}1.0729 ($\pm$0.022) \\
+		\end{tabular}%
+	}
+\end{table}%
+
+From Table~\ref{tab:results:reselection:metrics:loss}, a clear pattern can be observed. The empirical results show that, in general, a larger reselection interval is preferred, with the largest reselection intervals yielding the best performance outcomes in the majority of cases, and the lowest reselection interval of one, yielding the worst performance in the majority of cases.
+
+To illustrate the effects of the reselection interval hyper-paramter on the entire trianing, process, Table \ref{tab:results:reselection:metrics:rank} provides the ranked performance, per dataset, of each of the \acs{BHH} reselection interval configurations. Similar to before, the performance rank is calculated as the average rank produced by reselection interval configuration, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1063,49 +1096,22 @@ Table \ref{tab:results:reselection:metrics} provides the ranked performance, per
 	}
 \end{table}%
 
-\begin{table}[htb]
-	\centering
-	\caption{Empirical results showing average rank and statistics for different reselection intervals used by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
-	\label{tab:results:reselection:metrics:loss}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{r|ccccc}
-			                             & \multicolumn{5}{c}{\textbf{Reselection - Average Loss}}                                                                                                                                                                                                                                         \\
-			\midrule
-			\textbf{dataset}             & \textbf{1}                                              & \textbf{5}                                              & \textbf{10}                                             & \textbf{15}                                             & \textbf{20}                                             \\
-			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .973,  .412,  .42}2.737 ($\pm$0.507)   & \cellcolor[rgb]{ 1,  .922,  .518}2.0907 ($\pm$0.113)    & \cellcolor[rgb]{ .545,  .788,  .49}2.0587 ($\pm$0.088)  & \cellcolor[rgb]{ .388,  .745,  .482}2.0475 ($\pm$0.103) & \cellcolor[rgb]{ 1,  .906,  .518}2.1139 ($\pm$0.336)    \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.3003 ($\pm$0.046)  & \cellcolor[rgb]{ .992,  .725,  .482}0.2835 ($\pm$0.021) & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 ($\pm$0.016)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2619 ($\pm$0.013) & \cellcolor[rgb]{ .486,  .773,  .486}0.2637 ($\pm$0.016) \\
-			\textbf{bank}                & \cellcolor[rgb]{ .984,  .596,  .455}0.2933 ($\pm$0.033) & \cellcolor[rgb]{ .973,  .412,  .42}0.3198 ($\pm$0.18)   & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)    & \cellcolor[rgb]{ .553,  .792,  .49}0.2299 ($\pm$0.032)  & \cellcolor[rgb]{ .388,  .745,  .482}0.224 ($\pm$0.018)  \\
-			\textbf{bike}                & \cellcolor[rgb]{ .973,  .412,  .42}0.1524 ($\pm$0.023)  & \cellcolor[rgb]{ .988,  .671,  .471}0.1084 ($\pm$0.025) & \cellcolor[rgb]{ 1,  .922,  .518}0.0651 ($\pm$0.02)     & \cellcolor[rgb]{ .6,  .804,  .494}0.0566 ($\pm$0.01)    & \cellcolor[rgb]{ .388,  .745,  .482}0.052 ($\pm$0.004)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ .973,  .412,  .42}0.2157 ($\pm$0.031)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1591 ($\pm$0.026)    & \cellcolor[rgb]{ .91,  .894,  .51}0.1572 ($\pm$0.034)   & \cellcolor[rgb]{ 1,  .863,  .51}0.1659 ($\pm$0.064)     & \cellcolor[rgb]{ .388,  .745,  .482}0.1456 ($\pm$0.03)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}0.9624 ($\pm$0.043) & \cellcolor[rgb]{ .973,  .412,  .42}3.7821 ($\pm$4.993)  & \cellcolor[rgb]{ 1,  .914,  .518}1.2983 ($\pm$0.66)     & \cellcolor[rgb]{ 1,  .922,  .518}1.2541 ($\pm$0.868)    & \cellcolor[rgb]{ .482,  .773,  .486}1.0085 ($\pm$0.251) \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .973,  .412,  .42}0.1091 ($\pm$0.01)   & \cellcolor[rgb]{ 1,  .922,  .518}0.1043 ($\pm$0.009)    & \cellcolor[rgb]{ 1,  .894,  .514}0.1046 ($\pm$0.008)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1013 ($\pm$0.008) & \cellcolor[rgb]{ .549,  .792,  .49}0.1021 ($\pm$0.008)  \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.1253 ($\pm$0.087)  & \cellcolor[rgb]{ .988,  .702,  .478}0.1002 ($\pm$0.064) & \cellcolor[rgb]{ 1,  .922,  .518}0.081 ($\pm$0.069)     & \cellcolor[rgb]{ .647,  .82,  .494}0.0681 ($\pm$0.055)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0586 ($\pm$0.056) \\
-			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.1268 ($\pm$0.025)  & \cellcolor[rgb]{ 1,  .902,  .514}0.0974 ($\pm$0.017)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .922,  .518}0.0961 ($\pm$0.026)    & \cellcolor[rgb]{ .729,  .843,  .502}0.0952 ($\pm$0.02)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ .714,  .839,  .498}0.1633 ($\pm$0.135) & \cellcolor[rgb]{ .388,  .745,  .482}0.1376 ($\pm$0.138) & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)  & \cellcolor[rgb]{ .976,  .447,  .427}0.2373 ($\pm$0.361) & \cellcolor[rgb]{ 1,  .922,  .518}0.1853 ($\pm$0.235)    \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .973,  .412,  .42}1.8461 ($\pm$5.829)  & \cellcolor[rgb]{ .886,  .886,  .51}0.0283 ($\pm$0.099)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0388 ($\pm$0.111)    & \cellcolor[rgb]{ 1,  .922,  .518}0.0335 ($\pm$0.158)    \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .973,  .412,  .42}0.0872 ($\pm$0.018)  & \cellcolor[rgb]{ 1,  .886,  .514}0.0609 ($\pm$0.004)    & \cellcolor[rgb]{ 1,  .922,  .518}0.0587 ($\pm$0.003)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0584 ($\pm$0.002) & \cellcolor[rgb]{ .482,  .769,  .486}0.0585 ($\pm$0.003) \\
-			\textbf{student performance} & \cellcolor[rgb]{ .973,  .412,  .42}0.4376 ($\pm$0.108)  & \cellcolor[rgb]{ .98,  .518,  .443}0.397 ($\pm$0.13)    & \cellcolor[rgb]{ 1,  .922,  .518}0.2359 ($\pm$0.102)    & \cellcolor[rgb]{ .784,  .859,  .502}0.223 ($\pm$0.098)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1991 ($\pm$0.064) \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .973,  .412,  .42}1.1183 ($\pm$0.031)  & \cellcolor[rgb]{ 1,  .922,  .518}1.081 ($\pm$0.023)     & \cellcolor[rgb]{ 1,  .898,  .514}1.0827 ($\pm$0.026)    & \cellcolor[rgb]{ .388,  .745,  .482}1.0711 ($\pm$0.028) & \cellcolor[rgb]{ .498,  .776,  .486}1.0729 ($\pm$0.022) \\
-		\end{tabular}%
+Table \ref{tab:results:reselection:metrics:rank} shows that larger reselection intervals are mostly preferred. The overall normalised average rank is given at the bottom of the table and supports this finding. This outcome can be explained as follows. A larger reselection interval gives the low-level \index{heuristic}heuristics more time to execute, resulting in smoother update steps and provides an opportunity for the \acs{BHH} to gather more evidence of the current selection of \index{heuristic}heuristics' performance in the performance log. Both of these effects allow the \acs{BHH} to select better \index{heuristic}heuristics during training. This is further supported by the findings from Sections \ref{sec:results:standalone} and \ref{sec:results:heuristic_pool}, that show that gradient-based \index{heuristic}heuristics generally yield the best performance. Most of the gradient-based \index{heuristic}heuristics that are included in the \index{heuristic pool }heuristic pool implement exponentially averaged state parameters in order to produce smooth update steps. If reselection occurs too frequently these exponentially averaged state parameters do not yield smooth update steps. This is further supported by the inclusion of meta-heuristics such as \acp{GA} and \acs{DE}, which recombine state parameters.
 
+Finally, it should be noted that the default reanalysis interval is ten and the default replay window size is also ten. At every reanalysis interval, the concentrations for low-level \index{heuristic}heuristics are reset to the default, symmetrical value of 1.0. The replay window size then determines the number of samples in the performance log from which the reanalysis can be done. As such, \acs{BHH} configurations with reselection intervals that are larger than the replay window size, will only consider performance samples from the last replay window, which should contain less entries than the reselection interval. The reselection interval then directly influences what goes into the performance log. Since it is found that reselection intervals larger than the default reanalysis interval and replay window size yield better performance, it can be suggested that exploitation of low-level \index{heuristic}heuristics yields better results than exploration of low-level \index{heuristic}heuristics.
 
-	}
-\end{table}%
+Furthermore, early in the training process, a low reselection interval yields the highest variance of \index{heuristic}heuristic selection. Since the default population size is five and the default number of heuristics in the heuristic pool is thirteen, not all heuristics are represented at every training step, causing an unwanted bias towards the \index{heuristic}heuristics that happen to be             selected.
 
-Table \ref{tab:results:reselection:metrics} show that larger reselection intervals are mostly preferred, with the exception of the adult dataset. This outcome can be explained as follows. A larger reselection interval gives the low-level \index{heuristic}heuristics more time to execute, resulting in smoother update steps. This is further supported by the findings from Sections \ref{sec:results:standalone} and \ref{sec:results:heuristic_pool}, that show that gradient-based \index{heuristic}heuristics generally yield the best performance. Gradient-based \index{heuristic}heuristics rely on exponentially averaged state parameters in order to produce smooth update steps. If reselection occurs too frequently these exponentially averaged state parameters do not yield smooth update steps. Finally, it should be noted that the default reanalysis interval is 10. At every reanalysis interval, the concentrations for low-level \index{heuristic}heuristics is reset to the default, symmetrical value of 1. As such, \acs{BHH} configurations with reselection intervals that are larger than the reanalysis interval only consider performance samples from the last reanalysis window size. This suggests that exploitation of low-level \index{heuristic}heuristics is more important than exploration of low-level \index{heuristic}heuristics.
-
-Figure~\ref{fig:results:credit:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reselection interval configurations, per dataset.
+Figure~\ref{fig:results:credit:descriptive:descriptive} provides an illustration of the descriptive plots for the different \acs{BHH} configurations as it relates to the performance of different reselection interval configurations, per dataset. It can be seen that a general pattern occurs for almost all datasets that show an inverse correlation between performance and the reselection interval. Some exceptions of this relationship can be observed for the iris and diabetic datasets where an average reselection interval yielded the best results.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_reselection/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying reselection interval values per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying reselection interval values per dataset, across all independent runs and epochs.}
 	\label{fig:results:reselection:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:reselection:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reselection interval configuration as it relates to all datasets, across all runs.
+Figure~\ref{fig:results:reselection:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reselection interval configuration as it relates to all datasets, across all independent runs and epochs.
 
 \begin{figure}[htb]
 	\centering
@@ -1114,11 +1120,11 @@ Figure~\ref{fig:results:reselection:descriptive:cd} provides an illustration of 
 	\label{fig:results:reselection:descriptive:cd}
 \end{figure}
 
-Figure~\ref{fig:results:reselection:descriptive:cd} shows the statistically significant difference in results for the various reselection intervals. It can be seen that larger reselection intervals statistically perform better than smaller reselection intervals.
+Figure~\ref{fig:results:reselection:descriptive:cd} shows the statistically significant difference in overall results for the various reselection intervals across all datasets. It can be seen that larger reselection intervals statistically perform better than smaller reselection intervals. The largest reselection intervals (15 and 20) yielded the best overall results with statistically insignificant differences between them.
 
-Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the train and test, loss and accuracy plots for an example classification dataset (car) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
+Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the train and test, loss and accuracy plots for an example classification dataset (car) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for the other classification datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_reselection/figures/train/loss/car.pdf}
@@ -1149,9 +1155,9 @@ Similar to before, Figure~\ref{fig:results:reselection:figures:car} provides the
 	\label{fig:results:reselection:figures:car}
 \end{figure}
 
-Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
+Figure~\ref{fig:results:reselection:figures:bike} provides the train and test loss plots for an example regression dataset (bike) as it relates to the reselection interval experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for the other regression datasets are left out for brevity.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_reselection/figures/train/loss/bike.pdf}
@@ -1169,13 +1175,13 @@ Figure~\ref{fig:results:reselection:figures:bike} provides the train and test lo
 	\label{fig:results:reselection:figures:bike}
 \end{figure}
 
-Figures~\ref{fig:results:reselection:figures:loss:train:car} and ~\ref{fig:results:reselection:figures:loss:train:bike} both show a smooth decline in training loss for all reselection interval configurations of the \acs{BHH}, but larger reselection interval configurations are able to provide better results than smaller reselection intervals. This further supports the suggestion that exploitation of low-level \index{heuristic}heuristics is more important than exploration of low-level \index{heuristic}heuristics in this particular case.
+Figures~\ref{fig:results:reselection:figures:loss:train:car} and ~\ref{fig:results:reselection:figures:loss:train:bike} both show a smooth decline in training loss for all reselection interval configurations of the \acs{BHH}, but larger reselection interval configurations are able to provide better results than lower reselection intervals. This further supports the suggestion that exploitation of low-level \index{heuristic}heuristics is more important than exploration of low-level \index{heuristic}heuristics in this particular case.
 
 \section{Replay Window Size}\label{sec:results:replay}
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{replay window size} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different replay window sizes are considered. These include replay window sizes of 1, 5, 10, 15, and 20.
 
-Table \ref{tab:results:replay:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} replay window size configurations. Similar to before, the performance rank is calculated as the average rank produced by the replay window size configurations, for all datasets, over all runs and all training epochs.
+Table \ref{tab:results:replay:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} replay window size configurations. Similar to before, the performance rank is calculated as the average rank produced by the replay window size configurations, for all datasets, over all independent runs and all training epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1211,6 +1217,7 @@ Table \ref{tab:results:replay:metrics} provides the ranked performance, per data
 	}
 \end{table}%
 
+
 \begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for different replay window sizes used by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
@@ -1218,7 +1225,7 @@ Table \ref{tab:results:replay:metrics} provides the ranked performance, per data
 	\par\bigskip
 	\resizebox{\textwidth}{!}{
 		\begin{tabular}{r|ccccc}
-			                             & \multicolumn{5}{c}{\textbf{Replay - Average Loss}}                                                                                                                                                                                                                                              \\
+			                             & \multicolumn{5}{c}{\textbf{Replay - Average Test Loss}}                                                                                                                                                                                                                                         \\
 			\midrule
 			\textbf{dataset}             & \textbf{1}                                              & \textbf{5}                                              & \textbf{10}                                             & \textbf{15}                                             & \textbf{20}                                             \\
 			\midrule
@@ -1249,11 +1256,11 @@ Figure~\ref{fig:results:replay:descriptive:descriptive} provides an illustration
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_replay/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying replay window sizes per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying replay window sizes per dataset, across all independent runs and epochs.}
 	\label{fig:results:replay:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:replay:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each replay window size configuration as it relates to all datasets, across all runs.
+Figure~\ref{fig:results:replay:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each replay window size configuration as it relates to all datasets, across all independent runs.
 
 \begin{figure}[htb]
 	\centering
@@ -1323,7 +1330,7 @@ Figure~\ref{fig:results:replay:figures:fish_toxicity} provides the train and tes
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{reanalysis interval} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different reanalysis intervals are considered. These include reanalysis intervals of 1, 5, 10, 15, and 20.
 
-Table \ref{tab:results:reanalysis:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} reanalysis interval configurations. Similar to before, the performance rank is calculated as the average rank produced by the reanalysis interval configurations, for all datasets, over all runs and all training epochs.
+Table \ref{tab:results:reanalysis:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} reanalysis interval configurations. Similar to before, the performance rank is calculated as the average rank produced by the reanalysis interval configurations, for all datasets, over all independent runs and all training epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1368,24 +1375,24 @@ Table \ref{tab:results:reanalysis:metrics} provides the ranked performance, per 
 	\par\bigskip
 	\resizebox{\textwidth}{!}{
 		\begin{tabular}{r|lllll}
-			                             & \multicolumn{5}{c}{\textbf{Reanalysis - Average Loss}}                                                                                                                                                                                                                                         \\
+			                             & \multicolumn{5}{c}{\textbf{Reanalysis - Average Test Loss}}                                                                                                                                                                                                                                        \\
 			\midrule
-			\textbf{dataset}             & \multicolumn{1}{c}{\textbf{1}}                          & \multicolumn{1}{c}{\textbf{5}}                          & \multicolumn{1}{c}{\textbf{10}}                         & \multicolumn{1}{c}{\textbf{15}}                        & \multicolumn{1}{c}{\textbf{20}}                         \\
+			\textbf{dataset}             & \multicolumn{1}{c}{\textbf{1}}                              & \multicolumn{1}{c}{\textbf{5}}                          & \multicolumn{1}{c}{\textbf{10}}                         & \multicolumn{1}{c}{\textbf{15}}                        & \multicolumn{1}{c}{\textbf{20}}                         \\
 			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ 1,  .922,  .518}2.0571 ($\pm$0.102)    & \cellcolor[rgb]{ .388,  .745,  .482}2.0424 ($\pm$0.071) & \cellcolor[rgb]{ 1,  .898,  .514}2.0587 ($\pm$0.088)    & \cellcolor[rgb]{ .973,  .412,  .42}2.0879 ($\pm$0.226) & \cellcolor[rgb]{ .518,  .78,  .486}2.0456 ($\pm$0.079)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2682 ($\pm$0.014)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2637 ($\pm$0.012) & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)  & \cellcolor[rgb]{ .98,  .525,  .443}0.2718 ($\pm$0.019) & \cellcolor[rgb]{ .584,  .8,  .49}0.2651 ($\pm$0.012)    \\
-			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2599 ($\pm$0.114)  & \cellcolor[rgb]{ .698,  .831,  .498}0.2406 ($\pm$0.023) & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)    & \cellcolor[rgb]{ .984,  .624,  .463}0.254 ($\pm$0.047) & \cellcolor[rgb]{ .388,  .745,  .482}0.2353 ($\pm$0.025) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0621 ($\pm$0.016) & \cellcolor[rgb]{ 1,  .922,  .518}0.0627 ($\pm$0.021)    & \cellcolor[rgb]{ .984,  .584,  .455}0.0651 ($\pm$0.02)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0663 ($\pm$0.023) & \cellcolor[rgb]{ .765,  .851,  .502}0.0625 ($\pm$0.02)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ 1,  .922,  .518}0.1597 ($\pm$0.042)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1535 ($\pm$0.038) & \cellcolor[rgb]{ .749,  .847,  .502}0.1572 ($\pm$0.034) & \cellcolor[rgb]{ .973,  .412,  .42}0.1667 ($\pm$0.036) & \cellcolor[rgb]{ .984,  .58,  .455}0.1644 ($\pm$0.04)   \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.482 ($\pm$1.563)   & \cellcolor[rgb]{ .984,  .62,  .463}1.4074 ($\pm$1.558)  & \cellcolor[rgb]{ 1,  .922,  .518}1.2983 ($\pm$0.66)     & \cellcolor[rgb]{ .388,  .745,  .482}1.222 ($\pm$0.6)   & \cellcolor[rgb]{ .969,  .91,  .514}1.2944 ($\pm$0.832)  \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .961,  .91,  .514}0.1031 ($\pm$0.01)   & \cellcolor[rgb]{ 1,  .922,  .518}0.1033 ($\pm$0.008)    & \cellcolor[rgb]{ .988,  .694,  .475}0.1046 ($\pm$0.008) & \cellcolor[rgb]{ .973,  .412,  .42}0.1062 ($\pm$0.009) & \cellcolor[rgb]{ .388,  .745,  .482}0.1004 ($\pm$0.009) \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.1083 ($\pm$0.1)    & \cellcolor[rgb]{ .988,  .675,  .471}0.1003 ($\pm$0.069) & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0927 ($\pm$0.069)   & \cellcolor[rgb]{ .451,  .761,  .482}0.0822 ($\pm$0.059) \\
-			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.0998 ($\pm$0.017)  & \cellcolor[rgb]{ .745,  .847,  .502}0.0953 ($\pm$0.017) & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .918,  .518}0.0963 ($\pm$0.029)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0962 ($\pm$0.011)    \\
-			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.582 ($\pm$2.084)   & \cellcolor[rgb]{ .604,  .804,  .494}0.164 ($\pm$0.154)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2411 ($\pm$0.295)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1218 ($\pm$0.11) & \cellcolor[rgb]{ 1,  .882,  .514}0.2674 ($\pm$0.545)    \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .996,  .796,  .494}0.0548 ($\pm$0.241) & \cellcolor[rgb]{ .973,  .412,  .42}0.1165 ($\pm$0.597)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0344 ($\pm$0.102)   & \cellcolor[rgb]{ .655,  .82,  .494}0.0181 ($\pm$0.059)  \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ 1,  .922,  .518}0.0597 ($\pm$0.003)    & \cellcolor[rgb]{ .769,  .855,  .502}0.0593 ($\pm$0.002) & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.06 ($\pm$0.004)   & \cellcolor[rgb]{ 1,  .918,  .518}0.0597 ($\pm$0.003)    \\
-			\textbf{student performance} & \cellcolor[rgb]{ .992,  .741,  .486}0.2331 ($\pm$0.083) & \cellcolor[rgb]{ .725,  .839,  .498}0.2297 ($\pm$0.09)  & \cellcolor[rgb]{ .973,  .412,  .42}0.2359 ($\pm$0.102)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2315 ($\pm$0.063)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2274 ($\pm$0.098) \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0728 ($\pm$0.026) & \cellcolor[rgb]{ 1,  .922,  .518}1.0818 ($\pm$0.028)    & \cellcolor[rgb]{ 1,  .871,  .51}1.0827 ($\pm$0.026)     & \cellcolor[rgb]{ .514,  .78,  .486}1.0747 ($\pm$0.026) & \cellcolor[rgb]{ .973,  .412,  .42}1.0909 ($\pm$0.042)  \\
+			\textbf{abalone}             & \cellcolor[rgb]{ 1,  .922,  .518}2.0571 ($\pm$0.102)        & \cellcolor[rgb]{ .388,  .745,  .482}2.0424 ($\pm$0.071) & \cellcolor[rgb]{ 1,  .898,  .514}2.0587 ($\pm$0.088)    & \cellcolor[rgb]{ .973,  .412,  .42}2.0879 ($\pm$0.226) & \cellcolor[rgb]{ .518,  .78,  .486}2.0456 ($\pm$0.079)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2682 ($\pm$0.014)        & \cellcolor[rgb]{ .388,  .745,  .482}0.2637 ($\pm$0.012) & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)  & \cellcolor[rgb]{ .98,  .525,  .443}0.2718 ($\pm$0.019) & \cellcolor[rgb]{ .584,  .8,  .49}0.2651 ($\pm$0.012)    \\
+			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2599 ($\pm$0.114)      & \cellcolor[rgb]{ .698,  .831,  .498}0.2406 ($\pm$0.023) & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 ($\pm$0.065)    & \cellcolor[rgb]{ .984,  .624,  .463}0.254 ($\pm$0.047) & \cellcolor[rgb]{ .388,  .745,  .482}0.2353 ($\pm$0.025) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0621 ($\pm$0.016)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0627 ($\pm$0.021)    & \cellcolor[rgb]{ .984,  .584,  .455}0.0651 ($\pm$0.02)  & \cellcolor[rgb]{ .973,  .412,  .42}0.0663 ($\pm$0.023) & \cellcolor[rgb]{ .765,  .851,  .502}0.0625 ($\pm$0.02)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ 1,  .922,  .518}0.1597 ($\pm$0.042)        & \cellcolor[rgb]{ .388,  .745,  .482}0.1535 ($\pm$0.038) & \cellcolor[rgb]{ .749,  .847,  .502}0.1572 ($\pm$0.034) & \cellcolor[rgb]{ .973,  .412,  .42}0.1667 ($\pm$0.036) & \cellcolor[rgb]{ .984,  .58,  .455}0.1644 ($\pm$0.04)   \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .973,  .412,  .42}1.482 ($\pm$1.563)       & \cellcolor[rgb]{ .984,  .62,  .463}1.4074 ($\pm$1.558)  & \cellcolor[rgb]{ 1,  .922,  .518}1.2983 ($\pm$0.66)     & \cellcolor[rgb]{ .388,  .745,  .482}1.222 ($\pm$0.6)   & \cellcolor[rgb]{ .969,  .91,  .514}1.2944 ($\pm$0.832)  \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .961,  .91,  .514}0.1031 ($\pm$0.01)       & \cellcolor[rgb]{ 1,  .922,  .518}0.1033 ($\pm$0.008)    & \cellcolor[rgb]{ .988,  .694,  .475}0.1046 ($\pm$0.008) & \cellcolor[rgb]{ .973,  .412,  .42}0.1062 ($\pm$0.009) & \cellcolor[rgb]{ .388,  .745,  .482}0.1004 ($\pm$0.009) \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .973,  .412,  .42}0.1083 ($\pm$0.1)        & \cellcolor[rgb]{ .988,  .675,  .471}0.1003 ($\pm$0.069) & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0927 ($\pm$0.069)   & \cellcolor[rgb]{ .451,  .761,  .482}0.0822 ($\pm$0.059) \\
+			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.0998 ($\pm$0.017)      & \cellcolor[rgb]{ .745,  .847,  .502}0.0953 ($\pm$0.017) & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017) & \cellcolor[rgb]{ 1,  .918,  .518}0.0963 ($\pm$0.029)   & \cellcolor[rgb]{ 1,  .922,  .518}0.0962 ($\pm$0.011)    \\
+			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.582 ($\pm$2.084)       & \cellcolor[rgb]{ .604,  .804,  .494}0.164 ($\pm$0.154)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2411 ($\pm$0.295)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1218 ($\pm$0.11) & \cellcolor[rgb]{ 1,  .882,  .514}0.2674 ($\pm$0.545)    \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .996,  .796,  .494}0.0548 ($\pm$0.241)     & \cellcolor[rgb]{ .973,  .412,  .42}0.1165 ($\pm$0.597)  & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012) & \cellcolor[rgb]{ 1,  .922,  .518}0.0344 ($\pm$0.102)   & \cellcolor[rgb]{ .655,  .82,  .494}0.0181 ($\pm$0.059)  \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ 1,  .922,  .518}0.0597 ($\pm$0.003)        & \cellcolor[rgb]{ .769,  .855,  .502}0.0593 ($\pm$0.002) & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003) & \cellcolor[rgb]{ .973,  .412,  .42}0.06 ($\pm$0.004)   & \cellcolor[rgb]{ 1,  .918,  .518}0.0597 ($\pm$0.003)    \\
+			\textbf{student performance} & \cellcolor[rgb]{ .992,  .741,  .486}0.2331 ($\pm$0.083)     & \cellcolor[rgb]{ .725,  .839,  .498}0.2297 ($\pm$0.09)  & \cellcolor[rgb]{ .973,  .412,  .42}0.2359 ($\pm$0.102)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2315 ($\pm$0.063)   & \cellcolor[rgb]{ .388,  .745,  .482}0.2274 ($\pm$0.098) \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0728 ($\pm$0.026)     & \cellcolor[rgb]{ 1,  .922,  .518}1.0818 ($\pm$0.028)    & \cellcolor[rgb]{ 1,  .871,  .51}1.0827 ($\pm$0.026)     & \cellcolor[rgb]{ .514,  .78,  .486}1.0747 ($\pm$0.026) & \cellcolor[rgb]{ .973,  .412,  .42}1.0909 ($\pm$0.042)  \\
 		\end{tabular}%
 
 
@@ -1402,11 +1409,11 @@ Figure~\ref{fig:results:reanalysis:descriptive:descriptive} provides an illustra
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_reanalysis/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying reanalysis intervals per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying reanalysis intervals per dataset, across all independent runs and epochs.}
 	\label{fig:results:reanalysis:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:reanalysis:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all runs.
+Figure~\ref{fig:results:reanalysis:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all independent runs and epochs.
 
 \begin{figure}[htb]
 	\centering
@@ -1475,7 +1482,7 @@ Figure~\ref{fig:results:reanalysis:figures:parkinsons} provides the train and te
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{burn in} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, five different burn ins are considered. These include burn ins of 0, 5, 10, 15, and 20.
 
-Table \ref{tab:results:burn_in:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} burn in configurations. Similar to before, the performance rank is calculated as the average rank produced by the burn in configurations, for all datasets, over all runs and all training epochs.
+Table \ref{tab:results:burn_in:metrics} provides the ranked performance, per dataset, for each of the \acs{BHH} burn in configurations. Similar to before, the performance rank is calculated as the average rank produced by the burn in configurations, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1519,24 +1526,24 @@ Table \ref{tab:results:burn_in:metrics} provides the ranked performance, per dat
 	\par\bigskip
 	\resizebox{\textwidth}{!}{
 		\begin{tabular}{r|ccccc}
-			                             & \multicolumn{5}{c}{\textbf{Burn In - Average Loss}}                                                                                                                                                                                                                              \\
+			                             & \multicolumn{5}{c}{\textbf{Burn In - Average Test Loss}}                                                                                                                                                                                                                             \\
 			\midrule
-			\textbf{dataset}             & \textbf{0}                                           & \textbf{5}                                           & \textbf{10}                                          & \textbf{15}                                          & \textbf{20}                                          \\
+			\textbf{dataset}             & \textbf{0}                                               & \textbf{5}                                           & \textbf{10}                                          & \textbf{15}                                          & \textbf{20}                                          \\
 			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .392,  .745,  .482}2.0587 (+-0.088) & \cellcolor[rgb]{ .388,  .745,  .482}2.0583 (+-0.181) & \cellcolor[rgb]{ 1,  .922,  .518}2.0961 (+-0.168)    & \cellcolor[rgb]{ 1,  .878,  .51}2.1454 (+-0.365)     & \cellcolor[rgb]{ .973,  .412,  .42}2.6753 (+-2.18)   \\
-			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 (+-0.016)    & \cellcolor[rgb]{ .851,  .878,  .506}0.2719 (+-0.02)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2688 (+-0.014) & \cellcolor[rgb]{ .988,  .694,  .475}0.2784 (+-0.017) & \cellcolor[rgb]{ .973,  .412,  .42}0.2851 (+-0.029)  \\
-			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 (+-0.065)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2373 (+-0.033) & \cellcolor[rgb]{ .996,  .804,  .498}0.2514 (+-0.109) & \cellcolor[rgb]{ .784,  .859,  .502}0.2427 (+-0.033) & \cellcolor[rgb]{ .973,  .412,  .42}0.2703 (+-0.056)  \\
-			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 (+-0.02)  & \cellcolor[rgb]{ .443,  .761,  .482}0.0678 (+-0.024) & \cellcolor[rgb]{ 1,  .922,  .518}0.0929 (+-0.047)    & \cellcolor[rgb]{ .992,  .722,  .482}0.1109 (+-0.043) & \cellcolor[rgb]{ .973,  .412,  .42}0.1383 (+-0.034)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 (+-0.034) & \cellcolor[rgb]{ .627,  .812,  .494}0.164 (+-0.039)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1745 (+-0.037)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1883 (+-0.067)  & \cellcolor[rgb]{ .992,  .71,  .478}0.1803 (+-0.039)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .698,  .831,  .498}1.2983 (+-0.66)  & \cellcolor[rgb]{ .388,  .745,  .482}1.1216 (+-0.582) & \cellcolor[rgb]{ 1,  .922,  .518}1.4701 (+-1.161)    & \cellcolor[rgb]{ .984,  .604,  .459}1.9918 (+-3.645) & \cellcolor[rgb]{ .973,  .412,  .42}2.2996 (+-3.589)  \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .992,  .765,  .49}0.1046 (+-0.008)  & \cellcolor[rgb]{ .69,  .831,  .498}0.1026 (+-0.009)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1009 (+-0.01)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1043 (+-0.007)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1052 (+-0.009)  \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ 1,  .922,  .518}0.081 (+-0.069)     & \cellcolor[rgb]{ .753,  .851,  .502}0.0772 (+-0.057) & \cellcolor[rgb]{ .388,  .745,  .482}0.0714 (+-0.045) & \cellcolor[rgb]{ .973,  .412,  .42}0.1136 (+-0.059)  & \cellcolor[rgb]{ .98,  .557,  .451}0.1044 (+-0.093)  \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 (+-0.017) & \cellcolor[rgb]{ .596,  .804,  .494}0.096 (+-0.015)  & \cellcolor[rgb]{ .992,  .757,  .486}0.1036 (+-0.037) & \cellcolor[rgb]{ 1,  .922,  .518}0.0997 (+-0.021)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1116 (+-0.034)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ .996,  .78,  .49}0.2411 (+-0.295)   & \cellcolor[rgb]{ .388,  .745,  .482}0.1472 (+-0.134) & \cellcolor[rgb]{ .973,  .412,  .42}0.2717 (+-0.462)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2291 (+-0.376)    & \cellcolor[rgb]{ .663,  .824,  .498}0.1842 (+-0.189) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 (+-0.012) & \cellcolor[rgb]{ .976,  .42,  .424}0.1068 (+-0.3)    & \cellcolor[rgb]{ .616,  .808,  .494}0.0262 (+-0.057) & \cellcolor[rgb]{ .973,  .412,  .42}0.1075 (+-0.256)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0612 (+-0.108)    \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 (+-0.003) & \cellcolor[rgb]{ 1,  .922,  .518}0.0599 (+-0.003)    & \cellcolor[rgb]{ .745,  .847,  .502}0.0594 (+-0.003) & \cellcolor[rgb]{ .984,  .627,  .463}0.0644 (+-0.013) & \cellcolor[rgb]{ .973,  .412,  .42}0.0676 (+-0.015)  \\
-			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 (+-0.102) & \cellcolor[rgb]{ .733,  .843,  .502}0.2801 (+-0.127) & \cellcolor[rgb]{ 1,  .922,  .518}0.314 (+-0.137)     & \cellcolor[rgb]{ .988,  .631,  .463}0.3623 (+-0.139) & \cellcolor[rgb]{ .973,  .412,  .42}0.3988 (+-0.133)  \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ 1,  .922,  .518}1.0827 (+-0.026)    & \cellcolor[rgb]{ .396,  .745,  .482}1.0791 (+-0.021) & \cellcolor[rgb]{ .388,  .745,  .482}1.079 (+-0.03)   & \cellcolor[rgb]{ .988,  .686,  .475}1.086 (+-0.029)  & \cellcolor[rgb]{ .973,  .412,  .42}1.0897 (+-0.034)  \\
+			\textbf{abalone}             & \cellcolor[rgb]{ .392,  .745,  .482}2.0587 (+-0.088)     & \cellcolor[rgb]{ .388,  .745,  .482}2.0583 (+-0.181) & \cellcolor[rgb]{ 1,  .922,  .518}2.0961 (+-0.168)    & \cellcolor[rgb]{ 1,  .878,  .51}2.1454 (+-0.365)     & \cellcolor[rgb]{ .973,  .412,  .42}2.6753 (+-2.18)   \\
+			\textbf{air quality}         & \cellcolor[rgb]{ 1,  .922,  .518}0.2729 (+-0.016)        & \cellcolor[rgb]{ .851,  .878,  .506}0.2719 (+-0.02)  & \cellcolor[rgb]{ .388,  .745,  .482}0.2688 (+-0.014) & \cellcolor[rgb]{ .988,  .694,  .475}0.2784 (+-0.017) & \cellcolor[rgb]{ .973,  .412,  .42}0.2851 (+-0.029)  \\
+			\textbf{bank}                & \cellcolor[rgb]{ 1,  .922,  .518}0.2456 (+-0.065)        & \cellcolor[rgb]{ .388,  .745,  .482}0.2373 (+-0.033) & \cellcolor[rgb]{ .996,  .804,  .498}0.2514 (+-0.109) & \cellcolor[rgb]{ .784,  .859,  .502}0.2427 (+-0.033) & \cellcolor[rgb]{ .973,  .412,  .42}0.2703 (+-0.056)  \\
+			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 (+-0.02)      & \cellcolor[rgb]{ .443,  .761,  .482}0.0678 (+-0.024) & \cellcolor[rgb]{ 1,  .922,  .518}0.0929 (+-0.047)    & \cellcolor[rgb]{ .992,  .722,  .482}0.1109 (+-0.043) & \cellcolor[rgb]{ .973,  .412,  .42}0.1383 (+-0.034)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 (+-0.034)     & \cellcolor[rgb]{ .627,  .812,  .494}0.164 (+-0.039)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1745 (+-0.037)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1883 (+-0.067)  & \cellcolor[rgb]{ .992,  .71,  .478}0.1803 (+-0.039)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .698,  .831,  .498}1.2983 (+-0.66)      & \cellcolor[rgb]{ .388,  .745,  .482}1.1216 (+-0.582) & \cellcolor[rgb]{ 1,  .922,  .518}1.4701 (+-1.161)    & \cellcolor[rgb]{ .984,  .604,  .459}1.9918 (+-3.645) & \cellcolor[rgb]{ .973,  .412,  .42}2.2996 (+-3.589)  \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .992,  .765,  .49}0.1046 (+-0.008)      & \cellcolor[rgb]{ .69,  .831,  .498}0.1026 (+-0.009)  & \cellcolor[rgb]{ .388,  .745,  .482}0.1009 (+-0.01)  & \cellcolor[rgb]{ 1,  .922,  .518}0.1043 (+-0.007)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1052 (+-0.009)  \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ 1,  .922,  .518}0.081 (+-0.069)         & \cellcolor[rgb]{ .753,  .851,  .502}0.0772 (+-0.057) & \cellcolor[rgb]{ .388,  .745,  .482}0.0714 (+-0.045) & \cellcolor[rgb]{ .973,  .412,  .42}0.1136 (+-0.059)  & \cellcolor[rgb]{ .98,  .557,  .451}0.1044 (+-0.093)  \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 (+-0.017)     & \cellcolor[rgb]{ .596,  .804,  .494}0.096 (+-0.015)  & \cellcolor[rgb]{ .992,  .757,  .486}0.1036 (+-0.037) & \cellcolor[rgb]{ 1,  .922,  .518}0.0997 (+-0.021)    & \cellcolor[rgb]{ .973,  .412,  .42}0.1116 (+-0.034)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ .996,  .78,  .49}0.2411 (+-0.295)       & \cellcolor[rgb]{ .388,  .745,  .482}0.1472 (+-0.134) & \cellcolor[rgb]{ .973,  .412,  .42}0.2717 (+-0.462)  & \cellcolor[rgb]{ 1,  .922,  .518}0.2291 (+-0.376)    & \cellcolor[rgb]{ .663,  .824,  .498}0.1842 (+-0.189) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 (+-0.012)     & \cellcolor[rgb]{ .976,  .42,  .424}0.1068 (+-0.3)    & \cellcolor[rgb]{ .616,  .808,  .494}0.0262 (+-0.057) & \cellcolor[rgb]{ .973,  .412,  .42}0.1075 (+-0.256)  & \cellcolor[rgb]{ 1,  .922,  .518}0.0612 (+-0.108)    \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 (+-0.003)     & \cellcolor[rgb]{ 1,  .922,  .518}0.0599 (+-0.003)    & \cellcolor[rgb]{ .745,  .847,  .502}0.0594 (+-0.003) & \cellcolor[rgb]{ .984,  .627,  .463}0.0644 (+-0.013) & \cellcolor[rgb]{ .973,  .412,  .42}0.0676 (+-0.015)  \\
+			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 (+-0.102)     & \cellcolor[rgb]{ .733,  .843,  .502}0.2801 (+-0.127) & \cellcolor[rgb]{ 1,  .922,  .518}0.314 (+-0.137)     & \cellcolor[rgb]{ .988,  .631,  .463}0.3623 (+-0.139) & \cellcolor[rgb]{ .973,  .412,  .42}0.3988 (+-0.133)  \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ 1,  .922,  .518}1.0827 (+-0.026)        & \cellcolor[rgb]{ .396,  .745,  .482}1.0791 (+-0.021) & \cellcolor[rgb]{ .388,  .745,  .482}1.079 (+-0.03)   & \cellcolor[rgb]{ .988,  .686,  .475}1.086 (+-0.029)  & \cellcolor[rgb]{ .973,  .412,  .42}1.0897 (+-0.034)  \\
 		\end{tabular}%
 
 	}
@@ -1549,11 +1556,11 @@ Figure~\ref{fig:results:burn_in:descriptive:descriptive} provides an illustratio
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_burn_in/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying burn in values per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of the \acs{BHH} with varying burn in values per dataset, across all independent runs and epochs.}
 	\label{fig:results:burn_in:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:burn_in:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all runs.
+Figure~\ref{fig:results:burn_in:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for each reanalysis interval configuration as it relates to all datasets, across all independent runs and epochs.
 
 \begin{figure}[htb]
 	\centering
@@ -1622,7 +1629,7 @@ Figure~\ref{fig:results:burn_in:figures:parkinsons} provides the train and test 
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{normalisation} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, the normalisation hyper-parameter is a flag that enables or disables normalisation of the concentration parameters in an attempt to provide more exploration in the \index{heuristic}heuristic space.
 
-Table \ref{tab:results:normalise:metrics} provides the ranked performance, per dataset, with normalisation enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the normalisation configurations, for all datasets, over all runs and all training epochs.
+Table \ref{tab:results:normalise:metrics} provides the ranked performance, per dataset, with normalisation enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the normalisation configurations, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1665,24 +1672,24 @@ Table \ref{tab:results:normalise:metrics} provides the ranked performance, per d
 	\par\bigskip
 	\resizebox{0.6\textwidth}{!}{
 		\begin{tabular}{r|cc}
-			                             & \multicolumn{2}{c}{\textbf{Normalisation - Average Loss}}                                                           \\
+			                             & \multicolumn{2}{c}{\textbf{Normalisation - Average Test Loss}}                                                           \\
 			\midrule
-			\textbf{dataset}             & \textbf{false}                                            & \textbf{true}                                           \\
+			\textbf{dataset}             & \textbf{false}                                                 & \textbf{true}                                           \\
 			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)   & \cellcolor[rgb]{ .973,  .412,  .42}2.0936 ($\pm$0.231)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2704 ($\pm$0.017) \\
-			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2374 ($\pm$0.042) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 ($\pm$0.02)    & \cellcolor[rgb]{ .973,  .412,  .42}0.0689 ($\pm$0.03)   \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)   & \cellcolor[rgb]{ .973,  .412,  .42}0.1721 ($\pm$0.038)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}1.2983 ($\pm$0.66)    & \cellcolor[rgb]{ .973,  .412,  .42}1.5051 ($\pm$1.93)   \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .973,  .412,  .42}0.1046 ($\pm$0.008)    & \cellcolor[rgb]{ .388,  .745,  .482}0.1021 ($\pm$0.009) \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)    & \cellcolor[rgb]{ .973,  .412,  .42}0.0868 ($\pm$0.069)  \\
-			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.0941 ($\pm$0.017)    & \cellcolor[rgb]{ .388,  .745,  .482}0.0931 ($\pm$0.019) \\
-			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)    & \cellcolor[rgb]{ .388,  .745,  .482}0.2358 ($\pm$0.333) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)   & \cellcolor[rgb]{ .973,  .412,  .42}0.0455 ($\pm$0.216)  \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)   & \cellcolor[rgb]{ .973,  .412,  .42}0.0598 ($\pm$0.004)  \\
-			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 ($\pm$0.102)   & \cellcolor[rgb]{ .973,  .412,  .42}0.2522 ($\pm$0.098)  \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)   & \cellcolor[rgb]{ .973,  .412,  .42}1.0831 ($\pm$0.045)  \\
+			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)        & \cellcolor[rgb]{ .973,  .412,  .42}2.0936 ($\pm$0.231)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2704 ($\pm$0.017) \\
+			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2374 ($\pm$0.042) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 ($\pm$0.02)         & \cellcolor[rgb]{ .973,  .412,  .42}0.0689 ($\pm$0.03)   \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)        & \cellcolor[rgb]{ .973,  .412,  .42}0.1721 ($\pm$0.038)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}1.2983 ($\pm$0.66)         & \cellcolor[rgb]{ .973,  .412,  .42}1.5051 ($\pm$1.93)   \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .973,  .412,  .42}0.1046 ($\pm$0.008)         & \cellcolor[rgb]{ .388,  .745,  .482}0.1021 ($\pm$0.009) \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)         & \cellcolor[rgb]{ .973,  .412,  .42}0.0868 ($\pm$0.069)  \\
+			\textbf{housing}             & \cellcolor[rgb]{ .973,  .412,  .42}0.0941 ($\pm$0.017)         & \cellcolor[rgb]{ .388,  .745,  .482}0.0931 ($\pm$0.019) \\
+			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2358 ($\pm$0.333) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)        & \cellcolor[rgb]{ .973,  .412,  .42}0.0455 ($\pm$0.216)  \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)        & \cellcolor[rgb]{ .973,  .412,  .42}0.0598 ($\pm$0.004)  \\
+			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 ($\pm$0.102)        & \cellcolor[rgb]{ .973,  .412,  .42}0.2522 ($\pm$0.098)  \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .388,  .745,  .482}1.0827 ($\pm$0.026)        & \cellcolor[rgb]{ .973,  .412,  .42}1.0831 ($\pm$0.045)  \\
 		\end{tabular}%
 	}
 \end{table}%
@@ -1694,11 +1701,11 @@ Figure~\ref{fig:results:normalise:descriptive:descriptive} provides an illustrat
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_normalise/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of the \acs{BHH} with normalisation toggled per dataset, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of the \acs{BHH} with normalisation toggled per dataset, across all independent runs and epochs.}
 	\label{fig:results:normalise:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:normalise:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for normalisation configurations that are enabled and disabled, as it relates to all datasets, across all runs.
+Figure~\ref{fig:results:normalise:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for normalisation configurations that are enabled and disabled, as it relates to all datasets, across all independent runs and epochs.
 
 \begin{figure}[htb]
 	\centering
@@ -1773,7 +1780,7 @@ Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{discounted rewards} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, the discounted rewards hyper-parameter is a flag that enables or disables discounted rewards of the pseudo counts that are added to concentration parameters in an attempt to provide control over the effects of past performances of the low-level \index{heuristic}heuristics.
 
-Table \ref{tab:results:discounted_rewards:metrics} provides the ranked performance, per dataset, with discounted rewards enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the discounted rewards configurations, for all datasets, over all runs and all training epochs.
+Table \ref{tab:results:discounted_rewards:metrics} provides the ranked performance, per dataset, with discounted rewards enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the discounted rewards configurations, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
@@ -1816,24 +1823,24 @@ Table \ref{tab:results:discounted_rewards:metrics} provides the ranked performan
 	\par\bigskip
 	\resizebox{0.6\textwidth}{!}{
 		\begin{tabular}{r|cc}
-			                             & \multicolumn{2}{c}{\textbf{Discounted Rewards - Average Loss}}                                                           \\
+			                             & \multicolumn{2}{c}{\textbf{Discounted Rewards - Average Test Loss}}                                                           \\
 			\midrule
-			\textbf{dataset}             & \textbf{false}                                                 & \textbf{true}                                           \\
+			\textbf{dataset}             & \textbf{false}                                                      & \textbf{true}                                           \\
 			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)        & \cellcolor[rgb]{ .973,  .412,  .42}2.0789 ($\pm$0.102)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2693 ($\pm$0.011) \\
-			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)         & \cellcolor[rgb]{ .388,  .745,  .482}0.2349 ($\pm$0.041) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 ($\pm$0.02)         & \cellcolor[rgb]{ .973,  .412,  .42}0.0676 ($\pm$0.027)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)        & \cellcolor[rgb]{ .973,  .412,  .42}0.1672 ($\pm$0.037)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}1.2983 ($\pm$0.66)         & \cellcolor[rgb]{ .973,  .412,  .42}1.3457 ($\pm$1.419)  \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .388,  .745,  .482}0.1046 ($\pm$0.008)        & \cellcolor[rgb]{ .973,  .412,  .42}0.1053 ($\pm$0.008)  \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)         & \cellcolor[rgb]{ .973,  .412,  .42}0.0928 ($\pm$0.079)  \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)        & \cellcolor[rgb]{ .973,  .412,  .42}0.0972 ($\pm$0.017)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)         & \cellcolor[rgb]{ .388,  .745,  .482}0.1833 ($\pm$0.259) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)        & \cellcolor[rgb]{ .973,  .412,  .42}0.0479 ($\pm$0.203)  \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)        & \cellcolor[rgb]{ .973,  .412,  .42}0.06 ($\pm$0.002)    \\
-			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 ($\pm$0.102)        & \cellcolor[rgb]{ .973,  .412,  .42}0.2408 ($\pm$0.086)  \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .973,  .412,  .42}1.0827 ($\pm$0.026)         & \cellcolor[rgb]{ .388,  .745,  .482}1.0792 ($\pm$0.039) \\
+			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)             & \cellcolor[rgb]{ .973,  .412,  .42}2.0789 ($\pm$0.102)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)              & \cellcolor[rgb]{ .388,  .745,  .482}0.2693 ($\pm$0.011) \\
+			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)              & \cellcolor[rgb]{ .388,  .745,  .482}0.2349 ($\pm$0.041) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 ($\pm$0.02)              & \cellcolor[rgb]{ .973,  .412,  .42}0.0676 ($\pm$0.027)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)             & \cellcolor[rgb]{ .973,  .412,  .42}0.1672 ($\pm$0.037)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}1.2983 ($\pm$0.66)              & \cellcolor[rgb]{ .973,  .412,  .42}1.3457 ($\pm$1.419)  \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .388,  .745,  .482}0.1046 ($\pm$0.008)             & \cellcolor[rgb]{ .973,  .412,  .42}0.1053 ($\pm$0.008)  \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)              & \cellcolor[rgb]{ .973,  .412,  .42}0.0928 ($\pm$0.079)  \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)             & \cellcolor[rgb]{ .973,  .412,  .42}0.0972 ($\pm$0.017)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)              & \cellcolor[rgb]{ .388,  .745,  .482}0.1833 ($\pm$0.259) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)             & \cellcolor[rgb]{ .973,  .412,  .42}0.0479 ($\pm$0.203)  \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)             & \cellcolor[rgb]{ .973,  .412,  .42}0.06 ($\pm$0.002)    \\
+			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 ($\pm$0.102)             & \cellcolor[rgb]{ .973,  .412,  .42}0.2408 ($\pm$0.086)  \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .973,  .412,  .42}1.0827 ($\pm$0.026)              & \cellcolor[rgb]{ .388,  .745,  .482}1.0792 ($\pm$0.039) \\
 		\end{tabular}%
 
 
@@ -1847,11 +1854,11 @@ Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} provides an 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/descriptive/descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of the \acs{BHH} with discounted rewards toggled per datasets, across all runs and epochs.}
+	\caption{Descriptive plots for the average ranks of the \acs{BHH} with discounted rewards toggled per datasets, across all independent runs and epochs.}
 	\label{fig:results:discounted_rewards:descriptive:descriptive}
 \end{figure}
 
-Figure~\ref{fig:results:discounted_rewards:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for discounted rewards configurations that are enabled and disabled, as it relates to all datasets, across all runs.
+Figure~\ref{fig:results:discounted_rewards:descriptive:cd} provides an illustration of the overall critical difference plots for ranked performance for discounted rewards configurations that are enabled and disabled, as it relates to all datasets, across all independent runs and epochs.
 
 \begin{figure}[htb]
 	\centering
