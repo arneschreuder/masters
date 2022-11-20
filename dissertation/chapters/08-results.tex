@@ -1788,22 +1788,51 @@ Figure~\ref{fig:results:normalise:figures:bike} provides the train and test loss
 \end{figure}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DISCOUNTED REWARDS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Discounted Rewards}\label{sec:results:discounted_rewards}
 
 This section provides the empirical results for the experimental group that compares the performance of different variants of the \acs{BHH} as it relates to the \textit{discounted rewards} hyper-parameter. Brief discussions follow and illustrations are provided for visual aid. As a reminder, the discounted rewards hyper-parameter is a flag that enables or disables discounted rewards of the pseudo counts that are added to concentration parameters in an attempt to provide control over the effects of past performances of the low-level \index{heuristic}heuristics.
 
-Table \ref{tab:results:discounted_rewards:metrics} provides the average ranked performance, per dataset, with discounted rewards enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the discounted rewards configurations, for all datasets, over all independent runs and epochs.
+As a reminder, the discounted rewards mechanism is implemented such that pseudo counts for past performances that achieved successful credit allocations are exponentially decayed into the past. The default discounted rewards decay rate is set to 0.5.
+
+As before, Table~\ref{tab:results:discounted_rewards:metrics:loss} presents the empirical results for this experimental group, showing the average test loss and statistics for variants of the \acs{BHH} that was implemented where discounted rewards is enabled and disabled. The test loss is measured at the last epoch for each dataset, over all independent runs.
+
+\begin{table}[htb]
+	\centering
+	\caption{Empirical results showing average test loss and statistics for discounted rewards toggled by the \acs{BHH} across multiple datasets, for all independent runs and is measured at the last epoch.}
+	\label{tab:results:discounted_rewards:metrics:loss}%
+	\par\bigskip
+	\resizebox{0.7\textwidth}{!}{
+		\begin{tabular}{r|cc}
+			                             & \multicolumn{2}{c}{\textbf{Discounted Rewards - Average Test Loss}}                                                           \\
+			\midrule
+			\textbf{dataset}             & \textbf{false}                                                      & \textbf{true}                                           \\
+			\midrule
+			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)             & \cellcolor[rgb]{ .973,  .412,  .42}2.0789 ($\pm$0.102)  \\
+			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)              & \cellcolor[rgb]{ .388,  .745,  .482}0.2693 ($\pm$0.011) \\
+			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)              & \cellcolor[rgb]{ .388,  .745,  .482}0.2349 ($\pm$0.041) \\
+			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 ($\pm$0.02)              & \cellcolor[rgb]{ .973,  .412,  .42}0.0676 ($\pm$0.027)  \\
+			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)             & \cellcolor[rgb]{ .973,  .412,  .42}0.1672 ($\pm$0.037)  \\
+			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}1.2983 ($\pm$0.66)              & \cellcolor[rgb]{ .973,  .412,  .42}1.3457 ($\pm$1.419)  \\
+			\textbf{fish toxicity}       & \cellcolor[rgb]{ .388,  .745,  .482}0.1046 ($\pm$0.008)             & \cellcolor[rgb]{ .973,  .412,  .42}0.1053 ($\pm$0.008)  \\
+			\textbf{forest fires}        & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)              & \cellcolor[rgb]{ .973,  .412,  .42}0.0928 ($\pm$0.079)  \\
+			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)             & \cellcolor[rgb]{ .973,  .412,  .42}0.0972 ($\pm$0.017)  \\
+			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)              & \cellcolor[rgb]{ .388,  .745,  .482}0.1833 ($\pm$0.259) \\
+			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)             & \cellcolor[rgb]{ .973,  .412,  .42}0.0479 ($\pm$0.203)  \\
+			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)             & \cellcolor[rgb]{ .973,  .412,  .42}0.06 ($\pm$0.002)    \\
+			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 ($\pm$0.102)             & \cellcolor[rgb]{ .973,  .412,  .42}0.2408 ($\pm$0.086)  \\
+			\textbf{wine quality}        & \cellcolor[rgb]{ .973,  .412,  .42}1.0827 ($\pm$0.026)              & \cellcolor[rgb]{ .388,  .745,  .482}1.0792 ($\pm$0.039) \\
+		\end{tabular}%
+	}
+\end{table}%
+
+Table \ref{tab:results:discounted_rewards:metrics:rank} provides the average ranked performance, per dataset, with discounted rewards enabled and disabled. Similar to before, the performance rank is calculated as the average rank produced by the discounted rewards configurations, for all datasets, over all independent runs and epochs.
 
 \begin{table}[htb]
 	\centering
 	\caption{Empirical results showing average rank and statistics for discounted rewards toggled by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
 	\label{tab:results:discounted_rewards:metrics:rank}%
 	\par\bigskip
-	\resizebox{0.6\textwidth}{!}{
+	\resizebox{0.7\textwidth}{!}{
 		\begin{tabular}{rcc}
 			\multicolumn{1}{r|}{}                             & \multicolumn{2}{c}{\textbf{Discounted Rewards - Average Rank}}                                                           \\
 			\midrule
@@ -1828,42 +1857,12 @@ Table \ref{tab:results:discounted_rewards:metrics} provides the average ranked p
 			\midrule
 			\textbf{normalised avg rank}                      & \cellcolor[rgb]{ .388,  .745,  .482}1                          & \cellcolor[rgb]{ .973,  .412,  .42}2                    \\
 		\end{tabular}%
-
 	}
 \end{table}%
 
-\begin{table}[htb]
-	\centering
-	\caption{Empirical results showing average rank and statistics for discounted rewards toggled by the \acs{BHH} across multiple datasets, for all independent runs and epochs.}
-	\label{tab:results:discounted_rewards:metrics:loss}%
-	\par\bigskip
-	\resizebox{0.6\textwidth}{!}{
-		\begin{tabular}{r|cc}
-			                             & \multicolumn{2}{c}{\textbf{Discounted Rewards - Average Test Loss}}                                                           \\
-			\midrule
-			\textbf{dataset}             & \textbf{false}                                                      & \textbf{true}                                           \\
-			\midrule
-			\textbf{abalone}             & \cellcolor[rgb]{ .388,  .745,  .482}2.0587 ($\pm$0.088)             & \cellcolor[rgb]{ .973,  .412,  .42}2.0789 ($\pm$0.102)  \\
-			\textbf{air quality}         & \cellcolor[rgb]{ .973,  .412,  .42}0.2729 ($\pm$0.016)              & \cellcolor[rgb]{ .388,  .745,  .482}0.2693 ($\pm$0.011) \\
-			\textbf{bank}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2456 ($\pm$0.065)              & \cellcolor[rgb]{ .388,  .745,  .482}0.2349 ($\pm$0.041) \\
-			\textbf{bike}                & \cellcolor[rgb]{ .388,  .745,  .482}0.0651 ($\pm$0.02)              & \cellcolor[rgb]{ .973,  .412,  .42}0.0676 ($\pm$0.027)  \\
-			\textbf{car}                 & \cellcolor[rgb]{ .388,  .745,  .482}0.1572 ($\pm$0.034)             & \cellcolor[rgb]{ .973,  .412,  .42}0.1672 ($\pm$0.037)  \\
-			\textbf{diabetic}            & \cellcolor[rgb]{ .388,  .745,  .482}1.2983 ($\pm$0.66)              & \cellcolor[rgb]{ .973,  .412,  .42}1.3457 ($\pm$1.419)  \\
-			\textbf{fish toxicity}       & \cellcolor[rgb]{ .388,  .745,  .482}0.1046 ($\pm$0.008)             & \cellcolor[rgb]{ .973,  .412,  .42}0.1053 ($\pm$0.008)  \\
-			\textbf{forest fires}        & \cellcolor[rgb]{ .388,  .745,  .482}0.081 ($\pm$0.069)              & \cellcolor[rgb]{ .973,  .412,  .42}0.0928 ($\pm$0.079)  \\
-			\textbf{housing}             & \cellcolor[rgb]{ .388,  .745,  .482}0.0941 ($\pm$0.017)             & \cellcolor[rgb]{ .973,  .412,  .42}0.0972 ($\pm$0.017)  \\
-			\textbf{iris}                & \cellcolor[rgb]{ .973,  .412,  .42}0.2411 ($\pm$0.295)              & \cellcolor[rgb]{ .388,  .745,  .482}0.1833 ($\pm$0.259) \\
-			\textbf{mushroom}            & \cellcolor[rgb]{ .388,  .745,  .482}0.0052 ($\pm$0.012)             & \cellcolor[rgb]{ .973,  .412,  .42}0.0479 ($\pm$0.203)  \\
-			\textbf{parkinsons}          & \cellcolor[rgb]{ .388,  .745,  .482}0.0587 ($\pm$0.003)             & \cellcolor[rgb]{ .973,  .412,  .42}0.06 ($\pm$0.002)    \\
-			\textbf{student performance} & \cellcolor[rgb]{ .388,  .745,  .482}0.2359 ($\pm$0.102)             & \cellcolor[rgb]{ .973,  .412,  .42}0.2408 ($\pm$0.086)  \\
-			\textbf{wine quality}        & \cellcolor[rgb]{ .973,  .412,  .42}1.0827 ($\pm$0.026)              & \cellcolor[rgb]{ .388,  .745,  .482}1.0792 ($\pm$0.039) \\
-		\end{tabular}%
+Table \ref{tab:results:discounted_rewards:metrics:rank} shows that, in general, there is no obvious difference in the outcomes of the \acs{BHH} when discounted rewards is enabled or disabled. Although this could suggestion that the discounted rewards hyper-parameter is problem specific, a better suggestion supports the findings from Section \ref{sec:results:normalise} that suggest that manipulation of the outcomes of the concentration parameters yield insignificant differences in the outcomes of performance, as a small replay window size of ten, is used by default.
 
-
-	}
-\end{table}%
-
-Table \ref{tab:results:discounted_rewards:metrics} shows that, in general, there is no obvious difference in the outcomes of the \acs{BHH} when discounted rewards is enabled or disabled.
+In general, it is found that the online learning approach, followed by the \acs{BHH} yields very little room to learn from. This is supported by the fact that most of the significant performance gains are made in the early stages of training after which exploitation of \index{heuristic}heuristics and solutions later in the training process is shown to produce the best results.
 
 Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} provides an illustration of the descriptive plots for the \acs{BHH} configurations with the discounted rewards hyper-parameter enabled and disabled, per dataset.
 
@@ -1883,11 +1882,11 @@ Figure~\ref{fig:results:discounted_rewards:descriptive:cd} provides an illustrat
 	\label{fig:results:discounted_rewards:descriptive:cd}
 \end{figure}
 
-Figure~\ref{fig:results:discounted_rewards:descriptive:descriptive} shows no statistical difference in the outcomes of the discounted rewards configurations of the \acs{BHH}. This further supports the suggestion that the use of the discounted rewards hyper-parameter is problem specific.
+Figure~\ref{fig:results:discounted_rewards:descriptive:cd} shows no statistically significant difference in the outcomes of the discounted rewards configurations of the \acs{BHH}. This further supports the suggestion that the effects of discounted rewards is not realised for small replay window sizes.
 
 Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quality} provides the train and test, loss and accuracy plots for an example classification dataset (wine quality) as it relates to the discounted rewards experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss and accuracy plots for other datasets are left out for brevity as they yield similar illustrations.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/train/loss/wine_quality.pdf}
@@ -1920,7 +1919,7 @@ Similar to before, Figure~\ref{fig:results:discounted_rewards:figures:wine_quali
 
 Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train and test loss plots for an example regression dataset (housing) as it relates to the discounted rewards experimental group. As before, the illustrations are provided in log scale and illustrations of the train and test loss plots for other regression datasets are left out for brevity.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{bhh_discounted_rewards/figures/train/loss/housing.pdf}
@@ -1940,4 +1939,8 @@ Figure~\ref{fig:results:discounted_rewards:figures:housing} provides the train a
 
 \section{Summary}\label{sec:results:summary}
 
-TODO
+This section provided the results of the empirical process that was described in Chapter \ref{chap:methodology}. Three experimental groups were designed. These experimental groups include a case study on the behaviour of the \acs{BHH} as it relates to an example dataset (iris). Furthermore, an experimental group that compares the performance of the \acs{BHH} to standalone, low-level \index{heuristic}heuristics was included, and finally, an experimental group that compares the effects of various hyper-parameters on the outcomes of the \acs{BHH} was also included. The empirical results for each of these experimental groups were presented in detail.
+
+In general, it was found that the \acs{BHH} is able to successfully train the underlying \acp{FFNN}. Detailed analysis and discussions of the empirical results were provided along with illustrations for visual aid. Where possible, detailed discussions were presented that explain the reasons behind the outcomes that were produced. Throughout, various suggestions were made to improve on the implementations made in this dissertation.
+
+Finally, all results that were presented were retrieved from statistical analysis which yield statistical certainty in the results and outcomes observed.
