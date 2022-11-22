@@ -1,264 +1,298 @@
 \chapter{Conclusion}
 \label{chap:conclusion}
 
-\begin{quote}
-      \textit{
-            I am sorry to have made such a long speech, but I did not have time to make a shorter one. - Winston Churchill
-      }
-\end{quote}
+\begin{quotation}
+      \noindent ``I am sorry to have made such a long speech, but I did not have time to make a shorter one.''
+\end{quotation}
+\begin{flushright}
+      - Winston Churchill
+\end{flushright}
 
-Finally, the research objectives that have been set out in this dissertation must be concluded. This chapter provides a summary of the research that has been done.
-
-The remainder of the chapter is structured as follows:
+This chapter provides a summary of the research that is done in this dissertation. The research objectives were set out in Chapter \ref{chap:introduction} and are concluded in this chapter. Furthermore, this chapter provides a summary of the results and findings from the empirical process and provides future research opportunities. The remainder of the chapter is structured as follows.
 
 \begin{itemize}
-      \item \textbf{Section \ref{sec:conclusion:research_goals}} provides a review of the problem statement, objectives and motivations behind the research.
+      \item \textbf{Section \ref{sec:conclusion:research_goals}} provides a summary of the research intent and provides a review of the problem statement, objectives and motivations behind the research.
 
       \item \textbf{Section \ref{sec:conclusion:background_info}} summarises the background information that was covered.
 
-      \item \textbf{Section \ref{sec:conclusion:bhh}} provides a brief recap of the \ac{BHH} and its implementation.
+      \item \textbf{Section \ref{sec:conclusion:bhh}} provides a brief summary of the \ac{BHH} and its implementation.
 
-      \item \textbf{Section \ref{sec:conclusion:methodology}} provides a brief recap of the methodology and the empirical process that was followed.
+      \item \textbf{Section \ref{sec:conclusion:methodology}} provides a brief summary of the methodology and the empirical process that was followed.
 
-      \item \textbf{Section \ref{sec:conclusion:results}} summarises the research findings.
+      \item \textbf{Section \ref{sec:conclusion:results}} summarises the research findings. This section is broken down into the various experimental groups that were executed.
 
-      \item \textbf{Section \ref{sec:conclusion:further_research}} discuss further research opportunities.
+      \item \textbf{Section \ref{sec:conclusion:further_research}} presents future research opportunities.
 
-      \item \textbf{Section \ref{sec:conclusion:documentation_and_data}} briefly discusses some supplementary and supporting material related to the research, as made available by the authors either as external sources or in the appendices of this dissertation.
+      \item \textbf{Section \ref{sec:conclusion:documentation_and_data}} provides a brief discussion on supporting material related to the research, as made available by the authors.
 
-      \item Finally, \textbf{Section \ref{sec:conclusion:closing_statements}} provides the closing statements of the dissertation.
+      \item \textbf{Section \ref{sec:conclusion:summary}} provides a brief summary of the chapter.
 \end{itemize}
 
-\section{Reviewing Research Objectives}
+\section{Summary of Research Intent}
 \label{sec:conclusion:research_goals}
 
 This section briefly reviews the problem statement, motivations and research objectives that was set out in Chapter \ref{chap:introduction} of this dissertation.
 
-The main area of focus for this research stems from the problem statement which identified the difficult and tedious problem of heuristic selection for \ac{FFNN} training. Often times this process is non-trivial and very time-consuming. It has been identified that there is no easy way to know which heuristic to select to train \acp{FFNN}. Traditionally, an iterative approach of trial-and-error was followed. This process involves a tedious process of careful consideration and selection, often at the expense of the researcher's resources.  This research has identified the possibility of using a relatively new approach, referred to as \acp{HH} to automate this selection process. \ac{HH} has been shown to provide a general solution to this problem. The consequences of such approach being successful could provide a mechanism that saves a lot of time and could provide a more generalised solution to heuristic selection.
+\subsection{Review of Problem Statement}
+\label{sec:conclusion:research_goals:problem_statement}
 
-Investigation was done into the landscapes of existing solutions to train \acp{FFNN} as well as \acp{HH}. Though there exists many applications of \acp{HH} there are little to no published work on using \acp{HH} to train \acp{FFNN}. The only work that was found include the work by~\citeauthor{ref:nel:2021}~\cite{ref:nel:2021}.
+The main area of focus for the research done in this dissertation stems from the problem statement, which identified the difficult and tedious problem of selecting the best \index{heuristic}heuristic for training \acp{FFNN}. This process is often non-trivial and time-consuming. There is no easy way to know which \index{heuristic}heuristic to select to train \acp{FFNN}. Traditionally, an iterative approach of trial-and-error was followed. This process involves a tedious process of carefully considering and selecting candidate \index{heuristic}heuristics, whereby each candidate \index{heuristic}heuristic is then empirically tested and evaluated. This process is often executed at the expense of the researcher's resources.
 
-Other existing techniques from other problem domains were investigated. \ac{RL}, meta-learning, online, one-shot and probabilistic learning approached were considered. Bayesian probability theory showed promise and the \Ac{BHH} was conceptualised.
 
-The research objectives were defined and are summarised as follows:
+\subsection{Review of Research Motivation}
+\label{sec:conclusion:research_goals:motivations}
+
+The research presented in this disseration identified the possibility of using a different approach, referred to as \acp{HH}, to automate the \index{heuristic}heuristic selection process. \acp{HH} are high-level search algorithms that search in the \index{heuristic}heuristic space, whereby low-level \index{heuristic}heuristics search in the solution space. \acp{HH} have been shown to provide a general solution to the \index{heuristic}heuristic selection process. The benefit that such an approach provides, is that it automates the \index{heuristic}heuristic selection process. This approach saves researchers time and potentially produce a solution that could generalise to multiple problems.
+
+Investigation was done into the landscapes of existing solutions to train \acp{FFNN} as well as \acp{HH}. Though there exists many applications where \acp{HH} are used for optimisation, there are little to no published work on using \acp{HH} to train \acp{FFNN}. The only work that was found include the work by~\citeauthor{ref:nel:2021}~\cite{ref:nel:2021}.
+
+\subsection{Review of Research Objectives}
+\label{sec:conclusion:research_goals:research_objectives}
+
+Existing techniques from other problem domains were considered. \acs{RL}, meta-learning and probabilistic learning approached were considered. Bayesian probability theory showed promise. This research then set out to develop a novel high-level \index{heuristic}heuristic that utilises probability theory in an online learning setting to drive the automatic \index{heuristic}heuristic selection process. As such, the \acs{BHH} was conceptualised. The research objectives were defined and are summarised as follows.
 
 \begin{itemize}
-      \item Conduct literature studies on all related topics that are relevant to the development of the \ac{BHH}. These include \ac{ANN}, \index{heuristic}heuristics/optimisers, meta-learning, \acp{HH}, probability theory and Bayesian statistics.
+      \item Conduct literature studies on all related topics that are relevant to the development of the \acs{BHH}. These include \acs{ANN}, existing low-level \index{heuristic}heuristics, meta-learning, \acp{HH}, probability theory and Bayesian statistics.
 
-      \item Develop a novel \ac{BHH} that has both a selective and perturbative element. For the selection mechanism, Bayesian statistics and \ac{MAP} is used. For the perturbative element, proxied low-level \index{heuristic}heuristic update steps are used.
+      \item Develop a novel \acs{BHH} that can be used to automate the \index{heuristic}heuristic selection process. The \acs{BHH} follows an approach that includes a selective and perturbative element in an online learning setting. Bayesian statistics and \acs{MAP} is used as the optimisation technique. Furthermore, the \acs{BHH} implements a mapping for proxied \index{heuristic}heuristic state update operations, whereby \index{heuristic}heuristic state is maintained by outsourcing state opertations to relevant low-level \index{heuristic}heuristics.
 
       \item Conduct an empirical study to show that the \ac{BHH} is able to train \acp{FFNN} effectively on a number of different datasets.
 
-      \item Conduct an empirical study to study the behavioural characteristics of the \ac{BHH}.
+      \item Conduct an empirical study to study the behavioural characteristics of the \acs{BHH}.
 
-      \item Conduct an empirical study to critically evaluate the performance of the \ac{BHH} to those of traditional, low-level \index{heuristic}heuristic when training \acp{FFNN} on a number of different datasets.
+      \item Conduct an empirical study to critically evaluate the performance of the \acs{BHH} compared to traditional, low-level, standalone \index{heuristic}heuristic when training \acp{FFNN} on a number of different datasets.
 
-      \item Conduct an empirical study to evaluate variants of the \ac{BHH} to study the impacts of various design decisions on the outcomes of the \ac{BHH}.
+      \item Conduct an empirical study to evaluate variants of the \acs{BHH} to study the impact of various hyper-parameters on the outcomes of the \ac{BHH}.
 
-      \item Provide a statistically sound evaluation of outcomes with statistical significance tests driving the conclusions of the outcomes.
+      \item Provide and discuss the findings of the results produced by the empirical process. The results are analysed for statistical significance.
 \end{itemize}
 
-As one can see, the research set out to do in this dissertation was quite extensive and also identifies many different opportunities for future research.
+The research objectives set out in this dissertation are extensive. Each of these research objectives have been successfully executed. From the findings made in this dissertation, many different opportunities for future research are identified.
 
-The next sections aim to provide brief summaries of the work that was done, followed by a conclusion of the outcomes of each.
 
 \section{Summary of Background Information}
 \label{sec:conclusion:background_info}
 
-Chapters \ref{chap:introduction} - \ref{chap:probability} provided the reader with background information that is necessary to understand the components that are discussed and developed in this work. These chapters respectively provided background information, literature reviews and landscape analyses into \acp{ANN}, \index{heuristic}heuristics/optimisers, \acp{HH} and meta-learning, probability theory and Bayesian statistics.
+Chapters \ref{chap:anns}-\ref{chap:probability} provided the reader with the relevant background information that is necessary to develop the novel \acs{BHH}. Chapter~\ref{chap:anns} provided background information on \acp{ANN}. All the components that make up the \acs{AN} were provided and is followed by discussions on \acp{FFNN}. Chapter~\ref{chap:heuristics} provided background information on various low-level heuristics that are designed to train \acp{FFNN}. A number of gradient-based \index{heuristic}heuristics and \index{meta-heuristic}meta-heuristics were presented in detail. Chapter~\ref{chap:hhs} provided background information and literature reviews on \acp{HH}. Meta-learning is discussed and a \acs{HH} classification scheme, developed by \citeauthor{ref:burke:2010}~\cite{ref:burke:2010}, was discussed in detail. Chapter~\ref{chap:probability} provided background information and mathematical derivations on probability theory and Bayesian statistics. Various probability distributions were provided along with their conjugate priors. \acs{MLE} and \acs{MAP} were presented in detail along with mathematical breakdowns.
 
-It should be mentioned that there are many resources available on the above mentioned topics in their own right. However, the intersection of these topics, especially \acp{ANN} and \acp{HH} are close to non-existent and calls for much more research and publication. This dissertation aims to provide a manifesto of these topics and how they are bring together to show that \acp{HH} can be used to train \acp{FFNN}.
-
-From these topics, it can be concluded that the necessary background information that was provisioned for in the objectives for the dissertation have been provided. The next section gives a summary of the novel \ac{BHH} that was developed.
+From the aforementioned chapters, it can be concluded that the necessary background information was provided as set out in the research objectives of this dissertation.
 
 
-\section{Summary of Bayesian Hyper-Heuristics}
+\section{Summary of The Bayesian Hyper-Heuristic}
 \label{sec:conclusion:bhh}
 
-The main takeaway point from this dissertation is the development of a novel \ac{BHH}. Chapter \ref{chap:bhh} provides the details and implementation of the \ac{BHH} and provides the reader with various design decisions that could control/affect the outcomes of the \ac{BHH}.
+The main contribution from this dissertation is the development of a novel \acf{BHH}. Chapter \ref{chap:bhh} provided the details on the concept and implementation of the \ac{BHH}. Various design decisions and hyper-parameters that could affect the outcomes of the \ac{BHH} were presented.
 
-It was shown how the \ac{BHH} implements a Bayesian probabilistic model and makes use of online learning to select \index{heuristic}heuristics dynamically throughout the training process. This probabilistic model forms the selection mechanism for the \ac{BHH}.
+It was shown that the \acs{BHH} is a population-based, meta-hyper-heuristic that utilises selection and perturbation of low-level \index{heuristic}heuristics in an online learning fashion. \index{heuristic}Heuristics are selected for each entity in a population of entities that each implement a candidate solution to the underlying \acs{FFNN}. The \acs{BHH} uses a Bayesian probabilistic model to drive the \index{heuristic}heuristic selection process. \acs{MAP} was derived for the probabilistic model and is used as the mechanism by which the \acs{BHH} is optimised, yielding the learning capability of the \acs{BHH}.
 
-Furthermore, it is shown that selection alone is not enough and that a measure of transition between \index{heuristic}heuristics is needed. Entity and \index{heuristic}heuristic state and state-manipulation formed the cornerstone of this topic. A technique that deconstructs \index{heuristic}heuristics into their initialisation and update steps is proposed. This technique then allows for the proxying of update step operations as they are required by different \index{heuristic}heuristics. Though this solves the transition problem between \index{heuristic}heuristics, is has been indicated that does not guarantee stable search processes. This does raise opportunities for further research which is summarised below in Section \ref{sec:conclusion:further_research}.
+Furthermore, it is shown that \index{heuristic}heuristic selection alone is not sufficient and that a mechanism of transition between \index{heuristic}heuristics is needed as they are selected for each entity in the population. Entity and \index{heuristic}heuristic state and state-manipulation formed the cornerstone of this topic. Perturbation of \index{heuristic}heuristics and solutions is achieved through a technique that deconstructs \index{heuristic}heuristics into their initialisation and update steps. The update operations for each heuristic was derived as movement equations borrowed from the field of physics. This technique allows for the proxying of update step operations as they are required by different \index{heuristic}heuristics.
 
-The simplicity of the \ac{BHH} and various challenges related to it have been highlighted. Of these challenge include:
+Detailed discussions were provided on a number of hyper-parameters that each contribute to the trade-off between \index{heuristic}heuristic and solution exploration and exploitation. These hyper-parameters include the \index{heuristic pool}\textit{heuristic pool} configuration, the \textit{population size}, the \textit{credit assignment strategy} used, the \textit{reselection interval}, the \textit{replay window size}, the \textit{reanalysis interval}, the \textit{burn in window size}, \textit{normalisation} of concentration parameters and \textit{discounted rewards} as assigned by the credit assignment strategy. A \acs{BHH} baseline configuration was identified with default values for each of the hyper-parameters.
 
-\begin{itemize}
-      \item Catering for overfitting by early stopping conditions.
-      \item Catering for invalid selections.
-      \item Catering for invalid or stale entity and \index{heuristic}heuristic states.
-      \item Catering for mode-collapse where a \index{heuristic}heuristic is either always selected or never selected.
-      \item Catering for a trade-off between exploration and exploitation.
-\end{itemize}
-
-After the development of the \ac{BHH}, the authors presented the methodology used to execute the empirical process. The details of which is summarised in the next section.
-
+It was mentioned that the \acs{BHH}, implemented in this dissertation, does not implement a move-acceptance strategy that rejects heuristic progressions if they do not improve on the current best solution. Throughout the presentation of empirical results, it is recommended that this technique be investigated and implemented in further research.
 
 
 \section{Summary of Methodology}
 \label{sec:conclusion:methodology}
 
-As discussed above, the research objectives defined a number of empirical tests to be executed. Each one of the empirical tests is referred to as an experimental group. Various experimental groups have been identified and is listed below:
+The research objectives defined a number of empirical tests to be executed. Each one of the empirical tests is referred to as an experimental group. Various experimental groups have been identified and are listed below.
 
 \begin{itemize}
-      \item A case-study on the behaviour of the \ac{BHH} during training and testing to understand the workings of the \ac{BHH} and to see if the \ac{BHH} is able to train \acp{FFNN}.
-      \item A comparative analysis between the performance of standalone \index{heuristic}heuristics and the baseline \ac{BHH} when training \acp{FFNN}.
-      \item A comparative analysis between variants of the \ac{BHH} that include:
+      \item An experimental group that provides a case-study on the behaviour of the \ac{BHH} as it relates to training of a \acs{FFNN} on an example dataset (iris), in order to understand the workings of the \acs{BHH}, and to determine if the \acs{BHH} is able to successfully train \acp{FFNN}. Three different configurations of the \acs{BHH} configuration was implemented. This includes the default \acs{BHH} baseline configuration, the \acs{BHH} baseline configuration where the replay window size is set to 250, and the \acs{BHH} baseline configuration which utilises the \textit{symmetric} credit assignment strategy.
+
+      \item An experimental group that provides a comparative analysis between the performance of the \acs{BHH} baseline configuration and low-level, standalone \index{heuristic}heuristics when training \acp{FFNN} on a number of datasets.
+
+      \item An experimental group that provides a comparative analysis between variants of the \ac{BHH} that investigate the effects of various hyper-parameters on the outcomes of the \acs{BHH}. These variants include:
+
             \begin{itemize}
-                  \item Different \index{heuristic}heuristic pool configurations.
-                  \item Different population sizes.
-                  \item Different credit assignment strategies.
-                  \item Different reselection window sizes.
-                  \item Different replay window sizes.
-                  \item Different reanalysis window sizes.
-                  \item Different burn in window sizes.
-                  \item Enabling and disabling normalisation of pseudo counts in the performance log.
-                  \item Enabling and disabling discounted rewards of pseudo counts in the performance log.
+                  \item The \acs{BHH} baseline configuration with different \index{heuristic pool}heuristic pool configurations. Three different \index{heuristic pool}heuristic pool configurations were implemented. These configurations include a configuration with all the low-level \index{heuristic}heuristics included in the \index{heuristic pool}heuristic pool, a configuration with only gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and a configuration with only \index{meta-heuristic}meta-heuristics in the \index{heuristic pool}heuristic pool.
+
+                  \item The \acs{BHH} baseline configuration with different population sizes. Five different population sizes were implemented including 5, 10, 15, 20, and 25.
+
+                  \item The \acs{BHH} baseline configuration with different credit assignment strategies. Five different credit assignment strategies were implemented including the \textit{ibest}, \textit{pbest}, \textit{rbest}, \textit{gbest}, and \textit{symmetric} credit assignment strategies.
+
+                  \item The \acs{BHH} baseline configuration with different reselection intervals. Five different reselection intervals were implemented including 1, 5, 10, 15, and 20.
+
+                  \item The \acs{BHH} baseline configuration with different reanalysis window sizes. Five different reanalysis intervals were implemented including 1, 5, 10, 15, and 20.
+
+                  \item The \acs{BHH} baseline configuration with different replay window sizes. Five different replay window sizes were implemented including 1, 5, 10, 15, and 20.
+
+                  \item The \acs{BHH} baseline configuration with different burn in window sizes. Five different burn in window sizes were implemented including 0, 5, 10, 15, and 20.
+
+                  \item The \acs{BHH} baseline configuration where normalisation of pseudo counts for concentration parameters, as derived from credit allocations in the performance log, are enabled and disabled.
+
+                  \item The \acs{BHH} baseline configuration where discounted rewards of pseudo counts for concentration parameters, as derived from credit allocations in the performance log, are enabled and disabled.
             \end{itemize}
 \end{itemize}
 
-Each experimental group is run against a set of 15 datasets, consisting of regression and classification problems, split between uni- and multimodal problems. Each experimental group is repeated over 30 runs for statistical certainty. The statistical analysis process was discussed and ANOVA, post hoc Tukey, independent T-test and Kruskal-Wallis formed part of the statistical test repertoir.
+Each experimental group was executed against a set of fourteen datasets, consisting of regression and classification problems, split between uni- and multimodal problems. Each experimental group was repeated over 30 runs for statistical certainty. The statistical analysis process was discussed and the ANOVA, post hoc Tukey, independent T-test and Kruskal-Wallis statistical tests formed part of the statistical tests that were conducted.
 
-In order to allow for the studying of the \ac{BHH} even after training has saturated and overfitting has occured, all experimental groups are run for 30 epochs, way more than what has been empirically found to be necessary. This also meant that no early stopping conditions were used.
-
-The next section provides a summary of all the results, findings and conclusions related to the empirical process is given next.
+All experimental groups were run for a maximum of 30 epochs in order to allow for the studying of the \ac{BHH} even after training has converged and overfitting has occured. The maximum epoch strategy yielded a training process that is longer than what was empirically found to be necessary. This also meant that no early stopping strategy was used. Future research opportunities should incorporate an early stopping strategy of the training process.
 
 \section{Summary of Results}
 \label{sec:conclusion:results}
 
-All empirical tests where successfully executed and statistically evaluate as described in the methodology presented in Chapter \ref{chap:methodology}. From these evaluations a number of conclusions are made, each described briefly in the sub-sections below:
+This section provides a summary of the results obtained from each of the experimental groups that were executed. This section is structured as follows.
 
-\subsection{\ac{BHH} behavioural case study}
+\begin{itemize}
+      \item \textbf{Section \ref{sec:conclusion:results:summary:case_study}} provides a summary of the results for the experimental group that executed a case study on the behaviour of the \acs{BHH} on an example dataset.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:standalone}} provides a summary of the results for the experimental group that compares the performance of the \acs{BHH} baseline configuration with low-level, standalone \index{heuristic}heuristics, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:heuristic_pool}} provides a summary of the results for the experimental group that investigates the effects of the \index{heuristic pool}\textit{heuristic pool} hyper-parameter on the \acs{BHH}, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:population_size}} provides a summary of the results for the experimental group that investigates the effects of the \textit{population size} hyper-parameter on the \acs{BHH}, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:credit}} provides a summary of the results for the experimental group that investigates the effects of the \textit{credit assignment strategy} hyper-parameter on the \acs{BHH}, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:reselection}} provides a summary of the results for the experimental group that investigates the effects of the \textit{reselection interval} hyper-parameter on the \acs{BHH}, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:replay}} provides a summary of the results for the experimental group that investigates the effects of the \textit{replay window size} hyper-parameter on the \acs{BHH}, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:reanalysis}} provides a summary of the results for the experimental group that investigates the effects of the \textit{reanalysis interval} hyper-parameter on the \acs{BHH}, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:burn_in}} provides a summary of the results for the experimental group that investigates the effects of the \textit{burn in window size} hyper-parameter on the \acs{BHH}, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:normalise}} provides a summary of the results for the experimental group that investigates the effects of the \textit{normalisation} hyper-parameter on the \acs{BHH}, across all datasets.
+
+      \item \textbf{Section \ref{sec:conclusion:results:summary:discounted_rewards}} provides a summary of the results for the experimental group that investigates the effects of the \textit{discounted rewards} hyper-parameter on the \acs{BHH}, across all datasets.
+\end{itemize}
+
+\subsection{Behavioural Case Study}
 \label{sec:conclusion:results:summary:case_study}
 
-For this experimental group it was found that the \ac{BHH} is able to train \acp{FFNN} relatively well. It was shown how the \ac{BHH} is able to learn and that the learning is in a positive direction towards the overall objectives of the \ac{BHH}. Furthermore, it was shown in isolation that both the selection mechanism as well as the perturbative component of the \ac{BHH} was successful in their own rights, resulting in a \ac{HH} that is able to select and combine \index{heuristic}heuristics as needed.
+For this experimental group it was found that the \ac{BHH} is able to train a \acf{FFNN} relatively well. Detailed analysis was provided for various state parameters maintained by the \acs{BHH}. These include the concentration parameters for different heuristics, probabilities of \index{heuristic}heuristic selection probabilities, prior heuristic selection probabilities and posterior heuristic selection probabilities. It was shown that the \ac{BHH} is able to learn and that the \acs{BHH} is able to exploit small performance biases as it relates to \index{heuristic}heuristic selection. This enables the \acs{BHH} to select the correct \index{heuristic}heuristics to apply to the correct entities at the correct time in the training process.
 
-It was shown how the \ac{BHH} drastically overfits at some point during training for a number of datasets. Although it is known that early stopping conditions would prohibit this from happening, other solutions have also been proposed. These include:
+Various illustrations of the train and test loss plots, as it relates to training of a \acs{FFNN} on the the iris dataset, have been provided. Furthermore, various illustrations on the changes of the \acs{BHH} state parameters were provided for visual aid.
 
-\begin{itemize}
-      \item \index{heuristic}Heuristic selection acceptance criteria: where a selection is only deemed valid if it does indeed improve on performance.
+The main findings that were made for this experimental group are given as follows. Most of the training progression is made in the early stages of the training process. That leads to the conclusion that the \acs{BHH} has a small window from which it should learn and gain the most in the training process. After training has converged, the \acs{BHH} resets its concentration parameters and heuristic selection returns to the symmetric heuristic selection case. As such, the \acs{BHH} explores other heuristics in an attempt to further improve on the current best solution found. The test set was used as a validation set during training. Some overfitting can be observed as the \acs{BHH} tried finding better solutions on the train set, but at the cost of generalisation on the test set. Minor divergence of the training loss is observed as the \acs{BHH} explores other heuristics in an attempt to improve performance. Since no move-acceptance strategy, and no early stopping stategy was used, the \acs{BHH} could select heuristics that are sub-optimal. Future research opportunities should incorporate these aforementioned strategies.
 
-      \item State reset: to avoid overshooting solutions due to momentum.
 
-      \item Various techniques to balance exploration and exploitation.
-\end{itemize}
-
-Various example plots on training and test datasets have been provided and detailed plots of the inner-workings of the \ac{BHH} have been presented to support the findings and arguments.
-
-\subsection{Standalone vs. \ac{BHH} Baseline}
+\subsection{\acs{BHH} Baseline vs. Low-Level Heuristics}
 \label{sec:conclusion:results:summary:standalone}
 
-For this experimental group the baseline \ac{BHH} was found to perform relatively well in comparison to the standalone low-level \index{heuristic}heuristics. Overall the \ac{BHH} ranked 5th out of 11 with performances close to that of the best \index{heuristic}heuristics. Unfortunately, the \ac{BHH} was not entirely able to beat the best heuristics on all occasions, but did perform comparatively well in all cases. The empirical results, statistical tests, descriptive plots and plots of example runs are given to support findings and conclusions.
+For this experimental group, three different configurations of the \acs{BHH} baseline configuration were implemented. These configurations vary in the type of \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool. The \textit{bhh\_all} configuration included all low-level \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool. The \textit{bhh\_gd} configuration included only gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and the \textit{bhh\_mh} configuration included only \index{meta-heuristic}meta-heuristics in the \index{heuristic pool}heuristic pool.
 
-\subsection{\ac{BHH} Variant: Heuristic pool}
+Overall the \textit{bhh\_gd} configuration performed the best out of the \acs{BHH} variants, achieving an overall rank of fourth amongst thirteen \index{heuristic}heuristics that were implemented and executed on fourteen datasets. The \textit{bhh\_gd} configuration produced performance results close to that of the best low-level \index{heuristic}heuristics and was only statistically outperformed by the top two low-level \index{heuristic}heuristics. The \textit{bhh\_all} configuration achieved an overall rank of sixth and the \textit{bhh\_mh} achieved an overall rank of eighth.
+
+Although the \textit{bhh\_gd} configuration produced performance results comparable to the best low-level heuristics, the \textit{bhh\_all} and \textit{bhh\_mh} configurations produced average results. It was found that, in general, gradient-based heuristics produced the best results, as such, it it understandable that the \textit{bhh\_gd}  yielded the best performance outcomes between the different \acs{BHH} variants that were implemented. Although the \acs{BHH} variants were not able to produce better results than the top low-level \index{heuristic}heuristics, the \acs{BHH} variants still effectively trained the underlying \acp{FFNN} and produced good training outcomes overall.
+
+It was shown that the \textit{bhh\_gd} configuration produced the lowest variance in rank between datasets out of all of the \index{heuristic}heuristics implemented, giving the \acs{BHH} the ability to generalise well to other problems.
+
+Furthermore, it was shown that the \acs{BHH} provides a mechanism whereby prior expert knowledge can be injected, before training starts. Future research can exploit this knowledge and provide a significant bias towards \index{heuristic}heuristics that are known to perform well on particular problem types.
+
+\subsection{Heuristic pool}
 \label{sec:conclusion:results:summary:heuristic_pool}
 
-For this experimental group, different configurations of \index{heuristic}heuristic pools were considered. Three different configurations were evaluated. It was found that the gradient-only \ac{BHH} variant performed significantly better than the configurations that included all of the heuristics and one that included only the meta-heuristics. It was shown that the inclusion of meta-heuristics cause the \ac{BHH} to overfit much more drastically due to the nature of their update step operations.
+For this experimental group, the same three \index{heuristic pool}heuristical pool variants, as outlined for the \acs{BHH} behavioural case study, was implemented. These variants are denoted as \textit{all}, \textit{gd}, and \textit{mh}. This experimental group then provided an opportunity to look at the effects of the \index{heuristic pool}heuristic pool hyper-parameter in more detail.
 
-\subsection{\ac{BHH} Variant: Population Size}
+As with the experimental group that compares the performance of the \acs{BHH} baseline configuration with low-level, standalone \index{heuristic}heuristics, it was found that the \textit{gd} configuration performed significantly better than the \textit{all} and \textit{mh} configurations overall, across all datasets.
+
+The benefits of using meta-heuristics in the heuristic pool was not realised in this dissertation, since the gradient-based low-level \index{heuristic}heuristics, as well as the \textit{gd} configuration produced the best overall performance, across all datasets.
+
+\subsection{Population Size}
 \label{sec:conclusion:results:summary:population_size}
 
-For this experimental group, various different population sizes are evaluated. It was found that the population size is largely problem-dependent. An interesting observation was made where some cases where shown where the relationship between population size and performance is not linear, but rather parabolic or even polynomial in some cases. This warrants for further investigation and could serve as a good opportunity for future research.
+For this experimental group, five different population sizes were evaluated. These included population sizes of 5, 10, 15, 20, and 25. It was found that lower population sizes yielded better results on the majority of datasets, while only some datasets prefer larger population sizes. However, overall it was shown that the population size hyper-parameter is problem specific. Illustrations of the train and test, loss and accuracy plots for some example datasets were provided. Some divergence in training loss was observed and was attributed to selection of \index{heuristic}heuristics that yield sub-optimal results after an optimal solution has already been found. As before, a move acceptance strategy and an early stopping strategy can be incorporated to avoid this effect.
 
-\subsection{\ac{BHH} Variant: Credit}
+\subsection{Credit Assignment Strategy}
 \label{sec:conclusion:results:summary:credit}
 
-For this experimental group, various different credit assignment strategies were evaluated. It was found that the choice of credit assignment strategy to use is largely problem-dependent. Two cases were highlighted where symmetric credit assignment was preferred, which suggests that for that dataset \index{heuristic}heuristic selection doesn't matter, only the proxied update step operations are sufficient.
+For this experimental group, five different credit assignment strategies were evaluated. These included the \textit{ibest}, \textit{pbest}, \textit{rbest}, \textit{gbest}, and \textit{symmetric} credit assignment strategies. No clear overall difference in performance was observed for the various credit assignment strategies. In the majority of cases, a particular non-symmetric credit assignment strategy yielded the best performance, while the \textit{symmetric} credit assignment strategy yielded the best performance results in one case. It can therefore be concluded that the credit assignment strategy is problem specific. As before, illustrations of the train and test, loss and accuracy plots for some example datasets were provided.
 
-\subsection{\ac{BHH} Variant: Reselection}
+\subsection{Reselection Interval}
 \label{sec:conclusion:results:summary:reselection}
 
-For this experimental group different reselection window sizes were evaluated. It was found that a larger reselection size is generally preferred. A bigger reselection window sizes lead to a longer timeframe to learn before reselection has to occur. The increase in number of samples of evidence, per entity-heuristic combination in the performance log is argued to be the reason for this. However, that means that the reselection and replay window size parameter are related. If the reselection window size is large, the replay window size should be large as well.
+For this experimental group, five different reselection intervals were evaluated. These included reselection intervals of 1, 5, 10, 15, and 20. Overall, with statistical significance, it was found that a larger reselection interval is generally preferred. It was found that larger reselection intervals lead to longer timeframes for the low-level heuristics to progress, smoothing out update steps. Larger reselection intervals also allow the \acs{BHH} to collect more samples of \index{heuristic}heuristic performance evidence from which it can learn. Therefore, a conclusion that can be made is that \index{heuristic}heuristic and solution exploitation is preferred over exploration. As before, illustrations of the train and test, loss and accuracy plots for some example datasets were provided.
 
-\subsection{\ac{BHH} Variant: Replay}
+\subsection{Replay}
 \label{sec:conclusion:results:summary:replay}
 
-For this experimental group, different replay windows sizes were evaluated. It was found that the replay window is problem-dependent with some dataset preferring short memory and other preferring long memory. Take note of the relationship between the reselection, replay and reanalysis window sizes. The value of the one does influence the value of other and should be carefully selection together.
+For this experimental group, five different replay windows sizes were evaluated. These included replay window sizes of 1, 5, 10, 15, and 20. Overall, no statistically significant difference was found for the performance of the replay window size configurations, and thus, it was concluded that the replay window size is problem specific, with some datasets preferring short memory and other preferring long memory. The relationship between the reselection interval, replay window size and reanalysis interval was discussed, and it was shown that these hyper-parameters should be considered together. As before, illustrations of the train and test, loss and accuracy plots for some example datasets were provided.
 
-\subsection{\ac{BHH} Variant: Reanalysis}
+
+\subsection{Reanalysis Interval}
 \label{sec:conclusion:results:summary:reanalysis}
 
-For this experimental group different reanalysis window sizes were evaluated. It was also found that the reanalysis window size is problem-dependent. Given the relationship between the reselection, replay and reanalysis window sizes, a suggestion to eliminate hyper-parameters is to remove the notion of reanalysis and merge with reselection. Reselection is shown to correlate with reanalysis and thus can be removed by just setting the reanalysis window size equal to the reselection size.
+For this experimental group, five different reanalysis intervals were evaluated. These included reanalysis intervals of 1, 5, 10, 15, and 20. Overall, no statistically significant difference was found for the performance of the reanalysis intervals across all datasets, and thus, it was concluded that the reanalysis interval is problem specific. As before, illustrations of the train and test, loss and accuracy plots for some example datasets were provided.
 
-\subsection{\ac{BHH} Variant: Burn In}
+\subsection{Burn In}
 \label{sec:conclusion:results:summary:burn_in}
 
-For this experimental group different burn in window sizes were evaluated. It was found that in general no burn in is preferred, but some exceptions preferring just a very small burn in. In general is was shown that large burn in values are not good.
+For this experimental group, five different burn in window sizes were evaluated. These included burn in window sizes of 1, 5, 10, 15, and 20. Overall, it was found with statistical significance, that lower burn in window sizes are generally preferred. The lower burn in window sizes generally produced the best results in the majority of cases, with some exceptions that prefer average burn in window sizes. As before, illustrations of the train and test, loss and accuracy plots for some example datasets were provided.
 
-\subsection{\ac{BHH} Variant: Normalise}
+\subsection{Normalisation}
 \label{sec:conclusion:results:summary:normalise}
 
-For this experimental group an empirical test was conducted to determine the effects of normalisation of pseudo counts in the performance log. The choice of this parameter was shown to be problem depedent.
+For this experimental group an empirical test was conducted to determine the effects of normalisation of pseudo counts allocated by the credit assignment strategy in the performance log. A configuration is included with normalisation enabled and a configuration is included with normalisation disabled. It was concluded that the default replay window size of ten is too small to yield a significant difference in performance outcome for when normalisation is enabled compared to when normalisation is disabled. As before, illustrations of the train and test, loss and accuracy plots for some example datasets were provided.
 
-\subsection{\ac{BHH} Variant: Discounted Rewards}
+\subsection{Discounted Rewards}
 \label{sec:conclusion:results:summary:discounted_rewards}
 
-It can be concluded that the outcomes of the empirical process were successful and that the scientific process has been followed accordingly. From this, it can be concluded that all of the objective of the dissertation have been met and that the research can be concluded. The next section provides a brief discussion of further research opportunities that stem from this work.
+For this experimental group an empirical test was conducted to determine the effects of discounted rewards of pseudo counts allocated by the credit assignment strategy in the performance log. A configuration is included with discounted rewards enabled and a configuration is included with discounted rewards disabled. Similar to the findings for the experimental group investigating the effects of the normalisation hyper-parameter, it was concluded that the default replay window size of ten is too small to yield a significant difference in performance outcome for when discounted rewards is enabled compared to when discounted rewards is disabled. As before, illustrations of the train and test, loss and accuracy plots for some example datasets were provided.
 
-\section{Further Research}
+\section{Future Research Opportunities}
 \label{sec:conclusion:further_research}
 
-Throughout this dissertation, many different opportunities have been identified for future research. This section contains a summmary of these topics.
+Throughout this dissertation, many different opportunities have been identified for future research. This section contains a summary of each of these topics.
 
+\subsubsection{A Priori Biases}
+\label{sec:conclusion:further_research:a_priori_biases}
 
-\subsubsection{Prior Knowledge}
+By default, the \acs{BHH} initialises the values for the concentration parameters, related to each \index{heuristic}heuristic in the \index{heuristic pool}heuristic pool, symmetrically with an initial value of 1.0. This yields an initial probability distribution of the \index{heuristic}heuristic selection probabilities that is uniform. Symmetric initialisation contains no a priori \index{heuristic}heuristic selection bias and assumes uniform sampling at first. It has been identified that expert knowledge can be incorporated into the \acs{BHH} by carefully providing the initial concentrations for the each \index{heuristic}heuristic in the \index{heuristic pool}heuristic pool. Such research would then evaluate if such prior \index{heuristic}heuristic selection biases have a positive impact on the outcomes of the \acs{BHH}.
 
-The \ac{BHH} initialises the concentrations for its distributions symmetrically (a value of 1 for all indices). Symmetric initialisation contains no prior bias and assumes uniform sampling at first. It has been identified that expert knowledge can be incorporated into the \ac{BHH} by carefully providing the initial concentration for the distributions. This research would then evaluate if such prior information has a positive impact on the outcomes of the \ac{BHH}.
+\subsubsection{Move Acceptance Strategies}
+\label{sec:conclusion:further_research:move_acceptance}
 
+Throughout the presentation of the empirical results, it is mentioned that a move-acceptance strategy can be incorporated to reject \index{heuristic}heuristic progressions that do not improve on the current best solution found. This would eliminate any divergence in the training process as a result of selecting sub-optimal \index{heuristic}heuristics. Various different move-acceptance strategies can be developed and empirically tested.
 
-\subsubsection{Early Stopping}
+\subsubsection{Early Stopping Strategies}
+\label{sec:conclusion:further_research:early_stopping}
 
-It has been shown that the \ac{BHH} suffers drastically from overfitting as the majority of learning happens during the first few epochs (large datasets have more mini-batch iterations per epoch) resulting in the majority of the training process, which span 30 epochs, to try recover from overfitting. Early stop was purposefully not utilised in this research in order to see how the \ac{BHH} would behave after training has saturated. Early stopping could provide valuable insight into the actual ranked performance of the \ac{BHH} since overfitting would then no longer be present and a ranked performance evaluation can be done at some point in time.
+Similar to the move-acceptance strategy, throughout the presentation of the empirical results, it is mentioned that an early stopping strategy can be used to hault the training process if the performance does not improve for a number of steps. In this dissertation, a number of examples were presented where divergence of training loss occurred. Furthermore, a number of examples were presented where overfitting occurred. An early stopping strategy can help prevent such outcomes.
 
 \subsubsection{Entity Search}
+\label{sec:conclusion:further_research:entity_search}
+For this dissertation, even though the predictive model implemented by the \acs{BHH} includes entity consideration, it does not sample from an entity pool. The \acs{BHH} keeps the entire entity pool fixed, and just reselects heuristics for each entity. The \acs{BHH}, as is, can be used to learn which entities to select as well. The hypothesis is that this would result in better combinations of entities and heuristics, which should have a positive effect on the outcomes of the \acs{BHH}.
 
-For this dissertation, even though the predictive model implemented by the \ac{BHH} includes entity consideration, it does not sample from an entity pool, but rather keeps the entire entity pool and just switch allocated heuristics. The \ac{BHH}, as is, can be used to learn which entities to select as well. The hypothesis is that this would result in better combinations of entities and heuristics, more often, which should have a positive effect on the outcomes of the \ac{BHH}
+\subsubsection{Continuous Valued Credit Allocation}
+\label{sec:conclusion:further_research:continuous_credit}
 
-\subsubsection{Models}
-
-For this dissertation, focus was put on training \acp{FFNN}. However, in theory one should be able to swap out \acp{FFNN} for any other mathematical model that can be optimised. Suggestions include \acp{DNN}, \acp{RNN} and dynamic optimisation problems.
+Credit assignment in the context of this dissertation yields a discrete credit allocation value. More specifically, the credit allocation is binary, yielding a zero or a one. Future research can investigate different credit allocation strategies that yield continuous valued outcomes. This should provide more fine-grained indicators of \index{heuristic}heuristic performance which the \acs{BHH} can exploit easier.
 
 \subsubsection{Credit Search}
+\label{sec:conclusion:further_research:credit_search}
 
-Credit assignment in the context of this dissertation was has 2 outcomes, true and false. Therefore, credit assignment and by definition performance evaluation is modeled as a \index{Binomial probability distribution} distribution with a \index{Beta probability distribution}Beta probability distribution as a prior probability distribution. Heuristic selection has multiple possible outcomes, yielding a index associated with a heuristic. Therefore, heuristic selection is modeled as a \index{multionomial}multinomial/\index{categorical}categorical with a dirichlet probability distribution as a prior probability distribution. Since the dirichlet-multinomial distributions are the multivariate extensions of the beta-Binomial probability distributions, it show be possible to extend credit assignment to a multivariate version. A suggestion then is to learn which credit assignment to select. The results of this have show that credit assignment is problem-dependent. Therefore, include credit selection as part of the selection pool implemented by the \ac{BHH}. One could then include multiple strategies, each with varying exploration-exploitation trade-off.
-
-\subsubsection{Selection Validation}
-
-The intent behind a selection validation mechanism is to confirm that selections are successful before they are utilised. In other words, a small verification window where it is decided whether the outcomes of a selection mechanism was beneficial to the learning outcomes or not. These selection validations are based on an ``acceptance criterion'' that a selection has to pass before it is validated. Inclusion of a selection validation mechanism for the \ac{BHH} could yield interesting outcomes.
-
-\subsubsection{Dynamic Reselection Window Size Strategies}
-
-It was shown that generally larger reselection window sizes are required. It was shown that there is a relationship between the reselection, replay and reanalysis window sizes. There is an inherent trade-off between exploration and exploitation and therefore, investigation into dynamic sizing strategies could be prove to yield interesting outcomes.
-
-\subsubsection{Heuristic Pools}
-
-This dissertation only considered 3 different configurations of the heuristic pool. The following alternative  configurations could be considered:
-
-\begin{itemize}
-      \item Multiple of the same heuristic, but with different hyper-parameter values.
-      \item Very large or very small heuristic pool sizes.
-      \item Inclusion of black-box optimisers such as CMA-ES.
-      \item Ensemble pools where the heuristic selection is a selection of a ensemble configuration.
-\end{itemize}
-
-\subsubsection{Parameter Pools}
-
-Throughout this dissertation, many of the findings have been said to be "problem-dependent". A possible solution to this is to apply the \ac{BHH} then for all parameters, not just heuristics. This means to include hyper-parameters such as learning rate, which can be "learnt" during training. This eliminates a lot of the burden to tediously fine-tune and optimise hyper-params.
-
-This could also provide opportunity to investigate other \ac{FFNN} paradigms such as neural architecture search (ref ???) by including various parameters, that describe the \ac{NN} architecture. The \ac{BHH} slection mechanism can then include these elements for learning as well.
+Similar to entity search, the \acs{BHH}, as is, can be used to learn which credit assignment strategies to use. This can then be combined with heuristic and entity selection so that the correct heuristic is selected for the correct entity, by means of the correct credit allocation strategy that is applicable, at the correct time in the training process. For example, a particular heuristic-entity combination might benefit from a \textit{pbest} credit allocation, while another heuristic-entity combination might benefit from a \textit{ibest} credit allocation at the same time in the training process.
 
 \subsubsection{Models}
+\label{sec:conclusion:further_research:models}
 
-This dissertation focused on \acp{FFNN} as the underlying model to be trained. However, other models can also be considered.
+For this dissertation, focus was put on training \acp{FFNN}. However, in theory, other models can also be used. Suggestions include \acp{DNN} and \acp{RNN}. Furthermore, future research can attempt to use the \acs{BHH} for dynamic optimisation problems.
 
+
+\subsubsection{Dynamic Hyper-Parameter Values}
+\label{sec:conclusion:further_research:dynamic_hyper_parameters}
+
+It was shown that larger reselection intervals are generally preferred. It was shown that there is a relationship between the reselection interval, the replay window size and the reanalysis interval. These hyper-parameters provide an mechanism for trade-off between exploration and exploitation and therefore, investigation into dynamic selection of hyper-parameter values can be considered in future research.
+
+\subsubsection{Heuristic Pools}
+\label{sec:conclusion:further_research:heuristic_pools}
+
+This dissertation only considered three different types of \index{heuristic pool}heuristic pool configurations. The following alternative configurations could be considered. A \index{heuristic pool}heuristic pool could be considered where multiple instances of the same \index{heuristic}heuristic is included, but with different hyper-parameter values, effectively implementing dynamic hyper-parameter optimisation. Empirical testing can be done to determine the effects of various \index{heuristic pool}heuristic pool sizes. Different types of heuristics can be considered for inclusion in the \index{heuristic pool}heuristic pool. A suggestion is to include black-box optimisers such as \acs{CMA-ES}. Finally, \index{heuristic}heuristic ensemble pools could be considered, where the \index{heuristic}heuristic selection is a selection of an ensemble of \index{heuristic}heuristics.
+
+\subsubsection{Parameter Pools}
+\label{sec:conclusion:further_research:parameter_pools}
+
+A suggestion for future research is to apply the \acs{BHH} to a multitude of parameter types. These could be hyper-parameters of the low-level \index{heuristic}heuristics, the parameters for the topology and architecture of models (similar to neural architecture search) or the hyper-parameters of the \acs{BHH} itself.
 
 \section{Documentation and Data}
 \label{sec:conclusion:documentation_and_data}
 
-All data, source code, logs, configurations, scripts and analysis is hosted at: \url{https://github.com/arneschreuder/masters.ai} with raw empirical data made available on Google Cloud project id: masters-363209.
+All the source code, data, logs and analyses that were used in this dissertation, as well as the dissertation source itself, can be found at \url{https://github.com/arneschreuder/masters.ai}. The raw empirical data is made available on Google Cloud's BigQuery platform, under the project id \textit{masters-363209}.
 
 
-\section{Closing Statements}
-\label{sec:conclusion:closing_statements}
+\section{Summary}
+\label{sec:conclusion:summary}
 
-The research that is presented in this dissertation included the development and detailed analysis of a novel \ac{BHH}. This chapter presented a review of the research objectives. In conclusion it is found that all of the research objectives have been met. The empirical process was sound and the research outcome have been shown to be statistically significant. This concludes the research presented in this document
+This chapter concludes the research that is done in this dissertation. This chapter provided a summary of the research intent, providing a brief review of the research problem, motivations and objectives defined for this dissertation. A brief summary of the background information that is covered in this dissertation is provided. A brief summary on the concept and implementation of the novel \acs{BHH} is provided, followed by a brief summary of the methodology that is used for the empirical process. This chapter also provided brief summaries of the results and findings for each of the experimental groups that were executed in the empirical process. Future research opportunities were identified and reference is made to materials and assets used in this dissertation that are made available online.
