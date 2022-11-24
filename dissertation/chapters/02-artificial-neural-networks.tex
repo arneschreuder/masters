@@ -2,16 +2,13 @@
 \label{chap:anns}
 
 \begin{quotation}
-      \noindent ``Men ought to know that from the brain, and from the brain only, arise our pleasures, joy, laughter and jests, as well as our sorrows, pains, griefs, and tears.''
+      ``Men ought to know that from the brain, and from the brain only, arise our pleasures, joy, laughter and jests, as well as our sorrows, pains, griefs, and tears.''
 \end{quotation}
 \begin{flushright}
       - Hippocrates
 \end{flushright}
 
-\noindent
-The human brain is one of the most complicated biological organs in nature. It gives us the ability to think and learn. The field of \acs{ML} has taken a lot of inspiration from the biological brain which lead to the development of \acp{ANN}~\cite{ref:rosenblatt:1958}. \acp{ANN} are used throughout this dissertation as the \textit{model} to be trained using \acp{HH}.
-
-The purpose of this chapter is to provide the necessary background information needed on \acp{ANN} and is structured as follows.
+The human brain is one of the most complicated biological organs in nature. It gives us the ability to think and learn. The field of \acs{ML} has taken a lot of inspiration from the biological brain which lead to the development of \acp{ANN}~\cite{ref:rosenblatt:1958}. \acp{ANN} are used throughout this dissertation as the \textit{model} to be trained using \acp{HH}. The purpose of this chapter is to provide the necessary background information needed on \acp{ANN} and is structured as follows.
 
 \begin{itemize}
       \item \textbf{Section~\ref{sec:anns:bn}} gives background information on the \acs{BN}.
@@ -31,14 +28,13 @@ The purpose of this chapter is to provide the necessary background information n
 
 This section introduces the \acs{BN} and provides the necessary background information that show how the \acs{BN} has inspired the development of the \acs{AN}.
 
-\begin{figure}[htpb]
+\begin{figure}[htb]
       \centering
       \includegraphics[width=0.95\textwidth]{biological_neuron.pdf}
       \caption[The \index{biological neuron}biological Neuron]{An illustration of the \index{biological neuron}biological Neuron.}
       \label{fig:biological_neuron}
 \end{figure}
 
-\noindent
 The biological neural systems are made up of microscopic nerve cells called neurons~\cite{ref:jain:1996}. Figure~\ref{fig:biological_neuron} illustrates a single \acs{BN}. The main components of the \acs{BN} include the cell body, \index{dendrites}\textit{dendrites} and the \index{axon}\textit{axon}. \Acp{NN} are formed through the connections between the \index{axon}axons and \index{dendrites}dendrites of various neurons. This is known as \index{synaptogenesis}\textit{synaptogenesis}~\cite{ref:huttenlocher:1997}. Such a connection is referred to as a \index{synapse}\textit{synapse}. Communication takes place, through the synapse, by electro-chemical pulse and is often referred to as an \textit{activation} or \textit{action potential}.  Communication signals propagate from the \index{dendrites}dendrites, through the cell body to the axon of a neuron, provoking a signal in the post-synaptic neuron~\cite{ref:engelbrecht:2007}. The greater the connection between two neurons, the stronger the communication.  Kennedy~\cite{ref:kennedy:2016} defines stronger \index{synapse}synapses as ones that contribute more depolarisation to the neural membrane upon activation than weaker ones. Stronger \index{synapse}synapses have a higher probability of generating an action potential in the post-synaptic neuron. During activation, the pre-synaptic neuron release neurotransmitters that bind to the post-synaptic neuron~\cite{ref:khanacademy:synapse}. The frequent release of these molecules cause the \index{synapse}synapse to grow. Connections that grow over time yield stronger signals (learning), while connections that are weak propagate low intensity signals and vanish over time (forgetting). The ability of synapses to strengthen and weaken over time is known as \index{synaptic plasticity}\textit{synaptic plasticity}~\cite{ref:huttenlocher:1997}.
 
 \index{artificial neuron}
@@ -49,32 +45,30 @@ This section introduces the \acs{AN}. Brief discussion follow on the various com
 The \acs{AN} implements a nonlinear mapping from $\mathbb{R}^{I}$ to
 $\mathbb{R}^{T}$, usually in the ranges $[0,1]$ or $[-1,1]$, depending on the
 activation function used~\cite{ref:engelbrecht:2007} and is given
-in Equation~\eqref{eq:an_function_mapping} below.
+as
 
 \begin{equation}
       f_{AN} \colon \mathbb{R}^{I} \to \mathbb{R}^{T}
       \label{eq:an_function_mapping}
 \end{equation}
 
-\noindent
-In Equation~\eqref{eq:an_function_mapping} above, $f_{AN}$ is the mapping function produced by the \acs{AN}, $I$ is the total number of dimensions of the input in real-number space ($\mathbb{R}$), and $T$ is the total number of dimensions of the target (desired output) in real-number space.
+where $f_{AN}$ is the mapping function produced by the \acs{AN}, $I$ is the total number of dimensions of the input in real-number space ($\mathbb{R}$), and $T$ is the total number of dimensions of the target (desired output) in real-number space.
 
 The \acs{AN} implements various components and is illustrated in Figure~\ref{fig:artificial_neuron}.
 
-\begin{figure}[htpb]
+\begin{figure}[htb]
       \centering
       \includegraphics[width=\textwidth]{artificial_neuron.pdf}
       \caption[The \index{artificial neuron}artificial neuron]{An illustration of the \index{artificial neuron}artificial neuron.}
       \label{fig:artificial_neuron}
 \end{figure}
 
-\noindent
-Each of the components of the \acs{AN} is inspired by some element of the \acs{BN}. Brief descriptions of these are given as follows.
+Each of the components of the \acs{AN} is inspired by some element of the \acs{BN}. Brief descriptions of these are given as follows:
 
 \begin{itemize}
-      \item \textbf{Input:} The input models the activations received from the pre-synaptic neuron or from some environment sensor. Input is represented by the input vector $\vec{x}$, in Figure~\ref{fig:artificial_neuron}.
+      \item \textbf{Input:} The input models the activations received from the pre-synaptic neuron or from some environment sensor. Input is represented by the input vector $\boldsymbol{x}$, in Figure~\ref{fig:artificial_neuron}.
 
-      \item \textbf{Weights:} The weights model the \index{synapse}synapses and connection strengths. Weights are represented by the weight vector $\vec{v}$, in Figure~\ref{fig:artificial_neuron}.
+      \item \textbf{Weights:} The weights model the \index{synapse}synapses and connection strengths. Weights are represented by the weight vector $\boldsymbol{v}$, in Figure~\ref{fig:artificial_neuron}.
 
       \item \index{net input signal}\textbf{Net input signal:} The \index{net input signal}net input signal models the net resulting activations from all connected pre-synaptic neurons or environment sensors. The \index{net input signal}net input signal is represented by $net$, in Figure~\ref{fig:artificial_neuron}.
 
@@ -82,10 +76,9 @@ Each of the components of the \acs{AN} is inspired by some element of the \acs{B
 
       \item \index{activation function}\textbf{Activation function:} The activation function models the action potential of the \acs{BN} and is based on the net input signal. The \index{activation function}activation function is represented by $f$, in Figure~\ref{fig:artificial_neuron}.
 
-      \item \textbf{Output:} The output models the activation by the post-synaptic neuron. Output is represented by the output vector $\vec{y}$, in Figure~\ref{fig:artificial_neuron}.
+      \item \textbf{Output:} The output models the activation by the post-synaptic neuron. Output is represented by the output vector $\boldsymbol{y}$, in Figure~\ref{fig:artificial_neuron}.
 \end{itemize}
 
-\noindent
 The following sections provide a detailed discussion on each of the above mentioned components.
 
 
@@ -102,7 +95,7 @@ Input pre-processing improves the training process and contributes to the succes
 \index{encoding}
 \subsubsection{Encoding}\label{sec:anns:an:input:encoding}
 
-For qualitative data, the class labels have to be converted from textual to numerical representations. In general, class labels are encoded as numerical vectors~\cite{ref:srinidhi:2018, ref:brownlee:2017:one-hot}. One such encoding technique is referred to as \index{one-hot encoding}\textit{one-hot encoding}. Harris and Harris~\cite{ref:harris:2010} describe \index{one-hot encoding}one-hot encoding as a group of vector elements where the classes are represented with a single high element (represented by $1$) and all the others low (represented by $0$). Each element $y_k$, where $k$ is the $k$-th element of the encoded vector $\vec{y}$, uniquely refers to a class. An activation, represented by a value of $1$ at a given index thus represents a class associated with that index.
+For qualitative data, the class labels have to be converted from textual to numerical representations. In general, class labels are encoded as numerical vectors~\cite{ref:srinidhi:2018, ref:brownlee:2017:one-hot}. One such encoding technique is referred to as \index{one-hot encoding}\textit{one-hot encoding}. Harris and Harris~\cite{ref:harris:2010} describe \index{one-hot encoding}one-hot encoding as a group of vector elements where the classes are represented with a single high element (represented by $1$) and all the others low (represented by $0$). Each element $y_k$, where $k$ is the $k$-th element of the encoded vector $\boldsymbol{y}$, uniquely refers to a class. An activation, represented by a value of $1$ at a given index thus represents a class associated with that index.
 
 \index{normalisation}
 \subsubsection{Normalisation}\label{sec:anns:an:input:normalisation}
@@ -112,28 +105,26 @@ Numerical data must be normalised and scaled appropriately for the \acs{AN}. In 
 \index{min-max scaler}
 \subsubsection{Min-Max Scaler}\label{sec:anns:an:input:min_max_scaler}
 
-The \index{min-max scaler}min-max scaler, also called \index{unity-based normalisation}\textit{unity-based normalisation}, scales values to the range $[0,1]$. The \index{min-max scaler}min-max scaler is used as a pre-processing technique for target values when the \index{sigmoid}\textit{sigmoid} \index{activation function} activation function is used. The \index{min-max scaler}min-max scaler is given in Equation~\eqref{eq:min_max_scaler} below.
+The \index{min-max scaler}min-max scaler, also called \index{unity-based normalisation}\textit{unity-based normalisation}, scales values to the range $[0,1]$. The \index{min-max scaler}min-max scaler is used as a pre-processing technique for target values when the \index{sigmoid}\textit{sigmoid} \index{activation function} activation function is used. The \index{min-max scaler}min-max scaler is given as
 
 \begin{equation}
       x_{i,p}'  = \frac{x_{i,p} - x_{i_{min}}}{x_{i_{max}} - x_{i_{min}}}
       \label{eq:min_max_scaler}
 \end{equation}
 
-\noindent
-In Equation~\eqref{eq:min_max_scaler} above, $x_{i,p}^{'}$ is the normalised form of $x_{i,p}$, the $i$-th dimension of the input vector $\vec{x}_p$, $p \in \{1,2, \dots, P \}$, where $P$ is the total number of input patterns, $x_{i_{min}}$ and $x_{i_{max}}$ are respectfully the minimum and maximum values of the $i$-th dimension for all input vectors $\vec{x}_p$.
+where $x_{i,p}^{'}$ is the normalised form of $x_{i,p}$, the $i$-th dimension of the input vector $\boldsymbol{x}_p$, $p \in \{1,2, \dots, P \}$, where $P$ is the total number of input patterns, $x_{i_{min}}$ and $x_{i_{max}}$ are respectfully the minimum and maximum values of the $i$-th dimension for all input vectors $\boldsymbol{x}_p$.
 
 \index{standard score scaler}
 \subsubsection{Standard Score Scaler}\label{sec:anns:an:input:standard_score_scaler}
 
-The \index{standard score scaler}standard score scaler, also known as the \index{z-score scaler}\textit{z-score scaler}, scales values by subtracting the mean and scaling to the unit variance of each dimension $i$ for all input patterns $\vec{x}_p, p \in \{1,2, \dots, P\}$. The \index{standard score scaler}standard score scaler is used as a pre-processing technique for target values when the \index{hyperbolic tangent}\textit{hyperbolic tangent} \index{activation function}activation function\index{activation function} is used. The \index{standard score scaler}standard score scaler is given in Equation~\eqref{eq:standard_score_scaler} below.
+The \index{standard score scaler}standard score scaler, also known as the \index{z-score scaler}\textit{z-score scaler}, scales values by subtracting the mean and scaling to the unit variance of each dimension $i$ for all input patterns $\boldsymbol{x}_p, p \in \{1,2, \dots, P\}$. The \index{standard score scaler}standard score scaler is used as a pre-processing technique for target values when the \index{hyperbolic tangent}\textit{hyperbolic tangent} \index{activation function}activation function\index{activation function} is used. The \index{standard score scaler}standard score scaler is given as
 
 \begin{equation}
       x_{i,p}^{'} = \frac{x_{i,p} - \mu_i}{\sigma^2_i}
       \label{eq:standard_score_scaler}
 \end{equation}
 
-\noindent
-In Equation~\eqref{eq:standard_score_scaler} above, $\mu_i$ and $\sigma^2_i$ are respectfully the mean and unit variance of the $i$-th dimension of all input vectors $\vec{x}_p$.
+where $\mu_i$ and $\sigma^2_i$ are respectfully the mean and unit variance of the $i$-th dimension of all input vectors $\boldsymbol{x}_p$.
 
 \subsection{Weights}\label{sec:anns:an:weights}
 
@@ -170,15 +161,14 @@ Many different weight initialisation techniques have been developed~\cite{ref:er
 
 \acp{AN} accumulate the net resulting input signal from all input dimensions into a value called the \index{net input signal}\textit{net input signal}, expressed as $net$. This signal is passed to the \index{activation function}activation function, which provokes an artificial action potential in the \acs{AN}.
 
-A common way by which the \index{net input signal}net input signal is calculated is by means of \acp{SU}~\cite{ref:engelbrecht:2007}, which compute the \index{net input signal}net input signal as the weighted sum of all input signals as shown in Equation~\eqref{eq:summation_units} below.
+A common way by which the \index{net input signal}net input signal is calculated is by means of \acp{SU}~\cite{ref:engelbrecht:2007}, which compute the \index{net input signal}net input signal as the weighted sum of all input signals and is given as
 
 \begin{equation}
       net = \sum_{i=1}^{I}{x_{i}v_{i}}
       \label{eq:summation_units}
 \end{equation}
 
-\noindent
-In Equation~\eqref{eq:summation_units} above, $x_{i}$ is the $i$-th dimension of the input vector $\vec{x}$, and $v_{i}$ is the $i$-th dimension of the weight vector $\vec{v}$, associated with the given input dimension.
+where $x_{i}$ is the $i$-th dimension of the input vector $\boldsymbol{x}$, and $v_{i}$ is the $i$-th dimension of the weight vector $\boldsymbol{v}$, associated with the given input dimension.
 
 
 \subsection{Biases}\label{sec:anns:an:biases}
@@ -188,7 +178,7 @@ A bias/threshold term $\theta$ is introduced to help translate the output of the
 
 \subsubsection{Augmented Net Input Signal}\label{sec:anns:an:biases:augmented_net_input_signal}
 
-The augmented net input signal, that includes the bias unit, has the form $net^{'} = net - \theta$, with $\theta = x_{i+1}v_{i+1}$. A constant value $x_{i+1} = -1$ can be used, meaning that the weight associated with the bias unit, $v_{i+1}$, is optimised along with the other weights during the optimisation process. The net input signal as given in Equation~\eqref{eq:summation_units} then changes as is shown in Equation~\eqref{eq:augmented_vectors} below.
+The augmented net input signal, that includes the bias unit, has the form $net^{'} = net - \theta$, with $\theta = x_{i+1}v_{i+1}$. A constant value $x_{i+1} = -1$ can be used, meaning that the weight associated with the bias unit, $v_{i+1}$, is optimised along with the other weights during the optimisation process. The net input signal, as given in Equation~\eqref{eq:summation_units}, then changes as
 
 \begin{equation}
       \begin{split}
@@ -217,26 +207,24 @@ In general, activation functions produce a non-linear mapping of $\mathbb{R}^{I}
       \label{eq:an_function_mapping_minus_1_1}
 \end{equation}
 
-\noindent
 Many different \index{activation function}activation functions have been developed~\cite{ref:karlik:2011}. For the purposes of this dissertation, focus is put on the \acf{ReLU}~\cite{ref:jarrett:2009, ref:nair:2010}, the \acf{LReLU}~\cite{ref:maas:2013}, the \index{sigmoid}sigmoid~\cite{ref:lecun:1988} and the \index{hyperbolic tangent}hyperbolic tangent~\cite{ref:lin:2008} \index{activation function}activation functions.
 
 
 \subsubsection{Rectified Linear Unit}\label{sec:anns:an:act_functions:relu}
 
-The \acf{ReLU} \index{activation function}activation function is an \index{activation function}activation function defined in the positive part of its argument and is given in Equation~\eqref{eq:relu} below.
+The \acf{ReLU} \index{activation function}activation function is an \index{activation function}activation function defined in the positive part of its argument and is given as
 
 \begin{equation}
       f(x) = x^{+} = \max(0,x)
       \label{eq:relu}
 \end{equation}
 
-\noindent
 An advantage of \acs{ReLU} is that it is not susceptible to the \index{vanishing gradients problem}vanishing gradients problem~\cite{ref:xu:2015, ref:maksutov:2018} which occurs when gradients in the first layers of a multi-layer \acs{ANN} approach zero, and have no effect on the training process.
 
 
 \subsubsection{Leaky Rectified Linear Unit}\label{sec:anns:an:act_functions:leaky_relu}
 
-The \acf{LReLU} \index{activation function}activation function is a variant of the \acs{ReLU} \index{activation function}activation function that avoids zero gradients in the negative part of its argument by introducing a scaling parameter, $\alpha > 0$~\cite{ref:xu:2015}. Similar to \acs{ReLU}, \acs{LReLU} is not susceptible to the \index{vanishing gradients problem}vanishing gradients problem. However, \acs{LReLU} does not suffer from the \index{dying ReLU problem}dying \acs{ReLU} problem~\cite{ref:agarap:2018}, which occurs when the neurons that use \acs{ReLU} \index{activation function}activation functions become \textit{inactive} and only output $0$ due to a negative net input signal. The \acs{LReLU} \index{activation function}activation function is defined in Equation~\eqref{eq:leaky_relu} below.
+The \acf{LReLU} \index{activation function}activation function is a variant of the \acs{ReLU} \index{activation function}activation function that avoids zero gradients in the negative part of its argument by introducing a scaling parameter, $\alpha > 0$~\cite{ref:xu:2015}. Similar to \acs{ReLU}, \acs{LReLU} is not susceptible to the \index{vanishing gradients problem}vanishing gradients problem. However, \acs{LReLU} does not suffer from the \index{dying ReLU problem}dying \acs{ReLU} problem~\cite{ref:agarap:2018}, which occurs when the neurons that use \acs{ReLU} \index{activation function}activation functions become \textit{inactive} and only output $0$ due to a negative net input signal. The \acs{LReLU} \index{activation function}activation function is given as
 
 \begin{equation}
       f_{AN}(net - \theta) =
@@ -247,51 +235,48 @@ The \acf{LReLU} \index{activation function}activation function is a variant of t
       \label{eq:leaky_relu}
 \end{equation}
 
-\noindent
 By introducing a parameter $\alpha > 0$, negative \index{net input signal}net input signals will still yield non-zero activations, resulting in non-zero gradients and avoiding gradient saturation. Non-zero gradients are required by some heuristics such as \acs{SGD} in order to be able to effectively train \acp{ANN}~\cite{ref:hanin:2018}. An illustration of \acs{LReLU} with various values for $\alpha$ and $\theta = 0$ is given in Figure~\ref{fig:anns:activation_functions:leaky_relu}.
 
-\begin{figure}[htpb]
+\begin{figure}[htb]
       \centering
-      \includegraphics[width=0.8\textwidth]{lrelu.pdf}
+      \includegraphics[width=0.75\textwidth]{lrelu.pdf}
       \caption[The \acs{LReLU} \index{activation function}activation function]{An illustration of the \acs{LReLU} \index{activation function}activation function with various values for $\alpha$ and $\theta = 0$.}
       \label{fig:anns:activation_functions:leaky_relu}
 \end{figure}
 
 \subsubsection{Sigmoid}\label{sec:anns:an:act_functions:sigmoid}
 
-The \index{sigmoid}sigmoid activation is the continuous differentiable approximation of the step function, which was used in the original perceptron model developed by~\citeauthor{ref:rosenblatt:1957}~\cite{ref:rosenblatt:1957}, and yields output in the range $(0, 1)$. The \index{sigmoid}sigmoid \index{activation function}activation function is defined in Equation~\eqref{eq:sigmoid} below.
+The \index{sigmoid}sigmoid activation is the continuous differentiable approximation of the step function, which was used in the original perceptron model developed by~\citeauthor{ref:rosenblatt:1957}~\cite{ref:rosenblatt:1957}, and yields output in the range $(0, 1)$. The \index{sigmoid}sigmoid \index{activation function}activation function is given as
 
 \begin{equation}
       f_{AN}(net - \theta) = \frac{1}{1+e^{-\lambda(net - \theta)}}
       \label{eq:sigmoid}
 \end{equation}
 
-\noindent
-In Equation~\eqref{eq:sigmoid} above, $\lambda$ is a control parameter, which controls the steepness of the sigmoid activation function and is usually set to $\lambda = 1$. An illustration of the \index{sigmoid}sigmoid \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$ is given in Figure~\ref{fig:anns:activation_functions:sigmoid}.
+where $\lambda$ is a control parameter that controls the steepness of the sigmoid activation function and is usually set to $\lambda = 1$. An illustration of the \index{sigmoid}sigmoid \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$ is given in Figure~\ref{fig:anns:activation_functions:sigmoid}.
 
-\begin{figure}[htpb]
+\begin{figure}[htb]
       \centering
-      \includegraphics[width=0.8\textwidth]{sigmoid.pdf}
+      \includegraphics[width=0.75\textwidth]{sigmoid.pdf}
       \caption[The \index{sigmoid}sigmoid \index{activation function}activation function]{An illustration of the \index{sigmoid}sigmoid \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$.}
       \label{fig:anns:activation_functions:sigmoid}
 \end{figure}
 
 \subsubsection{Hyperbolic Tangent}\label{sec:anns:an:act_functions:tanh}
 
-The \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function has a similar shape to that of the \index{sigmoid}sigmoid \index{activation function}activation function, but yields output in the range $(-1, 1)$. The \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function is given in Equation~\eqref{eq:hyperbolic_tangent} below.
+The \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function has a similar shape to that of the \index{sigmoid}sigmoid \index{activation function}activation function, but yields output in the range $(-1, 1)$. The \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function is given as
 
 \begin{equation}
       f_{AN}(net - \theta) = \frac{e^{\lambda(net - \theta)}-e^{-\lambda(net - \theta)}}{e^{\lambda(net - \theta)}+e^{-\lambda(net - \theta)}}
       \label{eq:hyperbolic_tangent}
 \end{equation}
 
-\noindent
 An illustration of the \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$ is given in Figure~\ref{fig:anns:activation_functions:hyperbolic_tangent}.
 
 
-\begin{figure}[htpb]
+\begin{figure}[htb]
       \centering
-      \includegraphics[width=0.8\textwidth]{tanh.pdf}
+      \includegraphics[width=0.75\textwidth]{tanh.pdf}
       \caption[The \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function]{An illustration of the \index{hyperbolic tangent}hyperbolic tangent \index{activation function}activation function with various values for $\lambda$ and $\theta = 0$.}
       \label{fig:anns:activation_functions:hyperbolic_tangent}
 \end{figure}
@@ -309,19 +294,18 @@ re-scaling techniques are considered.
 
 \subsubsection{Decoding}\label{sec:anns:an:output:decoding}
 
-Data decoding refers to the process of undoing the encoding process. For min-max scaling, data is converted back to the range $(x_{min}, x_{max})$. In the context of an \acs{AN}, binary logistic regression problems maps the output to the positive or negative class, usually separating the class decision boundary using a threshold value $\tau$. In the context of multiple \acp{AN}' output, the output is a vector of numerical values. The one-hot encoded output is then decoded by mapping the index of the output vector that yields the highest activation (argmax) to its associated class.
+Data decoding refers to the process of undoing the encoding process. For min-max scaling, data is converted back to the range $(x_{min}, x_{max})$. In the context of an \acs{AN}, binary logistic regression problems map the output to the positive or negative class, usually separating the class decision boundary using a threshold value $\tau$. In the context of multiple \acp{AN}' output, the output is a vector of numerical values. The one-hot encoded output is then decoded by mapping the index of the output vector that yields the highest activation (argmax) to its associated class.
 
 \subsubsection{Softmax}\label{sec:anns:an:output:softmax}
 
-The \index{softmax}softmax function, also known as the \index{softargmax}\textit{softargmax}~\cite[p.~184]{ref:goodfellow:2016} or \index{normalised exponential function}\textit{normalised exponential function}~\cite{ref:bishop:2006} is a generalisation of the logistic function that converts a $K$-dimensional output vector $\vec{y}$ into a $K$-dimensional output vector $\vec{y^{'}}$ where each element $y^{'}_k$ is in the range $(0,1)$ and all elements sum up to $1$ as is shown in Equation~\eqref{eq:sum_after_softmax} below.
+The \index{softmax}softmax function, also known as the \index{softargmax}\textit{softargmax}~\cite[p.~184]{ref:goodfellow:2016} or \index{normalised exponential function}\textit{normalised exponential function}~\cite{ref:bishop:2006} is a generalisation of the logistic function that converts a $K$-dimensional output vector $\boldsymbol{y}$ into a $K$-dimensional output vector $\boldsymbol{y^{'}}$ where each element $y^{'}_k$ is in the range $(0,1)$ and all elements sum up to $1$ as is shown in Equation~\eqref{eq:sum_after_softmax} below.
 
 \begin{equation}
-      \vec{y^{'}} \colon \mathbb{R}^{K} \to \left\{\vec{y^{'}} \in \mathbb{R}^{K} \vert y^{'}_k \in (0,1), \sum_{k=1}^{K} y_k = 1\right\}
+      \boldsymbol{y^{'}} \colon \mathbb{R}^{K} \to \left\{\boldsymbol{y^{'}} \in \mathbb{R}^{K} \vert y^{'}_k \in (0,1), \sum_{k=1}^{K} y_k = 1\right\}
       \label{eq:sum_after_softmax}
 \end{equation}
 
-\noindent
-The softmax function is then given in Equation~\eqref{eq:softmax} below.
+The softmax function is then given as
 
 \begin{equation}
       y^{'}_k = \frac{e^{y_k}}{\sum_{k = 1}^{K}e^{y_k}}
@@ -331,7 +315,7 @@ The softmax function is then given in Equation~\eqref{eq:softmax} below.
 
 \subsubsection{Argmax}\label{sec:anns:an:output:argmax}
 
-The \index{argmax}argmax function is similar to the \index{softmax}softmax function, with the difference that the element $y_k, k \in \{1,2, \dots, K\}$ with the highest output value is set to $1$ and the rest are set to $0$. All elements still sum to $1$, but the activation is only observed at index $k$ where the activation is $1$. The \index{argmax}argmax function is given in Equation~\eqref{eq:argmax} below.
+The \index{argmax}argmax function is similar to the \index{softmax}softmax function, with the difference that the element $y_k, k \in \{1,2, \dots, K\}$ with the highest output value is set to $1$ and the rest are set to $0$. All elements still sum to $1$, but the activation is only observed at index $k$ where the activation is $1$. The \index{argmax}argmax function is given as
 
 \begin{equation}
       y^{'}_k =
@@ -342,13 +326,12 @@ The \index{argmax}argmax function is similar to the \index{softmax}softmax funct
       \end{cases}
 \end{equation}
 
-\noindent
-Figure~\ref{fig:anns:activation_functions:softmax_argmax} illustrates the comparison of transformations of the output vector $\vec{y}$, where the \index{sigmoid}sigmoid, the \index{softmax}softmax and the \index{argmax}argmax \index{activation function}activation functions are used.
+Figure~\ref{fig:anns:activation_functions:softmax_argmax} illustrates the comparison of transformations of the output vector $\boldsymbol{y}$, where the \index{sigmoid}sigmoid, the \index{softmax}softmax and the \index{argmax}argmax \index{activation function}activation functions are used.
 
 
-\begin{figure}[htpb]
+\begin{figure}[htb]
       \centering
-      \includegraphics[width=0.75\textwidth]{output_modifiers.pdf}
+      \includegraphics[width=0.65\textwidth]{output_modifiers.pdf}
       \caption[The results of \index{softmax}softmax and \index{argmax}argmax]{An illustration of \index{softmax}softmax and \index{argmax}argmax applied after the \index{sigmoid}sigmoid \index{activation function}activation function.}
       \label{fig:anns:activation_functions:softmax_argmax}
 \end{figure}
@@ -374,7 +357,6 @@ Multiple \acp{AN} can be organised and used together forming a ``network'' of \a
       \item \textbf{Data Mining}: Feature discovery in large datasets~\cite{ref:singh:2009}.
 \end{itemize}
 
-\noindent
 The composition of \acp{AN} in an \acs{ANN} is expressed as the \textit{architecture} and \textit{topology} of the \acs{AN}. The exact composition to use depends on the problem being solved.
 
 \subsection{Architecture} \label{sec:anns:anns:architecture}
@@ -404,17 +386,16 @@ The topology of the \acs{ANN} refers to the way that layers of \acp{AN} are conn
 
 \acp{FFNN} were the first and simplest type of \acp{ANN} developed~\cite{ref:schmidhuber:2015} and implement input, hidden and output layers by arranging them in sequential order. Furthermore, \acp{FFNN} implement \index{fully connected topology}fully connected topologies. In \acp{FFNN}, information moves forward, in one direction, from the input nodes, through the hidden nodes and finally to the output nodes. Depending on the optimisation algorithm used, error correction information can be ``backpropagated'' through the network. An illustration of a \acs{FFNN} is given in Figure~\ref{fig:ffnn} below.
 
-\begin{figure}[htpb]
+\begin{figure}[htb]
       \centering
       \includegraphics[width=0.98\textwidth]{feedforward_neural_network.pdf}
       \caption[A \index{feedforward neural network}feedforward neural network]{An illustration of a \index{feedforward neural network}feedforward neural network implementing input, hidden and output layers using a fully connected topology.}
       \label{fig:ffnn}
 \end{figure}
 
-\noindent
-In Figure~\ref{fig:ffnn}, $x_i$ refers to the $i$-th dimension in the input vector $\vec{x}$, $h_j$ refers to the $j$-th dimension in the hidden layer, $y_k$ refers to the $k$-th dimension in the output vector $\vec{y}$, $v_{i,j}$ refers to the weight associated with input node $x_i$ and the hidden node $h_j$, and $w_{j,k}$ refers to the weight associated with hidden node $h_j$ and the output node $y_k$.
+In Figure~\ref{fig:ffnn}, $x_i$ refers to the $i$-th dimension in the input vector $\boldsymbol{x}$, $h_j$ refers to the $j$-th dimension in the hidden layer, $y_k$ refers to the $k$-th dimension in the output vector $\boldsymbol{y}$, $v_{i,j}$ refers to the weight associated with input node $x_i$ and the hidden node $h_j$, and $w_{j,k}$ refers to the weight associated with hidden node $h_j$ and the output node $y_k$.
 
-Assuming the use of \acp{SU} and bias weights, the output for the \acs{FFNN} at index $k$, denoted $y_k$, is calculated as is shown in Equation~\eqref{eq:ffnn} below.
+Assuming the use of \acp{SU} and bias weights, the output for the \acs{FFNN} at index $k$, denoted $y_k$, is calculated as
 
 \begin{equation}
       \label{eq:ffnn}
@@ -426,7 +407,6 @@ Assuming the use of \acp{SU} and bias weights, the output for the \acs{FFNN} at 
       \end{split}
 \end{equation}
 
-\noindent
 The remainder of this dissertation makes use of \acp{FFNN} and is sometimes referred to as \textit{the model}.
 
 
@@ -440,7 +420,7 @@ detailed discussions on \index{supervised learning}supervised learning and loss 
 
 The degree to which the produced outcome differs from the target outcome is referred to as \textit{loss}. Since training of \acp{FFNN} is an optimisation problem, the goal of the training process is to minimise the loss of the \acp{FFNN} as it related to input and target data.
 
-Finding the optimal weights that produce the best performance on a given task is an optimisation problem. The optimisation algorithm used to find the optimal weights is referred to as a \index{heuristic}\textit{heuristic}. \index{heuristic}Heuristics search for possible solutions in the solution-space and make use of information from the search space to guide to process. Heuristics are discussed in detail in Chapter~\ref{chap:heuristics}.
+Finding the optimal weights that produce the best performance on a given task is an optimisation problem. The optimisation algorithm used to find the optimal weights is referred to as a \index{heuristic}\textit{heuristic}. \index{heuristic}Heuristics search for possible solutions in the solution-space and make use of information from the search space to guide to process.
 
 
 \subsection{Supervised Learning}
@@ -462,7 +442,6 @@ epoch. The \acs{FFNN} is trained until some stopping condition is reached. Once 
 
 Underfitting describes a scenario where the \acs{FFNN} is not able to effectively learn the underlying structure of the training data~\cite{ref:tetko:1995, ref:geron:2017}. Geron~\cite{ref:geron:2017} describe underfitting as the case where the \acs{FFNN} is too simple relative to the underlying structure of the training data.\\
 \\
-\noindent
 There are two types of supervised learning algorithms based on when weights are updated~\cite{ref:engelbrecht:2007}. These include stochastic training and batch
 training.
 
@@ -482,7 +461,6 @@ training.
 
 Research suggests a trade-off between stochastic and batch training by making use of mini-batches~\cite{ref:bengio:2012}. Mini-batch training is similar to batch training, however weights are updated after $\beta$ patterns have been presented, where $\beta$ is the mini-batch size.\\
 \\
-\noindent
 Performance metrics are used during training on the training set and evaluation on the test set. There are many different performance measurements that can be used, however this dissertation focuses on performance measures related to loss. Loss is calculated using an error function. The following section presents the reader with more detail on the error functions that can be used during the training process.
 
 \subsection{Error Functions}\label{sec:anns:training:error_functions}
@@ -492,20 +470,19 @@ This dissertation focuses on a number of error functions, including \acf{SSE}, \
 
 \subsubsection{Sum Squared Error}\label{sec:anns:training:error_functions:sse}
 
-The \acs{SSE} is given in Equation~\eqref{eq:sse} below.
+The \acs{SSE} is given as
 
 \begin{equation}
       \epsilon = \sum_{p=1}^P \sum_{k=1}^K (\hat{y}_{k,p} - y_{k,p})^2
       \label{eq:sse}
 \end{equation}
 
-\noindent
-In Equation~\eqref{eq:sse} above, $\hat{y}_{k,p}$ is $k$-th dimension of the target output of pattern $p$, $y_{k,p}$ is $k$-th dimension of the predicted output vector $\vec{y}_{p}$ for pattern $p$, $P$ is the number of patterns in the mini-batch, and $K$ is the number of dimensions in the output vector $\vec{y}$.
+where $\hat{y}_{k,p}$ is $k$-th dimension of the target output of pattern $p$, $y_{k,p}$ is $k$-th dimension of the predicted output vector $\boldsymbol{y}_{p}$ for pattern $p$, $P$ is the number of patterns in the mini-batch, and $K$ is the number of dimensions in the output vector $\boldsymbol{y}$.
 
 
 \subsubsection{Mean Squared Error}\label{sec:anns:training:error_functions:mse}
 
-The \acs{MSE} is given in Equation~\eqref{eq:mse} below.
+The \acs{MSE} is given as
 
 \begin{equation}
       \epsilon = \frac{\sum_{p=1}^P \sum_{k=1}^K (\hat{y}_{k,p} - y_{k,p})^2}{PK}
@@ -515,7 +492,7 @@ The \acs{MSE} is given in Equation~\eqref{eq:mse} below.
 
 \subsubsection{Root Mean Squared Error}\label{sec:anns:training:error_functions:rmse}
 
-The \acs{RMSE} is given in Equation~\eqref{eq:rmse} below.
+The \acs{RMSE} is given as
 
 \begin{equation}
       \epsilon = \sqrt{\frac{\sum_{p=1}^P \sum_{k=1}^K (\hat{y}_{k,p} - y_{k,p})^2}{PK}}
@@ -525,7 +502,7 @@ The \acs{RMSE} is given in Equation~\eqref{eq:rmse} below.
 
 \subsubsection{Mean Absolute Error}\label{sec:anns:training:error_functions:mae}
 
-The \acs{MAE} is given in Equation~\eqref{eq:mae} below.
+The \acs{MAE} is given as
 
 \begin{equation}
       \epsilon = \frac{\sum_{p=1}^P \sum_{k=1}^K |\hat{y}_{k,p} - y_{k,p}|}{PK}
@@ -535,26 +512,23 @@ The \acs{MAE} is given in Equation~\eqref{eq:mae} below.
 
 \subsubsection{Binary Cross-Entropy}\label{sec:anns:training:error_functions:bin_xe}
 
-\acs{BinXE} is used in classification problems, where there are only two classes in the target output data. \acs{BinXE} is given in Equation~\eqref{eq:bin_xe} below.
+\acs{BinXE} is used in classification problems, where there are only two classes in the target output data. \acs{BinXE} is given as
 
 \begin{equation}
       \epsilon = -\frac{\sum_{p=1}^P \sum_{k=1}^K (\hat{y}_{k,p} \log{(y_{k,p})} + (1 - \hat{y}_{k,p})\log{(1 - y_{k,p})})}{PK}
       \label{eq:bin_xe}
 \end{equation}
 
-\noindent
 
 \subsubsection{Categorical Cross-Entropy}\label{sec:anns:training:error_functions:cat_xe}
 
-\acs{CatXE} is used in classification problems where the target output or \textit{label} is a one-hot encoded vector. \acs{CatXE} is given in Equation~\eqref{eq:cat_xe} below.
+\acs{CatXE} is used in classification problems where the target output or \textit{label} is a one-hot encoded vector. \acs{CatXE} is given as
 
 \begin{equation}
       \epsilon = -\frac{\sum_{p=1}^P \sum_{k=1}^K \sum_{c=1}^C (\mathbbm{1}_{\hat{y}_{k,p} \in C_c} \log{(y_{k,p} \left[ y_{k,p} \in C_c \right])})}{PK}
       \label{eq:cat_xe}
 \end{equation}
-
-\noindent
-In Equation~\eqref{eq:cat_xe} above, $\mathbbm{1}$ is the indicator function that the $k$-th index observation belongs to the $c$-th class. $C$ is the total number of unique class labels. If $C = 2$, then \acs{BinXE} can be used instead.
+where $\mathbbm{1}$ is the indicator function that the $k$-th index observation belongs to the $c$-th class. $C$ is the total number of unique class labels. If $C = 2$, then \acs{BinXE} can be used instead.
 
 \subsubsection{Sparse Categorical Cross-Entropy}\label{sec:anns:training:error_functions:sparse_cat_xe}
 
@@ -563,4 +537,4 @@ In Equation~\eqref{eq:cat_xe} above, $\mathbbm{1}$ is the indicator function tha
 
 \section{Summary}\label{sec:anns:summary}
 
-This chapter presented background information on the \acs{BN}. The \acs{AN} was introduced and discussions followed on the various components that make up the \acs{AN}. Details on input, weights and biases, \index{net input signal}net input signal, \index{activation function}activation functions, and output were provided. The \acs{ANN} was introduced. \acs{ANN} design was described in terms of architecture and topologies. Special emphasis was put on \acp{FFNN}. Background information on the training of \acp{FFNN} was presented. A variant of training, called \index{supervised learning}supervised learning was presented and led to the discussion on datasets, performance measures and training outcomes. The chapter concluded with a number or error functions that can be used to calculate the loss in the context of supervised learning.
+This chapter presented background information on the \acs{BN}. The \acs{AN} was introduced and discussions followed on the various components that make up the \acs{AN}. Details on input, weights and biases, \index{net input signal}net input signal, \index{activation function}activation functions, and output were provided. The \acs{ANN} was introduced. \acs{ANN} design was described in terms of architecture and topologies. Special emphasis was put on \acp{FFNN}. Background information on the training of \acp{FFNN} was presented. A variant of training, called \index{supervised learning}supervised learning was presented and led to discussions on datasets, performance measures and training outcomes. The chapter concluded with a number or error functions that can be used to calculate the loss in the context of supervised learning.
