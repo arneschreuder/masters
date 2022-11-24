@@ -1,15 +1,30 @@
 \chapter{Derived Publications}
 \label{app:derived_publications}
 
-Explain that the following list includes a list of the publications derived from
-produced by \BIBTeX\ (we will hopefully release an automated way of generating
-this list some time in the future), and that the references are all correct.
+The following publications were derived from this dissertation.
+
+
+\newrobustcmd*{\citepub}{%
+    \AtNextCite{\defcounter{minnames}{5}}\fullcite}
+
+
 
 \begin{itemize}
-    \item First reference.
+    \item \fullcite{ref:schreuder:2022}
 
-    \item Second reference.
+    \item \begingroup
+          \defcounter{minnames}{5}
+          \citepub{ref:schreuder:2023:1}
+          \endgroup
 
-    \item Third reference.
+    \item \begingroup
+          \defcounter{minnames}{5}
+          \citepub{ref:schreuder:2023:2}
+          \endgroup
+
+    \item \begingroup
+          \defcounter{minnames}{5}
+          \citepub{ref:schreuder:2023:3}
+          \endgroup
 \end{itemize}
 

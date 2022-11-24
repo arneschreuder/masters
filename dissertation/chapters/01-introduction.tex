@@ -7,12 +7,11 @@
       - George Polya
 \end{flushright}
 
-\noindent
 \Acf{ML} is one of the most popular fields of research in \acf{AI} studies today. In recent years, \acs{ML} research has seen some notable achievements in academia~\cite{ref:lecun:2015, ref:glorot:2010, ref:goodfellow:2014, ref:quoc:2017}, as well as the industry at large~\cite{ref:silver:2016, ref:silver:2017, ref:zoph:2017, ref:lewis:2017}.  \acs{ML} research has grown tremendously over the past decade with successes like AlphaGo, which set new standards for \acs{AI} capabilities by beating the world's best Go player, Lee Sedol, 4-1~\cite{ref:san-hun:2016}.
 
 Over the past few years, modern hardware capabilities have improved to the point where workloads in the field of \acs{ML} that were previously computationally infeasible, are now possible. One such sub-field of \acs{ML} is \acp{ANN}. \acp{ANN} can generally be described as well-organised structures of mathematical computation and are inspired by the biological brain~\cite{ref:engelbrecht:2007}. \acp{ANN} can be trained, which is the equivalent of ``learning'' from data. Learning gives rise to the ability to apply some form of decision making. Decision making as an ability provides a wide-range of applications from healthcare to finance and yields great interest in the field. With the improvement of hardware came an influx of \acs{ML} researchers that focused their attention on training of \acp{ANN}.
 
-\Acfp{FFNN} are specific types of \acp{ANN}~\cite{ref:reed:1999}. A popular field of focus for studying \acp{ANN} is the process by which these models are trained.  The most common way of training \acp{FFNN} is \index{supervised learning}\textit{supervised learning}, which is a training technique that involves exposing the \acp{ANN} with input and comparing the produced output to that of predefined target data. Training of \acp{ANN} is seen as an optimisation problem. The \acs{ANN} maintains a set of parameters, referred to as ``weights'' and ``biases''. A search algorithm known as a \index{heuristic}\textit{heuristic}~\cite{ref:pearl:1984} is used to assign optimal values to the parameters of the \acs{ANN}, such that a specified objective function is minimised. The research presented in this disseration focuses on the development of a specific type of heuristic, called a \acf{HH} to train \acp{FFNN} in a supervised learning approach.
+\Acfp{FFNN} are specific types of \acp{ANN}~\cite{ref:reed:1999}. A popular field of focus for studying \acp{ANN} is the process by which these models are trained.  The most common way of training \acp{FFNN} is \index{supervised learning}\textit{supervised learning}, which is a training technique that involves exposing the \acp{ANN} with input data and comparing the produced output data to that of predefined target data. Training of \acp{ANN} is seen as an optimisation problem. The \acs{ANN} maintains a set of parameters, referred to as ``weights'' and ``biases''. A search algorithm known as a \index{heuristic}\textit{heuristic}~\cite{ref:pearl:1984} is used to assign optimal values to the parameters of the \acs{ANN}, such that a specified objective function is minimised. The research presented in this disseration focuses on the development of a specific type of heuristic, called a \acf{HH} to train \acp{FFNN} in a supervised learning approach.
 
 This chapter provides the reader with a brief overview of the problem domain and outlines the research problem, objectives and purpose. The remainder of the chapter is presented as follows.
 
@@ -55,12 +54,9 @@ One specific type of selection \acs{HH} is called a \index{multi-method populate
 
 \citeauthor{ref:grobler:2015}~\cite{ref:grobler:2015} mentioned that \acp{HH} have been shown to solve a number of problems including bin-packing, examination timetabling, production scheduling, the traveling salesman problem, vehicle routing problem and many more.
 
-The following section outlines the research problem that this dissertation aims to address and is followed by a motivation for this research.
-
-
 \section{Problem Statement}\label{sec:introduction:problem}
 
-Many different heuristics have been developed and used to train \acp{FFNN}~\cite{ref:gudise:2003, ref:rakitianskaia:2012, ref:montana:1989}. Each of these heuristics have different search behaviours, characteristics, strengths and weaknesses. Finding the best heuristic to train the \acs{FFNN} is required in order to yield optimal results. This process is often non-trivial and could be a time-consuming exercise.  Consider that selection of the best heuristic as applied to optimisation problems, such as training \acp{FFNN}, is problem dependent~\cite{ref:allen:1996, ref:drake:2020, ref:pillay:2018}.
+Many different heuristics have been developed and used to train \acp{FFNN}~\cite{ref:gudise:2003, ref:rakitianskaia:2012, ref:montana:1989}. Each of these heuristics have different search behaviours, characteristics, strengths and weaknesses. Finding the best heuristic to train the \acs{FFNN} is required in order to yield optimal results. This process is often non-trivial and could be a time-consuming exercise.  Consider that selection of the best heuristic as applied to optimisation problems, such as training \acp{FFNN}, is problem specific~\cite{ref:allen:1996, ref:drake:2020, ref:pillay:2018}.
 
 Careful, systematic selection is thus required to find and select the best heuristic to train \acp{FFNN}. In the past, researchers selected the best heuristic by trail and error. A set of heuristics and carefully selected hyper-parameters would be implemented, followed by an empirical test to evaluate the performance of each heuristic for a given problem domain~\cite{ref:pillay:2015}. In this way, researchers were able to determine which heuristics and which hyper-parameters performed well for different problems. However, this approach is problematic, because it is time-consuming and laborious.
 
@@ -72,9 +68,9 @@ In Section~\ref{sec:introduction:problem} above, it is mentioned that finding th
 
 In the general context of optimisation, many different types of \acp{HH} have been implemented and applied to many different problems. Some notable examples include the \index{simulated annealing}simulated annealing-based \acs{HH} by~\citeauthor{ref:dowsland:2007}~\cite{ref:dowsland:2007}, the \index{tabu-search}tabu-search \acs{HH} of~\citeauthor{ref:burke:2010}~\cite{ref:burke:2010}, the \index{heterogeneous meta-hyper-heuristic}heterogeneous meta-hyper-heuristic by~\citeauthor{ref:grobler:2012}~\cite{ref:grobler:2012} and work done by~\citeauthor{ref:vanderstockt:2018}~\cite{ref:vanderstockt:2018} on the analysis of selection hyper-heuristics for population-based meta-heuristics in real-valued dynamic optimization. However, research on the application of \acp{HH} in the context of \acs{FFNN} training is scarce.~\citeauthor{ref:nel:2021}~\cite{ref:nel:2021} provides the first research in this field, applying a \acs{HH} to \acs{FFNN} training.
 
-\acp{FFNN} training is seen as a computational search problem. \acf{HH} as defined by Burke et al.~\cite{ref:burke:2010} is ``a search method or learning mechanism for selecting or generating heuristics to solve computational search problems''. \acp{HH} is a field of research aimed at the automated selection, combination, adaptation or generation of multiple lower-level heuristics to efficiently solve computational search problems.
+Training of \acp{FFNN} is seen as a computational search problem. A \acf{HH}, as defined by Burke et al.~\cite{ref:burke:2010}, is ``a search method or learning mechanism for selecting or generating heuristics to solve computational search problems''. \acp{HH} is a field of research aimed at the automated selection, combination, adaptation or generation of multiple lower-level heuristics to efficiently solve computational search problems.
 
-\citeauthor{ref:grobler:2012}~\cite{ref:grobler:2012} mention that the focus of \acp{HH} is on automating the development of the \textit{learning mechanism} used to find the best heuristic to obtain an appropriate solution to an optimisation problem.~\citeauthor{ref:grobler:2012} explain that \acp{HH} employ a high-level heuristic that focuses on finding the best low-level heuristic in heuristic space that could include \textit{single-method} and \textit{multi-method} optimisation algorithms (heuristics). \acp{HH} relieve the burden of having to select the best heuristic to use by trial and error. Furthermore, \acp{HH} can generally be applied to multiple problems given that the set of low-level heuristics include heuristics that have the potential to solve the problem at hand~\cite{ref:burke:2010}. Automation of the heuristic selection process and the general application to a wider range of problems are characteristics of \acp{HH} that can be beneficial when applied in the context of \acp{FFNN} training.
+\citeauthor{ref:grobler:2012}~\cite{ref:grobler:2012} mention that the focus of \acp{HH} is on automating the development of the \textit{learning mechanism} used to find the best heuristic to obtain an appropriate solution to an optimisation problem.~\citeauthor{ref:grobler:2012} explain that \acp{HH} employ a high-level heuristic that focuses on finding the best low-level heuristic in heuristic space that could include \textit{single-method} and \textit{multi-method} optimisation algorithms (heuristics). \acp{HH} relieve the burden of having to select the best heuristic to use by trial and error. Furthermore, \acp{HH} can generally be applied to multiple problems given that the set of low-level heuristics include heuristics that have the potential to solve the problem at hand~\cite{ref:burke:2010}. Automation of the heuristic selection process and the general application to a wider range of problems are characteristics of \acp{HH} that can be beneficial when applied in the context of training \acp{FFNN}.
 
 Note that training of \acp{FFNN} using \acp{HH} is not to be confused with the training of \acp{FFNN} using \index{ensemble networks}\textit{ensemble networks} or \index{query by committees}\textit{query by committees}.~\citeauthor{ref:pappa:2014}~\cite{ref:pappa:2014} describe \index{ensemble networks}ensemble networks as a combination method in \index{meta-learning}meta-learning whereby multiple \acp{ANN} are jointly used to solve a problem. Each member network in the ensemble is trained using a specified heuristic, and generally this heuristic is applied to the same member throughout the training process. The results of all of the member networks are then joined together using some consensus mechanism~\cite{ref:zhou:2002}. This mechanism could be weighted averages, majority voting or weighted voting. \index{ensemble networks}Ensemble networks do not search through the heuristic space to find the best training algorithm for each member, while \acp{HH} do.
 
@@ -104,11 +100,8 @@ The main objective of this research is focused on developing a novel \Acf{BHH} s
 
       \item Conduct an empirical study that investigates variations of the \Acs{BHH} and the effects of design decisions and hyper-parameters on the search process.
 
-      \item Provide a statistically sound analysis of the results obtained from the empirical study.
+      \item Provide a statistical analysis of the results obtained from the empirical study.
 \end{itemize}
-
-\noindent
-By achieving the objectives outlined above, a number of research contributions are made. These contributions are presented in this following section.
 
 
 \section{Contributions}\label{sec:introduction:contributions}
@@ -119,7 +112,7 @@ following ways.
 \begin{itemize}
       \item A novel heuristic selection operator is used that focuses on using Bayesian statistics to calculate the probability that a heuristic should be selected in order to efficiently train \acp{FFNN}. The resulting \acs{HH} is referred to as the \acf{BHH}.
 
-      \item The results of the empirical study show with statistical significance and certainty that the \Acs{BHH} performs generally well on multiple problems. It is shown that, for each problem, the \Acs{BHH} performance is comparable to the best low-level heuristics (for the particular problem) included in the heuristic selection pool.
+      \item The results of the empirical study show with statistical significance and certainty that the \Acs{BHH} performs generally well on multiple problems. It is shown that, for each problem, the \Acs{BHH} performance is comparable to the best low-level heuristics included in the heuristic selection pool.
 
       \item The results of the empirical study show that the \Acs{BHH} is able to select the best heuristic to train \acp{FFNN} in general. This relieves researchers from the burden of having to do this selection process manually through trial and error.
 
@@ -146,17 +139,14 @@ The remainder of this dissertation is structured as follows.
 
       \item \textbf{Chapter~\ref{chap:methodology}} presents a detailed description of the empirical process and the setup of each experiment. It discusses the datasets used, the \acs{FFNN} architecture and topology used, heuristics that are used, the configuration of hyper-parameters, initialisation techniques used and performance measures used.  Finally, discussions follow on how the results are analysed. This includes a discussion on the method used to determine statistical significance.
 
-      \item \textbf{Chapter~\ref{chap:results}} provides and discusses the results of the empirical study in detail. A baseline comparison is done by comparing the performance of the \Acs{BHH} to that of all the individual lower-level heuristics on all datasets. These datasets include classification and regression problems of various sizes and complexity.  Detailed results are presented on the performance of the \Acs{BHH} as a selection mechanism for \acp{HH} and a brief comparison is made to other selection mechanisms. Finally, results are presented on the effects of the hyper-parameters of the \Acs{BHH} on the training process. Discussions follow on how the \Acs{BHH} is shown to automate the selection of the best heuristic during the training of \acp{FFNN}, as applied to a range of problems, alleviating the burden on researchers to apply traditional trial and error approaches. The chapter is concluded with a brief argument in favor of the general applicability of the \Acs{BHH} to more problem domains.
+      \item \textbf{Chapter~\ref{chap:results}} provides and discusses the results of the empirical study in detail. A baseline comparison is done by comparing the performance of the \Acs{BHH} to that of all the individual lower-level heuristics on all datasets. These datasets include classification and regression problems of various sizes and complexity.  Detailed results are presented on the performance of the \Acs{BHH} as a selection mechanism for \acp{HH} and a brief comparison is made to other selection mechanisms. Finally, results are presented on the effects of the hyper-parameters of the \Acs{BHH} on the training process. Discussions follow on how the \Acs{BHH} is shown to automate the selection of the best heuristic during the training of \acp{FFNN}, as applied to a range of problems, alleviating the burden on researchers to apply traditional trial and error approaches.
 
       \item \textbf{Chapter~\ref{chap:conclusion}} summarises the research done in this dissertation along with a brief overview of the findings made throughout the research process. A review of the research goals are given and suggestions for future research are made.
 \end{itemize}
 
-\noindent
 This dissertation is accompanied by a full index given at page~\pageref{index} along with the following appendices:
 
 \begin{itemize}
-      \item \textbf{Appendix~\ref{app:backpropagation}} provides a full breakdown of the \acf{BP} algorithm as presented by~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007}.
-
       \item \textbf{Appendix~\ref{app:datasets}} provides details on the datasets used for the empirical analysis.
 
       \item \textbf{Appendix~\ref{app:statistical_analysis}} provides details on the outcomes of the statistical analyses.
@@ -168,5 +158,4 @@ This dissertation is accompanied by a full index given at page~\pageref{index} a
       \item \textbf{Appendix~\ref{app:derived_publications}} lists the publications derived from this work.
 \end{itemize}
 
-\noindent
 To best view the illustrations, tables and figures presented throughout this dissertation, it is recommended that the dissertation be viewed in colour.

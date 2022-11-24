@@ -1,5 +1,4 @@
 from .abalone import Abalone
-from .adult import Adult
 from .air_quality import AirQuality
 from .bank import Bank
 from .bike import Bike

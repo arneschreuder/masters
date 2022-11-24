@@ -8,7 +8,7 @@ Training Feedforward Neural Networks with Bayesian Hyper-Heuristics
 
 ## Abstract
 
-Many different heuristics have been developed and used to train feedforward neural networks (FFNNs). However, selection of the best heuristic to train FFNNs is a time consuming and non-trivial exercise. Careful, systematic selection is thus required to ensure that the best heuristic is used to train the FFNNs. In the past, selection was done by trial and error. A modern approach is to automate the heuristic selection process. Often it is found that a single approach is not sufficient. Research has proposed the use of hybridisation of heuristics. One such approach is referred to as hyper-heuristics (HHs). HHs focus on dynamically finding the best heuristic or combinations of heuristics in heuristic-space by making use of heuristic performance information during training time. One such implementation of a HH is a population-based approach that guides the search process by dynamically selecting heuristics from a heuristic-pool to be applied to different entities that represent candidate solutions to the problem-space and work together to find good solutions. This dissertation introduces a novel population-based Bayesian hyper-heuristic (BHH). An empirical study is done by using the BHH to train FFNNs. An in-depth behaviour analysis is done and the performance of the BHH is compared to that of ten popular low-level heuristics each with different search behaviours. The chosen heuristic pool consists out of classic gradient-based heuristics as well as meta-heuristics. The empirical process was executed on fifteen datasets consisting of classification and regression problems with varying characteristics. Results are analysed for statistical significance and the BHH is shown to be able to train FFNNs well and provide an automated method for finding the best heuristic to train the FFNNs at various stages of the training process.
+Many different heuristics have been developed and used to train feedforward neural networks (FFNNs). However, selection of the best heuristic to train FFNNs is a time consuming and non-trivial exercise. Careful, systematic selection is required to ensure that the best heuristic is used to train FFNNs. In the past, selection was done by trial and error. A modern approach is to automate the heuristic selection process. Often it is found that a single approach is not sufficient. Research has proposed the use of hybridisation of heuristics. One such approach is referred to as hyper-heuristics (HHs). HHs focus on dynamically finding the best heuristic or combinations of heuristics in heuristic-space by making use of heuristic performance information. One such implementation of a HH is a population-based approach that guides the search process by dynamically selecting heuristics from a heuristic-pool to be applied to different entities that represent candidate solutions to the problem- space, and work together to find good solutions. This dissertation introduces a novel population-based Bayesian hyper-heuristic (BHH). An empirical study is done by using the BHH to train FFNNs. An in-depth behaviour analysis is done and the performance of the BHH is compared to that of ten popular low-level heuristics each with different search behaviours. The chosen heuristic pool consists out of classic gradient-based heuristics as well as meta-heuristics. The empirical process is executed on fourteen datasets consisting of classification and regression problems with varying characteristics. Results are analysed for statistical significance and the BHH is shown to be able to train FFNNs well and provide an automated method for finding the best heuristic to train the FFNNs at various stages of the training process.
 
 ## Keywords
 
@@ -98,7 +98,7 @@ There are 2 groups of experiments to run:
 
 ```
 usage: heuristic.py [-h] --dataset
-                    {abalone,adult,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
+                    {abalone,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
                     --optimiser
                     {sgd,momentum,nag,adagrad,rmsprop,adadelta,adam,pso,de,ga}
                     [--seed SEED]
@@ -107,7 +107,7 @@ Training Feedforward Neural Networks using Bayesian Hyper-Heuristics
 
 optional arguments:
   -h, --help            show this help message and exit
-  --dataset {abalone,adult,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
+  --dataset {abalone,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
                         The dataset to use
   --optimiser {sgd,momentum,nag,adagrad,rmsprop,adadelta,adam,pso,de,ga}
                         The optimiser to use
@@ -119,7 +119,7 @@ optional arguments:
 
 ```
 usage: bhh.py [-h] --dataset
-              {abalone,adult,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
+              {abalone,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
               [--seed SEED] [--log-level LOG_LEVEL]
               [--heuristic-pool {all,gd,mh}]
               [--population-size {5,10,15,20,25}] [--burn_in {0,10,20,50,100}]
@@ -132,7 +132,7 @@ Training Feedforward Neural Networks using Bayesian Hyper-Heuristics
 
 optional arguments:
   -h, --help            show this help message and exit
-  --dataset {abalone,adult,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
+  --dataset {abalone,air_quality,bank,bike,car,iris,diabetic,fish_toxicity,forest_fires,housing,mushroom,parkinsons,student_performance,wine_quality}
                         The dataset to use
   --seed SEED           The seed to use
   --log-level LOG_LEVEL

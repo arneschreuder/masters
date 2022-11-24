@@ -78,7 +78,6 @@ def parse_bhh_arguments():
         required=True,
         choices=[
             "abalone",
-            "adult",
             "air_quality",
             "bank",
             "bike",
@@ -93,7 +92,7 @@ def parse_bhh_arguments():
             "student_performance",
             "wine_quality",
         ],
-        help="The dataset to use"
+        help="The dataset to use",
     )
     parser.add_argument("--seed", type=int, help="The seed to use")
     parser.add_argument("--log-level", type=int, help="The log level to use")
@@ -108,85 +107,54 @@ def parse_bhh_arguments():
             "gd",
             "mh",
         ],
-        help="The BHH heuristic pool to use"
+        help="The BHH heuristic pool to use",
     )
     parser.add_argument(
         "--population-size",
         type=int,
         required=False,
-        choices=[
-            5,
-            10,
-            15,
-            20,
-            25
-        ],
+        choices=[5, 10, 15, 20, 25],
         default=5,
-        help="The population size to use"
+        help="The population size to use",
     )
     parser.add_argument(
         "--burn_in",
         type=int,
         required=False,
-        choices=[
-            0,
-            5,
-            10,
-            15,
-            20
-        ],
+        choices=[0, 5, 10, 15, 20],
         default=0,
-        help="The burn-in to use"
+        help="The burn-in to use",
     )
     parser.add_argument(
         "--replay",
         type=int,
         required=False,
-        choices=[
-            1,
-            5,
-            10,
-            15,
-            20,
-            250 # Special case
-        ],
+        choices=[1, 5, 10, 15, 20, 250],  # Special case
         default=10,
-        help="The replay buffer size to use"
+        help="The replay buffer size to use",
     )
     parser.add_argument(
         "--reselection",
         type=int,
         required=False,
-        choices=[
-            1,
-            5,
-            10,
-            15,
-            20
-        ],
+        choices=[1, 5, 10, 15, 20],
         default=10,
-        help="The reselection interval to use"
+        help="The reselection interval to use",
     )
     parser.add_argument(
         "--reanalysis",
         type=int,
         required=False,
-        choices=[
-            1,
-            5,
-            10,
-            15,
-            20
-        ],
+        choices=[1, 5, 10, 15, 20],
         default=10,
-        help="The reanalysis interval to use"
+        help="The reanalysis interval to use",
     )
     parser.add_argument(
         "--normalise",
         type=bool,
         required=False,
         default=False,
-        help="The normalisation flag"
+        help="The normalisation flag",
     )
     parser.add_argument(
         "--credit",
@@ -200,21 +168,21 @@ def parse_bhh_arguments():
             "symmetric",
         ],
         default="ibest",
-        help="The credit assignment strategy to use"
+        help="The credit assignment strategy to use",
     )
     parser.add_argument(
         "--discounted-rewards",
         type=bool,
         required=False,
         default=False,
-        help="The credit reward discount flag"
+        help="The credit reward discount flag",
     )
 
     # Arguments
     args = parser.parse_args()
     HEURISTIC_POOL = args.heuristic_pool
     DATASET = args.dataset
-    OPTIMISER = 'bhh'
+    OPTIMISER = "bhh"
     SEED = args.seed or None
     POPULATION_SIZE = args.population_size
     BURN_IN = args.burn_in
@@ -226,8 +194,7 @@ def parse_bhh_arguments():
     DISCOUNTED_REWARDS = args.discounted_rewards
     print(DISCOUNTED_REWARDS)
 
-    LOG_LEVEL = int(os.getenv('LOG_LEVEL')) if os.getenv(
-        'LOG_LEVEL') is not None else 0
+    LOG_LEVEL = int(os.getenv("LOG_LEVEL")) if os.getenv("LOG_LEVEL") is not None else 0
     LOG = "logs/{}/bhh/hp:{}_ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}".format(
         DATASET,
         HEURISTIC_POOL,
@@ -307,7 +274,7 @@ def bhh_optimiser():
         reanalysis=REANALYSIS,
         normalise=NORMALISE,
         credit=CREDIT,
-        discounted_rewards=DISCOUNTED_REWARDS
+        discounted_rewards=DISCOUNTED_REWARDS,
     )
 
     LOG = "logs/{}/bhh/hp:{}_ps:{}_bi:{}_rp:{}_rs:{}_ra:{}_nm:{}_ct:{}_dr:{}/{}".format(
@@ -321,16 +288,10 @@ def bhh_optimiser():
         NORMALISE,
         CREDIT,
         DISCOUNTED_REWARDS,
-        SEED
+        SEED,
     )
 
-    experiment = Experiment(
-        optimiser=Optimiser(
-            params=PARAMS
-        ),
-        log_dir=LOG,
-        seed=SEED
-    )
+    experiment = Experiment(optimiser=Optimiser(params=PARAMS), log_dir=LOG, seed=SEED)
 
     experiment.initialise()
     experiment()

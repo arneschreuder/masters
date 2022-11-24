@@ -57,7 +57,6 @@ def parse_basic_arguments():
         required=True,
         choices=[
             "abalone",
-            "adult",
             "air_quality",
             "bank",
             "bike",
@@ -72,7 +71,7 @@ def parse_basic_arguments():
             "student_performance",
             "wine_quality",
         ],
-        help="The dataset to use"
+        help="The dataset to use",
     )
     parser.add_argument(
         "--optimiser",
@@ -88,9 +87,9 @@ def parse_basic_arguments():
             "adam",
             "pso",
             "de",
-            "ga"
+            "ga",
         ],
-        help="The optimiser to use"
+        help="The optimiser to use",
     )
     parser.add_argument("--seed", type=int, help="The seed to use")
 
@@ -101,8 +100,7 @@ def parse_basic_arguments():
     SEED = args.seed or None
     PARAMS = params.params[DATASET]["optimisers"][OPTIMISER]["params"]
     LOG = params.params[DATASET]["optimisers"][OPTIMISER]["log"].format(SEED)
-    LOG_LEVEL = int(os.getenv('LOG_LEVEL')) if os.getenv(
-        'LOG_LEVEL') is not None else 0
+    LOG_LEVEL = int(os.getenv("LOG_LEVEL")) if os.getenv("LOG_LEVEL") is not None else 0
 
 
 def print_basic_banner():
@@ -136,13 +134,7 @@ def basic_optimisers():
     Experiment = params.params[DATASET]["experiment"]
     Optimiser = params.params[DATASET]["optimisers"][OPTIMISER]["optimiser"]
 
-    experiment = Experiment(
-        optimiser=Optimiser(
-            params=PARAMS
-        ),
-        log_dir=LOG,
-        seed=SEED
-    )
+    experiment = Experiment(optimiser=Optimiser(params=PARAMS), log_dir=LOG, seed=SEED)
 
     experiment.initialise()
     experiment()

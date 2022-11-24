@@ -32,807 +32,807 @@ discussion on the sample datasets you test your algorithm on).
 \end{itemize}
 
 
-\section{BHH vs. Low-Level Heuristics}\label{app:statistical_analysis:bhh_vs_low_level_heuristics}
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH vs. Low-Level Heuristics}
-	\label{tab:results:standalone:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases               & Sum of Squares       & df       & Mean Square          & F                    & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset             & $7.680\times10^{-5}$ & $13$     & $5.908\times10^{-6}$ & $1.422\times10^{-6}$ & $1.000$  \\
-			heuristic           & $1.163\times10^{+6}$ & $12$     & $96928.657$          & $23323.376$          & $<$ .001 \\
-			dataset * heuristic & $503842.812$         & $156$    & $3229.762$           & $777.159$            & $<$ .001 \\
-			Residuals           & $702664.298$         & $169078$ & $4.156$              & $$                   & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                                      \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH vs. Low-Level Heuristics}
-	\label{tab:results:standalone:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			adadelta             & adagrad              & $2.722$              & $2.638$                                         & $2.805$              & $0.025$              & $107.716$            & $<$ .001    \\
-			$ $                  & adam                 & $2.341$              & $2.258$                                         & $2.425$              & $0.025$              & $92.666$             & $<$ .001    \\
-			                     & de                   & $-5.181$             & $-5.265$                                        & $-5.097$             & $0.025$              & $-205.061$           & $<$ .001    \\
-			                     & ga                   & $-2.879$             & $-2.963$                                        & $-2.796$             & $0.025$              & $-113.966$           & $<$ .001    \\
-			                     & momentum             & $-4.015$             & $-4.099$                                        & $-3.931$             & $0.025$              & $-158.907$           & $<$ .001    \\
-			                     & nag                  & $1.433$              & $1.350$                                         & $1.517$              & $0.025$              & $56.729$             & $<$ .001    \\
-			                     & pso                  & $-3.172$             & $-3.256$                                        & $-3.089$             & $0.025$              & $-125.557$           & $<$ .001    \\
-			                     & rmsprop              & $1.704$              & $1.620$                                         & $1.787$              & $0.025$              & $67.426$             & $<$ .001    \\
-			                     & sgd                  & $-3.372$             & $-3.455$                                        & $-3.288$             & $0.025$              & $-133.448$           & $<$ .001    \\
-			                     & bhh\_all             & $0.840$              & $0.756$                                         & $0.924$              & $0.025$              & $33.247$             & $<$ .001    \\
-			                     & bhh\_gd              & $1.638$              & $1.554$                                         & $1.722$              & $0.025$              & $64.837$             & $<$ .001    \\
-			                     & bhh\_mh              & $-1.513$             & $-1.596$                                        & $-1.429$             & $0.025$              & $-59.872$            & $<$ .001    \\
-			adagrad              & adam                 & $-0.380$             & $-0.464$                                        & $-0.297$             & $0.025$              & $-15.050$            & $<$ .001    \\
-			$ $                  & de                   & $-7.903$             & $-7.986$                                        & $-7.819$             & $0.025$              & $-312.777$           & $<$ .001    \\
-			                     & ga                   & $-5.601$             & $-5.685$                                        & $-5.517$             & $0.025$              & $-221.683$           & $<$ .001    \\
-			                     & momentum             & $-6.737$             & $-6.820$                                        & $-6.653$             & $0.025$              & $-266.623$           & $<$ .001    \\
-			                     & nag                  & $-1.288$             & $-1.372$                                        & $-1.205$             & $0.025$              & $-50.987$            & $<$ .001    \\
-			                     & pso                  & $-5.894$             & $-5.978$                                        & $-5.810$             & $0.025$              & $-233.273$           & $<$ .001    \\
-			                     & rmsprop              & $-1.018$             & $-1.102$                                        & $-0.934$             & $0.025$              & $-40.290$            & $<$ .001    \\
-			                     & sgd                  & $-6.093$             & $-6.177$                                        & $-6.010$             & $0.025$              & $-241.165$           & $<$ .001    \\
-			                     & bhh\_all             & $-1.882$             & $-1.965$                                        & $-1.798$             & $0.025$              & $-74.470$            & $<$ .001    \\
-			                     & bhh\_gd              & $-1.083$             & $-1.167$                                        & $-1.000$             & $0.025$              & $-42.880$            & $<$ .001    \\
-			                     & bhh\_mh              & $-4.234$             & $-4.318$                                        & $-4.151$             & $0.025$              & $-167.589$           & $<$ .001    \\
-			adam                 & de                   & $-7.522$             & $-7.606$                                        & $-7.439$             & $0.025$              & $-297.727$           & $<$ .001    \\
-			$ $                  & ga                   & $-5.221$             & $-5.305$                                        & $-5.137$             & $0.025$              & $-206.632$           & $<$ .001    \\
-			                     & momentum             & $-6.356$             & $-6.440$                                        & $-6.273$             & $0.025$              & $-251.573$           & $<$ .001    \\
-			                     & nag                  & $-0.908$             & $-0.992$                                        & $-0.824$             & $0.025$              & $-35.937$            & $<$ .001    \\
-			                     & pso                  & $-5.514$             & $-5.597$                                        & $-5.430$             & $0.025$              & $-218.223$           & $<$ .001    \\
-			                     & rmsprop              & $-0.638$             & $-0.721$                                        & $-0.554$             & $0.025$              & $-25.240$            & $<$ .001    \\
-			                     & sgd                  & $-5.713$             & $-5.797$                                        & $-5.629$             & $0.025$              & $-226.115$           & $<$ .001    \\
-			                     & bhh\_all             & $-1.501$             & $-1.585$                                        & $-1.418$             & $0.025$              & $-59.420$            & $<$ .001    \\
-			                     & bhh\_gd              & $-0.703$             & $-0.787$                                        & $-0.619$             & $0.025$              & $-27.830$            & $<$ .001    \\
-			                     & bhh\_mh              & $-3.854$             & $-3.938$                                        & $-3.770$             & $0.025$              & $-152.539$           & $<$ .001    \\
-			de                   & ga                   & $2.302$              & $2.218$                                         & $2.385$              & $0.025$              & $91.095$             & $<$ .001    \\
-			$ $                  & momentum             & $1.166$              & $1.082$                                         & $1.250$              & $0.025$              & $46.154$             & $<$ .001    \\
-			                     & nag                  & $6.614$              & $6.531$                                         & $6.698$              & $0.025$              & $261.790$            & $<$ .001    \\
-			                     & pso                  & $2.009$              & $1.925$                                         & $2.092$              & $0.025$              & $79.504$             & $<$ .001    \\
-			                     & rmsprop              & $6.885$              & $6.801$                                         & $6.968$              & $0.025$              & $272.487$            & $<$ .001    \\
-			                     & sgd                  & $1.809$              & $1.726$                                         & $1.893$              & $0.025$              & $71.612$             & $<$ .001    \\
-			                     & bhh\_all             & $6.021$              & $5.937$                                         & $6.105$              & $0.025$              & $238.307$            & $<$ .001    \\
-			                     & bhh\_gd              & $6.819$              & $6.736$                                         & $6.903$              & $0.025$              & $269.897$            & $<$ .001    \\
-			                     & bhh\_mh              & $3.668$              & $3.585$                                         & $3.752$              & $0.025$              & $145.188$            & $<$ .001    \\
-			ga                   & momentum             & $-1.135$             & $-1.219$                                        & $-1.052$             & $0.025$              & $-44.941$            & $<$ .001    \\
-			$ $                  & nag                  & $4.313$              & $4.229$                                         & $4.397$              & $0.025$              & $170.696$            & $<$ .001    \\
-			                     & pso                  & $-0.293$             & $-0.377$                                        & $-0.209$             & $0.025$              & $-11.591$            & $<$ .001    \\
-			                     & rmsprop              & $4.583$              & $4.499$                                         & $4.667$              & $0.025$              & $181.393$            & $<$ .001    \\
-			                     & sgd                  & $-0.492$             & $-0.576$                                        & $-0.409$             & $0.025$              & $-19.482$            & $<$ .001    \\
-			                     & bhh\_all             & $3.720$              & $3.636$                                         & $3.803$              & $0.025$              & $147.213$            & $<$ .001    \\
-			                     & bhh\_gd              & $4.518$              & $4.434$                                         & $4.601$              & $0.025$              & $178.803$            & $<$ .001    \\
-			                     & bhh\_mh              & $1.367$              & $1.283$                                         & $1.450$              & $0.025$              & $54.094$             & $<$ .001    \\
-			momentum             & nag                  & $5.448$              & $5.365$                                         & $5.532$              & $0.025$              & $215.636$            & $<$ .001    \\
-			$ $                  & pso                  & $0.843$              & $0.759$                                         & $0.926$              & $0.025$              & $33.350$             & $<$ .001    \\
-			                     & rmsprop              & $5.719$              & $5.635$                                         & $5.802$              & $0.025$              & $226.333$            & $<$ .001    \\
-			                     & sgd                  & $0.643$              & $0.560$                                         & $0.727$              & $0.025$              & $25.459$             & $<$ .001    \\
-			                     & bhh\_all             & $4.855$              & $4.771$                                         & $4.939$              & $0.025$              & $192.154$            & $<$ .001    \\
-			                     & bhh\_gd              & $5.653$              & $5.569$                                         & $5.737$              & $0.025$              & $223.744$            & $<$ .001    \\
-			                     & bhh\_mh              & $2.502$              & $2.419$                                         & $2.586$              & $0.025$              & $99.035$             & $<$ .001    \\
-			nag                  & pso                  & $-4.606$             & $-4.689$                                        & $-4.522$             & $0.025$              & $-182.286$           & $<$ .001    \\
-			$ $                  & rmsprop              & $0.270$              & $0.187$                                         & $0.354$              & $0.025$              & $10.697$             & $<$ .001    \\
-			                     & sgd                  & $-4.805$             & $-4.889$                                        & $-4.721$             & $0.025$              & $-190.178$           & $<$ .001    \\
-			                     & bhh\_all             & $-0.593$             & $-0.677$                                        & $-0.510$             & $0.025$              & $-23.483$            & $<$ .001    \\
-			                     & bhh\_gd              & $0.205$              & $0.121$                                         & $0.289$              & $0.025$              & $8.107$              & $<$ .001    \\
-			                     & bhh\_mh              & $-2.946$             & $-3.030$                                        & $-2.862$             & $0.025$              & $-116.602$           & $<$ .001    \\
-			pso                  & rmsprop              & $4.876$              & $4.792$                                         & $4.960$              & $0.025$              & $192.984$            & $<$ .001    \\
-			$ $                  & sgd                  & $-0.199$             & $-0.283$                                        & $-0.116$             & $0.025$              & $-7.891$             & $<$ .001    \\
-			                     & bhh\_all             & $4.012$              & $3.929$                                         & $4.096$              & $0.025$              & $158.804$            & $<$ .001    \\
-			                     & bhh\_gd              & $4.811$              & $4.727$                                         & $4.894$              & $0.025$              & $190.394$            & $<$ .001    \\
-			                     & bhh\_mh              & $1.660$              & $1.576$                                         & $1.743$              & $0.025$              & $65.685$             & $<$ .001    \\
-			rmsprop              & sgd                  & $-5.075$             & $-5.159$                                        & $-4.992$             & $0.025$              & $-200.875$           & $<$ .001    \\
-			$ $                  & bhh\_all             & $-0.864$             & $-0.947$                                        & $-0.780$             & $0.025$              & $-34.180$            & $<$ .001    \\
-			                     & bhh\_gd              & $-0.065$             & $-0.149$                                        & $0.018$              & $0.025$              & $-2.590$             & $0.316$     \\
-			                     & bhh\_mh              & $-3.216$             & $-3.300$                                        & $-3.133$             & $0.025$              & $-127.299$           & $<$ .001    \\
-			sgd                  & bhh\_all             & $4.212$              & $4.128$                                         & $4.295$              & $0.025$              & $166.695$            & $<$ .001    \\
-			$ $                  & bhh\_gd              & $5.010$              & $4.926$                                         & $5.094$              & $0.025$              & $198.285$            & $<$ .001    \\
-			                     & bhh\_mh              & $1.859$              & $1.775$                                         & $1.943$              & $0.025$              & $73.576$             & $<$ .001    \\
-			bhh\_all             & bhh\_gd              & $0.798$              & $0.714$                                         & $0.882$              & $0.025$              & $31.590$             & $<$ .001    \\
-			$ $                  & bhh\_mh              & $-2.353$             & $-2.436$                                        & $-2.269$             & $0.025$              & $-93.119$            & $<$ .001    \\
-			bhh\_gd              & bhh\_mh              & $-3.151$             & $-3.235$                                        & $-3.067$             & $0.025$              & $-124.709$           & $<$ .001    \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 13 estimates (confidence intervals corrected using the tukey method).}             \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ ** p $<$ .01, *** p < .001}                                                                                                                                       \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-			\multicolumn{8}{p{0.5\linewidth}}{** $$}                                                                                                                                                                \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH vs. Low-Level Heuristics}
-	\label{tab:results:standalone:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor    & Statistic   & df   & p        \\
-			\cmidrule[0.4pt]{1-4}
-			heuristic & $83080.880$ & $12$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-
-\section{Population Size}\label{app:statistical_analysis:bhh_variant_population}
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Population Size}
-	\label{tab:results:population:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases                & Sum of Squares & df      & Mean Square & F        & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset              & $0.072$        & $13$    & $0.006$     & $0.003$  & $1.000$  \\
-			population           & $519.146$      & $4$     & $129.786$   & $66.439$ & $<$ .001 \\
-			dataset * population & $2701.713$     & $52$    & $51.956$    & $26.597$ & $<$ .001 \\
-			Residuals            & $127034.063$   & $65030$ & $1.953$     & $$       & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}           \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Population Size}
-	\label{tab:results:population:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			$5$                  & $10$                 & $-0.071$             & $-0.119$                                        & $-0.024$             & $0.017$              & $-4.119$             & $<$ .001    \\
-			$ $                  & $15$                 & $-0.189$             & $-0.236$                                        & $-0.141$             & $0.017$              & $-10.885$            & $<$ .001    \\
-			                     & $20$                 & $-0.235$             & $-0.283$                                        & $-0.188$             & $0.017$              & $-13.585$            & $<$ .001    \\
-			                     & $25$                 & $-0.204$             & $-0.251$                                        & $-0.157$             & $0.017$              & $-11.785$            & $<$ .001    \\
-			$10$                 & $15$                 & $-0.117$             & $-0.164$                                        & $-0.070$             & $0.017$              & $-6.766$             & $<$ .001    \\
-			$ $                  & $20$                 & $-0.164$             & $-0.211$                                        & $-0.117$             & $0.017$              & $-9.466$             & $<$ .001    \\
-			                     & $25$                 & $-0.133$             & $-0.180$                                        & $-0.086$             & $0.017$              & $-7.666$             & $<$ .001    \\
-			$15$                 & $20$                 & $-0.047$             & $-0.094$                                        & $4.779\times10^{-4}$ & $0.017$              & $-2.700$             & $0.054$     \\
-			$ $                  & $25$                 & $-0.016$             & $-0.063$                                        & $0.032$              & $0.017$              & $-0.900$             & $0.897$     \\
-			$20$                 & $25$                 & $0.031$              & $-0.016$                                        & $0.078$              & $0.017$              & $1.800$              & $0.373$     \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ * p $<$ .05, ** p < .01, *** p < .001}                                                                                                                            \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-			\multicolumn{8}{p{0.5\linewidth}}{** $$}                                                                                                                                                                \\
-			\multicolumn{8}{p{0.5\linewidth}}{* $$}                                                                                                                                                                 \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Population Size}
-	\label{tab:results:population:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor     & Statistic & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			population & $259.454$ & $4$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Heuristic Pool}\label{app:statistical_analysis:bhh_variant_hp}
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Heuristic Pool}
-	\label{tab:results:heuristic_pool:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases                     & Sum of Squares & df      & Mean Square & F          & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset                   & $0.000$        & $13$    & $0.000$     & $0.000$    & $1.000$  \\
-			heuristic\_pool           & $7332.913$     & $2$     & $3666.456$  & $9049.146$ & $<$ .001 \\
-			dataset * heuristic\_pool & $2898.104$     & $26$    & $111.466$   & $275.107$  & $<$ .001 \\
-			Residuals                 & $15808.983$    & $39018$ & $0.405$     & $$         & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                  \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Heuristic Pool}
-	\label{tab:results:heuristic_pool:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			all                  & gd                   & $0.250$              & $0.231$                                         & $0.268$              & $0.008$              & $31.660$             & $<$ .001    \\
-			$ $                  & mh                   & $-0.768$             & $-0.787$                                        & $-0.750$             & $0.008$              & $-97.404$            & $<$ .001    \\
-			gd                   & mh                   & $-1.018$             & $-1.037$                                        & $-1.000$             & $0.008$              & $-129.064$           & $<$ .001    \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 3 estimates (confidence intervals corrected using the tukey method).}              \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Heuristic Pool}
-	\label{tab:results:heuristic_pool:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor          & Statistic   & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			heuristic\_pool & $10999.088$ & $2$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Credit Assignment Strategy}\label{app:statistical_analysis:bhh_variant_credit}
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Credit Assignment Strategy}
-	\label{tab:results:credit:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases            & Sum of Squares & df      & Mean Square & F        & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset          & $0.088$        & $13$    & $0.007$     & $0.003$  & $1.000$  \\
-			credit           & $76.779$       & $4$     & $19.195$    & $9.756$  & $<$ .001 \\
-			dataset * credit & $2245.456$     & $52$    & $43.182$    & $21.949$ & $<$ .001 \\
-			Residuals        & $127940.670$   & $65030$ & $1.967$     & $$       & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}       \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Credit Assignment Strategy}
-	\label{tab:results:credit:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			gbest                & ibest                & $0.013$              & $-0.035$                                        & $0.060$              & $0.017$              & $0.742$              & $0.947$     \\
-			$ $                  & pbest                & $0.051$              & $0.004$                                         & $0.099$              & $0.017$              & $2.951$              & $0.026$     \\
-			                     & rbest                & $-0.031$             & $-0.078$                                        & $0.017$              & $0.017$              & $-1.776$             & $0.388$     \\
-			                     & symmetric            & $-0.047$             & $-0.094$                                        & $7.230\times10^{-4}$ & $0.017$              & $-2.686$             & $0.056$     \\
-			ibest                & pbest                & $0.038$              & $-0.009$                                        & $0.086$              & $0.017$              & $2.209$              & $0.176$     \\
-			$ $                  & rbest                & $-0.044$             & $-0.091$                                        & $0.004$              & $0.017$              & $-2.518$             & $0.087$     \\
-			                     & symmetric            & $-0.060$             & $-0.107$                                        & $-0.012$             & $0.017$              & $-3.428$             & $0.005$     \\
-			pbest                & rbest                & $-0.082$             & $-0.130$                                        & $-0.035$             & $0.017$              & $-4.727$             & $<$ .001    \\
-			$ $                  & symmetric            & $-0.098$             & $-0.145$                                        & $-0.051$             & $0.017$              & $-5.637$             & $<$ .001    \\
-			rbest                & symmetric            & $-0.016$             & $-0.063$                                        & $0.032$              & $0.017$              & $-0.910$             & $0.893$     \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ * p $<$ .05, ** p < .01, *** p < .001}                                                                                                                            \\
-			\multicolumn{8}{p{0.5\linewidth}}{* $$}                                                                                                                                                                 \\
-			\multicolumn{8}{p{0.5\linewidth}}{** $$}                                                                                                                                                                \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Credit Assignment Strategy}
-	\label{tab:results:credit:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor & Statistic & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			credit & $38.373$  & $4$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Reselection Interval}\label{app:statistical_analysis:bhh_variant_reselection}
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Reselection Interval}
-	\label{tab:results:reselection:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases                 & Sum of Squares & df      & Mean Square & F          & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset               & $0.000$        & $13$    & $0.000$     & $0.000$    & $1.000$  \\
-			reselection           & $25571.533$    & $4$     & $6392.883$  & $4372.618$ & $<$ .001 \\
-			dataset * reselection & $9552.887$     & $52$    & $183.709$   & $125.654$  & $<$ .001 \\
-			Residuals             & $95075.581$    & $65030$ & $1.462$     & $$         & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}              \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Reselection Interval}
-	\label{tab:results:reselection:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			$1$                  & $5$                  & $0.724$              & $0.683$                                         & $0.765$              & $0.015$              & $48.314$             & $<$ .001    \\
-			$ $                  & $10$                 & $1.328$              & $1.288$                                         & $1.369$              & $0.015$              & $88.649$             & $<$ .001    \\
-			                     & $15$                 & $1.546$              & $1.505$                                         & $1.587$              & $0.015$              & $103.168$            & $<$ .001    \\
-			                     & $20$                 & $1.707$              & $1.667$                                         & $1.748$              & $0.015$              & $113.936$            & $<$ .001    \\
-			$5$                  & $10$                 & $0.604$              & $0.564$                                         & $0.645$              & $0.015$              & $40.334$             & $<$ .001    \\
-			$ $                  & $15$                 & $0.822$              & $0.781$                                         & $0.863$              & $0.015$              & $54.854$             & $<$ .001    \\
-			                     & $20$                 & $0.983$              & $0.943$                                         & $1.024$              & $0.015$              & $65.622$             & $<$ .001    \\
-			$10$                 & $15$                 & $0.218$              & $0.177$                                         & $0.258$              & $0.015$              & $14.519$             & $<$ .001    \\
-			$ $                  & $20$                 & $0.379$              & $0.338$                                         & $0.420$              & $0.015$              & $25.287$             & $<$ .001    \\
-			$15$                 & $20$                 & $0.161$              & $0.120$                                         & $0.202$              & $0.015$              & $10.768$             & $<$ .001    \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Reselection Interval}
-	\label{tab:results:reselection:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor      & Statistic   & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			reselection & $12785.570$ & $4$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Replay Window Size}\label{app:statistical_analysis:bhh_variant_replay}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Replay Window Size}
-	\label{tab:results:replay:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases            & Sum of Squares & df      & Mean Square          & F                    & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset          & $0.003$        & $13$    & $2.458\times10^{-4}$ & $1.246\times10^{-4}$ & $1.000$  \\
-			replay           & $103.598$      & $4$     & $25.900$             & $13.132$             & $<$ .001 \\
-			dataset * replay & $1854.151$     & $52$    & $35.657$             & $18.079$             & $<$ .001 \\
-			Residuals        & $128254.247$   & $65030$ & $1.972$              & $$                   & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                            \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Replay Window Size}
-	\label{tab:results:replay:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			$1$                  & $5$                  & $0.039$              & $-0.009$                                        & $0.086$              & $0.017$              & $2.220$              & $0.172$     \\
-			$ $                  & $10$                 & $0.023$              & $-0.025$                                        & $0.070$              & $0.017$              & $1.306$              & $0.687$     \\
-			                     & $15$                 & $0.002$              & $-0.045$                                        & $0.050$              & $0.017$              & $0.119$              & $1.000$     \\
-			                     & $20$                 & $-0.077$             & $-0.125$                                        & $-0.030$             & $0.017$              & $-4.444$             & $<$ .001    \\
-			$5$                  & $10$                 & $-0.016$             & $-0.063$                                        & $0.032$              & $0.017$              & $-0.913$             & $0.892$     \\
-			$ $                  & $15$                 & $-0.037$             & $-0.084$                                        & $0.011$              & $0.017$              & $-2.100$             & $0.220$     \\
-			                     & $20$                 & $-0.116$             & $-0.163$                                        & $-0.068$             & $0.017$              & $-6.663$             & $<$ .001    \\
-			$10$                 & $15$                 & $-0.021$             & $-0.068$                                        & $0.027$              & $0.017$              & $-1.187$             & $0.759$     \\
-			$ $                  & $20$                 & $-0.100$             & $-0.148$                                        & $-0.053$             & $0.017$              & $-5.750$             & $<$ .001    \\
-			$15$                 & $20$                 & $-0.079$             & $-0.127$                                        & $-0.032$             & $0.017$              & $-4.563$             & $<$ .001    \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Replay Window Size}
-	\label{tab:results:replay:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor & Statistic & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			replay & $51.795$  & $4$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Reanalysis Internal}\label{app:statistical_analysis:bhh_variant_reanalysis}
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Reanalysis Interval}
-	\label{tab:results:reanalysis:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases                & Sum of Squares & df      & Mean Square & F        & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset              & $0.320$        & $13$    & $0.025$     & $0.012$  & $1.000$  \\
-			reanalysis           & $47.470$       & $4$     & $11.868$    & $6.017$  & $<$ .001 \\
-			dataset * reanalysis & $2012.676$     & $52$    & $38.705$    & $19.625$ & $<$ .001 \\
-			Residuals            & $128257.510$   & $65030$ & $1.972$     & $$       & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}           \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Reanalysis Interval}
-	\label{tab:results:reanalysis:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			$1$                  & $5$                  & $0.046$              & $-0.001$                                        & $0.094$              & $0.017$              & $2.661$              & $0.060$     \\
-			$ $                  & $10$                 & $0.082$              & $0.035$                                         & $0.130$              & $0.017$              & $4.735$              & $<$ .001    \\
-			                     & $15$                 & $0.060$              & $0.012$                                         & $0.107$              & $0.017$              & $3.420$              & $0.006$     \\
-			                     & $20$                 & $0.041$              & $-0.006$                                        & $0.089$              & $0.017$              & $2.378$              & $0.121$     \\
-			$5$                  & $10$                 & $0.036$              & $-0.011$                                        & $0.084$              & $0.017$              & $2.074$              & $0.231$     \\
-			$ $                  & $15$                 & $0.013$              & $-0.034$                                        & $0.061$              & $0.017$              & $0.759$              & $0.942$     \\
-			                     & $20$                 & $-0.005$             & $-0.052$                                        & $0.043$              & $0.017$              & $-0.282$             & $0.999$     \\
-			$10$                 & $15$                 & $-0.023$             & $-0.070$                                        & $0.025$              & $0.017$              & $-1.315$             & $0.682$     \\
-			$ $                  & $20$                 & $-0.041$             & $-0.088$                                        & $0.006$              & $0.017$              & $-2.356$             & $0.128$     \\
-			$15$                 & $20$                 & $-0.018$             & $-0.066$                                        & $0.029$              & $0.017$              & $-1.041$             & $0.836$     \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ * p $<$ .05, ** p < .01, *** p < .001}                                                                                                                            \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-			\multicolumn{8}{p{0.5\linewidth}}{** $$}                                                                                                                                                                \\
-			\multicolumn{8}{p{0.5\linewidth}}{* $$}                                                                                                                                                                 \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Reanalysis Interval}
-	\label{tab:results:reanalysis:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor     & Statistic & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			reanalysis & $23.713$  & $4$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Burn In}\label{app:statistical_analysis:bhh_variant_burn_in}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Burn In}
-	\label{tab:results:burn_in:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases              & Sum of Squares & df      & Mean Square & F         & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset            & $0.135$        & $13$    & $0.010$     & $0.006$   & $1.000$  \\
-			burn\_in           & $6237.667$     & $4$     & $1559.417$  & $850.761$ & $<$ .001 \\
-			dataset * burn\_in & $4842.323$     & $52$    & $93.122$    & $50.804$  & $<$ .001 \\
-			Residuals          & $119197.865$   & $65030$ & $1.833$     & $$        & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}          \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Burn In}
-	\label{tab:results:burn_in:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			$0$                  & $5$                  & $-0.171$             & $-0.217$                                        & $-0.126$             & $0.017$              & $-10.212$            & $<$ .001    \\
-			$ $                  & $10$                 & $-0.367$             & $-0.413$                                        & $-0.321$             & $0.017$              & $-21.884$            & $<$ .001    \\
-			                     & $15$                 & $-0.595$             & $-0.641$                                        & $-0.549$             & $0.017$              & $-35.451$            & $<$ .001    \\
-			                     & $20$                 & $-0.877$             & $-0.923$                                        & $-0.831$             & $0.017$              & $-52.281$            & $<$ .001    \\
-			$5$                  & $10$                 & $-0.196$             & $-0.242$                                        & $-0.150$             & $0.017$              & $-11.672$            & $<$ .001    \\
-			$ $                  & $15$                 & $-0.424$             & $-0.469$                                        & $-0.378$             & $0.017$              & $-25.239$            & $<$ .001    \\
-			                     & $20$                 & $-0.706$             & $-0.752$                                        & $-0.660$             & $0.017$              & $-42.069$            & $<$ .001    \\
-			$10$                 & $15$                 & $-0.228$             & $-0.273$                                        & $-0.182$             & $0.017$              & $-13.567$            & $<$ .001    \\
-			$ $                  & $20$                 & $-0.510$             & $-0.556$                                        & $-0.464$             & $0.017$              & $-30.397$            & $<$ .001    \\
-			$15$                 & $20$                 & $-0.282$             & $-0.328$                                        & $-0.237$             & $0.017$              & $-16.830$            & $<$ .001    \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Burn In}
-	\label{tab:results:burn_in:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor   & Statistic  & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			burn\_in & $3117.030$ & $4$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Normalisation}\label{app:statistical_analysis:bhh_variant_normalise}
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Normalisation}
-	\label{tab:results:normalise:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases                   & Sum of Squares       & df      & Mean Square          & F                    & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset                 & $4.992\times10^{-4}$ & $13$    & $3.840\times10^{-5}$ & $1.555\times10^{-4}$ & $1.000$  \\
-			normalisation           & $5.751$              & $1$     & $5.751$              & $23.282$             & $<$ .001 \\
-			dataset * normalisation & $78.260$             & $13$    & $6.020$              & $24.369$             & $<$ .001 \\
-			Residuals               & $6425.988$           & $26012$ & $0.247$              & $$                   & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                                         \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Normalisation}
-	\label{tab:results:normalise:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			False                & True                 & $-0.030$             & $-0.042$                                        & $-0.018$             & $0.006$              & $-4.825$             & $<$ .001    \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Normalisation}
-	\label{tab:results:normalise:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor        & Statistic & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			normalisation & $23.005$  & $1$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Discounted Rewards}\label{app:statistical_analysis:bhh_variant_discounted_rewards}
-
-\begin{table}[htb]
-	\centering
-	\caption{ANOVA - Rank - BHH Variant: Discounted Rewards}
-	\label{tab:results:discounted_rewards:anova}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{lrrrrr}
-			\toprule
-			Cases                         & Sum of Squares & df      & Mean Square & F        & p        \\
-			\cmidrule[0.4pt]{1-6}
-			dataset                       & $0.264$        & $13$    & $0.020$     & $0.082$  & $1.000$  \\
-			discounted\_rewards           & $18.019$       & $1$     & $18.019$    & $73.148$ & $<$ .001 \\
-			dataset * discounted\_rewards & $83.831$       & $13$    & $6.449$     & $26.177$ & $<$ .001 \\
-			Residuals                     & $6407.866$     & $26012$ & $0.246$     & $$       & $ $      \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                    \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Post Hoc Comparisons - BHH Variant: Discounted Rewards}
-	\label{tab:results:discounted_rewards:post_hoc}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrrrrrr}
-			\toprule
-			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
-			\cline{4-5}
-			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
-			\cmidrule[0.4pt]{1-8}
-			False                & True                 & $-0.053$             & $-0.065$                                        & $-0.041$             & $0.006$              & $-8.553$             & $<$ .001    \\
-			\bottomrule
-			\addlinespace[1ex]
-			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
-			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
-			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[htb]
-	\centering
-	\caption{Kruskal-Wallis - BHH Variant: Discounted Rewards}
-	\label{tab:results:discounted_rewards:kruskal}%
-	\par\bigskip
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{lrrr}
-			\toprule
-			Factor              & Statistic & df  & p        \\
-			\cmidrule[0.4pt]{1-4}
-			discounted\_rewards & $72.075$  & $1$ & $<$ .001 \\
-			\bottomrule
-		\end{tabular}
-	}
-\end{table}
-
-\section{Summary}\label{app:statistical_analysis:summary}
-
-As always, provide a summary at the end.
+% \section{BHH vs. Low-Level Heuristics}\label{app:statistical_analysis:bhh_vs_low_level_heuristics}
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH vs. Low-Level Heuristics}
+% 	\label{tab:results:standalone:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases               & Sum of Squares       & df       & Mean Square          & F                    & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset             & $7.680\times10^{-5}$ & $13$     & $5.908\times10^{-6}$ & $1.422\times10^{-6}$ & $1.000$  \\
+% 			heuristic           & $1.163\times10^{+6}$ & $12$     & $96928.657$          & $23323.376$          & $<$ .001 \\
+% 			dataset * heuristic & $503842.812$         & $156$    & $3229.762$           & $777.159$            & $<$ .001 \\
+% 			Residuals           & $702664.298$         & $169078$ & $4.156$              & $$                   & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                                      \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH vs. Low-Level Heuristics}
+% 	\label{tab:results:standalone:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			adadelta             & adagrad              & $2.722$              & $2.638$                                         & $2.805$              & $0.025$              & $107.716$            & $<$ .001    \\
+% 			$ $                  & adam                 & $2.341$              & $2.258$                                         & $2.425$              & $0.025$              & $92.666$             & $<$ .001    \\
+% 			                     & de                   & $-5.181$             & $-5.265$                                        & $-5.097$             & $0.025$              & $-205.061$           & $<$ .001    \\
+% 			                     & ga                   & $-2.879$             & $-2.963$                                        & $-2.796$             & $0.025$              & $-113.966$           & $<$ .001    \\
+% 			                     & momentum             & $-4.015$             & $-4.099$                                        & $-3.931$             & $0.025$              & $-158.907$           & $<$ .001    \\
+% 			                     & nag                  & $1.433$              & $1.350$                                         & $1.517$              & $0.025$              & $56.729$             & $<$ .001    \\
+% 			                     & pso                  & $-3.172$             & $-3.256$                                        & $-3.089$             & $0.025$              & $-125.557$           & $<$ .001    \\
+% 			                     & rmsprop              & $1.704$              & $1.620$                                         & $1.787$              & $0.025$              & $67.426$             & $<$ .001    \\
+% 			                     & sgd                  & $-3.372$             & $-3.455$                                        & $-3.288$             & $0.025$              & $-133.448$           & $<$ .001    \\
+% 			                     & bhh\_all             & $0.840$              & $0.756$                                         & $0.924$              & $0.025$              & $33.247$             & $<$ .001    \\
+% 			                     & bhh\_gd              & $1.638$              & $1.554$                                         & $1.722$              & $0.025$              & $64.837$             & $<$ .001    \\
+% 			                     & bhh\_mh              & $-1.513$             & $-1.596$                                        & $-1.429$             & $0.025$              & $-59.872$            & $<$ .001    \\
+% 			adagrad              & adam                 & $-0.380$             & $-0.464$                                        & $-0.297$             & $0.025$              & $-15.050$            & $<$ .001    \\
+% 			$ $                  & de                   & $-7.903$             & $-7.986$                                        & $-7.819$             & $0.025$              & $-312.777$           & $<$ .001    \\
+% 			                     & ga                   & $-5.601$             & $-5.685$                                        & $-5.517$             & $0.025$              & $-221.683$           & $<$ .001    \\
+% 			                     & momentum             & $-6.737$             & $-6.820$                                        & $-6.653$             & $0.025$              & $-266.623$           & $<$ .001    \\
+% 			                     & nag                  & $-1.288$             & $-1.372$                                        & $-1.205$             & $0.025$              & $-50.987$            & $<$ .001    \\
+% 			                     & pso                  & $-5.894$             & $-5.978$                                        & $-5.810$             & $0.025$              & $-233.273$           & $<$ .001    \\
+% 			                     & rmsprop              & $-1.018$             & $-1.102$                                        & $-0.934$             & $0.025$              & $-40.290$            & $<$ .001    \\
+% 			                     & sgd                  & $-6.093$             & $-6.177$                                        & $-6.010$             & $0.025$              & $-241.165$           & $<$ .001    \\
+% 			                     & bhh\_all             & $-1.882$             & $-1.965$                                        & $-1.798$             & $0.025$              & $-74.470$            & $<$ .001    \\
+% 			                     & bhh\_gd              & $-1.083$             & $-1.167$                                        & $-1.000$             & $0.025$              & $-42.880$            & $<$ .001    \\
+% 			                     & bhh\_mh              & $-4.234$             & $-4.318$                                        & $-4.151$             & $0.025$              & $-167.589$           & $<$ .001    \\
+% 			adam                 & de                   & $-7.522$             & $-7.606$                                        & $-7.439$             & $0.025$              & $-297.727$           & $<$ .001    \\
+% 			$ $                  & ga                   & $-5.221$             & $-5.305$                                        & $-5.137$             & $0.025$              & $-206.632$           & $<$ .001    \\
+% 			                     & momentum             & $-6.356$             & $-6.440$                                        & $-6.273$             & $0.025$              & $-251.573$           & $<$ .001    \\
+% 			                     & nag                  & $-0.908$             & $-0.992$                                        & $-0.824$             & $0.025$              & $-35.937$            & $<$ .001    \\
+% 			                     & pso                  & $-5.514$             & $-5.597$                                        & $-5.430$             & $0.025$              & $-218.223$           & $<$ .001    \\
+% 			                     & rmsprop              & $-0.638$             & $-0.721$                                        & $-0.554$             & $0.025$              & $-25.240$            & $<$ .001    \\
+% 			                     & sgd                  & $-5.713$             & $-5.797$                                        & $-5.629$             & $0.025$              & $-226.115$           & $<$ .001    \\
+% 			                     & bhh\_all             & $-1.501$             & $-1.585$                                        & $-1.418$             & $0.025$              & $-59.420$            & $<$ .001    \\
+% 			                     & bhh\_gd              & $-0.703$             & $-0.787$                                        & $-0.619$             & $0.025$              & $-27.830$            & $<$ .001    \\
+% 			                     & bhh\_mh              & $-3.854$             & $-3.938$                                        & $-3.770$             & $0.025$              & $-152.539$           & $<$ .001    \\
+% 			de                   & ga                   & $2.302$              & $2.218$                                         & $2.385$              & $0.025$              & $91.095$             & $<$ .001    \\
+% 			$ $                  & momentum             & $1.166$              & $1.082$                                         & $1.250$              & $0.025$              & $46.154$             & $<$ .001    \\
+% 			                     & nag                  & $6.614$              & $6.531$                                         & $6.698$              & $0.025$              & $261.790$            & $<$ .001    \\
+% 			                     & pso                  & $2.009$              & $1.925$                                         & $2.092$              & $0.025$              & $79.504$             & $<$ .001    \\
+% 			                     & rmsprop              & $6.885$              & $6.801$                                         & $6.968$              & $0.025$              & $272.487$            & $<$ .001    \\
+% 			                     & sgd                  & $1.809$              & $1.726$                                         & $1.893$              & $0.025$              & $71.612$             & $<$ .001    \\
+% 			                     & bhh\_all             & $6.021$              & $5.937$                                         & $6.105$              & $0.025$              & $238.307$            & $<$ .001    \\
+% 			                     & bhh\_gd              & $6.819$              & $6.736$                                         & $6.903$              & $0.025$              & $269.897$            & $<$ .001    \\
+% 			                     & bhh\_mh              & $3.668$              & $3.585$                                         & $3.752$              & $0.025$              & $145.188$            & $<$ .001    \\
+% 			ga                   & momentum             & $-1.135$             & $-1.219$                                        & $-1.052$             & $0.025$              & $-44.941$            & $<$ .001    \\
+% 			$ $                  & nag                  & $4.313$              & $4.229$                                         & $4.397$              & $0.025$              & $170.696$            & $<$ .001    \\
+% 			                     & pso                  & $-0.293$             & $-0.377$                                        & $-0.209$             & $0.025$              & $-11.591$            & $<$ .001    \\
+% 			                     & rmsprop              & $4.583$              & $4.499$                                         & $4.667$              & $0.025$              & $181.393$            & $<$ .001    \\
+% 			                     & sgd                  & $-0.492$             & $-0.576$                                        & $-0.409$             & $0.025$              & $-19.482$            & $<$ .001    \\
+% 			                     & bhh\_all             & $3.720$              & $3.636$                                         & $3.803$              & $0.025$              & $147.213$            & $<$ .001    \\
+% 			                     & bhh\_gd              & $4.518$              & $4.434$                                         & $4.601$              & $0.025$              & $178.803$            & $<$ .001    \\
+% 			                     & bhh\_mh              & $1.367$              & $1.283$                                         & $1.450$              & $0.025$              & $54.094$             & $<$ .001    \\
+% 			momentum             & nag                  & $5.448$              & $5.365$                                         & $5.532$              & $0.025$              & $215.636$            & $<$ .001    \\
+% 			$ $                  & pso                  & $0.843$              & $0.759$                                         & $0.926$              & $0.025$              & $33.350$             & $<$ .001    \\
+% 			                     & rmsprop              & $5.719$              & $5.635$                                         & $5.802$              & $0.025$              & $226.333$            & $<$ .001    \\
+% 			                     & sgd                  & $0.643$              & $0.560$                                         & $0.727$              & $0.025$              & $25.459$             & $<$ .001    \\
+% 			                     & bhh\_all             & $4.855$              & $4.771$                                         & $4.939$              & $0.025$              & $192.154$            & $<$ .001    \\
+% 			                     & bhh\_gd              & $5.653$              & $5.569$                                         & $5.737$              & $0.025$              & $223.744$            & $<$ .001    \\
+% 			                     & bhh\_mh              & $2.502$              & $2.419$                                         & $2.586$              & $0.025$              & $99.035$             & $<$ .001    \\
+% 			nag                  & pso                  & $-4.606$             & $-4.689$                                        & $-4.522$             & $0.025$              & $-182.286$           & $<$ .001    \\
+% 			$ $                  & rmsprop              & $0.270$              & $0.187$                                         & $0.354$              & $0.025$              & $10.697$             & $<$ .001    \\
+% 			                     & sgd                  & $-4.805$             & $-4.889$                                        & $-4.721$             & $0.025$              & $-190.178$           & $<$ .001    \\
+% 			                     & bhh\_all             & $-0.593$             & $-0.677$                                        & $-0.510$             & $0.025$              & $-23.483$            & $<$ .001    \\
+% 			                     & bhh\_gd              & $0.205$              & $0.121$                                         & $0.289$              & $0.025$              & $8.107$              & $<$ .001    \\
+% 			                     & bhh\_mh              & $-2.946$             & $-3.030$                                        & $-2.862$             & $0.025$              & $-116.602$           & $<$ .001    \\
+% 			pso                  & rmsprop              & $4.876$              & $4.792$                                         & $4.960$              & $0.025$              & $192.984$            & $<$ .001    \\
+% 			$ $                  & sgd                  & $-0.199$             & $-0.283$                                        & $-0.116$             & $0.025$              & $-7.891$             & $<$ .001    \\
+% 			                     & bhh\_all             & $4.012$              & $3.929$                                         & $4.096$              & $0.025$              & $158.804$            & $<$ .001    \\
+% 			                     & bhh\_gd              & $4.811$              & $4.727$                                         & $4.894$              & $0.025$              & $190.394$            & $<$ .001    \\
+% 			                     & bhh\_mh              & $1.660$              & $1.576$                                         & $1.743$              & $0.025$              & $65.685$             & $<$ .001    \\
+% 			rmsprop              & sgd                  & $-5.075$             & $-5.159$                                        & $-4.992$             & $0.025$              & $-200.875$           & $<$ .001    \\
+% 			$ $                  & bhh\_all             & $-0.864$             & $-0.947$                                        & $-0.780$             & $0.025$              & $-34.180$            & $<$ .001    \\
+% 			                     & bhh\_gd              & $-0.065$             & $-0.149$                                        & $0.018$              & $0.025$              & $-2.590$             & $0.316$     \\
+% 			                     & bhh\_mh              & $-3.216$             & $-3.300$                                        & $-3.133$             & $0.025$              & $-127.299$           & $<$ .001    \\
+% 			sgd                  & bhh\_all             & $4.212$              & $4.128$                                         & $4.295$              & $0.025$              & $166.695$            & $<$ .001    \\
+% 			$ $                  & bhh\_gd              & $5.010$              & $4.926$                                         & $5.094$              & $0.025$              & $198.285$            & $<$ .001    \\
+% 			                     & bhh\_mh              & $1.859$              & $1.775$                                         & $1.943$              & $0.025$              & $73.576$             & $<$ .001    \\
+% 			bhh\_all             & bhh\_gd              & $0.798$              & $0.714$                                         & $0.882$              & $0.025$              & $31.590$             & $<$ .001    \\
+% 			$ $                  & bhh\_mh              & $-2.353$             & $-2.436$                                        & $-2.269$             & $0.025$              & $-93.119$            & $<$ .001    \\
+% 			bhh\_gd              & bhh\_mh              & $-3.151$             & $-3.235$                                        & $-3.067$             & $0.025$              & $-124.709$           & $<$ .001    \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 13 estimates (confidence intervals corrected using the tukey method).}             \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ ** p $<$ .01, *** p < .001}                                                                                                                                       \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{** $$}                                                                                                                                                                \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH vs. Low-Level Heuristics}
+% 	\label{tab:results:standalone:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor    & Statistic   & df   & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			heuristic & $83080.880$ & $12$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \section{Population Size}\label{app:statistical_analysis:bhh_variant_population}
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Population Size}
+% 	\label{tab:results:population:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases                & Sum of Squares & df      & Mean Square & F        & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset              & $0.072$        & $13$    & $0.006$     & $0.003$  & $1.000$  \\
+% 			population           & $519.146$      & $4$     & $129.786$   & $66.439$ & $<$ .001 \\
+% 			dataset * population & $2701.713$     & $52$    & $51.956$    & $26.597$ & $<$ .001 \\
+% 			Residuals            & $127034.063$   & $65030$ & $1.953$     & $$       & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}           \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Population Size}
+% 	\label{tab:results:population:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			$5$                  & $10$                 & $-0.071$             & $-0.119$                                        & $-0.024$             & $0.017$              & $-4.119$             & $<$ .001    \\
+% 			$ $                  & $15$                 & $-0.189$             & $-0.236$                                        & $-0.141$             & $0.017$              & $-10.885$            & $<$ .001    \\
+% 			                     & $20$                 & $-0.235$             & $-0.283$                                        & $-0.188$             & $0.017$              & $-13.585$            & $<$ .001    \\
+% 			                     & $25$                 & $-0.204$             & $-0.251$                                        & $-0.157$             & $0.017$              & $-11.785$            & $<$ .001    \\
+% 			$10$                 & $15$                 & $-0.117$             & $-0.164$                                        & $-0.070$             & $0.017$              & $-6.766$             & $<$ .001    \\
+% 			$ $                  & $20$                 & $-0.164$             & $-0.211$                                        & $-0.117$             & $0.017$              & $-9.466$             & $<$ .001    \\
+% 			                     & $25$                 & $-0.133$             & $-0.180$                                        & $-0.086$             & $0.017$              & $-7.666$             & $<$ .001    \\
+% 			$15$                 & $20$                 & $-0.047$             & $-0.094$                                        & $4.779\times10^{-4}$ & $0.017$              & $-2.700$             & $0.054$     \\
+% 			$ $                  & $25$                 & $-0.016$             & $-0.063$                                        & $0.032$              & $0.017$              & $-0.900$             & $0.897$     \\
+% 			$20$                 & $25$                 & $0.031$              & $-0.016$                                        & $0.078$              & $0.017$              & $1.800$              & $0.373$     \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ * p $<$ .05, ** p < .01, *** p < .001}                                                                                                                            \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{** $$}                                                                                                                                                                \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{* $$}                                                                                                                                                                 \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Population Size}
+% 	\label{tab:results:population:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor     & Statistic & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			population & $259.454$ & $4$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Heuristic Pool}\label{app:statistical_analysis:bhh_variant_hp}
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Heuristic Pool}
+% 	\label{tab:results:heuristic_pool:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases                     & Sum of Squares & df      & Mean Square & F          & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset                   & $0.000$        & $13$    & $0.000$     & $0.000$    & $1.000$  \\
+% 			heuristic\_pool           & $7332.913$     & $2$     & $3666.456$  & $9049.146$ & $<$ .001 \\
+% 			dataset * heuristic\_pool & $2898.104$     & $26$    & $111.466$   & $275.107$  & $<$ .001 \\
+% 			Residuals                 & $15808.983$    & $39018$ & $0.405$     & $$         & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                  \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Heuristic Pool}
+% 	\label{tab:results:heuristic_pool:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			all                  & gd                   & $0.250$              & $0.231$                                         & $0.268$              & $0.008$              & $31.660$             & $<$ .001    \\
+% 			$ $                  & mh                   & $-0.768$             & $-0.787$                                        & $-0.750$             & $0.008$              & $-97.404$            & $<$ .001    \\
+% 			gd                   & mh                   & $-1.018$             & $-1.037$                                        & $-1.000$             & $0.008$              & $-129.064$           & $<$ .001    \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 3 estimates (confidence intervals corrected using the tukey method).}              \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Heuristic Pool}
+% 	\label{tab:results:heuristic_pool:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor          & Statistic   & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			heuristic\_pool & $10999.088$ & $2$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Credit Assignment Strategy}\label{app:statistical_analysis:bhh_variant_credit}
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Credit Assignment Strategy}
+% 	\label{tab:results:credit:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases            & Sum of Squares & df      & Mean Square & F        & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset          & $0.088$        & $13$    & $0.007$     & $0.003$  & $1.000$  \\
+% 			credit           & $76.779$       & $4$     & $19.195$    & $9.756$  & $<$ .001 \\
+% 			dataset * credit & $2245.456$     & $52$    & $43.182$    & $21.949$ & $<$ .001 \\
+% 			Residuals        & $127940.670$   & $65030$ & $1.967$     & $$       & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}       \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Credit Assignment Strategy}
+% 	\label{tab:results:credit:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			gbest                & ibest                & $0.013$              & $-0.035$                                        & $0.060$              & $0.017$              & $0.742$              & $0.947$     \\
+% 			$ $                  & pbest                & $0.051$              & $0.004$                                         & $0.099$              & $0.017$              & $2.951$              & $0.026$     \\
+% 			                     & rbest                & $-0.031$             & $-0.078$                                        & $0.017$              & $0.017$              & $-1.776$             & $0.388$     \\
+% 			                     & symmetric            & $-0.047$             & $-0.094$                                        & $7.230\times10^{-4}$ & $0.017$              & $-2.686$             & $0.056$     \\
+% 			ibest                & pbest                & $0.038$              & $-0.009$                                        & $0.086$              & $0.017$              & $2.209$              & $0.176$     \\
+% 			$ $                  & rbest                & $-0.044$             & $-0.091$                                        & $0.004$              & $0.017$              & $-2.518$             & $0.087$     \\
+% 			                     & symmetric            & $-0.060$             & $-0.107$                                        & $-0.012$             & $0.017$              & $-3.428$             & $0.005$     \\
+% 			pbest                & rbest                & $-0.082$             & $-0.130$                                        & $-0.035$             & $0.017$              & $-4.727$             & $<$ .001    \\
+% 			$ $                  & symmetric            & $-0.098$             & $-0.145$                                        & $-0.051$             & $0.017$              & $-5.637$             & $<$ .001    \\
+% 			rbest                & symmetric            & $-0.016$             & $-0.063$                                        & $0.032$              & $0.017$              & $-0.910$             & $0.893$     \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ * p $<$ .05, ** p < .01, *** p < .001}                                                                                                                            \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{* $$}                                                                                                                                                                 \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{** $$}                                                                                                                                                                \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Credit Assignment Strategy}
+% 	\label{tab:results:credit:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor & Statistic & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			credit & $38.373$  & $4$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Reselection Interval}\label{app:statistical_analysis:bhh_variant_reselection}
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Reselection Interval}
+% 	\label{tab:results:reselection:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases                 & Sum of Squares & df      & Mean Square & F          & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset               & $0.000$        & $13$    & $0.000$     & $0.000$    & $1.000$  \\
+% 			reselection           & $25571.533$    & $4$     & $6392.883$  & $4372.618$ & $<$ .001 \\
+% 			dataset * reselection & $9552.887$     & $52$    & $183.709$   & $125.654$  & $<$ .001 \\
+% 			Residuals             & $95075.581$    & $65030$ & $1.462$     & $$         & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}              \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Reselection Interval}
+% 	\label{tab:results:reselection:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			$1$                  & $5$                  & $0.724$              & $0.683$                                         & $0.765$              & $0.015$              & $48.314$             & $<$ .001    \\
+% 			$ $                  & $10$                 & $1.328$              & $1.288$                                         & $1.369$              & $0.015$              & $88.649$             & $<$ .001    \\
+% 			                     & $15$                 & $1.546$              & $1.505$                                         & $1.587$              & $0.015$              & $103.168$            & $<$ .001    \\
+% 			                     & $20$                 & $1.707$              & $1.667$                                         & $1.748$              & $0.015$              & $113.936$            & $<$ .001    \\
+% 			$5$                  & $10$                 & $0.604$              & $0.564$                                         & $0.645$              & $0.015$              & $40.334$             & $<$ .001    \\
+% 			$ $                  & $15$                 & $0.822$              & $0.781$                                         & $0.863$              & $0.015$              & $54.854$             & $<$ .001    \\
+% 			                     & $20$                 & $0.983$              & $0.943$                                         & $1.024$              & $0.015$              & $65.622$             & $<$ .001    \\
+% 			$10$                 & $15$                 & $0.218$              & $0.177$                                         & $0.258$              & $0.015$              & $14.519$             & $<$ .001    \\
+% 			$ $                  & $20$                 & $0.379$              & $0.338$                                         & $0.420$              & $0.015$              & $25.287$             & $<$ .001    \\
+% 			$15$                 & $20$                 & $0.161$              & $0.120$                                         & $0.202$              & $0.015$              & $10.768$             & $<$ .001    \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Reselection Interval}
+% 	\label{tab:results:reselection:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor      & Statistic   & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			reselection & $12785.570$ & $4$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Replay Window Size}\label{app:statistical_analysis:bhh_variant_replay}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Replay Window Size}
+% 	\label{tab:results:replay:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases            & Sum of Squares & df      & Mean Square          & F                    & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset          & $0.003$        & $13$    & $2.458\times10^{-4}$ & $1.246\times10^{-4}$ & $1.000$  \\
+% 			replay           & $103.598$      & $4$     & $25.900$             & $13.132$             & $<$ .001 \\
+% 			dataset * replay & $1854.151$     & $52$    & $35.657$             & $18.079$             & $<$ .001 \\
+% 			Residuals        & $128254.247$   & $65030$ & $1.972$              & $$                   & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                            \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Replay Window Size}
+% 	\label{tab:results:replay:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			$1$                  & $5$                  & $0.039$              & $-0.009$                                        & $0.086$              & $0.017$              & $2.220$              & $0.172$     \\
+% 			$ $                  & $10$                 & $0.023$              & $-0.025$                                        & $0.070$              & $0.017$              & $1.306$              & $0.687$     \\
+% 			                     & $15$                 & $0.002$              & $-0.045$                                        & $0.050$              & $0.017$              & $0.119$              & $1.000$     \\
+% 			                     & $20$                 & $-0.077$             & $-0.125$                                        & $-0.030$             & $0.017$              & $-4.444$             & $<$ .001    \\
+% 			$5$                  & $10$                 & $-0.016$             & $-0.063$                                        & $0.032$              & $0.017$              & $-0.913$             & $0.892$     \\
+% 			$ $                  & $15$                 & $-0.037$             & $-0.084$                                        & $0.011$              & $0.017$              & $-2.100$             & $0.220$     \\
+% 			                     & $20$                 & $-0.116$             & $-0.163$                                        & $-0.068$             & $0.017$              & $-6.663$             & $<$ .001    \\
+% 			$10$                 & $15$                 & $-0.021$             & $-0.068$                                        & $0.027$              & $0.017$              & $-1.187$             & $0.759$     \\
+% 			$ $                  & $20$                 & $-0.100$             & $-0.148$                                        & $-0.053$             & $0.017$              & $-5.750$             & $<$ .001    \\
+% 			$15$                 & $20$                 & $-0.079$             & $-0.127$                                        & $-0.032$             & $0.017$              & $-4.563$             & $<$ .001    \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Replay Window Size}
+% 	\label{tab:results:replay:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor & Statistic & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			replay & $51.795$  & $4$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Reanalysis Internal}\label{app:statistical_analysis:bhh_variant_reanalysis}
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Reanalysis Interval}
+% 	\label{tab:results:reanalysis:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases                & Sum of Squares & df      & Mean Square & F        & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset              & $0.320$        & $13$    & $0.025$     & $0.012$  & $1.000$  \\
+% 			reanalysis           & $47.470$       & $4$     & $11.868$    & $6.017$  & $<$ .001 \\
+% 			dataset * reanalysis & $2012.676$     & $52$    & $38.705$    & $19.625$ & $<$ .001 \\
+% 			Residuals            & $128257.510$   & $65030$ & $1.972$     & $$       & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}           \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Reanalysis Interval}
+% 	\label{tab:results:reanalysis:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			$1$                  & $5$                  & $0.046$              & $-0.001$                                        & $0.094$              & $0.017$              & $2.661$              & $0.060$     \\
+% 			$ $                  & $10$                 & $0.082$              & $0.035$                                         & $0.130$              & $0.017$              & $4.735$              & $<$ .001    \\
+% 			                     & $15$                 & $0.060$              & $0.012$                                         & $0.107$              & $0.017$              & $3.420$              & $0.006$     \\
+% 			                     & $20$                 & $0.041$              & $-0.006$                                        & $0.089$              & $0.017$              & $2.378$              & $0.121$     \\
+% 			$5$                  & $10$                 & $0.036$              & $-0.011$                                        & $0.084$              & $0.017$              & $2.074$              & $0.231$     \\
+% 			$ $                  & $15$                 & $0.013$              & $-0.034$                                        & $0.061$              & $0.017$              & $0.759$              & $0.942$     \\
+% 			                     & $20$                 & $-0.005$             & $-0.052$                                        & $0.043$              & $0.017$              & $-0.282$             & $0.999$     \\
+% 			$10$                 & $15$                 & $-0.023$             & $-0.070$                                        & $0.025$              & $0.017$              & $-1.315$             & $0.682$     \\
+% 			$ $                  & $20$                 & $-0.041$             & $-0.088$                                        & $0.006$              & $0.017$              & $-2.356$             & $0.128$     \\
+% 			$15$                 & $20$                 & $-0.018$             & $-0.066$                                        & $0.029$              & $0.017$              & $-1.041$             & $0.836$     \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ * p $<$ .05, ** p < .01, *** p < .001}                                                                                                                            \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{** $$}                                                                                                                                                                \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{* $$}                                                                                                                                                                 \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Reanalysis Interval}
+% 	\label{tab:results:reanalysis:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor     & Statistic & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			reanalysis & $23.713$  & $4$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Burn In}\label{app:statistical_analysis:bhh_variant_burn_in}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Burn In}
+% 	\label{tab:results:burn_in:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases              & Sum of Squares & df      & Mean Square & F         & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset            & $0.135$        & $13$    & $0.010$     & $0.006$   & $1.000$  \\
+% 			burn\_in           & $6237.667$     & $4$     & $1559.417$  & $850.761$ & $<$ .001 \\
+% 			dataset * burn\_in & $4842.323$     & $52$    & $93.122$    & $50.804$  & $<$ .001 \\
+% 			Residuals          & $119197.865$   & $65030$ & $1.833$     & $$        & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}          \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Burn In}
+% 	\label{tab:results:burn_in:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			$0$                  & $5$                  & $-0.171$             & $-0.217$                                        & $-0.126$             & $0.017$              & $-10.212$            & $<$ .001    \\
+% 			$ $                  & $10$                 & $-0.367$             & $-0.413$                                        & $-0.321$             & $0.017$              & $-21.884$            & $<$ .001    \\
+% 			                     & $15$                 & $-0.595$             & $-0.641$                                        & $-0.549$             & $0.017$              & $-35.451$            & $<$ .001    \\
+% 			                     & $20$                 & $-0.877$             & $-0.923$                                        & $-0.831$             & $0.017$              & $-52.281$            & $<$ .001    \\
+% 			$5$                  & $10$                 & $-0.196$             & $-0.242$                                        & $-0.150$             & $0.017$              & $-11.672$            & $<$ .001    \\
+% 			$ $                  & $15$                 & $-0.424$             & $-0.469$                                        & $-0.378$             & $0.017$              & $-25.239$            & $<$ .001    \\
+% 			                     & $20$                 & $-0.706$             & $-0.752$                                        & $-0.660$             & $0.017$              & $-42.069$            & $<$ .001    \\
+% 			$10$                 & $15$                 & $-0.228$             & $-0.273$                                        & $-0.182$             & $0.017$              & $-13.567$            & $<$ .001    \\
+% 			$ $                  & $20$                 & $-0.510$             & $-0.556$                                        & $-0.464$             & $0.017$              & $-30.397$            & $<$ .001    \\
+% 			$15$                 & $20$                 & $-0.282$             & $-0.328$                                        & $-0.237$             & $0.017$              & $-16.830$            & $<$ .001    \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} P-value and confidence intervals adjusted for comparing a family of 5 estimates (confidence intervals corrected using the tukey method).}              \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Burn In}
+% 	\label{tab:results:burn_in:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor   & Statistic  & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			burn\_in & $3117.030$ & $4$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Normalisation}\label{app:statistical_analysis:bhh_variant_normalise}
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Normalisation}
+% 	\label{tab:results:normalise:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases                   & Sum of Squares       & df      & Mean Square          & F                    & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset                 & $4.992\times10^{-4}$ & $13$    & $3.840\times10^{-5}$ & $1.555\times10^{-4}$ & $1.000$  \\
+% 			normalisation           & $5.751$              & $1$     & $5.751$              & $23.282$             & $<$ .001 \\
+% 			dataset * normalisation & $78.260$             & $13$    & $6.020$              & $24.369$             & $<$ .001 \\
+% 			Residuals               & $6425.988$           & $26012$ & $0.247$              & $$                   & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                                         \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Normalisation}
+% 	\label{tab:results:normalise:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			False                & True                 & $-0.030$             & $-0.042$                                        & $-0.018$             & $0.006$              & $-4.825$             & $<$ .001    \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Normalisation}
+% 	\label{tab:results:normalise:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor        & Statistic & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			normalisation & $23.005$  & $1$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Discounted Rewards}\label{app:statistical_analysis:bhh_variant_discounted_rewards}
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{ANOVA - Rank - BHH Variant: Discounted Rewards}
+% 	\label{tab:results:discounted_rewards:anova}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}{
+% 		\begin{tabular}{lrrrrr}
+% 			\toprule
+% 			Cases                         & Sum of Squares & df      & Mean Square & F        & p        \\
+% 			\cmidrule[0.4pt]{1-6}
+% 			dataset                       & $0.264$        & $13$    & $0.020$     & $0.082$  & $1.000$  \\
+% 			discounted\_rewards           & $18.019$       & $1$     & $18.019$    & $73.148$ & $<$ .001 \\
+% 			dataset * discounted\_rewards & $83.831$       & $13$    & $6.449$     & $26.177$ & $<$ .001 \\
+% 			Residuals                     & $6407.866$     & $26012$ & $0.246$     & $$       & $ $      \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{6}{p{0.5\linewidth}}{\textit{Note.} Type III Sum of Squares}                    \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Post Hoc Comparisons - BHH Variant: Discounted Rewards}
+% 	\label{tab:results:discounted_rewards:post_hoc}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrrrrrr}
+% 			\toprule
+% 			\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{95\% CI for Mean Difference} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}               \\
+% 			\cline{4-5}
+% 			$ $                  & $ $                  & Mean Difference      & Lower                                           & Upper                & SE                   & t                    & p$_{tukey}$ \\
+% 			\cmidrule[0.4pt]{1-8}
+% 			False                & True                 & $-0.053$             & $-0.065$                                        & $-0.041$             & $0.006$              & $-8.553$             & $<$ .001    \\
+% 			\bottomrule
+% 			\addlinespace[1ex]
+% 			\multicolumn{8}{p{0.5\linewidth}}{\textit{Note.} Results are averaged over the levels of: dataset}                                                                                                      \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{$ $ *** p $<$ .001}                                                                                                                                                   \\
+% 			\multicolumn{8}{p{0.5\linewidth}}{*** $$}                                                                                                                                                               \\
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{Kruskal-Wallis - BHH Variant: Discounted Rewards}
+% 	\label{tab:results:discounted_rewards:kruskal}%
+% 	\par\bigskip
+% 	\resizebox{\textwidth}{!}
+% 	{
+% 		\begin{tabular}{lrrr}
+% 			\toprule
+% 			Factor              & Statistic & df  & p        \\
+% 			\cmidrule[0.4pt]{1-4}
+% 			discounted\_rewards & $72.075$  & $1$ & $<$ .001 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% \end{table}
+
+% \section{Summary}\label{app:statistical_analysis:summary}
+
+% As always, provide a summary at the end.
