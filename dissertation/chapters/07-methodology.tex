@@ -1,14 +1,13 @@
 \chapter{Methodology}\label{chap:methodology}
 
 \begin{quotation}
-      \noindent ``Observation, reason and experimentation make up what we call the scientific method.''
+      ``Observation, reason and experimentation make up what we call the scientific method.''
 \end{quotation}
 \begin{flushright}
       - Richard P. Feynman
 \end{flushright}
 
-\noindent
-So far, this dissertation has provided background information on \acfp{ANN}, \index{heuristic}heuristics, \acf{HH} and probability theory in Chapters \ref{chap:anns}-\ref{chap:probability}. Chapter \ref{chap:bhh} provided the detail of the implementation of the proposed \acs{BHH} with all its components and hyper-parameters. Scientific experimentation can now be conducted. Chapter \ref{chap:introduction} identified a set of empirical goals for this dissertation. The goals of this dissertation include an empirical evaluation of the \acs{BHH}, its behaviour and performance, and a comparison to state of the art low-level \index{heuristic}heuristics. This chapter provides the detailed specification of the methodology that is followed for the empirical process. Details are provided on the implementation of experiments, datasets, selection of hyper-parameters and design decisions. The process by which the results are statistically analysed are also presented. The remainder of the chapter is structured as follows.
+So far, this dissertation has provided background information on \acfp{ANN}, \index{heuristic}heuristics, \acf{HH} and probability theory in Chapters \ref{chap:anns}-\ref{chap:probability}. Chapter \ref{chap:bhh} provided the detail of the implementation of the proposed \acs{BHH} with all its components and hyper-parameters. Scientific experimentation can now be conducted. Chapter \ref{chap:introduction} identified a set of empirical goals for this dissertation. The goals of this dissertation include an empirical evaluation of the \acs{BHH}, its behaviour and performance, and a comparison to state of the art low-level \index{heuristic}heuristics. This chapter provides the detailed specification of the methodology that is followed for the empirical process. Details are provided on the implementation of experiments, datasets, selection of hyper-parameters and design decisions. The process by which the results are statistically analysed are also presented. The remainder of the chapter is structured as follows:
 
 \begin{itemize}
       \item \textbf{Section \ref{sec:methodology:overview}} provides a brief overview of the overall empirical process.
@@ -46,7 +45,6 @@ The purpose of the empirical process is to conduct a carefully crafted set of ex
       \item An empirical study to critically evaluate the performance of the \Acs{BHH} compared to individual low-level \index{heuristic}heuristics in the \index{heuristic}heuristic space as they are used to train \acp{FFNN} on a number of different problems.
 \end{itemize}
 
-\noindent
 These empirical tests represent a set of questions, related to the \acs{BHH}, that need to be answered. The empirical process is designed to answer these questions. The empirical process is structured as follows.
 
 Each empirical tests starts with a question to be answered. A hypothesis is formulated for the outcome of the empirical test. The empirical tests are then designed around the implementation of the components under evaluation. Each empirical test defines the configuration of elements and generally include a set of parameters that are altered between experiments. Each experiment is evaluated by means of a performance measurement. In the context of training \acp{FFNN}, the underlying model is trained across a number of datasets. Each dataset is split into a training and test set. The training set is used to train the model, while the test set is used to evaluate the model's performance on unseen data. Training epochs are split into mini-batch iterations with a specified mini-batch size. Evaluation takes place at every mini-batch step. Due to the stochastic nature of the experiments, each experiment is repeated over a number of runs to provide sufficient sample for statistical certainty about the outcome of the results. Each run contains a different random seed, such that each run is unique. The evaluation data forms the results of the empirical test. These results are analysed for statistical significance, from which findings and conclusions are then made. The null hypothesis is then either rejected or verified based on these findings.
@@ -99,7 +97,6 @@ This section provides the detail around the different datasets that are used thr
       }
 \end{table}%
 
-\noindent
 Details on how the datasets where preprocessed and prepared is given in Appendix \ref{app:datasets}. The concept of class balancing is briefly discussed next.
 
 \subsection{Class Balancing}
@@ -142,7 +139,6 @@ All models that are trained in this dissertation follow implementations of shall
       }
 \end{table}%
 
-\noindent
 For the classification problems presented in Tables \ref{tab:methodology:datasets:classification} and \ref{tab:methodology:models:configurations}, the softmax activation function is added after training and is not included in the model during training. The loss functions, \acf{SparseCatXE} and \acf{BinXE}, that are used, contain a \index{softmax}softmax function.
 
 \index{heuristic}
@@ -198,7 +194,6 @@ This section provides the details of the low-level \index{heuristic}heuristics t
       }
 \end{table}%
 
-\noindent
 Note that from Table \ref{tab:methodology:heuristics}, values that are configured to make use of a decay schedule are presented with the initial value first and the decay rate in brackets next to it. The number of steps is the total number of mini-batch training steps that are executed for that particular dataset.
 
 Furthermore, it should be noted that a learning rate was added to \acs{PSO} as an attempt to avoid overshooting solutions later in the training process. This parameter does not traditionally form part of \acs{PSO}, but was found to be useful.
@@ -214,7 +209,6 @@ Section \ref{sec:bhh:heuristic:proxies} presented the concept of a mapping of pr
 \end{figure}
 
 
-\noindent
 In Figure \ref{fig:methodology:heuristics:proxies}, cells containing \textbf{x}, indicate that the associated \index{heuristic}heuristic implements that particular state parameter explicitly, and cells containing \textbf{o} indicate that the state parameter is implicitly implemented as part of the \acs{BHH} algorithm. The required mapping of proxied \index{heuristic}heuristic state operations is then implemented as a lookup of the table presented in Figure \ref{fig:methodology:heuristics:proxies}.
 
 The following section provides the details around the \acs{BHH} baseline configuration.
@@ -246,7 +240,6 @@ The \acs{BHH} baseline is a name given to a specific configuration of the \acs{B
       }
 \end{table}%
 
-\noindent
 In Table \ref{tab:methodology:bhh_baseline_configuration}, the \index{heuristic}heuristic pool configuration that is used, is referred to as \textit{all}. The \textit{all} configuration refers to a configuration where the \index{heuristic pool}heuristic pool contains all the low-level \index{heuristic}heuristics as presented in Section \ref{sec:methodology:heuristics}, including all gradient-based \index{heuristic}heuristics and \index{meta-heuristic}meta-heuristics.
 
 The following section provides the performance measurements that are implemented.
@@ -316,7 +309,6 @@ This section provides the details of the experimental group that focuses on \acs
       }
 \end{table}%
 
-\noindent
 In Table \ref{tab:methodology:experiments:bhh_variants}, the \index{heuristic pool}heuristic pool configuration \textit{gd} refers to the \index{heuristic pool}heuristic pool configuration where only gradient-based \index{heuristic}heuristics are included, and \textit{mh} refers to the \index{heuristic pool}heuristic pool configuration where only meta-heuristics are included.
 
 The next section presents the method that is followed for statistical analysis.

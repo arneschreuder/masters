@@ -2,13 +2,13 @@
 \label{chap:conclusion}
 
 \begin{quotation}
-      \noindent ``I am sorry to have made such a long speech, but I did not have time to make a shorter one.''
+      ``I am sorry to have made such a long speech, but I did not have time to make a shorter one.''
 \end{quotation}
 \begin{flushright}
       - Winston Churchill
 \end{flushright}
 
-This chapter provides a summary of the research that is done in this dissertation. The research objectives were set out in Chapter \ref{chap:introduction} and are concluded in this chapter. Furthermore, this chapter provides a summary of the results and findings from the empirical process and provides future research opportunities. The remainder of the chapter is structured as follows.
+This chapter provides a summary of the research that is done in this dissertation. The research objectives were set out in Chapter \ref{chap:introduction} and are concluded in this chapter. Furthermore, this chapter provides a summary of the results and findings from the empirical process and provides future research opportunities. The remainder of the chapter is structured as follows:
 
 \begin{itemize}
       \item \textbf{Section \ref{sec:conclusion:research_goals}} provides a summary of the research intent and provides a review of the problem statement, objectives and motivations behind the research.
@@ -49,7 +49,7 @@ Investigation was done into the landscapes of existing solutions to train \acp{F
 \subsection{Review of Research Objectives}
 \label{sec:conclusion:research_goals:research_objectives}
 
-Existing techniques from other problem domains were considered. \acs{RL}, meta-learning and probabilistic learning approached were considered. Bayesian probability theory showed promise. This research then set out to develop a novel high-level \index{heuristic}heuristic that utilises probability theory in an online learning setting to drive the automatic \index{heuristic}heuristic selection process. As such, the \acs{BHH} was conceptualised. The research objectives were defined and are summarised as follows.
+Existing techniques from other problem domains were considered. \acs{RL}, meta-learning and probabilistic learning approached were considered. Bayesian probability theory showed promise. This research then set out to develop a novel high-level \index{heuristic}heuristic that utilises probability theory in an online learning setting to drive the automatic \index{heuristic}heuristic selection process. As such, the \acs{BHH} was conceptualised. The research objectives were defined and are summarised as follows:
 
 \begin{itemize}
       \item Conduct literature studies on all related topics that are relevant to the development of the \acs{BHH}. These include \acs{ANN}, existing low-level \index{heuristic}heuristics, meta-learning, \acp{HH}, probability theory and Bayesian statistics.
@@ -89,7 +89,7 @@ Furthermore, it is shown that \index{heuristic}heuristic selection alone is not 
 
 Detailed discussions were provided on a number of hyper-parameters that each contribute to the trade-off between \index{heuristic}heuristic and solution exploration and exploitation. These hyper-parameters include the \index{heuristic pool}\textit{heuristic pool} configuration, the \textit{population size}, the \textit{credit assignment strategy} used, the \textit{reselection interval}, the \textit{replay window size}, the \textit{reanalysis interval}, the \textit{burn in window size}, \textit{normalisation} of concentration parameters and \textit{discounted rewards} as assigned by the credit assignment strategy. A \acs{BHH} baseline configuration was identified with default values for each of the hyper-parameters.
 
-It was mentioned that the \acs{BHH}, implemented in this dissertation, does not implement a move-acceptance strategy that rejects heuristic progressions if they do not improve on the current best solution. Throughout the presentation of empirical results, it is recommended that this technique be investigated and implemented in further research.
+It was mentioned that the \acs{BHH}, implemented in this dissertation, does not implement a move acceptance strategy that rejects heuristic progressions if they do not improve on the current best solution. Throughout the presentation of empirical results, it is recommended that this technique be investigated and implemented in further research.
 
 
 \section{Summary of Methodology}
@@ -165,7 +165,7 @@ For this experimental group it was found that the \ac{BHH} is able to train a \a
 
 Various illustrations of the train and test loss plots, as it relates to training of a \acs{FFNN} on the the iris dataset, have been provided. Furthermore, various illustrations on the changes of the \acs{BHH} state parameters were provided for visual aid.
 
-The main findings that were made for this experimental group are given as follows. Most of the training progression is made in the early stages of the training process. That leads to the conclusion that the \acs{BHH} has a small window from which it should learn and gain the most in the training process. After training has converged, the \acs{BHH} resets its concentration parameters and heuristic selection returns to the symmetric heuristic selection case. As such, the \acs{BHH} explores other heuristics in an attempt to further improve on the current best solution found. The test set was used as a validation set during training. Some overfitting can be observed as the \acs{BHH} tried finding better solutions on the train set, but at the cost of generalisation on the test set. Minor divergence of the training loss is observed as the \acs{BHH} explores other heuristics in an attempt to improve performance. Since no move-acceptance strategy, and no early stopping stategy was used, the \acs{BHH} could select heuristics that are sub-optimal. Future research opportunities should incorporate these aforementioned strategies.
+The main findings that were made for this experimental group are given as follows. Most of the training progression is made in the early stages of the training process. That leads to the conclusion that the \acs{BHH} has a small window from which it should learn and gain the most in the training process. After training has converged, the \acs{BHH} resets its concentration parameters and heuristic selection returns to the symmetric heuristic selection case. As such, the \acs{BHH} explores other heuristics in an attempt to further improve on the current best solution found. The test set was used as a validation set during training. Some overfitting can be observed as the \acs{BHH} tried finding better solutions on the train set, but at the cost of generalisation on the test set. Minor divergence of the training loss is observed as the \acs{BHH} explores other heuristics in an attempt to improve performance. Since no move acceptance strategy, and no early stopping stategy was used, the \acs{BHH} could select heuristics that are sub-optimal. Future research opportunities should incorporate these aforementioned strategies.
 
 
 \subsection{\acs{BHH} Baseline vs. Low-Level Heuristics}
@@ -244,12 +244,12 @@ By default, the \acs{BHH} initialises the values for the concentration parameter
 \subsubsection{Move Acceptance Strategies}
 \label{sec:conclusion:further_research:move_acceptance}
 
-Throughout the presentation of the empirical results, it is mentioned that a move-acceptance strategy can be incorporated to reject \index{heuristic}heuristic progressions that do not improve on the current best solution found. This would eliminate any divergence in the training process as a result of selecting sub-optimal \index{heuristic}heuristics. Various different move-acceptance strategies can be developed and empirically tested.
+Throughout the presentation of the empirical results, it is mentioned that a move acceptance strategy can be incorporated to reject \index{heuristic}heuristic progressions that do not improve on the current best solution found. This would eliminate any divergence in the training process as a result of selecting sub-optimal \index{heuristic}heuristics. Various different move acceptance strategies can be developed and empirically tested.
 
 \subsubsection{Early Stopping Strategies}
 \label{sec:conclusion:further_research:early_stopping}
 
-Similar to the move-acceptance strategy, throughout the presentation of the empirical results, it is mentioned that an early stopping strategy can be used to hault the training process if the performance does not improve for a number of steps. In this dissertation, a number of examples were presented where divergence of training loss occurred. Furthermore, a number of examples were presented where overfitting occurred. An early stopping strategy can help prevent such outcomes.
+Similar to the move acceptance strategy, throughout the presentation of the empirical results, it is mentioned that an early stopping strategy can be used to hault the training process if the performance does not improve for a number of steps. In this dissertation, a number of examples were presented where divergence of training loss occurred. Furthermore, a number of examples were presented where overfitting occurred. An early stopping strategy can help prevent such outcomes.
 
 \subsubsection{Entity Search}
 \label{sec:conclusion:further_research:entity_search}
