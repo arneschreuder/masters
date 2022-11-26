@@ -1,907 +1,699 @@
-\chapter{Bayesian Hyper-Heuristic}\label{chap:bhh}
+\chapter{Probability}
+\label{chap:probability}
 
 \begin{quotation}
-      ``The result is a posterior distribution, which the agent may use as its new prior in the next step.''
+      ``Probability theory is nothing but common sense reduced to calculation.''
 \end{quotation}
 \begin{flushright}
-      - Pedro Domingos, The Master Algorithm
+      - Pierre-Simon Laplace
 \end{flushright}
 
-The above quote was the inspiration for the development of a novel \acf{HH} that uses Bayesian probability concepts as a selection mechanism to drive the heuristic selection process. Thus far the reader has been presented with all of the necessary background information on \acp{ANN} (Chapter \ref{chap:anns}), low-level \index{heuristic}heuristics (Chapter \ref{chap:heuristics}), \acp{HH} (Chapter \ref{chap:hhs}) and lastly, probability theory (Chapter \ref{chap:probability}). These elements form the fundamental components of the proposed \Acf{BHH}. This chapter provides the details around the implementation of the \Ac{BHH} and explains how it used to train \acp{FFNN}. The remainder of the chapter is structured as follows:
+Probability theory and statistics can be traced back to as early as the 18th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of of Chance}; a book that is widely seen as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of \index{Bayes' theorem}Bayes' theorem was introduced.
+
+Probability theory, statistics and \acf{ML} are transdisciplinary fields with many shared concepts. There are many examples of how probability theory has been incorporated into \acs{ML} research. In 1991,~\citeauthor{ref:denker:1991},~\cite{ref:denker:1991} proposed a way to transform \acf{ANN} outputs to probability distributions. In 1993, \citeauthor{ref:neal:1993}~\cite{ref:neal:1993} developed a \acf{MCMC} sampling algorithm for Bayesian \acp{NN}. These are but a few examples of the role that probability theory has played in \acs{ML} research in the past.
+
+Chapter \ref{chap:hhs} provided the reader with the concept of a \acf{HH}. This dissertation aims to develop a selection \acs{HH} that makes use of probability theory to select the best \acs{HH} to solve a given problem. This chapter aims to provide the reader with the necessary background information on probability theory and statistics. These are big fields and focus is put on the elements that are required to formulate the proposed \acf{BHH}. The remainder of the chapter is structured as follows:
 
 \begin{itemize}
-      \item \textbf{Section \ref{sec:bhh:overview}} provides a brief overview of the \Acs{BHH}.
+      \item \textbf{Section \ref{sec:probability:overview}} gives a brief overview of what probability is and how it is used.
 
-      \item \textbf{Section \ref{sec:bhh:architecture}} provides the general architecture and \Ac{HH} framework implemented by the \Acs{BHH}.
+      \item \textbf{Section \ref{sec:probability:multiple_events}} presents the concept of conditional probability.
 
-      \item \textbf{Section \ref{sec:bhh:heuristic_pool}} presents the \index{heuristic}\textit{heuristic pool}, a collection of low-level \index{heuristic}heuristics. Discussions follow on the importance of diversity amoungst heuristics in the \index{heuristic pool}heuristic pool.
+      \item \textbf{Section \ref{sec:probability:multiple_events}} presents the two laws of probability related to the intersection and union of multiple events.
 
-      \item \textbf{Section \ref{sec:bhh:entity_pool}} presents details on entity (local) and population (global) memory (state).
+      \item \textbf{Section \ref{sec:probability:cond_probability}} introduces conditional probability.
 
-      \item \textbf{Section \ref{sec:bhh:performance_log}} presents detailed discussions on performance measurement. The \textit{performance log}, implemented by the \acs{BHH}, is presented.
+      \item \textbf{Section \ref{sec:probability:bayes_theorem}} introduces \index{Bayes' theorem}Bayes' theorem, the fundamental theorem upon which the \acs{BHH} is built.
 
-      \item \textbf{Section \ref{sec:bhh:credit_assignment_strategy}} presents detailed discussions on credit assignment and move acceptance strategies.
+      \item \textbf{Section \ref{sec:probability:probability_distributions}} presents the reader with relevant probability distributions.
 
-      \item \textbf{Section \ref{sec:bhh:selection_mechanism}} presents the Bayesian probabilistic model that is used as the heuristic selection mechanism.
+      \item \textbf{Section \ref{sec:probability:conjugate_priors}} presents the reader with relevant conjugate prior probability distributions.
 
-      \item \textbf{Section \ref{sec:bhh:optimisation_step}} presents the learning mechanisms by which the probabilistic model can be optimised.
+      \item \textbf{Section \ref{sec:probability:bayesian_statistics}} presents \textit{Bayesian} statistics. Brief discussions follow on the \textit{frequentist} view and \textit{Bayesian} view of probability. Detailed discussions follow on Bayesian optimisation methods such as \index{Bayesian analysis}\textit{Bayesian analysis}.
 
-      \item \textbf{Section \ref{sec:bhh:hyper_parameters}} summarises and discusses the associated \index{hyper-parameters}hyper-parameters and default values.
-
-      \item \textbf{Section \ref{sec:bhh:algorithm}} provides the pseudo-code algorithm for the \acs{BHH}.
-
-      \item \textbf{Section \ref{sec:bhh:summary}} provides a brief summary of the chapter.
+      \item \textbf{Section \ref{sec:probability:summary}} provides a brief summary of the chapter.
 \end{itemize}
 
 
-\section{Overview}\label{sec:bhh:overview}
+\section{Overview of Probability}\label{sec:probability:overview}
 
-This section provides an overview of the workings of the \Acf{BHH}. The general concept of the \acs{BHH} can be summarised as follows. The \acs{BHH} implements a high-level heuristic selection mechanism that learns to select the best heuristic, from a pool of low-level heuristics, to apply to a population of entities, each implementing a candidate solution to a \acs{FFNN}, with the intent of both optimising the underlying \acs{FFNN} and \acs{FFNN} training process. The \acs{BHH} does so by learning the probability that a given heuristic will perform well at a given stage in the \acs{FFNN} training process. These probabilities are then used as heuristic selection probabilities in the next step of the training process.
+In everyday conversation, the term \textit{probability} is a measure of one's belief in the occurrence of a future event~\cite{ref:wackerly:2014}. Probability is a necessary tool used in many fields including physics, biology, chemistry and computer science. These fields contain many cases that generate observations that cannot be predicted with absolute certainty~\cite{ref:wackerly:2014}. Probability can be be inferred and confirmed through past events. These events are referred to as \textit{random} or \textit{stochastic} events. The probability that a certain event $A$ might occur, is denoted $P(A)$. Although these random events cannot be predicted with absolute certainty, the relative frequency with which they occur over many trials, is often remarkably stable.
 
-Formal classification of the \Acs{BHH} is needed. Chapter \ref{chap:hhs} presented the reader with a proposed classification scheme for \acp{HH} by~\citeauthor{ref:burke:2010}~\cite{ref:burke:2010}. According to the aforementioned classification scheme, the \Acs{BHH} is a population-based, meta-hyper-heuristic that utilises selection and perturbation of low-level heuristics in an online learning fashion. A breakdown of the classification is given as follows:
+Consider flipping an unbiased, fair coin. The coin has two possible outcomes. It can conclude that each side has a $\frac{1}{2}$ or $50\%$ chance of occurring. In statistics, the decimal probability notation is used, where $0 <= P(A) <= 1$. Suppose the fair coin is thrown 10 times, one is not guaranteed to observe $0.5$ heads and $0.5$ tails. There is some probability (although small) that the coin might fall on heads $0/10$ times. The probability of such an event occurring is $0.0009765625$. In the coin flip example, the \acf{CLT} shows that the normalised sum of events tends toward a normal distribution with a mean value of $0.5$ if the number of events observed $N$, is large~\cite{ref:wackerly:2014}. The larger the value of $N$, the higher the confidence of mean probability and relative frequency of the event. The stable long-term relative frequency by which a random event occurs, provides an intuitive and meaningful measure of belief that a certain event will occur again at some point in the future~\cite{ref:wackerly:2014}.
 
-\begin{itemize}
-      \item \textbf{Population-Based:} The \acs{BHH} implements a population-based approach, where a collection of different candidate solutions, referred to as \textit{entities}, work together to yield a global best solution.
+Probability can also be expressed over multiple random events. Multiple random events can be considered together, dependently or conditionally. The following sections provides insight into conditional and joints probabilities of multiple random events.
 
-      \item \textbf{Meta-Hyper-Heuristic:} There exists a domain barrier, where the \acs{BHH} searches through the \textit{heuristic space}, using only \index{heuristic}heuristic performance information, while lower level heuristics search through the \textit{solution space} using information from the search domain itself. Furthermore, the \index{heuristic pool}heuristic pool implemented by the \acs{BHH} supports both gradient-based low level \index{heuristic}heuristics, as well as meta-heuristics.
+\section{Conditional Probability and Independence}\label{sec:probability:cond_probability}
 
-      \item \textbf{Selection and Perturbation of Low-Level Heuristics:} The \acs{BHH} implements a \index{heuristic}heuristic selection mechanism that selects from a collection of lower level \index{heuristic}heuristics, called a \index{heuristic pool}\textit{heuristic pool}. Selection is biased towards good performing heuristics. A credit assignment strategy is used to \textit{reward} good heuristic performance. The \acs{BHH} maintains entity and population state through operations that \textit{proxy} update steps from different heuristics (perturbation), as is required. These proxy operations ensure that heuristic requirements are satisfied even when different heuristics are used for different entities throughout the training process.
+The occurrence of a given random event $A$ can often be conditional on the occurrence of another event $B$. In the field of medicine, an example of this is to calculate the probability of a certain diagnosis of a sick patient given his/her symptoms. The aforementioned relationship between events is referred to as the conditional probability between two events. The conditional probability is expressed as $P(A \vert B)$ and is read \textit{the probability of $A$ given $B$}. On the contrary, the \textit{unconditional} probability is the probability of an event, not dependent on any other. The conditional probability of $A$ given $B$ can be expressed as is given in Definition \ref{eq:probability:cond_probability} below~\cite{ref:wackerly:2014}.
+\\
+\begin{definition}[\textbf{Conditional Probability}]
+      \label{eq:probability:cond_probability}
+      The conditional probability of an event $A$, subject to the occurrence of event $B$ is expressed as
 
-      \item \textbf{Online Learning:} The \acs{BHH} applies learning, at specified intervals, throughout the \acs{FFNN} training process.
-\end{itemize}
+      \begin{equation}
+            \label{eq:probability:overview:conditional}
+            P(A \vert B) = \frac{P(A \cap B)}{P(B)}
+      \end{equation}
+\end{definition}
 
-The following sections presents the reader with more detail on the implementation of the \acs{BHH}. Discussions lead with the \acs{BHH} architecture and general \acs{HH} framework in the following section.
+In Equation~\eqref{eq:probability:overview:conditional} above, $P(B) > 0$. Note that conditional probability does not suggest causation. If an event $A$ has a high probability of occurring after observing event $B$, it does not necessarily mean that $A$ is caused by $B$. Conditional probability simply expresses the dependence amongst events.
 
-\section{Architecture}\label{sec:bhh:architecture}
+It could also be the case that the outcome of observing event $A$ is not affected by the occurrence of $B$. In this case, it is said that events $A$ and $B$ are independent. The independence between two events are expressed in Definition \ref{def:probability:cond_probability:independence} below.
+\\
+\begin{definition}[\textbf{Independence of Events}]
+      \label{def:probability:cond_probability:independence}
+      Two events, $A$ and $B$ are said to be independent of each other if, and only if the following criteria hold:
 
-This section aims to present the reader with all the high level components in the architecture of the \Acs{BHH}. Burke et al.~\cite{ref:burke:2010} proposed an initial framework for \acp{HH} and Grobler~\cite{ref:grobler:2015} further proposed a framework for a heterogeneous meta-\ac{HH}. The aforementioned frameworks are adapted for the implementation of the \Acs{BHH}. An illustration of the high-level architecture of the \Acs{BHH} is given in Figure \ref{fig:bhh_architecture}.
+      \begin{itemize}
+            \item $P(A \vert B) = P(A)$
+            \item $P(B \vert A) = P(B)$
+            \item $P(A \cap B) = P(A)P(B)$
+      \end{itemize}
+
+      otherwise, events $A$ and $B$ are said to be \textit{dependent} random events.
+\end{definition}
+
+\section{Two Laws of Probability for Multiple Events}\label{sec:probability:multiple_events}
+
+Suppose there are two random events $A$ and $B$, then one can calculate the probability of the union and intersection of these events. From the aforementioned concept, two laws of probability can be formulated. These are referred to as the \textit{multiplicative} and \textit{additive} laws of probability~\cite{ref:wackerly:2014} and is given below in Theorems \ref{th:probability:multiple_events:multiplicative} and \ref{th:probability:multiple_events:additive} respectively.\\
+
+\begin{theorem}[\textbf{The Multiplicative Law of Probability}]
+      \label{th:probability:multiple_events:multiplicative}
+      The probability of the intersection of two events $A$ and $B$ is given as
+
+      \begin{equation}
+            \begin{split}
+                  P(A \cap B)
+                  &= P(A)P(B \vert A) \\
+                  &= P(B)P(A \vert B)
+            \end{split}
+      \end{equation}
+
+      If $A$ and $B$ are independent, then
+
+      \begin{equation}
+            P(A \cap B) = P(A)P(B)
+      \end{equation}
+\end{theorem}
+
+\begin{proof}
+      Proof is given from Definition \ref{eq:probability:cond_probability} above.
+\end{proof}
+\vspace*{0.5cm}
+
+\begin{theorem}[\textbf{The Additive Law of Probability}]
+      \label{th:probability:multiple_events:additive}
+      The probability of the union of two events $A$ and $B$ is given as
+
+      \begin{equation}
+            P(A \cup B) = P(A) + P(B) - P(B \cap A)
+      \end{equation}
+\end{theorem}
+
+\begin{proof}
+      The geometric proof of the additive law of probability is given by the Venn Diagram presented in Figure \ref{fig:probability:multiple_events:additive}. Note that $A \cup B = A \cup ( \bar{A} \cap B)$, where $A$ and $\bar{A} \cap B$ are mutually exclusive events. Furthermore, consider that $B = (\bar{A} \cap B) \cup (A \cap B)$, where $\bar{A} \cap B$ and $A \cap B$ are mutually exclusive. Then $P(A \cup B) = P(A) + P(\bar{A} \cap B)$ and $P(B) = P(\bar{A} \cap B) + P(A \cap B)$. The equality on the right implies that $P(\bar{A} \cap B) = P(B) - P(A \cap B)$. By substituting the expression for $P(\bar{A} \cap B)$ into the expression for $P(A \cup B)$, one can obtain the result $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
+\end{proof}
 
 \begin{figure}[htbp]
       \centering
-      \includegraphics[width=1.0\textwidth]{bhh_architecture.pdf}
-      \caption[An illustration of
-            the architecture and high level components of the \acf{BHH}.]{An illustration of
-            the architecture and high level components of the \acf{BHH}.}
-      \label{fig:bhh_architecture}
+      \includegraphics[width=0.7\textwidth]{images/additive_law_of_probability_proof.pdf}
+      \caption{A Venn-Diagram showing the proof of the additive law of probability for multiple events.}
+      \label{fig:probability:multiple_events:additive}
 \end{figure}
 
-With reference to Figure \ref{fig:bhh_architecture}, the components are briefly given below in the order of information flow during the \acs{FFNN} training process steps.
+\index{Bayes Theorem}
+\section{Bayes' Theorem}\label{sec:probability:bayes_theorem}
 
-\begin{itemize}
-      \item \textbf{Initialisation Step}: The initialisation step refers to the initialisation strategy implemented by the \acs{BHH}.
-
-      \item \textbf{Heuristic Pool}: The \index{heuristic pool}heuristic pool contains a collection of low-level \index{heuristic}heuristics.
-
-      \item \textbf{Entity Pool}: The \index{entity pool}entity pool represents a collection of candidate solutions for the underlying \acs{FFNN}, referred to as entities in a population.
-
-      \item \textbf{Selection Mechanism}: The selection mechanism refers to the Bayesian probabilistic model.
-
-      \item \textbf{Heuristic-Entity Selections}: Every entity in the \index{entity pool}entity pool gets assigned a selected heuristic.
-
-      \item \textbf{Train and Test Datasets}: The training set is used to train the model while the test set is used to evaluate the model's generalisation capabilities.
-
-      \item \textbf{Model}: The underlying \acs{FFNN} to be trained.
-
-      \item \textbf{Low-Level Heuristics Update Step}: The low-level heuristics' update step as it applies to its allocated entity.
-
-      \item \textbf{Loss Function}: In supervised learning, the loss function is a measure of distance between predicted output and the ground truth, and is the mechanism used to evaluate the model's performance.
-
-      \item \textbf{Domain Barrier}: The domain barrier is the logical separation of information available in the heuristic space and the solution space. The \acs{BHH} searches in the heuristic space, while low-level heuristics search in the solution space.
-
-      \item \textbf{Performance Log}: Contains a record of heuristic-entity performance at each step of the training process.
-
-      \item \textbf{Credit Assignment Strategy}: The strategy used to assign credit to heuristics for their performance.
-
-      \item \textbf{Update Step}: The high-level heuristic update step as implemented by the \acs{BHH}.
-\end{itemize}
-
-Each of the components in Figure \ref{fig:bhh_architecture} is discussed in detail in the following sections.
-
-\index{heuristic pool}
-\section{Heuristic Pool}\label{sec:bhh:heuristic_pool}
-
-Generally speaking, the \index{heuristic pool}heuristic pool is a collection of low-level heuristics under consideration by the \acs{BHH}. The \index{heuristic pool}heuristic pool contains the set of low-level \index{heuristic}heuristics that, together with their performance information, make up the \text{heuristic space}. Importantly, the \acs{BHH} searches in \index{heuristic}heuristic space. The \index{heuristic pool}heuristic pool is defined in terms of the diversity of heuristics, as well as the amount of heuristics in the \index{heuristic pool}heuristic pool. Each of these are discussed in the following sections.
-
-\subsection{Heuristic Diversity}\label{sec:bhh:heuristic_pool:diversity}
-
-A \index{heuristic}heuristic's eligibility for inclusion in the \index{heuristic}heuristic pool, is determined by its ability to solve to underlying problem and its search behaviour and characteristics. The \index{heuristic pool}heuristic pool should contain a variety of different heuristics that have different search behaviours, so that a trade-off can be made by between exploration and exploitation of solutions, as is required during the training process. Heuristics that explore a lot, should be selected when exploration is needed, and heuristics that exploit a lot should be selected accordingly. The trade-off between exploration and exploitation is managed by the high-level heuristic. The \acs{BHH} will learn to select and apply the appropriate heuristic, at the appropriate points, throughout the training process. In doing so, a balance is achieved between exploration and exploitation.
-
-\subsection{Heuristic Pool Size}\label{sec:bhh:heuristic_pool:pool_size}
-
-Another design decision in the heuristic pool is heuristic pool size. Since the \acs{BHH} is a \textit{learning} \acs{HH}, every heuristic that is included in the heuristic pool increases the requirement of more statistical evidence of heuristic performance. Not only does a large \index{heuristic pool}heuristic pool drastically complicate the learning process that is required by the \acs{BHH}, but it also drastically complicates the process of maintaining \textit{state}. State is the term used to describe data that is relevant to the training process, and is maintained between training steps. An example of \textit{local} state is an entity's position, while an example of \textit{global} state is the global best solution found thus far. The following section presents the concept of \textit{proxies} and their role in maintaining state.
-
-\subsection{Proxies}\label{sec:bhh:heuristic:proxies}
-
-The concept of proxies arise from the sparsity of state as maintained by different \index{heuristic}heuristics. Since \index{heuristic}heuristics maintain (possibly) different states, there is an uncertainty of state transition when switching between \index{heuristic}heuristics. Consider an example where the \index{heuristic pool}heuristic pool consists of just two \index{heuristic}heuristics. One heuristic is a gradient-based heuristic that maintains momentum such as \acs{Adam}. The other is a \index{meta-heuristic}meta-heuristic that does not require a gradient, such as \acs{PSO}. Both these \index{heuristic}heuristics track different parameters in their state. For \acs{Adam}, the expected gradient mean and variance is maintained, while the \ac{PSO} maintains record of the gbest and pbest solutions of all of entities. A solution to state indifference, is to proxy heuristic state update operations. State is then maintained in two parts:
-
-\begin{itemize}
-      \item \textbf{Primary State}: Refers to the state that is originally maintained by a heuristic. The selected heuristic simply applies the normal state update operations to its state.
-
-      \item \textbf{Proxied State}: Refers to the state that is not directly maintained by the heuristic, but can be updated by outsourcing the required state update operation to another heuristic.
-\end{itemize}
-
-Primary and proxied state parameters must be maintained together. Since entities represent candidate solutions, which are forms of state, entities are ideal candidates to store and maintain these state parameters. Entities are extended to include the primary state elements of \textit{all} the underlying low-level heuristics, as well as the candidate solution (weights) for the \acs{FFNN}. At each heuristic-entity application step, all state parameters, per entity, are updated either by primary method or by proxied method. The \acs{BHH} thus incorporates a mapping of proxied state update operation as given in the example in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example} below.
-
-\begin{table}[htbp]
-      \centering
-      \caption{An example of mapping of proxied state update operation maintained by the \acs{BHH}.}
-      \label{tab:bhh:heuristic_pool:proxy_mapping_example}%
-      \par\bigskip
-      \resizebox{0.5\textwidth}{!}{
-            \begin{tabular}{ccccc}
-                                                                  &   & \multicolumn{3}{c}{State Parameter}                                                                                                                                                                                      \\
-                  \cmidrule{3-5}                                  &   & 1                                                                      & 2                                                                      & 3                                                                      \\
-                  \cmidrule{3-5}    \multirow{3}[1]{*}{Heuristic} & A & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{n/a} & \cellcolor[rgb]{ 1,  .922,  .612}\textcolor[rgb]{ .612,  .341,  0}{B}  & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{n/a} \\
-                                                                  & B & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{n/a} & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{n/a} & \cellcolor[rgb]{ 1,  .922,  .612}\textcolor[rgb]{ .612,  .341,  0}{A}  \\
-                                                                  & C & \cellcolor[rgb]{ .776,  .937,  .808}\textcolor[rgb]{ 0,  .38,  0}{n/a} & \cellcolor[rgb]{ 1,  .922,  .612}\textcolor[rgb]{ .612,  .341,  0}{B}  & \cellcolor[rgb]{ 1,  .922,  .612}\textcolor[rgb]{ .612,  .341,  0}{A}  \\
-            \end{tabular}%
-      }
-\end{table}%
-
-From the example given in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example}, when \index{heuristic}heuristic A is selected, it will outsource state update operations from \index{heuristic}heuristic B, for state parameter 2. Heuristic B will outsource from \index{heuristic}heuristic A, for state parameter 3. Finally, \index{heuristic}heuristic C will outsource from \index{heuristic}heuristic A and B, for state parameters 2 and 3 respectively. In this way, all \index{heuristic}heuristics maintain all the state parameters.
-
-Proxied state update operations is a simple concept in principle, but requires detailed decomposition of the \index{heuristic}heuristics included in the \index{heuristic pool}heuristic pool.  Overlapping and unique state parameters must be identified so that a proxy mapping, such as the one given in Table \ref{tab:bhh:heuristic_pool:proxy_mapping_example}, can be constructed. A suggestion to simplify this process is to borrow concepts from the equations of motion from physics. These include \textit{position}, \textit{velocity}, \textit{acceleration} and \textit{momentum}. Expressing \index{heuristic}heuristic update steps according to these parameters drastically simplify the process. However, it is possible that \index{heuristic}heuristics implement unique state parameters that do not overlap, these have to be catered for in the proxy mapping.
-
-State parameters and update operations should not be considered in isolation. An example is \textit{position} and \textit{velocity}. Consider, for example, \index{heuristic}heuristics such as \acf{DE} and \acfp{GA}. These \index{heuristic}heuristics recombine entities. In the aforementioned case, the concept of an equation of motion does not entirely make sense, since the displacement of its position is not a result of maintaining velocity or momentum, but rather by displacement through recombination. In this particular case, a solution is to apply the recombination operation to \textit{all} applicable state parameters as well, or to nullify the necessary state parameters. Unfortunately there is no general, automated solution to formulate these heuristic state overlaps. Each \index{heuristic}heuristic must be carefully considered. More details on the \index{entity pool}entity pool and entity state are presented in the following section.
-
-\index{entity pool}
-\section{Entity Pool}\label{sec:bhh:entity_pool}
-
-The \index{entity pool}entity pool refers to a collection of \textit{entities} that each represent a candidate solution to the underlying \acs{FFNN} being trained. The entities contain information of the solution space. A common naming convention for such a collection is a \textit{population} of entities. The \acs{BHH} is a population-based \acs{HH} and as such, the \index{entity pool}entity pool size or population size is an important design choice. The population size is defined as a hyper-parameter of the \acs{BHH} and can be empirically evaluated.
-
-The \index{entity pool}entity pool maintains two different types of state. These include entity (local) and population (global) state. Each of these are discussed in more detail next.
-
-\subsection{Entity State}\label{sec:bhh:entity_pool:entity_state}
-
-Entities represent candidate solutions to the model's trainable parameters (weights) and other \index{heuristic}heuristic-specific state parameters, as was discussed in Section \ref{sec:bhh:heuristic:proxies}. It can be said that entities implement \textit{local} state. It was mentioned that these entities can be treated as physical \textit{particles} in a hyper-dimensional search environment. Entities model concepts from physics. For example, the candidate solution is represented as the entity's position, and an entity's velocity and acceleration is analogous to the gradient and momentum of the entity respectfully. Examples of entity state parameters, as derived from various low-level \index{heuristic}heuristics, is given as follows.
-
-\begin{itemize}
-      \item \textbf{position}: General parameter that represents the actual candidate solution and is thus a primary state parameter for all \index{heuristic}heuristics.
-
-      \item \textbf{velocity}: Directly implemented by \index{heuristic}heuristics such as \acp{PSO} and is analogous to the gradient for gradient-based \index{heuristic}heuristics such as \ac{Momentum}.
-
-      \item \textbf{gradient}: The last known gradient, as derived from gradient-based \index{heuristic}heuristics.
-
-      \item \textbf{position delta}: The last computed position delta between the current timestep and the previous timestep.
-
-      \item \textbf{sum of the gradients squared}: As required and maintained by \index{heuristic}heuristics such as \acs{Adagrad}.
-
-      \item \textbf{expected position delta variance}: As required and maintained by \index{heuristic}heuristics such as \acs{Adadelta}.
-
-      \item \textbf{expected gradient mean}: As required and maintained by \index{heuristic}heuristics such as \acs{Momentum}, \acs{NAG} and \acs{Adam}.
-
-      \item \textbf{expected gradient variance}: As required and maintained by \index{heuristic}heuristics such as \acs{RMSProp}, \acs{Adadelta} and \acs{Adam}.
-
-      \item \textbf{personal best position}: Parameter that tracks that best known position by the entity thus far. As required and maintained by \index{heuristic}heuristics such as \acs{PSO}.
-
-      \item \textbf{personal best loss}: Parameter that tracks that best known loss by the entity thus far. As required and maintained by \index{heuristic}heuristics such as \acs{PSO}.
-
-      \item \textbf{loss}: Parameter that tracks the loss as achieved by the the entity throughout training.
-\end{itemize}
-
-From the list above, it should be clear that entity state becomes increasingly complicated with the increase of the number of distinct \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool with unique state parameters.
-
-\subsection{Population State}\label{sec:bhh:entity_pool:population_state}
-
-The population state refers to a collection of parameters that are shared between the entities in the population. Population state is also referred to as \textit{global} state and represents the population's memory. The population state generally contains state parameters that are of importance to multiple \index{heuristic}heuristics, and usually tracks the state of the population and not individual \index{heuristic}heuristic. Some examples of population state that can arise from different \index{heuristic}heuristics is given below.
-
-\begin{itemize}
-      \item \textbf{entities}: Naturally, the population state contains the list of entities in the population.
-
-      \item \textbf{ibest} and \textbf{ibest loss}: Refers to the best position and loss achieved by the population for the current iteration/step.
-
-      \item \textbf{rbest} and \textbf{rbest loss}: Refers to the best position and loss achieved by the population for the current replay buffer/window size.
-
-      \item \textbf{gbest} and \textbf{gbest loss}: Refers to the overall/global best position and loss achieved by the population for the entire training process. This parameter is introduced by \index{heuristic}heuristics such as \acp{PSO}.
-\end{itemize}
-
-Entities in the entity pool are each assigned an associated \index{heuristic}heuristic. The \acs{BHH} selects from the \index{heuristic pool}heuristic pool a low-level \index{heuristic}heuristic to be applied to an individual entity. The outcome of this selection process is a mapping table that tracks which \index{heuristic}heuristic has been selected for which entity. The selection process is executed by the selection mechanism of the \acs{BHH}. These \index{heuristic}heuristic-entity combinations are applied to the underlying \acs{FFNN}. The \acs{BHH} tracks the performance of each of these combinations throughout the training process in a performance log. The performance log is presented in the following section.
-
-
-\section{Performance Log}\label{sec:bhh:performance_log}
-
-The \acs{BHH} incorporates a form of probabilistic modeling in its selection mechanism. Probability is calculated based on \index{heuristic}heuristic-entity performance over time. Evidence of \index{heuristic}heuristic-entity performance is thus required for the \acs{BHH} to learn. Since the performance log can become very big, only a sliding window of the performance history is maintained at each step in the learning process. The sliding window is also referred to as a \textit{replay} buffer, a term borrowed from the field of \acf{RL}. The replay window size is defined as a hyper-parameter of the \acs{BHH}. The performance log is then simply a table of events and metrics. The \acs{BHH} tracks the following metrics in the performance log.
-
-\begin{itemize}
-      \item \textbf{step}: The current mini-batch step.
-
-      \item \textbf{\index{heuristic}heuristic}: The selected heuristic's index.
-
-      \item \textbf{entity}: The entity's index to whom the \index{heuristic}heuristic is applied.
-
-      \item \textbf{loss}: The \index{heuristic}heuristic-entity performance metric. The loss is retrieved from the loss function.
-
-      \item \textbf{ibest loss}: Keeps track of the \textit{iteration} best loss. Thus, the best loss value achieved by all entity-\index{heuristic}heuristic combinations, for a single mini-batch step.
-
-      \item \textbf{rbest loss}:  Keeps track of the \textit{replay} best loss. Thus, the best loss value achieved by all entity-\index{heuristic}heuristic combinations, over all mini-batch steps currently in the performance log/replay buffer.
-
-      \item \textbf{gbest loss}:  Keeps track of the \textit{global} best loss. Thus, the best loss value achieved by all entity-\index{heuristic}heuristic combinations over all mini-batch steps thus far.
-\end{itemize}
-
-An example of the performance log implemented by the \acs{BHH} is given in Table \ref{tab:bhh:performance_log:performance_log_example} below.
-
-\begin{table}[htbp]
-      \centering
-      \caption{An example of the performance log implemented by the \acs{BHH}, showing the first 5 entities, their allocated \index{heuristic}heuristics and their resulting performance measurements for step 1 of the training process.}
-      \label{tab:bhh:performance_log:performance_log_example}%
-      \par\bigskip
-      \resizebox{\textwidth}{!}{
-            \begin{tabular}{cccccccc}
-                  \textbf{step} & \textbf{entity} & \textbf{heuristic} & \textbf{loss} & \textbf{ibest loss} & \textbf{pbest loss} & \textbf{rbest loss} & \textbf{gbest loss} \\
-                  \midrule
-                  1             & 1               & 1                  & 0.016444      & 0.016444            & 0.016444            & 0.016444            & 0.016444            \\
-                  1             & 2               & 2                  & 0.337965      & 0.016444            & 0.337965            & 0.016444            & 0.016444            \\
-                  1             & 3               & 1                  & 0.134781      & 0.016444            & 0.134781            & 0.016444            & 0.016444            \\
-                  1             & 4               & 1                  & 0.998719      & 0.016444            & 0.998719            & 0.016444            & 0.016444            \\
-                  1             & 5               & 3                  & 0.708702      & 0.016444            & 0.708702            & 0.016444            & 0.016444            \\
-            \end{tabular}%
-      }
-\end{table}%
-
-The performance log itself introduces a number of design considerations as well. The larger the performance log, the longer memory is retained throughout the training process. The performance log size, referred to as the \textit{replay window size}, controls the recency of evidence from which the \acs{BHH} must learn. If the replay window size is too small, it does not accumulate enough samples/evidence to statistically make accurate selections. If the replay window size is too big, a bias could exist for selecting \index{heuristic}heuristics that performed well in the past. Furthermore, it is not guaranteed that past performance is indicative of future performance during the training process. The performance log should be considered along with the selection of a credit assignment strategy. Credit assignment strategies are presented in the following section.
-
-
-\section{Credit Assignment Strategy}
-\label{sec:bhh:credit_assignment_strategy}
-
-The credit assignment strategy is a mechanism that assigns a discrete credit indicator to \index{heuristic}heuristics that perform well, based on their performance metrics such as loss. The credit assignment strategy implements the ``move acceptance'' process as proposed by~\citeauthor{ref:ozcan:2006}~\cite{ref:ozcan:2006,ref:ozcan:2008} and addresses the credit assignment problem as discussed by~\citeauthor{ref:burke:2010}~\cite{ref:burke:2010}. A good credit assignment strategy will correctly allocate credit to the appropriate \index{heuristic}heuristic-entity combination. The credit assignment strategy to use is defined as a hyper-parameter. The \acs{BHH} implements the following credit assignment strategies to choose from.
-
-\begin{itemize}
-      \item \textbf{ibest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{ibest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that achieved the best performance in the current mini-batch iteration.
-
-      \item \textbf{pbest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{pbest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that was able to improve on its personal best past performance loss.
-
-      \item \textbf{rbest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{rbest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that achieved the best performance in the current replay window.
-
-      \item \textbf{gbest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{gbest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that achieved the overall best performance so far.
-
-      \item \textbf{symmetric}: Credit is assigned to all entity-\index{heuristic}heuristic combinations, regardless of their performance. The symmetric credit assignment strategy does not randomly assign credit, but rather assigns credit to all events. In effect, no learning and performance-bias is achieved with the symmetric credit assignment strategy and thus, the symmetric credit assignment strategy is implemented as a basis for comparison. Comparing a credit assignment staretegy to the symmetric credit assignment indicates the ability of the other credit assignment strategy to have an effect on the learning process and performance of the \acs{BHH}.
-\end{itemize}
-
-The implementation of a credit assignment strategy is simply a function that translates the performance log from Table \ref{tab:bhh:performance_log:performance_log_example}, into Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}.
-
-\begin{table}[htbp]
-      \centering
-      \caption{Credit assignment strategy output table showing \textit{ibest} credit assignment for the first 5 entities and their selected heuristics, for step 1 of the training process.}
-      \label{tab:bhh:credit_assignment_strategy:credit_assignment_example}%
-      \par\bigskip
-      \resizebox{0.4\textwidth}{!}{
-            \begin{tabular}{cccc}
-                  \textbf{step} & \textbf{entity} & \textbf{heuristic} & \textbf{credit} \\
-                  \midrule
-                  1             & 1               & 1                  & true            \\
-                  1             & 2               & 2                  & false           \\
-                  1             & 3               & 1                  & false           \\
-                  1             & 4               & 1                  & false           \\
-                  1             & 5               & 3                  & false           \\
-            \end{tabular}%
-      }
-\end{table}%
-
-Credit is used by the selection mechanism of the \acs{BHH}. The selection mechanism is presented in the following section.
-
-
-\section{Selection Mechanism}\label{sec:bhh:selection_mechanism}
-
-This section aims to provide the reader with the detail around the selection mechanism as it is implemented by the \acs{BHH}. It is mentioned throughout this document that the \acs{BHH} implements a predictive model based on Bayesian probabilistic concepts. In probabilistic modeling it is necessary to identify all the random events that can occur.
-
-\subsection{Random Events}
-\label{sec:bhh:selection_mechanism:random_events}
-
-Observation of random events is treated as evidence. In the context of a Bayesian approach, this evidence is used to update prior beliefs. The \acs{BHH} distinguishes between the following events.
-
-\begin{itemize}
-      \item \textbf{$H$}: The event of observing \textit{heuristics}.
-      \item \textbf{$E$}: The event of observing \textit{entities}.
-      \item \textbf{$C$}: The event of observing \textit{credit assignments} that indicate that the credit assignment \textit{performance criteria} is met.
-\end{itemize}
-
-It should be noted that event information is stored and observed directly from the performance log as presented in Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}. From the above list of events, the event $C$ is dependent on the occurrence of $H$ and $E$ and a credit assignment strategy.
-
-\subsection{Independence}\label{sec:bhh:selection_mechanism:independence}
-
-The dependence between random events can have an impact on the probabilistic model that is implemented. For simplicity, the \acs{BHH} assumes independence between events, although the event $C$ is clearly dependent on the occurrence of $H$ and $E$. Furthermore, the \acs{BHH} assumes independence between steps  and treats each training step as if training has restarted. The \acs{BHH} implements a form of Naïve Bayes classifier, where the appropriate heuristic to assign to an entity is a classification problem. \citeauthor{ref:domingos:1997}~\cite{ref:domingos:1997} mentions that although Bayesian classifiers’ probability estimates are only optimal under quadratic loss if the independence assumption holds, the classifier itself can still be optimal under zero-one loss (misclassification rate), even when this assumption is violated by a wide margin. This means that independence can be assumed when the probabilistic model is used as a classifier.
-
-\index{Bayes' Theorem}
-\subsection{Bayes' Theorem}\label{sec:bhh:selection_mechanism:bayes_theorem}
-
-Chapter \ref{chap:probability} presented \index{Bayes' Theorem}Bayes' Theorem, but for convenience, it is given again in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} below.
-
-\begin{equation}
-      \label{eq:bhh:selection_mechanism:bayes_theorem}
-      P(A \vert B) = \frac{P(B \vert A)P(A)}{P(B)}
-\end{equation}
-
-Since the \acs{BHH} implements a Bayesian classifier, the \acs{BHH} is not concerned with actual probabilities. Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem} can thus be evaluated for proportionality. The resulting proportionality is expressed in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem_prop_to} below.
-
-\begin{equation}
-      \label{eq:bhh:selection_mechanism:bayes_theorem_prop_to}
-      P(A \vert B) \propto P(B \vert A)P(A)
-\end{equation}
-
-The conditionality implemented by \index{Bayes' Theorem}Bayes' Theorem can be extended to include multiple criteria. \index{Bayes' Theorem}Bayes' Theorem is used by the selection mechanism of the \acs{BHH}. The predictive model that is used by the selection mechanism of the \acs{BHH} is presented in the following section.
-
-\subsection{Predictive Model}\label{sec:bhh:selection_mechanism:predictive_model}
-
-This section presents the predictive model as implemented by the selection mechanism of the \acs{BHH}. The predictive model is arguably the most important component of the \acs{BHH}, as it drives the heuristic selection process. The \acs{BHH} implements a predictive model that predicts which heuristic to select, given the conditionality that a particular entity is used and a particular credit assignment criteria is met. The predictive model can be derived as follows.\\\\
-\textbf{Setup}:
+\index{Bayes' theorem}Bayes' theorem, named after Thomas Bayes, describes the probability of an event $A$, based on prior knowledge of conditions that might be related to $A$~\cite{ref:zalta:2015}. In order to derive the formal theorem and proof, first consider Definition \ref{def:probability:bayes_theorem:partition} below~\cite{ref:zalta:2015}.
 \\
-Let
+\begin{definition}
+      \label{def:probability:bayes_theorem:partition}
+      For some positive integer, $K$, let the sets $B_{1}, B_{2}, \dots, B_{K}$ be such that
+
+      \begin{enumerate}
+            \item $S = B_{1} \cup B_{2} \cup \dots \cup B_{K}$
+            \item $B_{i} \cap B_{j} = \emptyset$, for $i \neq j$
+      \end{enumerate}
+
+      Then the collection of sets $\{B_{1}$, $B_{2}$, $\dots$, $B_{K}\}$ is said to be a partition of S, the union of mutually exclusive subsets.
+\end{definition}
+\vspace*{0.5cm}
+
+\index{Bayes Theorem}
+\begin{theorem}[\textbf{Bayes' theorem}]
+      \label{th:probability:bayes_theorem:theorem}
+      Assume that $[B_{1}, B_{2}, \dots, B_{K}]$ is a partition of $S$ such that $P(B_{i}) > 0$, for $i = 1,2, \dots, K$ then\\
+      \\
+      \begin{equation}
+            P(B_{j} \vert A) = \frac{P(A \vert B_{j})P(B_{j})}{\sum_{i=1}^{K} P(A \vert B_{i})P(B_{i})}
+      \end{equation}
+\end{theorem}
+
+\begin{proof}
+      The proof follows from the definition of conditional probability as was presented in Section~\ref{sec:probability:cond_probability}.
+
+      \begin{equation}
+            \begin{split}
+                  P(B_{j} \vert A)
+                  &= \frac{P(A \cap B_{j})}{P(A)}\\
+                  &= \frac{P(A \vert B_{j})P(B_{j})}{\sum_{i=1}^{K} P(A \vert B_{i})P(B_{i})}
+            \end{split}
+      \end{equation}
+\end{proof}
+
+One of the many applications of \index{Bayes' theorem}Bayes' theorem is to do statistical inference. \index{Bayes' theorem}Bayes' theorem expresses how a degree of belief, expressed as a probability, should rationally change to account for the availability of related evidence.
+
+
+\section{Probability Distributions}\label{sec:probability:probability_distributions}
+
+Probability distributions are mathematical functions that give the probabilities of the occurrences of different possible outcomes in the experiment. The theory and equations presented in the following sections where all taken from~\citeauthor{ref:wackerly:2014}~\cite{ref:wackerly:2014}.
+
+
+\subsection{Beta probability distribution}\label{sec:probability:probability_distributions:beta}
+
+The \index{Beta probability distribution}Beta probability distribution is a family of univariate, continuous, probability distributions over some $x$, with support on the interval $[0,1]$~\cite{ref:wackerly:2014}. It is parameterised by two shape parameters $\alpha > 0$, $\alpha \in \mathbb{R}$ and $\beta > 0$, $\beta \in \mathbb{R}$. The \index{Beta probability distribution}Beta probability distribution is denoted as $Beta(\alpha, \beta)$. The \acf{PDF} of the \index{Beta probability distribution}Beta probability distribution is given in Equation~\eqref{eq:probability:probability_distributions:beta:pdf} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:beta:pdf}
+      P(x \vert \alpha, \beta) = f_{Beta}(x; \alpha, \beta) = \frac{1}{B(\alpha, \beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}
+\end{equation}
+
+From Equation~\eqref{eq:probability:probability_distributions:beta:pdf} above, the normalising constant $B(\alpha, \beta)$, is defined below in Equation~\eqref{eq:probability:probability_distributions:beta:norm_const}.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:beta:norm_const}
+      B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
+\end{equation}
+
+In Equation~\eqref{eq:probability:probability_distributions:beta:norm_const}, $\Gamma$ is the Gamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:beta:gamma_func}
+      \Gamma(n) = ( n - 1)!
+\end{equation}
+
+It should be noted that the Gamma function can also be written as shown in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func_alt} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:beta:gamma_func_alt}
+      \Gamma(n+1) = n!
+\end{equation}
+
+The control parameters $\alpha$ and $\beta$, determine the shape of the distribution. There exists a special case where $\alpha = \beta$. This is referred to as the \textit{symmetric} \index{Beta probability distribution}Beta probability distribution. In the case where $\alpha = \beta = 1$ the distribution is equivalent to the uniform distribution over all points in its support. The \index{Beta probability distribution}Beta probability distribution for various values of $\alpha$ and $\beta$, including the symmetric version is presented in Figure \ref{fig:probability:probability_distributions:beta}.
+
+\begin{figure}[htbp]
+      \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/beta_various.pdf}
+            \caption{\index{Beta probability distribution}Beta probability distribution}
+            \label{fig:probability:probability_distributions:beta_normal}
+      \end{subfigure}
+      \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/beta_cumulative.pdf}
+            \caption{Cumulative \index{Beta probability distribution}Beta probability distribution}
+            \label{fig:probability:probability_distributions:beta_cumulative}
+      \end{subfigure}
+      \par\bigskip
+      \caption{An illustration of the \index{Beta probability distribution}Beta probability distribution (left)~\cite{ref:beta:2014} as well as the cumulative \index{Beta probability distribution}Beta probability distribution (right)~\cite{ref:cumulativebeta:2014} for various values of $\alpha$ and $\beta$ .}
+      \label{fig:probability:probability_distributions:beta}
+\end{figure}
+
+The expected value of $x$ is given below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value}.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:beta:expected_value}
+      E[x] = \frac{\alpha}{\alpha + \beta}
+\end{equation}
+
+Similarly, the expected value of the natural logarithm of $x$ can be calculated as is shown below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value_ln}.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:beta:expected_value_ln}
+      E[\ln(x)] = \psi({\alpha}) - \psi(\alpha + \beta)
+\end{equation}
+
+In Equation~\eqref{eq:probability:probability_distributions:beta:expected_value_ln} above, $\psi$ is the logarithmic derivative of the Gamma function, called the \textit{Digamma} function. The Digamma function is given below in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:beta:digamma}
+      \psi(n) = \frac{d}{dn}\ln(\Gamma(n)) = \frac{\Gamma'(n)}{\Gamma(n)}
+\end{equation}
+
+Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:beta:mode} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:beta:mode}
+      M[x] = E[x] - 1 = \frac{\alpha - 1}{\alpha + \beta - 1}
+\end{equation}
+
+
+\subsection{Dirichlet probability distribution}\label{sec:probability:probability_distributions:dirichlet}
+
+The \index{Dirichlet probability distribution}Dirichlet probability distribution is a family of multivariate continuous probability distributions over some $x$ in $K$ dimensions~\cite{ref:wackerly:2014}. The \index{Dirichlet probability distribution}Dirichlet probability distribution is the multivariate generalization of the \index{Beta probability distribution}Beta probability distribution and is thus sometimes referred to by its alternative name, the multivariate Beta probability distribution. The \index{Dirichlet probability distribution}Dirichlet probability distribution is parameterised by some vector $\vec{\alpha} = (\alpha_{1}$,  $\dots, \alpha_{K})$ $\forall_{k=1}^{K} \alpha_{k} > 0$, $\alpha_{k} \in \mathbb{R}$. Throughout this chapter, the vector notation is dropped for simplicity and readability. $\alpha$ is referred to as the concentration parameter. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K \geq 2$ with parameters $\alpha$, denoted $Dir(\alpha)$, has a \acs{PDF} as is given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:dirichlet:pdf}
+      P(x \vert \alpha) =  f_{Dir}(x; K, \alpha) = \frac{1}{B(\alpha)}  \prod_{k=1}^{K} x_{k}^{\alpha_{k} - 1}
+\end{equation}
+
+In Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} above, the normalising constant $B(\alpha)$, is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:norm_cost}.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:dirichlet:norm_cost}
+      B(\alpha) = \frac{\prod_{k=1}^{K} \Gamma(\alpha_{k})}{\Gamma(\alpha_{0})}
+\end{equation}
+
+In Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} above, $\alpha_{0}$ is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:alpha_0} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:dirichlet:alpha_0}
+      \alpha_{0} = \sum_{k=1}^{K}\alpha_{k}
+\end{equation}
+
+Importantly, the set $\{x_{k}\}_{k=1}^{K}$ belongs to the standard $K-1$ probability simplex $S$, meaning that $x_{K} = 1 - \sum_{k=1}^{K-1}x_{k}$ with support $\forall_{k=1}^{K} x \in [0,1]$. Under the simplex $S$, this means that the sum over all values of the vector $\vec{x}$ must be 1. The simplex can thus be rewritten as $\sum_{k=1}^{K}x_{k} = 1$.
+
+Similar to the \index{Beta probability distribution}Beta probability distribution, $\alpha$ determines the shape of the distribution in $K$ dimensions and thus, there also exist a special case, referred to as the \textit{symmetric} distribution when $\forall_{k=1}^{K} \alpha_{k} = c$, where $c$ is some constant. In the case where $c = 1$, the distribution is referred to as a \textit{flat} distribution and yields the uniform distribution over all points in $S$. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K = 3$, for various values of $\alpha$, including the symmetric version is presented in Figure \ref{fig:probability:probability_distributions:dirichlet}.
+
+\begin{figure}[htb]
+      \centering
+      \includegraphics[width=0.9\textwidth]{images/dirichlet.pdf}
+      \caption{The \acfp{PDF} for the \index{Dirichlet probability distribution}Dirichlet probability distribution over the 2-simplex. The concentration parameter $\alpha$ is varied. The values of the \acs{PDF} are shown by the color maps with contour lines at equal values as indicated in the color bars~\cite{ref:dirichlet:2020}.}
+      \label{fig:probability:probability_distributions:dirichlet}
+\end{figure}
+
+The expected value of $x$ can be calculated as shown in Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:dirichlet:expected_value}
+      E[x_{k}] = \frac{\alpha_{k}}{\alpha_{0}}
+\end{equation}
+
+Similarly, the expected value of the natural logarithm of $x_{k}$ can be calculated as defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value_ln} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:dirichlet:expected_value_ln}
+      E[\ln(x_{k})] = \psi({\alpha_{k}}) - \psi(\alpha_{0})
+\end{equation}
+
+In Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value_ln} above, $\psi$ is the Digamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}. Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:mode} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:dirichlet:mode}
+      \begin{split}
+            M[x_{k}] &= E[{x_{k}] -K^{-1}} \\
+            &=  \frac{\alpha_{k} - 1}{\alpha_{0} - K}
+      \end{split}
+\end{equation}
+
+
+\subsection{Bernoulli probability distribution}\label{sec:probability:probability_distributions:bernoulli}
+
+The \index{Bernoulli probability distribution}Bernoulli probability distribution is a discrete probability distribution over some random variable $x$ that takes the value of $1$ with probability $\theta$ and $0$ with probability $1-\theta$ ~\cite{ref:wackerly:2014}. The \index{Bernoulli probability distribution}Bernoulli probability distribution is denoted as $Ber(\theta)$ with support $x \in \{0, 1\}$. In probability theory, the \index{Bernoulli probability distribution}Bernoulli probability distribution is often used to explain the possible outcomes of a single experiment that asks a \textit{yes-no} question such as flipping a coin. The outcome of such an experiment is a Boolean value. The \index{Bernoulli probability distribution}Bernoulli probability distribution has a \acf{PMF} as given below in Equation~\eqref{eq:probability:probability_distributions:bernoulli:pmf}.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:bernoulli:pmf}
+      P(x \vert \theta) = f_{Ber}(x; \theta) =
+      \begin{cases}
+            \theta     & \text{if}\ x=1 \\
+            1 - \theta & \text{if}\ x=0
+      \end{cases}
+\end{equation}
+
+Equation~\eqref{eq:probability:probability_distributions:bernoulli:pmf} above, can also be expressed as show in Equation~\eqref{eq:probability:probability_distributions:bernoulli:alt} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:bernoulli:alt}
+      f_{Ber}(x; \theta) = \theta^{x}(1-\theta)^{1-x}
+\end{equation}
+
+The mean of the \index{Bernoulli probability distribution}Bernoulli probability distribution approaches $\theta$ over many samples according to the \acs{CLT}~\cite{ref:grinstead:1997}. Figure \ref{fig:probability:probability_distributions:bernoulli:coin} shows a simulation of a fair-coin flipping simulation. The mean converges to 0.5 for various sample sizes.
+
+\begin{figure}[htbp]
+      \centering
+      \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/coin_flip_samples_100.pdf}
+            \caption{100 Samples}
+            \label{fig:probability:probability_distributions:bernoulli:coin_100}
+      \end{subfigure}
+      \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/coin_flip_samples_10000.pdf}
+            \caption{10000 Samples}
+            \label{fig:probability:probability_distributions:bernoulli:coin_10000}
+      \end{subfigure}
+      \par\bigskip
+      \caption{An illustration of the the coin flip situation for different sample sizes that show the convergence of the mean as per the \acf{CLT}.}
+      \label{fig:probability:probability_distributions:bernoulli:coin}
+\end{figure}
+
+The expected value of the distribution is thus given according to Equation~\eqref{eq:probability:probability_distributions:bernoulli:expected_value} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:bernoulli:expected_value}
+      E[x] = \theta
+\end{equation}
+
+The mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:bernoulli:mode} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:bernoulli:mode}
+      M[x_{k}] =
+      \begin{cases}
+            0   & \text{if}\ \theta < 0.5 \\
+            0,1 & \text{if}\ \theta = 0.5 \\
+            1   & \text{if}\ \theta > 0.5 \\
+      \end{cases}
+\end{equation}
+
+
+\subsection{Binomial probability distribution}\label{sec:probability:probability_distributions:bin}
+
+
+The \index{Binomial probability distribution}Binomial probability distribution is a discrete probability distribution over a random variable $x$ taking on a number of successes in $N$ sequential independent experiments that each ask a \textit{yes-no} question~\cite{ref:wackerly:2014}. The probability of a single independent experiment yielding a success, is given as $\theta$ and the \index{Binomial probability distribution}Binomial probability distribution is denoted as $Bin(N, \theta)$ with support $x \in \{0, 1, \dots, N\}$.  It should be noted that the \index{Binomial probability distribution}Binomial probability distribution is the extension of the \index{Bernoulli probability distribution}Bernoulli probability distribution over $N$ independent sequential experiments and thus, each experiment also yields some Boolean outcome. When $N=1$, the experiment is referred to as a Bernoulli trial, and the distribution is just a \index{Bernoulli probability distribution}Bernoulli probability distribution. When $N > 1$, the sequence of outcomes is referred to as a Bernoulli process. The \acf{PMF} of the \index{Binomial probability distribution}Binomial probability distribution is given in Equation~\eqref{eq:probability:probability_distributions:binomial:pmf} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:binomial:pmf}
+      P(x \vert \theta; N) = f_{Bin}(x; N, \theta) = \binom{N}{x} \theta^{x}(1-\theta)^{1-x}
+\end{equation}
+
+Similar to the \index{Bernoulli probability distribution}Bernoulli probability distribution, the mean of the \index{Binomial probability distribution}Binomial probability distribution is $N\theta$ given the \acs{CLT} as was shown in Figure \ref{fig:probability:probability_distributions:bernoulli:coin}. The expected value of the \index{Binomial probability distribution}Binomial probability distribution is thus given in Equation~\eqref{eq:probability:probability_distributions:binomial:expected_value} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:binomial:expected_value}
+      E[x] = N\theta
+\end{equation}
+
+The mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:binomial:mode} below.
+
+\begin{align}
+      \label{eq:probability:probability_distributions:binomial:mode}
+      \begin{split}
+            M[x_{k}] &= E[x] + \theta \\
+            &= N\theta  + \theta \\
+            &= (N  + 1)\theta
+      \end{split}
+\end{align}
+
+\subsection{Categorical Probability Distribution}\label{sec:probability:probability_distributions:categorical}
+
+The \index{Categorical probability distribution}Categorical probability distribution is a discrete probability distribution over some random variable $x$, taking on any one of $K$ possible categories~\cite{ref:wackerly:2014}. There is no ordering to these categories and therefore, for simplicity, each category is assigned a numerical representative value such that $k = (1, 2, \dots, K)$. The probabilities for all outcomes is given by the probability vector $\vec{\theta} = (\theta_{1}, \dots, \theta_{K})$.  This means that the probability $P(x=k)=\theta_{k}$, has support $x \in \{1, \dots, K\}$. The \index{Categorical probability distribution}Categorical probability distribution, denoted $Cat(\theta)$, is the generalization of the \index{Bernoulli probability distribution}Bernoulli probability distribution and is sometimes referred to it by its alternative names, the generalised \index{Bernoulli probability distribution}Bernoulli probability distribution or the Multinoulli probability distribution. In probability theory, the \index{Categorical probability distribution}Categorical probability distribution is often used to explain the outcome of a single experiment with more than two possible outcomes, such as rolling a six-sided die~\cite{ref:wackerly:2014}. The \acs{PMF} of the \index{Categorical probability distribution}Categorical probability distribution is given in Equation~\eqref{eq:probability:probability_distributions:categorical:pmf} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:categorical:pmf}
+      P(x \vert \theta; K) = f_{Cat}(x; K, \theta) = \prod_{k=1}^{K}\theta_{k}^{[x = k]}
+\end{equation}
+
+In Equation~\eqref{eq:probability:probability_distributions:categorical:pmf} above, $[x = k]$ is the \textit{Iversion Bracket}~\cite{ref:iverson:1962}, yielding 1 if $x = k$ and 0 otherwise. Given class $k$, the categorical distribution simply yields $\theta_{k}$ as is shown in Equation~\eqref{eq:probability:probability_distributions:categorical:pmf_k} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:categorical:pmf_k}
+      f_{Cat}(x=k; K, \theta) = \theta_{k}
+\end{equation}
+
+The random variable $x$ can also be encoded in binary format, yielding a vector $\vec{x} = (x_{1}, \dots, x_{K})$ of \index{Bernoulli probability distribution}Bernoulli probability distributions such that the support is $\forall_{k=1}^{K} x_{k} \in \{0, 1\}$. Importantly, if the outcome of the random event is of category $k$, then $x_{k} = 1$ and $\forall_{j=1}^{K} x_{j} = 0, j \neq k$ so that the standard $K-1$ probability simplex $S$ still holds. The \acs{PMF} of the \index{Categorical probability distribution}Categorical probability distribution can then be rewritten as follows in Equation~\eqref{eq:probability:probability_distributions:categorical:pmf_alt} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:categorical:pmf_alt}
+      f_{Cat}(x; K, \theta) = \prod_{k=1}^{K}\theta_{k}^{\mathbbm{1}_{1}(x_{k})}
+\end{equation}
+
+In Equation \ref{eq:probability:probability_distributions:categorical:pmf_alt} above, $\mathbbm{1}(x_{k})$ is the \textit{indicator function}, yielding 1 if $x_{k} = 1$ and 0 otherwise.
+
+Since there is no order to the underlying categories, the mean of the distribution does not yield any relevant information. The mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:categorical:mode} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:categorical:mode}
+      M[x] = \argmax_{k}(\theta_{1}, \dots, \theta_{K})
+\end{equation}
+
+
+\subsection{Multinomial Distribution}
+\label{sec:probability:probability_distributions:multinomial}
+
+The \index{Multinomial probability distribution}Multinomial probability distribution is a discrete probability distribution over some random variable $x = (x_{1}, \dots\, x_{K})$ that takes on the counts for each occurrence of $K$ possible classes in $N$ independent trials~\cite{ref:wackerly:2014}. The probabilities for all possible outcomes in a single trial is given by the probability vector $\vec{\theta} = (\theta_{1}, \dots, \theta_{K})$. The \index{Multinomial probability distribution}Multinomial probability distribution, denoted $Mul(N, K, \theta)$, is thus the generalization of the \index{Binomial probability distribution}Binomial probability distribution to $K$ dimensions. Consider the following special cases.
 
 \begin{itemize}
-      \item $I$: Denote the maximum number of instances in the replay window.
-      \item $J$: Denote the \index{entity pool}entity pool (population) size.
-      \item $K$: Denote the \index{heuristic pool}heuristic pool size.
-      \item $L$: Denote the number of credit assignment output classes. Since the output of credit assignment is boolean, $L = 2$.
-
-      \item $\alpha = (\alpha_{1}, \dots, \alpha_{K})$: Denote the concentration parameters for the heuristic probability distribution.
-      \item $\beta = (\beta_{1}, \dots, \beta_{K})^{J}$: Denote the concentration parameters for the entity-heuristic probability distributions.
-      \item $\gamma = (\gamma_{1}, \dots, \gamma_{K})^{L}$: Denote the concentration parameters for the credit-heuristic probability distribution.
-
-      \item $\theta \vert \alpha \sim Dir(\alpha; K)$: Denote the heuristic probability distribution, implementing a \index{Dirichlet probability distribution}Dirichlet probability distribution parameterised by $\alpha$ and $K$. Heuristic selection probabilities are sampled from this distribution.
-
-      \item $\phi \vert \beta \sim Dir(\beta; K)^{J}$: Denote the entity-heuristic probability distribution, implementing a \index{Dirichlet probability distribution}Dirichlet probability distribution parameterised by $\beta$ and $K$ for each entity in the \index{entity pool}entity pool with population size $J$. Entity-heuristic probabilities are sampled from this distribution.
-
-      \item $\psi \vert \gamma_{1}, \gamma_{0}  \sim Beta(\gamma_{1}, \gamma_{0})$: Denote the credit-heuristic probability distribution, implementing a Beta probability distribution parameterised by $\gamma_{1}$ and $\gamma_{0}$. Credit-heuristic probabilities are sampled from this distribution.
-
-      \item $H \vert \theta \sim Mult(\theta; I, K)$: Denote the distribution of heuristics (event $H$), implementing a \index{Multinomial probability distribution}Multinomial distribution, parameterised by the sampled heuristic selection probability $\theta$, the \index{heuristic pool}heuristic pool size $K$ and maximum number of instances $I$.
-
-      \item $E \vert \phi \sim Mult(\phi; I, K)^{J}$: Denote the distribution of entity-heuristic combinations (event $E$), implementing a \index{Multinomial probability distribution}Multinomial distribution, parameterised by the sampled entity-heuristic selection probability $\phi$, the \index{heuristic pool}heuristic pool size $K$ and maximum number of instances $I$, for each entity in $J$.
-
-      \item $C \vert \psi \sim Bin(\psi, I)$: Denote the distribution of credit-heuristic combinations (event $C$), implementing a \index{Binomial probability distribution}Binomial probability distribution, parameterised by the sampled credit-heuristic selection probability $\psi$ and the maximum number of instances $I$.
+      \item When $K$ is 2 and $N = 1$, the \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Bernoulli probability distribution}Bernoulli probability distribution.
+      \item When $K$ is 2 and $N > 1$, the \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Binomial probability distribution}Binomial probability distribution.
+      \item When $K > 2$ and $N = 1$, the \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Categorical probability distribution}Categorical probability distribution.
 \end{itemize}
 
-Vector notation is dropped for sake of convenience, simplicity and readability. The parameterised predictive model, as derived from \index{Bayes' Theorem}Bayes' theorem, is then given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model} below.
+The support for the Multinomial is $\forall_{i=1}^{K} x_{k} \in \{1, \dots, N\}, \sum_{k=1}^{K}x_{k} = N$ and the \acs{PMF} for the \index{Multinomial probability distribution}Multinomial probability distribution is given below in Equation~\eqref{eq:probability:probability_distributions:multinomial:pmf}.
 
 \begin{equation}
-      \label{eq:bhh:selection_mechanism:predictive_model}
+      \label{eq:probability:probability_distributions:multinomial:pmf}
+      P(x \vert \theta; N; K) = f_{Mul}(x; N, K, \theta) = \frac{N!}{\prod_{k=1}^{K}x_{k}!} \prod_{k=1}^{K}\theta_{k}^{x_{k}}
+\end{equation}
+
+Similar to the \index{Categorical probability distribution}Categorical probability distribution, the random variable $x$ can also be encoded in binary format, yielding an $N \times K$ matrix $X$ of \index{Bernoulli probability distribution}Bernoulli probability distributions. The support is then given as $X \in \{0, 1\}^{N \times K}, \forall_{i=1}^{N}\sum_{k=1}^{K} x_{i,k} = 1$ so that the standard $K-1$ probability simplex $S$ still holds for each trial. The \acs{PMF} of the \index{Multinomial probability distribution}Multinomial probability distribution can then be rewritten as is presented in Equation~\eqref{eq:probability:probability_distributions:multinomial:pmf_alt} below.
+
+\begin{equation}
+      \label{eq:probability:probability_distributions:multinomial:pmf_alt}
       \begin{split}
-            P(H \vert E, C;  \theta, \phi, \psi)
-            &= \frac{
-                  P(E, C \vert H;  \phi, \psi)  P(H \vert \theta)
-            }{
-                  P(E, C \vert \theta, \phi, \psi)
-            } \\
-            &= \frac{
-                  P(E \vert H;  \phi)  P(C \vert H;  \psi) P(H \vert \theta)
-            }{
-                  P(E \vert \theta, \psi) P(C \vert \theta, \phi)
-            } \\
-            &= \frac{
-                  P(E \vert H;  \phi)  P(C \vert H;  \psi) P(H \vert \theta)
-            }{
-                  \left[ \sum_{k}^{K} P(E, H=k \vert \theta, \phi) \right] \left[ \sum_{k}^{K}  P(C, H=k \vert \theta, \psi) \right]
-            } \\
-            &= \frac{
-                  P(E \vert H;  \phi)  P(C \vert H;  \psi) P(H \vert \theta)
-            }{
-                  \left[ \sum_{k}^{K} P(E \vert H=k, \phi) P(H=k \vert \theta) \right] \left[ \sum_{k}^{K} P(C \vert H=k, \psi) P(H=k \vert \theta) \right]
-            }
+            f_{Mul}(x; N, K, \theta) &= \frac{N!}{\prod_{k=1}(\sum_{i=1}^{N}x_{i, k})!}\prod_{i=1}^{N}\prod_{k=1}^{K}\theta_{k}^{\mathbbm{1}_{1}(x_{i,k})} \\
+            &= \frac{N!}{\prod_{k=1}(\sum_{i=1}^{N}x_{i, k})!} \prod_{k=1}^{K}\theta_{k}^{\sum_{i=1}^{N}\mathbbm{1}_{1}(x_{i,k})} \\
+            &= \frac{N!}{\prod_{k=1}(\sum_{i=1}^{N}x_{i, k})!} \prod_{k=1}^{K}\theta_{k}^{N_{k}} \\
       \end{split}
 \end{equation}
 
-Notice the joint probability over events $E$ and $C$, given the selection of a heuristic $H$, denoted by the product of the sums of the separate parts for $E$ and $C$, in the denominator. The calculation in the denominator can be intractable. Since the \acs{BHH} selection mechanism uses the predictive model as a classifier, the posterior distribution as given in Equation~\eqref{eq:bhh:selection_mechanism:bayes_theorem}, can be evaluated for proportionality, as is given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} below.
+In Equation~\eqref{eq:probability:probability_distributions:multinomial:pmf_alt} above, $N_{k}$ is a summary variable, denoting the number of times a category $k$ occurs over all trials in $N$.
+
+The \index{Categorical probability distribution}Categorical and \index{Multinomial probability distribution}Multinomial probability distributions are presented as binary encoded vectors in order to simplify the proof of their conjugate priors as is shown in the following section.
+
+
+\section{Conjugate Priors}\label{sec:probability:conjugate_priors}
+
+\citeauthor{ref:wackerly:2014}\cite{ref:wackerly:2014} states that conjugate priors are prior probability distributions that results in posterior distributions that are of the same functional form $\mathcal{A}(v)$ as the prior, but with different parameter values. This section considers the conjugate priors that are used with the Binomial likelihood and Categorical/Multinomial likelihood.
+
+\subsection{Binomial Likelihood}\label{sec:probability:conjugate_priors:binom_likelihood}
+
+The conjugate prior to a \index{Bernoulli probability distribution}Bernoulli probability distribution is the \index{Beta probability distribution}Beta probability distribution
+\cite{ref:wackerly:2014}. This is shown by demonstrating that the posterior distribution has the
+same functional form $\mathcal{A}(v)$ as the prior distribution as follows. \\\\
+\textbf{Setup}:
+
+\begin{itemize}
+      \item Let $I$ be a number of independent, identical  (iid) random events.
+
+      \item Let $\alpha \in \mathbb{R}, \alpha > 0$ and $\beta \in \mathbb{R}, \beta >0$ be the shape parameters to the \index{Beta probability distribution}Beta probability distribution.
+
+      \item Let $\theta$ be the probability of a success. With $\theta | \alpha, \beta \sim Beta(\alpha, \beta)$.
+
+      \item $P(\theta)$ is the prior probability distribution with the functional form $\mathcal{A}(v)$.
+
+      \item Let $X = (x_{1}, \dots, x_{I})$ be the outcomes of independent, identical random events, each with Boolean outcome. That is $x_{i} | \theta \overset{\text{iid}}{\sim} Ber(\theta)$ and $\mathcal{L}(x_{i} \vert \theta)$ is the Bernoulli likelihood.
+
+      \item Let $\mathcal{D}$ denote all the prior data $X$, parameterised by $\alpha$, $\beta$.
+
+      \item Let $N_{1} = \sum_{i=1}^{I} \mathbbm{1}(x_{i} = 1)$ and $N_{0} = \sum_{i=1}^{I} \mathbbm{1}(x_{i} = 0)$.
+\end{itemize}
+
+The Bernoulli likelihood is given in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:likelihood} below.
 
 \begin{equation}
-      \label{eq:bhh:selection_mechanism:predictive_model_prop_to}
+      \label{eq:probability:conjugate_priors:binom_likelihood:likelihood}
       \begin{split}
-            P(H \vert E, C;  \theta, \phi, \psi) &\propto P(E \vert H;  \phi)  P(C \vert H;  \psi) P(H \vert \theta)
+            \mathcal{L}(\mathcal{D}) &=  P(\mathcal{D} | \theta) \\
+            &\propto \theta^{N_{1}}(1-\theta)^{N_{0}}
       \end{split}
 \end{equation}
 
-The predictive model thus models the \textit{proportional} probability of the event (selection of) heuristic $H$, given allocation to entity $E$ and credit $C$, parameterised by sampled $\theta$, $\phi$ and $\psi$. These parameters are in turn parameterised by concentrations $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$, which denote the prior beliefs of the \acs{BHH}.
-
-
-\index{Naïve Bayes}
-\subsection{Naïve Bayes}\label{sec:bhh:selection_mechanism:naive_bayes}
-
-This section aims to dissect the probabilistic model that is presented in Equestion~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to}. The \acs{BHH} implements a form of Naïve Bayes classifier and thus, independence between events can be assumed. The following derived \acp{PMF} are provided as fundamental building blocks to show the mechanism by which the \acs{BHH} learns.
-
-The independence between events for class label $H$, simply yields the \ac{PMF} of the \index{Multinomial probability distribution}Multinomial distribution as presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf} below.
+By \index{Bayes' theorem}Bayes' theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:posterior} below.
 
 \begin{equation}
-      \label{eq:bhh:selection_mechanism:naive_bayes:h_pmf}
       \begin{split}
-            P(H \vert \theta)
-            &\propto \prod_{i=1}^{I} \prod_{k=1}^{K} P(h_{i,k} \vert \theta_{k}) \\
-            &\propto \prod_{i=1}^{I} \prod_{k=1}^{K} \theta_{k}^{\mathbbm{1}_{1}(h_{i,k})} \\
-            &\propto \prod_{k=1}^{K} \theta_{k}^{\sum_{i=1}^{I} \mathbbm{1}_{1}(h_{i,k})} \\
+            \label{eq:probability:conjugate_priors:binom_likelihood:posterior}
+            P(\theta \vert \mathcal{D}) &= \frac{P(\mathcal{D} | \theta) P(\theta)}{P(\mathcal{D})}
+      \end{split}
+\end{equation}
+
+Since the denominator sums to $1$, one could get rid of the denominator and constants for the Bernoulli likelihood and the Beta prior, by expressing the posterior as proportional to the likelihood times the prior as is shown in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:posterior_propto} below.
+
+\begin{equation}
+      \label{eq:probability:conjugate_priors:binom_likelihood:posterior_propto}
+      \begin{split}
+            P(\theta | \mathcal{D}) &\propto \left[\theta^{N_{1}}(1-\theta)^{N_{0}}\right] \left[\theta^{\alpha - 1} (1 - \theta)^{\beta - 1}\right] \\
+            &\propto \theta^{(N_{1} + \alpha) - 1}(1-\theta)^{(N_{0} + \beta) - 1} \\
+            &\propto Beta(N_{1} + \alpha, N_{0} + \beta)
+      \end{split}
+\end{equation}
+
+The posterior distribution has the same functional form $\mathcal{A}(v)$ as the prior, but with updated prior parameters $\alpha' = N_{1} + \alpha$ and $\beta' = N_{0} + \beta$. This shows that the \index{Beta probability distribution}Beta probability distribution is the conjugate prior used with the Bernoulli likelihood.
+
+
+\subsection{Categorical and Multinomial Likelihood}
+\label{sec:probability:conjugate_priors:cat_mult_likelihood}
+
+The conjugate prior to a \index{Categorical probability distribution}Categorical and \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Dirichlet probability distribution}Dirichlet probability distribution~\cite{ref:wackerly:2014}. The proof of the conjugate prior for the \index{Bernoulli probability distribution}Bernoulli probability distribution is similar to the proof presented in Section \ref{sec:probability:conjugate_priors:binom_likelihood} above. This means that the posterior distribution must have the same functional form $\mathcal{A}(v)$ as the prior distribution. The proof is shown as follows. \\\\
+\textbf{Setup}:
+
+\begin{itemize}
+      \item Let $I$ be a number of independent, identical (iid) random events.
+
+      \item Let $K$ be a number of possible outcomes for each event, with $K \geq 2$.
+
+      \item Let $\alpha = (\alpha_{1}, \dots, \alpha_{K}), \forall_{k=1}^{K} \alpha_{k} \in \mathbb{R}, \alpha_{k} > 0$ be the concentration parameters to the \index{Dirichlet probability distribution}Dirichlet probability distribution.
+
+      \item Let $\theta = (\theta_{1}, \dots, \theta_{K}), \forall_{k=1}^{K} \theta{k} \in (0,1), \sum_{k}^{K} \theta{k} = 1$ be the probability of each class in $K$ and $\theta$ belongs to the standard $K-1$ probability simplex $S$. With $\theta | \alpha \sim Dir(K, \alpha)$.
+
+      \item $P(\theta)$ is the prior probability distribution with the functional form $\mathcal{A}(v)$.
+
+      \item Let $X = (x_{1}, \dots, x_{I})$ be the outcomes of independent, identical random events, each with $K$ possible outcomes. That is $x_{i} | \theta \overset{\text{iid}}{\sim} Cat(\theta)$ and $\mathcal{L}(x_{i} \vert \theta)$ is the Categorical likelihood.
+
+      \item Let $\mathcal{D}$ denote all the prior data $X$, parameterised by $\alpha$.
+
+      \item Let $N = (N_{1}, \dots, N_{K}), N_{k} = \sum_{i=1}^{I} \mathbbm{1}(x_{i,k} = 1)$, denote the counts for each occurrence of a class $k$.
+\end{itemize}
+
+The likelihood of the Categorical and \index{Multinomial probability distribution}Multinomial probability distributions is given in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:likelihood} below.
+
+\begin{equation}
+      \label{eq:probability:conjugate_priors:mult_likelihood:likelihood}
+      \begin{split}
+            \mathcal{L}(\mathcal{D}) &=  P(\mathcal{D} | \theta) \\
             &\propto \prod_{k=1}^{K} \theta_{k}^{N_{k}}
       \end{split}
 \end{equation}
 
-In Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf} above, $N_{k}$ is a summary variable such that $N_{k} = \sum_{i=i}^{I} \mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the event $h_{i}$ taking on class $k$ in $I$ independent, identical runs.
-
-The independence between events $E$, given class label $H$, is denoted by the likelihood of $E$,
-conditional to the occurrence of heuristic $k$ and model parameter $\phi$ as is given in in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} below.
+By \index{Bayes' theorem}Bayes' theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:posterior} below.
 
 \begin{equation}
-      \label{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf}
+      \label{eq:probability:conjugate_priors:mult_likelihood:posterior}
       \begin{split}
-            P(E \vert H;  \phi)
-            &\propto \prod_{i=1}^{I} \prod_{j=1}^{J} \prod_{k=1}^{K} P(e_{i,j,k} \vert h_{i,k} ; \phi_{j,k})  \\
-            &\propto \prod_{i=1}^{I} \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{\mathbbm{1}_{1}(e_{i,j,k})\mathbbm{1}_{1}(h_{i,k})} \\
-            &\propto \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{ \sum_{i}^{I} \left[ \mathbbm{1}_{1}(e_{i,j,k}) \mathbbm{1}_{1}(h_{i,k}) \right]} \\
-            &\propto \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{N_{j,k}}
+            P(\theta \vert \mathcal{D}) &= \frac{P(\mathcal{D} \vert \theta) P(\theta)}{P(\mathcal{D})}
       \end{split}
 \end{equation}
 
-In Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} above, $N_{j,k}$ is a summary variable such that $N_{j,k} = \sum_{i=i}^{I} \mathbbm{1}_{1}(e_{i,j,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the events $e_{i}$ taking on class $j$ and $h_{i}$ taking on class $k$, i.e. the count of occurrences of both entity $e$ and heuristic $k$ occurring together in $I$ independent, identical runs.
-
-Finally, the independence between events for the performance criteria $C$, given class label $H$, is denoted by the likelihood of $C$, conditional to the occurrence of heuristic $k$ and model parameter $\psi$ as given in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} below.
+Since the denominator sums to $1$, one could get rid of the denominator and constants for the \index{Dirichlet probability distribution}Dirichlet prior, by expressing the posterior as proportional to the likelihood times the prior as is shown in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:posterior_propto} below.
 
 \begin{equation}
-      \label{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf}
+      \label{eq:probability:conjugate_priors:mult_likelihood:posterior_propto}
       \begin{split}
-            P(C\vert H;  \psi)
-            &\propto\prod_{i=1}^{I} \prod_{k=1}^{K} P(c_{i,k} \vert h_{i,k} ; \psi_{k})  \\
-            &\propto \prod_{i=1}^{I} \prod_{k=1}^{K} \psi_{k}^{\mathbbm{1}_{1}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})} (1 - \psi_{k})^{\mathbbm{1}_{0}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})}\\
-            &\propto \prod_{k=1}^{K} \psi_{k}^{\sum_{i=1}^{I} \mathbbm{1}_{1}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})} (1 - \psi_{k})^{\sum_{i=1}^{I} \mathbbm{1}_{0}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})}\\
-            &\propto \prod_{k=1}^{K} \psi_{k}^{N_{1,k}} (1 - \psi_{k})^{N_{0,k}} \\
-            &\propto \prod_{k=1}^{K} \psi_{k}^{N_{1,k}} (1 - \psi_{k})^{(N_{k} - N_{1,k})}
+            P(\theta \vert \mathcal{D}) &\propto \prod_{k=1}^{K} \theta_{k}^{N_{k}} \prod_{k=1}^{K} \theta_{k}^{\alpha_{k} - 1}\\
+            &\propto \prod_{k=1}^{K} \theta_{k}^{(N_{k} + \alpha_{k}) - 1} \\
+            &\propto Dir(K, N + \alpha)
       \end{split}
 \end{equation}
 
-In Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} above, $N_{k}$ is the same summary variable as described for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}. $N_{1,k}$ is a summary variable such that $N_{1,k} = \sum_{i=1}^{I} \mathbbm{1}_{1}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the events $c_{i}$ taking on a success $(c_{i}=1)$ and $h_{i}$ taking on class $k$, i.e. the count of occurrences of both succeeding in the performance criteria and heuristic $k$ occurring together in $I$ independent, identical runs. Similarly $N_{0,k} = N_{k} - N_{1,k}$ would denote the count of occurrences of the events $c_{i}$ taking on a failure $(c_{i}=0)$ and $h_{i}$
-taking on class $k$.
+The posterior distribution has the same form $\mathcal{A}(v)$ as the prior, but with updated prior parameters $\alpha' = N + \alpha$. This shows that the \index{Dirichlet probability distribution}Dirichlet probability distribution is the conjugate prior used with the Categorical/Multinomial likelihood.
 
-Equations~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}, \eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} and \eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} can be supplemented into the proportional evaluation of the predictive model as given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} and is given in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} below.
+The next section aims to provide the reader with the concept of Bayesian statistics and it is shown how Bayesian inference and Bayesian analysis can be used to to train a \acs{HH}.
 
-\begin{equation}
-      \label{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}
-      \begin{split}
-            P(H \vert E, C;  \theta, \phi, \psi)
-            &\propto P(E \vert H;  \phi)  P(C \vert H;  \psi) P(H \vert \theta)  \\
-            &\propto \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{N_{j,k}} \right] \left[ \prod_{k=1}^{K} \psi_{k}^{N_{1,k}} (1 - \psi_{k})^{(N_{k} - N_{1,k})} \right] \left[ \prod_{k=1}^{K} \theta_{k}^{N_{k}} \right]
-      \end{split}
-\end{equation}
 
-Consider the practical implementation of the predictive model as shown in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} above. Computationally the equation presented in Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} will underflow on a real computer if the resulting probabilities are very small. Discussions follow on numerical stability as it relates to practical implementation.
+\section{Bayesian Statistics}
+\label{sec:probability:bayesian_statistics}
 
-\subsection{Numerical Stability}\label{sec:bhh:selection_mechanism:numerical_stability}
+In general, there are two main views to probability and statistics. These include the \textit{frequentist} and the \textit{Bayesian} view of statistics. Naturally, Bayesian statistics is based on \index{Bayes' theorem}Bayes' theorem as was presented in Section \ref{sec:probability:bayes_theorem}. Bayesian statistics describe the probability of an event in terms of some belief, based on previous knowledge of the event, and the conditions under which the event happens~\cite{ref:hackenberger:2019}. To introduce the concept of Bayesian inference and analysis, one first need to understand the difference between these two approaches. Bayesian statistics out-date the frequentist approach, but lacked interest in the early days, partly because of the limited applications where the conjugate priors where known~\cite{ref:hackenberger:2019}. More recent advancements in mathematical methods popularised the Bayesian approach again. A notable contribution to this switch, was the development of \acf{MCMC} in the 1950's. This family of algorithms allowed for the construction of random sampling algorithms from a probability distribution, which allows for the calculation of Bayesian hierarchical models~\cite{ref:hackenberger:2019}. Soon after followed one of the earliest papers that use Bayesian statistics in the field of medicine in 1982~\cite{ref:ashby:2006}.
 
-When evaluating for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplying multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfills a credit assignment, yielding an extremely small probability for $\psi$. A solution to the aforementioned problem is to apply the \textit{log-sum-exp} trick. The transformation of Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given below in Equation~\eqref{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}.
-
-\begin{equation}
-      \label{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}
-      \begin{split}
-            LSE(P(h_{k} \vert e_{j}, c_{1};  \theta, \phi, \psi)) = \ln(\exp(\phi_{j,k}) +  \exp(\psi_{k}) + \exp(\theta_{k}))
-      \end{split}
-\end{equation}
-
-The log-sum-exp trick as shown above caters for very small probabilities, however, there might be a situation where  a random event is never seen, purely by chance. This results in a scenario referred to as \textit{mode collapse} and is discussed next.
-
-\subsection{Mode Collapse}\label{sec:bhh:selection_mechanism:mode_collapse}
-
-Mode collapse is the situation that occurs where the selective pressure towards a heuristic is close to zero as a result of random sampling, low initial bias or bad performance. This leads to a situation where the probabilistic model continually decreases the selective pressure, until the selection probability of that heuristic is 0, yielding no further observations of that particular random event. The \acs{BHH} addresses the aforementioned issue by:
-
-\begin{itemize}
-      \item Using \textit{symmetric} initialisation of the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$.
-
-      \item Setting the lower-bound of the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$ to 1, so that a selection probability of 0 is highly improbable.
-
-      \item Continuously resampling heuristics throughout the training process, before and after optimisation, eliminating mode collapse as a result of just random sampling.
-\end{itemize}
-
-Another suggestion is to ensure that at least one of every heuristic is always selected during training. The \acs{BHH} does not incorporate this approach as this could result in a situation where a bad choice of heuristic is continually used throughout the training process, possibly resulting in bad update steps/selections. Instead, the \acs{BHH} relies on the underlying learning process to control the selective pressure according to performance and nothing else. If this leads to a situation where mode collapse occurs, the \acs{BHH} accepts the outcome.
-
-\section{Optimisation Step}\label{sec:bhh:optimisation_step}
-
-Thus far all the fundamental components of the \acs{BHH} has been presented. The final step that is missing is to present the optimisation step by which the learning process takes place. This section aims to provide a solid mathematical explanation to show exactly how the \acs{BHH} is able to learn.
-
-The intent of the \acs{BHH} is to gather evidence that can be use to update prior beliefs about which heuristics perform well during training. These beliefs are represented by the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$. A change in prior beliefs is represented by a change in these concentration parameters. Specifically, it can be said, that the optimisation process implemented by the \acs{BHH}, updates \textit{pseudo counts} of events that are observed in the performance logs. These pseudo counts track the occurrence of a heuristic, an entity and resulting performance of these two elements. Through the credit assignment strategy, these pseudo counts are biased towards entity-heuristic combinations that meet performance requirements and yield credit allocations.
-
-The \acs{BHH} is an adaptive \ac{HH}, meaning that it implements online learning. Online learning refers to a process where learning happens during the training process. Throughout the training process, concentration parameters are updated strategically to guide the selection mechanism towards heuristics that perform well. The learning capability of the \acs{BHH} lies in carefully updating these concentration parameters. Another possibility is to introduce \textit{a priori} information in the form of expert knowledge. A priori biases can be introduced by carefully setting the concentration parameters to values that are known to be good.
-
-Generally, there are two different techniques that are used to train Naïve Bayes classifiers. The frequentist approach implements \acf{MLE} and the Bayesian approach implements \acf{MAP}. These methods are provided in Sections \ref{sec:bhh:optimisation_step:mle} and \ref{sec:bhh:optimisation_step:map} respectively and show how the concentration parameters are updated throughout the training process, yielding the mechanism by which optimisation and learning takes place. It should be mentioned that the \acs{BHH} makes use of \acs{MAP} to optimise the predictive model. However, the details of \acs{MLE} is provided as well as it contains fundamental mathematical building blocks that are required to present \acs{MAP}.
-
-
-\index{maximum likelihood estimation}
-\subsection{Maximum Likelihood Estimation}\label{sec:bhh:optimisation_step:mle}
-
-In probability theory and statistics, \acf{MLE} is a method that estimates the parameters of a prior probability distribution given newly observed data and evidence. This section shows that the values for $\theta$, $\phi$ and $\psi$ can be estimated by \ac{MLE} and is given in Equations \eqref{eq:bhh:optimisation_step:mle:theta}, \eqref{eq:bhh:optimisation_step:mle:phi} and \eqref{eq:bhh:optimisation_step:mle:psi} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:theta}
-      \begin{split}
-            \hat{\theta}_{k} = E[\theta_{k}] = \frac{N_{k}}{N}
-      \end{split}
-\end{equation}
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:phi}
-      \begin{split}
-            \hat{\phi}_{j,k} = E[\phi_{j,k}] = \frac{N_{j,k}}{N_{j}}
-      \end{split}
-\end{equation}
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:psi}
-      \begin{split}
-            \hat{\psi}_{k} = E[\psi_{k}] = \frac{N_{1,k}}{N_{k}}
-      \end{split}
-\end{equation}
-
-The derivations of the \acs{MLE} for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and
-$\hat{\psi}_{k}$ are presented as follows. The log likelihood of $\hat{\theta}$, $\hat{\phi}$ and $\hat{\psi}$ as derived from the Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to} is given in Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:log_likelihood_all}
-      \begin{split}
-            & \mathcal{L}(\theta, \phi, \psi) \\
-            &= \ln\left(\left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{N_{j,k}} \right] \left[ \prod_{k=1}^{K} \psi_{k}^{N_{1,k}} (1 - \psi_{k})^{(N_{k} - N_{1,k})} \right] \left[ \prod_{k=1}^{K} \theta_{k}^{N_{k}} \right] \right) \\
-            &= \ln \left( \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{N_{j,k}} \right) +  \ln \left( \prod_{k=1}^{K} \psi_{k}^{N_{1,k}} (1 - \psi_{k})^{(N_{k} - N_{1,k})} \right) + \ln \left( \prod_{k=1}^{K} \theta_{k}^{N_{k}} \right) \\
-            &= \left( \sum_{j=1}^{J} \sum_{k=1}^{K} N_{j,k} \ ln \left( \phi_{j,k}
-            \right) \right) \\
-            &+ \left( \sum_{k=1}^{K} N_{1,k} \ln \left( \psi_{k} \right) + \left( N_{k} - N_{1,k} \right) \ln \left( 1 - \psi_{k} \right) \right) + \left( \sum_{k=1}^{K} N_{k} \ln \left( \theta_{k} \right) \right)
-      \end{split}
-\end{equation}
-
-Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_all} can be broken down into each of its components. Consider the log likelihood of $\psi$ as denoted by Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_psi} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:log_likelihood_psi}
-      \begin{split}
-            \mathcal{L}(\psi) &=  \sum_{k=1}^{K} N_{1,k} \ln \left( \psi_{k} \right) + \left( N_{k} - N_{1,k} \right) \ln \left( 1 - \psi_{k} \right)
-      \end{split}
-\end{equation}
-
-The \acs{MLE} for $\hat{\psi_{k}} $ can be calculated by taking the partial derivative of Equation~\eqref{eq:bhh:optimisation_step:mle:log_likelihood_psi} with respect to $\psi_{k}$ and equating to zero as presented in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_psi} as follows.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_psi}
-      \begin{split}
-            \frac{\partial \mathcal{L}(\psi)}{\partial \psi_{k}} &= N_{1,k} \frac{1}{ \psi_{k}} + \left( N_{k} - N_{1,k} \right) \frac{-1}{ \left( 1 - \psi_{k} \right) } \\
-            0 &=  \frac{ N_{1,k} \left( 1 - \psi_{k} \right) +  \left( N_{1,k} - N_{k} \right) \psi_{k}}{ \psi_{k} \left( 1 - \psi_{k} \right) } \\
-            0 &=  N_{1,k} \left( 1 - \psi_{k} \right) +  \left( N_{1,k} - N_{k} \right) \psi_{k} \\
-            0 &=  N_{1,k} - N_{1,k} \psi_{k}  +  N_{1,k} \psi_{k} - N_{k}\psi_{k} \\
-            0 &=  N_{1,k} - N_{k}\psi_{k} \\
-            N_{k}\psi_{k} &=  N_{1,k} \\
-            \hat{\psi}_{k} &=  \frac{N_{1,k}}{N_{k}} \\
-      \end{split}
-\end{equation}
-
-The \acs{MLE} for $\hat{\theta_{k}} $ can be calculated similarly. However, one has to compensate for the $K-1$ simplex $S$ by adding error factor $\epsilon$, to correct values for $\theta$, where $\sum_{k}^{K} \theta_{k} \neq 1$. The new log likelihood function is then given in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_1} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_1}
-      \begin{split}
-            \mathcal{L}(\theta, \epsilon)
-            &=  \left( \sum_{k=1}^{K} N_{k} \ln \left( \theta_{k} \right) \right) + \epsilon \left( 1 - \sum_{k=1}^{K} \theta_{k} \right) \\
-            &=  \left( \sum_{k=1}^{K} N_{k} \ln \left( \theta_{k} \right) \right) + \left( \epsilon -  \epsilon \sum_{k=1}^{K} \theta_{k} \right)
-      \end{split}
-\end{equation}
-
-Solving first for $\epsilon$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_2} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_2}
-      \begin{split}
-            \frac{\partial \mathcal{L}(\theta, \epsilon)}{\partial \epsilon} &= 1 - \sum_{k=1}^{K} \theta_{k}  \\
-            \sum_{k=1}^{K} \theta_{k}  &= 1
-      \end{split}
-\end{equation}
-
-Then solving for $\theta_{k}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_3} as presented below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_3}
-      \begin{split}
-            \frac{\partial \mathcal{L}(\theta, \epsilon)}{\partial \theta_{k}} &=  N_{k} \frac{1}{\theta_{k}}  + \epsilon(-1) \\
-            \frac{N_{k}}{\theta_{k}} &= \epsilon \\
-            N_{k} &= \theta_{k} \epsilon \\
-            \sum_{k=1}^{K} N_{k} &= \sum_{k=1}^{K} \theta_{k} \epsilon \\
-            N &= \epsilon \sum_{k=1}^{K} \theta_{k} \\
-            N &= \epsilon
-      \end{split}
-\end{equation}
-
-Substituting $N = \epsilon$ back into Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_3} yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_4} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_theta_part_4}
-      \begin{split}
-            N_{k} &= \theta_{k} \epsilon \\
-            N_{k} &= \theta_{k} N \\
-            \hat{\theta}_{k} &= \frac{N_{k}}{N}\\
-      \end{split}
-\end{equation}
-
-The \acs{MLE} for $\hat{\phi}_{j, k} $ is calculated similarly. To compensate for the $K-1$ simplex $S$, an error $\lambda = (\lambda_{1}, \dots, \lambda_{J})$ is added as is shown in Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_1}
-      \begin{split}
-            \mathcal{L}(\phi, \lambda)
-            &=  \left( \sum_{j=1}^{J} \sum_{k=1}^{K} N_{j,k} \ ln \left( \phi_{j,k} \right) \right) + \sum_{j=1}^{J} \lambda_{j} \left( 1 - \sum_{k=1}^{K} \phi_{j,k} \right) \\
-            &=  \left( \sum_{j=1}^{J} \sum_{k=1}^{K} N_{j,k} \ ln \left( \phi_{j,k} \right) \right) + \sum_{j=1}^{J} \lambda_{j} - \sum_{j=1}^{J} \lambda_{j} \sum_{k=1}^{K} \phi_{j,k} \\
-      \end{split}
-\end{equation}
-
-Solving first for $\lambda_{j}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_2} as is given below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_2}
-      \begin{split}
-            \frac{\partial \mathcal{L}(\phi, \lambda)}{\partial \lambda_{j}} &= 1 - \sum_{k=1}^{K} \phi_{j,k}  \\
-            \sum_{k=1}^{K} \phi_{j,k}  &= 1
-      \end{split}
-\end{equation}
-
-Then solving for $\phi_{j,k}$ yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_3} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_3}
-      \begin{split}
-            \frac{\partial \mathcal{L}(\phi, \lambda)}{\partial \phi_{j,k}} &= N_{j,k} \frac{1}{\phi_{j,k}}  - \lambda_{j} \\
-            \frac{N_{j,k}}{\phi_{jk}} &= \lambda_{j} \\
-            N_{j,k} &= \phi_{j,k} \lambda_{j} \\
-            \sum_{k=1}^{K} N_{j,k} &= \sum_{k=1}^{K} \phi_{j,k} \lambda_{j} \\
-            N_{j} &= \lambda_{j} \sum_{k=1}^{K} \phi_{j,k} \\
-            N_{j} &= \lambda_{j}
-      \end{split}
-\end{equation}
-
-Substituting $N_{j} = \lambda_{j}$ back into Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_3} yields Equation~\eqref{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_4} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:mle:proof_log_likelihood_phi_part_4}
-      \begin{split}
-            N_{j,k} &= \phi_{j,k} \lambda_{j} \\
-            N_{j,k} &= \phi_{j,k} N_{j} \\
-            \hat{\phi}_{j,k} &= \frac{N_{j,k}}{N_{j}}\\
-      \end{split}
-\end{equation}
-
-\index{maximum a posteriori estimation}
-\subsection{Maximum A Posteriori Estimation}\label{sec:bhh:optimisation_step:map}
-
-Another approach to optimising the values for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and $\hat{\psi}_{k}$ is to optimise the parameters by their probability distributions' parameters. This process is referred to as \index{Bayesian analysis}\textit{Bayesian analysis}. This section provides the mathematical details of Bayesian analysis and \acf{MAP} as it is implemented by the \acs{BHH}.
-
-Bayesian analysis makes use of the \textit{posterior} probability distribution. The posterior distribution is simply expressed proportionally as follows.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:bayesian_analysis_lamens}
-      \begin{split}
-            POSTERIOR \propto LIKELIHOOD \times PRIOR
-      \end{split}
-\end{equation}
-
-The event $H$ is a multinomial distribution with probability parameter $\theta$. It is known that the conjugate prior to a multinomial distribution is a \index{Dirichlet probability distribution}Dirichlet probability distribution. The \textit{prior} probability distribution for $\theta_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_theta_prior} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:map_theta_prior}
-      \begin{split}
-            P(\theta | \alpha)
-            &\propto \prod_{k=1}^{K} \theta_{k}^{\alpha_{k} -1}
-      \end{split}
-\end{equation}
-
-Furthermore, the event $E$ is also a multinomial distribution with parameter $\phi$. The \textit{prior} probability distribution for $\phi_{j,k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_phi_prior} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:map_phi_prior}
-      \begin{split}
-            P(\phi \vert \beta)
-            &\propto \prod_{j=1}^{J}  \prod_{k=1}^{K} \phi_{j,k}^{\beta_{j,k} -1}
-      \end{split}
-\end{equation}
-
-Finally, the event $C$ is a \index{Binomial probability distribution}Binomial probability distribution with probability parameter $\psi$. It is known that the conjugate prior to a \index{Binomial probability distribution}Binomial probability distribution is a Beta probability distribution. The prior probability distribution for $\psi_{k}$ is thus presented in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:map_psi_prior}
-      \begin{split}
-            P(\psi | \gamma_{1}, \gamma_{0})
-            &\propto \prod_{k=1}^{K} \psi_{k}^{\gamma_{1,k}} (1- \psi_{k})^{\gamma_{2,k}}
-      \end{split}
-\end{equation}
-
-Putting the likelihood and priors together yields the posterior distribution as given in Equation~\eqref{eq:bhh:optimisation_step:map:map_psi_prior} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:posterior}
-      \begin{split}
-            P(\theta, \phi, \psi \vert H, E, C;  \alpha, \beta, \gamma_{1}, \gamma_{0})
-            &\propto P(H \vert E, C; \theta, \phi, \psi)P(\theta, \phi, \psi \vert \alpha, \beta, \gamma_{1}, \gamma_{0}) \\
-            &= P(E \vert H; \phi) P(C \vert H; \psi) P(H \vert \theta) P(\phi \vert \beta) \\
-            &\times P(\psi \vert \gamma_{1}, \gamma_{0}) P(\theta \vert \alpha)  \\
-            &= \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{N_{j,k}} \right] \left[ \prod_{k=1}^{K} \psi_{k}^{N_{1,k}} (1 - \psi_{k})^{(N_{k} - N_{1,k})} \right] \left[ \prod_{k=1}^{K} \theta_{k}^{N_{k}} \right] \\
-            &\times \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{\beta_{j,k} - 1} \right] \left[ \prod_{k=1}^{K} \psi_{k}^{\gamma_{1,k} - 1} (1 - \psi_{k})^{\gamma_{2,k} - 1} \right] \\
-            &\times \left[ \prod_{k=1}^{K} \theta_{k}^{\alpha_{k} - 1} \right] \\
-            &= \left[ \prod_{j=1}^{J} \prod_{k=1}^{K} \phi_{j,k}^{(N_{j,k} + \beta_{j,k}) - 1} \right] \\
-            &\times \left[ \prod_{k=1}^{K} \psi_{k}^{(N_{1,k} + \gamma_{1,k}) - 1} (1 - \psi_{k})^{(N_{0,k} + \gamma_{2,k} )- 1} \right] \\
-            &\times \left[ \prod_{k=1}^{K} \theta_{k}^{(N_{k} + \alpha_{k}) - 1} \right]
-      \end{split}
-\end{equation}
-
-From Equation~\eqref{eq:bhh:optimisation_step:map:posterior} above, it can be seen that the posterior distribution has the same form $\mathcal{A}(v)$ as the prior distribution. The concentration update operations can then be given in Equations \eqref{eq:bhh:optimisation_step:map:alpha_update_operation}, \eqref{eq:bhh:optimisation_step:map:beta_update_operation}, \eqref{eq:bhh:optimisation_step:map:gamma1_update_operation} and \eqref{eq:bhh:optimisation_step:map:gamma2_update_operation} below.
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:alpha_update_operation}
-      \begin{split}
-            \alpha_{k}(t+1) = N_{k} + \alpha_{k}(t)
-      \end{split}
-\end{equation}
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:beta_update_operation}
-      \begin{split}
-            \beta_{j,k}(t+1) = N_{j,k} + \beta_{j,k}(t)
-      \end{split}
-\end{equation}
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:gamma1_update_operation}
-      \begin{split}
-            \gamma_{1,k}(t+1) = N_{1,k} + \gamma_{1,k}(t)
-      \end{split}
-\end{equation}
-
-\begin{equation}
-      \label{eq:bhh:optimisation_step:map:gamma2_update_operation}
-      \begin{split}
-            \gamma_{2,k}(t+1) = N_{0,k} + \gamma_{2,k}(t)
-      \end{split}
-\end{equation}
-
-It can be seen that the prior and posterior probability distributions are of the same form, $\mathcal{A}(v)$. It can therefore be said that the \acs{BHH} implements a Gaussian process. Since the reselection of heuristics happens at regular intervals, the outcome of a selection in one iteration may influence the outcome of another in the next iteration, making the implementation of the \acs{BHH} a \acf{HMM}.
-
-Throughout this chapter a number of hyper-parameters have been identified. These are summarised and discussed in the next section.
-
-
-\section{Hyper-Parameters}\label{sec:bhh:hyper_parameters}
-
-This section provides a breakdown of all the hyper-parameters that were identified and briefly mentioned in this chapter. Some logical arguments can be made as to what their values should be, however it is still up to empirical analysis to determine the effects of certain hyper-parameter design decisions. Were possible, a range of possible values is provided.
-
-\index{heuristic pool}
-\subsection{Heuristic Pool}\label{sec:bhh:hyper_parameters:heuristic_pool}
-
-Section \ref{sec:bhh:heuristic_pool} provided the reader with the context and detail of the \index{heuristic pool}heuristic pool as it is included in the architecture of the \acs{BHH}. A detailed discussion was given around the importance of diversity and balancing exploration and exploitation capabilities. The \index{heuristic pool}heuristic pool hyper-parameter refers to the heuristic-pool configuration that is used. The configuration of the \index{heuristic pool}heuristic pool should account for the following factors.
-
-\begin{itemize}
-      \item The type of low-level heuristics to include in the \index{heuristic pool}heuristic pool. This dissertation investigates two main groups, including gradient-based \index{heuristic}heuristics and meta-heuristics.
-
-      \item The low-level heuristics' hyper-parameters. At a lower-level, each of these heuristics have their own set of hyper-parameters.
-
-      \item The \index{heuristic pool}heuristic pool size. This refers to the number of heuristics in the \index{heuristic pool}heuristic pool.
-\end{itemize}
-
-The design choices at a high level is not as strict for the \acs{BHH} as it is for low-level heuristics. If one is unsure as to which low-level hyper-parameters to use, one could simply include multiple configurations of a low-level heuristic, each with its own unique hyper-parameter configurations.
-
-
-\subsection{Population Size}\label{sec:bhh:hyper_parameters:population_size}
-
-Population size refers to the number of entities included in the \index{entity pool}entity pool. The population size to use is to be determined empirically. Naturely, an assumption is made that a larger population could lead to better results, assuming that entities are initialised uniformly across the solution search space. \citeauthor{ref:oldewage:2017}~\cite{ref:oldewage:2017} mentions that a large number of particles (entities) may be able to traverse a greater portion of the search space as every particle provides additional information about the search space. However, it is to be determined if this is indeed the case for the \acs{BHH}. The following factors need to be considered when picking a population size.
-
-\begin{itemize}
-      \item When considering the lower bound of possible population sizes, take into account the highest, minimum population size required by all low-level \index{heuristic}heuristics. For example, if one includes \Acs{DE} into the \index{heuristic}heuristic pool, one needs a population size of at least 4. For \acs{PSO}, the minimum population size is 3.
-
-      \item When considering the upper bound of possible population sizes, take into account that a bigger population size results in a more computationally expensive training process. Furthermore, there could exists a point of \textit{diminishing returns} where an increase in population size does not yield any better outcome.
-\end{itemize}
-
-\subsection{Credit}\label{sec:bhh:hyper_parameters:credit}
-
-The credit hyper-parameter refers to the credit assignment strategy that is used. This dissertation proposed 5 different credit assignment strategies that were presented in Section \ref{sec:bhh:credit_assignment_strategy}. The choice of credit assignment is assumed to be problem-dependent, however, this is to be  tested empirically. Along with the credit assignment strategy itself, the following factors related to the credit assignment strategy should be considered.
-
-\begin{itemize}
-      \item When to apply credit assignment during the training process.
-      \item What should the credit assignment score/value be (default = 1).
-      \item To what degree should credit assignment be allocated to past results in the performance log.
-\end{itemize}
-
-A number of other hyper-parameters are specifically included to address the list of considerations as given above. These include \textit{reselection}, \textit{replay} and \textit{reanalysis window sizes}, \textit{burn in}, \textit{discounted rewards} and \textit{normalisation}. Each of these are presented next.
-
-\subsection{Reselection}\label{sec:bhh:hyper_parameters:reselection}
-
-The reselection window size is a hyper-parameter that controls how often heuristic selections are resampled from the heuristic distribution, parameterised by the heuristic selection probability that is learnt. The choice of reselection should be influenced by the following considerations. If reselection happens too frequently, it does not allow heuristics sufficient time to achieve their goals and smooth out update steps. If reselection happens too infrequently, it does not allow for sufficient collection of samples/evidence from which learning is done. Naturally, the correct reselection window size to use is to be determined empirically.
-
-\subsection{Replay}\label{sec:bhh:hyper_parameters:replay}
-
-The replay window size is a hyper-parameter that controls how much historical performance information is kept in the performance log for the \acs{BHH} to learn from and was introduced in Section \ref{sec:bhh:performance_log}. The replay window size is a parameter that is borrowed from \acf{RL} and aims to control the effect that past performances have on the \acs{BHH}. A replay window size that is too small includes little to no memory, resulting in a situation where the \acs{BHH} simply looks at the most recent evidence that is collected and nothing more. On the contrary, if the replay window size is big, the \acs{BHH} tracks a longer history of past performances, leading to a situation where previously well-performing heuristics that are not relevant later in the training process, is still selected often.
-
-\subsection{Reanalysis}\label{sec:bhh:hyper_parameters:reanalysis}
-
-The reanalysis window size is a hyper-parameter that controls how often the \acs{BHH} updates its past beliefs (priors). The reanalysis window size goes hand in hand with the reselection and replay window sizes. If the reanalysis window is too small, the \acs{BHH} prematurely updates its priors. Similar to other hyper-parameters discussed thus far, the correct value to use for the reanalysis window size is to be determined empirically. However, some logical exclusions can be made. A reanalysis window size that is smaller than the reselection window size does not make sense, since the effects of reanalysis are only realised during reselection. A reanalysis window size that is too big could lead to a situation where the delay in updating priors could be detrimental to the outcomes of the \acs{BHH}.
-
-\subsection{Burn In}\label{sec:bhh:hyper_parameters:burn_in}
-
-Burn in is a hyper-parameter that is borrowed from \acf{MCMC} and aims to delay the learning process of the \acs{BHH}. The intent of the burn in hyper-parameter is to determine if heuristics need time to execute before reanalysis starts. Notice that a delay in the learning process does not mean that reselection doesn't occur or performance information is not collected in the replay window. Therefore, it should be noted that the burn in window size, reselection window size and replay window size should be considered together. If the replay window size is smaller than the burn in window size, performance information is discarded and an opportunity to learn is lost.
-
-\index{discounted rewards}
-\subsection{Discounted Rewards}\label{sec:bhh:hyper_parameters:discounted_rewards}
-
-\index{discounted rewards}Discounted rewards is another hyper-parameter that is borrowed from \acs{RL} and is a flag that determines if discounted rewards are applied or not. \index{discounted rewards}Discounted rewards refer to an implementation where credit assignments for past performances are exponentially decreased further into the past. An exponential decay factor of 0.5 is proposed. The intent of the discounted rewards flag is to scale the effect of past performances that are further back in the performance log, such that they have a smaller impact than more recent evidence on the learning process of the \acs{BHH}.
-
-\subsection{Normalisation}\label{sec:bhh:hyper_parameters:normalisation}
-
-Normalisation is a hyper-parameter that aims to provide a mechanism of control for the degree to which exploration is allowed. Figure \ref{sec:bhh:hyper_parameters:discounted_rewards:normalisation} shows the effect of different concentrations ($\alpha$ and $\beta$) on the Beta probability distribution. By normalising the concentration parameters for the \acs{BHH} ($\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$), the variance of the selection probability distributions increases, allowing for sampled probabilities further from the mean and thus allowing for more exploration.
+The difference between the frequentist approach and the Bayesian approach can be illustrated using an example.~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} suggests an experiment that investigates whether the sex ration in some hypothetical mice population is $1:1$. Two experiments can be designed. In the first experiment, mice are randomly selected until the first male is chosen. The result in this experiment will then be the total number of mice chosen by sex. For the second experiment, exactly seven mice are randomly selected. The result of the second experiment would be the number of males and females in a sample of seven. Suppose the outcome of the experiment was $FFFFFFM$, where $F$ represents a female and $M$ represents a male. If the experimental design is not known ahead of time, the result is useless. Consider the $P$-value for each of these experiments. The P-value is the probability of obtaining results at least as extreme as the observed results of a statistical hypothesis test~\cite{ref:beers:2022}. For the first experiment, the $P$-value is $0.031$ and for the second experiment, the $P$-value is $0.227$. Using a confidence level of $\alpha = 0.05$, one would conclude opposite outcomes for these two experiments, when it comes to rejecting the null hypothesis, despite using the same data. The reason for the difference in outcomes, is due to the difference in their null distributions. The first approach uses a geometrical approach, and the second used a binomial approach as is illustrated on Figure \ref{fig:probability:bayesian_statistics:mouse_experiment_outcome} below.
 
 \begin{figure}[htbp]
-      \begin{subfigure}{0.49\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{images/beta_1_1.pdf}
-            \caption{$\alpha=1$, $\beta=1$}
-            \label{sec:bhh:hyper_parameters:normalisation_beta_1_1}
-      \end{subfigure}
-      \begin{subfigure}{0.49\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{images/beta_5_5.pdf}
-            \caption{$\alpha=5$, $\beta=5$}
-            \label{sec:bhh:hyper_parameters:normalisation_beta_5_5}
-      \end{subfigure}
-      \par\bigskip
-      \begin{subfigure}{0.49\textwidth}
-            \centering
-            \centering
-            \includegraphics[width=\textwidth]{images/beta_20_20.pdf}
-            \caption{$\alpha=20$, $\beta=20$}
-            \label{sec:bhh:hyper_parameters:normalisation_beta_20_20}
-      \end{subfigure}
-      \par\bigskip
-      \caption{The \index{Beta probability distribution}Beta probability distribution with varying $\alpha$ and $\beta$ values.}
-      \label{sec:bhh:hyper_parameters:discounted_rewards:normalisation}
+      \centering
+      \includegraphics[width=0.6\textwidth]{images/mouse_experiment_outcome.pdf}
+      \caption{The experimental outcomes for the mice-population experiments as was taken from~\cite{ref:hackenberger:2019} .}
+      \label{fig:probability:bayesian_statistics:mouse_experiment_outcome}
 \end{figure}
 
-The following section discusses the default values for proxied update step operations.
+If Bayesian statistics is used, the experimental design that was chosen does not matter. In Bayesian statistics it is common to use a \index{Beta probability distribution}Beta probability distribution as a prior distribution. If the prior distribution is sampled from $Beta(3,3)$ then using Bayesian analysis, the posterior distribution, according to the outcomes of this experiment, would yield $Beta(9,4)$.
 
-\subsection{Defaults}
-\label{sec:bhh:hyper_parameters:defaults}
+~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} mentions that the $Beta$ distribution can be seen as a probability distribution of the occurrence of specific parameters. From the information that is now known about the $Beta$ distribution, it is possible to calculate the probability that the sex ratio in this mice population is not $1:1$, with the $Beta$ distribution as a prior, yielding a $P$-value of $0.92$. This means that there is a probability of $92\%$ that the mice population is not $1:1$, regardless of experiment design. An illustration of this is given in Figure \ref{fig:probability:bayesian_statistics:mouse_distributions} below.
 
-Section \ref{sec:bhh:heuristic:proxies} provided the reader with the concept of proxied heuristic update step operations. As was mentioned in Section \ref{sec:bhh:hyper_parameters:heuristic_pool}, low-level heuristics each have their own set of hyper-parameters as well. A set of default low-level parameters must be allocated specifically for these proxies. Consider a scenario where two instances of \acs{Adam} is included in the \index{heuristic pool}heuristic pool. Each has its own set of hyper-parameters that differ from each other. In the case of \acs{Adam}, there are 4 hyper-parameters that include learning rate, $\beta1$, $\beta2$ and $\epsilon$. If another heuristic needs to proxy \acs{Adam}'s expected gradient mean operation, a default $\beta1$ parameter must be supplied that is applied by the proxy mechanism. This is only the case when multiple instances of a heuristic is included and there is uncertainty about which instance's hyper-parameters to use for the proxied heuristic update steps. If there is only one instance of a particular heuristic, that instance's hyper-parameters are used.
+\begin{figure}[htbp]
+      \centering
+      \includegraphics[width=0.6\textwidth]{images/mouse_experiment_distributions.pdf}
+      \caption{An illustration of the prior and posterior probability distributions for the outcomes of the mice-population experiment, using a $Beta$ prior, as was taken from~\cite{ref:hackenberger:2019}.}
+      \label{fig:probability:bayesian_statistics:mouse_distributions}
+\end{figure}
 
-The next section provides the reader with the pseudo-code algorithm for the \acs{BHH}.
+It can be seen from Figure \ref{fig:probability:bayesian_statistics:mouse_distributions} how the posterior distribution differs from the prior distribution. This is the nature of Bayesian analysis and is presented in more detail in the following section.
 
-\section{Algorithm}
-\label{sec:bhh:algorithm}
+\subsection{Bayesian Analysis}
+\label{sec:probability:bayesian_statistics:bayesian_analysis}
 
-The high level pseudo-code implementation of the \acs{BHH} is given in Algorithm \ref{algo:bhh}.
+Bayesian analysis is the process by which prior beliefs are updated as a result of observing new data/evidence. Similar to the approaches followed above to explain Bayesian statistics, a proposal is made to explain Bayesian analysis by means of an example taken from~\cite{ref:wackerly:2014}. Let $Y = Y_{1}, Y_{2}, \dots, Y_{N}$ denote the random variable that is observed over a sample size of $N$. Then the likelihood of the sample is given as $\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)$. In the discrete case the likelihood function is defined to be the joint probability $P(Y_{1} = y_{1}, Y_{2} = y_{2}, \dots, Y_{N} = y_{n})$ and the continuous case yields the joint density of $Y_{1}, Y_{2}, \dots, Y_{N}$, evaluated at $y_{1}, y_{2}, \dots, y_{n}$. The Bayesian view models the parameter $\theta$ as a random variable with a probability distribution, referred to as the prior distribution of $\theta$. The symbol $\theta$, is included in the notation of $\mathcal{L}$ as an argument to illustrate that this function is dependent, explicitly, on the value of $\theta$. Importantly, prior distribution is specified before any data is collected and represents the theoretical prior knowledge about $\theta$. Assume that the parameter $\theta$ has a continuous distribution with density $g(\theta)$ that has no unknown parameters. Considering the likelihood of the data and the prior on $\theta$, then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood} below.
 
-\begin{algorithm}[H]
-      \caption{The pseudo-code for the implementation of the \acf{BHH}}
-      \label{algo:bhh}
-      \begin{algorithmic}
-            \State step $\gets 0$
+\begin{equation}
+      \label{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood}
+      f(y_{1}, y_{2}, \dots, y_{n}, \theta) = \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)
+\end{equation}
 
-            \State select initial heuristics
-            \State initialise population and entities
-            \State evaluate entities' initial position
-            \State update population state
+The marginal density or mass function of $Y_{1}, Y_{2}, \dots, Y_{N}$ is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:marginal_density} below.
 
-            \While{stopping condition not met}
-            \For{all entities in entity pool}
-            \If{selected heuristic is gradient-based}
-            \State get gradients
-            \EndIf
+\begin{equation}
+      \label{eq:probability:bayesian_statistic:bayesian_analysis:marginal_density}
+      m(y_{1}, y_{2}, \dots, y_{n}) = \int_{-\infty}^{\infty} \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)d\theta
+\end{equation}
 
-            \State apply low-level heuristic and proxy operations
-            \State update population state
-            \State log performance metrics to performance log
+Finally, the posterior density of $\theta \vert y_{1}, y_{2}, \dots, y_{n}$, according to \index{Bayes' theorem}Bayes' theorem, is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density} below.
 
-            \If {step < burn-in window size}
-            \State select heuristic
-            \Else
-            \If {step $\mathbin{\%}$ reanalysis window size = 0}
-            \State apply Bayesian analysis
-            \EndIf
+\begin{equation}
+      \label{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density}
+      g^{*}(\theta \vert y_{1}, y_{2}, \dots, y_{n}) = \frac{\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)}{\int_{-\infty}^{\infty} \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)d\theta}
+\end{equation}
 
-            \If {step $\mathbin{\%}$ reselection window size = 0}
-            \State select heuristic
-            \EndIf
+\citeauthor{ref:wackerly:2014}\cite{ref:wackerly:2014} mentions that the posterior density summarises all the pertinent information about the parameter $\theta$ by making use of the information contained in the prior for $\theta$, as well as the information in the observed data/evidence.
 
-            \If {step > replay window size}
-            \State prune performance log
-            \EndIf
-            \EndIf
-            \EndFor
-            \State step $\gets$ step + $1$
-            \EndWhile
-      \end{algorithmic}
-\end{algorithm}
+Consider now how Bayesian analysis can be used to update the priors on $\theta$ based on newly observed data. As with the example above, the below is taken from~\cite{ref:wackerly:2014}. Let $Y_{1}, Y_{2}, \dots, Y_{N}$ denote a random sample from a \index{Bernoulli probability distribution}Bernoulli probability distribution, where $P(Y_{i} = 1) = \theta$ and $P(Y_{i} = 0) = 1 - \theta$ and the prior distribution for $\theta$ is $Beta(\alpha, \beta)$. The posterior distribution for $\theta$ can be formulated as follows. The Bernoulli probability function can be written as is shown in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_1} below.
 
-\section{Summary}
-\label{sec:bhh:summary}
+\begin{equation}
+      \label{eq:probability:bayesian_statistic:bayesian_analysis:step_1}
+      P(y_{i} \vert \theta) = \theta^{y_{i}}(1 - \theta)^{1-y_{i}}
+\end{equation}
 
-This chapter provided extensive detail on the inner workings and design of the \acs{BHH}. The \acs{BHH} was formally classified and the details around various components of the \acs{BHH}'s architecture was presented. Formal mathematical descriptions of the Bayesian selection method have been provided. The selection mechanism was presented as a probabilistic, predictive classifier. The optimisation process, by means of Bayesian analysis, has also been presented. Hyper-parameters were discussed in detail and a pseudo code implementation of the \acs{BHH} was presented.
+In Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_1} above, $y_{i} = \{0,1\}$ and $0 < \theta < 1$. The likelihood $\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)$ is presented in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_2} below.
 
-This methodology for the empirical process is provided in the following chapter.
+\begin{equation}
+      \label{eq:probability:bayesian_statistic:bayesian_analysis:step_2}
+      \begin{split}
+            \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)
+            &= P(y_{1}, y_{2}, \dots, y_{n} \vert \theta)\\
+            &= \theta^{y_{1}}(1-\theta)^{1 - y_{1}} \times \theta^{y_{2}}(1-\theta)^{1 - y_{2}} \times \dots \times \theta^{y_{n}}(1-\theta)^{1 - y_{n}}\\
+            &= \theta^{\sum y_{i}}(1-\theta)^{n-\sum y_{i}}
+      \end{split}
+\end{equation}
+
+Then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ from Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood} can be formulated as in shown in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_3} below.
+
+\begin{equation}
+      \label{eq:probability:bayesian_statistic:bayesian_analysis:step_3}
+      \begin{split}
+            f(y_{1}, y_{2}, \dots, y_{n}, \theta)
+            &= \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)\\
+            &= \theta^{\sum y_{i}}(1-\theta)^{n-\sum y_{i}} \times \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\alpha - 1}(1 - \theta)^{\beta  - 1}\\
+            &= \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\sum y_{i} + \alpha - 1}(1-\theta)^{n - \sum y_{i} + \beta - 1}
+      \end{split}
+\end{equation}
+
+The marginal density of $Y_{1}, Y_{2}, \dots Y_{N}$ is then given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_4} below.
+
+\begin{equation}
+      \label{eq:probability:bayesian_statistic:bayesian_analysis:step_4}
+      \begin{split}
+            m(y_{1}, y_{2}, \dots, y_{n})
+            &= \int_{0}^{1}\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\sum y_{i} + \alpha - 1}(1-\theta)^{n - \sum y_{i} + \beta - 1}d\theta\\
+            &= \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}\frac{\Gamma(\sum y_{i} + \alpha)\Gamma(n - \sum y_{i} + \beta)}{\Gamma(n + \alpha + \beta)}
+      \end{split}
+\end{equation}
+
+Finally, the posterior density of $\theta$ is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_5} below.
+
+\begin{equation}
+      \label{eq:probability:bayesian_statistic:bayesian_analysis:step_5}
+      \begin{split}
+            g^{*}(\theta \vert y_{1}, y_{2}, \dots, y_{n})
+            &= \frac{\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\sum y_{i} + \alpha - 1}(1-\theta)^{n - \sum y_{i} + \beta - 1}}{\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}\frac{\Gamma(\sum y_{i} + \alpha)\Gamma(n - \sum y_{i} + \beta)}{\Gamma(n + \alpha + \beta)}}\\
+            &= \frac{\Gamma(n + \alpha + \beta)}{\Gamma(\sum y_{i} + \alpha)\Gamma(n - \sum y_{i} + \beta)}\theta^{\sum y_{i} + \alpha - 1}(1-\theta)^{n - \sum y_{i} + \beta - 1}
+      \end{split}
+\end{equation}
+
+The posterior density has the same functional shape $\mathcal{A}(v)$ as the prior, yielding the update on prior parameters as $\alpha^{*} = \sum y_{i} + \alpha$ and $\beta^{*} = n - \sum y_{i} + \beta$.
+
+
+\section{Summary}\label{sec:probability:summary}
+
+This chapter provided the reader with all the necessary background information on probability theory and statistics. The origins of statistical analysis was discussed and the differences between the frequentist and Bayesian view of statistics were discussed in detail. Probability distributions and proofs of conjugate priors were provided with detailed mathematical descriptions. Finally, a detailed description of Bayesian analysis was provided with detailed mathematical descriptions.
+
+This chapter concludes all the relevant background information that is needed to formulate the \acs{BHH}. The proposed \acs{BHH} is presented in the following chapter.
