@@ -463,13 +463,13 @@ where $N_{k}$ is a summary variable, denoting the number of times a category $k$
 
 \section{Conjugate Priors}\label{sec:probability:conjugate_priors}
 
-\citeauthor{ref:wackerly:2014}\cite{ref:wackerly:2014} states that conjugate priors are prior probability distributions that results in posterior distributions that are of the same functional form $\mathcal{A}(v)$ as the prior, but with different parameter values. This section considers the conjugate priors that are used with the Binomial likelihood and Categorical/Multinomial likelihood.
+\citeauthor{ref:wackerly:2014}\cite{ref:wackerly:2014} state that conjugate priors are prior probability distributions that result in posterior distributions that are of the same functional form, $\mathcal{A}(v)$, as the prior, but with different parameter values. This section considers the conjugate priors that are used with the Binomial likelihood and Categorical/Multinomial likelihood.
 
 \subsection{Binomial Likelihood}\label{sec:probability:conjugate_priors:binom_likelihood}
 
 The conjugate prior to a \index{Bernoulli probability distribution}Bernoulli probability distribution is the \index{Beta probability distribution}Beta probability distribution
 \cite{ref:wackerly:2014}. This is shown by demonstrating that the posterior distribution has the
-same functional form $\mathcal{A}(v)$ as the prior distribution as follows. \\\\
+same functional form, $\mathcal{A}(v)$, as the prior distribution as follows. \\\\
 \textbf{Setup}:
 
 \begin{itemize}
@@ -481,50 +481,50 @@ same functional form $\mathcal{A}(v)$ as the prior distribution as follows. \\\\
 
       \item $P(\theta)$ is the prior probability distribution with the functional form $\mathcal{A}(v)$.
 
-      \item Let $X = (x_{1}, \dots, x_{I})$ be the outcomes of independent, identical random events, each with Boolean outcome. That is $x_{i} | \theta \overset{\text{iid}}{\sim} Ber(\theta)$ and $\mathcal{L}(x_{i} \vert \theta)$ is the Bernoulli likelihood.
+      \item Let $\boldsymbol{X} = (x_{1}, \dots, x_{I})$ be the outcomes of independent, identical random events, each with Boolean outcome. That is $x_{i} | \theta \overset{\text{iid}}{\sim} Ber(\theta)$ and $\mathcal{L}(x_{i} \vert \theta)$ is the Bernoulli likelihood.
 
-      \item Let $\mathcal{D}$ denote all the prior data $X$, parameterised by $\alpha$, $\beta$.
+      \item Let $\boldsymbol{\mathcal{D}}$ denote all the prior data $\boldsymbol{X}$, parameterised by $\alpha$, $\beta$.
 
       \item Let $N_{1} = \sum_{i=1}^{I} \mathbbm{1}(x_{i} = 1)$ and $N_{0} = \sum_{i=1}^{I} \mathbbm{1}(x_{i} = 0)$.
 \end{itemize}
 
-The Bernoulli likelihood is given in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:likelihood} below.
+The Bernoulli likelihood is given as
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:binom_likelihood:likelihood}
       \begin{split}
-            \mathcal{L}(\mathcal{D}) &=  P(\mathcal{D} | \theta) \\
+            \mathcal{L}(\boldsymbol{\mathcal{D}}) &=  P(\boldsymbol{\mathcal{D}} | \theta) \\
             &\propto \theta^{N_{1}}(1-\theta)^{N_{0}}
       \end{split}
 \end{equation}
 
-By \index{Bayes' theorem}Bayes' theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:posterior} below.
+By \index{Bayes' theorem}Bayes' theorem, the posterior distribution with given prior data $\boldsymbol{\mathcal{D}}$ is given as
 
 \begin{equation}
       \begin{split}
             \label{eq:probability:conjugate_priors:binom_likelihood:posterior}
-            P(\theta \vert \mathcal{D}) &= \frac{P(\mathcal{D} | \theta) P(\theta)}{P(\mathcal{D})}
+            P(\theta \vert \boldsymbol{\mathcal{D}}) &= \frac{P(\boldsymbol{\mathcal{D}} | \theta) P(\theta)}{P(\boldsymbol{\mathcal{D}})}
       \end{split}
 \end{equation}
 
-Since the denominator sums to $1$, one could get rid of the denominator and constants for the Bernoulli likelihood and the Beta prior, by expressing the posterior as proportional to the likelihood times the prior as is shown in Equation~\eqref{eq:probability:conjugate_priors:binom_likelihood:posterior_propto} below.
+Since the denominator sums to $1$, the denominator and constants for the Bernoulli likelihood and the Beta prior can be removed by expressing the posterior as proportional to the likelihood times the prior as follows:
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:binom_likelihood:posterior_propto}
       \begin{split}
-            P(\theta | \mathcal{D}) &\propto \left[\theta^{N_{1}}(1-\theta)^{N_{0}}\right] \left[\theta^{\alpha - 1} (1 - \theta)^{\beta - 1}\right] \\
+            P(\theta | \boldsymbol{\mathcal{D}}) &\propto \left[\theta^{N_{1}}(1-\theta)^{N_{0}}\right] \left[\theta^{\alpha - 1} (1 - \theta)^{\beta - 1}\right] \\
             &\propto \theta^{(N_{1} + \alpha) - 1}(1-\theta)^{(N_{0} + \beta) - 1} \\
             &\propto Beta(N_{1} + \alpha, N_{0} + \beta)
       \end{split}
 \end{equation}
 
-The posterior distribution has the same functional form $\mathcal{A}(v)$ as the prior, but with updated prior parameters $\alpha' = N_{1} + \alpha$ and $\beta' = N_{0} + \beta$. This shows that the \index{Beta probability distribution}Beta probability distribution is the conjugate prior used with the Bernoulli likelihood.
+The posterior distribution has the same functional form, $\mathcal{A}(v)$, as the prior, but with updated prior parameters $\alpha' = N_{1} + \alpha$ and $\beta' = N_{0} + \beta$. This shows that the \index{Beta probability distribution}Beta probability distribution is the conjugate prior used with the Bernoulli likelihood.
 
 
 \subsection{Categorical and Multinomial Likelihood}
 \label{sec:probability:conjugate_priors:cat_mult_likelihood}
 
-The conjugate prior to a \index{Categorical probability distribution}Categorical and \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Dirichlet probability distribution}Dirichlet probability distribution~\cite{ref:wackerly:2014}. The proof of the conjugate prior for the \index{Bernoulli probability distribution}Bernoulli probability distribution is similar to the proof presented in Section \ref{sec:probability:conjugate_priors:binom_likelihood} above. This means that the posterior distribution must have the same functional form $\mathcal{A}(v)$ as the prior distribution. The proof is shown as follows. \\\\
+The conjugate prior to a \index{Categorical probability distribution}Categorical and \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Dirichlet probability distribution}Dirichlet probability distribution~\cite{ref:wackerly:2014}. The proof of the conjugate prior for the \index{Bernoulli probability distribution}Bernoulli probability distribution is similar to the proof presented in Section \ref{sec:probability:conjugate_priors:binom_likelihood}. This means that the posterior distribution must have the same functional form, $\mathcal{A}(v)$, as the prior distribution. The proof is shown as follows. \\\\
 \textbf{Setup}:
 
 \begin{itemize}
@@ -532,71 +532,68 @@ The conjugate prior to a \index{Categorical probability distribution}Categorical
 
       \item Let $K$ be a number of possible outcomes for each event, with $K \geq 2$.
 
-      \item Let $\alpha = (\alpha_{1}, \dots, \alpha_{K}), \forall_{k=1}^{K} \alpha_{k} \in \mathbb{R}, \alpha_{k} > 0$ be the concentration parameters to the \index{Dirichlet probability distribution}Dirichlet probability distribution.
+      \item Let $\boldsymbol{\alpha} = (\alpha_{1}, \dots, \alpha_{K}), \forall_{k=1}^{K} \alpha_{k} \in \mathbb{R}, \alpha_{k} > 0$ be the concentration parameters to the \index{Dirichlet probability distribution}Dirichlet probability distribution.
 
-      \item Let $\theta = (\theta_{1}, \dots, \theta_{K}), \forall_{k=1}^{K} \theta{k} \in (0,1), \sum_{k}^{K} \theta{k} = 1$ be the probability of each class in $K$ and $\theta$ belongs to the standard $K-1$ probability simplex $S$. With $\theta | \alpha \sim Dir(K, \alpha)$.
+      \item Let $\boldsymbol{\theta} = (\theta_{1}, \dots, \theta_{K}), \forall_{k=1}^{K} \theta_{k} \in (0,1), \sum_{k}^{K} \theta_{k} = 1$ be the probability of each class in $K$ and $\boldsymbol{\theta}$ belongs to the standard $K-1$ probability simplex $S$. With $\boldsymbol{\theta} | \boldsymbol{\alpha} \sim Dir(K, \boldsymbol{\alpha})$.
 
-      \item $P(\theta)$ is the prior probability distribution with the functional form $\mathcal{A}(v)$.
+      \item $P(\boldsymbol{\theta})$ is the prior probability distribution with the functional form $\mathcal{A}(v)$.
 
-      \item Let $X = (x_{1}, \dots, x_{I})$ be the outcomes of independent, identical random events, each with $K$ possible outcomes. That is $x_{i} | \theta \overset{\text{iid}}{\sim} Cat(\theta)$ and $\mathcal{L}(x_{i} \vert \theta)$ is the Categorical likelihood.
+      \item Let $\boldsymbol{X} = (\boldsymbol{x_{1}}, \dots, \boldsymbol{x_{I}})$ be the outcomes of $I$ independent, identical random events, each with $K$ possible outcomes. That is $\boldsymbol{x_{i}} | \boldsymbol{\theta} \overset{\text{iid}}{\sim} Cat(\boldsymbol{\theta})$ and $\mathcal{L}(\boldsymbol{x_{i}} \vert \boldsymbol{\theta})$ is the Categorical likelihood.
 
-      \item Let $\mathcal{D}$ denote all the prior data $X$, parameterised by $\alpha$.
+      \item Let $\boldsymbol{\mathcal{D}}$ denote all the prior data $\boldsymbol{X}$, parameterised by $\boldsymbol{\alpha}$.
 
-      \item Let $N = (N_{1}, \dots, N_{K}), N_{k} = \sum_{i=1}^{I} \mathbbm{1}(x_{i,k} = 1)$, denote the counts for each occurrence of a class $k$.
+      \item Let $\boldsymbol{N} = (N_{1}, \dots, N_{K}), N_{k} = \sum_{i=1}^{I} \mathbbm{1}(x_{i,k} = 1)$, denote the counts for each occurrence of a class $k$.
 \end{itemize}
 
-The likelihood of the Categorical and \index{Multinomial probability distribution}Multinomial probability distributions is given in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:likelihood} below.
+The likelihood of the Categorical and \index{Multinomial probability distribution}Multinomial probability distributions is given as
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:mult_likelihood:likelihood}
       \begin{split}
-            \mathcal{L}(\mathcal{D}) &=  P(\mathcal{D} | \theta) \\
+            \mathcal{L}(\boldsymbol{\mathcal{D}}) &=  P(\boldsymbol{\mathcal{D}} | \boldsymbol{\theta}) \\
             &\propto \prod_{k=1}^{K} \theta_{k}^{N_{k}}
       \end{split}
 \end{equation}
 
-By \index{Bayes' theorem}Bayes' theorem, the posterior distribution with given prior data $\mathcal{D}$ is given in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:posterior} below.
+By \index{Bayes' theorem}Bayes' theorem, the posterior distribution with given prior data $\mathcal{D}$ is given as
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:mult_likelihood:posterior}
       \begin{split}
-            P(\theta \vert \mathcal{D}) &= \frac{P(\mathcal{D} \vert \theta) P(\theta)}{P(\mathcal{D})}
+            P(\boldsymbol{\theta} \vert \boldsymbol{\mathcal{D}}) &= \frac{P(\boldsymbol{\mathcal{D}} \vert \boldsymbol{\theta}) P(\boldsymbol{\theta)}}{P(\boldsymbol{\mathcal{D}})}
       \end{split}
 \end{equation}
 
-Since the denominator sums to $1$, one could get rid of the denominator and constants for the \index{Dirichlet probability distribution}Dirichlet prior, by expressing the posterior as proportional to the likelihood times the prior as is shown in Equation~\eqref{eq:probability:conjugate_priors:mult_likelihood:posterior_propto} below.
+Since the denominator sums to $1$, the denominator and constants for the \index{Dirichlet probability distribution}Dirichlet prior can be removed by expressing the posterior as proportional to the likelihood times the prior as follows:
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:mult_likelihood:posterior_propto}
       \begin{split}
-            P(\theta \vert \mathcal{D}) &\propto \prod_{k=1}^{K} \theta_{k}^{N_{k}} \prod_{k=1}^{K} \theta_{k}^{\alpha_{k} - 1}\\
+            P(\boldsymbol{\theta} \vert \boldsymbol{\mathcal{D}}) &\propto \prod_{k=1}^{K} \theta_{k}^{N_{k}} \prod_{k=1}^{K} \theta_{k}^{\alpha_{k} - 1}\\
             &\propto \prod_{k=1}^{K} \theta_{k}^{(N_{k} + \alpha_{k}) - 1} \\
-            &\propto Dir(K, N + \alpha)
+            &\propto Dir(K, \boldsymbol{N} + \boldsymbol{\alpha})
       \end{split}
 \end{equation}
 
-The posterior distribution has the same form $\mathcal{A}(v)$ as the prior, but with updated prior parameters $\alpha' = N + \alpha$. This shows that the \index{Dirichlet probability distribution}Dirichlet probability distribution is the conjugate prior used with the Categorical/Multinomial likelihood.
-
-The next section aims to provide the reader with the concept of Bayesian statistics and it is shown how Bayesian inference and Bayesian analysis can be used to to train a \acs{HH}.
-
+The posterior distribution has the same form, $\mathcal{A}(v)$, as the prior, but with updated prior parameters $\boldsymbol{\alpha'} = \boldsymbol{N} + \boldsymbol{\alpha}$. This shows that the \index{Dirichlet probability distribution}Dirichlet probability distribution is the conjugate prior used with the Categorical/Multinomial likelihood.
 
 \section{Bayesian Statistics}
 \label{sec:probability:bayesian_statistics}
 
-In general, there are two main views to probability and statistics. These include the \textit{frequentist} and the \textit{Bayesian} view of statistics. Naturally, Bayesian statistics is based on \index{Bayes' theorem}Bayes' theorem as was presented in Section \ref{sec:probability:bayes_theorem}. Bayesian statistics describe the probability of an event in terms of some belief, based on previous knowledge of the event, and the conditions under which the event happens~\cite{ref:hackenberger:2019}. To introduce the concept of Bayesian inference and analysis, one first need to understand the difference between these two approaches. Bayesian statistics out-date the frequentist approach, but lacked interest in the early days, partly because of the limited applications where the conjugate priors where known~\cite{ref:hackenberger:2019}. More recent advancements in mathematical methods popularised the Bayesian approach again. A notable contribution to this switch, was the development of \acf{MCMC} in the 1950's. This family of algorithms allowed for the construction of random sampling algorithms from a probability distribution, which allows for the calculation of Bayesian hierarchical models~\cite{ref:hackenberger:2019}. Soon after followed one of the earliest papers that use Bayesian statistics in the field of medicine in 1982~\cite{ref:ashby:2006}.
+In general, there are two main views to probability and statistics. These include the \textit{frequentist} and the \textit{Bayesian} view of statistics. Naturally, Bayesian statistics is based on \index{Bayes' theorem}Bayes' theorem as was presented in Section \ref{sec:probability:bayes_theorem}. Bayesian statistics describe the probability of an event in terms of some belief, based on previous knowledge of the event and the conditions under which the event happened~\cite{ref:hackenberger:2019}. To introduce the concept of Bayesian inference and Bayesian analysis, a proposal is made to first understand the difference between these two approaches. Bayesian statistics out-date the frequentist approach, but lacked interest in the early days, partly because of the limited applications where the conjugate priors where known~\cite{ref:hackenberger:2019}. More recent advancements in mathematical methods popularised the Bayesian approach again. A notable contribution to this switch was the development of the \acf{MCMC} algorithm in the 1950s. This family of algorithms allowed for the construction of random sampling algorithms from a probability distribution, which allows for the calculation of Bayesian hierarchical models~\cite{ref:hackenberger:2019}. Soon after followed one of the earliest papers that use Bayesian statistics in the field of medicine in 1982~\cite{ref:ashby:2006}.
 
-The difference between the frequentist approach and the Bayesian approach can be illustrated using an example.~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} suggests an experiment that investigates whether the sex ration in some hypothetical mice population is $1:1$. Two experiments can be designed. In the first experiment, mice are randomly selected until the first male is chosen. The result in this experiment will then be the total number of mice chosen by sex. For the second experiment, exactly seven mice are randomly selected. The result of the second experiment would be the number of males and females in a sample of seven. Suppose the outcome of the experiment was $FFFFFFM$, where $F$ represents a female and $M$ represents a male. If the experimental design is not known ahead of time, the result is useless. Consider the $P$-value for each of these experiments. The P-value is the probability of obtaining results at least as extreme as the observed results of a statistical hypothesis test~\cite{ref:beers:2022}. For the first experiment, the $P$-value is $0.031$ and for the second experiment, the $P$-value is $0.227$. Using a confidence level of $\alpha = 0.05$, one would conclude opposite outcomes for these two experiments, when it comes to rejecting the null hypothesis, despite using the same data. The reason for the difference in outcomes, is due to the difference in their null distributions. The first approach uses a geometrical approach, and the second used a binomial approach as is illustrated on Figure \ref{fig:probability:bayesian_statistics:mouse_experiment_outcome} below.
+The difference between the frequentist approach and the Bayesian approach can be illustrated using an example.~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} suggests an experiment that investigates whether the gender ratio in some hypothetical mice population is $1:1$. Two experiments were designed. In the first experiment, mice are randomly selected until the first male is chosen. The result in this experiment will then be the total number of mice chosen by gender. For the second experiment, exactly seven mice are randomly selected. The result of the second experiment would be the number of males and females in a sample of seven. Suppose the outcome of the experiment was $FFFFFFM$, where $F$ represents a female and $M$ represents a male. If the experimental design is not known ahead of time, the result is useless. Consider the $p$-value for each of these experiments. The $p$-value is the probability of obtaining results at least as extreme as the observed results of a statistical hypothesis test~\cite{ref:beers:2022}. For the first experiment, the $p$-value is $0.031$ and for the second experiment, the $p$-value is $0.227$. Using a confidence level of $\alpha = 0.05$, opposite outcomes could be concluded for these two experiments when it comes to rejecting the null hypothesis, despite using the same data. The reason for the difference in outcomes, is due to the difference in their null distributions, which represent the probability distribution of the test statistic when the null hypothesis is true. The first approach uses a geometrical approach, and the second used a binomial approach as illustrated in Figure \ref{fig:probability:bayesian_statistics:mouse_experiment_outcome}.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
       \centering
       \includegraphics[width=0.6\textwidth]{images/mouse_experiment_outcome.pdf}
       \caption{The experimental outcomes for the mice-population experiments as was taken from~\cite{ref:hackenberger:2019} .}
       \label{fig:probability:bayesian_statistics:mouse_experiment_outcome}
 \end{figure}
 
-If Bayesian statistics is used, the experimental design that was chosen does not matter. In Bayesian statistics it is common to use a \index{Beta probability distribution}Beta probability distribution as a prior distribution. If the prior distribution is sampled from $Beta(3,3)$ then using Bayesian analysis, the posterior distribution, according to the outcomes of this experiment, would yield $Beta(9,4)$.
+If Bayesian statistics is used, the experimental design that was chosen does not matter. In Bayesian statistics it is common to use a \index{Beta probability distribution}Beta probability distribution as a prior distribution. If the prior distribution is sampled from $Beta(3,3)$, then using Bayesian analysis, the posterior distribution, according to the outcomes of this experiment, would yield $Beta(9,4)$.
 
-~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} mentions that the $Beta$ distribution can be seen as a probability distribution of the occurrence of specific parameters. From the information that is now known about the $Beta$ distribution, it is possible to calculate the probability that the sex ratio in this mice population is not $1:1$, with the $Beta$ distribution as a prior, yielding a $P$-value of $0.92$. This means that there is a probability of $92\%$ that the mice population is not $1:1$, regardless of experiment design. An illustration of this is given in Figure \ref{fig:probability:bayesian_statistics:mouse_distributions} below.
+~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} mentions that the $Beta$ distribution can be seen as a probability distribution of the occurrence of specific parameters. From the information that is now known about the $Beta$ distribution, it is possible to calculate the probability that the gender ratio in this mice population is not $1:1$, with the $Beta$ distribution as a prior, yielding a $p$-value of $0.92$. This means that there is a probability of $92\%$ that the mice population is not $1:1$, regardless of experiment design. An illustration of this is given in Figure \ref{fig:probability:bayesian_statistics:mouse_distributions} below.
 
 \begin{figure}[htbp]
       \centering
