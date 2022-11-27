@@ -20,7 +20,7 @@ The above quote was the inspiration for the development of a novel \acf{HH} that
 
       \item \textbf{Section \ref{sec:bhh:performance_log}} presents detailed discussions on performance measurement. The \textit{performance log}, implemented by the \acs{BHH}, is presented.
 
-      \item \textbf{Section \ref{sec:bhh:credit_assignment_strategy}} presents detailed discussions on credit assignment and move acceptance strategies.
+      \item \textbf{Section \ref{sec:bhh:credit_assignment_strategy}} presents detailed discussions on credit assignment strategies.
 
       \item \textbf{Section \ref{sec:bhh:selection_mechanism}} presents the Bayesian probabilistic model that is used as the heuristic selection mechanism.
 
@@ -36,7 +36,7 @@ The above quote was the inspiration for the development of a novel \acf{HH} that
 
 \section{Overview}\label{sec:bhh:overview}
 
-This section provides an overview of the workings of the \Acf{BHH}. The general concept of the \acs{BHH} can be summarised as follows. The \acs{BHH} implements a high-level heuristic selection mechanism that learns to select the best heuristic, from a pool of low-level heuristics, to apply to a population of entities, each implementing a candidate solution to a \acs{FFNN}, with the intent of both optimising the underlying \acs{FFNN} and \acs{FFNN} training process. The \acs{BHH} does so by learning the probability that a given heuristic will perform well at a given stage in the \acs{FFNN} training process. These probabilities are then used as heuristic selection probabilities in the next step of the training process.
+This section provides an overview of the workings of the \Acf{BHH}. The general concept of the \acs{BHH} can be summarised as follows: The \acs{BHH} implements a high-level heuristic selection mechanism that learns to select the best heuristic from a pool of low-level heuristics, to apply to a population of entities, each implementing a candidate solution to a \acs{FFNN}, with the intent of both optimising the underlying \acs{FFNN} and \acs{FFNN} training process. The \acs{BHH} does so by learning the probability that a given heuristic will perform well at a given stage in the \acs{FFNN} training process. These probabilities are then used as heuristic selection probabilities in the next step of the training process.
 
 Formal classification of the \Acs{BHH} is needed. Chapter \ref{chap:hhs} presented the reader with a proposed classification scheme for \acp{HH} by~\citeauthor{ref:burke:2010}~\cite{ref:burke:2010}. According to the aforementioned classification scheme, the \Acs{BHH} is a population-based, meta-hyper-heuristic that utilises selection and perturbation of low-level heuristics in an online learning fashion. A breakdown of the classification is given as follows:
 
@@ -52,7 +52,7 @@ Formal classification of the \Acs{BHH} is needed. Chapter \ref{chap:hhs} present
 
 \section{Architecture}\label{sec:bhh:architecture}
 
-This section aims to present the reader with all the high level components in the architecture of the \Acs{BHH}. Burke et al.~\cite{ref:burke:2010} propose an initial framework for \acp{HH} and Grobler~\cite{ref:grobler:2015} further proposed a framework for a heterogeneous meta-\ac{HH}. The aforementioned frameworks are adapted for the implementation of the \Acs{BHH}. An illustration of the high-level architecture of the \Acs{BHH} is given in Figure \ref{fig:bhh_architecture}.
+This section aims to present the reader with all the high level components in the architecture of the \Acs{BHH}. Burke et al.~\cite{ref:burke:2010} propose an initial framework for \acp{HH} and Grobler~\cite{ref:grobler:2015} further propose a framework for a heterogeneous meta-\ac{HH}. The aforementioned frameworks are adapted for the implementation of the \Acs{BHH}. An illustration of the high-level architecture of the \Acs{BHH} is given in Figure \ref{fig:bhh_architecture}.
 
 \begin{figure}[htbp]
       \centering
@@ -93,8 +93,6 @@ With reference to Figure \ref{fig:bhh_architecture}, the components are briefly 
       \item \textbf{Update Step}: The high-level heuristic update step as implemented by the \acs{BHH}.
 \end{itemize}
 
-Each of the components in Figure \ref{fig:bhh_architecture} is discussed in detail in the following sections.
-
 \index{heuristic pool}
 \section{Heuristic Pool}\label{sec:bhh:heuristic_pool}
 
@@ -122,7 +120,7 @@ Primary and proxied state parameters must be maintained together. Since entities
 
 \begin{table}[htbp]
       \centering
-      \caption{An example of mapping of proxied state update operation maintained by the \acs{BHH}.}
+      \caption{An example of a mapping of proxied state update operation maintained by the \acs{BHH}.}
       \label{tab:bhh:heuristic_pool:proxy_mapping_example}%
       \par\bigskip
       \resizebox{0.38\textwidth}{!}{
@@ -181,7 +179,7 @@ From the list above, it should be clear that entity state becomes increasingly c
 
 \subsection{Population State}\label{sec:bhh:entity_pool:population_state}
 
-The population state refers to a collection of parameters that are shared between the entities in the population. Population state is also referred to as \textit{global} state and represents the population's memory. The population state generally contains state parameters that are of importance to multiple \index{heuristic}heuristics, and usually tracks the state of the population and not individual \index{heuristic}heuristic. Some examples of population state that can arise from different \index{heuristic}heuristics is given below:
+The population state refers to a collection of parameters that are shared between the entities in the population. Population state is also referred to as \textit{global} state and represents the population's memory. The population state generally contains state parameters that are of importance to multiple \index{heuristic}heuristics, and usually tracks the state of the population and not individual \index{heuristic}heuristic. Some examples of population state that can arise from different \index{heuristic}heuristics are given below:
 
 \begin{itemize}
       \item \textbf{entities}: Naturally, the population state contains the list of entities in the population.
@@ -220,7 +218,7 @@ An example of the performance log implemented by the \acs{BHH} is given in Table
 
 \begin{table}[htbp]
       \centering
-      \caption{An example of the performance log implemented by the \acs{BHH}, showing the first five entities, their allocated \index{heuristic}heuristics and their resulting performance measurements for step 1 of the training process.}
+      \caption{An example of the performance log implemented by the \acs{BHH}, showing the first five entities, their allocated \index{heuristic}heuristics and their resulting performance measurements for the first step of the training process.}
       \label{tab:bhh:performance_log:performance_log_example}%
       \par\bigskip
       \resizebox{\textwidth}{!}{
@@ -289,16 +287,16 @@ This section provides the detail around the selection mechanism as it is impleme
 Observation of random events is treated as evidence. In the context of a Bayesian approach, this evidence is used to update prior beliefs. The \acs{BHH} distinguishes between the following events:
 
 \begin{itemize}
-      \item \textbf{$H$}: The event of observing \textit{heuristics}.
-      \item \textbf{$E$}: The event of observing \textit{entities}.
-      \item \textbf{$C$}: The event of observing \textit{credit assignments} that indicate that the credit assignment \textit{performance criteria} are met.
+      \item \textbf{$\boldsymbol{H}$}: The event of observing \textit{heuristics}.
+      \item \textbf{$\boldsymbol{E}$}: The event of observing \textit{entities}.
+      \item \textbf{$\boldsymbol{C}$}: The event of observing \textit{credit assignments} that indicate that the credit assignment \textit{performance criteria} are met.
 \end{itemize}
 
-It should be noted that event information is stored and observed directly from the performance log as presented in Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}. From the above list of events, the event $C$ is dependent on the occurrence of $H$ and $E$ and a credit assignment strategy.
+It should be noted that event information is stored and observed directly from the performance log as presented in Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}. From the above list of events, the event $\boldsymbol{C}$ is dependent on the occurrence of $\boldsymbol{H}$ and $\boldsymbol{E}$ and a credit assignment strategy.
 
 \subsection{Independence}\label{sec:bhh:selection_mechanism:independence}
 
-The dependence between random events can have an impact on the probabilistic model that is implemented. For simplicity, the \acs{BHH} assumes independence between events, although the event $C$ is clearly dependent on the occurrence of $H$ and $E$. Furthermore, the \acs{BHH} assumes independence between steps  and treats each training step as if training has restarted. The \acs{BHH} implements a form of Naïve Bayes classifier, where the appropriate heuristic to assign to an entity is a classification problem. \citeauthor{ref:domingos:1997}~\cite{ref:domingos:1997} mention that although the probability estimates of Bayesian classifiers are only optimal under quadratic loss if the independence assumption holds, the classifier itself can still be optimal under zero-one loss (misclassification rate), even when this assumption is violated by a wide margin. This means that independence can be assumed when the probabilistic model is used as a classifier.
+The dependence between random events can have an impact on the probabilistic model that is implemented. For simplicity, the \acs{BHH} assumes independence between events, although the event $\boldsymbol{C}$ is clearly dependent on the occurrence of $\boldsymbol{H}$ and $\boldsymbol{E}$. Furthermore, the \acs{BHH} assumes independence between steps  and treats each training step as if training has restarted. The \acs{BHH} implements a form of Naïve Bayes classifier, where the appropriate heuristic to assign to an entity is a classification problem. \citeauthor{ref:domingos:1997}~\cite{ref:domingos:1997} mention that although the probability estimates of Bayesian classifiers are only optimal under quadratic loss if the independence assumption holds, the classifier itself can still be optimal under zero-one loss (misclassification rate), even when this assumption is violated by a wide margin. This means that independence can be assumed when the probabilistic model is used as a classifier.
 
 \index{Bayes' theorem}
 \subsection{Bayes' Theorem}\label{sec:bhh:selection_mechanism:bayes_theorem}
@@ -342,11 +340,11 @@ Let
 
       \item $\boldsymbol{\psi} \vert \gamma_{1}, \gamma_{0}  \sim Beta(\gamma_{1}, \gamma_{0})$ denote the credit-heuristic probability distribution, implementing a Beta probability distribution parameterised by $\gamma_{1}$ and $\gamma_{0}$. Credit-heuristic probabilities are sampled from this distribution.
 
-      \item $\boldsymbol{H} \vert \boldsymbol{\theta} \sim Mult(\boldsymbol{\theta}; I, K)$ denote the distribution of heuristics (events $\boldsymbol{H}$), implementing a \index{Multinomial probability distribution}Multinomial distribution, parameterised by the sampled heuristic selection probabilities $\boldsymbol{\theta}$, the \index{heuristic pool}heuristic pool size $K$, and maximum number of instances $I$.
+      \item $\boldsymbol{H} \vert \boldsymbol{\theta} \sim Mult(\boldsymbol{\theta}; I, K)$ denote the distribution of heuristics (event $\boldsymbol{H}$), implementing a \index{Multinomial probability distribution}Multinomial distribution, parameterised by the sampled heuristic selection probabilities $\boldsymbol{\theta}$, the \index{heuristic pool}heuristic pool size $K$, and maximum number of instances $I$.
 
-      \item $\boldsymbol{E} \vert \boldsymbol{\phi} \sim Mult(\boldsymbol{\phi}; I, K)^{J}$ denote the distribution of entity-heuristic combinations (events $\boldsymbol{E}$), implementing a \index{Multinomial probability distribution}Multinomial distribution, parameterised by the sampled entity-heuristic selection probabilities $\boldsymbol{\phi}$, the \index{heuristic pool}heuristic pool size $K$, and maximum number of instances $I$ for each entity in $J$.
+      \item $\boldsymbol{E} \vert \boldsymbol{\phi} \sim Mult(\boldsymbol{\phi}; I, K)^{J}$ denote the distribution of entity-heuristic combinations (event $\boldsymbol{E}$), implementing a \index{Multinomial probability distribution}Multinomial distribution, parameterised by the sampled entity-heuristic selection probabilities $\boldsymbol{\phi}$, the \index{heuristic pool}heuristic pool size $K$, and maximum number of instances $I$ for each entity in $J$.
 
-      \item $\boldsymbol{C} \vert \boldsymbol{\psi} \sim Bin(\boldsymbol{\psi}, I)$ denote the distribution of credit-heuristic combinations (events $\boldsymbol{C}$), implementing a \index{Binomial probability distribution}Binomial probability distribution, parameterised by the sampled credit-heuristic selection probabilities $\boldsymbol{\psi}$ and the maximum number of instances $I$.
+      \item $\boldsymbol{C} \vert \boldsymbol{\psi} \sim Bin(\boldsymbol{\psi}, I)$ denote the distribution of credit-heuristic combinations (event $\boldsymbol{C}$), implementing a \index{Binomial probability distribution}Binomial probability distribution, parameterised by the sampled credit-heuristic selection probabilities $\boldsymbol{\psi}$ and the maximum number of instances $I$.
 \end{itemize}
 
 The parameterised predictive model, as derived from \index{Bayes' theorem}Bayes' theorem, is then given as
@@ -458,7 +456,7 @@ Consider the practical implementation of the predictive model as shown in Equati
 
 \subsection{Numerical Stability}\label{sec:bhh:selection_mechanism:numerical_stability}
 
-When Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} is evaluated, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplication of multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfills a credit assignment, yielding an extremely small probability for $\psi$. A solution to the aforementioned problem is to apply the \textit{log-sum-exp} trick. The transformation of Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given as
+When Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} is evaluated, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplication of multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfills a credit assignment, yielding an extremely small probability for $\boldsymbol{\psi}$. A solution to the aforementioned problem is to apply the \textit{log-sum-exp} trick. The transformation of Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given as
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}
@@ -476,7 +474,7 @@ Mode collapse is the situation that occurs where the selective pressure towards 
 \begin{itemize}
       \item using \textit{symmetric} initialisation of the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$;
 
-      \item setting the lower-bound of the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$ to 1, so that a selection probability of 0 is highly improbable; and
+      \item setting the lower-bound of the concentration parameters $\boldsymbol{\alpha}$, $\boldsymbol{\beta}$, $\gamma_{1}$ and $\gamma_{0}$ to 1, so that a selection probability of 0 is highly improbable; and
 
       \item continuously resampling heuristics throughout the training process, before and after optimisation, eliminating mode collapse as a result of just random sampling.
 \end{itemize}
@@ -667,7 +665,7 @@ Bayesian analysis makes use of the \textit{posterior} probability distribution. 
       \end{split}
 \end{equation}
 
-The events $\boldsymbol{H}$ is a multinomial distribution with probability parameter $\boldsymbol{\theta}$. It is known that the conjugate prior to a multinomial distribution is a \index{Dirichlet probability distribution}Dirichlet probability distribution. The \textit{prior} probability distribution for $\boldsymbol{\theta}$ is thus presented as
+The event $\boldsymbol{H}$ is a multinomial distribution with probability parameter $\boldsymbol{\theta}$. It is known that the conjugate prior to a multinomial distribution is a \index{Dirichlet probability distribution}Dirichlet probability distribution. The \textit{prior} probability distribution for $\boldsymbol{\theta}$ is thus presented as
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_theta_prior}
@@ -677,7 +675,7 @@ The events $\boldsymbol{H}$ is a multinomial distribution with probability param
       \end{split}
 \end{equation}
 
-Furthermore, the events $\boldsymbol{E}$ is also a multinomial distribution with parameter $\boldsymbol{\phi}$. The \textit{prior} probability distribution for $\boldsymbol{\phi}$ is thus presented as
+Furthermore, the event $\boldsymbol{E}$ is also a multinomial distribution with parameter $\boldsymbol{\phi}$. The \textit{prior} probability distribution for $\boldsymbol{\phi}$ is thus presented as
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_phi_prior}
@@ -687,7 +685,7 @@ Furthermore, the events $\boldsymbol{E}$ is also a multinomial distribution with
       \end{split}
 \end{equation}
 
-Finally, the events $\boldsymbol{C}$ is a \index{Binomial probability distribution}Binomial probability distribution with probability parameter $\boldsymbol{\psi}$. It is known that the conjugate prior to a \index{Binomial probability distribution}Binomial probability distribution is a Beta probability distribution. The prior probability distribution for $\boldsymbol{\psi}$ is thus presented as
+Finally, the event $\boldsymbol{C}$ is a \index{Binomial probability distribution}Binomial probability distribution with probability parameter $\boldsymbol{\psi}$. It is known that the conjugate prior to a \index{Binomial probability distribution}Binomial probability distribution is a Beta probability distribution. The prior probability distribution for $\boldsymbol{\psi}$ is thus presented as
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:map:map_psi_prior}
@@ -751,7 +749,7 @@ It can be seen that the prior and posterior probability distributions are of the
 
 \section{Hyper-Parameters}\label{sec:bhh:hyper_parameters}
 
-This section provides a breakdown of all the hyper-parameters that were identified and briefly mentioned in this chapter. The following hyper-parameters are presented: \index{heuristic pool}\textit{heuristic pool}, \textit{population size}, \textit{credit assignment strategy}, \textit{reselection interval}, \textit{replay window size}, \textit{reanalysis interval}, \textit{burn in window size}, \textit{discounted rewards} and \textit{normalisation}. Some logical arguments can be made as to what their values should be. However it is still up to empirical analysis to determine the effects of certain hyper-parameter design decisions. Were possible, a range of possible values is provided.
+This section provides a breakdown of all the hyper-parameters that were identified and briefly mentioned in this chapter. The following hyper-parameters are presented: \index{heuristic pool}\textit{heuristic pool}, \textit{population size}, \textit{credit assignment strategy}, \textit{reselection interval}, \textit{replay window size}, \textit{reanalysis interval}, \textit{burn in window size}, \textit{discounted rewards} and \textit{normalisation}. Some logical arguments can be made as to what their values should be. However it is still up to empirical analysis to determine the effects of certain hyper-parameter design decisions. Where possible, a range of possible values are provided.
 
 \index{heuristic pool}
 \subsection{Heuristic Pool}\label{sec:bhh:hyper_parameters:heuristic_pool}
@@ -759,7 +757,7 @@ This section provides a breakdown of all the hyper-parameters that were identifi
 Section \ref{sec:bhh:heuristic_pool} provided the reader with the context and detail of the \index{heuristic pool}heuristic pool as it is included in the architecture of the \acs{BHH}. A detailed discussion was given around the importance of diversity and balancing exploration and exploitation capabilities. The \index{heuristic pool}heuristic pool hyper-parameter refers to the heuristic-pool configuration that is used. The configuration of the \index{heuristic pool}heuristic pool should account for the following factors:
 
 \begin{itemize}
-      \item The type of low-level heuristics to include in the \index{heuristic pool}heuristic pool. This dissertation investigates two main groups, including gradient-based \index{heuristic}heuristics and meta-heuristics.
+      \item The type of low-level heuristics to include in the \index{heuristic pool}heuristic pool. This dissertation investigates two main groups, including gradient-based \index{heuristic}heuristics and \acp{MH}.
 
       \item The low-level heuristics' hyper-parameters. At a lower-level, each of these heuristics have their own set of hyper-parameters.
 
@@ -778,9 +776,9 @@ Population size refers to the number of entities included in the \index{entity p
       \item When considering the upper bound of possible population sizes, take into account that a bigger population size results in a more computationally expensive training process. Furthermore, there could exist a point of \textit{diminishing returns} where an increase in population size does not yield any better outcome.
 \end{itemize}
 
-\subsection{Credit}\label{sec:bhh:hyper_parameters:credit}
+\subsection{Credit Assignment Strategy}\label{sec:bhh:hyper_parameters:credit}
 
-The credit hyper-parameter refers to the credit assignment strategy that is used. This dissertation proposed five different credit assignment strategies that were presented in Section \ref{sec:bhh:credit_assignment_strategy}. The choice of credit assignment is assumed to be problem-dependent. However, this is to be tested empirically. Along with the credit assignment strategy itself, the following factors related to the credit assignment strategy should be considered:
+Five different credit assignment strategies were presented in Section \ref{sec:bhh:credit_assignment_strategy}. The choice of credit assignment is assumed to be problem dependent. However, this is to be tested empirically. Along with the credit assignment strategy itself, the following factors related to the credit assignment strategy should be considered:
 
 \begin{itemize}
       \item When to apply credit assignment during the training process.
@@ -788,7 +786,7 @@ The credit hyper-parameter refers to the credit assignment strategy that is used
       \item To what degree should credit assignment be allocated to past results in the performance log.
 \end{itemize}
 
-A number of other hyper-parameters are specifically included to address the list of considerations as given above. These include \textit{reselection interval}, \textit{replay window size} and \textit{reanalysis interval}, \textit{burn in window size}, \textit{discounted rewards} and \textit{normalisation}.
+A number of other hyper-parameters are specifically included to address the list of considerations as given above. These include the \textit{reselection interval}, \textit{replay window size} and \textit{reanalysis interval}, \textit{burn in window size}, \textit{discounted rewards} and \textit{normalisation}.
 
 \subsection{Reselection Interval}\label{sec:bhh:hyper_parameters:reselection}
 
@@ -796,15 +794,15 @@ The reselection interval is a hyper-parameter that controls how often heuristic 
 
 \subsection{Replay Window Size}\label{sec:bhh:hyper_parameters:replay}
 
-The replay window size is a hyper-parameter that controls how much historical performance information is kept in the performance log for the \acs{BHH} to learn from and was introduced in Section \ref{sec:bhh:performance_log}. The replay window size is a parameter that is borrowed from \acf{RL} and aims to control the effect that past performances have on the \acs{BHH}. A replay window size that is too small includes little to no memory, resulting in a situation where the \acs{BHH} simply looks at the most recent evidence that is collected and nothing more. On the contrary, if the replay window size is large, the \acs{BHH} tracks a longer history of past performances, leading to a situation where previously well-performing heuristics that are not relevant later in the training process, is still selected often.
+The replay window size is a hyper-parameter that controls how much historical performance information is kept in the performance log for the \acs{BHH} to learn from and was introduced in Section \ref{sec:bhh:performance_log}. The replay window size is a parameter that is borrowed from \acf{RL} and aims to control the effect that past performances have on the \acs{BHH}. A replay window size that is too small includes little to no memory, resulting in a situation where the \acs{BHH} simply looks at the most recent evidence that is collected and nothing more. On the contrary, if the replay window size is large, the \acs{BHH} tracks a longer history of past performances, leading to a situation where previously well-performing heuristics that are not relevant later in the training process, are still selected often.
 
 \subsection{Reanalysis Interval}\label{sec:bhh:hyper_parameters:reanalysis}
 
-The reanalysis interval is a hyper-parameter that controls how often the \acs{BHH} updates its past beliefs (priors). The reanalysis interval goes hand in hand with the reselection interval and replay window size. If the reanalysis window is too small, the \acs{BHH} prematurely updates its priors. Similar to other hyper-parameters discussed thus far, the correct value to use for the reanalysis interval is to be determined empirically. However, some logical exclusions can be made. A reanalysis interval that is smaller than the reselection interval does not make sense, since the effects of reanalysis are only realised during reselection. A reanalysis interval that is too big could lead to a situation where the delay in updating priors could be detrimental to the outcomes of the \acs{BHH}.
+The reanalysis interval is a hyper-parameter that controls how often the \acs{BHH} updates its past beliefs (priors). The reanalysis interval goes hand in hand with the reselection interval and replay window size. If the reanalysis interval is too small, the \acs{BHH} prematurely updates its priors. Similar to other hyper-parameters discussed thus far, the correct value to use for the reanalysis interval is to be determined empirically. However, some logical exclusions can be made. A reanalysis interval that is smaller than the reselection interval does not make sense, since the effects of reanalysis are only realised during reselection. A reanalysis interval that is too big could lead to a situation where the delay in updating priors could be detrimental to the outcomes of the \acs{BHH}.
 
 \subsection{Burn In}\label{sec:bhh:hyper_parameters:burn_in}
 
-Burn in is a hyper-parameter that is borrowed from \acf{MCMC} and aims to delay the learning process of the \acs{BHH}. The intent of the burn in hyper-parameter is to determine if heuristics need time to execute before reanalysis starts. Notice that a delay in the learning process does not mean that reselection does not occur or that performance information is not collected in the replay window. Therefore, it should be noted that the burn in window size, reselection interval, and replay window size should be considered together. If the replay window size is smaller than the burn in window size, performance information is discarded and an opportunity to learn is lost.
+Burn in is a hyper-parameter that is borrowed from \acf{MCMC} and aims to delay the learning process of the \acs{BHH}. The intent of the burn in hyper-parameter is to determine if heuristics need time to execute before reanalysis starts. Notice that a delay in the learning process does not mean that reselection does not occur or that performance information is not collected in the replay window. Therefore, it should be noted that the burn in window size, reselection interval, replay window size, and reanalysis interval should be considered together. If the replay window size is smaller than the burn in window size, performance information is discarded and an opportunity to learn is lost.
 
 \index{discounted rewards}
 \subsection{Discounted Rewards}\label{sec:bhh:hyper_parameters:discounted_rewards}
@@ -813,9 +811,9 @@ Burn in is a hyper-parameter that is borrowed from \acf{MCMC} and aims to delay 
 
 \subsection{Normalisation}\label{sec:bhh:hyper_parameters:normalisation}
 
-Normalisation is a hyper-parameter that aims to provide a mechanism of control for the degree to which exploration is allowed. Figure \ref{sec:bhh:hyper_parameters:discounted_rewards:normalisation} shows the effect of different concentrations ($\alpha$ and $\beta$) on the Beta probability distribution. By normalising the concentration parameters for the \acs{BHH} ($\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$), the variance of the selection probability distributions increases, allowing for sampled probabilities further from the mean and thus allowing for more exploration.
+Normalisation is a hyper-parameter that provides a mechanism of control for the degree to which exploration is allowed. Figure \ref{sec:bhh:hyper_parameters:discounted_rewards:normalisation} shows the effect of different concentrations ($\alpha$ and $\beta$) on the Beta probability distribution. By normalising the concentration parameters for the \acs{BHH} ($\boldsymbol{\alpha}$, $\boldsymbol{\beta}$, $\gamma_{1}$ and $\gamma_{0}$), the variance of the selection probability distributions increases, allowing for sampled probabilities further from the mean and thus allowing for more exploration.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
       \begin{subfigure}{0.49\textwidth}
             \centering
             \includegraphics[width=\textwidth]{images/beta_1_1.pdf}
@@ -844,14 +842,14 @@ Normalisation is a hyper-parameter that aims to provide a mechanism of control f
 \subsection{Defaults}
 \label{sec:bhh:hyper_parameters:defaults}
 
-Section \ref{sec:bhh:heuristic:proxies} provided the reader with the concept of proxied heuristic update step operations. As was mentioned in Section \ref{sec:bhh:hyper_parameters:heuristic_pool}, low-level heuristics each have their own set of hyper-parameters as well. A set of default low-level parameters must be allocated specifically for these proxies. Consider a scenario where two instances of \acs{Adam} is included in the \index{heuristic pool}heuristic pool. Each has its own set of hyper-parameters that differ from each other. In the case of \acs{Adam}, there are four hyper-parameters that include learning rate, $\beta_{1}$, $\beta_{2}$ and $\epsilon$. If another heuristic needs to proxy \acs{Adam}'s expected gradient mean operation, a default $\beta_{1}$ parameter must be supplied that is applied by the proxy mechanism. This is only the case when multiple instances of a heuristic is included and there is uncertainty about which instance's hyper-parameters to use for the proxied heuristic update steps. If there is only one instance of a particular heuristic, that instance's hyper-parameters are used.
+Section \ref{sec:bhh:heuristic:proxies} provided the reader with the concept of proxied heuristic update step operations. As was mentioned in Section \ref{sec:bhh:hyper_parameters:heuristic_pool}, low-level heuristics each have their own set of hyper-parameters as well. A set of default low-level parameters must be allocated specifically for these proxies. Consider a scenario where two instances of \acs{Adam} is included in the \index{heuristic pool}heuristic pool. Each has its own set of hyper-parameters that differ from each other. In the case of \acs{Adam}, there are four hyper-parameters that include learning rate, $\eta$, $\beta_{1}$, $\beta_{2}$ and $\epsilon$. If another heuristic needs to proxy \acs{Adam}'s expected gradient mean operation, a default $\beta_{1}$ parameter must be supplied that is applied by the proxy mechanism. This is only the case when multiple instances of a heuristic is included and there is uncertainty about which instance's hyper-parameters to use for the proxied heuristic update steps. If there is only one instance of a particular heuristic, that instance's hyper-parameters are used.
 
 \section{The \acs{BHH} Algorithm}
 \label{sec:bhh:algorithm}
 
 The high level pseudo-code implementation of the \acs{BHH} is given in Algorithm \ref{algo:bhh}.
 
-\begin{algorithm}[htbp]
+\begin{algorithm}[htb]
       \caption{The pseudo-code for the implementation of the \acf{BHH}}
       \label{algo:bhh}
       \begin{algorithmic}
