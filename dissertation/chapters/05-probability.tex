@@ -8,20 +8,18 @@
       - Pierre-Simon Laplace
 \end{flushright}
 
-Probability theory and statistics can be traced back to as early as the 18th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of of Chance}; a book that is widely seen as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of \index{Bayes' theorem}Bayes' theorem was introduced.
+Probability theory and statistics can be traced back to as early as the 18th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of of Chance}; a book that is widely regarded as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of \index{Bayes' theorem}Bayes' theorem was introduced.
 
-Probability theory, statistics and \acf{ML} are transdisciplinary fields with many shared concepts. There are many examples of how probability theory has been incorporated into \acs{ML} research. In 1991,~\citeauthor{ref:denker:1991},~\cite{ref:denker:1991} proposed a way to transform \acf{ANN} outputs to probability distributions. In 1993, \citeauthor{ref:neal:1993}~\cite{ref:neal:1993} developed a \acf{MCMC} sampling algorithm for \acfp{BNN}. These are but a few examples of the role that probability theory has played in \acs{ML} research in the past.
+Probability theory, statistics and \acf{ML} are transdisciplinary fields with many shared concepts. There are many examples of how probability theory has been incorporated into \acs{ML} research. In 1991,~\citeauthor{ref:denker:1991}~\cite{ref:denker:1991} proposed a way to transform \acf{ANN} outputs to probability distributions. In 1993, \citeauthor{ref:neal:1993}~\cite{ref:neal:1993} developed a \acf{MCMC} sampling algorithm for \acfp{BNN}. These are but a few examples of the role that probability theory has played in \acs{ML} research in the past.
 
-Chapter \ref{chap:hhs} provided the reader with the concept of a \acf{HH}. This dissertation aims to develop a selection \acs{HH} that makes use of probability theory to select the best \acs{HH} to solve a given problem. This chapter aims to provide the reader with the necessary background information on probability theory and statistics. These are large fields and focus is put on the elements that are required to formulate the proposed \acf{BHH}. The remainder of the chapter is structured as follows:
+Chapter \ref{chap:hhs} provided the concept of a \acf{HH}. This dissertation aims to develop a selection \acs{HH} that makes use of probability theory to select the best \acs{HH} to solve a given problem. This chapter aims to provide the necessary background information on probability theory and statistics. These are large fields and focus is put on the elements that are required to formulate the proposed \acf{BHH}. The remainder of the chapter is structured as follows:
 
 \begin{itemize}
-      \item \textbf{Section \ref{sec:probability:overview}} gives a brief overview of what probability is and how it is used.
+      \item \textbf{Section \ref{sec:probability:overview}} provides a brief overview of what probability is and how it is used.
 
-      \item \textbf{Section \ref{sec:probability:multiple_events}} presents the concept of conditional probability.
+      \item \textbf{Section \ref{sec:probability:cond_probability}} presents the concept of conditional probability.
 
       \item \textbf{Section \ref{sec:probability:multiple_events}} presents the two laws of probability related to the intersection and union of multiple events.
-
-      \item \textbf{Section \ref{sec:probability:cond_probability}} introduces conditional probability.
 
       \item \textbf{Section \ref{sec:probability:bayes_theorem}} introduces \index{Bayes' theorem}Bayes' theorem, the fundamental theorem upon which the \acs{BHH} is built.
 
@@ -37,15 +35,15 @@ Chapter \ref{chap:hhs} provided the reader with the concept of a \acf{HH}. This 
 
 \section{Overview of Probability}\label{sec:probability:overview}
 
-In everyday conversation, the term \textit{probability} is a measure of belief in the occurrence of a future event~\cite{ref:wackerly:2014}. Probability is a necessary tool used in many fields including physics, biology, chemistry and computer science. These fields contain many cases that generate observations that cannot be predicted with absolute certainty~\cite{ref:wackerly:2014}. Probability can be be inferred and confirmed through past events. These events are referred to as \textit{random} or \textit{stochastic} events. The probability that a certain event, $A$ might occur is denoted by $P(A)$. Although these random events cannot be predicted with absolute certainty, the relative frequency with which they occur over many trials, is often remarkably stable.
+In everyday conversation, the term \textit{probability} is a measure of belief in the occurrence of a future event~\cite{ref:wackerly:2014}. Probability is a necessary tool used in many fields including physics, biology, chemistry and computer science. These fields contain many cases that generate observations that cannot be predicted with absolute certainty~\cite{ref:wackerly:2014}. Probability can be be inferred and confirmed through past events. These events are referred to as \textit{random} or \textit{stochastic} events. The probability that a certain event, $A$, might occur is denoted by $P(A)$. Although these random events cannot be predicted with absolute certainty, the relative frequency with which they occur over many trials, is often remarkably stable.
 
-Consider flipping an unbiased, fair coin. The coin has two possible outcomes. It can conclude that each side has a $\frac{1}{2}$ or $50\%$ chance of occurring. In statistics, the decimal probability notation is used, where $0 <= P(A) <= 1$. Suppose the fair coin is thrown 10 times, there is not guarantee of observing $0.5$ heads and $0.5$ tails. There is some probability (although small) that the coin might fall on heads $0/10$ times. The probability of such an event occurring is $0.0009765625$. In the coin flip example, the \acf{CLT} shows that the normalised sum of events tends toward a normal distribution with a mean value of $0.5$ if the number of events observed $N$, is large~\cite{ref:wackerly:2014}. The larger the value of $N$, the higher the confidence of mean probability and relative frequency of the event. The stable long-term relative frequency by which a random event occurs, provides an intuitive and meaningful measure of belief that a certain event will occur again at some point in the future~\cite{ref:wackerly:2014}.
+Consider flipping an unbiased, fair coin. The coin has two possible outcomes. It can conclude that each side has a $\frac{1}{2}$ or $50\%$ chance of occurring. In statistics, the decimal probability notation is used, where $0 <= P(A) <= 1$. Suppose the fair coin is thrown 10 times, there is no guarantee of observing $0.5$ heads and $0.5$ tails. There is some probability (although small) that the coin might fall on heads $0/10$ times. The probability of such an event occurring is $0.0009765625$. In the coin flip example, the \acf{CLT} shows that the normalised sum of events tends toward a normal distribution with a mean value of $0.5$, if the number of events observed, $N$, is large~\cite{ref:wackerly:2014}. The larger the value of $N$, the higher the confidence of mean probability and relative frequency of the event. The stable long-term relative frequency by which a random event occurs, provides an intuitive and meaningful measure of belief that a certain event will occur again at some point in the future~\cite{ref:wackerly:2014}.
 
 Probability can also be expressed over multiple random events. Multiple random events can be considered together, dependently or conditionally. The following sections provide insight into conditional and joint probabilities of multiple random events.
 
 \section{Conditional Probability and Independence}\label{sec:probability:cond_probability}
 
-The occurrence of a given random event, $A$ can often be conditional on the occurrence of another event, $B$. In the field of medicine, an example of this is to calculate the probability of a certain diagnosis of a sick patient given his/her symptoms. The aforementioned relationship between events is referred to as the conditional probability between two events. The conditional probability is expressed as $P(A \vert B)$ and is read \textit{the probability of $A$ given $B$}. On the contrary, the \textit{unconditional} probability is the probability of an event, not dependent on any other. The conditional probability of $A$ given $B$ can be expressed as is given in Definition \ref{eq:probability:cond_probability} below~\cite{ref:wackerly:2014}.
+The occurrence of a given random event, $A$, can often be conditional on the occurrence of another event, $B$. In the field of medicine, an example of this is to calculate the probability of a certain diagnosis of a sick patient given his/her symptoms. The aforementioned relationship between events is referred to as the conditional probability between two events. The conditional probability is expressed as $P(A \vert B)$ and is read \textit{the probability of $A$ given $B$}. On the contrary, the \textit{unconditional} probability is the probability of an event, not dependent on any other. The conditional probability of $A$ given $B$ can be expressed as is given in Definition \ref{eq:probability:cond_probability} below~\cite{ref:wackerly:2014}.
 \\
 \begin{definition}[\textbf{Conditional Probability}]
       \label{eq:probability:cond_probability}
@@ -57,7 +55,7 @@ The occurrence of a given random event, $A$ can often be conditional on the occu
       \end{equation}
 \end{definition}
 
-In Equation~\eqref{eq:probability:overview:conditional} above, $P(B) > 0$. Note that conditional probability does not suggest causation. If an event $A$ has a high probability of occurring after observing event $B$, it does not necessarily mean that $A$ is caused by $B$. Conditional probability simply expresses the dependence amongst events.
+where $P(B) > 0$. Note that conditional probability does not suggest causation. If an event $A$ has a high probability of occurring after observing event $B$, it does not necessarily mean that $A$ is caused by $B$. Conditional probability simply expresses the dependence amongst events.
 
 It could also be the case that the outcome of observing event $A$ is not affected by the occurrence of $B$. In this case, it is said that events $A$ and $B$ are independent. The independence between two events are expressed in Definition \ref{def:probability:cond_probability:independence} below.
 \\
@@ -76,11 +74,11 @@ It could also be the case that the outcome of observing event $A$ is not affecte
 
 \section{Two Laws of Probability for Multiple Events}\label{sec:probability:multiple_events}
 
-Suppose there are two random events $A$ and $B$, then one can calculate the probability of the union and intersection of these events. From the aforementioned concept, two laws of probability can be formulated. These are referred to as the \textit{multiplicative} and \textit{additive} laws of probability~\cite{ref:wackerly:2014} and is given below in Theorems \ref{th:probability:multiple_events:multiplicative} and \ref{th:probability:multiple_events:additive} respectively.\\
+Suppose there are two random events, $A$ and $B$, then one can calculate the probability of the union and intersection of these events. From the aforementioned concept, two laws of probability can be formulated. These are referred to as the \textit{multiplicative} and \textit{additive} laws of probability~\cite{ref:wackerly:2014} and is given below in Theorems \ref{th:probability:multiple_events:multiplicative} and \ref{th:probability:multiple_events:additive} respectively.\\
 
 \begin{theorem}[\textbf{The Multiplicative Law of Probability}]
       \label{th:probability:multiple_events:multiplicative}
-      The probability of the intersection of two events $A$ and $B$ is given as
+      The probability of the intersection of two events, $A$ and $B$, is given as
 
       \begin{equation}
             \begin{split}
@@ -104,7 +102,7 @@ Suppose there are two random events $A$ and $B$, then one can calculate the prob
 
 \begin{theorem}[\textbf{The Additive Law of Probability}]
       \label{th:probability:multiple_events:additive}
-      The probability of the union of two events $A$ and $B$ is given as
+      The probability of the union of two events, $A$ and $B$, is given as
 
       \begin{equation}
             P(A \cup B) = P(A) + P(B) - P(B \cap A)
@@ -122,7 +120,7 @@ Suppose there are two random events $A$ and $B$, then one can calculate the prob
       \label{fig:probability:multiple_events:additive}
 \end{figure}
 
-\index{Bayes Theorem}
+\index{Bayes' theorem}
 \section{Bayes' Theorem}\label{sec:probability:bayes_theorem}
 
 \index{Bayes' theorem}Bayes' theorem, named after Thomas Bayes, describes the probability of an event, $A$, based on prior knowledge of conditions that might be related to $A$~\cite{ref:zalta:2015}. In order to derive the formal theorem and proof, first consider Definition \ref{def:probability:bayes_theorem:partition} below~\cite{ref:zalta:2015}.
@@ -140,7 +138,7 @@ Suppose there are two random events $A$ and $B$, then one can calculate the prob
 \end{definition}
 \vspace*{0.5cm}
 
-\index{Bayes Theorem}
+\index{Bayes' theorem}
 \begin{theorem}[\textbf{Bayes' theorem}]
       \label{th:probability:bayes_theorem:theorem}
       Assume that $\{B_{1}, B_{2}, \dots, B_{K}\}$ is a partition of $S$ such that $P(B_{i}) > 0$, for $i = 1,2, \dots, K$ then\\
@@ -251,7 +249,7 @@ Finally, the mode of the distribution is given as
 
 \subsection{Dirichlet Probability Distribution}\label{sec:probability:probability_distributions:dirichlet}
 
-The \index{Dirichlet probability distribution}Dirichlet probability distribution is a family of multivariate continuous probability distributions over some $\boldsymbol{x}$ in $K$ dimensions~\cite{ref:wackerly:2014}. The \index{Dirichlet probability distribution}Dirichlet probability distribution is the multivariate generalization of the \index{Beta probability distribution}Beta probability distribution and is thus sometimes referred to by its alternative name, i.e. the multivariate Beta probability distribution. The \index{Dirichlet probability distribution}Dirichlet probability distribution is parameterised by some vector $\boldsymbol{\alpha} = (\alpha_{1}$,  $\dots, \alpha_{K}), \forall_{k=1}^{K} \alpha_{k} > 0, \alpha_{k} \in \mathbb{R}$. The parameter, $\boldsymbol{\alpha}$, is referred to as the concentration parameter. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K \geq 2$ with parameter $\boldsymbol{\alpha}$, denoted $Dir(\boldsymbol{\alpha})$, has a \acs{PDF} given as
+The \index{Dirichlet probability distribution}Dirichlet probability distribution is a family of multivariate continuous probability distributions over some $\boldsymbol{x}$ in $K$ dimensions~\cite{ref:wackerly:2014}. The \index{Dirichlet probability distribution}Dirichlet probability distribution is a multivariate generalization of the \index{Beta probability distribution}Beta probability distribution and is thus sometimes referred to by its alternative name, i.e. the multivariate Beta probability distribution. The \index{Dirichlet probability distribution}Dirichlet probability distribution is parameterised by some vector $\boldsymbol{\alpha} = (\alpha_{1}$,  $\dots, \alpha_{K}), \forall_{k=1}^{K} \alpha_{k} > 0, \alpha_{k} \in \mathbb{R}$. The parameters, $\boldsymbol{\alpha}$, are referred to as the concentration parameters. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K \geq 2$ with parameters $\boldsymbol{\alpha}$, denoted $Dir(\boldsymbol{\alpha})$, has a \acs{PDF} given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:pdf}
@@ -279,7 +277,7 @@ Similar to the \index{Beta probability distribution}Beta probability distributio
 \begin{figure}[htb]
       \centering
       \includegraphics[width=0.9\textwidth]{images/dirichlet.pdf}
-      \caption{The \acfp{PDF} for the \index{Dirichlet probability distribution}Dirichlet probability distribution over the 2-simplex. The concentration parameter $\boldsymbol{\alpha}$ is varied. The values of the \acs{PDF} are shown by the color maps with contour lines at equal values as indicated in the color bars~\cite{ref:dirichlet:2020}.}
+      \caption{The \acfp{PDF} for the \index{Dirichlet probability distribution}Dirichlet probability distribution over the 2-simplex. The concentration parameters, $\boldsymbol{\alpha}$, are varied. The values of the \acs{PDF} are shown by the color maps with contour lines at equal values as indicated in the color bars~\cite{ref:dirichlet:2020}.}
       \label{fig:probability:probability_distributions:dirichlet}
 \end{figure}
 
@@ -328,7 +326,7 @@ Equation~\eqref{eq:probability:probability_distributions:bernoulli:pmf} can also
       f_{Ber}(x; \theta) = \theta^{x}(1-\theta)^{1-x}
 \end{equation}
 
-The mean of the \index{Bernoulli probability distribution}Bernoulli probability distribution approaches $\theta$ over many samples according to the \acs{CLT}~\cite{ref:grinstead:1997}. Figure \ref{fig:probability:probability_distributions:bernoulli:coin} illustrates a simulation of a fair-coin flipping simulation. The mean converges to 0.5 for various sample sizes.
+The mean of the \index{Bernoulli probability distribution}Bernoulli probability distribution approaches $\theta$ over many samples according to the \acs{CLT}~\cite{ref:grinstead:1997}. Figure \ref{fig:probability:probability_distributions:bernoulli:coin} illustrates a fair-coin flipping simulation. The mean converges to 0.5 for various sample sizes.
 
 \begin{figure}[htbp]
       \centering
@@ -345,7 +343,7 @@ The mean of the \index{Bernoulli probability distribution}Bernoulli probability 
             \label{fig:probability:probability_distributions:bernoulli:coin_10000}
       \end{subfigure}
       \par\bigskip
-      \caption{An illustration of the the coin flip situation for different sample sizes that show the convergence of the mean as per the \acf{CLT}.}
+      \caption{An illustration of the the coin-flip simulation for different sample sizes that show the convergence of the mean as per the \acf{CLT}.}
       \label{fig:probability:probability_distributions:bernoulli:coin}
 \end{figure}
 
@@ -445,10 +443,10 @@ The support for the Multinomial is $\forall_{i=1}^{K} x_{k} \in \{1, \dots, N\},
 
 \begin{equation}
       \label{eq:probability:probability_distributions:multinomial:pmf}
-      P(\boldsymbol{x} \vert \boldsymbol{\theta}; N; K) = f_{Mul}(x; N, K, \boldsymbol{\theta}) = \frac{N!}{\prod_{k=1}^{K}x_{k}!} \prod_{k=1}^{K}\theta_{k}^{x_{k}}
+      P(\boldsymbol{x} \vert \boldsymbol{\theta}; N; K) = f_{Mul}(\boldsymbol{x}; N, K, \boldsymbol{\theta}) = \frac{N!}{\prod_{k=1}^{K}x_{k}!} \prod_{k=1}^{K}\theta_{k}^{x_{k}}
 \end{equation}
 
-Similar to the \index{Categorical probability distribution}Categorical probability distribution, the random variable $x$ can also be encoded in binary format, yielding an $N \times K$ matrix $X$ of \index{Bernoulli probability distribution}Bernoulli probability distributions. The support is then given as $\boldsymbol{X} \in \{0, 1\}^{N \times K}, \forall_{i=1}^{N}\sum_{k=1}^{K} x_{i,k} = 1$ so that the standard $K-1$ probability simplex $S$ still holds for each trial. The \acs{PMF} of the \index{Multinomial probability distribution}Multinomial probability distribution is then rewritten as
+Similar to the \index{Categorical probability distribution}Categorical probability distribution, the random variable $x$ can also be encoded in binary format, yielding an $N \times K$ matrix $\boldsymbol{X}$ of \index{Bernoulli probability distribution}Bernoulli probability distributions. The support is then given as $\boldsymbol{X} \in \{0, 1\}^{N \times K}, \forall_{i=1}^{N}\sum_{k=1}^{K} x_{i,k} = 1$ so that the standard $K-1$ probability simplex $S$ still holds for each trial. The \acs{PMF} of the \index{Multinomial probability distribution}Multinomial probability distribution is then rewritten as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:multinomial:pmf_alt}
@@ -481,9 +479,9 @@ same functional form, $\mathcal{A}(v)$, as the prior distribution as follows. \\
 
       \item $P(\theta)$ is the prior probability distribution with the functional form $\mathcal{A}(v)$.
 
-      \item Let $\boldsymbol{X} = (x_{1}, \dots, x_{I})$ be the outcomes of independent, identical random events, each with Boolean outcome. That is $x_{i} | \theta \overset{\text{iid}}{\sim} Ber(\theta)$ and $\mathcal{L}(x_{i} \vert \theta)$ is the Bernoulli likelihood.
+      \item Let $\boldsymbol{X} = (x_{1}, \dots, x_{I})$ be the outcomes of $I$ independent, identical random events, each with Boolean outcome. That is $x_{i} | \theta \overset{\text{iid}}{\sim} Ber(\theta)$ and $\mathcal{L}(x_{i} \vert \theta)$ is the Bernoulli likelihood.
 
-      \item Let $\boldsymbol{\mathcal{D}}$ denote all the prior data $\boldsymbol{X}$, parameterised by $\alpha$, $\beta$.
+      \item Let $\boldsymbol{\mathcal{D}}$ denote all the prior data of $\boldsymbol{X}$, parameterised by $\alpha$, $\beta$.
 
       \item Let $N_{1} = \sum_{i=1}^{I} \mathbbm{1}(x_{i} = 1)$ and $N_{0} = \sum_{i=1}^{I} \mathbbm{1}(x_{i} = 0)$.
 \end{itemize}
@@ -540,7 +538,7 @@ The conjugate prior to a \index{Categorical probability distribution}Categorical
 
       \item Let $\boldsymbol{X} = (\boldsymbol{x_{1}}, \dots, \boldsymbol{x_{I}})$ be the outcomes of $I$ independent, identical random events, each with $K$ possible outcomes. That is $\boldsymbol{x_{i}} | \boldsymbol{\theta} \overset{\text{iid}}{\sim} Cat(\boldsymbol{\theta})$ and $\mathcal{L}(\boldsymbol{x_{i}} \vert \boldsymbol{\theta})$ is the Categorical likelihood.
 
-      \item Let $\boldsymbol{\mathcal{D}}$ denote all the prior data $\boldsymbol{X}$, parameterised by $\boldsymbol{\alpha}$.
+      \item Let $\boldsymbol{\mathcal{D}}$ denote all the prior data of $\boldsymbol{X}$, parameterised by $\boldsymbol{\alpha}$.
 
       \item Let $\boldsymbol{N} = (N_{1}, \dots, N_{K}), N_{k} = \sum_{i=1}^{I} \mathbbm{1}(x_{i,k} = 1)$, denote the counts for each occurrence of a class $k$.
 \end{itemize}
@@ -555,7 +553,7 @@ The likelihood of the Categorical and \index{Multinomial probability distributio
       \end{split}
 \end{equation}
 
-By \index{Bayes' theorem}Bayes' theorem, the posterior distribution with given prior data $\mathcal{D}$ is given as
+By \index{Bayes' theorem}Bayes' theorem, the posterior distribution with given prior data $\boldsymbol{\mathcal{D}}$ is given as
 
 \begin{equation}
       \label{eq:probability:conjugate_priors:mult_likelihood:posterior}
@@ -580,7 +578,14 @@ The posterior distribution has the same form, $\mathcal{A}(v)$, as the prior, bu
 \section{Bayesian Statistics}
 \label{sec:probability:bayesian_statistics}
 
-In general, there are two main views to probability and statistics. These include the \textit{frequentist} and the \textit{Bayesian} view of statistics. Naturally, Bayesian statistics is based on \index{Bayes' theorem}Bayes' theorem as was presented in Section \ref{sec:probability:bayes_theorem}. Bayesian statistics describe the probability of an event in terms of some belief, based on previous knowledge of the event and the conditions under which the event happened~\cite{ref:hackenberger:2019}. To introduce the concept of Bayesian inference and Bayesian analysis, a proposal is made to first understand the difference between these two approaches. Bayesian statistics out-date the frequentist approach, but lacked interest in the early days, partly because of the limited applications where the conjugate priors where known~\cite{ref:hackenberger:2019}. More recent advancements in mathematical methods popularised the Bayesian approach again. A notable contribution to this switch was the development of the \acf{MCMC} algorithm in the 1950s. This family of algorithms allowed for the construction of random sampling algorithms from a probability distribution, which allows for the calculation of Bayesian hierarchical models~\cite{ref:hackenberger:2019}. Soon after followed one of the earliest papers that use Bayesian statistics in the field of medicine in 1982~\cite{ref:ashby:2006}.
+This section provides detailed discussions on various aspects related to Bayesian statistics and probability. Brief discussion follow on the frequentist and the Bayesian approach to statistics and probability. Finally, the concept of Bayesian analysis is presented in detail.
+
+\subsection{Frequentist vs. Bayesian Statistics}
+\label{sec:probability:bayesian_statistics:frequentist_vs_bayesian}
+
+In general, there are two main views to probability and statistics. These include the \textit{frequentist} and the \textit{Bayesian} view of statistics. Naturally, Bayesian statistics is based on \index{Bayes' theorem}Bayes' theorem as was presented in Section \ref{sec:probability:bayes_theorem}. Bayesian statistics describe the probability of an event in terms of some belief, based on previous knowledge of the event and the conditions under which the event happened~\cite{ref:hackenberger:2019}. To introduce the concept of Bayesian inference and Bayesian analysis, the differences between the frequentist and the Bayesian view of statistics need to be presented.
+
+Bayesian statistics out-date the frequentist approach, but lacked interest in the early days, partly because of the limited applications where the conjugate priors where known~\cite{ref:hackenberger:2019}. More recent advancements in mathematical methods popularised the Bayesian approach again. A notable contribution to this switch was the development of the \acf{MCMC} algorithm in the 1950s. This family of algorithms allowed for the construction of random sampling algorithms from a probability distribution, which allows for the calculation of Bayesian hierarchical models~\cite{ref:hackenberger:2019}. Soon after followed one of the earliest papers that use Bayesian statistics in the field of medicine in 1982~\cite{ref:ashby:2006}.
 
 The difference between the frequentist approach and the Bayesian approach can be illustrated using an example.~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} suggests an experiment that investigates whether the gender ratio in some hypothetical mice population is $1:1$. Two experiments were designed. In the first experiment, mice are randomly selected until the first male is chosen. The result in this experiment will then be the total number of mice chosen by gender. For the second experiment, exactly seven mice are randomly selected. The result of the second experiment would be the number of males and females in a sample of seven. Suppose the outcome of the experiment was $FFFFFFM$, where $F$ represents a female and $M$ represents a male. If the experimental design is not known ahead of time, the result is useless. Consider the $p$-value for each of these experiments. The $p$-value is the probability of obtaining results at least as extreme as the observed results of a statistical hypothesis test~\cite{ref:beers:2022}. For the first experiment, the $p$-value is $0.031$ and for the second experiment, the $p$-value is $0.227$. Using a confidence level of $\alpha = 0.05$, opposite outcomes could be concluded for these two experiments when it comes to rejecting the null hypothesis, despite using the same data. The reason for the difference in outcomes, is due to the difference in their null distributions, which represent the probability distribution of the test statistic when the null hypothesis is true. The first approach uses a geometrical approach, and the second used a binomial approach as illustrated in Figure \ref{fig:probability:bayesian_statistics:mouse_experiment_outcome}.
 
@@ -593,7 +598,7 @@ The difference between the frequentist approach and the Bayesian approach can be
 
 If Bayesian statistics is used, the experimental design that was chosen does not matter. In Bayesian statistics it is common to use a \index{Beta probability distribution}Beta probability distribution as a prior distribution. If the prior distribution is sampled from $Beta(3,3)$, then using Bayesian analysis, the posterior distribution, according to the outcomes of this experiment, would yield $Beta(9,4)$.
 
-~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} mentions that the $Beta$ distribution can be seen as a probability distribution of the occurrence of specific parameters. From the information that is now known about the $Beta$ distribution, it is possible to calculate the probability that the gender ratio in this mice population is not $1:1$, with the $Beta$ distribution as a prior, yielding a $p$-value of $0.92$. This means that there is a probability of $92\%$ that the mice population is not $1:1$, regardless of experiment design. An illustration of this is given in Figure \ref{fig:probability:bayesian_statistics:mouse_distributions} below.
+~\citeauthor{ref:hackenberger:2019}~\cite{ref:hackenberger:2019} mentions that the $Beta$ probability distribution can be seen as a probability distribution of the occurrence of specific parameters. From the information that is now known about the $Beta$ probability distribution, it is possible to calculate the probability that the gender ratio in this mice population is not $1:1$, with the $Beta$ probability distribution as a prior, yielding a $p$-value of $0.92$. This means that there is a probability of $92\%$ that the mice population is not $1:1$, regardless of experimental design. An illustration of this is given in Figure \ref{fig:probability:bayesian_statistics:mouse_distributions}.
 
 \begin{figure}[htbp]
       \centering
@@ -602,42 +607,42 @@ If Bayesian statistics is used, the experimental design that was chosen does not
       \label{fig:probability:bayesian_statistics:mouse_distributions}
 \end{figure}
 
-It can be seen from Figure \ref{fig:probability:bayesian_statistics:mouse_distributions} how the posterior distribution differs from the prior distribution. This is the nature of Bayesian analysis and is presented in more detail in the following section.
+Figure \ref{fig:probability:bayesian_statistics:mouse_distributions} shows how the posterior distribution differs from the prior distribution.
 
 \subsection{Bayesian Analysis}
 \label{sec:probability:bayesian_statistics:bayesian_analysis}
 
-Bayesian analysis is the process by which prior beliefs are updated as a result of observing new data/evidence. Similar to the approaches followed above to explain Bayesian statistics, a proposal is made to explain Bayesian analysis by means of an example taken from~\cite{ref:wackerly:2014}. Let $Y = Y_{1}, Y_{2}, \dots, Y_{N}$ denote the random variable that is observed over a sample size of $N$. Then the likelihood of the sample is given as $\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)$. In the discrete case the likelihood function is defined to be the joint probability $P(Y_{1} = y_{1}, Y_{2} = y_{2}, \dots, Y_{N} = y_{n})$ and the continuous case yields the joint density of $Y_{1}, Y_{2}, \dots, Y_{N}$, evaluated at $y_{1}, y_{2}, \dots, y_{n}$. The Bayesian view models the parameter $\theta$ as a random variable with a probability distribution, referred to as the prior distribution of $\theta$. The symbol $\theta$, is included in the notation of $\mathcal{L}$ as an argument to illustrate that this function is dependent, explicitly, on the value of $\theta$. Importantly, prior distribution is specified before any data is collected and represents the theoretical prior knowledge about $\theta$. Assume that the parameter $\theta$ has a continuous distribution with density $g(\theta)$ that has no unknown parameters. Considering the likelihood of the data and the prior on $\theta$, then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood} below.
+Bayesian analysis is the process by which prior beliefs are updated as a result of observing new data/evidence. Similar to the approaches followed above to explain Bayesian statistics, a proposal is made to explain Bayesian analysis by means of an example taken from~\cite{ref:wackerly:2014}. Let $\boldsymbol{Y} = (Y_{1}, Y_{2}, \dots, Y_{N})$ denote the random variable that is observed over a sample size of $N$. Then the likelihood of the sample is given as $\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)$. In the discrete case, the likelihood function is defined to be the joint probability, $P(Y_{1} = y_{1}, Y_{2} = y_{2}, \dots, Y_{N} = y_{n})$, and for the continuous case, yields the joint density of $Y_{1}, Y_{2}, \dots, Y_{N}$, evaluated at $y_{1}, y_{2}, \dots, y_{n}$. The Bayesian view models the parameter $\theta$ as a random variable with a probability distribution, referred to as the prior distribution of $\theta$. The symbol $\theta$, is included in the notation of $\mathcal{L}$ as an argument to illustrate that this function is dependent, explicitly, on the value of $\theta$. Importantly, the prior distribution is specified before any data is collected and represents the theoretical prior knowledge about $\theta$. Assume that the parameter $\theta$ has a continuous distribution with density $g(\theta)$ that has no unknown parameters. Considering the likelihood of the data and the prior on $\theta$, then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ is given as
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood}
       f(y_{1}, y_{2}, \dots, y_{n}, \theta) = \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)
 \end{equation}
 
-The marginal density or mass function of $Y_{1}, Y_{2}, \dots, Y_{N}$ is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:marginal_density} below.
+The marginal density or mass function of $Y_{1}, Y_{2}, \dots, Y_{N}$ is given as
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:marginal_density}
       m(y_{1}, y_{2}, \dots, y_{n}) = \int_{-\infty}^{\infty} \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)d\theta
 \end{equation}
 
-Finally, the posterior density of $\theta \vert y_{1}, y_{2}, \dots, y_{n}$, according to \index{Bayes' theorem}Bayes' theorem, is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density} below.
+Finally, the posterior density of $\theta \vert y_{1}, y_{2}, \dots, y_{n}$ denoted by $g^{*}(\theta \vert y_{1}, y_{2}, \dots, y_{n})$, according to \index{Bayes' theorem}Bayes' theorem, is given as
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:posterior_density}
       g^{*}(\theta \vert y_{1}, y_{2}, \dots, y_{n}) = \frac{\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)}{\int_{-\infty}^{\infty} \mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)g(\theta)d\theta}
 \end{equation}
 
-\citeauthor{ref:wackerly:2014}\cite{ref:wackerly:2014} mentions that the posterior density summarises all the pertinent information about the parameter $\theta$ by making use of the information contained in the prior for $\theta$, as well as the information in the observed data/evidence.
+\citeauthor{ref:wackerly:2014}\cite{ref:wackerly:2014} mention that the posterior density summarises all the pertinent information about the parameter $\theta$ by making use of the information contained in the prior for $\theta$, as well as the information in the observed data/evidence.
 
-Consider now how Bayesian analysis can be used to update the priors on $\theta$ based on newly observed data. As with the example above, the below is taken from~\cite{ref:wackerly:2014}. Let $Y_{1}, Y_{2}, \dots, Y_{N}$ denote a random sample from a \index{Bernoulli probability distribution}Bernoulli probability distribution, where $P(Y_{i} = 1) = \theta$ and $P(Y_{i} = 0) = 1 - \theta$ and the prior distribution for $\theta$ is $Beta(\alpha, \beta)$. The posterior distribution for $\theta$ can be formulated as follows. The Bernoulli probability function can be written as is shown in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_1} below.
+Consider now how Bayesian analysis can be used to update the priors on $\theta$ based on newly observed data. As with the example above, the discussion below is taken from~\cite{ref:wackerly:2014}. Let $Y_{1}, Y_{2}, \dots, Y_{N}$ denote a random sample from a \index{Bernoulli probability distribution}Bernoulli probability distribution, where $P(Y_{i} = 1) = \theta$ and $P(Y_{i} = 0) = 1 - \theta$ and the prior distribution for $\theta$ is $Beta(\alpha, \beta)$. The posterior distribution for $\theta$ can be formulated as follows. The Bernoulli probability function is written as
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:step_1}
       P(y_{i} \vert \theta) = \theta^{y_{i}}(1 - \theta)^{1-y_{i}}
 \end{equation}
 
-In Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_1} above, $y_{i} = \{0,1\}$ and $0 < \theta < 1$. The likelihood $\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)$ is presented in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_2} below.
+where $y_{i} = \{0,1\}$ and $0 < \theta < 1$. The likelihood $\mathcal{L}(y_{1}, y_{2}, \dots, y_{n} \vert \theta)$ is presented as follows:
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:step_2}
@@ -649,7 +654,7 @@ In Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_1} a
       \end{split}
 \end{equation}
 
-Then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ from Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood} can be formulated as in shown in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_3} below.
+Then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ from Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:joint_likelihood} is formulated as
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:step_3}
@@ -661,7 +666,7 @@ Then the joint likelihood of $Y_{1}, Y_{2}, \dots, Y_{N}, \theta$ from Equation~
       \end{split}
 \end{equation}
 
-The marginal density of $Y_{1}, Y_{2}, \dots Y_{N}$ is then given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_4} below.
+The marginal density of $Y_{1}, Y_{2}, \dots Y_{N}$ is then given as
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:step_4}
@@ -672,7 +677,7 @@ The marginal density of $Y_{1}, Y_{2}, \dots Y_{N}$ is then given in Equation~\e
       \end{split}
 \end{equation}
 
-Finally, the posterior density of $\theta$ is given in Equation~\eqref{eq:probability:bayesian_statistic:bayesian_analysis:step_5} below.
+Finally, the posterior density of $\theta$, denoted by $g^{*}(\theta \vert y_{1}, y_{2}, \dots, y_{n})$, is given as
 
 \begin{equation}
       \label{eq:probability:bayesian_statistic:bayesian_analysis:step_5}
@@ -683,11 +688,11 @@ Finally, the posterior density of $\theta$ is given in Equation~\eqref{eq:probab
       \end{split}
 \end{equation}
 
-The posterior density has the same functional shape $\mathcal{A}(v)$ as the prior, yielding the update on prior parameters as $\alpha^{*} = \sum y_{i} + \alpha$ and $\beta^{*} = n - \sum y_{i} + \beta$.
+The posterior density has the same functional form, $\mathcal{A}(v)$, as the prior, yielding the update on prior parameters as $\alpha' = \sum y_{i} + \alpha$ and $\beta' = n - \sum y_{i} + \beta$.
 
 
 \section{Summary}\label{sec:probability:summary}
 
-This chapter provided the reader with all the necessary background information on probability theory and statistics. The origins of statistical analysis was discussed and the differences between the frequentist and Bayesian view of statistics were discussed in detail. Probability distributions and proofs of conjugate priors were provided with detailed mathematical descriptions. Finally, a detailed description of Bayesian analysis was provided with detailed mathematical descriptions.
+This chapter provided all the necessary background information on probability theory and statistics. The origins of statistical analysis were discussed and the differences between the frequentist and Bayesian view of statistics were discussed in detail. Probability distributions and proofs of conjugate priors were provided with detailed mathematical descriptions. Finally, a detailed description of Bayesian analysis was provided with detailed mathematical descriptions.
 
 This chapter concludes all the relevant background information that is needed to formulate the \acs{BHH}. The proposed \acs{BHH} is presented in the following chapter.
