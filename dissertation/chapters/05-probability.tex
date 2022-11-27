@@ -170,7 +170,7 @@ One of the many applications of \index{Bayes' theorem}Bayes' theorem is to do st
 Probability distributions are mathematical functions that give the probabilities of the occurrences of different possible outcomes in the experiment. The theory and equations presented in the following sections where all taken from~\citeauthor{ref:wackerly:2014}~\cite{ref:wackerly:2014}.
 
 
-\subsection{Beta probability distribution}\label{sec:probability:probability_distributions:beta}
+\subsection{Beta Probability Distribution}\label{sec:probability:probability_distributions:beta}
 
 The \index{Beta probability distribution}Beta probability distribution is a family of univariate, continuous, probability distributions over some $x$, with support on the interval $[0,1]$~\cite{ref:wackerly:2014}. It is parameterised by two shape parameters $\alpha > 0$, $\alpha \in \mathbb{R}$ and $\beta > 0$, $\beta \in \mathbb{R}$. The \index{Beta probability distribution}Beta probability distribution is denoted as $Beta(\alpha, \beta)$. The \acf{PDF} of the \index{Beta probability distribution}Beta probability distribution is given as
 
@@ -186,21 +186,21 @@ The normalising constant, $B(\alpha, \beta)$, is defined as
       B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
 \end{equation}
 
-where $\Gamma$ is the Gamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func} below.
+where $\Gamma$ is the Gamma function defined as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:gamma_func}
       \Gamma(n) = ( n - 1)!
 \end{equation}
 
-It should be noted that the Gamma function can also be written as shown in Equation~\eqref{eq:probability:probability_distributions:beta:gamma_func_alt} below.
+It should be noted that the Gamma function can also be written as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:gamma_func_alt}
       \Gamma(n+1) = n!
 \end{equation}
 
-The control parameters $\alpha$ and $\beta$, determine the shape of the distribution. There exists a special case where $\alpha = \beta$. This is referred to as the \textit{symmetric} \index{Beta probability distribution}Beta probability distribution. In the case where $\alpha = \beta = 1$ the distribution is equivalent to the uniform distribution over all points in its support. The \index{Beta probability distribution}Beta probability distribution for various values of $\alpha$ and $\beta$, including the symmetric version is presented in Figure \ref{fig:probability:probability_distributions:beta}.
+The control parameters $\alpha$ and $\beta$ determine the shape of the distribution. There exists a special case where $\alpha = \beta$. This is referred to as the \textit{symmetric} \index{Beta probability distribution}Beta probability distribution. In the case where $\alpha = \beta = 1$ the distribution is equivalent to the uniform distribution over all points in its support. The \index{Beta probability distribution}Beta probability distribution for various values of $\alpha$ and $\beta$, including the symmetric version is illustrated in Figure \ref{fig:probability:probability_distributions:beta}.
 
 \begin{figure}[htbp]
       \begin{subfigure}{0.49\textwidth}
@@ -220,28 +220,28 @@ The control parameters $\alpha$ and $\beta$, determine the shape of the distribu
       \label{fig:probability:probability_distributions:beta}
 \end{figure}
 
-The expected value of $x$ is given below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value}.
+The expected value of $x$ is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:expected_value}
       E[x] = \frac{\alpha}{\alpha + \beta}
 \end{equation}
 
-Similarly, the expected value of the natural logarithm of $x$ can be calculated as is shown below in Equation~\eqref{eq:probability:probability_distributions:beta:expected_value_ln}.
+Similarly, the expected value of the natural logarithm of $x$ is calculated as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:expected_value_ln}
       E[\ln(x)] = \psi({\alpha}) - \psi(\alpha + \beta)
 \end{equation}
 
-In Equation~\eqref{eq:probability:probability_distributions:beta:expected_value_ln} above, $\psi$ is the logarithmic derivative of the Gamma function, called the \textit{Digamma} function. The Digamma function is given below in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}.
+where $\psi$ is the logarithmic derivative of the Gamma function, called the \textit{Digamma} function. The Digamma function is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:digamma}
       \psi(n) = \frac{d}{dn}\ln(\Gamma(n)) = \frac{\Gamma'(n)}{\Gamma(n)}
 \end{equation}
 
-Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:beta:mode} below.
+Finally, the mode of the distribution is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:mode}
@@ -249,55 +249,55 @@ Finally, the mode of the distribution is given in Equation~\eqref{eq:probability
 \end{equation}
 
 
-\subsection{Dirichlet probability distribution}\label{sec:probability:probability_distributions:dirichlet}
+\subsection{Dirichlet Probability Distribution}\label{sec:probability:probability_distributions:dirichlet}
 
-The \index{Dirichlet probability distribution}Dirichlet probability distribution is a family of multivariate continuous probability distributions over some $x$ in $K$ dimensions~\cite{ref:wackerly:2014}. The \index{Dirichlet probability distribution}Dirichlet probability distribution is the multivariate generalization of the \index{Beta probability distribution}Beta probability distribution and is thus sometimes referred to by its alternative name, the multivariate Beta probability distribution. The \index{Dirichlet probability distribution}Dirichlet probability distribution is parameterised by some vector $\vec{\alpha} = (\alpha_{1}$,  $\dots, \alpha_{K})$ $\forall_{k=1}^{K} \alpha_{k} > 0$, $\alpha_{k} \in \mathbb{R}$. Throughout this chapter, the vector notation is dropped for simplicity and readability. $\alpha$ is referred to as the concentration parameter. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K \geq 2$ with parameters $\alpha$, denoted $Dir(\alpha)$, has a \acs{PDF} as is given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} below.
+The \index{Dirichlet probability distribution}Dirichlet probability distribution is a family of multivariate continuous probability distributions over some $\boldsymbol{x}$ in $K$ dimensions~\cite{ref:wackerly:2014}. The \index{Dirichlet probability distribution}Dirichlet probability distribution is the multivariate generalization of the \index{Beta probability distribution}Beta probability distribution and is thus sometimes referred to by its alternative name, i.e. the multivariate Beta probability distribution. The \index{Dirichlet probability distribution}Dirichlet probability distribution is parameterised by some vector $\boldsymbol{\alpha} = (\alpha_{1}$,  $\dots, \alpha_{K}), \forall_{k=1}^{K} \alpha_{k} > 0, \alpha_{k} \in \mathbb{R}$. The parameter, $\boldsymbol{\alpha}$, is referred to as the concentration parameter. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K \geq 2$ with parameter $\boldsymbol{\alpha}$, denoted $Dir(\boldsymbol{\alpha})$, has a \acs{PDF} given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:pdf}
-      P(x \vert \alpha) =  f_{Dir}(x; K, \alpha) = \frac{1}{B(\alpha)}  \prod_{k=1}^{K} x_{k}^{\alpha_{k} - 1}
+      P(\boldsymbol{x} \vert \boldsymbol{\alpha}) =  f_{Dir}(\boldsymbol{x}; K, \boldsymbol{\alpha}) = \frac{1}{B(\boldsymbol{\alpha})}  \prod_{k=1}^{K} x_{k}^{\alpha_{k} - 1}
 \end{equation}
 
-In Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} above, the normalising constant $B(\alpha)$, is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:norm_cost}.
+The normalising constant, $B(\boldsymbol{\alpha})$, is defined as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:norm_cost}
-      B(\alpha) = \frac{\prod_{k=1}^{K} \Gamma(\alpha_{k})}{\Gamma(\alpha_{0})}
+      B(\boldsymbol{\alpha}) = \frac{\prod_{k=1}^{K} \Gamma(\alpha_{k})}{\Gamma(\alpha_{0})}
 \end{equation}
 
-In Equation~\eqref{eq:probability:probability_distributions:dirichlet:pdf} above, $\alpha_{0}$ is defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:alpha_0} below.
+where $\alpha_{0}$ is defined as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:alpha_0}
       \alpha_{0} = \sum_{k=1}^{K}\alpha_{k}
 \end{equation}
 
-Importantly, the set $\{x_{k}\}_{k=1}^{K}$ belongs to the standard $K-1$ probability simplex $S$, meaning that $x_{K} = 1 - \sum_{k=1}^{K-1}x_{k}$ with support $\forall_{k=1}^{K} x \in [0,1]$. Under the simplex $S$, this means that the sum over all values of the vector $\vec{x}$ must be 1. The simplex can thus be rewritten as $\sum_{k=1}^{K}x_{k} = 1$.
+Importantly, the set $\{x_{k}\}_{k=1}^{K}$ belongs to the standard $K-1$ probability simplex $S$, meaning that $x_{K} = 1 - \sum_{k=1}^{K-1}x_{k}$ with support $\forall_{k=1}^{K} x_{k} \in [0,1]$. Under the simplex $S$, this means that the sum over all values of the vector $\boldsymbol{x}$ must be 1. The simplex can thus be rewritten as $\sum_{k=1}^{K}x_{k} = 1$.
 
-Similar to the \index{Beta probability distribution}Beta probability distribution, $\alpha$ determines the shape of the distribution in $K$ dimensions and thus, there also exist a special case, referred to as the \textit{symmetric} distribution when $\forall_{k=1}^{K} \alpha_{k} = c$, where $c$ is some constant. In the case where $c = 1$, the distribution is referred to as a \textit{flat} distribution and yields the uniform distribution over all points in $S$. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K = 3$, for various values of $\alpha$, including the symmetric version is presented in Figure \ref{fig:probability:probability_distributions:dirichlet}.
+Similar to the \index{Beta probability distribution}Beta probability distribution, $\boldsymbol{\alpha}$ determines the shape of the distribution in $K$ dimensions and thus, there also exist a special case, referred to as the \textit{symmetric} distribution when $\forall_{k=1}^{K} \alpha_{k} = c$, where $c$ is some constant. In the case where $c = 1$, the distribution is referred to as a \textit{flat} distribution and yields the uniform distribution over all points in $S$. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K = 3$ for various values of $\boldsymbol{\alpha}$, including the symmetric version, is presented in Figure \ref{fig:probability:probability_distributions:dirichlet}.
 
 \begin{figure}[htb]
       \centering
       \includegraphics[width=0.9\textwidth]{images/dirichlet.pdf}
-      \caption{The \acfp{PDF} for the \index{Dirichlet probability distribution}Dirichlet probability distribution over the 2-simplex. The concentration parameter $\alpha$ is varied. The values of the \acs{PDF} are shown by the color maps with contour lines at equal values as indicated in the color bars~\cite{ref:dirichlet:2020}.}
+      \caption{The \acfp{PDF} for the \index{Dirichlet probability distribution}Dirichlet probability distribution over the 2-simplex. The concentration parameter $\boldsymbol{\alpha}$ is varied. The values of the \acs{PDF} are shown by the color maps with contour lines at equal values as indicated in the color bars~\cite{ref:dirichlet:2020}.}
       \label{fig:probability:probability_distributions:dirichlet}
 \end{figure}
 
-The expected value of $x$ can be calculated as shown in Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value} below.
+The expected value of $x_{k}$ is calculated as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:expected_value}
       E[x_{k}] = \frac{\alpha_{k}}{\alpha_{0}}
 \end{equation}
 
-Similarly, the expected value of the natural logarithm of $x_{k}$ can be calculated as defined in Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value_ln} below.
+Similarly, the expected value of the natural logarithm of $x_{k}$ is calculated as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:expected_value_ln}
       E[\ln(x_{k})] = \psi({\alpha_{k}}) - \psi(\alpha_{0})
 \end{equation}
 
-In Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_value_ln} above, $\psi$ is the Digamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}. Finally, the mode of the distribution is given in Equation~\eqref{eq:probability:probability_distributions:dirichlet:mode} below.
+where $\psi$ is the Digamma function as defined in Equation~\eqref{eq:probability:probability_distributions:beta:digamma}. Finally, the mode of the distribution is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:mode}
@@ -308,9 +308,9 @@ In Equation~\eqref{eq:probability:probability_distributions:dirichlet:expected_v
 \end{equation}
 
 
-\subsection{Bernoulli probability distribution}\label{sec:probability:probability_distributions:bernoulli}
+\subsection{Bernoulli Probability Distribution}\label{sec:probability:probability_distributions:bernoulli}
 
-The \index{Bernoulli probability distribution}Bernoulli probability distribution is a discrete probability distribution over some random variable $x$ that takes the value of $1$ with probability $\theta$ and $0$ with probability $1-\theta$ ~\cite{ref:wackerly:2014}. The \index{Bernoulli probability distribution}Bernoulli probability distribution is denoted as $Ber(\theta)$ with support $x \in \{0, 1\}$. In probability theory, the \index{Bernoulli probability distribution}Bernoulli probability distribution is often used to explain the possible outcomes of a single experiment that asks a \textit{yes-no} question such as flipping a coin. The outcome of such an experiment is a Boolean value. The \index{Bernoulli probability distribution}Bernoulli probability distribution has a \acf{PMF}, given as
+The \index{Bernoulli probability distribution}Bernoulli probability distribution is a discrete probability distribution over some random variable $x$ that takes the value of $1$ with probability $\theta$ and $0$ with probability $1-\theta$ ~\cite{ref:wackerly:2014}. The \index{Bernoulli probability distribution}Bernoulli probability distribution is denoted as $Ber(\theta)$ with support $x \in \{0, 1\}$. In probability theory, the \index{Bernoulli probability distribution}Bernoulli probability distribution is often used to explain the possible outcomes of a single experiment that asks a \textit{yes-no} question such as flipping a coin. The outcome of such an experiment is a Boolean value. The \index{Bernoulli probability distribution}Bernoulli probability distribution has a \acs{PMF}, given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:bernoulli:pmf}
@@ -369,10 +369,10 @@ The mode of the distribution is given as
 \end{equation}
 
 
-\subsection{Binomial probability distribution}\label{sec:probability:probability_distributions:bin}
+\subsection{Binomial Probability Distribution}\label{sec:probability:probability_distributions:bin}
 
 
-The \index{Binomial probability distribution}Binomial probability distribution is a discrete probability distribution over a random variable $x$ taking on a number of successes in $N$ sequential independent experiments that each ask a \textit{yes-no} question~\cite{ref:wackerly:2014}. The probability of a single independent experiment yielding a success is given as $\theta$ and the \index{Binomial probability distribution}Binomial probability distribution is denoted as $Bin(N, \theta)$, with support $x \in \{0, 1, \dots, N\}$.  It should be noted that the \index{Binomial probability distribution}Binomial probability distribution is an extension of the \index{Bernoulli probability distribution}Bernoulli probability distribution over $N$ independent sequential experiments, and thus each experiment also yields some Boolean outcome. When $N=1$, the experiment is referred to as a Bernoulli trial, and the distribution is just a \index{Bernoulli probability distribution}Bernoulli probability distribution. When $N > 1$, the sequence of outcomes is referred to as a Bernoulli process. The \acf{PMF} of the \index{Binomial probability distribution}Binomial probability distribution is given as
+The \index{Binomial probability distribution}Binomial probability distribution is a discrete probability distribution over a random variable $x$ taking on a number of successes in $N$ sequential independent experiments that each ask a \textit{yes-no} question~\cite{ref:wackerly:2014}. The probability of a single independent experiment yielding a success is given as $\theta$ and the \index{Binomial probability distribution}Binomial probability distribution is denoted as $Bin(N, \theta)$, with support $x \in \{0, 1, \dots, N\}$.  It should be noted that the \index{Binomial probability distribution}Binomial probability distribution is an extension of the \index{Bernoulli probability distribution}Bernoulli probability distribution over $N$ independent sequential experiments, and thus each experiment also yields some Boolean outcome. When $N=1$, the experiment is referred to as a Bernoulli trial, and the distribution is just a \index{Bernoulli probability distribution}Bernoulli probability distribution. When $N > 1$, the sequence of outcomes is referred to as a Bernoulli process. The \acs{PMF} of the \index{Binomial probability distribution}Binomial probability distribution is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:binomial:pmf}
@@ -399,14 +399,14 @@ The mode of the distribution is given as
 
 \subsection{Categorical Probability Distribution}\label{sec:probability:probability_distributions:categorical}
 
-The \index{Categorical probability distribution}Categorical probability distribution is a discrete probability distribution over some random variable, $x$, taking on any one of $K$ possible categories~\cite{ref:wackerly:2014}. There is no ordering to these categories and therefore, for simplicity, each category is assigned a numerical representative value such that $k \in \{1, 2, \dots, K\}$. The probabilities for all outcomes is given by the probability vector $\vec{\theta} = (\theta_{1}, \dots, \theta_{K})$.  This means that the probability $P(x=k)=\theta_{k}$ has support $x \in \{1, \dots, K\}$. The \index{Categorical probability distribution}Categorical probability distribution, denoted $Cat(\theta)$, is a generalization of the \index{Bernoulli probability distribution}Bernoulli probability distribution and is sometimes referred to it by its alternative names, i.e. the generalised \index{Bernoulli probability distribution}Bernoulli probability distribution or the Multinoulli probability distribution. In probability theory, the \index{Categorical probability distribution}Categorical probability distribution is often used to explain the outcome of a single experiment with more than two possible outcomes, such as rolling a six-sided die~\cite{ref:wackerly:2014}. The \acs{PMF} of the \index{Categorical probability distribution}Categorical probability distribution is given as
+The \index{Categorical probability distribution}Categorical probability distribution is a discrete probability distribution over some random variable, $x$, taking on any one of $K$ possible categories~\cite{ref:wackerly:2014}. There is no ordering to these categories and therefore, for simplicity, each category is assigned a numerical representative value such that $k \in \{1, 2, \dots, K\}$. The probabilities for all outcomes is given by the probability vector $\boldsymbol{\theta} = (\theta_{1}, \dots, \theta_{K})$.  This means that the probability $P(x=k)=\theta_{k}$ has support $x \in \{1, \dots, K\}$. The \index{Categorical probability distribution}Categorical probability distribution, denoted $Cat(\boldsymbol{\theta})$, is a generalization of the \index{Bernoulli probability distribution}Bernoulli probability distribution and is sometimes referred to it by its alternative names, i.e. the generalised \index{Bernoulli probability distribution}Bernoulli probability distribution or the Multinoulli probability distribution. In probability theory, the \index{Categorical probability distribution}Categorical probability distribution is often used to explain the outcome of a single experiment with more than two possible outcomes, such as rolling a six-sided die~\cite{ref:wackerly:2014}. The \acs{PMF} of the \index{Categorical probability distribution}Categorical probability distribution is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:categorical:pmf}
-      P(x \vert \theta; K) = f_{Cat}(x; K, \theta) = \prod_{k=1}^{K}\theta_{k}^{[x = k]}
+      P(x \vert \boldsymbol{\theta}; K) = f_{Cat}(x; K, \boldsymbol{\theta}) = \prod_{k=1}^{K}\theta_{k}^{[x = k]}
 \end{equation}
 
-where the term $[x = k]$ is the \textit{Iversion Bracket}~\cite{ref:iverson:1962}, yielding 1 if $x = k$ and 0 otherwise. Given class $k$, the categorical distribution simply yields $\theta_{k}$ as is follows:
+where the term, $[x = k]$, is the \textit{Iversion Bracket}~\cite{ref:iverson:1962}, yielding 1 if $x = k$ and 0 otherwise. Given class $k$, the categorical distribution simply yields $\theta_{k}$ as follows:
 
 \begin{equation}
       \label{eq:probability:probability_distributions:categorical:pmf_k}
@@ -433,7 +433,7 @@ Since there is no order to the underlying categories, the mean of the distributi
 \subsection{Multinomial Distribution}
 \label{sec:probability:probability_distributions:multinomial}
 
-The \index{Multinomial probability distribution}Multinomial probability distribution is a discrete probability distribution over some random variable $x = (x_{1}, \dots\, x_{K})$ that takes on the counts for each occurrence of $K$ possible classes in $N$ independent trials~\cite{ref:wackerly:2014}. The probabilities for all possible outcomes in a single trial is given by the probability vector $\vec{\theta} = (\theta_{1}, \dots, \theta_{K})$. The \index{Multinomial probability distribution}Multinomial probability distribution, denoted $Mul(N, K, \theta)$, is thus the generalization of the \index{Binomial probability distribution}Binomial probability distribution to $K$ dimensions. Consider the following special cases.
+The \index{Multinomial probability distribution}Multinomial probability distribution is a discrete probability distribution over some random variable $\boldsymbol{x} = (x_{1}, \dots\, x_{K})$ that takes on the counts for each occurrence of $K$ possible classes in $N$ independent trials~\cite{ref:wackerly:2014}. The probabilities for all possible outcomes in a single trial is given by the probability vector, $\boldsymbol{\theta} = (\theta_{1}, \dots, \theta_{K})$. The \index{Multinomial probability distribution}Multinomial probability distribution, denoted $Mul(N, K, \boldsymbol{\theta})$, is thus a generalization of the \index{Binomial probability distribution}Binomial probability distribution to $K$ dimensions. Consider the following special cases:
 
 \begin{itemize}
       \item When $K$ is 2 and $N = 1$, the \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Bernoulli probability distribution}Bernoulli probability distribution.
@@ -441,28 +441,25 @@ The \index{Multinomial probability distribution}Multinomial probability distribu
       \item When $K > 2$ and $N = 1$, the \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Categorical probability distribution}Categorical probability distribution.
 \end{itemize}
 
-The support for the Multinomial is $\forall_{i=1}^{K} x_{k} \in \{1, \dots, N\}, \sum_{k=1}^{K}x_{k} = N$ and the \acs{PMF} for the \index{Multinomial probability distribution}Multinomial probability distribution is given below in Equation~\eqref{eq:probability:probability_distributions:multinomial:pmf}.
+The support for the Multinomial is $\forall_{i=1}^{K} x_{k} \in \{1, \dots, N\}, \sum_{k=1}^{K}x_{k} = N$ and the \acs{PMF} for the \index{Multinomial probability distribution}Multinomial probability distribution is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:multinomial:pmf}
-      P(x \vert \theta; N; K) = f_{Mul}(x; N, K, \theta) = \frac{N!}{\prod_{k=1}^{K}x_{k}!} \prod_{k=1}^{K}\theta_{k}^{x_{k}}
+      P(\boldsymbol{x} \vert \boldsymbol{\theta}; N; K) = f_{Mul}(x; N, K, \boldsymbol{\theta}) = \frac{N!}{\prod_{k=1}^{K}x_{k}!} \prod_{k=1}^{K}\theta_{k}^{x_{k}}
 \end{equation}
 
-Similar to the \index{Categorical probability distribution}Categorical probability distribution, the random variable $x$ can also be encoded in binary format, yielding an $N \times K$ matrix $X$ of \index{Bernoulli probability distribution}Bernoulli probability distributions. The support is then given as $X \in \{0, 1\}^{N \times K}, \forall_{i=1}^{N}\sum_{k=1}^{K} x_{i,k} = 1$ so that the standard $K-1$ probability simplex $S$ still holds for each trial. The \acs{PMF} of the \index{Multinomial probability distribution}Multinomial probability distribution can then be rewritten as is presented in Equation~\eqref{eq:probability:probability_distributions:multinomial:pmf_alt} below.
+Similar to the \index{Categorical probability distribution}Categorical probability distribution, the random variable $x$ can also be encoded in binary format, yielding an $N \times K$ matrix $X$ of \index{Bernoulli probability distribution}Bernoulli probability distributions. The support is then given as $\boldsymbol{X} \in \{0, 1\}^{N \times K}, \forall_{i=1}^{N}\sum_{k=1}^{K} x_{i,k} = 1$ so that the standard $K-1$ probability simplex $S$ still holds for each trial. The \acs{PMF} of the \index{Multinomial probability distribution}Multinomial probability distribution is then rewritten as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:multinomial:pmf_alt}
       \begin{split}
-            f_{Mul}(x; N, K, \theta) &= \frac{N!}{\prod_{k=1}(\sum_{i=1}^{N}x_{i, k})!}\prod_{i=1}^{N}\prod_{k=1}^{K}\theta_{k}^{\mathbbm{1}_{1}(x_{i,k})} \\
+            f_{Mul}(\boldsymbol{X}; N, K, \boldsymbol{\theta}) &= \frac{N!}{\prod_{k=1}(\sum_{i=1}^{N}x_{i, k})!}\prod_{i=1}^{N}\prod_{k=1}^{K}\theta_{k}^{\mathbbm{1}_{1}(x_{i,k})} \\
             &= \frac{N!}{\prod_{k=1}(\sum_{i=1}^{N}x_{i, k})!} \prod_{k=1}^{K}\theta_{k}^{\sum_{i=1}^{N}\mathbbm{1}_{1}(x_{i,k})} \\
             &= \frac{N!}{\prod_{k=1}(\sum_{i=1}^{N}x_{i, k})!} \prod_{k=1}^{K}\theta_{k}^{N_{k}} \\
       \end{split}
 \end{equation}
 
-In Equation~\eqref{eq:probability:probability_distributions:multinomial:pmf_alt} above, $N_{k}$ is a summary variable, denoting the number of times a category $k$ occurs over all trials in $N$.
-
-The \index{Categorical probability distribution}Categorical and \index{Multinomial probability distribution}Multinomial probability distributions are presented as binary encoded vectors in order to simplify the proof of their conjugate priors as is shown in the following section.
-
+where $N_{k}$ is a summary variable, denoting the number of times a category $k$ occurs over all trials in $N$.
 
 \section{Conjugate Priors}\label{sec:probability:conjugate_priors}
 
