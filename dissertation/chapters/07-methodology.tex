@@ -47,16 +47,16 @@ The purpose of the empirical process is to conduct a carefully crafted set of ex
 
 These empirical tests represent a set of questions, related to the \acs{BHH}, that need to be answered. The empirical process is designed to answer these questions. The empirical process is structured as follows.
 
-Each empirical tests starts with a question to be answered. A hypothesis is formulated for the outcome of the empirical test. The empirical tests are then designed around the implementation of the components under evaluation. Each empirical test defines the configuration of elements and generally include a set of parameters that are altered between experiments. Each experiment is evaluated by means of a performance measurement. In the context of training \acp{FFNN}, the underlying model is trained across a number of datasets. Each dataset is split into a training and test set. The training set is used to train the model, while the test set is used to evaluate the model's performance on unseen data. Training epochs are split into mini-batch iterations with a specified mini-batch size. Evaluation takes place at every mini-batch step. Due to the stochastic nature of the experiments, each experiment is repeated over a number of runs to provide sufficient sample for statistical certainty about the outcome of the results. Each run contains a different random seed, such that each run is unique. The evaluation data forms the results of the empirical test. These results are analysed for statistical significance, from which findings and conclusions are then made. The null hypothesis is then either rejected or verified based on these findings.
+Each empirical test starts with a question to be answered. A hypothesis is formulated for the outcome of the empirical test. The empirical tests are then designed around the implementation of the components under evaluation. Each empirical test defines the configuration of elements and generally include a set of parameters that are altered between experiments. Each experiment is evaluated by means of a performance measurement. In the context of training \acp{FFNN}, the underlying model is trained across a number of datasets. Each dataset is split into a training set comprising of 80\% of the data, and a test set comprising of 20\% of the data. The training set is used to train the model, while the test set is used to evaluate the model's performance on unseen data. Training epochs are split into mini-batch iterations with a specified mini-batch size per dataset. Evaluation takes place at every mini-batch step. Due to the stochastic nature of the experiments, each experiment is repeated over a number of runs to provide sufficient sample for statistical certainty about the outcome of the results. Each run contains a different random seed, such that each run is unique. The evaluation data forms the results of the empirical test. These results are analysed for statistical significance, from which findings and conclusions are then made. The null hypothesis is then either rejected or verified based on these findings.
 
 Details around each of these elements are provided in the following sections and lead with discussions around the datasets that are used.
 
 \section{Datasets}
 \label{sec:methodology:datasets}
 
-This section provides the detail around the different datasets that are used throughout the empirical process. These datasets originate from the UCI Machine Learning Repository~\cite{ref:uci:2022}. Datasets are grouped by problem type and include 8 classification and 7 regression datasets. The classification datasets are given in Table \ref{tab:methodology:datasets:classification} and the regression datasets are given in Table \ref{tab:methodology:datasets:regression} below.
+This section provides the detail around the different datasets that are used throughout the empirical process. These datasets originate from the UCI Machine Learning Repository~\cite{ref:uci:2022}. Datasets are grouped by problem type and include seven classification and seven regression datasets. The classification datasets are given in Table \ref{tab:methodology:datasets:classification} and the regression datasets are given in Table \ref{tab:methodology:datasets:regression} below.
 
-\begin{table}[htbp]
+\begin{table}[htb]
       \centering
       \caption{Classification datasets}
       \label{tab:methodology:datasets:classification}%
@@ -71,13 +71,12 @@ This section provides the detail around the different datasets that are used thr
                   wine quality     & multivariate    & real                       & 12                  & 11               & 4898               & 256            & 20             & ~\cite{ref:cortez:2009}    \\
                   mushroom         & multivariate    & categorical                & 22                  & 2                & 8214               & 512            & 17             & ~\cite{ref:schlimmer:1987} \\
                   bank             & multivariate    & real                       & 17                  & 2                & 45211              & 512            & 89             & ~\cite{ref:moro:2014}      \\
-                  adult            & multivariate    & categorical, integer       & 14                  & 2                & 48842              & 256            & 191            & ~\cite{ref:kohavi:1996}    \\
                   diabetic         & multivariate    & integer                    & 55                  & 3                & 100000             & 1024           & 98             & ~\cite{ref:strack:2014}    \\
             \end{tabular}%
       }
 \end{table}%
 
-\begin{table}[htbp]
+\begin{table}[htb]
       \centering
       \caption{Regression datasets}
       \label{tab:methodology:datasets:regression}%
@@ -97,21 +96,17 @@ This section provides the detail around the different datasets that are used thr
       }
 \end{table}%
 
-Details on how the datasets where preprocessed and prepared is given in Appendix \ref{app:datasets}. The concept of class balancing is briefly discussed next.
+Details on how the datasets where preprocessed and prepared is given in Appendix \ref{app:datasets}.
 
 \subsection{Class Balancing}
 
-A number of classification datasets given in Table \ref{tab:methodology:datasets:classification} contain an unbalanced representation of classes. The empirical process defined in this dissertation does not apply mechanisms to cater for class balancing, in order to eliminate as many variables and factors in the empirical process as possible, as it is already a complicated process.  It is therefore suggested that the \acs{BHH} first be studied under the assumption of balanced classes, before applying class balancing techniques. In future research opportunities, class balancing should be utilised.
-
-The next section presents the \acp{FFNN}/models and the configurations that are used in the empirical process.
+A number of classification datasets given in Table \ref{tab:methodology:datasets:classification} contain an unbalanced representation of classes. The empirical process defined in this dissertation does not apply mechanisms to cater for class balancing, in order to eliminate as many variables and factors in the empirical process as possible. It is therefore suggested that the \acs{BHH} first be studied under the assumption of balanced classes, before applying class balancing techniques. In future research opportunities, class balancing should be utilised.
 
 \section{Models}\label{sec:methodology:model}
 
-All models that are trained in this dissertation follow implementations of shallow \acp{FFNN}, meaning they only have one hidden layer. The architecture of a model is dependent on the dataset being trained on, the type of optimisation problem, the number of input dimensions and the number of output dimensions. Models' initial weights are initialised by means of \index{Glorot uniform sampling}Glorot uniform sampling. The models and their configuration, as it is used for each dataset, is given in Table \ref{tab:methodology:models:configurations} below.
+All models that are trained in this dissertation follow implementations of shallow \acp{FFNN}, meaning that they only have one hidden layer. The architecture of a model is dependent on the dataset being trained on, the type of optimisation problem, the number of input dimensions and the number of output dimensions. The number of hidden layers were determined empirically. Weights are initialised by means of \index{Glorot uniform sampling}Glorot uniform sampling~\cite{ref:glorot:2010}. The models and their configuration, as it is used for each dataset, are given in Table \ref{tab:methodology:models:configurations}.
 
-
-% Table generated by Excel2LaTeX from sheet 'Model Configurations'
-\begin{table}[htbp]
+\begin{table}[htb]
       \centering
       \caption{Model configurations}
       \label{tab:methodology:models:configurations}%
@@ -169,13 +164,13 @@ This section provides the details of the low-level \index{heuristic}heuristics t
                                      & epsilon                   & 1E-07          &                            \\
                   adadelta           & learning rate             & 1.0 (0.95)     & ~\cite{ref:zeiler:2012}    \\
                                      & rho                       & 0.95           &                            \\
-                                     & epsilon                   & 0.0000001      &                            \\
+                                     & epsilon                   & 1E-07          &                            \\
                   adam               & learning rate             & 0.1 (0.01)     & ~\cite{ref:kingma:2014}    \\
                                      & beta1                     & 0.9            &                            \\
-                                     & beta2                     & 0.95           &                            \\
+                                     & beta2                     & 0.999          &                            \\
                                      & epsilon                   & 1E-07          &                            \\
                   pso                & population size           & 10             & ~\cite{ref:van:2010}       \\
-                                     & learning rate             & 0.1 (0.01)     &                            \\
+                                     & learning rate             & 1.0 (0.9)      &                            \\
                                      & inertia weight (w)        & 0.729844       &                            \\
                                      & cognitive control (c1)    & 1.49618        &                            \\
                                      & social control (c2)       & 1.49618        &                            \\
@@ -194,11 +189,20 @@ This section provides the details of the low-level \index{heuristic}heuristics t
       }
 \end{table}%
 
-Note that from Table \ref{tab:methodology:heuristics}, values that are configured to make use of a decay schedule are presented with the initial value first and the decay rate in brackets next to it. The number of steps is the total number of mini-batch training steps that are executed for that particular dataset.
+Note from Table \ref{tab:methodology:heuristics} that values that are configured to make use of a decay schedule are presented with the initial value first and the decay rate in brackets next to it. The number of steps is the total number of mini-batch training steps that are executed for that particular dataset.
 
-Furthermore, it should be noted that a learning rate was added to \acs{PSO} as an attempt to avoid overshooting solutions later in the training process. This parameter does not traditionally form part of \acs{PSO}, but was found to be useful.
+Furthermore, it should be noted that a learning rate was added to \acs{PSO} as an attempt to avoid overshooting solutions later in the training process. A learning rate parameter does not traditionally form part of \acs{PSO}, but was found to be useful. The position update step for \acs{PSO} using a learning rate is then defined as
 
-Section \ref{sec:bhh:heuristic:proxies} presented the concept of a mapping of proxied \index{heuristic}heuristic state update operations. The mapping of proxied \index{heuristic}heuristic state update operations, implemented by the \acs{BHH} in the empirical process, is given in Figure \ref{fig:methodology:heuristics:proxies}.
+\begin{equation}
+      \label{eq:heuristics:pso:position_learning_rate}
+      \begin{split}
+            x_{ij}(t+1) = x_{ij}(t) + \eta v_{ij}(t+1)
+      \end{split}
+\end{equation}
+
+where $\eta$ is the added learning rate with $0 \leq \eta \leq 1, \eta \in \mathbb{R}$.
+
+Section \ref{sec:bhh:heuristic:proxies} presented the concept of a mapping of proxied \index{heuristic}heuristic state update operations. The mapping of proxied \index{heuristic}heuristic state update operations implemented by the \acs{BHH} in the empirical process is given in Figure \ref{fig:methodology:heuristics:proxies}.
 
 
 \begin{figure}[htbp]
@@ -209,16 +213,14 @@ Section \ref{sec:bhh:heuristic:proxies} presented the concept of a mapping of pr
 \end{figure}
 
 
-In Figure \ref{fig:methodology:heuristics:proxies}, cells containing \textbf{x}, indicate that the associated \index{heuristic}heuristic implements that particular state parameter explicitly, and cells containing \textbf{o} indicate that the state parameter is implicitly implemented as part of the \acs{BHH} algorithm. The required mapping of proxied \index{heuristic}heuristic state operations is then implemented as a lookup of the table presented in Figure \ref{fig:methodology:heuristics:proxies}.
-
-The following section provides the details around the \acs{BHH} baseline configuration.
+In Figure \ref{fig:methodology:heuristics:proxies}, cells containing \textbf{x} indicate that the associated \index{heuristic}heuristic implements that particular state parameter explicitly, and cells containing \textbf{o} indicate that the state parameter is implicitly implemented as part of the \acs{BHH} algorithm. The required mapping of proxied \index{heuristic}heuristic state operations is then implemented as a lookup of the table presented in Figure \ref{fig:methodology:heuristics:proxies}.
 
 \section{BHH Baseline}\label{sec:methodology:baseline_bhh}
 
 The \acs{BHH} baseline is a name given to a specific configuration of the \acs{BHH} which, during development, has been found to provide a reasonable baseline performance. The baseline configuration is used as the cornerstone configuration from which all other \index{heuristic}heuristics and their configurations are evaluated. The \acs{BHH} baseline is also used for the behavioural study of the \acs{BHH}. The \acs{BHH} baseline configuration is given in Table \ref{tab:methodology:bhh_baseline_configuration}.
 
 % Table generated by Excel2LaTeX from sheet 'BHH Baseline'
-\begin{table}[htbp]
+\begin{table}[htb]
       \centering
       \caption{The \acs{BHH} baseline configuration as it is used in the empirical study.}
       \label{tab:methodology:bhh_baseline_configuration}%
@@ -242,34 +244,30 @@ The \acs{BHH} baseline is a name given to a specific configuration of the \acs{B
 
 In Table \ref{tab:methodology:bhh_baseline_configuration}, the \index{heuristic}heuristic pool configuration that is used, is referred to as \textit{all}. The \textit{all} configuration refers to a configuration where the \index{heuristic pool}heuristic pool contains all the low-level \index{heuristic}heuristics as presented in Section \ref{sec:methodology:heuristics}, including all gradient-based \index{heuristic}heuristics and \index{meta-heuristic}meta-heuristics.
 
-The following section provides the performance measurements that are implemented.
-
 
 \section{Performance Measures}\label{sec:methodology:performance_measures}
 
 This section provides the performance measures that are used to evaluate the different experimental runs during the empirical process. Chapter \ref{chap:anns} provided a number of loss functions. These loss functions are used to measure the performance of the \acp{FFNN} being trained. In this dissertation, \acf{BinXE} is used for classification problems with two classes and \acf{SparseCatXE} is used for classification problems with more than two classes. For the classifications problems accuracy is also measured. Accuracy refers to the proportion of correct classifications. For regression problems, the \acf{RMSE} is used as a performance metric.
 
-After training has been completed, the \textit{average rank}, based on test loss, for all configurations, is calculated at each mini-batch step across all runs. The test loss metric and average rank are statistically analysed and used to derive findings and conclusions.
+The test set is used as a validation set during training. All performance metrics are measured for the training set as well as the test/validation set during training. As such, a divergence in performance metrics between the training and test/validation set is used to evaluate for overfitting during the training process.
 
-The following section provides the stopping conditions that are used.
+After training has been completed, the \textit{average rank}, based on test loss, for all configurations, is calculated at each mini-batch step. A total of 30 independent runs with different random seed configurations are executed for each empirical test. The test loss metric and average rank are then statistically analysed across all runs, and are used to derive findings and conclusions.
 
 \section{Stopping Conditions}\label{sec:methodology:stopping_conditions}
 
 This section provides the stopping conditions that are used during the empirical process. For this dissertation, the \textit{maximum epoch} stopping condition is used, where a fixed, maximum number of training steps and epochs are executed and training is not haulted until the maximum number of epochs have been reached. Early stopping is a technique where training is stopped when the \index{heuristic}heuristic is not able to improve the performance of the \acs{FFNN} for a number of steps. If the performance has not improved, the training is halted and the last known best model weights are restored. Early stopping is not implemented for the empirical process in this dissertation. This design decision is made so that the behaviour of the \acs{BHH} can be studied beyond the point of optimal results.
 
-The following sections provide the various experimental groups that are formulated and empirically tested.
-
 
 \section{Experiments}
 \label{sec:methodology:experiments}
 
-This section presents the experimental groups that are executed in the empirical process. Three main experimental groups are formulated. These include a behavioural case study of the \acs{BHH} as it relates to an example problem, a critical evaluation of the \acs{BHH}'s baseline performance in comparison to other standalone low-level \index{heuristic}heuristics, and finally an analysis of different \acs{BHH} variants is done by analysing the effects of different hyper-parameter values on the outcomes of the \acs{BHH}. Each of these are discussed in more detail in the following sections.
+This section presents the experimental groups that are executed in the empirical process. Three main experimental groups are formulated. Each of these are discussed in more detail in the following sections.
 
 
 \subsection{Behavioural Case Study}
 \label{sec:methodology:experiments:case_study}
 
-The behavioural case study is concerned with studying the behaviour of the \acs{BHH} baseline configuration as it relates to an example problem dataset, across a number of runs. The example problem dataset is the iris dataset, presented in Table \ref{tab:methodology:datasets:classification}. The behavioural case study is meant to provide an introductory analysis of the inner workings of the \acs{BHH} and includes analysis of the selection mechanism, as well as the perturbative nature of the \acs{BHH}. The behavioural case study is not meant to be statistically analysed, but to rather provide a detailed visual analysis of a number of hand-picked example runs, to determine if the \acs{BHH} is behaving as expected. From these observations, it is determined if the \acs{BHH} is learning and that selection is indeed biasing towards better performance. These observations also provide an opportunity to observe the outcome of the perturbative nature of the \acs{BHH}, which includes proxied \index{heuristic}heuristic update step operations.
+The behavioural case study analyses the behaviour of the \acs{BHH} baseline configuration as it relates to an example problem dataset, across 30 independent runs. The example problem dataset is the iris dataset, presented in Table \ref{tab:methodology:datasets:classification}. The behavioural case study is meant to provide an introductory analysis of the inner workings of the \acs{BHH} and includes analysis of the selection mechanism, as well as the perturbative nature of the \acs{BHH}. The behavioural case study is not meant to be statistically analysed, but to rather provide a detailed visual analysis of a number of hand-picked example runs, to determine if the \acs{BHH} is behaving as expected. From these observations, it is determined if the \acs{BHH} is learning and that selection is indeed biasing towards better performance. These observations also provide an opportunity to observe the outcome of the perturbative nature of the \acs{BHH}, which includes proxied \index{heuristic}heuristic update step operations.
 
 The behavioural case study provides an implementation of the \acs{BHH} baseline which, by default, has a replay window size of 10. The baseline configuration is provided and compared to an implementation of a \acs{BHH} configuration where the replay window size is large (250), as well as an implementation of the \acs{BHH} using the \textit{symmetric} credit assignment strategy. The large replay window size configuration is to used to show the behaviour of the \acs{BHH} when it has access to a large number of performance log samples, which increases the statistical certainty of the learning outcome. The \acs{BHH} configuration that uses the \textit{symmetric} credit assignment strategy is used to illustrate the behaviour of the \acs{BHH} where no performance bias takes place and thus, no learning occurs.
 
@@ -280,14 +278,14 @@ For the standalone \index{heuristic}heuristics experimental group, the \index{he
 
 The intent of the standalone \index{heuristic}heuristics experimental group is to determine if the \acs{BHH} baseline configuration can generalise to multiple problems in comparison to individual low-level \index{heuristic}heuristics.
 
-Additional to the \acs{BHH} baseline configuration, two more \acs{BHH} configurations are included. These include \acs{BHH} configurations where the \index{heuristic pool}heuristic pool only makes use of gradient-based \index{heuristic}heuristics, and a configuration where the \index{heuristic pool}heuristic pool only makes use of meta-heuristics. The intent behind the inclusion of these configurations is to determine the effectiveness of multi-method approaches in the \index{heuristic pool}heuristic pool as it applies to training \acp{FFNN}.
+Additional to the \acs{BHH} baseline configuration, two more \acs{BHH} configurations are included. These include \acs{BHH} configurations where the \index{heuristic pool}heuristic pool only makes use of gradient-based \index{heuristic}heuristics, and a configuration where the \index{heuristic pool}heuristic pool only makes use of \acp{MH}. The intent behind the inclusion of these configurations is to determine the effectiveness of multi-method approaches in the \index{heuristic pool}heuristic pool as it applies to training \acp{FFNN}.
 
 \subsection{BHH Variants}
 \label{sec:methodology:experiments:bhh_variants}
 
 This section provides the details of the experimental group that focuses on \acs{BHH} variants and the effect that different hyper-parameter configurations can have on the outcome of the \acs{BHH}. The different variants of the \acs{BHH} and their possible configurations are given in Table \ref{tab:methodology:experiments:bhh_variants}.
 
-\begin{table}[htbp]
+\begin{table}[htb]
       \centering
       \caption{BHH variants and their configuration}
       \label{tab:methodology:experiments:bhh_variants}%
@@ -309,9 +307,7 @@ This section provides the details of the experimental group that focuses on \acs
       }
 \end{table}%
 
-In Table \ref{tab:methodology:experiments:bhh_variants}, the \index{heuristic pool}heuristic pool configuration \textit{gd} refers to the \index{heuristic pool}heuristic pool configuration where only gradient-based \index{heuristic}heuristics are included, and \textit{mh} refers to the \index{heuristic pool}heuristic pool configuration where only meta-heuristics are included.
-
-The next section presents the method that is followed for statistical analysis.
+In Table \ref{tab:methodology:experiments:bhh_variants}, the \index{heuristic pool}heuristic pool configuration \textit{gd} refers to the \index{heuristic pool}heuristic pool configuration where only gradient-based \index{heuristic}heuristics are included, and \textit{mh} refers to the \index{heuristic pool}heuristic pool configuration where only \acp{MH} are included.
 
 \section{Statistical Analysis}
 \label{sec:methodology:statistical_analysis}
@@ -320,22 +316,22 @@ This section provides the detail of the process that is used to execute the stat
 
 Various experimental groups and configurations have been presented in Sections \ref{sec:methodology:experiments:case_study}, \ref{sec:methodology:experiments:standalone_optimisers} and \ref{sec:methodology:experiments:bhh_variants}. The results from each of these experimental groups are statistically analysed. To ensure that there are sufficient samples for statistical analysis, each experiment and configuration is trained for 30 epochs and is repeated over 30 runs, for each of the 15 datasets. The experimental results contain performance evaluation data for the training and testing datasets, and includes loss and accuracy measurements. Statistical analysis is executed on the results from the testing datasets. An average rank is calculated across all 30 runs, for all experimental groups and configurations, at each step, for every epoch of training. Each run is executed using a unique random seed, such that each run is identical in its setup and configuration, but unique between runs.
 
-The evaluation of outcome is based on the aggregated statistical results as mentioned above. A descriptive analysis is executed on the spread of the data. The results are analysed and checked for overfitting and outliers are identified. The skewness of the results is evaluated per dataset and the \index{Shapiro-Wilk}Shapiro-Wilk test for normality ($\alpha$ = 0.001) is used to determine if the results are normally distributed. Furthermore, the \index{Levene}Levene's test for equality of variance ($\alpha$ = 0.001) is used. The output of the full statistical analysis is presented in Appendix \ref{app:statistical_analysis}.
+The evaluation of outcome is based on the aggregated statistical results as mentioned above. A descriptive analysis is executed on the spread of the data. The results are analysed and checked for overfitting and outliers are identified. The skewness of the results is evaluated per dataset and the \index{Shapiro-Wilk}Shapiro-Wilk test for normality~\cite{ref:shapiro:1965} ($\alpha$ = 0.001) is used to determine if the results are normally distributed. Furthermore, the \index{Levene}Levene's test for equality of variance~\cite{ref:levene:1961} ($\alpha$ = 0.001) is used. The output of the full statistical analysis is presented in Appendix \ref{app:statistical_analysis}.
 
-Dependent on the outcomes of the above statistical tests, the appropriate statistical significance test is then executed. For experiments where there are only two configurations, the Mann-Whitney U\index{Mann-Whitney U} independent samples t-Test ($\alpha$ = 0.001) is executed. For experiments with three or more configurations, the \acf{ANOVA} statistical test ($\alpha$ = 0.001) is used. The\index{Kruskal-Wallis} Kruskal-Wallis ranked non-parametric test for statistical significance ($\alpha$ = 0.001) is used for cases where data is not normally distributed.
+Dependent on the outcomes of the above statistical tests, the appropriate statistical significance test is then executed. For experiments where there are only two configurations, the Mann-Whitney U\index{Mann-Whitney U} independent samples t-Test~\cite{ref:mann:1947} ($\alpha$ = 0.001) is executed. For experiments with three or more configurations, the \acs{ANOVA} statistical test~\cite{ref:fisher:1921} ($\alpha$ = 0.001) is used. The\index{Kruskal-Wallis} Kruskal-Wallis ranked non-parametric test~\cite{ref:kruskal:1952} for statistical significance ($\alpha$ = 0.001) is used for cases where data is not normally distributed.
 
-Regardless of the statistical test that is used, a post-hoc Tukey honest significant difference test ($\alpha$ = 0.001) is used from which significant ranking is retrieved. Descriptive and critical difference plots are then retrieved from these results to provide visual aid.
+Regardless of the statistical test that is used, a post-hoc Tukey honest significant difference test~\cite{ref:tukey:1949} ($\alpha$ = 0.001) is used from which significant ranking is retrieved. Descriptive and critical difference plots are then retrieved from these results to provide visual aid.
 
 \section{Implementation and Execution}\label{sec:methodology:implementation}
 
-All implementations are done from first principles in Python 3.9 using Tensorflow 2.7 and Tensorflow Probability 0.15.0. Most underlying mathematical functions are reused from the Tensorflow library, however, all \index{heuristic}heuristics are implemented from first principles to fit the \acs{HH} framework that was developed. The source code and data for this dissertation is provided and made public at \url{https://github.com/arneschreuder/masters.ai}.
+All implementations are done from first principles in Python 3.9 using Tensorflow 2.7 and Tensorflow Probability 0.15.0. Most underlying mathematical functions are reused from the Tensorflow library, however, all \index{heuristic}heuristics are implemented from first principles to fit the \acs{HH} framework that was developed. The source code and data for this dissertation is provided and made public at \url{https://github.com/arneschreuder/masters}.
 
 It should be noted that this implementation makes heavy use of CPU processing, due to flattening of the \acs{FFNN} weights by the \index{heuristic}heuristics. For this reason, execution is much more timely and costly than with GPU training.
 
-All experiments were run on the Centre for High Performance Computing (CHPC) cluster. A total of 14 different server were used, each running 24-56 cores and 256GB of memory. The entire empirical process took 6 days.
+All experiments were run on the Centre for High Performance Computing (CHPC) cluster. A total of 14 different server were used, each running 24 to 56 cores and 256GB of memory. The entire empirical process took six days.
 
 \section{Summary}\label{sec:methodology:summary}
 
-This chapter provided the detail around the methodology that is used to execute the empirical process. The datasets, \acp{FFNN} and \index{heuristic}heuristics that are used during the empirical process have been presented in detail, along with details around various \acs{BHH} configurations. A baseline \acs{BHH} has been formulated. The empirical process was defined in terms of a number of different experimental groups and finally, the process of statistical analysis of the results was provided.
+This chapter provided the detail around the methodology that was used to execute the empirical process. The datasets, \acp{FFNN} and \index{heuristic}heuristics that are used during the empirical process have been presented in detail, along with details around various \acs{BHH} configurations. A baseline \acs{BHH} has been formulated. The empirical process was defined in terms of a number of different experimental groups and finally, the process of statistical analysis of the results was provided.
 
 The results and findings of the empirical process are presented in the following chapter.
