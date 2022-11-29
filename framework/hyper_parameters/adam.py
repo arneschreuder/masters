@@ -44,16 +44,19 @@ class Adam(Parameters):
     epsilon: float
         Small error value. Default = None
     """
+
     learning_rate: float or Schedule = None
     beta1: float = None
     beta2: float = None
     epsilon: float = None
 
-    def __init__(self,
-                 learning_rate: float or Schedule = 0.001,
-                 beta1: float = 0.9,
-                 beta2: float = 0.9,
-                 epsilon: float = 1e-7):
+    def __init__(
+        self,
+        learning_rate: float or Schedule = 0.001,
+        beta1: float = 0.9,
+        beta2: float = 0.999,
+        epsilon: float = 1e-7,
+    ):
         """
         Parameters
         ----------
