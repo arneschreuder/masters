@@ -1,13 +1,31 @@
 \chapter{Datasets}
 \label{app:datasets}
 
-Appendices follow exactly the same structure as chapters. They are used to
-describe aspects that are not central to the dissertation (for example, an
-algorithm that you benchmark against, but do not focus on in the main text, or a
-discussion on the sample datasets you test your algorithm on).
+This appendix provides insight into the preparation and usage of datasets that were used as part of the empirical process. The section is structured as follows:
 
-\section{Summary}
-\label{app:datasets:summary}
+\begin{itemize}
+	\item \textbf{Section \ref{app:datasets:overview}} provides an overview of the data processing that was executed on each dataset.
 
-As always, provide a summary at the end.
+	\item \textbf{Section \ref{app:datasets:example}} provides an example data processing script for the iris dataset. The same approach was followed for all datasets.
+\end{itemize}
 
+\section{Overview}\label{app:datasets:overview}
+
+This section provides a brief overview of all the data processing operations that were executed on all datasets. The data processing tasks included:
+
+\begin{itemize}
+	\item Exploratory analysis and visualisation off data distribution.
+
+	\item Dropping of rows that contain missing data in and standardisation of data types.
+
+	\item Normalising all numerical features using the \index{standard score scaler}standard score scaler and one-hot encoding of all categorical features.
+
+	\item Splitting the datasets into a training set (80\%) and a testing set (20\%) and then shuffling and batching of data.
+\end{itemize}
+
+
+\section{Example}\label{app:datasets:example}
+
+This section provides an example data processing script that was used for the iris dataset. All the datasets used in this dissertation follow the same data processing principles.
+
+\includepdf[pages=-]{attachments/iris.pdf}

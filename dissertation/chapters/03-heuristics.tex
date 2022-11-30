@@ -106,7 +106,7 @@ Finally, assuming the use of the \index{sigmoid}sigmoid activation function, the
 
 Again, assuming the use of \acs{SSE} as the loss function, the pseudo-code implementation for the generic \acs{GD} algorithm is taken from~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} and is presented in Algorithm~\ref{algo:heuristics:gd:gd} below.
 
-\begin{algorithm}[H]
+\begin{algorithm}[htb]
       \caption{The pseudo code algorithm for the generic \acf{GD} heuristic.}
       \label{algo:heuristics:gd:gd}
       \begin{algorithmic}
@@ -444,7 +444,7 @@ It should be noted that the choice of control parameters play a vital role in th
 
 An example of the pseudo code implementation of the \textit{gbest} \acs{PSO} is taken from~\cite{ref:engelbrecht:2007} and is given in Algorithm~\ref{algo:heuristics:pso:gbest}.
 
-\begin{algorithm}[H]
+\begin{algorithm}[htb]
       \caption{The pseudo code algorithm for the gbest \acs{PSO} heuristic.}
       \label{algo:heuristics:pso:gbest}
       \begin{algorithmic}
@@ -530,7 +530,7 @@ In Equation~\eqref{eq:heuristics:de:crossover}, $x_{ij}(t)$ refers to the $j$-th
       \item \textbf{Exponential \index{crossover}crossover}:~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} states that with exponential \index{crossover}crossover, a sequence of adjacent \index{crossover}crossover points are selected from some randomly selected \index{crossover}crossover index. This means that the set of possible \index{crossover}crossover points $\mathcal{J}$ is a circular array in indices. Exponential \index{crossover}crossover does not require the selection of an additional \index{crossover}crossover point $j^{*}$ as this technique includes at the very least one index, which is the starting index that is randomly selected. From the starting index, the next index is selected until $U(0,1) \geq p_{r}$ or $|\mathcal{J}| = N$, and $p_{r}$ is the same \index{crossover}crossover probability as mentioned above for binomial \index{crossover}crossover. The implementation of exponential \index{crossover}crossover is given in Algorithm~\ref{algo:heuristics:de:exp}.
 \end{itemize}
 
-\begin{algorithm}[H]
+\begin{algorithm}[htb]
       \caption{The pseudo code algorithm for the binomial \index{crossover}crossover technique for \acs{DE}.}
       \label{algo:heuristics:de:bin}
       \begin{algorithmic}
@@ -544,7 +544,7 @@ In Equation~\eqref{eq:heuristics:de:crossover}, $x_{ij}(t)$ refers to the $j$-th
       \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}[H]
+\begin{algorithm}[htb]
       \caption{The pseudo code algorithm for the exponential \index{crossover}crossover technique for \acs{DE}.}
       \label{algo:heuristics:de:exp}
       \begin{algorithmic}
@@ -566,7 +566,7 @@ Selection refers to the technique that is used to determine which entities are i
 
 Algorithm~\ref{algo:heuristics:de:general_de} is taken from~\citeauthor{ref:engelbrecht:2007}~\cite{ref:engelbrecht:2007} and presents the general \acs{DE} algorithm. The population is initialised by randomly placing entities in the search space such that the positions of the entities are confined to some search boundary. As such, $x_{ij}(t) \sim U(x_{min,j}, x_{max,j})$, where $x_{min,j}$ and $x_{max,j}$ define the search boundaries.
 
-\begin{algorithm}[H]
+\begin{algorithm}[htbp]
       \caption{The pseudo code for the general \acs{DE} heuristic.}
       \label{algo:heuristics:de:general_de}
       \begin{algorithmic}
@@ -627,7 +627,7 @@ So far, two population-based \acp{MH} have been introduces. These include \acs{P
 
 For sake of clarity, a generic \acs{EC} algorithm is presented first, as a frame of reference. The generic \acs{EC} algorithm is referred to as the canonical \acs{GA} (CGA) and was proposed by Holland~\cite{ref:holland:1992}. The generic \acs{EC} algorithm is taken from~\cite{ref:engelbrecht:2007} and is is presented in Algorithm~\ref{algo:heuristics:ga:generic_ec} below.
 
-\begin{algorithm}[H]
+\begin{algorithm}[htb]
       \caption{The pseudo code for the generic \acs{EC} heuristic.}
       \label{algo:heuristics:ga:generic_ec}
       \begin{algorithmic}
@@ -686,7 +686,7 @@ Although floating-point representations of chromosomes are assumed, binary \inde
 \end{figure}
 
 
-\begin{algorithm}[H]
+\begin{algorithm}[htb]
       \caption{The pseudo code for the uniform \index{crossover}crossover operator as used by \acp{GA}.}
       \label{algo:heuristics:mh:ga:uniform_crossover}
       \begin{algorithmic}
@@ -708,7 +708,7 @@ The \index{mutation}mutation operator is applied in order to introduce new genet
 Similar to the \index{crossover}crossover operator, \index{mutation}mutation operators can be classified according to the representation scheme used. In the context of training
 \acp{FFNN}, binary \index{crossover}crossover operators such as the \textit{uniform} \index{mutation}mutation operator can be used to generate a \index{mutation}mutation mask that specifies which genes are mutated. For the purposes of this dissertation, the application of the \index{mutation}mutation operator on $x_{ij}(t)$ results in a small update step for that gene such that $x'_{ij}(t) = x_{ij}(t) + v_{ij}(t)$. In this case, $v_{ij}(t)$ is sampled using \index{Glorot uniform sampling}Glorot uniform sampling within the bounds $(-limit, limit)$, as was presented in Chapter~\ref{chap:anns}. An adaptation of the uniform \index{mutation}mutation operator is provided in Algorithm~\ref{algo:heuristics:mh:ga:uniform_mutation} below.
 
-\begin{algorithm}[H]
+\begin{algorithm}[htb]
       \caption{The pseudo code for the uniform \index{mutation}mutation operator as used by \acp{GA}.}
       \label{algo:heuristics:mh:ga:uniform_mutation}
       \begin{algorithmic}
