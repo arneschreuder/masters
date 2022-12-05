@@ -83,15 +83,15 @@ This section provides the detail around the different datasets that are used thr
       \par\bigskip
       \resizebox{\textwidth}{!}{
             \begin{tabular}{cccccccc}
-                  \textbf{dataset}    & \textbf{output}          & \textbf{types} & \textbf{attributes} & \textbf{instances} & \textbf{batch} & \textbf{steps} & \textbf{citation}         \\
+                  \textbf{dataset}    & \textbf{output}           & \textbf{types} & \textbf{attributes} & \textbf{instances} & \textbf{batch} & \textbf{steps} & \textbf{citation}         \\
                   \midrule
-                  fish toxicity       & multivariate             & real           & 7                   & 908                & 64             & 15             & ~\cite{ref:cassotti:2015} \\
-                  housing             & univariate               & real           & 13                  & 506                & 32             & 16             & ~\cite{ref:harrison:1978} \\
-                  forest fires        & multivariate             & real           & 13                  & 517                & 32             & 17             & ~\cite{ref:cortez:2007}   \\
-                  student performance & multivariate             & integer        & 33                  & 649                & 32             & 21             & ~\cite{ref:cortez:2008}   \\
-                  parkinsons          & multivariate             & integer, real  & 26                  & 5875               & 256            & 23             & ~\cite{ref:tsanas:2009}   \\
-                  air quality         & multivariate, timeseries & real           & 15                  & 9358               & 256            & 37             & ~\cite{ref:de:2008}       \\
-                  bike                & univariate               & integer, real  & 16                  & 17389              & 256            & 68             & ~\cite{ref:fanaee:2014}   \\
+                  fish toxicity       & multivariate              & real           & 7                   & 908                & 64             & 15             & ~\cite{ref:cassotti:2015} \\
+                  housing             & univariate                & real           & 13                  & 506                & 32             & 16             & ~\cite{ref:harrison:1978} \\
+                  forest fires        & multivariate              & real           & 13                  & 517                & 32             & 17             & ~\cite{ref:cortez:2007}   \\
+                  student performance & multivariate              & integer        & 33                  & 649                & 32             & 21             & ~\cite{ref:cortez:2008}   \\
+                  parkinsons          & multivariate              & integer, real  & 26                  & 5875               & 256            & 23             & ~\cite{ref:tsanas:2009}   \\
+                  air quality         & multivariate, time series & real           & 15                  & 9358               & 256            & 37             & ~\cite{ref:de:2008}       \\
+                  bike                & univariate                & integer, real  & 16                  & 17389              & 256            & 68             & ~\cite{ref:fanaee:2014}   \\
             \end{tabular}%
       }
 \end{table}%
@@ -269,7 +269,7 @@ This section presents the experimental groups that are executed in the empirical
 
 The behavioural case study analyses the behaviour of the \acs{BHH} baseline configuration as it relates to an example problem dataset, across 30 independent runs. The example problem dataset is the iris dataset, presented in Table \ref{tab:methodology:datasets:classification}. The behavioural case study is meant to provide an introductory analysis of the inner workings of the \acs{BHH} and includes analysis of the selection mechanism, as well as the perturbative nature of the \acs{BHH}. The behavioural case study is used to determine if the \acs{BHH} is learning and that selection is indeed biasing towards better performance. These observations also provide an opportunity to observe the outcome of the perturbative nature of the \acs{BHH}, which includes proxied \index{heuristic}heuristic update step operations.
 
-The behavioural case study provides an implementation of the \acs{BHH} baseline which, by default, has a replay window size of 10. The baseline configuration is provided and compared to an implementation of a \acs{BHH} configuration where the replay window size is large (250), as well as an implementation of the \acs{BHH} using the \textit{symmetric} credit assignment strategy. The large replay window size configuration is to used to show the behaviour of the \acs{BHH} when it has access to a large number of performance log samples, which increases the statistical certainty of the learning outcome. The \acs{BHH} configuration that uses the \textit{symmetric} credit assignment strategy is used to illustrate the behaviour of the \acs{BHH} where no performance bias takes place and thus, no learning occurs.
+The behavioural case study provides an implementation of the \acs{BHH} baseline which, by default, has a replay window size of 10. The baseline configuration is provided and compared to an implementation of a \acs{BHH} configuration where the replay window size is large (250), as well as an implementation of the \acs{BHH} using the \textit{symmetric} credit assignment strategy. The large replay window size configuration is used to show the behaviour of the \acs{BHH} when it has access to a large number of performance log samples, which increases the statistical certainty of the learning outcome. The \acs{BHH} configuration that uses the \textit{symmetric} credit assignment strategy is used to illustrate the behaviour of the \acs{BHH} where no performance bias takes place and thus, no learning occurs.
 
 \subsection{Standalone Heuristics}
 \label{sec:methodology:experiments:standalone_optimisers}

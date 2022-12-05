@@ -42,7 +42,7 @@ The biological neural systems are made up of microscopic nerve cells called neur
 
 This section introduces the \acs{AN}. Brief discussion follow on the various components that make up the \acs{AN}.
 
-The \acs{AN} implements a nonlinear mapping from $\mathbb{R}^{I}$ to
+The \acs{AN} implements a non-linear mapping from $\mathbb{R}^{I}$ to
 $\mathbb{R}^{T}$, usually in the ranges $[0,1]$ or $[-1,1]$, depending on the
 activation function used~\cite{ref:engelbrecht:2007} and is given
 as
@@ -100,7 +100,7 @@ For qualitative data, the class labels have to be converted from textual to nume
 \index{normalisation}
 \subsubsection{Normalisation}\label{sec:anns:an:input:normalisation}
 
-Numerical data must be normalised and scaled appropriately for the \acs{AN}. In general, input data is normalised to a range that is appropriate for the \index{activation function}activation function being used by the \acs{AN}. Normalisation and scaling yields input data that is comparable to the output produced by the \acs{AN}. For the purposes of this disseration, the \index{min-max scaler}min-max scaler~\cite{ref:al:2006} and the \index{standard score scaler}standard score scaler~\cite{ref:jain:2005} are considered.
+Numerical data must be normalised and scaled appropriately for the \acs{AN}. In general, input data is normalised to a range that is appropriate for the \index{activation function}activation function being used by the \acs{AN}. Normalisation and scaling yields input data that is comparable to the output produced by the \acs{AN}. For the purposes of this dissertation, the \index{min-max scaler}min-max scaler~\cite{ref:al:2006} and the \index{standard score scaler}standard score scaler~\cite{ref:jain:2005} are considered.
 
 \index{min-max scaler}
 \subsubsection{Min-Max Scaler}\label{sec:anns:an:input:min_max_scaler}
@@ -128,7 +128,7 @@ where $\mu_i$ and $\sigma^2_i$ are respectfully the mean and unit variance of th
 
 \subsection{Weights}\label{sec:anns:an:weights}
 
-The connection strength that synapses in the \acs{BN} have is modeled in the \acs{AN} as weight vectors of numerical values associated with each dimension of the input. Weights can either dampen or strengthen the input by some negative or positive numerical value. Changes in the weight associated with a feature changes the influence that that particular feature has on the predicted output. Finding the correct value for each weight, such that the \acs{AN} yields optimal output, is an optimisation problem~\cite{ref:thierens:1993}. Research has shown that weight initialisation plays an important role in the efficient training of \acp{ANN}~\cite{ref:thimm:1995}.
+The connection strength that synapses in the \acs{BN} have is modelled in the \acs{AN} as weight vectors of numerical values associated with each dimension of the input. Weights can either dampen or strengthen the input by some negative or positive numerical value. Changes in the weight associated with a feature changes the influence that that particular feature has on the predicted output. Finding the correct value for each weight, such that the \acs{AN} yields optimal output, is an optimisation problem~\cite{ref:thierens:1993}. Research has shown that weight initialisation plays an important role in the efficient training of \acp{ANN}~\cite{ref:thimm:1995}.
 
 \subsubsection{Weight Initialisation}\label{sec:anns:an:weights:initialisation}
 
@@ -384,7 +384,7 @@ The topology of the \acs{ANN} refers to the way that layers of \acp{AN} are conn
 
 \subsection{Feedforward Neural Networks}\label{sec:anns:anns:ffnns}
 
-\acp{FFNN} were the first and simplest type of \acp{ANN} developed~\cite{ref:schmidhuber:2015} and implement input, hidden and output layers by arranging them in sequential order. Furthermore, \acp{FFNN} implement \index{fully connected topology}fully connected topologies. In \acp{FFNN}, information moves forward, in one direction, from the input nodes, through the hidden nodes and finally to the output nodes. Depending on the optimisation algorithm used, error correction information can be ``backpropagated'' through the network. An illustration of a \acs{FFNN} is given in Figure~\ref{fig:ffnn} below.
+\acp{FFNN} were the first and simplest type of \acp{ANN} developed~\cite{ref:schmidhuber:2015} and implement input, hidden and output layers by arranging them in sequential order. Furthermore, \acp{FFNN} implement \index{fully connected topology}fully connected topologies. In \acp{FFNN}, information moves forward, in one direction, from the input nodes, through the hidden nodes and finally to the output nodes. Depending on the optimisation algorithm used, error correction information can be propagated backwards through the network. An illustration of a \acs{FFNN} is given in Figure~\ref{fig:ffnn} below.
 
 \begin{figure}[htb]
       \centering
@@ -436,11 +436,11 @@ epoch. The \acs{FFNN} is trained until some stopping condition is reached. Once 
 
 \subsubsection{Overfitting}\label{sec:anns:training:process:overfitting}
 
-\index{overfitting}Overfitting describes a scenario where the trained \acs{FFNN} performs well on training data, but does not generalise well to never before seen data from the test set~\cite{ref:tetko:1995, ref:geron:2017}. Geron~\cite{ref:geron:2017} describes \index{overfitting}overfitting as the case where \acs{FFNN} is too complex relative to the noisiness of the training data.
+\index{overfitting}Overfitting describes a scenario where the trained \acs{FFNN} performs well on training data, but does not generalise well to never before seen data from the test set~\cite{ref:tetko:1995, ref:geron:2017}. \citeauthor{ref:geron:2017}~\cite{ref:geron:2017} describes \index{overfitting}overfitting as the case where \acs{FFNN} is too complex relative to the noisiness of the training data.
 
 \subsubsection{Underfitting}\label{sec:anns:training:process:underfitting}
 
-Underfitting describes a scenario where the \acs{FFNN} is not able to effectively learn the underlying structure of the training data~\cite{ref:tetko:1995, ref:geron:2017}. Geron~\cite{ref:geron:2017} describe underfitting as the case where the \acs{FFNN} is too simple relative to the underlying structure of the training data.\\
+Underfitting describes a scenario where the \acs{FFNN} is not able to effectively learn the underlying structure of the training data~\cite{ref:tetko:1995, ref:geron:2017}. \citeauthor{ref:geron:2017}~\cite{ref:geron:2017} describe underfitting as the case where the \acs{FFNN} is too simple relative to the underlying structure of the training data.\\
 \\
 There are two types of supervised learning algorithms based on when weights are updated~\cite{ref:engelbrecht:2007}. These include stochastic training and batch
 training.

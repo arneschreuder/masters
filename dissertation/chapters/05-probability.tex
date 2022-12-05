@@ -8,7 +8,7 @@
       - Pierre-Simon Laplace
 \end{flushright}
 
-Probability theory and statistics can be traced back to as early as the 18th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of of Chance}; a book that is widely regarded as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of \index{Bayes' theorem}Bayes' theorem was introduced.
+Probability theory and statistics can be traced back to as early as the 18th century. In 1718,~\citeauthor{ref:demoivre:1718}~\cite{ref:demoivre:1718} published the \textit{Doctrine of Chance}; a book that is widely regarded as the first published book on probability theory. In 1763, Thomas Bayes~\cite{ref:bayes:1763} published an article titled \textit{An Essay towards solving a Problem in the Doctrine of Chances} where the first version of \index{Bayes' theorem}Bayes' theorem was introduced.
 
 Probability theory, statistics and \acf{ML} are transdisciplinary fields with many shared concepts. There are many examples of how probability theory has been incorporated into \acs{ML} research. In 1991,~\citeauthor{ref:denker:1991}~\cite{ref:denker:1991} proposed a way to transform \acf{ANN} outputs to probability distributions. In 1993, \citeauthor{ref:neal:1993}~\cite{ref:neal:1993} developed a \acf{MCMC} sampling algorithm for \acfp{BNN}. These are but a few examples of the role that probability theory has played in \acs{ML} research in the past.
 
@@ -35,7 +35,7 @@ Chapter \ref{chap:hhs} provided the concept of a \acf{HH}. This dissertation aim
 
 \section{Overview of Probability}\label{sec:probability:overview}
 
-In everyday conversation, the term \textit{probability} is a measure of belief in the occurrence of a future event~\cite{ref:wackerly:2014}. Probability is a necessary tool used in many fields including physics, biology, chemistry and computer science. These fields contain many cases that generate observations that cannot be predicted with absolute certainty~\cite{ref:wackerly:2014}. Probability can be be inferred and confirmed through past events. These events are referred to as \textit{random} or \textit{stochastic} events. The probability that a certain event, $A$, might occur is denoted by $P(A)$. Although these random events cannot be predicted with absolute certainty, the relative frequency with which they occur over many trials, is often remarkably stable.
+In everyday conversation, the term \textit{probability} is a measure of belief in the occurrence of a future event~\cite{ref:wackerly:2014}. Probability is a necessary tool used in many fields including physics, biology, chemistry and computer science. These fields contain many cases that generate observations that cannot be predicted with absolute certainty~\cite{ref:wackerly:2014}. Probability can be inferred and confirmed through past events. These events are referred to as \textit{random} or \textit{stochastic} events. The probability that a certain event, $A$, might occur is denoted by $P(A)$. Although these random events cannot be predicted with absolute certainty, the relative frequency with which they occur over many trials, is often remarkably stable.
 
 Consider flipping an unbiased, fair coin. The coin has two possible outcomes. It can conclude that each side has a $\frac{1}{2}$ or $50\%$ chance of occurring. In statistics, the decimal probability notation is used, where $0 <= P(A) <= 1$. Suppose the fair coin is thrown 10 times, there is no guarantee of observing $0.5$ heads and $0.5$ tails. There is some probability (although small) that the coin might fall on heads $0/10$ times. The probability of such an event occurring is $0.0009765625$. In the coin flip example, the \acf{CLT} shows that the normalised sum of events tends toward a normal distribution with a mean value of $0.5$, if the number of events observed, $N$, is large~\cite{ref:wackerly:2014}. The larger the value of $N$, the higher the confidence of mean probability and relative frequency of the event. The stable long-term relative frequency by which a random event occurs, provides an intuitive and meaningful measure of belief that a certain event will occur again at some point in the future~\cite{ref:wackerly:2014}.
 
@@ -277,7 +277,7 @@ Similar to the \index{Beta probability distribution}Beta probability distributio
 \begin{figure}[htb]
       \centering
       \includegraphics[width=0.9\textwidth]{images/dirichlet.pdf}
-      \caption{The \acfp{PDF} for the \index{Dirichlet probability distribution}Dirichlet probability distribution over the 2-simplex. The concentration parameters, $\boldsymbol{\alpha}$, are varied. The values of the \acs{PDF} are shown by the color maps with contour lines at equal values as indicated in the color bars~\cite{ref:dirichlet:2020}.}
+      \caption{The \acfp{PDF} for the \index{Dirichlet probability distribution}Dirichlet probability distribution over the 2-simplex. The concentration parameters, $\boldsymbol{\alpha}$, are varied. The values of the \acs{PDF} are shown by the colour maps with contour lines at equal values as indicated in the colour bars~\cite{ref:dirichlet:2020}.}
       \label{fig:probability:probability_distributions:dirichlet}
 \end{figure}
 
@@ -343,7 +343,7 @@ The mean of the \index{Bernoulli probability distribution}Bernoulli probability 
             \label{fig:probability:probability_distributions:bernoulli:coin_10000}
       \end{subfigure}
       \par\bigskip
-      \caption{An illustration of the the coin-flip simulation for different sample sizes that show the convergence of the mean as per the \acf{CLT}.}
+      \caption{An illustration of the coin-flip simulation for different sample sizes that show the convergence of the mean as per the \acf{CLT}.}
       \label{fig:probability:probability_distributions:bernoulli:coin}
 \end{figure}
 

@@ -158,7 +158,7 @@ Entities represent candidate solutions to the model's trainable parameters (weig
 
       \item \textbf{gradient}: The last known gradient, as derived from gradient-based \index{heuristic}heuristics.
 
-      \item \textbf{position delta}: The last computed position delta between the current timestep and the previous timestep.
+      \item \textbf{position delta}: The last computed position delta between the current time step and the previous time step.
 
       \item \textbf{sum of the gradients squared}: As required and maintained by \index{heuristic}heuristics such as \acs{Adagrad}.
 
@@ -172,7 +172,7 @@ Entities represent candidate solutions to the model's trainable parameters (weig
 
       \item \textbf{personal best loss}: A parameter that tracks that best known loss by the entity thus far, as required and maintained by \index{heuristic}heuristics such as \acs{PSO}.
 
-      \item \textbf{loss}: A parameter that tracks the loss as achieved by the the entity throughout training.
+      \item \textbf{loss}: A parameter that tracks the loss as achieved by the entity throughout training.
 \end{itemize}
 
 From the list above, it should be clear that entity state becomes increasingly complicated with the increase of the number of distinct \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool with unique state parameters.
@@ -196,7 +196,7 @@ Entities in the entity pool are each assigned an associated \index{heuristic}heu
 
 \section{Performance Log}\label{sec:bhh:performance_log}
 
-The \acs{BHH} incorporates a form of probabilistic modeling in its selection mechanism. Probability is calculated based on \index{heuristic}heuristic-entity performance over time. Evidence of \index{heuristic}heuristic-entity performance is thus required for the \acs{BHH} to learn. Since the performance log can become very big, only a sliding window of the performance history is maintained at each step in the learning process. The sliding window is also referred to as a \textit{replay} buffer, a term borrowed from the field of \acf{RL}. The replay window size is defined as a hyper-parameter of the \acs{BHH}. The performance log is then simply a table of events and metrics. The \acs{BHH} tracks the following metrics in the performance log:
+The \acs{BHH} incorporates a form of probabilistic modelling in its selection mechanism. Probability is calculated based on \index{heuristic}heuristic-entity performance over time. Evidence of \index{heuristic}heuristic-entity performance is thus required for the \acs{BHH} to learn. Since the performance log can become very big, only a sliding window of the performance history is maintained at each step in the learning process. The sliding window is also referred to as a \textit{replay} buffer, a term borrowed from the field of \acf{RL}. The replay window size is defined as a hyper-parameter of the \acs{BHH}. The performance log is then simply a table of events and metrics. The \acs{BHH} tracks the following metrics in the performance log:
 
 \begin{itemize}
       \item \textbf{step}: The current mini-batch step.
@@ -251,7 +251,7 @@ The credit assignment strategy is a mechanism that assigns a discrete credit ind
 
       \item \textbf{gbest}: Credit is assigned to the \index{heuristic}heuristic-entity combination that set the \textit{gbest} loss value, meaning that it is the entity-\index{heuristic}heuristic combination that achieved the overall best performance so far.
 
-      \item \textbf{symmetric}: Credit is assigned to all entity-\index{heuristic}heuristic combinations, regardless of their performance. The symmetric credit assignment strategy does not randomly assign credit, but rather assigns credit to all events. In effect, no learning and performance-bias is achieved with the symmetric credit assignment strategy and thus the symmetric credit assignment strategy is implemented as a basis for comparison. Comparing a credit assignment staretegy to the symmetric credit assignment indicates the ability of the other credit assignment strategy to have an effect on the learning process and performance of the \acs{BHH}.
+      \item \textbf{symmetric}: Credit is assigned to all entity-\index{heuristic}heuristic combinations, regardless of their performance. The symmetric credit assignment strategy does not randomly assign credit, but rather assigns credit to all events. In effect, no learning and performance-bias is achieved with the symmetric credit assignment strategy and thus the symmetric credit assignment strategy is implemented as a basis for comparison. Comparing a credit assignment strategy to the symmetric credit assignment indicates the ability of the other credit assignment strategy to have an effect on the learning process and performance of the \acs{BHH}.
 \end{itemize}
 
 The implementation of a credit assignment strategy is simply a function that translates the performance log from Table \ref{tab:bhh:performance_log:performance_log_example} into Table \ref{tab:bhh:credit_assignment_strategy:credit_assignment_example}.
@@ -328,7 +328,7 @@ Let
       \item $I$ denote the maximum number of instances in the replay window.
       \item $J$ denote the \index{entity pool}entity pool (population) size.
       \item $K$ denote the \index{heuristic pool}heuristic pool size.
-      \item $L$ denote the number of credit assignment output classes. Since the output of credit assignment is boolean, $L = 2$.
+      \item $L$ denote the number of credit assignment output classes. Since the output of credit assignment is Boolean, $L = 2$.
 
       \item $\boldsymbol{\alpha} = (\alpha_{1}, \dots, \alpha_{K})$ denote the concentration parameters for the heuristic probability distribution.
       \item $\boldsymbol{\beta} = (\beta_{1}, \dots, \beta_{K})^{J}$ denote the concentration parameters for the entity-heuristic probability distributions.
@@ -393,7 +393,7 @@ The predictive model thus models the \textit{proportional} probability of the ev
 \index{Naïve Bayes}
 \subsection{Naïve Bayes}\label{sec:bhh:selection_mechanism:naive_bayes}
 
-This section aims to dissect the probabilistic model that is presented in Equestion~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to}. The \acs{BHH} implements a form of Naïve Bayes classifier, and thus independence between events can be assumed. The following derived \acp{PMF} are provided as fundamental building blocks to show the mechanism by which the \acs{BHH} learns.
+This section aims to dissect the probabilistic model that is presented in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to}. The \acs{BHH} implements a form of Naïve Bayes classifier, and thus independence between events can be assumed. The following derived \acp{PMF} are provided as fundamental building blocks to show the mechanism by which the \acs{BHH} learns.
 
 The independence between events for class label $\boldsymbol{H}$, simply yields the \ac{PMF} of the \index{Multinomial probability distribution}Multinomial distribution as presented below:
 
@@ -441,7 +441,7 @@ Finally, the independence between events for the performance criteria $\boldsymb
 
 where $N_{k}$ is the same summary variable as described for Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}. $N_{1,k}$ is a summary variable such that $N_{1,k} = \sum_{i=1}^{I} \mathbbm{1}_{1}(c_{i,k})\mathbbm{1}_{1}(h_{i,k})$, denoting the count of occurrences of the events $c_{i}$ taking on a success (i.e. $c_{i}=1$) and $h_{i}$ taking on class $k$, i.e. the count of occurrences of both succeeding in the performance criteria and heuristic $k$ occurring together in $I$ independent, identical runs. Similarly, $N_{0,k} = N_{k} - N_{1,k}$ denotes the count of occurrences of the events $c_{i}$ taking on a failure (i.e. $c_{i}=0$) and $h_{i}$ taking on class $k$.
 
-Equations~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}, \eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} and \eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} can be substituded into the proportional evaluation of the predictive model as given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to}, resulting in
+Equations~\eqref{eq:bhh:selection_mechanism:naive_bayes:h_pmf}, \eqref{eq:bhh:selection_mechanism:naive_bayes:EgH_pmf} and \eqref{eq:bhh:selection_mechanism:naive_bayes:CgH_pmf} can be substituted into the proportional evaluation of the predictive model as given in Equation~\eqref{eq:bhh:selection_mechanism:predictive_model_prop_to}, resulting in
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf}
@@ -456,7 +456,7 @@ Consider the practical implementation of the predictive model as shown in Equati
 
 \subsection{Numerical Stability}\label{sec:bhh:selection_mechanism:numerical_stability}
 
-When Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} is evaluated, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplication of multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfills a credit assignment, yielding an extremely small probability for $\boldsymbol{\psi}$. A solution to the aforementioned problem is to apply the \textit{log-sum-exp} trick. The transformation of Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given as
+When Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} is evaluated, the numerical stability is shown to underflow if the resulting probabilities from its parts are very small. Multiplication of multiple fractional parameters leads to an even smaller fractional number. Probabilities might be very low at some points during training. Consider an example where training has stagnated, effectively leading to a scenario where a credit assignment strategy never fulfils a credit assignment, yielding an extremely small probability for $\boldsymbol{\psi}$. A solution to the aforementioned problem is to apply the \textit{log-sum-exp} trick. The transformation of Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} using the log-sum-exp trick is given as
 
 \begin{equation}
       \label{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}
@@ -894,6 +894,6 @@ The high level pseudo-code implementation of the \acs{BHH} is given in Algorithm
 \section{Summary}
 \label{sec:bhh:summary}
 
-This chapter provided extensive detail on the inner workings and design of the \acs{BHH}. The \acs{BHH} was formally classified and the details around various components of the \acs{BHH}'s architecture was presented. Formal mathematical descriptions of the Bayesian selection method have been provided. The selection mechanism was presented as a probabilistic, predictive classifier. The optimisation process, by means of Bayesian analysis, has also been presented. Hyper-parameters were discussed in detail and a pseudo code implementation of the \acs{BHH} was presented.
+This chapter provided extensive detail on the inner workings and design of the \acs{BHH}. The \acs{BHH} was formally classified and the details around various components of the \acs{BHH}'s architecture was presented. Formal mathematical descriptions of the Bayesian selection method have been provided. The selection mechanism was presented as a probabilistic, predictive classifier. The optimisation process, by means of Bayesian analysis, has also been presented. Hyper-parameters were discussed in detail and a pseudo-code implementation of the \acs{BHH} was presented.
 
 This methodology for the empirical process is provided in the following chapter.
