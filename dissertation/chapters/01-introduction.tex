@@ -7,7 +7,7 @@
       - George Polya
 \end{flushright}
 
-\Acf{ML} is one of the most popular fields of research in \acf{AI} studies today. In recent years, \acs{ML} research has seen some notable achievements in academia~\cite{ref:lecun:2015, ref:glorot:2010, ref:goodfellow:2014, ref:quoc:2017}, as well as the industry at large~\cite{ref:silver:2016, ref:silver:2017, ref:zoph:2017, ref:lewis:2017}.  \acs{ML} research has grown tremendously over the past decade with successes like AlphaGo, which set new standards for \acs{AI} capabilities by beating the world's best Go player, Lee Sedol, 4-1~\cite{ref:san-hun:2016}.
+\Acf{ML} is one of the most popular fields of research in \acf{AI} studies today. In recent years, \acs{ML} research has seen some notable achievements in academia~\cite{ref:lecun:2015, ref:glorot:2010, ref:goodfellow:2014, ref:vaswani:2017}, as well as the industry at large~\cite{ref:silver:2016, ref:silver2017, ref:zoph:2017, ref:lewis:2017}.  \acs{ML} research has grown tremendously over the past decade with successes like AlphaGo, which set new standards for \acs{AI} capabilities by beating the world's best Go player, Lee Sedol, 4-1~\cite{ref:silver:2017}.
 
 Over the past few years, modern hardware capabilities have improved to the point where workloads in the field of \acs{ML} that were previously computationally infeasible, are now possible. One such sub-field of \acs{ML} is \acp{ANN}. \acp{ANN} can generally be described as well-organised structures of mathematical computation and are inspired by the biological brain~\cite{ref:engelbrecht:2007}. \acp{ANN} can be trained, which is the equivalent of ``learning'' from data. Learning gives rise to the ability to apply some form of decision making. Decision making as an ability provides a wide-range of applications from healthcare to finance and yields great interest in the field. With the improvement of hardware came an influx of \acs{ML} researchers that focused their attention on training of \acp{ANN}.
 
@@ -38,7 +38,7 @@ Although the landscape of what can be solved using \acp{ANN} today is extensive,
 
 The performance and capabilities of \acp{ANN} is largely influenced by the learning process used. The learning process consists of multiple components. These include the type of underlying optimisation algorithm used, how the model parameters are initialised, the hyper-parameters used and the constraints of learning such as allowed search space and boundaries. Each of these elements influence how much a particular learning technique might focus on a particular solution (exploitation), in comparison to seeking out novel solutions (exploration) during training.
 
-Techniques exist to dynamically balance the trade-off between exploration and exploitation during the search process. An example of such a technique is to dynamically adjust and learn the heuristic \index{hyper-parameters}\textit{hyper-parameters} as part of the learning process. This field of study is known as \index{meta-learning}meta-learning~\cite{ref:giraud:2004}. \index{meta-learning}Meta-learning of heuristic hyper-parameters as applied in the training of \acp{ANN} has shown to yield good generalisation results~\cite{ref:hospedales:2020, ref:vilalta:2002}.
+Techniques exist to dynamically balance the trade-off between exploration and exploitation during the search process. An example of such a technique is to dynamically adjust and learn the heuristic \index{hyper-parameters}\textit{hyper-parameters} as part of the learning process. This field of study is known as \index{meta-learning}meta-learning~\cite{ref:giraud:2004}. \index{meta-learning}Meta-learning of heuristic hyper-parameters as applied in the training of \acp{ANN} has shown to yield good generalisation results~\cite{ref:hospedales:2022, ref:vilalta:2002}.
 
 The dynamic nature of the learning process leads towards the idea that \acs{ML} models could be trained in a way such that the learning process and learning mechanism applied are not statically defined, but rather dynamic and under the control of some mechanism.
 
@@ -147,11 +147,13 @@ The remainder of this dissertation is structured as follows:
 This dissertation is accompanied by a full index given at page~\pageref{index} along with the following appendices:
 
 \begin{itemize}
+      \item \textbf{Appendix~\ref{app:acronyms}} provides a list of the important acronyms used or newly defined in the course of this work, as well as their associated definitions.
+
+      \item \textbf{Appendix~\ref{app:symbols}} lists and defines the mathematical symbols used in this work, categorised according to the relevant chapter in which they appear.
+
       \item \textbf{Appendix~\ref{app:datasets}} provides details on the datasets used for the empirical analysis.
 
       \item \textbf{Appendix~\ref{app:statistical_analysis}} provides details on the outcomes of the statistical analyses.
-
-      \item \textbf{Appendix~\ref{app:acronyms}} provides a list of the important acronyms used or newly defined in the course of this work, as well as their associated definitions.
 
       \item \textbf{Appendix~\ref{app:derived_publications}} lists the publications derived from this work.
 \end{itemize}
