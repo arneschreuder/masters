@@ -461,7 +461,7 @@ When Equation~\eqref{eq:bhh:selection_mechanism:naive_bayes:HgEC_pmf} is evaluat
 \begin{equation}
       \label{eq:bhh:selection_mechanism:numerical_stability:log_sum_exp}
       \begin{split}
-            LSE(P(h_{k} \vert e_{j}, c_{1};  \theta, \phi, \psi)) = \ln(\exp(\phi_{j,k}) +  \exp(\psi_{k}) + \exp(\theta_{k}))
+            LSE(P(h_{k} \vert e_{j}, c_{1};  \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})) = \ln(\exp(\phi_{j,k}) +  \exp(\psi_{k}) + \exp(\theta_{k}))
       \end{split}
 \end{equation}
 
@@ -472,7 +472,7 @@ The log-sum-exp trick as shown above caters for very small probabilities. Howeve
 Mode collapse is the situation that occurs where the selective pressure towards a heuristic is close to zero as a result of random sampling, low initial bias, or bad performance. This leads to a situation where the probabilistic model continually decreases the selective pressure, until the selection probability of that heuristic is 0, yielding no further observations of that particular random event. The \acs{BHH} addresses the aforementioned issue by
 
 \begin{itemize}
-      \item using \textit{symmetric} initialisation of the concentration parameters $\alpha$, $\beta$, $\gamma_{1}$ and $\gamma_{0}$;
+      \item using \textit{symmetric} initialisation of the concentration parameters $\boldsymbol{\alpha}$, $\boldsymbol{\beta}$, $\gamma_{1}$ and $\gamma_{0}$;
 
       \item setting the lower-bound of the concentration parameters $\boldsymbol{\alpha}$, $\boldsymbol{\beta}$, $\gamma_{1}$ and $\gamma_{0}$ to 1, so that a selection probability of 0 is highly improbable; and
 
