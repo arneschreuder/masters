@@ -1,77 +1,77 @@
 \chapter{Symbols}
 \label{app:symbols}
 
-This appendix summarises the important symbols used throughout the dissertation. For each symbol, a short description is provided as well as the reference to the equation that makes use it. Symbols are divided according to the chapter in which they were introduced and are ordered alphabetically.
+This appendix summarises the important symbols used throughout the dissertation. A short description is provided for each symbol. Symbols are divided according to the chapter in which they were introduced and are ordered alphabetically.
 
 \section{Chapter~\ref{chap:anns}: Artificial Neural Networks}
 \label{sec:symbols:anns}
 
 \begin{description}
 	% \item
-	%       [\parbox{2cm}{$EXAMPLE$}] THIS IS AN EXAMPLE DESCRIPTION. \lbrack Eq.~\eqref{eq:an_function_mapping} pg.~\pageref{eq:an_function_mapping} \rbrack
+	%       [\parbox{2cm}{$EXAMPLE$}] \parbox{12.5cm}{THIS IS AN EXAMPLE DESCRIPTION. \lbrack Eq.~\eqref{eq:an_function_mapping} pg.~\pageref{eq:an_function_mapping} \rbrack}
 
-	\item [\parbox{2cm}{$I$}] The input pattern's dimension size.
-	\item [\parbox{2cm}{$T$}] The target pattern's dimension size.
-	\item [\parbox{2cm}{$\mathbb{R}$}] The real-number space.
-	\item [\parbox{2cm}{$\mathbb{R}^{I}$}] The real-number space in I dimensions.
-	\item [\parbox{2cm}{$\mathbb{R}^{T}$}] The real-number space in T dimensions.
-	\item [\parbox{2cm}{$f_{AN}$}] The mapping function realised by the \acs{AN}.
-	\item [\parbox{2cm}{$\boldsymbol{x}$}] The input pattern/vector.
-	\item [\parbox{2cm}{$x_{i}$}] The $i$-th dimension of the input pattern/vector.
-	\item [\parbox{2cm}{$\theta$}] The bias unit.
-	\item [\parbox{2cm}{$\boldsymbol{v}$}] The weight vector.
-	\item [\parbox{2cm}{$v_{i}$}] The $i$-th dimension of the weight vector.
-	\item [\parbox{2cm}{$net$}] The net input signal to the \acs{AN}.
-	\item [\parbox{2cm}{$f(net)$}] The activation function over net input signal.
-	\item [\parbox{2cm}{$\boldsymbol{y}$}] The output vector.
-	\item [\parbox{2cm}{$\boldsymbol{y}_{p}$}] The output vector for pattern $p$.
-	\item [\parbox{2cm}{$k$}] Index for the output vector.
-	\item [\parbox{2cm}{$x_{i,p}^{'}$}] The normalised form of the input at dimension $i$, pattern $p$.
-	\item [\parbox{2cm}{$x_{i,p}$}] The original input at dimension $i$, pattern $p$.
-	\item [\parbox{2cm}{$x_{i_{min}}$}] The input's minimum value at dimension $i$.
-	\item [\parbox{2cm}{$x_{i_{max}}$}] The input's maximum value at dimension $i$.
-	\item [\parbox{2cm}{$p$}] Index for the input data patterns.
-	\item [\parbox{2cm}{$P$}] Total number of input data patterns.
-	\item [\parbox{2cm}{$\boldsymbol{x}_p$}] The $p$-th input vector/pattern.
-	\item [\parbox{2cm}{$\mu_i$}] The mean of the input at dimension $i$.
-	\item [\parbox{2cm}{$\sigma^2_i$}] The unit variance of the input at dimension $i$.
-	\item [\parbox{2cm}{$i$}] Index for the input vector.
-	\item [\parbox{2cm}{$\omega$}] The general weight vector used for normalisation.
-	\item [\parbox{2cm}{$\omega_{i}$}] The general weight vector used for normalisation at dimension $i$.
-	\item [\parbox{2cm}{$\omega_{min}$}] The lower bound of the uniform distribution used for weights initialisation.
-	\item [\parbox{2cm}{$\omega_{max}$}] The upper bound of the uniform distribution used for weights initialisation.
-	\item [\parbox{2cm}{$fanin$}] The number of input neurons to the weight vector.
-	\item [\parbox{2cm}{$fanout$}] The number of output neurons from the weight vector.
-	\item [\parbox{2cm}{$\sigma$}] The standard deviation of the truncated normal distribution used for weight initialisation.
-	\item [\parbox{2cm}{$K$}] Number of output units.
-	\item [\parbox{2cm}{$x_{i+1}$}] The $i+1$-th dimension of the input pattern/vector.
-	\item [\parbox{2cm}{$v_{i+1}$}] The $i+1$-th dimension of the weight vector.
-	\item [\parbox{2cm}{$net^{'}$}] The augmented net input signal that includes the bias term.
-	\item [\parbox{2cm}{$\tau$}] Phase shift threshold parameter.
-	\item [\parbox{2cm}{$f(x)$}] The function used to describe the \acs{LReLU} activation function.
-	\item [\parbox{2cm}{$f$}] A shorted form of the activation function.
-	\item [\parbox{2cm}{$x^{+}$}] The positive part of the input parameter's domain.
-	\item [\parbox{2cm}{$\alpha$}] Scaling parameter used by the \acs{LReLU} activation function.
-	\item [\parbox{2cm}{$\lambda$}] Scaling/control parameter used by the sigmoid and tanh activation functions.
-	\item [\parbox{2cm}{$x_{min}$}] The input's minimum value used by the min-max scaler.
-	\item [\parbox{2cm}{$x_{max}$}] The input's maximum value used by the min-max scaler.
-	\item [\parbox{2cm}{$\mathbb{R}^{K}$}] The real-number space in $K$ dimensions.
-	\item [\parbox{2cm}{$y_{k}$}] The $k$-th dimension of the output vector.
-	\item [\parbox{2cm}{$y^{'}_k$}] The softmax value of the output at dimension $k$.
-	\item [\parbox{2cm}{$\boldsymbol{y^{'}}$}] The softmax form of the output vector.
-	\item [\parbox{2cm}{$h_{j}$}] The $j$-th dimension of the hidden layer.
-	\item [\parbox{2cm}{$j$}] Index used for the hidden layer.
-	\item [\parbox{2cm}{$v_{i,j}$}] The weight associated with input node $x_{i}$ and the hidden node $h_{j}$.
-	\item [\parbox{2cm}{$w_{j,k}$}] The weight associated with hidden node $h_{j}$ and the output node $y_{k}$.
-	\item [\parbox{2cm}{$net_{i,h}$}] The net input signal at the hidden layer.
-	\item [\parbox{2cm}{$net_{h,y}$}] The net input signal at the output layer.
-	\item [\parbox{2cm}{$\epsilon$}] The cost/loss produced by the loss function.
-	\item [\parbox{2cm}{$y_{k,p}$}] The output produced by the \acs{ANN} at the $k$-th dimension for the $p$-th pattern.
-	\item [\parbox{2cm}{$\hat{y}_{k,p}$}] The target output for the \acs{ANN} at the $k$-th dimension for the $p$-th pattern.
-	\item [\parbox{2cm}{$\beta$}] Mini-batch size.
-	\item [\parbox{2cm}{$\mathbbm{1}$}] The indicator function.
-	\item [\parbox{2cm}{$c$}] Index used for $c$-th class.
-	\item [\parbox{2cm}{$C$}] Total number of classes.
+	\item [\parbox{2cm}{$\alpha$}] \parbox{12.5cm}{Scaling parameter used by the \acs{LReLU} activation function.}
+	\item [\parbox{2cm}{$\beta$}] \parbox{12.5cm}{Mini-batch size.}
+	\item [\parbox{2cm}{$\boldsymbol{v}$}] \parbox{12.5cm}{The weight vector.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_p$}] \parbox{12.5cm}{The $p$-th input vector/pattern.}
+	\item [\parbox{2cm}{$\boldsymbol{x}$}] \parbox{12.5cm}{The input pattern/vector.}
+	\item [\parbox{2cm}{$\boldsymbol{y}_{p}$}] \parbox{12.5cm}{The output vector for pattern $p$.}
+	\item [\parbox{2cm}{$\boldsymbol{y}$}] \parbox{12.5cm}{The output vector.}
+	\item [\parbox{2cm}{$\boldsymbol{y^{'}}$}] \parbox{12.5cm}{The softmax form of the output vector.}
+	\item [\parbox{2cm}{$\epsilon$}] \parbox{12.5cm}{The cost/loss produced by the loss function.}
+	\item [\parbox{2cm}{$\hat{y}_{k,p}$}] \parbox{12.5cm}{The target output for the \acs{ANN} at the $k$-th dimension for the $p$-th pattern.}
+	\item [\parbox{2cm}{$\lambda$}] \parbox{12.5cm}{Scaling/control parameter used by the sigmoid and tanh activation functions.}
+	\item [\parbox{2cm}{$\mathbb{R}^{I}$}] \parbox{12.5cm}{The real-number space in I dimensions.}
+	\item [\parbox{2cm}{$\mathbb{R}^{K}$}] \parbox{12.5cm}{The real-number space in $K$ dimensions.}
+	\item [\parbox{2cm}{$\mathbb{R}^{T}$}] \parbox{12.5cm}{The real-number space in T dimensions.}
+	\item [\parbox{2cm}{$\mathbb{R}$}] \parbox{12.5cm}{The real-number space.}
+	\item [\parbox{2cm}{$\mathbbm{1}$}] \parbox{12.5cm}{The indicator function.}
+	\item [\parbox{2cm}{$\mu_i$}] \parbox{12.5cm}{The mean of the input at dimension $i$.}
+	\item [\parbox{2cm}{$\omega_{i}$}] \parbox{12.5cm}{The general weight vector used for normalisation at dimension $i$.}
+	\item [\parbox{2cm}{$\omega_{max}$}] \parbox{12.5cm}{The upper bound of the uniform distribution used for weights initialisation.}
+	\item [\parbox{2cm}{$\omega_{min}$}] \parbox{12.5cm}{The lower bound of the uniform distribution used for weights initialisation.}
+	\item [\parbox{2cm}{$\omega$}] \parbox{12.5cm}{The general weight vector used for normalisation.}
+	\item [\parbox{2cm}{$\sigma^2_i$}] \parbox{12.5cm}{The unit variance of the input at dimension $i$.}
+	\item [\parbox{2cm}{$\sigma$}] \parbox{12.5cm}{The standard deviation of the truncated normal distribution used for weight initialisation.}
+	\item [\parbox{2cm}{$\tau$}] \parbox{12.5cm}{Phase shift threshold parameter.}
+	\item [\parbox{2cm}{$\theta$}] \parbox{12.5cm}{The bias unit.}
+	\item [\parbox{2cm}{$c$}] \parbox{12.5cm}{Index used for $c$-th class.}
+	\item [\parbox{2cm}{$C$}] \parbox{12.5cm}{Total number of classes.}
+	\item [\parbox{2cm}{$f_{AN}$}] \parbox{12.5cm}{The mapping function realised by the \acs{AN}.}
+	\item [\parbox{2cm}{$f(net)$}] \parbox{12.5cm}{The activation function over net input signal.}
+	\item [\parbox{2cm}{$f(x)$}] \parbox{12.5cm}{The function used to describe the \acs{LReLU} activation function.}
+	\item [\parbox{2cm}{$f$}] \parbox{12.5cm}{A shortened form of the activation function.}
+	\item [\parbox{2cm}{$fanin$}] \parbox{12.5cm}{The number of input neurons to the weight vector.}
+	\item [\parbox{2cm}{$fanout$}] \parbox{12.5cm}{The number of output neurons from the weight vector.}
+	\item [\parbox{2cm}{$h_{j}$}] \parbox{12.5cm}{The $j$-th dimension of the hidden layer.}
+	\item [\parbox{2cm}{$i$}] \parbox{12.5cm}{Index for the input vector.}
+	\item [\parbox{2cm}{$I$}] \parbox{12.5cm}{The input pattern's dimension size.}
+	\item [\parbox{2cm}{$j$}] \parbox{12.5cm}{Index used for the hidden layer.}
+	\item [\parbox{2cm}{$k$}] \parbox{12.5cm}{Index for the output vector.}
+	\item [\parbox{2cm}{$K$}] \parbox{12.5cm}{Number of output units.}
+	\item [\parbox{2cm}{$net_{h,y}$}] \parbox{12.5cm}{The net input signal at the output layer.}
+	\item [\parbox{2cm}{$net_{i,h}$}] \parbox{12.5cm}{The net input signal at the hidden layer.}
+	\item [\parbox{2cm}{$net^{'}$}] \parbox{12.5cm}{The augmented net input signal that includes the bias term.}
+	\item [\parbox{2cm}{$net$}] \parbox{12.5cm}{The net input signal to the \acs{AN}.}
+	\item [\parbox{2cm}{$p$}] \parbox{12.5cm}{Index for the input data patterns.}
+	\item [\parbox{2cm}{$P$}] \parbox{12.5cm}{Total number of input data patterns.}
+	\item [\parbox{2cm}{$T$}] \parbox{12.5cm}{The target pattern's dimension size.}
+	\item [\parbox{2cm}{$v_{i,j}$}] \parbox{12.5cm}{The weight associated with input node $x_{i}$ and the hidden node $h_{j}$.}
+	\item [\parbox{2cm}{$v_{i}$}] \parbox{12.5cm}{The $i$-th dimension of the weight vector.}
+	\item [\parbox{2cm}{$v_{i+1}$}] \parbox{12.5cm}{The $i+1$-th dimension of the weight vector.}
+	\item [\parbox{2cm}{$w_{j,k}$}] \parbox{12.5cm}{The weight associated with hidden node $h_{j}$ and the output node $y_{k}$.}
+	\item [\parbox{2cm}{$x_{i_{max}}$}] \parbox{12.5cm}{The input's maximum value at dimension $i$.}
+	\item [\parbox{2cm}{$x_{i_{min}}$}] \parbox{12.5cm}{The input's minimum value at dimension $i$.}
+	\item [\parbox{2cm}{$x_{i,p}^{'}$}] \parbox{12.5cm}{The normalised form of the input at dimension $i$, pattern $p$.}
+	\item [\parbox{2cm}{$x_{i,p}$}] \parbox{12.5cm}{The original input at dimension $i$, pattern $p$.}
+	\item [\parbox{2cm}{$x_{i}$}] \parbox{12.5cm}{The $i$-th dimension of the input pattern/vector.}
+	\item [\parbox{2cm}{$x_{i+1}$}] \parbox{12.5cm}{The $i+1$-th dimension of the input pattern/vector.}
+	\item [\parbox{2cm}{$x_{max}$}] \parbox{12.5cm}{The input's maximum value used by the min-max scaler.}
+	\item [\parbox{2cm}{$x_{min}$}] \parbox{12.5cm}{The input's minimum value used by the min-max scaler.}
+	\item [\parbox{2cm}{$x^{+}$}] \parbox{12.5cm}{The positive part of the input parameter's domain.}
+	\item [\parbox{2cm}{$y_{k,p}$}] \parbox{12.5cm}{The output produced by the \acs{ANN} at the $k$-th dimension for the $p$-th pattern.}
+	\item [\parbox{2cm}{$y_{k}$}] \parbox{12.5cm}{The $k$-th dimension of the output vector.}
+	\item [\parbox{2cm}{$y^{'}_k$}] \parbox{12.5cm}{The softmax value of the output at dimension $k$.}
 
 \end{description}
 
@@ -79,372 +79,368 @@ This appendix summarises the important symbols used throughout the dissertation.
 \label{sec:symbols:heuristics}
 
 \begin{description}
-	\item [\parbox{2cm}{$f$}] A shortened form of the objective function being optimised.
-	\item [\parbox{2cm}{$x$}] The independent variables to the objective function. Also used in \acs{DE} notation to denote the selection mechanism for the trial vector.
-	\item [\parbox{2cm}{$f(x)$}] The objective function over $x$.
-	\item [\parbox{2cm}{$\epsilon$}] The error between the output of the \acs{FFNN} and the target pattern, produced by the loss function. Also used as a small error value used by heuristics to avoid division by 0.
-	\item [\parbox{2cm}{$\mathcal{E}$}] The error function.
-	\item [\parbox{2cm}{$w_{i}(t)$}] The $i$-th dimension of the weight vector at time step $t$.
-	\item [\parbox{2cm}{$w_{i}(t-1)$}] The $i$-th dimension of the weight vector at time step $t-1$.
-	\item [\parbox{2cm}{$\Delta w_{i}(t)$}] The change in the $i$-th dimension of the weight vector at time step $t$.
-	\item [\parbox{2cm}{$w_{i}$}] The $i$-th dimension of the weight vector.
-	\item [\parbox{2cm}{$i$}] Index used for the weight vector. Also used as the index for the $i$-th particle in the population, implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$\boldsymbol{w}$}] The weight vector.
-	\item [\parbox{2cm}{$p$}] Index used for input data patterns.
-	\item [\parbox{2cm}{$o_{i,p}$}] The $i$-th dimension of the output for pattern $p$.
-	\item [\parbox{2cm}{$t_{i,p}$}] The $i$-th dimension of the target for pattern $p$.
-	      item [\parbox{2cm}{$o_{k,p}$}] The $k$-th dimension of the output for pattern $p$.
-	\item [\parbox{2cm}{$t_{k,p}$}] The $k$-th dimension of the target for pattern $p$.
-	\item [\parbox{2cm}{$net_{p}$}] The net input signal for pattern $p$.
-	\item [\parbox{2cm}{$z_{i,p}$}] The input value at index $i$ for pattern $p$.
-	\item [\parbox{2cm}{$\boldsymbol{g}$}] General symbol used to represent the gradient vector, retrieved from the error function relative to the weight vector.
-	\item [\parbox{2cm}{$\boldsymbol{v}$}] The velocity vector resulting from \acs{Momentum}.
-	\item [\parbox{2cm}{$\boldsymbol{w}$}] General symbol used to represent the weight vector.
-	\item [\parbox{2cm}{$\epsilon_{T}$}] The error at time step $T$.
-	\item [\parbox{2cm}{$\epsilon_{T_{p}}$}] The error produced for pattern $p$ at time step $T$.
-	\item [\parbox{2cm}{$\eta$}] Learning rate.
-	\item [\parbox{2cm}{$k$}] Index used for the output layer.
-	\item [\parbox{2cm}{$K$}] Total number of output units.
-	\item [\parbox{2cm}{$t$}] Time step.
-	\item [\parbox{2cm}{$T$}] Time step.
-	\item [\parbox{2cm}{$\alpha$}] The momentum hyper-parameter.
-	\item [\parbox{2cm}{$w_{t,i}$}] The $i$-th dimension of the weight vector at time step $t$.
-	\item [\parbox{2cm}{$w_{t+1,i}$}] The $i$-th dimension of the weight vector at time step $t+1$.
-	\item [\parbox{2cm}{$G_{t,ii}$}] Diagonal matrix containing the sum of the squared gradients with regards to the $i$-th dimension of the weight vector.
-	\item [\parbox{2cm}{$g_{t,i}$}] The $i$-th dimension of the gradient vector at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{G_{t}}$}] The sum of the squares of the gradients.
-	\item [\parbox{2cm}{$G_{t,i}$}] The sum of the squared gradients with regards to the $i$-th dimension of the weight vector.
-	\item [\parbox{2cm}{$\odot$}] The matrix-vector product.
-	\item [\parbox{2cm}{$W$}] Window size of previous squared gradients.
-	\item [\parbox{2cm}{$E[\boldsymbol{g}^{2}]_{t}$}] The expected value of the squared gradients at time step $t$.
-	\item [\parbox{2cm}{$E[\boldsymbol{g}^{2}]_{t - 1}$}] The expected value of the squared gradients at time step $t-1$.
-	\item [\parbox{2cm}{$\boldsymbol{g}^{2}_{t}$}] The squared gradient vector at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{w}_{t+1}$}] The weight vector at time step $t+1$.
-	\item [\parbox{2cm}{$\boldsymbol{w}_{t}^{2}$}] The squared weight vector at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{g}_{t}$}] The gradient vector at time step $t$.
-	\item [\parbox{2cm}{$RMS$}] The root mean squared error criterion.
-	\item [\parbox{2cm}{$E[\Delta \boldsymbol{w}^{2}]_{t}$}] The expected value of the delta of the squared weight vector at time step $t$.
-	\item [\parbox{2cm}{$E[\Delta \boldsymbol{w}^{2}]_{t - 1}$}] The expected value of the delta of the squared weight vector at time step $t-1$.
-	\item [\parbox{2cm}{$\Delta \boldsymbol{w}^{2}_{t}$}] The delta of the squared weight vector at time step $t$.
-	\item [\parbox{2cm}{$RMS[\Delta \boldsymbol{w}]_{t}$}] The root mean squared delta of the weight vector at time step $t$.
-	\item [\parbox{2cm}{$RMS[\Delta \boldsymbol{w}]_{t-1}$}] The root mean squared delta of the weight vector at time step $t-1$.
-	\item [\parbox{2cm}{$RMS[\boldsymbol{g}]_{t}$}] The root mean squared gradient vector at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{g}_{t}$}] The gradient vector at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{m}_{t}$}] The estimate of the first moment at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{m}_{t+1}$}] The estimate of the first moment at time step $t+1$.
-	\item [\parbox{2cm}{$\boldsymbol{v}_{t}$}] The estimate of the second moment at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{v}_{t+1}$}] The estimate of the second moment at time step $t+1$.
-	\item [\parbox{2cm}{$\beta_{1}$}] First decay rate parameter for \acs{Adam}.
-	\item [\parbox{2cm}{$\beta_{2}$}] Second decay rate parameter for \acs{Adam}.
-	\item [\parbox{2cm}{$\hat{\boldsymbol{m}}_{t}$}] The bias-corrected first moment at time step $t$.
-	\item [\parbox{2cm}{$\hat{\boldsymbol{v}}_{t}$}] The bias-corrected second moment at time step $t$.
-	\item [\parbox{2cm}{$\beta^{t}_{1}$}] First decay rate parameter for \acs{Adam} at time step $t$.
-	\item [\parbox{2cm}{$\beta^{t}_{2}$}] Second decay rate parameter for \acs{Adam} at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{i}$}] The $i$-th particle's position vector as implemented by \acs{PSO}. Also represents the $i$-th parent's position vector as implemented by \acs{DE}.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{i}(t)$}] The $i$-th particle's position vector at time step $t$ as implemented by \acs{PSO}. Also represents the $i$-th parent's position vector at time step $t$ as implemented by \acs{DE}.
-	\item [\parbox{2cm}{$\boldsymbol{v}_{i}(t)$}] The $i$-th particle's velocity vector at time step $t$ as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$f(x_{i})$}] The evaluation of the $i$-th particle's solution with respect to the objective function.
-	\item [\parbox{2cm}{$\boldsymbol{y}_{i}(t)$}] The $i$-th particle's personal best position vector at time step $t$ as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{i}(0)$}] The $i$-th particle's position vector at time step $0$ as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$\boldsymbol{y}_{i}(0)$}] The $i$-th particle's personal best position vector at time step $0$ as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$\boldsymbol{\hat{y}}_{i}(t)$}] The $i$-th particle's global best position vector as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{i}$}] The $i$-th particle's position vector as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{min}$}] The lower bound constraint vector of the position vector's values.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{max}$}] The upper bound constraint vector of the position vector's values.
-	\item [\parbox{2cm}{$v_{ij}(t+1)$}] The $i$-th particle's $j$-th dimension of the velocity vector at time step $t+1$.
-	\item [\parbox{2cm}{$v_{ij}(t)$}] The $i$-th particle's $j$-th dimension of the velocity vector at time step $t$. Also used in the mutation operator for \acp{GA} to represent some sampled mutation update value.
-	\item [\parbox{2cm}{$w$}] The inertia weight hyper-parameter as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$c_{1}$}] The cognitive control parameter as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$c_{2}$}] The social control parameter as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$r_{1_{j}}(t)$}] The $j$-th dimension of the first stochastic scaling parameter at time step $t$ as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$r_{2_{j}}(t)$}] The $j$-th dimension of the second stochastic scaling parameter at time step $t$ as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$x_{ij}$}] The $i$-th particle's/entity's $j$-th dimension of the position vector.
-	\item [\parbox{2cm}{$x_{ij}(t)$}] The $i$-th particle's/entity's $j$-th dimension of the position vector at time step $t$.
-	\item [\parbox{2cm}{$y_{ij}$}] The $i$-th particle's $j$-th dimension of the personal best position vector.
-	\item [\parbox{2cm}{$y_{ij}(t)$}] The $i$-th particle's $j$-th dimension of the personal best position vector at time step $t$.
-	\item [\parbox{2cm}{$\boldsymbol{\hat{y}}$}] Short form of the global best position vector.
-	\item [\parbox{2cm}{$\hat{y}_{ij}$}] The $i$-th particle's $j$-th dimension of the global best position vector.
-	\item [\parbox{2cm}{$\hat{y}_{ij}(t)$}] The $i$-th particle's $j$-th dimension of the global best position vector at time step $t$.
-	\item [\parbox{2cm}{$f(\hat{y})$}] The evaluation of the global best position.
-	\item [\parbox{2cm}{$x_{ij}(t+1)$}] The $i$-th particle's $j$-th dimension of the position vector at time step $t+1$.
-	\item [\parbox{2cm}{$\boldsymbol{r}_{1}$}] The vector for the first stochastic scaling parameter as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$\boldsymbol{r}_{2}$}] The vector for the second stochastic scaling parameter as implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$I$}] The total number of particles in the swarm (particle swarm size).
-	\item [\parbox{2cm}{$N$}] An alternative to the particle swarm size.
-	\item [\parbox{2cm}{$j$}] Index used for the dimensions of candidate solutions.
-	\item [\parbox{2cm}{$J$}] The total number of dimensions in the position vector for particles in \acs{PSO}.
-	\item [\parbox{2cm}{$U$}] The uniform distribution.
-	\item [\parbox{2cm}{$v'_{ij}(t+1)$}] The $i$-th particle's $j$-th dimension of the clamped velocity vector at time step $t+1$.
-	\item [\parbox{2cm}{$\boldsymbol{V}_{max}$}] The upper bound of the velocity clamping vector.
-	\item [\parbox{2cm}{$V_{max,j}$}] The $j$-th dimension of the upper bound of the velocity clamping vector.
-	\item [\parbox{2cm}{$\boldsymbol{u}_{i}(t)$}] The $i$-th entity's trial vector at time step $t$ implemented by \acs{DE}.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{1}}(t)$}] The $i$-th entity's target vector at time step $t$ implemented by \acs{DE}.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{2}}(t)$}] The $i$-th entity's first selected individual's position vector at time step $t$ implemented by \acs{DE}.
-	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{3}}(t)$}] The $i$-th entity's second selected individual's position vector at time step $t$ implemented by \acs{DE}.
-	\item [\parbox{2cm}{$i_{1}$}] Index for the target vector in \acs{DE}.
-	\item [\parbox{2cm}{$i_{2}$}] Index for the first selected individual in \acs{DE}.
-	\item [\parbox{2cm}{$i_{3}$}] Index for the second selected individual in \acs{DE}.
-	\item [\parbox{2cm}{$\beta$}] Scale factor as implemented by \acs{DE}.
-	\item [\parbox{2cm}{$\boldsymbol{x}'_{i}(t)$}] The $i$-th offspring's position vector at time step $t$ as implemented by \acs{DE}.
-	\item [\parbox{2cm}{$x'_{ij}(t)$}] The $i$-th offspring's $j$-th dimension of the position vector at time step $t$.
-	\item [\parbox{2cm}{$u_{ij}(t)$}] The $j$-th dimension of the $i$-th entity's trial vector at time step $t$ implemented by \acs{DE}.
-	\item [\parbox{2cm}{$\mathcal{J}$}] The set of crossover points.
-	\item [\parbox{2cm}{$j^{*}$}] Randomly selected crossover point.
-	\item [\parbox{2cm}{$\emptyset$}] The empty set.
-	\item [\parbox{2cm}{$p_{r}$}] The crossover probability i.e. recombination probability.
-	\item [\parbox{2cm}{$f(\boldsymbol{x}_{i}(t))$}] The evaluation of the $i$-th entity's candidate solution at time step $t$.
-	\item [\parbox{2cm}{$f(\boldsymbol{x}'_{i}(t))$}] The evaluation of the $i$-th offspring's candidate solution at time step $t$.
-	\item [\parbox{2cm}{$f(\boldsymbol{y}_{i})$}] The evaluation of the $i$-th particle's personal best position.
-	\item [\parbox{2cm}{$f(\boldsymbol{\hat{y}})$}] The evaluation of the global best position.
-	\item [\parbox{2cm}{$x_{min,j}$}] The $j$-th dimension of the lower bound constraint for an entity's position.
-	\item [\parbox{2cm}{$x_{max,j}$}] The $j$-th dimension of the upper bound constraint for an entity's position.
-	\item [\parbox{2cm}{$\mathcal{C}$}] The set of entities in the population.
-	\item [\parbox{2cm}{$\mathcal{C}(0)$}] The set of entities in the population at time step $0$.
-	\item [\parbox{2cm}{$\mathcal{C}(t)$}] The set of entities in the population at time step $t$.
-	\item [\parbox{2cm}{$\mathcal{C}(t+1)$}] The set of entities in the population at time step $t+1$.
-	\item [\parbox{2cm}{$y$}] Used in \acs{DE} notation to denote the number of difference vectors to include.
-	\item [\parbox{2cm}{$z$}] Used in \acs{DE} notation to denote the type of crossover operator to use.
-	\item [\parbox{2cm}{$p_{c}$}] Probability of producing offspring.
-	\item [\parbox{2cm}{$p_{x}$}] Bitswapping probability.
-	\item [\parbox{2cm}{$m_{j}(t)$}] The $j$-th dimension of the crossover mask, $m$, at time step $t$.
-	\item [\parbox{2cm}{$p_{m}$}] The mutation probability.
-	\item [\parbox{2cm}{$N_{t}$}] Tournament selection size.
+	\item [\parbox{2cm}{$\alpha$}] \parbox{12.5cm}{The momentum hyper-parameter.}
+	\item [\parbox{2cm}{$\beta_{1}$}] \parbox{12.5cm}{First decay rate parameter for \acs{Adam}.}
+	\item [\parbox{2cm}{$\beta_{2}$}] \parbox{12.5cm}{Second decay rate parameter for \acs{Adam}.}
+	\item [\parbox{2cm}{$\beta^{t}_{1}$}] \parbox{12.5cm}{First decay rate parameter for \acs{Adam} at time step $t$.}
+	\item [\parbox{2cm}{$\beta^{t}_{2}$}] \parbox{12.5cm}{Second decay rate parameter for \acs{Adam} at time step $t$.}
+	\item [\parbox{2cm}{$\beta$}] \parbox{12.5cm}{Scale factor as implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$\boldsymbol{\hat{y}}_{i}(t)$}] \parbox{12.5cm}{The $i$-th particle's global best position vector as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$\boldsymbol{\hat{y}}$}] \parbox{12.5cm}{Short form of the global best position vector.}
+	\item [\parbox{2cm}{$\boldsymbol{G_{t}}$}] \parbox{12.5cm}{The sum of the squares of the gradients.}
+	\item [\parbox{2cm}{$\boldsymbol{g}_{t}$}] \parbox{12.5cm}{The gradient vector at time step $t$.}
+	\item [\parbox{2cm}{$\boldsymbol{g}^{2}_{t}$}] \parbox{12.5cm}{The squared gradient vector at time step $t$.}
+	\item [\parbox{2cm}{$\boldsymbol{g}$}] \parbox{12.5cm}{General symbol used to represent the gradient vector, retrieved from the error function relative to the weight vector.}
+	\item [\parbox{2cm}{$\boldsymbol{m}_{t}$}] \parbox{12.5cm}{The estimate of the first moment at time step $t$.}
+	\item [\parbox{2cm}{$\boldsymbol{m}_{t+1}$}] \parbox{12.5cm}{The estimate of the first moment at time step $t+1$.}
+	\item [\parbox{2cm}{$\boldsymbol{r}_{1}$}] \parbox{12.5cm}{The vector for the first stochastic scaling parameter as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$\boldsymbol{r}_{2}$}] \parbox{12.5cm}{The vector for the second stochastic scaling parameter as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$\boldsymbol{u}_{i}(t)$}] \parbox{12.5cm}{The $i$-th entity's trial vector at time step $t$ implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$\boldsymbol{v}_{i}(t)$}] \parbox{12.5cm}{The $i$-th particle's velocity vector at time step $t$ as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$\boldsymbol{V}_{max}$}] \parbox{12.5cm}{The upper bound of the velocity clamping vector.}
+	\item [\parbox{2cm}{$\boldsymbol{v}_{t}$}] \parbox{12.5cm}{The estimate of the second moment at time step $t$.}
+	\item [\parbox{2cm}{$\boldsymbol{v}_{t+1}$}] \parbox{12.5cm}{The estimate of the second moment at time step $t+1$.}
+	\item [\parbox{2cm}{$\boldsymbol{v}$}] \parbox{12.5cm}{The velocity vector resulting from \acs{Momentum}.}
+	\item [\parbox{2cm}{$\boldsymbol{w}_{t}^{2}$}] \parbox{12.5cm}{The squared weight vector at time step $t$.}
+	\item [\parbox{2cm}{$\boldsymbol{w}_{t+1}$}] \parbox{12.5cm}{The weight vector at time step $t+1$.}
+	\item [\parbox{2cm}{$\boldsymbol{w}$}] \parbox{12.5cm}{General symbol used to represent the weight vector.}
+	\item [\parbox{2cm}{$\boldsymbol{w}$}] \parbox{12.5cm}{The weight vector.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{1}}(t)$}] \parbox{12.5cm}{The $i$-th entity's target vector at time step $t$ implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{2}}(t)$}] \parbox{12.5cm}{The $i$-th entity's first selected individual's position vector at time step $t$ implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{3}}(t)$}] \parbox{12.5cm}{The $i$-th entity's second selected individual's position vector at time step $t$ implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i}(0)$}] \parbox{12.5cm}{The $i$-th particle's position vector at time step $0$ as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i}(t)$}] \parbox{12.5cm}{The $i$-th particle's position vector at time step $t$ as implemented by \acs{PSO}. Also represents the $i$-th parent's position vector at time step $t$ as implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i}$}] \parbox{12.5cm}{The $i$-th particle's position vector as implemented by \acs{PSO}. Also represents the $i$-th parent's position vector as implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i}$}] \parbox{12.5cm}{The $i$-th particle's position vector as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{max}$}] \parbox{12.5cm}{The upper bound constraint vector of the position vector's values.}
+	\item [\parbox{2cm}{$\boldsymbol{x}_{min}$}] \parbox{12.5cm}{The lower bound constraint vector of the position vector's values.}
+	\item [\parbox{2cm}{$\boldsymbol{x}'_{i}(t)$}] \parbox{12.5cm}{The $i$-th offspring's position vector at time step $t$ as implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$\boldsymbol{y}_{i}(0)$}] \parbox{12.5cm}{The $i$-th particle's personal best position vector at time step $0$ as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$\boldsymbol{y}_{i}(t)$}] \parbox{12.5cm}{The $i$-th particle's personal best position vector at time step $t$ as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$\Delta \boldsymbol{w}^{2}_{t}$}] \parbox{12.5cm}{The delta of the squared weight vector at time step $t$.}
+	\item [\parbox{2cm}{$\Delta w_{i}(t)$}] \parbox{12.5cm}{The change in the $i$-th dimension of the weight vector at time step $t$.}
+	\item [\parbox{2cm}{$\emptyset$}] \parbox{12.5cm}{The empty set.}
+	\item [\parbox{2cm}{$\epsilon_{T_{p}}$}] \parbox{12.5cm}{The error produced for pattern $p$ at time step $T$.}
+	\item [\parbox{2cm}{$\epsilon_{T}$}] \parbox{12.5cm}{The error at time step $T$.}
+	\item [\parbox{2cm}{$\epsilon$}] \parbox{12.5cm}{The error between the output of the \acs{FFNN} and the target pattern, produced by the loss function. Also used as a small error value used by heuristics to avoid division by 0.}
+	\item [\parbox{2cm}{$\eta$}] \parbox{12.5cm}{Learning rate.}
+	\item [\parbox{2cm}{$\hat{\boldsymbol{m}}_{t}$}] \parbox{12.5cm}{The bias-corrected first moment at time step $t$.}
+	\item [\parbox{2cm}{$\hat{\boldsymbol{v}}_{t}$}] \parbox{12.5cm}{The bias-corrected second moment at time step $t$.}
+	\item [\parbox{2cm}{$\hat{y}_{ij}(t)$}] \parbox{12.5cm}{The $i$-th particle's $j$-th dimension of the global best position vector at time step $t$.}
+	\item [\parbox{2cm}{$\hat{y}_{ij}$}] \parbox{12.5cm}{The $i$-th particle's $j$-th dimension of the global best position vector.}
+	\item [\parbox{2cm}{$\mathcal{C}(0)$}] \parbox{12.5cm}{The set of entities in the population at time step $0$.}
+	\item [\parbox{2cm}{$\mathcal{C}(t)$}] \parbox{12.5cm}{The set of entities in the population at time step $t$.}
+	\item [\parbox{2cm}{$\mathcal{C}(t+1)$}] \parbox{12.5cm}{The set of entities in the population at time step $t+1$.}
+	\item [\parbox{2cm}{$\mathcal{C}$}] \parbox{12.5cm}{The set of entities in the population.}
+	\item [\parbox{2cm}{$\mathcal{E}$}] \parbox{12.5cm}{The error function.}
+	\item [\parbox{2cm}{$\mathcal{J}$}] \parbox{12.5cm}{The set of crossover points.}
+	\item [\parbox{2cm}{$\odot$}] \parbox{12.5cm}{The matrix-vector product.}
+	\item [\parbox{2cm}{$c_{1}$}] \parbox{12.5cm}{The cognitive control parameter as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$c_{2}$}] \parbox{12.5cm}{The social control parameter as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$E[\boldsymbol{g}^{2}]_{t - 1}$}] \parbox{12.5cm}{The expected value of the squared gradients at time step $t-1$.}
+	\item [\parbox{2cm}{$E[\boldsymbol{g}^{2}]_{t}$}] \parbox{12.5cm}{The expected value of the squared gradients at time step $t$.}
+	\item [\parbox{2cm}{$E[\Delta \boldsymbol{w}^{2}]_{t - 1}$}] \parbox{12.5cm}{The expected value of the delta of the squared weight vector at time step $t-1$.}
+	\item [\parbox{2cm}{$E[\Delta \boldsymbol{w}^{2}]_{t}$}] \parbox{12.5cm}{The expected value of the delta of the squared weight vector at time step $t$.}
+	\item [\parbox{2cm}{$f(\boldsymbol{\hat{y}})$}] \parbox{12.5cm}{The evaluation of the global best position.}
+	\item [\parbox{2cm}{$f(\boldsymbol{x}_{i}(t))$}] \parbox{12.5cm}{The evaluation of the $i$-th entity's candidate solution at time step $t$.}
+	\item [\parbox{2cm}{$f(\boldsymbol{x}'_{i}(t))$}] \parbox{12.5cm}{The evaluation of the $i$-th offspring's candidate solution at time step $t$.}
+	\item [\parbox{2cm}{$f(\boldsymbol{y}_{i})$}] \parbox{12.5cm}{The evaluation of the $i$-th particle's personal best position.}
+	\item [\parbox{2cm}{$f(\hat{y})$}] \parbox{12.5cm}{The evaluation of the global best position.}
+	\item [\parbox{2cm}{$f(x_{i})$}] \parbox{12.5cm}{The evaluation of the $i$-th particle's solution with respect to the objective function.}
+	\item [\parbox{2cm}{$f(x)$}] \parbox{12.5cm}{The objective function over $x$.}
+	\item [\parbox{2cm}{$f$}] \parbox{12.5cm}{A shortened form of the objective function being optimised.}
+	\item [\parbox{2cm}{$g_{t,i}$}] \parbox{12.5cm}{The $i$-th dimension of the gradient vector at time step $t$.}
+	\item [\parbox{2cm}{$G_{t,i}$}] \parbox{12.5cm}{The sum of the squared gradients with regards to the $i$-th dimension of the weight vector.}
+	\item [\parbox{2cm}{$G_{t,ii}$}] \parbox{12.5cm}{Diagonal matrix containing the sum of the squared gradients with regards to the $i$-th dimension of the weight vector.}
+	\item [\parbox{2cm}{$i_{1}$}] \parbox{12.5cm}{Index for the target vector in \acs{DE}.}
+	\item [\parbox{2cm}{$i_{2}$}] \parbox{12.5cm}{Index for the first selected individual in \acs{DE}.}
+	\item [\parbox{2cm}{$i_{3}$}] \parbox{12.5cm}{Index for the second selected individual in \acs{DE}.}
+	\item [\parbox{2cm}{$i$}] \parbox{12.5cm}{Index used for the weight vector. Also used as the index for the $i$-th particle in the population, implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$I$}] \parbox{12.5cm}{The total number of particles in the swarm (particle swarm size).}
+	\item [\parbox{2cm}{$j^{*}$}] \parbox{12.5cm}{Randomly selected crossover point.}
+	\item [\parbox{2cm}{$j$}] \parbox{12.5cm}{Index used for the dimensions of candidate solutions.}
+	\item [\parbox{2cm}{$J$}] \parbox{12.5cm}{The total number of dimensions in the position vector for particles in \acs{PSO}.}
+	\item [\parbox{2cm}{$k$}] \parbox{12.5cm}{Index used for the output layer.}
+	\item [\parbox{2cm}{$K$}] \parbox{12.5cm}{Total number of output units.}
+	\item [\parbox{2cm}{$m_{j}(t)$}] \parbox{12.5cm}{The $j$-th dimension of the crossover mask, $m$, at time step $t$.}
+	\item [\parbox{2cm}{$N_{t}$}] \parbox{12.5cm}{Tournament selection size.}
+	\item [\parbox{2cm}{$N$}] \parbox{12.5cm}{An alternative to the particle swarm size.}
+	\item [\parbox{2cm}{$net_{p}$}] \parbox{12.5cm}{The net input signal for pattern $p$.}
+	\item [\parbox{2cm}{$o_{i,p}$}] \parbox{12.5cm}{The $i$-th dimension of the output for pattern $p$.}
+	\item [\parbox{2cm}{$o_{k,p}$}] \parbox{12.5cm}{The $k$-th dimension of the output for pattern $p$.}
+	\item [\parbox{2cm}{$p_{c}$}] \parbox{12.5cm}{Probability of producing offspring.}
+	\item [\parbox{2cm}{$p_{m}$}] \parbox{12.5cm}{The mutation probability.}
+	\item [\parbox{2cm}{$p_{r}$}] \parbox{12.5cm}{The crossover probability i.e. recombination probability.}
+	\item [\parbox{2cm}{$p_{x}$}] \parbox{12.5cm}{Bitswapping probability.}
+	\item [\parbox{2cm}{$p$}] \parbox{12.5cm}{Index used for input data patterns.}
+	\item [\parbox{2cm}{$r_{1_{j}}(t)$}] \parbox{12.5cm}{The $j$-th dimension of the first stochastic scaling parameter at time step $t$ as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$r_{2_{j}}(t)$}] \parbox{12.5cm}{The $j$-th dimension of the second stochastic scaling parameter at time step $t$ as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$RMS[\boldsymbol{g}]_{t}$}] \parbox{12.5cm}{The root mean squared gradient vector at time step $t$.}
+	\item [\parbox{2cm}{$RMS$}] \parbox{12.5cm}{The root mean squared error criterion.}
+	\item [\parbox{2cm}{$t_{i,p}$}] \parbox{12.5cm}{The $i$-th dimension of the target for pattern $p$.}
+	\item [\parbox{2cm}{$t_{k,p}$}] \parbox{12.5cm}{The $k$-th dimension of the target for pattern $p$.}
+	\item [\parbox{2cm}{$t$}] \parbox{12.5cm}{Time step.}
+	\item [\parbox{2cm}{$T$}] \parbox{12.5cm}{Time step.}
+	\item [\parbox{2cm}{$u_{ij}(t)$}] \parbox{12.5cm}{The $j$-th dimension of the $i$-th entity's trial vector at time step $t$ implemented by \acs{DE}.}
+	\item [\parbox{2cm}{$U$}] \parbox{12.5cm}{The uniform distribution.}
+	\item [\parbox{2cm}{$v_{ij}(t)$}] \parbox{12.5cm}{The $i$-th particle's $j$-th dimension of the velocity vector at time step $t$. Also used in the mutation operator for \acp{GA} to represent some sampled mutation update value.}
+	\item [\parbox{2cm}{$v_{ij}(t+1)$}] \parbox{12.5cm}{The $i$-th particle's $j$-th dimension of the velocity vector at time step $t+1$.}
+	\item [\parbox{2cm}{$V_{max,j}$}] \parbox{12.5cm}{The $j$-th dimension of the upper bound of the velocity clamping vector.}
+	\item [\parbox{2cm}{$v'_{ij}(t+1)$}] \parbox{12.5cm}{The $i$-th particle's $j$-th dimension of the clamped velocity vector at time step $t+1$.}
+	\item [\parbox{2cm}{$w_{i}(t-1)$}] \parbox{12.5cm}{The $i$-th dimension of the weight vector at time step $t-1$.}
+	\item [\parbox{2cm}{$w_{i}(t)$}] \parbox{12.5cm}{The $i$-th dimension of the weight vector at time step $t$.}
+	\item [\parbox{2cm}{$w_{i}$}] \parbox{12.5cm}{The $i$-th dimension of the weight vector.}
+	\item [\parbox{2cm}{$w_{t,i}$}] \parbox{12.5cm}{The $i$-th dimension of the weight vector at time step $t$.}
+	\item [\parbox{2cm}{$w_{t+1,i}$}] \parbox{12.5cm}{The $i$-th dimension of the weight vector at time step $t+1$.}
+	\item [\parbox{2cm}{$w$}] \parbox{12.5cm}{The inertia weight hyper-parameter as implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$W$}] \parbox{12.5cm}{Window size of previous squared gradients.}
+	\item [\parbox{2cm}{$x_{ij}(t)$}] \parbox{12.5cm}{The $i$-th particle's/entity's $j$-th dimension of the position vector at time step $t$.}
+	\item [\parbox{2cm}{$x_{ij}(t+1)$}] \parbox{12.5cm}{The $i$-th particle's $j$-th dimension of the position vector at time step $t+1$.}
+	\item [\parbox{2cm}{$x_{ij}$}] \parbox{12.5cm}{The $i$-th particle's/entity's $j$-th dimension of the position vector.}
+	\item [\parbox{2cm}{$x_{max,j}$}] \parbox{12.5cm}{The $j$-th dimension of the upper bound constraint for an entity's position.}
+	\item [\parbox{2cm}{$x_{min,j}$}] \parbox{12.5cm}{The $j$-th dimension of the lower bound constraint for an entity's position.}
+	\item [\parbox{2cm}{$x'_{ij}(t)$}] \parbox{12.5cm}{The $i$-th offspring's $j$-th dimension of the position vector at time step $t$.}
+	\item [\parbox{2cm}{$x$}] \parbox{12.5cm}{The independent variables to the objective function. Also used in \acs{DE} notation to denote the selection mechanism for the trial vector.}
+	\item [\parbox{2cm}{$y_{ij}(t)$}] \parbox{12.5cm}{The $i$-th particle's $j$-th dimension of the personal best position vector at time step $t$.}
+	\item [\parbox{2cm}{$y_{ij}$}] \parbox{12.5cm}{The $i$-th particle's $j$-th dimension of the personal best position vector.}
+	\item [\parbox{2cm}{$y$}] \parbox{12.5cm}{Used in \acs{DE} notation to denote the number of difference vectors to include.}
+	\item [\parbox{2cm}{$z_{i,p}$}] \parbox{12.5cm}{The input value at index $i$ for pattern $p$.}
+	\item [\parbox{2cm}{$z$}] \parbox{12.5cm}{Used in \acs{DE} notation to denote the type of crossover operator to use.}
 \end{description}
 
 \section{Chapter~\ref{chap:hhs}: Hyper-Heuristics}
 \label{sec:symbols:hhs}
 
 \begin{description}
-	\item [\parbox{2cm}{$K$}] The number of folds to execute for $K$-fold crossover validation.
+	\item [\parbox{2cm}{$K$}] \parbox{12.5cm}{The number of folds to execute for $K$-fold crossover validation.}
 \end{description}
 
 \section{Chapter~\ref{chap:probability}: Probability}
 \label{sec:symbols:probability}
 
 \begin{description}
-	\item [\parbox{2cm}{$A$}] Random event.
-	\item [\parbox{2cm}{$P$}] The probability of some event.
-	\item [\parbox{2cm}{$N$}] The total number of events observed.
-	\item [\parbox{2cm}{$B$}] Random event.
-	\item [\parbox{2cm}{$\bar{A}$}] Not observing random event $A$.
-	\item [\parbox{2cm}{$B_{1}$}] The first set in the partition $S$.
-	\item [\parbox{2cm}{$B_{2}$}] The second set in the partition $S$.
-	\item [\parbox{2cm}{$B_{i}$}] The $i$-th set in the partition $S$.
-	\item [\parbox{2cm}{$B_{j}$}] The $j$-th set in the partition $S$.
-	\item [\parbox{2cm}{$B_{K}$}] The last set in the partition $S$.
-	\item [\parbox{2cm}{$S$}] The union of mutually exclusion subsets. Also referred to as the probability simplex.
-	\item [\parbox{2cm}{$\emptyset$}] The empty set.
-	\item [\parbox{2cm}{$i$}] Index to track sets in partition $S$. Also used as a general index in random variables in $I$ dimensions.
-	\item [\parbox{2cm}{$j$}] Index to track sets in partition $S$. Also used as a general index in random variables in $J$ dimensions.
-	\item [\parbox{2cm}{$k$}] Index used to denote class $k$ in $K$ classes. Also used as a general index in random variables in $K$ dimensions.
-	\item [\parbox{2cm}{$K$}] The total number of sets in the partition $S$. Also used to denote the number of classes in the Dirichlet probability distribution.
-	\item [\parbox{2cm}{$\alpha$}] Shape parameter for the Beta probability distribution. Also used for confidence levels for the statistical tests.
-	\item [\parbox{2cm}{$x$}] Random variable used by various probability distributions. Also referred to as a realisation of an event that occurred as a results of a random process $X$.
-	\item [\parbox{2cm}{$\beta$}] Shape parameter for the Beta probability distribution.
-	\item [\parbox{2cm}{$\mathbb{R}$}] The real-number space.
-	\item [\parbox{2cm}{$Beta$}] The Beta probability distribution.
-	\item [\parbox{2cm}{$f_{Beta}$}] The \acs{PDF} of the Beta probability distribution.
-	\item [\parbox{2cm}{$B(\alpha, \beta)$}] The normalising constant used in the \acs{PDF} of the Beta probability distribution.
-	\item [\parbox{2cm}{$\Gamma$}] The Gamma function.
-	\item [\parbox{2cm}{$n$}] Input parameter to the Gamma function.
-	\item [\parbox{2cm}{$E[x]$}] The expected value of the distribution of $x$.
-	\item [\parbox{2cm}{$E[\ln(x)]$}] The expected value of the natural logarithm of $x$.
-	\item [\parbox{2cm}{$\psi$}] The logarithmic derivative of the Gamma function, called the Digamma Function.
-	\item [\parbox{2cm}{$\Gamma(n)$}] The Gamma function over input $n$.
-	\item [\parbox{2cm}{$\Gamma'(n)$}] The first derivative of the Gamma function over input $n$.
-	\item [\parbox{2cm}{$M[x]$}] The mode of the distribution of $x$.
-	\item [\parbox{2cm}{$\boldsymbol{x}$}] The random variable for various probability distributions in multiple dimensions.
-	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}] The concentration parameter vector that parameterises the Dirichlet probability distribution.
-	\item [\parbox{2cm}{$\alpha_{1}$}] The first dimension of the concentration parameter $\boldsymbol{\alpha}$.
-	\item [\parbox{2cm}{$\alpha_{k}$}] The $k$-th dimension of the concentration parameter $\boldsymbol{\alpha}$.
-	\item [\parbox{2cm}{$\alpha_{K}$}] The last dimension of the concentration parameter $\boldsymbol{\alpha}$.
-	\item [\parbox{2cm}{$Dir$}] The Dirichlet probability distribution.
-	\item [\parbox{2cm}{$f_{Dir}$}] The \acs{PDF} of the Dirichlet probability distribution.
-	\item [\parbox{2cm}{$B(\boldsymbol{\alpha})$}] The normalising constant used in the \acs{PDF} of the Dirichlet probability distribution.
-	\item [\parbox{2cm}{$\alpha_{0}$}] The sum of all the values in each dimension of the concentration parameter $\boldsymbol{\alpha}$.
-	\item [\parbox{2cm}{$x_{1}$}] The first dimension of the random variable. Also used as the first random event.
-	\item [\parbox{2cm}{$x_{i}$}] The $i$-th dimension of the random variable. Also used as the $i$-th random event.
-	\item [\parbox{2cm}{$x_{j}$}] The $j$-th dimension of the random variable. Also used as the $j$-th random event.
-	\item [\parbox{2cm}{$x_{k}$}] The $k$-th dimension of the random variable. Also used as the $k$-th random event.
-	\item [\parbox{2cm}{$x_{I}$}] The last dimension of the random variable with $I$ dimensions. Also used as the last random event in $I$ random events.
-	\item [\parbox{2cm}{$x_{K}$}] The last dimension of the random variable with $K$ dimensions. Also used as the last random event in $K$ random events.
-	\item [\parbox{2cm}{$c$}] Symmetric distribution constant.
-	\item [\parbox{2cm}{$E[x_{k}]$}] The expected value of the $k$-th dimension of the random variable.
-	\item [\parbox{2cm}{$E[\ln(x_{k})]$}] The expected value of the natural logarithm of the $k$-th dimension of the random variable.
-	\item [\parbox{2cm}{$M[x_{k}]$}] The mode of the $k$-th dimension of the random variable.
-	\item [\parbox{2cm}{$\theta$}] Success probability for the Bernoulli probability distribution.
-	\item [\parbox{2cm}{$Ber$}] The Bernoulli probability distribution.
-	\item [\parbox{2cm}{$f_{Ber}$}] The \acs{PMF} for the Bernoulli probability distribution.
-	\item [\parbox{2cm}{$Bin$}] The Binomial probability distribution.
-	\item [\parbox{2cm}{$f_{Bin}$}] The \acs{PMF} for the Binomial probability distribution.
-	\item [\parbox{2cm}{$\boldsymbol{\theta}$}] The probability vector in multiple dimensions used by multiple probability distributions.
-	\item [\parbox{2cm}{$\theta_{1}$}] The first dimension of the probability vector $\boldsymbol{\theta}$.
-	\item [\parbox{2cm}{$\theta_{k}$}] The $k$-th dimension of the probability vector $\boldsymbol{\theta}$.
-	\item [\parbox{2cm}{$\theta_{K}$}] The last dimension of the probability vector $\boldsymbol{\theta}$.
-	\item [\parbox{2cm}{$Cat$}] The Categorical probability distribution.
-	\item [\parbox{2cm}{$f_{Cat}$}] The \acs{PMF} for the Categorical probability distribution.
-	\item [\parbox{2cm}{$\mathbbm{1}$}] Indicator function.
-	\item [\parbox{2cm}{$Mul$}] The Multinomial probability distribution.
-	\item [\parbox{2cm}{$f_{Mul}$}] The \acs{PMF} for the Multinomial probability distribution.
-	\item [\parbox{2cm}{$\boldsymbol{X}$}] Matrix of Bernoulli probability distributions. Also used to represent the outcomes of $I$ independent, identical (iid) random events.
-	\item [\parbox{2cm}{$x_{i,k}$}] The $k$-th dimension of the $i$-th random event vector $\boldsymbol{x}$.
-	\item [\parbox{2cm}{$N_{k}$}] is a summary variable, denoting the number of times a category $k$ occurs over all trials in $N$.
-	\item [\parbox{2cm}{$\boldsymbol{x_{1}}$}] The outcomes of the first random event in $I$ independent, identical (iid) events for $k$ categories.
-	\item [\parbox{2cm}{$\boldsymbol{x_{I}}$}] The outcomes of the last random event in $I$ independent, identical (iid) events for $k$ categories.
-	\item [\parbox{2cm}{$\boldsymbol{x_{i}}$}] The outcomes of the $i$-th random event in $I$ independent, identical (iid) events for $k$ categories.
-	\item [\parbox{2cm}{$\overset{\text{iid}}{\sim}$}] Independent, identical (iid) random events.
-	\item [\parbox{2cm}{$\boldsymbol{N}$}] The counts for each occurrence of a category $k$ over $I$ independent, identical (iid) events.
-	\item [\parbox{2cm}{$I$}] The total number of independent, identical (iid) random events.
-	\item [\parbox{2cm}{$\mathcal{A}(v)$}] Functional form of priors.
-	\item [\parbox{2cm}{$\mathbb{R}$}] Real-number space.
-	\item [\parbox{2cm}{$\mathcal{L}$}] The likelihood function.
-	\item [\parbox{2cm}{$\boldsymbol{\mathcal{D}}$}] All the prior data of $\boldsymbol{X}$
-	\item [\parbox{2cm}{$N_{0}$}] Summary variable tracking the number of unsuccessful Boolean outcomes.
-	\item [\parbox{2cm}{$N_{1}$}] Summary variable tracking the number of successful Boolean outcomes.
-	\item [\parbox{2cm}{$N_{K}$}] Summary variable denoting the number of times category $k$ occurs.
-	\item [\parbox{2cm}{$\alpha'$ }] The update form of the prior parameter, $\alpha$, for a Beta probability distribution.
-	\item [\parbox{2cm}{$\beta'$ }] The update form of the prior parameter, $\beta$, for a Beta probability distribution.
-	\item [\parbox{2cm}{$\boldsymbol{\alpha'}$}] Update form of the prior parameter, $\boldsymbol{\alpha}$, for a Dirichlet probability distribution.
-	\item [\parbox{2cm}{$p$}] The statistical $p$-value.
-	\item [\parbox{2cm}{$\boldsymbol{Y}$}] A vector of random events.
-	\item [\parbox{2cm}{$Y_{1}$}] The first random event in $\boldsymbol{Y}$.
-	\item [\parbox{2cm}{$Y_{2}$}] The second random event in $\boldsymbol{Y}$.
-	\item [\parbox{2cm}{$Y_{i}$}] The $i$-th random event in $\boldsymbol{Y}$.
-	\item [\parbox{2cm}{$Y_{N}$}] The last random event in $\boldsymbol{Y}$ with $N$ events.
-	\item [\parbox{2cm}{$y_{1}$}] The realisation of the first random event in $\boldsymbol{Y}$.
-	\item [\parbox{2cm}{$y_{2}$}] The realisation of the second random event in $\boldsymbol{Y}$.
-	\item [\parbox{2cm}{$y_{i}$}] The realisation of the $i$-th random event in $\boldsymbol{Y}$.
-	\item [\parbox{2cm}{$y_{n}$}] The realisation of the $n$-th random event in $\boldsymbol{Y}$ with $N$ events.
-	\item [\parbox{2cm}{$g$}] Prior density.
-	\item [\parbox{2cm}{$g^{*}$}] Posterior density.
-	\item [\parbox{2cm}{$f$}] General symbol used for functions. Used for likelihood functions, \acp{PMF} and \acp{PDF}.
-	\item [\parbox{2cm}{$m$}] The marginal density function.
-	\item [\parbox{2cm}{$M$}] The symbol used for a male outcome in the mice experiment.
-	\item [\parbox{2cm}{$F$}] The symbol used for a female outcome in the mice experiment.
+	\item [\parbox{2cm}{$\alpha_{0}$}] \parbox{12.5cm}{The sum of all the values in each dimension of the concentration parameter $\boldsymbol{\alpha}$.}
+	\item [\parbox{2cm}{$\alpha_{1}$}] \parbox{12.5cm}{The first dimension of the concentration parameter $\boldsymbol{\alpha}$.}
+	\item [\parbox{2cm}{$\alpha_{k}$}] \parbox{12.5cm}{The $k$-th dimension of the concentration parameter $\boldsymbol{\alpha}$.}
+	\item [\parbox{2cm}{$\alpha_{K}$}] \parbox{12.5cm}{The last dimension of the concentration parameter $\boldsymbol{\alpha}$.}
+	\item [\parbox{2cm}{$\alpha'$}] \parbox{12.5cm}{The update form of the prior parameter, $\alpha$, for a Beta probability distribution.}
+	\item [\parbox{2cm}{$\alpha$}] \parbox{12.5cm}{Shape parameter for the Beta probability distribution. Also used for confidence levels for the statistical tests.}
+	\item [\parbox{2cm}{$\bar{A}$}] \parbox{12.5cm}{Not observing random event $A$.}
+	\item [\parbox{2cm}{$\beta'$}] \parbox{12.5cm}{The update form of the prior parameter, $\beta$, for a Beta probability distribution.}
+	\item [\parbox{2cm}{$\beta$}] \parbox{12.5cm}{Shape parameter for the Beta probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\alpha'}$}] \parbox{12.5cm}{Update form of the prior parameter, $\boldsymbol{\alpha}$, for a Dirichlet probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}] \parbox{12.5cm}{The concentration parameter vector that parameterises the Dirichlet probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\mathcal{D}}$}] \parbox{12.5cm}{All the prior data of $\boldsymbol{X}$}
+	\item [\parbox{2cm}{$\boldsymbol{\theta}$}] \parbox{12.5cm}{The probability vector in multiple dimensions used by multiple probability distributions.}
+	\item [\parbox{2cm}{$\boldsymbol{N}$}] \parbox{12.5cm}{The counts for each occurrence of a category $k$ over $I$ independent, identical (iid) events.}
+	\item [\parbox{2cm}{$\boldsymbol{x_{1}}$}] \parbox{12.5cm}{The outcomes of the first random event in $I$ independent, identical (iid) events for $k$ categories.}
+	\item [\parbox{2cm}{$\boldsymbol{x_{i}}$}] \parbox{12.5cm}{The outcomes of the $i$-th random event in $I$ independent, identical (iid) events for $k$ categories.}
+	\item [\parbox{2cm}{$\boldsymbol{x_{I}}$}] \parbox{12.5cm}{The outcomes of the last random event in $I$ independent, identical (iid) events for $k$ categories.}
+	\item [\parbox{2cm}{$\boldsymbol{X}$}] \parbox{12.5cm}{Matrix of Bernoulli probability distributions. Also used to represent the outcomes of $I$ independent, identical (iid) random events.}
+	\item [\parbox{2cm}{$\boldsymbol{x}$}] \parbox{12.5cm}{The random variable for various probability distributions in multiple dimensions.}
+	\item [\parbox{2cm}{$\boldsymbol{Y}$}] \parbox{12.5cm}{A vector of random events.}
+	\item [\parbox{2cm}{$\emptyset$}] \parbox{12.5cm}{The empty set.}
+	\item [\parbox{2cm}{$\Gamma'(n)$}] \parbox{12.5cm}{The first derivative of the Gamma function over input $n$.}
+	\item [\parbox{2cm}{$\Gamma(n)$}] \parbox{12.5cm}{The Gamma function over input $n$.}
+	\item [\parbox{2cm}{$\Gamma$}] \parbox{12.5cm}{The Gamma function.}
+	\item [\parbox{2cm}{$\mathbb{R}$}] \parbox{12.5cm}{Real-number space.}
+	\item [\parbox{2cm}{$\mathbb{R}$}] \parbox{12.5cm}{The real-number space.}
+	\item [\parbox{2cm}{$\mathbbm{1}$}] \parbox{12.5cm}{Indicator function.}
+	\item [\parbox{2cm}{$\mathcal{A}(v)$}] \parbox{12.5cm}{Functional form of priors.}
+	\item [\parbox{2cm}{$\mathcal{L}$}] \parbox{12.5cm}{The likelihood function.}
+	\item [\parbox{2cm}{$\overset{\text{iid}}{\sim}$}] \parbox{12.5cm}{Independent, identical (iid) random events.}
+	\item [\parbox{2cm}{$\psi$}] \parbox{12.5cm}{The logarithmic derivative of the Gamma function, called the Digamma Function.}
+	\item [\parbox{2cm}{$\theta_{1}$}] \parbox{12.5cm}{The first dimension of the probability vector $\boldsymbol{\theta}$.}
+	\item [\parbox{2cm}{$\theta_{k}$}] \parbox{12.5cm}{The $k$-th dimension of the probability vector $\boldsymbol{\theta}$.}
+	\item [\parbox{2cm}{$\theta_{K}$}] \parbox{12.5cm}{The last dimension of the probability vector $\boldsymbol{\theta}$.}
+	\item [\parbox{2cm}{$\theta$}] \parbox{12.5cm}{Success probability for the Bernoulli probability distribution.}
+	\item [\parbox{2cm}{$A$}] \parbox{12.5cm}{Random event.}
+	\item [\parbox{2cm}{$B_{1}$}] \parbox{12.5cm}{The first set in the partition $S$.}
+	\item [\parbox{2cm}{$B_{2}$}] \parbox{12.5cm}{The second set in the partition $S$.}
+	\item [\parbox{2cm}{$B_{i}$}] \parbox{12.5cm}{The $i$-th set in the partition $S$.}
+	\item [\parbox{2cm}{$B_{j}$}] \parbox{12.5cm}{The $j$-th set in the partition $S$.}
+	\item [\parbox{2cm}{$B_{K}$}] \parbox{12.5cm}{The last set in the partition $S$.}
+	\item [\parbox{2cm}{$B(\alpha, \beta)$}] \parbox{12.5cm}{The normalising constant used in the \acs{PDF} of the Beta probability distribution.}
+	\item [\parbox{2cm}{$B(\boldsymbol{\alpha})$}] \parbox{12.5cm}{The normalising constant used in the \acs{PDF} of the Dirichlet probability distribution.}
+	\item [\parbox{2cm}{$B$}] \parbox{12.5cm}{Random event.}
+	\item [\parbox{2cm}{$Ber$}] \parbox{12.5cm}{The Bernoulli probability distribution.}
+	\item [\parbox{2cm}{$Beta$}] \parbox{12.5cm}{The Beta probability distribution.}
+	\item [\parbox{2cm}{$Bin$}] \parbox{12.5cm}{The Binomial probability distribution.}
+	\item [\parbox{2cm}{$c$}] \parbox{12.5cm}{Symmetric distribution constant.}
+	\item [\parbox{2cm}{$Cat$}] \parbox{12.5cm}{The Categorical probability distribution.}
+	\item [\parbox{2cm}{$Dir$}] \parbox{12.5cm}{The Dirichlet probability distribution.}
+	\item [\parbox{2cm}{$E[\ln(x_{k})]$}] \parbox{12.5cm}{The expected value of the natural logarithm of the $k$-th dimension of the random variable.}
+	\item [\parbox{2cm}{$E[\ln(x)]$}] \parbox{12.5cm}{The expected value of the natural logarithm of $x$.}
+	\item [\parbox{2cm}{$E[x_{k}]$}] \parbox{12.5cm}{The expected value of the $k$-th dimension of the random variable.}
+	\item [\parbox{2cm}{$E[x]$}] \parbox{12.5cm}{The expected value of the distribution of $x$.}
+	\item [\parbox{2cm}{$f_{Ber}$}] \parbox{12.5cm}{The \acs{PMF} for the Bernoulli probability distribution.}
+	\item [\parbox{2cm}{$f_{Beta}$}] \parbox{12.5cm}{The \acs{PDF} of the Beta probability distribution.}
+	\item [\parbox{2cm}{$f_{Bin}$}] \parbox{12.5cm}{The \acs{PMF} for the Binomial probability distribution.}
+	\item [\parbox{2cm}{$f_{Cat}$}] \parbox{12.5cm}{The \acs{PMF} for the Categorical probability distribution.}
+	\item [\parbox{2cm}{$f_{Dir}$}] \parbox{12.5cm}{The \acs{PDF} of the Dirichlet probability distribution.}
+	\item [\parbox{2cm}{$f_{Mul}$}] \parbox{12.5cm}{The \acs{PMF} for the Multinomial probability distribution.}
+	\item [\parbox{2cm}{$f$}] \parbox{12.5cm}{General symbol used for functions. Used for likelihood functions, \acp{PMF} and \acp{PDF}.}
+	\item [\parbox{2cm}{$F$}] \parbox{12.5cm}{The symbol used for a female outcome in the mice experiment.}
+	\item [\parbox{2cm}{$g^{*}$}] \parbox{12.5cm}{Posterior density.}
+	\item [\parbox{2cm}{$g$}] \parbox{12.5cm}{Prior density.}
+	\item [\parbox{2cm}{$i$}] \parbox{12.5cm}{Index to track sets in partition $S$. Also used as a general index in random variables in $I$ dimensions.}
+	\item [\parbox{2cm}{$I$}] \parbox{12.5cm}{The total number of independent, identical (iid) random events.}
+	\item [\parbox{2cm}{$j$}] \parbox{12.5cm}{Index to track sets in partition $S$. Also used as a general index in random variables in $J$ dimensions.}
+	\item [\parbox{2cm}{$k$}] \parbox{12.5cm}{Index used to denote class $k$ in $K$ classes. Also used as a general index in random variables in $K$ dimensions.}
+	\item [\parbox{2cm}{$K$}] \parbox{12.5cm}{The total number of sets in the partition $S$. Also used to denote the number of classes in the Dirichlet probability distribution.}
+	\item [\parbox{2cm}{$M[x_{k}]$}] \parbox{12.5cm}{The mode of the $k$-th dimension of the random variable.}
+	\item [\parbox{2cm}{$M[x]$}] \parbox{12.5cm}{The mode of the distribution of $x$.}
+	\item [\parbox{2cm}{$m$}] \parbox{12.5cm}{The marginal density function.}
+	\item [\parbox{2cm}{$M$}] \parbox{12.5cm}{The symbol used for a male outcome in the mice experiment.}
+	\item [\parbox{2cm}{$Mul$}] \parbox{12.5cm}{The Multinomial probability distribution.}
+	\item [\parbox{2cm}{$N_{0}$}] \parbox{12.5cm}{Summary variable tracking the number of unsuccessful Boolean outcomes.}
+	\item [\parbox{2cm}{$N_{1}$}] \parbox{12.5cm}{Summary variable tracking the number of successful Boolean outcomes.}
+	\item [\parbox{2cm}{$N_{k}$}] \parbox{12.5cm}{Summary variable, denoting the number of times a category $k$ occurs over all trials in $N$.}
+	\item [\parbox{2cm}{$N_{K}$}] \parbox{12.5cm}{Summary variable denoting the number of times category $k$ occurs.}
+	\item [\parbox{2cm}{$n$}] \parbox{12.5cm}{Input parameter to the Gamma function.}
+	\item [\parbox{2cm}{$N$}] \parbox{12.5cm}{The total number of events observed.}
+	\item [\parbox{2cm}{$P$}] \parbox{12.5cm}{The probability of some event.}
+	\item [\parbox{2cm}{$p$}] \parbox{12.5cm}{The statistical $p$-value.}
+	\item [\parbox{2cm}{$S$}] \parbox{12.5cm}{The union of mutually exclusive subsets. Also referred to as the probability simplex.}
+	\item [\parbox{2cm}{$x_{1}$}] \parbox{12.5cm}{The first dimension of the random variable. Also used as the first random event.}
+	\item [\parbox{2cm}{$x_{i,k}$}] \parbox{12.5cm}{The $k$-th dimension of the $i$-th random event vector $\boldsymbol{x}$.}
+	\item [\parbox{2cm}{$x_{i}$}] \parbox{12.5cm}{The $i$-th dimension of the random variable. Also used as the $i$-th random event.}
+	\item [\parbox{2cm}{$x_{I}$}] \parbox{12.5cm}{The last dimension of the random variable with $I$ dimensions. Also used as the last random event in $I$ random events.}
+	\item [\parbox{2cm}{$x_{j}$}] \parbox{12.5cm}{The $j$-th dimension of the random variable. Also used as the $j$-th random event.}
+	\item [\parbox{2cm}{$x_{k}$}] \parbox{12.5cm}{The $k$-th dimension of the random variable. Also used as the $k$-th random event.}
+	\item [\parbox{2cm}{$x_{K}$}] \parbox{12.5cm}{The last dimension of the random variable with $K$ dimensions. Also used as the last random event in $K$ random events.}
+	\item [\parbox{2cm}{$x$}] \parbox{12.5cm}{Random variable used by various probability distributions. Also referred to as a realisation of an event that occurred as a results of a random process $X$.}
+	\item [\parbox{2cm}{$Y_{1}$}] \parbox{12.5cm}{The first random event in $\boldsymbol{Y}$.}
+	\item [\parbox{2cm}{$y_{1}$}] \parbox{12.5cm}{The realisation of the first random event in $\boldsymbol{Y}$.}
+	\item [\parbox{2cm}{$y_{2}$}] \parbox{12.5cm}{The realisation of the second random event in $\boldsymbol{Y}$.}
+	\item [\parbox{2cm}{$Y_{2}$}] \parbox{12.5cm}{The second random event in $\boldsymbol{Y}$.}
+	\item [\parbox{2cm}{$Y_{i}$}] \parbox{12.5cm}{The $i$-th random event in $\boldsymbol{Y}$.}
+	\item [\parbox{2cm}{$y_{i}$}] \parbox{12.5cm}{The realisation of the $i$-th random event in $\boldsymbol{Y}$.}
+	\item [\parbox{2cm}{$Y_{N}$}] \parbox{12.5cm}{The last random event in $\boldsymbol{Y}$ with $N$ events.}
+	\item [\parbox{2cm}{$y_{n}$}] \parbox{12.5cm}{The realisation of the $n$-th random event in $\boldsymbol{Y}$ with $N$ events.}
 \end{description}
 
 \section{Chapter~\ref{chap:bhh}: Bayesian Hyper-Heuristic}
 \label{sec:symbols:bhh}
 
 \begin{description}
-	\item [\parbox{2cm}{$\boldsymbol{H}$}] The event of observing heuristics.
-	\item [\parbox{2cm}{$\boldsymbol{E}$}] The event of observing entities.
-	\item [\parbox{2cm}{$\boldsymbol{C}$}] The event of observing credit assignments upon meeting credit assignment criteria.
-	\item [\parbox{2cm}{$A$}] A random event.
-	\item [\parbox{2cm}{$B$}] A random event.
-	\item [\parbox{2cm}{$I$}] The maximum number of instances in the replay window.
-	\item [\parbox{2cm}{$N$}] The maximum number of random events observed.
-	\item [\parbox{2cm}{$J$}] The entity pool (population) size.
-	\item [\parbox{2cm}{$K$}] The heuristic pool size.
-	\item [\parbox{2cm}{$L$}] The number of credit assignment output classes.
-	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}] The concentration parameters for the heuristic probability distribution.
-	\item [\parbox{2cm}{$\alpha_{1}$}] The first dimension of the concentration parameter, $\boldsymbol{\alpha}$.
-	\item [\parbox{2cm}{$\alpha_{k}$}] The dimension of $\boldsymbol{\alpha}$ associated with class $k$.
-	\item [\parbox{2cm}{$\alpha_{K}$}] The $k$-th dimension of the concentration parameter, $\boldsymbol{\alpha}$.
-	\item [\parbox{2cm}{$\boldsymbol{\beta}$}] The concentration parameters for the entity-heuristic probability distributions.
-	\item [\parbox{2cm}{$\beta_{1}$}] The first dimension of the concentration parameter, $\boldsymbol{\beta}$.
-	\item [\parbox{2cm}{$\beta_{2}$}] The second dimension of the concentration parameter, $\boldsymbol{\beta}$.
-	\item [\parbox{2cm}{$\beta_{j,k}$}] The $j$-th entity's concentration parameter associated with heuristic $k$.
-	\item [\parbox{2cm}{$\boldsymbol{\gamma}$}] The concentration parameters for the credit-heuristic probability distribution.
-	\item [\parbox{2cm}{$\gamma_{0}$}] The zeroth dimension of the concentration parameter, $\boldsymbol{\gamma}$.
-	\item [\parbox{2cm}{$\gamma_{1}$}] The first dimension of the concentration parameter, $\boldsymbol{\gamma}$.
-	\item [\parbox{2cm}{$\gamma_{K}$}] The $k$-th dimension of the concentration parameter, $\boldsymbol{\gamma}$.
-	\item [\parbox{2cm}{$\boldsymbol{\theta}$}] The heuristic probability distribution.
-	\item [\parbox{2cm}{$\boldsymbol{\phi}$}] The entity-heuristic probability distribution.
-	\item [\parbox{2cm}{$Dir$}] The Dirichlet probability distribution.
-	\item [\parbox{2cm}{$\boldsymbol{\psi}$}] The credit-heuristic probability distribution.
-	\item [\parbox{2cm}{$Beta$}] The Beta probability distribution.
-	\item [\parbox{2cm}{$Mult$}] The Multinomial probability distribution.
-	\item [\parbox{2cm}{$Bin$}] The Binomial probability distribution.
-	\item [\parbox{2cm}{$h_{i,k}$}] The realisation of the $i$-th event of observing heuristic $k$.
-	\item [\parbox{2cm}{$\theta_{k}$}] The heuristic selection probability for heuristic $k$.
-	\item [\parbox{2cm}{$\mathbbm{1}_{0}$}] The indicator function yielding a failure/non-occurrence.
-	\item [\parbox{2cm}{$\mathbbm{1}_{1}$}] The indicator function yielding a success/occurrence.
-	\item [\parbox{2cm}{$N_{k}$}] A summary variable denoting the count of occurrences of the event $h_{i}$ taking on class $k$ in $I$ independent, identical runs.
-	\item [\parbox{2cm}{$e_{i,j,k}$}] The realisation of the $i$-th event of observing heuristic $k$ for selected for entity $j$.
-	\item [\parbox{2cm}{$\phi_{j,k}$}] The entity-heuristic selection probability for entity $j$ and heuristic $k$.
-	\item [\parbox{2cm}{$N_{j,k}$}] A summary variable denoting the count of occurrences of the events $e_{i}$ taking on class $j$ and $h_{i}$ taking on class $k$ in $I$ independent, identical runs.
-	\item [\parbox{2cm}{$k$}] Index generally associated to heuristic $k$.
-	\item [\parbox{2cm}{$j$}] Index generally associated to entity $j$.
-	\item [\parbox{2cm}{$i$}] Index generally associated to event/run $i$.
-	\item [\parbox{2cm}{$h_{i}$}] The $i$-th event of observing heuristics.
-	\item [\parbox{2cm}{$c_{i,k}$}] The realisation of the $i$-th event of observing a credit assignment $i$ to heuristic $k$.
-	\item [\parbox{2cm}{$\psi_{k}$}] The heuristic-credit-assignment probability for credit assignment success and heuristic $k$.
-	\item [\parbox{2cm}{$N_{0,k}$}] The count of occurrences of the events $c_{i}$ taking on a failure.
-	\item [\parbox{2cm}{$N_{1,k}$}] The count of occurrences of the events $c_{i}$ taking on a success.
-	\item [\parbox{2cm}{$c_{i}$}] The $i$-th event of observing credit assignments.
-	\item [\parbox{2cm}{$LSE$}] The log-sum-exp trick/function.
-	\item [\parbox{2cm}{$\hat{\theta}_{k}$}] The expected value of the probability of selecting heuristic $k$.
-	\item [\parbox{2cm}{$E[\theta_{k}]$}] The expected value of the probability of selecting heuristic $k$.
-	\item [\parbox{2cm}{$N_{j}$}] The count of the occurrences of observing entity $j$.
-	\item [\parbox{2cm}{$\hat{\phi}_{j,k}$}] The expected value of the probability of selecting heuristic $k$ for entity $j$.
-	\item [\parbox{2cm}{$E[\phi_{j,k}]$}] The expected value of the probability of selecting heuristic $k$ for entity $j$.
-	\item [\parbox{2cm}{$\hat{\psi}_{k}$}] The expected value of the probability of selecting heuristic $k$ and observing credit assignments.
-	\item [\parbox{2cm}{$E[\psi_{k}]$}] The expected value of the probability of selecting heuristic $k$ and observing credit assignments.
-	\item [\parbox{2cm}{$\boldsymbol{\hat{\theta}}$}] The expected value of the heuristic selection probabilities.
-	\item [\parbox{2cm}{$\boldsymbol{\hat{\phi}}$}] The expected value of the entity-heuristic probabilities.
-	\item [\parbox{2cm}{$\boldsymbol{\hat{\psi}}$}] The expected value of the heuristic-credit-assignment probabilities.
-	\item [\parbox{2cm}{$\mathcal{L}$}] The likelihood function.
-	\item [\parbox{2cm}{$\boldsymbol{\lambda}$}] Error vector.
-	\item \item [\parbox{2cm}{$\lambda_{1}$}] The first dimension of the error vector, $\boldsymbol{\lambda}$.
-	\item [\parbox{2cm}{$\lambda_{j}$}] The $j$-th dimension of the error vector, $\boldsymbol{\lambda}$.
-	\item [\parbox{2cm}{$\lambda_{J}$}] The last dimension of the error vector, $\boldsymbol{\lambda}$ in $J$ dimensions.
-	\item [\parbox{2cm}{$\epsilon$}] Error factor.
-	\item [\parbox{2cm}{$\gamma_{1,k}$}] The first dimension of the concentration parameter, $\boldsymbol{\gamma}$ associated with heuristic $k$.
-	\item [\parbox{2cm}{$\gamma_{2,k}$}] The second dimension of the concentration parameter, $\boldsymbol{\gamma}$ associated with heuristic $k$.
-	\item [\parbox{2cm}{$\alpha$}] Concentration parameter for the Beta probability distribution.
-	\item [\parbox{2cm}{$\beta$}] Concentration parameter for the Beta probability distribution.
 
-	\item [\parbox{2cm}{$\eta$}] Learning rate.
-	\item [\parbox{2cm}{$\mathcal{A}(v)$}] Functional form of priors.
-	\item [\parbox{2cm}{$\psi_{k}$}] The successful credit assignment probability for heuristic $k$.
-	\item [\parbox{2cm}{$c_{1}$}] Successful credit allocation.
-	\item [\parbox{2cm}{$e_{i}$}] The $i$-th event of observing entities.
-	\item [\parbox{2cm}{$e_{j}$}] The $j$-th entity.
-	\item [\parbox{2cm}{$h_{k}$}] The $k$-th heuristic.
-	\item [\parbox{2cm}{$S$}] The probability simplex.
-	\item [\parbox{2cm}{$t$}] Time step.
+	\item [\parbox{2cm}{$\alpha_{1}$}] \parbox{12.5cm}{The first dimension of the concentration parameter, $\boldsymbol{\alpha}$.}
+	\item [\parbox{2cm}{$\alpha_{K}$}] \parbox{12.5cm}{The $k$-th dimension of the concentration parameter, $\boldsymbol{\alpha}$.}
+	\item [\parbox{2cm}{$\alpha_{k}$}] \parbox{12.5cm}{The dimension of $\boldsymbol{\alpha}$ associated with class $k$.}
+	\item [\parbox{2cm}{$\alpha$}] \parbox{12.5cm}{Concentration parameter for the Beta probability distribution.}
+	\item [\parbox{2cm}{$\beta_{1}$}] \parbox{12.5cm}{The first dimension of the concentration parameter, $\boldsymbol{\beta}$.}
+	\item [\parbox{2cm}{$\beta_{2}$}] \parbox{12.5cm}{The second dimension of the concentration parameter, $\boldsymbol{\beta}$.}
+	\item [\parbox{2cm}{$\beta_{j,k}$}] \parbox{12.5cm}{The $j$-th entity's concentration parameter associated with heuristic $k$.}
+	\item [\parbox{2cm}{$\beta$}] \parbox{12.5cm}{Concentration parameter for the Beta probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}] \parbox{12.5cm}{The concentration parameters for the heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\beta}$}] \parbox{12.5cm}{The concentration parameters for the entity-heuristic probability distributions.}
+	\item [\parbox{2cm}{$\boldsymbol{\gamma}$}] \parbox{12.5cm}{The concentration parameters for the credit-heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\hat{\phi}}$}] \parbox{12.5cm}{The expected value of the entity-heuristic probabilities.}
+	\item [\parbox{2cm}{$\boldsymbol{\hat{\psi}}$}] \parbox{12.5cm}{The expected value of the heuristic-credit-assignment probabilities.}
+	\item [\parbox{2cm}{$\boldsymbol{\hat{\theta}}$}] \parbox{12.5cm}{The expected value of the heuristic selection probabilities.}
+	\item [\parbox{2cm}{$\boldsymbol{\lambda}$}] \parbox{12.5cm}{Error vector.}
+	\item [\parbox{2cm}{$\boldsymbol{\phi}$}] \parbox{12.5cm}{The entity-heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\psi}$}] \parbox{12.5cm}{The credit-heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\theta}$}] \parbox{12.5cm}{The heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{C}$}] \parbox{12.5cm}{The event of observing credit assignments upon meeting credit assignment criteria.}
+	\item [\parbox{2cm}{$\boldsymbol{E}$}] \parbox{12.5cm}{The event of observing entities.}
+	\item [\parbox{2cm}{$\boldsymbol{H}$}] \parbox{12.5cm}{The event of observing heuristics.}
+	\item [\parbox{2cm}{$\epsilon$}] \parbox{12.5cm}{Error factor.}
+	\item [\parbox{2cm}{$\eta$}] \parbox{12.5cm}{Learning rate.}
+	\item [\parbox{2cm}{$\gamma_{0}$}] \parbox{12.5cm}{The zeroth dimension of the concentration parameter, $\boldsymbol{\gamma}$.}
+	\item [\parbox{2cm}{$\gamma_{1,k}$}] \parbox{12.5cm}{The first dimension of the concentration parameter, $\boldsymbol{\gamma}$ associated with heuristic $k$.}
+	\item [\parbox{2cm}{$\gamma_{1}$}] \parbox{12.5cm}{The first dimension of the concentration parameter, $\boldsymbol{\gamma}$.}
+	\item [\parbox{2cm}{$\gamma_{2,k}$}] \parbox{12.5cm}{The second dimension of the concentration parameter, $\boldsymbol{\gamma}$ associated with heuristic $k$.}
+	\item [\parbox{2cm}{$\gamma_{K}$}] \parbox{12.5cm}{The $k$-th dimension of the concentration parameter, $\boldsymbol{\gamma}$.}
+	\item [\parbox{2cm}{$\hat{\phi}_{j,k}$}] \parbox{12.5cm}{The expected value of the probability of selecting heuristic $k$ for entity $j$.}
+	\item [\parbox{2cm}{$\hat{\psi}_{k}$}] \parbox{12.5cm}{The expected value of the probability of selecting heuristic $k$ and observing credit assignments.}
+	\item [\parbox{2cm}{$\hat{\theta}_{k}$}] \parbox{12.5cm}{The expected value of the probability of selecting heuristic $k$.}
+	\item [\parbox{2cm}{$\lambda_{j}$}] \parbox{12.5cm}{The $j$-th dimension of the error vector, $\boldsymbol{\lambda}$.}
+	\item [\parbox{2cm}{$\lambda_{J}$}] \parbox{12.5cm}{The last dimension of the error vector, $\boldsymbol{\lambda}$ in $J$ dimensions.}
+	\item [\parbox{2cm}{$\mathbbm{1}_{0}$}] \parbox{12.5cm}{The indicator function yielding a failure/non-occurrence.}
+	\item [\parbox{2cm}{$\mathbbm{1}_{1}$}] \parbox{12.5cm}{The indicator function yielding a success/occurrence.}
+	\item [\parbox{2cm}{$\mathcal{A}(v)$}] \parbox{12.5cm}{Functional form of priors.}
+	\item [\parbox{2cm}{$\mathcal{L}$}] \parbox{12.5cm}{The likelihood function.}
+	\item [\parbox{2cm}{$\phi_{j,k}$}] \parbox{12.5cm}{The entity-heuristic selection probability for entity $j$ and heuristic $k$.}
+	\item [\parbox{2cm}{$\psi_{k}$}] \parbox{12.5cm}{The successful credit assignment probability for heuristic $k$.}
+	\item [\parbox{2cm}{$\theta_{k}$}] \parbox{12.5cm}{The heuristic selection probability for heuristic $k$.}
+	\item [\parbox{2cm}{$A$}] \parbox{12.5cm}{A random event.}
+	\item [\parbox{2cm}{$B$}] \parbox{12.5cm}{A random event.}
+	\item [\parbox{2cm}{$Beta$}] \parbox{12.5cm}{The Beta probability distribution.}
+	\item [\parbox{2cm}{$Bin$}] \parbox{12.5cm}{The Binomial probability distribution.}
+	\item [\parbox{2cm}{$c_{1}$}] \parbox{12.5cm}{Successful credit allocation.}
+	\item [\parbox{2cm}{$c_{i,k}$}] \parbox{12.5cm}{The realisation of the $i$-th event of observing a credit assignment $i$ to heuristic $k$.}
+	\item [\parbox{2cm}{$c_{i}$}] \parbox{12.5cm}{The $i$-th event of observing credit assignments.}
+	\item [\parbox{2cm}{$Dir$}] \parbox{12.5cm}{The Dirichlet probability distribution.}
+	\item [\parbox{2cm}{$e_{i,j,k}$}] \parbox{12.5cm}{The realisation of the $i$-th event of observing heuristic $k$ for selected for entity $j$.}
+	\item [\parbox{2cm}{$e_{i}$}] \parbox{12.5cm}{The $i$-th event of observing entities.}
+	\item [\parbox{2cm}{$e_{j}$}] \parbox{12.5cm}{The $j$-th entity.}
+	\item [\parbox{2cm}{$E[\phi_{j,k}]$}] \parbox{12.5cm}{The expected value of the probability of selecting heuristic $k$ for entity $j$.}
+	\item [\parbox{2cm}{$E[\psi_{k}]$}] \parbox{12.5cm}{The expected value of the probability of selecting heuristic $k$ and observing credit assignments.}
+	\item [\parbox{2cm}{$E[\theta_{k}]$}] \parbox{12.5cm}{The expected value of the probability of selecting heuristic $k$.}
+	\item [\parbox{2cm}{$h_{i,k}$}] \parbox{12.5cm}{The realisation of the $i$-th event of observing heuristic $k$.}
+	\item [\parbox{2cm}{$h_{i}$}] \parbox{12.5cm}{The $i$-th event of observing heuristics.}
+	\item [\parbox{2cm}{$h_{k}$}] \parbox{12.5cm}{The $k$-th heuristic.}
+	\item [\parbox{2cm}{$i$}] \parbox{12.5cm}{Index generally associated with event/run $i$.}
+	\item [\parbox{2cm}{$I$}] \parbox{12.5cm}{The maximum number of instances in the replay window.}
+	\item [\parbox{2cm}{$j$}] \parbox{12.5cm}{Index generally associated to entity $j$.}
+	\item [\parbox{2cm}{$J$}] \parbox{12.5cm}{The entity pool (population) size.}
+	\item [\parbox{2cm}{$k$}] \parbox{12.5cm}{Index generally associated to heuristic $k$.}
+	\item [\parbox{2cm}{$K$}] \parbox{12.5cm}{The heuristic pool size.}
+	\item [\parbox{2cm}{$L$}] \parbox{12.5cm}{The number of credit assignment output classes.}
+	\item [\parbox{2cm}{$LSE$}] \parbox{12.5cm}{The log-sum-exp trick/function.}
+	\item [\parbox{2cm}{$Mult$}] \parbox{12.5cm}{The Multinomial probability distribution.}
+	\item [\parbox{2cm}{$N_{0,k}$}] \parbox{12.5cm}{The count of occurrences of the events $c_{i}$ taking on a failure.}
+	\item [\parbox{2cm}{$N_{1,k}$}] \parbox{12.5cm}{The count of occurrences of the events $c_{i}$ taking on a success.}
+	\item [\parbox{2cm}{$N_{j,k}$}] \parbox{12.5cm}{A summary variable denoting the count of occurrences of the events $e_{i}$ taking on class $j$ and $h_{i}$ taking on class $k$ in $I$ independent, identical runs.}
+	\item [\parbox{2cm}{$N_{j}$}] \parbox{12.5cm}{The count of the occurrences of observing entity $j$.}
+	\item [\parbox{2cm}{$N_{k}$}] \parbox{12.5cm}{A summary variable denoting the count of occurrences of the event $h_{i}$ taking on class $k$ in $I$ independent, identical runs.}
+	\item [\parbox{2cm}{$N$}] \parbox{12.5cm}{The maximum number of random events observed.}
+	\item [\parbox{2cm}{$S$}] \parbox{12.5cm}{The probability simplex.}
+	\item [\parbox{2cm}{$t$}] \parbox{12.5cm}{Time step.}
+	\item [\parbox{2cm}{$\lambda_{1}$}] \parbox{12.5cm}{The first dimension of the error vector, $\boldsymbol{\lambda}$.}
 \end{description}
 
 \section{Chapter~\ref{chap:methodology}: Methodology}
 \label{sec:symbols:methodology}
 
 \begin{description}
-	\item [\parbox{2cm}{$\alpha$}] Used as a scaling parameter for the \acs{LReLU} activation function. Also used as a threshold parameter for the statistical significance tests.
-	\item [\parbox{2cm}{$\eta$}] Learning rate.
-	\item [\parbox{2cm}{$\mathbb{R}$}] Real-number space.
-	\item [\parbox{2cm}{$v_{ij}$}] The $j$-th dimension of the velocity vector of the $i$-th particle in the population implemented by \acs{PSO}.
-	\item [\parbox{2cm}{$x_{ij}$}] The $j$-th dimension of the position vector of the $i$-th particle in the population implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$\alpha$}] \parbox{12.5cm}{Used as a scaling parameter for the \acs{LReLU} activation function. Also used as a threshold parameter for the statistical significance tests.}
+	\item [\parbox{2cm}{$\eta$}] \parbox{12.5cm}{Learning rate.}
+	\item [\parbox{2cm}{$\mathbb{R}$}] \parbox{12.5cm}{Real-number space.}
+	\item [\parbox{2cm}{$v_{ij}$}] \parbox{12.5cm}{The $j$-th dimension of the velocity vector of the $i$-th particle in the population implemented by \acs{PSO}.}
+	\item [\parbox{2cm}{$x_{ij}$}] \parbox{12.5cm}{The $j$-th dimension of the position vector of the $i$-th particle in the population implemented by \acs{PSO}.}
 \end{description}
 
 \section{Chapter~\ref{chap:results}: Results}
 \label{sec:symbols:results}
 
 \begin{description}
-	\item [\parbox{2cm}{$\alpha_{0}$}] The zeroth dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $0$ (\acs{SGD}).
-	\item [\parbox{2cm}{$\alpha_{6}$}] The sixth dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $6$ (\acs{Adam}).
-	\item [\parbox{2cm}{$\alpha_{7}$}] The seventh dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $7$ (\acs{PSO}).
-	\item [\parbox{2cm}{$\alpha_{8}$}] The eight dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $8$ (\acs{GA}).
-	\item [\parbox{2cm}{$\alpha_{i}$}] The $i$-th dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $i$.
-	\item [\parbox{2cm}{$\boldsymbol{H}$}] The event of observing heuristics.
-	\item [\parbox{2cm}{$\boldsymbol{E}$}] The event of observing entities.
-	\item [\parbox{2cm}{$\boldsymbol{C}$}] The event of observing credit assignments upon meeting credit assignment criteria.
-	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}] The concentration parameters for the heuristic probability distribution.
-	\item [\parbox{2cm}{$\boldsymbol{\phi}$}] The entity-heuristic probability distribution.
-	\item [\parbox{2cm}{$\boldsymbol{\psi}$}] The credit-heuristic probability distribution.
-	\item [\parbox{2cm}{$\boldsymbol{\theta}$}] The heuristic probability distribution.
-	\item [\parbox{2cm}{$\theta_{0}$}] The zeroth dimension of the heuristic selection probabilities $\boldsymbol{\theta}$ and is associated to heuristic $0$ (\acs{SGD}).
-	\item [\parbox{2cm}{$\theta_{6}$}] The sixth dimension of the heuristic selection probabilities $\boldsymbol{\theta}$ and is associated to heuristic $6$ (\acs{Adam}).
-	\item [\parbox{2cm}{$\theta_{7}$}] The seventh dimension of the heuristic selection probabilities $\boldsymbol{\theta}$ and is associated to heuristic $7$ (\acs{PSO}).
-	\item [\parbox{2cm}{$\theta_{8}$}] The eight dimension of the heuristic selection probabilities $\boldsymbol{\theta}$ and is associated to heuristic $8$ (\acs{GA}).
-	\item [\parbox{2cm}{$c_{1}$}] Successful credit allocation.
-	\item [\parbox{2cm}{$Cat$}] The Categorical probability distribution.
-	\item [\parbox{2cm}{$Dir$}] The Dirichlet probability distribution.
-	\item [\parbox{2cm}{$e_{0}$}] Entity $0$.
-	\item [\parbox{2cm}{$h_{0}$}] Heuristic $0$ (\acs{SGD}).
-	\item [\parbox{2cm}{$h_{6}$}] Heuristic $6$ (\acs{Adam}).
-	\item [\parbox{2cm}{$h_{7}$}] Heuristic $7$ (\acs{PSO}).
-	\item [\parbox{2cm}{$h_{8}$}] Heuristic $8$ (\acs{GA}).
-	\item [\parbox{2cm}{$i$}] General index associated with event/run number.
-	\item [\parbox{2cm}{$K$}] Heuristic pool size.
+	\item [\parbox{2cm}{$\alpha_{0}$}] \parbox{12.5cm}{The zeroth dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $0$ (\acs{SGD}).}
+	\item [\parbox{2cm}{$\alpha_{6}$}] \parbox{12.5cm}{The sixth dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $6$ (\acs{Adam}).}
+	\item [\parbox{2cm}{$\alpha_{7}$}] \parbox{12.5cm}{The seventh dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $7$ (\acs{PSO}).}
+	\item [\parbox{2cm}{$\alpha_{8}$}] \parbox{12.5cm}{The eight dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $8$ (\acs{GA}).}
+	\item [\parbox{2cm}{$\alpha_{i}$}] \parbox{12.5cm}{The $i$-th dimension of the concentration parameter $\boldsymbol{\alpha}$ and is associated to heuristic $i$.}
+	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}] \parbox{12.5cm}{The concentration parameters for the heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\phi}$}] \parbox{12.5cm}{The entity-heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\psi}$}] \parbox{12.5cm}{The credit-heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{\theta}$}] \parbox{12.5cm}{The heuristic probability distribution.}
+	\item [\parbox{2cm}{$\boldsymbol{C}$}] \parbox{12.5cm}{The event of observing credit assignments upon meeting credit assignment criteria.}
+	\item [\parbox{2cm}{$\boldsymbol{E}$}] \parbox{12.5cm}{The event of observing entities.}
+	\item [\parbox{2cm}{$\boldsymbol{H}$}] \parbox{12.5cm}{The event of observing heuristics.}
+	\item [\parbox{2cm}{$\theta_{0}$}] \parbox{12.5cm}{The zeroth dimension of the heuristic selection probabilities $\boldsymbol{\theta}$ and is associated to heuristic $0$ (\acs{SGD}).}
+	\item [\parbox{2cm}{$\theta_{6}$}] \parbox{12.5cm}{The sixth dimension of the heuristic selection probabilities $\boldsymbol{\theta}$ and is associated to heuristic $6$ (\acs{Adam}).}
+	\item [\parbox{2cm}{$\theta_{7}$}] \parbox{12.5cm}{The seventh dimension of the heuristic selection probabilities $\boldsymbol{\theta}$ and is associated to heuristic $7$ (\acs{PSO}).}
+	\item [\parbox{2cm}{$\theta_{8}$}] \parbox{12.5cm}{The eight dimension of the heuristic selection probabilities $\boldsymbol{\theta}$ and is associated to heuristic $8$ (\acs{GA}).}
+	\item [\parbox{2cm}{$c_{1}$}] \parbox{12.5cm}{Successful credit allocation.}
+	\item [\parbox{2cm}{$Cat$}] \parbox{12.5cm}{The Categorical probability distribution.}
+	\item [\parbox{2cm}{$Dir$}] \parbox{12.5cm}{The Dirichlet probability distribution.}
+	\item [\parbox{2cm}{$e_{0}$}] \parbox{12.5cm}{Entity $0$.}
+	\item [\parbox{2cm}{$h_{0}$}] \parbox{12.5cm}{Heuristic $0$ (\acs{SGD}).}
+	\item [\parbox{2cm}{$h_{6}$}] \parbox{12.5cm}{Heuristic $6$ (\acs{Adam}).}
+	\item [\parbox{2cm}{$h_{7}$}] \parbox{12.5cm}{Heuristic $7$ (\acs{PSO}).}
+	\item [\parbox{2cm}{$h_{8}$}] \parbox{12.5cm}{Heuristic $8$ (\acs{GA}).}
+	\item [\parbox{2cm}{$i$}] \parbox{12.5cm}{General index associated with event/run number.}
+	\item [\parbox{2cm}{$K$}] \parbox{12.5cm}{Heuristic pool size.}
 \end{description}
