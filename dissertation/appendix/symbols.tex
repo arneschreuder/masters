@@ -8,71 +8,70 @@ This appendix summarises the important symbols used throughout the dissertation.
 
 \begin{description}
 	% \item
-	%       [\parbox{1cm}{$EXAMPLE$}] THIS IS AN EXAMPLE DESCRIPTION. \lbrack Eq.~\eqref{eq:an_function_mapping} pg.~\pageref{eq:an_function_mapping} \rbrack
+	%       [\parbox{2cm}{$EXAMPLE$}] THIS IS AN EXAMPLE DESCRIPTION. \lbrack Eq.~\eqref{eq:an_function_mapping} pg.~\pageref{eq:an_function_mapping} \rbrack
 
-	\item [\parbox{1cm}{$I$}] The input pattern's dimension size.
-	\item [\parbox{1cm}{$T$}] The target pattern's dimension size.
-	\item [\parbox{1cm}{$\mathbb{R}$}] The real-number space.
-	\item [\parbox{1cm}{$\mathbb{R}^{I}$}] The real-number space in I dimensions.
-	\item [\parbox{1cm}{$\mathbb{R}^{T}$}] The real-number space in T dimensions.
-	\item [\parbox{1cm}{$f_{AN}$}] The mapping function realised by the \acs{AN}.
-	\item [\parbox{1cm}{$\boldsymbol{x}$}] The input pattern/vector.
-	\item [\parbox{1cm}{$x_{i}$}] The $i$-th dimension of the input pattern/vector.
-	\item [\parbox{1cm}{$\theta$}] The bias unit.
-	\item [\parbox{1cm}{$\boldsymbol{v}$}] The weight vector.
-	\item [\parbox{1cm}{$v_{i}$}] The $i$-th dimension of the weight vector.
-	\item [\parbox{1cm}{$net$}] The net input signal to the \acs{AN}.
-	\item [\parbox{1cm}{$f(net)$}] The activation function over net input signal.
-	\item [\parbox{1cm}{$\boldsymbol{y}$}] The output vector.
-	\item [\parbox{1cm}{$\boldsymbol{y}_{p}$}] The output vector for pattern $p$.
-	\item [\parbox{1cm}{$k$}] Index for the output vector.
-	\item [\parbox{1cm}{$x_{i,p}^{'}$}] The normalised form of the input at dimension $i$, pattern $p$.
-	\item [\parbox{1cm}{$x_{i,p}$}] The original input at dimension $i$, pattern $p$.
-	\item [\parbox{1cm}{$x_{i_{min}}$}] The input's minimum value at dimension $i$.
-	\item [\parbox{1cm}{$x_{i_{max}}$}] The input's maximum value at dimension $i$.
-	\item [\parbox{1cm}{$p$}] Index for the input data patterns.
-	\item [\parbox{1cm}{$P$}] Total number of input data patterns.
-	\item [\parbox{1cm}{$\boldsymbol{x}_p$}] The $p$-th input vector/pattern.
-	\item [\parbox{1cm}{$\mu_i$}] The mean of the input at dimension $i$.
-	\item [\parbox{1cm}{$\sigma^2_i$}] The unit variance of the input at dimension $i$.
-	\item [\parbox{1cm}{$i$}] Index for the input vector.
-	\item [\parbox{1cm}{$\omega$}] The general weight vector used for normalisation.
-	\item [\parbox{1cm}{$\omega_{i}$}] The general weight vector used for normalisation at dimension $i$.
-	\item [\parbox{1cm}{$\omega_{min}$}] The lower bound of the uniform distribution used for weights initialisation.
-	\item [\parbox{1cm}{$\omega_{max}$}] The upper bound of the uniform distribution used for weights initialisation.
-	\item [\parbox{1cm}{\footnotesize{$fanin$}}] The number of input neurons to the weight vector.
-	\item [\parbox{1cm}{\footnotesize{$fanout$}}] The number of output neurons from the weight vector.
-	\item [\parbox{1cm}{$\sigma$}] The standard deviation of the truncated normal distribution used for weight initialisation.
-	\item [\parbox{1cm}{$K$}] Number of output units.
-	\item [\parbox{1cm}{$x_{i+1}$}] The $i+1$-th dimension of the input pattern/vector.
-	\item [\parbox{1cm}{$v_{i+1}$}] The $i+1$-th dimension of the weight vector.
-	\item [\parbox{1cm}{$net^{'}$}] The augmented net input signal that includes the bias term.
-	\item [\parbox{1cm}{$\tau$}] Phase shift threshold parameter.
-	\item [\parbox{1cm}{$f(x)$}] The function used to describe the \acs{LReLU} activation function.
-	\item [\parbox{1cm}{$f$}] A shorted form of the activation function.
-	\item [\parbox{1cm}{$x^{+}$}] The positive part of the input parameter's domain.
-	\item [\parbox{1cm}{$\alpha$}] Scaling parameter used by the \acs{LReLU} activation function.
-	\item [\parbox{1cm}{$\lambda$}] Scaling/control parameter used by the sigmoid and tanh activation functions.
-	\item [\parbox{1cm}{$x_{min}$}] The input's minimum value used by the min-max scaler.
-	\item [\parbox{1cm}{$x_{max}$}] The input's maximum value used by the min-max scaler.
-	\item [\parbox{1cm}{$\mathbb{R}^{K}$}] The real-number space in $K$ dimensions.
-	\item [\parbox{1cm}{$y_{k}$}] The $k$-th dimension of the output vector.
-	\item [\parbox{1cm}{$y^{'}_k$}] The softmax value of the output at dimension $k$.
-	\item [\parbox{1cm}{$\boldsymbol{y^{'}}$}] The softmax form of the output vector.
-	\item [\parbox{1cm}{$x_{i}$}] The $i$-th dimension of the input vector.
-	\item [\parbox{1cm}{$h_{j}$}] The $j$-th dimension of the hidden layer.
-	\item [\parbox{1cm}{$j$}] Index used for the hidden layer.
-	\item [\parbox{1cm}{$v_{i,j}$}] The weight associated with input node $x_{i}$ and the hidden node $h_{j}$.
-	\item [\parbox{1cm}{$w_{j,k}$}] The weight associated with hidden node $h_{j}$ and the output node $y_{k}$.
-	\item [\parbox{1cm}{$net_{i,h}$}] The net input signal at the hidden layer.
-	\item [\parbox{1cm}{$net_{h,y}$}] The net input signal at the output layer.
-	\item [\parbox{1cm}{$\epsilon$}] The cost/loss produced by the loss function.
-	\item [\parbox{1cm}{$y_{k,p}$}] The output produced by the \acs{ANN} at the $k$-th dimension for the $p$-th pattern.
-	\item [\parbox{1cm}{$\hat{y}_{k,p}$}] The target output for the \acs{ANN} at the $k$-th dimension for the $p$-th pattern.
-	\item [\parbox{1cm}{$\beta$}] Mini-batch size.
-	\item [\parbox{1cm}{$\mathbbm{1}$}] The indicator function.
-	\item [\parbox{1cm}{$c$}] Index used for $c$-th class.
-	\item [\parbox{1cm}{$C$}] Total number of classes.
+	\item [\parbox{2cm}{$I$}] The input pattern's dimension size.
+	\item [\parbox{2cm}{$T$}] The target pattern's dimension size.
+	\item [\parbox{2cm}{$\mathbb{R}$}] The real-number space.
+	\item [\parbox{2cm}{$\mathbb{R}^{I}$}] The real-number space in I dimensions.
+	\item [\parbox{2cm}{$\mathbb{R}^{T}$}] The real-number space in T dimensions.
+	\item [\parbox{2cm}{$f_{AN}$}] The mapping function realised by the \acs{AN}.
+	\item [\parbox{2cm}{$\boldsymbol{x}$}] The input pattern/vector.
+	\item [\parbox{2cm}{$x_{i}$}] The $i$-th dimension of the input pattern/vector.
+	\item [\parbox{2cm}{$\theta$}] The bias unit.
+	\item [\parbox{2cm}{$\boldsymbol{v}$}] The weight vector.
+	\item [\parbox{2cm}{$v_{i}$}] The $i$-th dimension of the weight vector.
+	\item [\parbox{2cm}{$net$}] The net input signal to the \acs{AN}.
+	\item [\parbox{2cm}{$f(net)$}] The activation function over net input signal.
+	\item [\parbox{2cm}{$\boldsymbol{y}$}] The output vector.
+	\item [\parbox{2cm}{$\boldsymbol{y}_{p}$}] The output vector for pattern $p$.
+	\item [\parbox{2cm}{$k$}] Index for the output vector.
+	\item [\parbox{2cm}{$x_{i,p}^{'}$}] The normalised form of the input at dimension $i$, pattern $p$.
+	\item [\parbox{2cm}{$x_{i,p}$}] The original input at dimension $i$, pattern $p$.
+	\item [\parbox{2cm}{$x_{i_{min}}$}] The input's minimum value at dimension $i$.
+	\item [\parbox{2cm}{$x_{i_{max}}$}] The input's maximum value at dimension $i$.
+	\item [\parbox{2cm}{$p$}] Index for the input data patterns.
+	\item [\parbox{2cm}{$P$}] Total number of input data patterns.
+	\item [\parbox{2cm}{$\boldsymbol{x}_p$}] The $p$-th input vector/pattern.
+	\item [\parbox{2cm}{$\mu_i$}] The mean of the input at dimension $i$.
+	\item [\parbox{2cm}{$\sigma^2_i$}] The unit variance of the input at dimension $i$.
+	\item [\parbox{2cm}{$i$}] Index for the input vector.
+	\item [\parbox{2cm}{$\omega$}] The general weight vector used for normalisation.
+	\item [\parbox{2cm}{$\omega_{i}$}] The general weight vector used for normalisation at dimension $i$.
+	\item [\parbox{2cm}{$\omega_{min}$}] The lower bound of the uniform distribution used for weights initialisation.
+	\item [\parbox{2cm}{$\omega_{max}$}] The upper bound of the uniform distribution used for weights initialisation.
+	\item [\parbox{2cm}{$fanin$}] The number of input neurons to the weight vector.
+	\item [\parbox{2cm}{$fanout$}] The number of output neurons from the weight vector.
+	\item [\parbox{2cm}{$\sigma$}] The standard deviation of the truncated normal distribution used for weight initialisation.
+	\item [\parbox{2cm}{$K$}] Number of output units.
+	\item [\parbox{2cm}{$x_{i+1}$}] The $i+1$-th dimension of the input pattern/vector.
+	\item [\parbox{2cm}{$v_{i+1}$}] The $i+1$-th dimension of the weight vector.
+	\item [\parbox{2cm}{$net^{'}$}] The augmented net input signal that includes the bias term.
+	\item [\parbox{2cm}{$\tau$}] Phase shift threshold parameter.
+	\item [\parbox{2cm}{$f(x)$}] The function used to describe the \acs{LReLU} activation function.
+	\item [\parbox{2cm}{$f$}] A shorted form of the activation function.
+	\item [\parbox{2cm}{$x^{+}$}] The positive part of the input parameter's domain.
+	\item [\parbox{2cm}{$\alpha$}] Scaling parameter used by the \acs{LReLU} activation function.
+	\item [\parbox{2cm}{$\lambda$}] Scaling/control parameter used by the sigmoid and tanh activation functions.
+	\item [\parbox{2cm}{$x_{min}$}] The input's minimum value used by the min-max scaler.
+	\item [\parbox{2cm}{$x_{max}$}] The input's maximum value used by the min-max scaler.
+	\item [\parbox{2cm}{$\mathbb{R}^{K}$}] The real-number space in $K$ dimensions.
+	\item [\parbox{2cm}{$y_{k}$}] The $k$-th dimension of the output vector.
+	\item [\parbox{2cm}{$y^{'}_k$}] The softmax value of the output at dimension $k$.
+	\item [\parbox{2cm}{$\boldsymbol{y^{'}}$}] The softmax form of the output vector.
+	\item [\parbox{2cm}{$h_{j}$}] The $j$-th dimension of the hidden layer.
+	\item [\parbox{2cm}{$j$}] Index used for the hidden layer.
+	\item [\parbox{2cm}{$v_{i,j}$}] The weight associated with input node $x_{i}$ and the hidden node $h_{j}$.
+	\item [\parbox{2cm}{$w_{j,k}$}] The weight associated with hidden node $h_{j}$ and the output node $y_{k}$.
+	\item [\parbox{2cm}{$net_{i,h}$}] The net input signal at the hidden layer.
+	\item [\parbox{2cm}{$net_{h,y}$}] The net input signal at the output layer.
+	\item [\parbox{2cm}{$\epsilon$}] The cost/loss produced by the loss function.
+	\item [\parbox{2cm}{$y_{k,p}$}] The output produced by the \acs{ANN} at the $k$-th dimension for the $p$-th pattern.
+	\item [\parbox{2cm}{$\hat{y}_{k,p}$}] The target output for the \acs{ANN} at the $k$-th dimension for the $p$-th pattern.
+	\item [\parbox{2cm}{$\beta$}] Mini-batch size.
+	\item [\parbox{2cm}{$\mathbbm{1}$}] The indicator function.
+	\item [\parbox{2cm}{$c$}] Index used for $c$-th class.
+	\item [\parbox{2cm}{$C$}] Total number of classes.
 
 \end{description}
 
@@ -80,391 +79,385 @@ This appendix summarises the important symbols used throughout the dissertation.
 \label{sec:symbols:heuristics}
 
 \begin{description}
-	\item [\parbox{1cm}{$\alpha$}]
-	\item [\parbox{1cm}{$\beta_{1}$}]
-	\item [\parbox{1cm}{$\beta_{2}$}]
-	\item [\parbox{1cm}{$\beta^{t}_{1}$}]
-	\item [\parbox{1cm}{$\beta^{t}_{2}$}]
-	\item [\parbox{1cm}{$\beta$}]
-	\item [\parbox{1cm}{$\boldsymbol{\hat{y}}_{i}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{G_{t}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{g}_{t}^{2}$}]
-	\item [\parbox{1cm}{$\boldsymbol{g}_{t}$}]
-	\item [\parbox{1cm}{$\boldsymbol{g}^{2}_{t}$}]
-	\item [\parbox{1cm}{$\boldsymbol{g}$}]
-	\item [\parbox{1cm}{$\boldsymbol{m}_{t}$}]
-	\item [\parbox{1cm}{$\boldsymbol{m}_{t+1}$}]
-	\item [\parbox{1cm}{$\boldsymbol{r}_{1} \sim U(0,1)^J$}]
-	\item [\parbox{1cm}{$\boldsymbol{r}_{2} \sim U(0,1)^J$}]
-	\item [\parbox{1cm}{$\boldsymbol{u}_{i}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{v}_{i}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{V}_{max}$}]
-	\item [\parbox{1cm}{$\boldsymbol{v}_{t}$}]
-	\item [\parbox{1cm}{$\boldsymbol{v}_{t+1}$}]
-	\item [\parbox{1cm}{$\boldsymbol{v}$}]
-	\item [\parbox{1cm}{$\boldsymbol{w}_{t}^{2}$}]
-	\item [\parbox{1cm}{$\boldsymbol{w}_{t}$}]
-	\item [\parbox{1cm}{$\boldsymbol{w}_{t+1}$}]
-	\item [\parbox{1cm}{$\boldsymbol{w}$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i_{1}}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i_{1}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i_{2}}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i_{2}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i_{3}}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i_{3}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i} \sim U(x_{min}, x_{max})$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i}(0)$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i}(t) \in \mathcal{C}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}_{i}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}'_{i}(t)$}]
-	\item [\parbox{1cm}{$\boldsymbol{y}_{i}(0)$}]
-	\item [\parbox{1cm}{$\boldsymbol{y}_{i}(t)$}]
-	\item [\parbox{1cm}{$\Delta w_{i}(t)$}]
-	\item [\parbox{1cm}{$\Delta$}]
-	\item [\parbox{1cm}{$\emptyset$}]
-	\item [\parbox{1cm}{$\epsilon_{T_{p}}$}]
-	\item [\parbox{1cm}{$\epsilon_{T}$}]
-	\item [\parbox{1cm}{$\epsilon$}]
-	\item [\parbox{1cm}{$\eta$}]
-	\item [\parbox{1cm}{$\hat{\boldsymbol{m}}_{t}$}]
-	\item [\parbox{1cm}{$\hat{\boldsymbol{v}}_{t}$}]
-	\item [\parbox{1cm}{$\hat{y}_{ij}(t)$}]
-	\item [\parbox{1cm}{$\hat{y}_{ij}$}]
-	\item [\parbox{1cm}{$\hat{y}$}]
-	\item [\parbox{1cm}{$\mathcal{C}(0)$}]
-	\item [\parbox{1cm}{$\mathcal{C}(t+1)$}]
-	\item [\parbox{1cm}{$\mathcal{E}$}]
-	\item [\parbox{1cm}{$\mathcal{J}$}]
-	\item [\parbox{1cm}{$\odot$}]
-	\item [\parbox{1cm}{$c_{1}$}]
-	\item [\parbox{1cm}{$c_{2}$}]
-	\item [\parbox{1cm}{$E[\boldsymbol{g}^{2}]_{t - 1}$}]
-	\item [\parbox{1cm}{$E[\boldsymbol{g}^{2}]_{t}$}]
-	\item [\parbox{1cm}{$E[\Delta \boldsymbol{w}^{2}]_{t - 1}$}]
-	\item [\parbox{1cm}{$E[\Delta \boldsymbol{w}^{2}]_{t}$}]
-	\item [\parbox{1cm}{$f(\boldsymbol{x}_{i}(t))$}]
-	\item [\parbox{1cm}{$f(\boldsymbol{x}'_{i}(t))$}]
-	\item [\parbox{1cm}{$f(\hat{y})$}]
-	\item [\parbox{1cm}{$f(x_{i})$}]
-	\item [\parbox{1cm}{$f(x)$}]
-	\item [\parbox{1cm}{$f(y_{i})$}]
-	\item [\parbox{1cm}{$f$}]
-	\item [\parbox{1cm}{$g_{t,i}$}]
-	\item [\parbox{1cm}{$G_{t,i}$}]
-	\item [\parbox{1cm}{$G_{t,ii}$}]
-	\item [\parbox{1cm}{$g$}]
-	\item [\parbox{1cm}{$i_{1}$}]
-	\item [\parbox{1cm}{$i_{2}$}]
-	\item [\parbox{1cm}{$i_{3}$}]
-	\item [\parbox{1cm}{$i$}]
-	\item [\parbox{1cm}{$I$}]
-	\item [\parbox{1cm}{$j^{*}$}]
-	\item [\parbox{1cm}{$j$}]
-	\item [\parbox{1cm}{$J$}]
-	\item [\parbox{1cm}{$k$}]
-	\item [\parbox{1cm}{$m_{j}(t)$}]
-	\item [\parbox{1cm}{$mathcal{J}$}]
-	\item [\parbox{1cm}{$N_{t}$}]
-	\item [\parbox{1cm}{$N$}]
-	\item [\parbox{1cm}{$net_{p}$}]
-	\item [\parbox{1cm}{$o_{k,p}^{2}$}]
-	\item [\parbox{1cm}{$o_{p}$}]
-	\item [\parbox{1cm}{$o_p$}]
-	\item [\parbox{1cm}{$p_{c}$}]
-	\item [\parbox{1cm}{$p_{m}$}]
-	\item [\parbox{1cm}{$p_{r}$}]
-	\item [\parbox{1cm}{$p_{x}$}]
-	\item [\parbox{1cm}{$p$}]
-	\item [\parbox{1cm}{$r_{1_{j}}$}]
-	\item [\parbox{1cm}{$r_{2_{j}}$}]
-	\item [\parbox{1cm}{$RMS$}]
-	\item [\parbox{1cm}{$t_{k,p}$}]
-	\item [\parbox{1cm}{$t_{p}$}]
-	\item [\parbox{1cm}{$t$}]
-	\item [\parbox{1cm}{$T$}]
-	\item [\parbox{1cm}{$u_{ij}(t)$}]
-	\item [\parbox{1cm}{$v_{ij}(t)$}]
-	\item [\parbox{1cm}{$v_{ij}(t+1)$}]
-	\item [\parbox{1cm}{$v_{ij}$}]
-	\item [\parbox{1cm}{$V_{max,j}$}]
-	\item [\parbox{1cm}{$V_{max}$}]
-	\item [\parbox{1cm}{$v'_{ij}(t+1)$}]
-	\item [\parbox{1cm}{$w_{i}(t-1)$}]
-	\item [\parbox{1cm}{$w_{i}(t)$}]
-	\item [\parbox{1cm}{$w_{i}$}]
-	\item [\parbox{1cm}{$w_{i}$}]
-	\item [\parbox{1cm}{$w_{t,i}$}]
-	\item [\parbox{1cm}{$w_{t}$}]
-	\item [\parbox{1cm}{$w_{t+1,i}$}]
-	\item [\parbox{1cm}{$w_{t+1}$}]
-	\item [\parbox{1cm}{$w$}]
-	\item [\parbox{1cm}{$W$}]
-	\item [\parbox{1cm}{$wv_{ij}(t)$}]
-	\item [\parbox{1cm}{$wv_{ij}$}]
-	\item [\parbox{1cm}{$x_{i}$}]
-	\item [\parbox{1cm}{$x_{ij}(t)$}]
-	\item [\parbox{1cm}{$x_{ij}(t+1)$}]
-	\item [\parbox{1cm}{$x_{ij}$}]
-	\item [\parbox{1cm}{$x_{max,j}$}]
-	\item [\parbox{1cm}{$x_{min,j}$}]
-	\item [\parbox{1cm}{$x'_{ij}(t)$}]
-	\item [\parbox{1cm}{$x$}]
-	\item [\parbox{1cm}{$y_{i}$}]
-	\item [\parbox{1cm}{$y_{ij}(t)$}]
-	\item [\parbox{1cm}{$y_{ij}$}]
-	\item [\parbox{1cm}{$y$}]
-	\item [\parbox{1cm}{$z_{i,p}$}]
-	\item [\parbox{1cm}{$z$}]
+	\item [\parbox{2cm}{$f$}] A shortened form of the objective function being optimised.
+	\item [\parbox{2cm}{$x$}] The independent variables to the objective function. Also used in \acs{DE} notation to denote the selection mechanism for the trial vector.
+	\item [\parbox{2cm}{$f(x)$}] The objective function over $x$.
+	\item [\parbox{2cm}{$\epsilon$}] The error between the output of the \acs{FFNN} and the target pattern, produced by the loss function. Also used as a small error value used by heuristics to avoid division by 0.
+	\item [\parbox{2cm}{$\mathcal{E}$}] The error function.
+	\item [\parbox{2cm}{$w_{i}(t)$}] The $i$-th dimension of the weight vector at time step $t$.
+	\item [\parbox{2cm}{$w_{i}(t-1)$}] The $i$-th dimension of the weight vector at time step $t-1$.
+	\item [\parbox{2cm}{$\Delta w_{i}(t)$}] The change in the $i$-th dimension of the weight vector at time step $t$.
+	\item [\parbox{2cm}{$w_{i}$}] The $i$-th dimension of the weight vector.
+	\item [\parbox{2cm}{$i$}] Index used for the weight vector. Also used as the index for the $i$-th particle in the population, implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$\boldsymbol{w}$}] The weight vector.
+	\item [\parbox{2cm}{$p$}] Index used for input data patterns.
+	\item [\parbox{2cm}{$o_{i,p}$}] The $i$-th dimension of the output for pattern $p$.
+	\item [\parbox{2cm}{$t_{i,p}$}] The $i$-th dimension of the target for pattern $p$.
+	      item [\parbox{2cm}{$o_{k,p}$}] The $k$-th dimension of the output for pattern $p$.
+	\item [\parbox{2cm}{$t_{k,p}$}] The $k$-th dimension of the target for pattern $p$.
+	\item [\parbox{2cm}{$net_{p}$}] The net input signal for pattern $p$.
+	\item [\parbox{2cm}{$z_{i,p}$}] The input value at index $i$ for pattern $p$.
+	\item [\parbox{2cm}{$\boldsymbol{g}$}] General symbol used to represent the gradient vector, retrieved from the error function relative to the weight vector.
+	\item [\parbox{2cm}{$\boldsymbol{v}$}] The velocity vector resulting from \acs{Momentum}.
+	\item [\parbox{2cm}{$\boldsymbol{w}$}] General symbol used to represent the weight vector.
+	\item [\parbox{2cm}{$\epsilon_{T}$}] The error at time step $T$.
+	\item [\parbox{2cm}{$\epsilon_{T_{p}}$}] The error produced for pattern $p$ at time step $T$.
+	\item [\parbox{2cm}{$\eta$}] Learning rate.
+	\item [\parbox{2cm}{$k$}] Index used for the output layer.
+	\item [\parbox{2cm}{$K$}] Total number of output units.
+	\item [\parbox{2cm}{$t$}] Time step.
+	\item [\parbox{2cm}{$T$}] Time step.
+	\item [\parbox{2cm}{$\alpha$}] The momentum hyper-parameter.
+	\item [\parbox{2cm}{$w_{t,i}$}] The $i$-th dimension of the weight vector at time step $t$.
+	\item [\parbox{2cm}{$w_{t+1,i}$}] The $i$-th dimension of the weight vector at time step $t+1$.
+	\item [\parbox{2cm}{$G_{t,ii}$}] Diagonal matrix containing the sum of the squared gradients with regards to the $i$-th dimension of the weight vector.
+	\item [\parbox{2cm}{$g_{t,i}$}] The $i$-th dimension of the gradient vector at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{G_{t}}$}] The sum of the squares of the gradients.
+	\item [\parbox{2cm}{$G_{t,i}$}] The sum of the squared gradients with regards to the $i$-th dimension of the weight vector.
+	\item [\parbox{2cm}{$\odot$}] The matrix-vector product.
+	\item [\parbox{2cm}{$W$}] Window size of previous squared gradients.
+	\item [\parbox{2cm}{$E[\boldsymbol{g}^{2}]_{t}$}] The expected value of the squared gradients at time step $t$.
+	\item [\parbox{2cm}{$E[\boldsymbol{g}^{2}]_{t - 1}$}] The expected value of the squared gradients at time step $t-1$.
+	\item [\parbox{2cm}{$\boldsymbol{g}^{2}_{t}$}] The squared gradient vector at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{w}_{t+1}$}] The weight vector at time step $t+1$.
+	\item [\parbox{2cm}{$\boldsymbol{w}_{t}^{2}$}] The squared weight vector at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{g}_{t}$}] The gradient vector at time step $t$.
+	\item [\parbox{2cm}{$RMS$}] The root mean squared error criterion.
+	\item [\parbox{2cm}{$E[\Delta \boldsymbol{w}^{2}]_{t}$}] The expected value of the delta of the squared weight vector at time step $t$.
+	\item [\parbox{2cm}{$E[\Delta \boldsymbol{w}^{2}]_{t - 1}$}] The expected value of the delta of the squared weight vector at time step $t-1$.
+	\item [\parbox{2cm}{$\Delta \boldsymbol{w}^{2}_{t}$}] The delta of the squared weight vector at time step $t$.
+	\item [\parbox{2cm}{$RMS[\Delta \boldsymbol{w}]_{t}$}] The root mean squared delta of the weight vector at time step $t$.
+	\item [\parbox{2cm}{$RMS[\Delta \boldsymbol{w}]_{t-1}$}] The root mean squared delta of the weight vector at time step $t-1$.
+	\item [\parbox{2cm}{$RMS[\boldsymbol{g}]_{t}$}] The root mean squared gradient vector at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{g}_{t}$}] The gradient vector at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{m}_{t}$}] The estimate of the first moment at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{m}_{t+1}$}] The estimate of the first moment at time step $t+1$.
+	\item [\parbox{2cm}{$\boldsymbol{v}_{t}$}] The estimate of the second moment at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{v}_{t+1}$}] The estimate of the second moment at time step $t+1$.
+	\item [\parbox{2cm}{$\beta_{1}$}] First decay rate parameter for \acs{Adam}.
+	\item [\parbox{2cm}{$\beta_{2}$}] Second decay rate parameter for \acs{Adam}.
+	\item [\parbox{2cm}{$\hat{\boldsymbol{m}}_{t}$}] The bias-corrected first moment at time step $t$.
+	\item [\parbox{2cm}{$\hat{\boldsymbol{v}}_{t}$}] The bias-corrected second moment at time step $t$.
+	\item [\parbox{2cm}{$\beta^{t}_{1}$}] First decay rate parameter for \acs{Adam} at time step $t$.
+	\item [\parbox{2cm}{$\beta^{t}_{2}$}] Second decay rate parameter for \acs{Adam} at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i}$}] The $i$-th particle's position vector as implemented by \acs{PSO}. Also represents the $i$-th parent's position vector as implemented by \acs{DE}.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i}(t)$}] The $i$-th particle's position vector at time step $t$ as implemented by \acs{PSO}. Also represents the $i$-th parent's position vector at time step $t$ as implemented by \acs{DE}.
+	\item [\parbox{2cm}{$\boldsymbol{v}_{i}(t)$}] The $i$-th particle's velocity vector at time step $t$ as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$f(x_{i})$}] The evaluation of the $i$-th particle's solution with respect to the objective function.
+	\item [\parbox{2cm}{$\boldsymbol{y}_{i}(t)$}] The $i$-th particle's personal best position vector at time step $t$ as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i}(0)$}] The $i$-th particle's position vector at time step $0$ as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$\boldsymbol{y}_{i}(0)$}] The $i$-th particle's personal best position vector at time step $0$ as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$\boldsymbol{\hat{y}}_{i}(t)$}] The $i$-th particle's global best position vector as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i}$}] The $i$-th particle's position vector as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{min}$}] The lower bound constraint vector of the position vector's values.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{max}$}] The upper bound constraint vector of the position vector's values.
+	\item [\parbox{2cm}{$v_{ij}(t+1)$}] The $i$-th particle's $j$-th dimension of the velocity vector at time step $t+1$.
+	\item [\parbox{2cm}{$v_{ij}(t)$}] The $i$-th particle's $j$-th dimension of the velocity vector at time step $t$. Also used in the mutation operator for \acp{GA} to represent some sampled mutation update value.
+	\item [\parbox{2cm}{$w$}] The inertia weight hyper-parameter as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$c_{1}$}] The cognitive control parameter as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$c_{2}$}] The social control parameter as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$r_{1_{j}}(t)$}] The $j$-th dimension of the first stochastic scaling parameter at time step $t$ as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$r_{2_{j}}(t)$}] The $j$-th dimension of the second stochastic scaling parameter at time step $t$ as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$x_{ij}$}] The $i$-th particle's/entity's $j$-th dimension of the position vector.
+	\item [\parbox{2cm}{$x_{ij}(t)$}] The $i$-th particle's/entity's $j$-th dimension of the position vector at time step $t$.
+	\item [\parbox{2cm}{$y_{ij}$}] The $i$-th particle's $j$-th dimension of the personal best position vector.
+	\item [\parbox{2cm}{$y_{ij}(t)$}] The $i$-th particle's $j$-th dimension of the personal best position vector at time step $t$.
+	\item [\parbox{2cm}{$\boldsymbol{\hat{y}}$}] Short form of the global best position vector.
+	\item [\parbox{2cm}{$\hat{y}_{ij}$}] The $i$-th particle's $j$-th dimension of the global best position vector.
+	\item [\parbox{2cm}{$\hat{y}_{ij}(t)$}] The $i$-th particle's $j$-th dimension of the global best position vector at time step $t$.
+	\item [\parbox{2cm}{$f(\hat{y})$}] The evaluation of the global best position.
+	\item [\parbox{2cm}{$x_{ij}(t+1)$}] The $i$-th particle's $j$-th dimension of the position vector at time step $t+1$.
+	\item [\parbox{2cm}{$\boldsymbol{r}_{1}$}] The vector for the first stochastic scaling parameter as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$\boldsymbol{r}_{2}$}] The vector for the second stochastic scaling parameter as implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$I$}] The total number of particles in the swarm (particle swarm size).
+	\item [\parbox{2cm}{$N$}] An alternative to the particle swarm size.
+	\item [\parbox{2cm}{$j$}] Index used for the dimensions of candidate solutions.
+	\item [\parbox{2cm}{$J$}] The total number of dimensions in the position vector for particles in \acs{PSO}.
+	\item [\parbox{2cm}{$U$}] The uniform distribution.
+	\item [\parbox{2cm}{$v'_{ij}(t+1)$}] The $i$-th particle's $j$-th dimension of the clamped velocity vector at time step $t+1$.
+	\item [\parbox{2cm}{$\boldsymbol{V}_{max}$}] The upper bound of the velocity clamping vector.
+	\item [\parbox{2cm}{$V_{max,j}$}] The $j$-th dimension of the upper bound of the velocity clamping vector.
+	\item [\parbox{2cm}{$\boldsymbol{u}_{i}(t)$}] The $i$-th entity's trial vector at time step $t$ implemented by \acs{DE}.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{1}}(t)$}] The $i$-th entity's target vector at time step $t$ implemented by \acs{DE}.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{2}}(t)$}] The $i$-th entity's first selected individual's position vector at time step $t$ implemented by \acs{DE}.
+	\item [\parbox{2cm}{$\boldsymbol{x}_{i_{3}}(t)$}] The $i$-th entity's second selected individual's position vector at time step $t$ implemented by \acs{DE}.
+	\item [\parbox{2cm}{$i_{1}$}] Index for the target vector in \acs{DE}.
+	\item [\parbox{2cm}{$i_{2}$}] Index for the first selected individual in \acs{DE}.
+	\item [\parbox{2cm}{$i_{3}$}] Index for the second selected individual in \acs{DE}.
+	\item [\parbox{2cm}{$\beta$}] Scale factor as implemented by \acs{DE}.
+	\item [\parbox{2cm}{$\boldsymbol{x}'_{i}(t)$}] The $i$-th offspring's position vector at time step $t$ as implemented by \acs{DE}.
+	\item [\parbox{2cm}{$x'_{ij}(t)$}] The $i$-th offspring's $j$-th dimension of the position vector at time step $t$.
+	\item [\parbox{2cm}{$u_{ij}(t)$}] The $j$-th dimension of the $i$-th entity's trial vector at time step $t$ implemented by \acs{DE}.
+	\item [\parbox{2cm}{$\mathcal{J}$}] The set of crossover points.
+	\item [\parbox{2cm}{$j^{*}$}] Randomly selected crossover point.
+	\item [\parbox{2cm}{$\emptyset$}] The empty set.
+	\item [\parbox{2cm}{$p_{r}$}] The crossover probability i.e. recombination probability.
+	\item [\parbox{2cm}{$f(\boldsymbol{x}_{i}(t))$}] The evaluation of the $i$-th entity's candidate solution at time step $t$.
+	\item [\parbox{2cm}{$f(\boldsymbol{x}'_{i}(t))$}] The evaluation of the $i$-th offspring's candidate solution at time step $t$.
+	\item [\parbox{2cm}{$f(\boldsymbol{y}_{i})$}] The evaluation of the $i$-th particle's personal best position.
+	\item [\parbox{2cm}{$f(\boldsymbol{\hat{y}})$}] The evaluation of the global best position.
+	\item [\parbox{2cm}{$x_{min,j}$}] The $j$-th dimension of the lower bound constraint for an entity's position.
+	\item [\parbox{2cm}{$x_{max,j}$}] The $j$-th dimension of the upper bound constraint for an entity's position.
+	\item [\parbox{2cm}{$\mathcal{C}$}] The set of entities in the population.
+	\item [\parbox{2cm}{$\mathcal{C}(0)$}] The set of entities in the population at time step $0$.
+	\item [\parbox{2cm}{$\mathcal{C}(t)$}] The set of entities in the population at time step $t$.
+	\item [\parbox{2cm}{$\mathcal{C}(t+1)$}] The set of entities in the population at time step $t+1$.
+	\item [\parbox{2cm}{$y$}] Used in \acs{DE} notation to denote the number of difference vectors to include.
+	\item [\parbox{2cm}{$z$}] Used in \acs{DE} notation to denote the type of crossover operator to use.
+	\item [\parbox{2cm}{$p_{c}$}] Probability of producing offspring.
+	\item [\parbox{2cm}{$p_{x}$}] Bitswapping probability.
+	\item [\parbox{2cm}{$m_{j}(t)$}] The $j$-th dimension of the crossover mask, $m$, at time step $t$.
+	\item [\parbox{2cm}{$p_{m}$}] The mutation probability.
+	\item [\parbox{2cm}{$N_{t}$}] Tournament selection size.
 \end{description}
 
 \section{Chapter~\ref{chap:hhs}: Hyper-Heuristics}
 \label{sec:symbols:hhs}
 
 \begin{description}
-	\item [\parbox{1cm}{$K$}]
+	\item [\parbox{2cm}{$K$}] The number of folds to execute for $K$-fold crossover validation.
 \end{description}
 
 \section{Chapter~\ref{chap:probability}: Probability}
 \label{sec:symbols:probability}
 
 \begin{description}
-	\item [\parbox{1cm}{$\alpha_{0}$}]
-	\item [\parbox{1cm}{$\alpha_{1}$}]
-	\item [\parbox{1cm}{$\alpha_{k}$}]
-	\item [\parbox{1cm}{$\alpha_{K}$}]
-	\item [\parbox{1cm}{$\alpha$}]
-	\item [\parbox{1cm}{$\bar{A}$}]
-	\item [\parbox{1cm}{$\beta'$ }]
-	\item [\parbox{1cm}{$\beta$}]
-	\item [\parbox{1cm}{$Bin$}]
-	\item [\parbox{1cm}{$\boldsymbol{\alpha'}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\alpha}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\mathcal{D}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\theta}$}]
-	\item [\parbox{1cm}{$\boldsymbol{N}$}]
-	\item [\parbox{1cm}{$\boldsymbol{x_{1}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{x_{i}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{x_{I}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{x}$}]
-	\item [\parbox{1cm}{$\boldsymbol{X}$}]
-	\item [\parbox{1cm}{$\boldsymbol{Y}$}]
-	\item [\parbox{1cm}{$\emptyset$}]
-	\item [\parbox{1cm}{$\Gamma'(n)$}]
-	\item [\parbox{1cm}{$\Gamma(n)$}]
-	\item [\parbox{1cm}{$\Gamma$}]
-	\item [\parbox{1cm}{$\mathbb{R}$}]
-	\item [\parbox{1cm}{$\mathbbm{1}$}]
-	\item [\parbox{1cm}{$\mathcal{A}$}]
-	\item [\parbox{1cm}{$\mathcal{L}$}]
-	\item [\parbox{1cm}{$\overset{\text{iid}}{\sim}$}]
-	\item [\parbox{1cm}{$\psi$}]
-	\item [\parbox{1cm}{$\theta_{1}$}]
-	\item [\parbox{1cm}{$\theta_{k}$}]
-	\item [\parbox{1cm}{$\theta_{K}$}]
-	\item [\parbox{1cm}{$\theta$}]
-	\item [\parbox{1cm}{$A$}]
-	\item [\parbox{1cm}{$B_{1}$}]
-	\item [\parbox{1cm}{$B_{2}$}]
-	\item [\parbox{1cm}{$B_{i}$}]
-	\item [\parbox{1cm}{$B_{j}$}]
-	\item [\parbox{1cm}{$B_{K}$}]
-	\item [\parbox{1cm}{$B(\boldsymbol{\alpha})$}]
-	\item [\parbox{1cm}{$B$}]
-	\item [\parbox{1cm}{$Ber(\theta)$}]
-	\item [\parbox{1cm}{$Beta$}]
-	\item [\parbox{1cm}{$Bin$}]
-	\item [\parbox{1cm}{$c$}]
-	\item [\parbox{1cm}{$Cat$}]
-	\item [\parbox{1cm}{$d$}]
-	\item [\parbox{1cm}{$Dir$}]
-	\item [\parbox{1cm}{$dn$}]
-	\item [\parbox{1cm}{$E[{x_{k}}]$}]
-	\item [\parbox{1cm}{$E[\ln(x_{k})]$}]
-	\item [\parbox{1cm}{$E[\ln(x)]$}]
-	\item [\parbox{1cm}{$E[x_{k}]$}]
-	\item [\parbox{1cm}{$E[x]$}]
-	\item [\parbox{1cm}{$f_{Ber}$}]
-	\item [\parbox{1cm}{$f_{Beta}$}]
-	\item [\parbox{1cm}{$f_{Bin}$}]
-	\item [\parbox{1cm}{$f_{Cat}$}]
-	\item [\parbox{1cm}{$f_{Dir}$}]
-	\item [\parbox{1cm}{$f_{Mul}$}]
-	\item [\parbox{1cm}{$f$}]
-	\item [\parbox{1cm}{$F$}]
-	\item [\parbox{1cm}{$g^{*}$}]
-	\item [\parbox{1cm}{$g$}]
-	\item [\parbox{1cm}{$i$}]
-	\item [\parbox{1cm}{$I$}]
-	\item [\parbox{1cm}{$j$}]
-	\item [\parbox{1cm}{$K$}]
-	\item [\parbox{1cm}{$k$}]
-	\item [\parbox{1cm}{$K$}]
-	\item [\parbox{1cm}{$M[x_{k}]$}]
-	\item [\parbox{1cm}{$M[x]$}]
-	\item [\parbox{1cm}{$m$}]
-	\item [\parbox{1cm}{$M$}]
-	\item [\parbox{1cm}{$Mul$}]
-	\item [\parbox{1cm}{$N_{0}$}]
-	\item [\parbox{1cm}{$N_{1}$}]
-	\item [\parbox{1cm}{$N_{k}$}]
-	\item [\parbox{1cm}{$N_{K}$}]
-	\item [\parbox{1cm}{$n$}]
-	\item [\parbox{1cm}{$N$}]
-	\item [\parbox{1cm}{$p$}]
-	\item [\parbox{1cm}{$S$}]
-	\item [\parbox{1cm}{$v$}]
-	\item [\parbox{1cm}{$x_{1}$}]
-	\item [\parbox{1cm}{$x_{i,k}$}]
-	\item [\parbox{1cm}{$x_{i}$}]
-	\item [\parbox{1cm}{$x_{I}$}]
-	\item [\parbox{1cm}{$x_{j}$}]
-	\item [\parbox{1cm}{$x_{k}$}]
-	\item [\parbox{1cm}{$x_{K}$}]
-	\item [\parbox{1cm}{$x$}]
-	\item [\parbox{1cm}{$y_{1}$}]
-	\item [\parbox{1cm}{$Y_{1}$}]
-	\item [\parbox{1cm}{$y_{2}$}]
-	\item [\parbox{1cm}{$Y_{2}$}]
-	\item [\parbox{1cm}{$y_{i}$}]
-	\item [\parbox{1cm}{$Y_{i}$}]
-	\item [\parbox{1cm}{$y_{n}$}]
-	\item [\parbox{1cm}{$Y_{N}$}]
+	\item [\parbox{2cm}{$\alpha_{0}$}]
+	\item [\parbox{2cm}{$\alpha_{1}$}]
+	\item [\parbox{2cm}{$\alpha_{k}$}]
+	\item [\parbox{2cm}{$\alpha_{K}$}]
+	\item [\parbox{2cm}{$\alpha$}]
+	\item [\parbox{2cm}{$\bar{A}$}]
+	\item [\parbox{2cm}{$\beta'$ }]
+	\item [\parbox{2cm}{$\beta$}]
+	\item [\parbox{2cm}{$Bin$}]
+	\item [\parbox{2cm}{$\boldsymbol{\alpha'}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\mathcal{D}}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\theta}$}]
+	\item [\parbox{2cm}{$\boldsymbol{N}$}]
+	\item [\parbox{2cm}{$\boldsymbol{x_{1}}$}]
+	\item [\parbox{2cm}{$\boldsymbol{x_{i}}$}]
+	\item [\parbox{2cm}{$\boldsymbol{x_{I}}$}]
+	\item [\parbox{2cm}{$\boldsymbol{x}$}]
+	\item [\parbox{2cm}{$\boldsymbol{X}$}]
+	\item [\parbox{2cm}{$\boldsymbol{Y}$}]
+	\item [\parbox{2cm}{$\emptyset$}]
+	\item [\parbox{2cm}{$\Gamma'(n)$}]
+	\item [\parbox{2cm}{$\Gamma(n)$}]
+	\item [\parbox{2cm}{$\Gamma$}]
+	\item [\parbox{2cm}{$\mathbb{R}$}]
+	\item [\parbox{2cm}{$\mathbbm{1}$}]
+	\item [\parbox{2cm}{$\mathcal{A}$}]
+	\item [\parbox{2cm}{$\mathcal{L}$}]
+	\item [\parbox{2cm}{$\overset{\text{iid}}{\sim}$}]
+	\item [\parbox{2cm}{$\psi$}]
+	\item [\parbox{2cm}{$\theta_{1}$}]
+	\item [\parbox{2cm}{$\theta_{k}$}]
+	\item [\parbox{2cm}{$\theta_{K}$}]
+	\item [\parbox{2cm}{$\theta$}]
+	\item [\parbox{2cm}{$A$}]
+	\item [\parbox{2cm}{$B_{1}$}]
+	\item [\parbox{2cm}{$B_{2}$}]
+	\item [\parbox{2cm}{$B_{i}$}]
+	\item [\parbox{2cm}{$B_{j}$}]
+	\item [\parbox{2cm}{$B_{K}$}]
+	\item [\parbox{2cm}{$B(\boldsymbol{\alpha})$}]
+	\item [\parbox{2cm}{$B$}]
+	\item [\parbox{2cm}{$Ber(\theta)$}]
+	\item [\parbox{2cm}{$Beta$}]
+	\item [\parbox{2cm}{$Bin$}]
+	\item [\parbox{2cm}{$c$}]
+	\item [\parbox{2cm}{$Cat$}]
+	\item [\parbox{2cm}{$d$}]
+	\item [\parbox{2cm}{$Dir$}]
+	\item [\parbox{2cm}{$dn$}]
+	\item [\parbox{2cm}{$E[{x_{k}}]$}]
+	\item [\parbox{2cm}{$E[\ln(x_{k})]$}]
+	\item [\parbox{2cm}{$E[\ln(x)]$}]
+	\item [\parbox{2cm}{$E[x_{k}]$}]
+	\item [\parbox{2cm}{$E[x]$}]
+	\item [\parbox{2cm}{$f_{Ber}$}]
+	\item [\parbox{2cm}{$f_{Beta}$}]
+	\item [\parbox{2cm}{$f_{Bin}$}]
+	\item [\parbox{2cm}{$f_{Cat}$}]
+	\item [\parbox{2cm}{$f_{Dir}$}]
+	\item [\parbox{2cm}{$f_{Mul}$}]
+	\item [\parbox{2cm}{$f$}]
+	\item [\parbox{2cm}{$F$}]
+	\item [\parbox{2cm}{$g^{*}$}]
+	\item [\parbox{2cm}{$g$}]
+	\item [\parbox{2cm}{$i$}]
+	\item [\parbox{2cm}{$I$}]
+	\item [\parbox{2cm}{$j$}]
+	\item [\parbox{2cm}{$K$}]
+	\item [\parbox{2cm}{$k$}]
+	\item [\parbox{2cm}{$K$}]
+	\item [\parbox{2cm}{$M[x_{k}]$}]
+	\item [\parbox{2cm}{$M[x]$}]
+	\item [\parbox{2cm}{$m$}]
+	\item [\parbox{2cm}{$M$}]
+	\item [\parbox{2cm}{$Mul$}]
+	\item [\parbox{2cm}{$N_{0}$}]
+	\item [\parbox{2cm}{$N_{1}$}]
+	\item [\parbox{2cm}{$N_{k}$}]
+	\item [\parbox{2cm}{$N_{K}$}]
+	\item [\parbox{2cm}{$n$}]
+	\item [\parbox{2cm}{$N$}]
+	\item [\parbox{2cm}{$p$}]
+	\item [\parbox{2cm}{$S$}]
+	\item [\parbox{2cm}{$v$}]
+	\item [\parbox{2cm}{$x_{1}$}]
+	\item [\parbox{2cm}{$x_{i,k}$}]
+	\item [\parbox{2cm}{$x_{i}$}]
+	\item [\parbox{2cm}{$x_{I}$}]
+	\item [\parbox{2cm}{$x_{j}$}]
+	\item [\parbox{2cm}{$x_{k}$}]
+	\item [\parbox{2cm}{$x_{K}$}]
+	\item [\parbox{2cm}{$x$}]
+	\item [\parbox{2cm}{$y_{1}$}]
+	\item [\parbox{2cm}{$Y_{1}$}]
+	\item [\parbox{2cm}{$y_{2}$}]
+	\item [\parbox{2cm}{$Y_{2}$}]
+	\item [\parbox{2cm}{$y_{i}$}]
+	\item [\parbox{2cm}{$Y_{i}$}]
+	\item [\parbox{2cm}{$y_{n}$}]
+	\item [\parbox{2cm}{$Y_{N}$}]
 \end{description}
 
 \section{Chapter~\ref{chap:bhh}: Bayesian Hyper-Heuristic}
 \label{sec:symbols:bhh}
 
 \begin{description}
-	\item [\parbox{1cm}{$\alpha_{1}$}]
-	\item [\parbox{1cm}{$\alpha_{k}$}]
-	\item [\parbox{1cm}{$\alpha_{K}$}]
-	\item [\parbox{1cm}{$\alpha$}]
-	\item [\parbox{1cm}{$\beta_{1}$}]
-	\item [\parbox{1cm}{$\beta_{2}$}]
-	\item [\parbox{1cm}{$\beta_{j,k}$}]
-	\item [\parbox{1cm}{$\beta_{K}^{J}$}]
-	\item [\parbox{1cm}{$\beta$}]
-	\item [\parbox{1cm}{$\boldsymbol{\alpha}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\beta}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\gamma}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\hat{\phi}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\hat{\psi}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\hat{\theta}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\lambda}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\phi}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\psi}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\theta}$}]
-	\item [\parbox{1cm}{$\boldsymbol{C}$}]
-	\item [\parbox{1cm}{$\boldsymbol{E}$}]
-	\item [\parbox{1cm}{$\boldsymbol{H}$}]
-	\item [\parbox{1cm}{$\epsilon(-1)$}]
-	\item [\parbox{1cm}{$\epsilon$}]
-	\item [\parbox{1cm}{$\eta$}]
-	\item [\parbox{1cm}{$\gamma_{0}$}]
-	\item [\parbox{1cm}{$\gamma_{1,k}$}]
-	\item [\parbox{1cm}{$\gamma_{1}$}]
-	\item [\parbox{1cm}{$\gamma_{2,k}$}]
-	\item [\parbox{1cm}{$\gamma_{K}$}]
-	\item [\parbox{1cm}{$\hat{\phi}_{j,k}$}]
-	\item [\parbox{1cm}{$\hat{\psi_{k}}$}]
-	\item [\parbox{1cm}{$\hat{\psi}_{k}$}]
-	\item [\parbox{1cm}{$\hat{\theta_{k}}$}]
-	\item [\parbox{1cm}{$\hat{\theta}_{k}$}]
-	\item [\parbox{1cm}{$\lambda_{1}$}]
-	\item [\parbox{1cm}{$\lambda_{j}$}]
-	\item [\parbox{1cm}{$\lambda_{J}$}]
-	\item [\parbox{1cm}{$\mathbbm{1}_{0}$}]
-	\item [\parbox{1cm}{$\mathbbm{1}_{1}$}]
-	\item [\parbox{1cm}{$\mathbin{\%}$}]
-	\item [\parbox{1cm}{$\mathcal{A}(v)$}]
-	\item [\parbox{1cm}{$\mathcal{L}$}]
-	\item [\parbox{1cm}{$\phi_{j,k}$}]
-	\item [\parbox{1cm}{$\phi_{jk}$}]
-	\item [\parbox{1cm}{$\phi$}]
-	\item [\parbox{1cm}{$\psi_{k}$}]
-	\item [\parbox{1cm}{$\psi_{k}N_{k}$}]
-	\item [\parbox{1cm}{$\psi$}]
-	\item [\parbox{1cm}{$\theta_{k}$}]
-	\item [\parbox{1cm}{$\theta$}]
-	\item [\parbox{1cm}{$A$}]
-	\item [\parbox{1cm}{$B$}]
-	\item [\parbox{1cm}{$Beta$}]
-	\item [\parbox{1cm}{$Bin$}]
-	\item [\parbox{1cm}{$c_{1}$}]
-	\item [\parbox{1cm}{$c_{i,k}$}]
-	\item [\parbox{1cm}{$c_{i}$}]
-	\item [\parbox{1cm}{$Dir$}]
-	\item [\parbox{1cm}{$e_{i,j,k}$}]
-	\item [\parbox{1cm}{$e_{i}$}]
-	\item [\parbox{1cm}{$e_{j}$}]
-	\item [\parbox{1cm}{$E[\phi_{j,k}]$}]
-	\item [\parbox{1cm}{$E[\psi_{k}]$}]
-	\item [\parbox{1cm}{$E[\theta_{k}]$}]
-	\item [\parbox{1cm}{$h_{i,k}$}]
-	\item [\parbox{1cm}{$h_{i}$}]
-	\item [\parbox{1cm}{$h_{k}$}]
-	\item [\parbox{1cm}{$i$}]
-	\item [\parbox{1cm}{$I$}]
-	\item [\parbox{1cm}{$j$}]
-	\item [\parbox{1cm}{$J$}]
-	\item [\parbox{1cm}{$K-1$}]
-	\item [\parbox{1cm}{$k$}]
-	\item [\parbox{1cm}{$K$}]
-	\item [\parbox{1cm}{$L$}]
-	\item [\parbox{1cm}{$LSE$}]
-	\item [\parbox{1cm}{$Mult$}]
-	\item [\parbox{1cm}{$N_{0,k}$}]
-	\item [\parbox{1cm}{$N_{1,k}$}]
-	\item [\parbox{1cm}{$N_{j,k}$}]
-	\item [\parbox{1cm}{$N_{j}$}]
-	\item [\parbox{1cm}{$N_{k}$}]
-	\item [\parbox{1cm}{$N$}]
-	\item [\parbox{1cm}{$S$}]
-	\item [\parbox{1cm}{$t$}]
+	\item [\parbox{2cm}{$\alpha_{1}$}]
+	\item [\parbox{2cm}{$\alpha_{k}$}]
+	\item [\parbox{2cm}{$\alpha_{K}$}]
+	\item [\parbox{2cm}{$\alpha$}]
+	\item [\parbox{2cm}{$\beta_{1}$}]
+	\item [\parbox{2cm}{$\beta_{2}$}]
+	\item [\parbox{2cm}{$\beta_{j,k}$}]
+	\item [\parbox{2cm}{$\beta_{K}^{J}$}]
+	\item [\parbox{2cm}{$\beta$}]
+	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\beta}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\gamma}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\hat{\phi}}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\hat{\psi}}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\hat{\theta}}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\lambda}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\phi}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\psi}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\theta}$}]
+	\item [\parbox{2cm}{$\boldsymbol{C}$}]
+	\item [\parbox{2cm}{$\boldsymbol{E}$}]
+	\item [\parbox{2cm}{$\boldsymbol{H}$}]
+	\item [\parbox{2cm}{$\epsilon(-1)$}]
+	\item [\parbox{2cm}{$\epsilon$}]
+	\item [\parbox{2cm}{$\eta$}]
+	\item [\parbox{2cm}{$\gamma_{0}$}]
+	\item [\parbox{2cm}{$\gamma_{1,k}$}]
+	\item [\parbox{2cm}{$\gamma_{1}$}]
+	\item [\parbox{2cm}{$\gamma_{2,k}$}]
+	\item [\parbox{2cm}{$\gamma_{K}$}]
+	\item [\parbox{2cm}{$\hat{\phi}_{j,k}$}]
+	\item [\parbox{2cm}{$\hat{\psi_{k}}$}]
+	\item [\parbox{2cm}{$\hat{\psi}_{k}$}]
+	\item [\parbox{2cm}{$\hat{\theta_{k}}$}]
+	\item [\parbox{2cm}{$\hat{\theta}_{k}$}]
+	\item [\parbox{2cm}{$\lambda_{1}$}]
+	\item [\parbox{2cm}{$\lambda_{j}$}]
+	\item [\parbox{2cm}{$\lambda_{J}$}]
+	\item [\parbox{2cm}{$\mathbbm{1}_{0}$}]
+	\item [\parbox{2cm}{$\mathbbm{1}_{1}$}]
+	\item [\parbox{2cm}{$\mathbin{\%}$}]
+	\item [\parbox{2cm}{$\mathcal{A}(v)$}]
+	\item [\parbox{2cm}{$\mathcal{L}$}]
+	\item [\parbox{2cm}{$\phi_{j,k}$}]
+	\item [\parbox{2cm}{$\phi_{jk}$}]
+	\item [\parbox{2cm}{$\phi$}]
+	\item [\parbox{2cm}{$\psi_{k}$}]
+	\item [\parbox{2cm}{$\psi_{k}N_{k}$}]
+	\item [\parbox{2cm}{$\psi$}]
+	\item [\parbox{2cm}{$\theta_{k}$}]
+	\item [\parbox{2cm}{$\theta$}]
+	\item [\parbox{2cm}{$A$}]
+	\item [\parbox{2cm}{$B$}]
+	\item [\parbox{2cm}{$Beta$}]
+	\item [\parbox{2cm}{$Bin$}]
+	\item [\parbox{2cm}{$c_{1}$}]
+	\item [\parbox{2cm}{$c_{i,k}$}]
+	\item [\parbox{2cm}{$c_{i}$}]
+	\item [\parbox{2cm}{$Dir$}]
+	\item [\parbox{2cm}{$e_{i,j,k}$}]
+	\item [\parbox{2cm}{$e_{i}$}]
+	\item [\parbox{2cm}{$e_{j}$}]
+	\item [\parbox{2cm}{$E[\phi_{j,k}]$}]
+	\item [\parbox{2cm}{$E[\psi_{k}]$}]
+	\item [\parbox{2cm}{$E[\theta_{k}]$}]
+	\item [\parbox{2cm}{$h_{i,k}$}]
+	\item [\parbox{2cm}{$h_{i}$}]
+	\item [\parbox{2cm}{$h_{k}$}]
+	\item [\parbox{2cm}{$i$}]
+	\item [\parbox{2cm}{$I$}]
+	\item [\parbox{2cm}{$j$}]
+	\item [\parbox{2cm}{$J$}]
+	\item [\parbox{2cm}{$K-1$}]
+	\item [\parbox{2cm}{$k$}]
+	\item [\parbox{2cm}{$K$}]
+	\item [\parbox{2cm}{$L$}]
+	\item [\parbox{2cm}{$LSE$}]
+	\item [\parbox{2cm}{$Mult$}]
+	\item [\parbox{2cm}{$N_{0,k}$}]
+	\item [\parbox{2cm}{$N_{1,k}$}]
+	\item [\parbox{2cm}{$N_{j,k}$}]
+	\item [\parbox{2cm}{$N_{j}$}]
+	\item [\parbox{2cm}{$N_{k}$}]
+	\item [\parbox{2cm}{$N$}]
+	\item [\parbox{2cm}{$S$}]
+	\item [\parbox{2cm}{$t$}]
 \end{description}
 
 \section{Chapter~\ref{chap:methodology}: Methodology}
 \label{sec:symbols:methodology}
 
 \begin{description}
-	\item [\parbox{1cm}{$\alpha$}]
-	\item [\parbox{1cm}{$\eta$}]
-	\item [\parbox{1cm}{$\mathbb{R}$}]
-	\item [\parbox{1cm}{$v_{ij}$}]
-	\item [\parbox{1cm}{$x_{ij}$}]
-
+	\item [\parbox{2cm}{$\alpha$}] Used as a scaling parameter for the \acs{LReLU} activation function. Also used as a threshold parameter for the statistical significance tests.
+	\item [\parbox{2cm}{$\eta$}] Learning rate.
+	\item [\parbox{2cm}{$\mathbb{R}$}] Real-number space.
+	\item [\parbox{2cm}{$v_{ij}$}] The $j$-th dimension of the velocity vector of the $i$-th particle in the population implemented by \acs{PSO}.
+	\item [\parbox{2cm}{$x_{ij}$}] The $j$-th dimension of the position vector of the $i$-th particle in the population implemented by \acs{PSO}.
 \end{description}
 
 \section{Chapter~\ref{chap:results}: Results}
 \label{sec:symbols:results}
 
 \begin{description}
-	\item [\parbox{1cm}{$\alpha_{0}$}]
-	\item [\parbox{1cm}{$\alpha_{6}$}]
-	\item [\parbox{1cm}{$\alpha_{7}$}]
-	\item [\parbox{1cm}{$\alpha_{8}$}]
-	\item [\parbox{1cm}{$\alpha_{i} = 50$}]
-	\item [\parbox{1cm}{$\boldsymbol{{H}}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\alpha}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\phi}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\psi}$}]
-	\item [\parbox{1cm}{$\boldsymbol{\theta}$}]
-	\item [\parbox{1cm}{$\boldsymbol{C}$}]
-	\item [\parbox{1cm}{$\boldsymbol{E}$}]
-	\item [\parbox{1cm}{$\boldsymbol{H}$}]
-	\item [\parbox{1cm}{$\pm$}]
-	\item [\parbox{1cm}{$\theta_{0}$}]
-	\item [\parbox{1cm}{$\theta_{6}$}]
-	\item [\parbox{1cm}{$\theta_{7}$}]
-	\item [\parbox{1cm}{$\theta_{8}$}]
-	\item [\parbox{1cm}{$c_{1}$}]
-	\item [\parbox{1cm}{$Cat$}]
-	\item [\parbox{1cm}{$Dir$}]
-	\item [\parbox{1cm}{$e_{0}$}]
-	\item [\parbox{1cm}{$h_{0}$}]
-	\item [\parbox{1cm}{$h_{6}$}]
-	\item [\parbox{1cm}{$h_{7}$}]
-	\item [\parbox{1cm}{$h_{8}$}]
-	\item [\parbox{1cm}{$i$}]
-	\item [\parbox{1cm}{$K$}]
+	\item [\parbox{2cm}{$\alpha_{0}$}]
+	\item [\parbox{2cm}{$\alpha_{6}$}]
+	\item [\parbox{2cm}{$\alpha_{7}$}]
+	\item [\parbox{2cm}{$\alpha_{8}$}]
+	\item [\parbox{2cm}{$\alpha_{i} = 50$}]
+	\item [\parbox{2cm}{$\boldsymbol{{H}}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\alpha}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\phi}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\psi}$}]
+	\item [\parbox{2cm}{$\boldsymbol{\theta}$}]
+	\item [\parbox{2cm}{$\boldsymbol{C}$}]
+	\item [\parbox{2cm}{$\boldsymbol{E}$}]
+	\item [\parbox{2cm}{$\boldsymbol{H}$}]
+	\item [\parbox{2cm}{$\pm$}]
+	\item [\parbox{2cm}{$\theta_{0}$}]
+	\item [\parbox{2cm}{$\theta_{6}$}]
+	\item [\parbox{2cm}{$\theta_{7}$}]
+	\item [\parbox{2cm}{$\theta_{8}$}]
+	\item [\parbox{2cm}{$c_{1}$}]
+	\item [\parbox{2cm}{$Cat$}]
+	\item [\parbox{2cm}{$Dir$}]
+	\item [\parbox{2cm}{$e_{0}$}]
+	\item [\parbox{2cm}{$h_{0}$}]
+	\item [\parbox{2cm}{$h_{6}$}]
+	\item [\parbox{2cm}{$h_{7}$}]
+	\item [\parbox{2cm}{$h_{8}$}]
+	\item [\parbox{2cm}{$i$}]
+	\item [\parbox{2cm}{$K$}]
 \end{description}
