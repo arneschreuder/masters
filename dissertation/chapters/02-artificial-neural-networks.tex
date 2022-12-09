@@ -142,13 +142,13 @@ Many different weight initialisation techniques have been developed~\cite{ref:er
 \index{random uniform sampling}
 \subsubsection{Random Uniform Sampling}\label{sec:anns:an:weights:random_uniform_sampling}
 
-\index{random uniform sampling}Random uniform sampling initialises weights uniformly in the range $[\omega_{min}, \omega_{max}]$, written as $w_{i} \sim \textit{U} (\omega_{min}, \omega_{max})$, where the $\omega_{min}$ and $\omega_{max}$ are respectfully the lower and upper bounds of the uniform distribution. Suggested parameter values are $(-1, 1)$ or $(-0.5, 0.5)$~\cite{ref:nguyen:1990}.
+\index{random uniform sampling}Random uniform sampling initialises weights uniformly in the range $[\omega_{min}, \omega_{max}]$, written as $omega_{i} \sim \textit{U} (\omega_{min}, \omega_{max})$, where the $\omega_{min}$ and $\omega_{max}$ are respectfully the lower and upper bounds of the uniform distribution. Suggested parameter values are $(-1, 1)$ or $(-0.5, 0.5)$~\cite{ref:nguyen:1990}.
 
 
 \index{Glorot uniform sampling}
 \subsubsection{Glorot Uniform Sampling}\label{sec:anns:an:weights:glorot_uniform_sampling}
 
-\index{Glorot uniform sampling}Glorot uniform sampling is a specialisation of \index{random uniform sampling}random uniform sampling, whereby $\omega = \sqrt{\frac{6}{fanin + fanout}}$ and $fanin$ is the number of input neurons to the weight vector and $fanout$ is the number of output neurons from the weight vector.
+\index{Glorot uniform sampling}Glorot uniform sampling is a specialisation of \index{random uniform sampling}random uniform sampling, whereby $\omega_{i} = \sqrt{\frac{6}{fanin + fanout}}$ and $fanin$ is the number of input neurons to the weight vector and $fanout$ is the number of output neurons from the weight vector.
 
 \index{Glorot normal sampling}
 \subsubsection{Glorot Normal Sampling}\label{sec:anns:an:weights:glorot_normal_sampling}

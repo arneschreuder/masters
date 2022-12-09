@@ -331,7 +331,7 @@ The main advantage of \acs{Adadelta} is in removing the learning rate, which eli
       \end{split}
 \end{equation}
 
-In Equations~\eqref{eq:heuristics:gd:adam_part_1} and~\eqref{eq:heuristics:gd:adam_part_2} above, $\beta_{1}$ and $\beta_{2}$ are decay rates, similar to $\alpha$ for \acs{Momentum}. \citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} suggest default values $B_{1}=0.9$, $B_{2}=0.999$ and $\epsilon = 1 \times 10^{-8}$.
+In Equations~\eqref{eq:heuristics:gd:adam_part_1} and~\eqref{eq:heuristics:gd:adam_part_2} above, $\beta_{1}$ and $\beta_{2}$ are decay rates, similar to $\alpha$ for \acs{Momentum}. \citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} suggest default values $\beta_{1}=0.9$, $\beta_{2}=0.999$ and $\epsilon = 1 \times 10^{-8}$.
 
 \citeauthor{ref:ruder:2016}~\cite{ref:ruder:2016} mentions that $\boldsymbol{m}_{t}$ and $\boldsymbol{v}_{t}$ presented above are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively. ~\citeauthor{ref:kingma:2014}~\cite{ref:kingma:2014} mentions that because $\boldsymbol{m}_{t}$ and $\boldsymbol{v}_{t}$ are initialised to be vectors of 0's, they are biased towards 0. The aforementioned bias is especially prominent during the initial time steps and/or when the decay rates $\beta_{1}$ and $\beta_{2}$ are small ($\beta_{1}$ and $\beta_{2}$ are close to 1). The bias-corrected first and second moment estimates are presented in Equations~\eqref{eq:heuristics:gd:adam_bc_first_moment} and~\eqref{eq:heuristics:gd:adam_bc_second_moment} respectively.
 
