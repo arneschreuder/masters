@@ -3,7 +3,7 @@
 
 % Acro
 \acsetup {
-    make-links=true
+      make-links=true
 }
 
 % Fancy headers and footers
@@ -17,30 +17,29 @@
 
 % % Hyperlinks
 \hypersetup{
-    breaklinks=true,   %  Allow link breaking across lines
-    citecolor=blue,    %  Citation link color
-    colorlinks=true,   %  Color link text only (no borders)
-    filecolor=blue,    %  File link color
-    linkcolor=blue,    %  Internal link color
-    menucolor=blue,    %  Acrobat menu link color
-    pageanchor=true,   %  Enable page referencing
-    pdffitwindow=true, %  Fit pdf to window
-    pdfhighlight=/N,   %  No visual cue on clicking link
-    pdfstartview=Fit,  %  Fit initial view to page
-    plainpages=false,  %  Prevent hyperref page number changes
-    urlcolor=blue,      %  URL link color,
-    draft=false
+      breaklinks=true,   %  Allow link breaking across lines
+      citecolor=blue,    %  Citation link color
+      colorlinks=true,   %  Color link text only (no borders)
+      filecolor=blue,    %  File link color
+      linkcolor=blue,    %  Internal link color
+      menucolor=blue,    %  Acrobat menu link color
+      pageanchor=true,   %  Enable page referencing
+      pdffitwindow=true, %  Fit pdf to window
+      pdfhighlight=/N,   %  No visual cue on clicking link
+      pdfstartview=Fit,  %  Fit initial view to page
+      plainpages=false,  %  Prevent hyperref page number changes
+      urlcolor=blue,      %  URL link color,
+      draft=false
 }
 
 % PDF Meta
 \hypersetup{
-    pdftitle    = {Training Feedforward Neural Networks with Bayesian
-            Hyper-Heuristics},
-    pdfauthor   = {A.N. Schreuder <arne@schreuder.ai>},
-    pdfsubject  = {Bayesian Hyper-Heuristics},
-    pdfkeywords = {Hyper-Heuristics, Meta-Learning, Feedforward Neural
-            Networks, Supervised Learning, Bayesian Statistics, Optimisation.},
-    % draft              %  Remove on final document
+      pdftitle    = {Training Feedforward Neural Networks with Bayesian
+                  Hyper-Heuristics},
+      pdfauthor   = {A.N. Schreuder <an.schreuder@up.ac.za>},
+      pdfsubject  = {Bayesian Hyper-Heuristics},
+      pdfkeywords = {hyper-heuristics, meta-learning, feedforward neural networks, supervised learning, Bayesian statistics},
+      % draft              %  Remove on final document
 }
 
 % Dates
@@ -73,22 +72,22 @@
 % Bold float caption numbers and reduced size captions
 \makeatletter
 \long\def\@makecaption#1#2{%
-    \vskip\abovecaptionskip
-    \sbox\@tempboxa{{\small{\bf #1:} #2}}%
-    \ifdim \wd\@tempboxa >\hsize
-        {\small{\bf #1:} #2\par}
-    \else
-        \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
-    \fi
-    \vskip\belowcaptionskip
+      \vskip\abovecaptionskip
+      \sbox\@tempboxa{{\small{\bf #1:} #2}}%
+      \ifdim \wd\@tempboxa >\hsize
+            {\small{\bf #1:} #2\par}
+      \else
+            \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+      \fi
+      \vskip\belowcaptionskip
 }
 \renewcommand\floatc@plain[2]{
-    \setbox\@tempboxa\hbox{\small{\bf #1:} #2}%
-    \ifdim\wd\@tempboxa>\hsize
-        {\small{\bf #1:} #2\par}
-    \else
-        \hbox to\hsize{\hfil\box\@tempboxa\hfil}
-    \fi
+      \setbox\@tempboxa\hbox{\small{\bf #1:} #2}%
+      \ifdim\wd\@tempboxa>\hsize
+            {\small{\bf #1:} #2\par}
+      \else
+            \hbox to\hsize{\hfil\box\@tempboxa\hfil}
+      \fi
 }
 \makeatother
 
@@ -98,10 +97,19 @@
 
 \makeatletter
 \g@addto@macro\normalsize{%
-    % \setlength\abovedisplayskip{-10pt}
-    % \setlength\belowdisplayskip{15pt}
-    % \setlength\abovedisplayshortskip{-10pt}
-    % \setlength\belowdisplayshortskip{15pt}
+      \setlength\abovedisplayskip{0pt}
+      \setlength\belowdisplayskip{15pt}
+      \setlength\abovedisplayshortskip{0pt}
+      \setlength\belowdisplayshortskip{15pt}
+}
+\makeatother
+
+\makeatletter
+\g@addto@macro\footnotesize{%
+      \setlength\abovedisplayskip{0pt}
+      \setlength\belowdisplayskip{15pt}
+      \setlength\abovedisplayshortskip{0pt}
+      \setlength\belowdisplayshortskip{15pt}
 }
 \makeatother
 

@@ -138,11 +138,10 @@ Weight initialisation is dependent on the \index{activation function}activation 
 
 Many different weight initialisation techniques have been developed~\cite{ref:erdogmus:2003}. For the purposes of this dissertation, focus is put on \index{random uniform sampling}random uniform sampling, \index{Glorot uniform sampling}\textit{Glorot uniform (Xavier)} sampling and \index{Glorot normal sampling}\textit{Glorot normal} sampling~\cite{ref:glorot:2010}. Brief discussions on each of these weight initialisation techniques are presented as follows.
 
-
 \index{random uniform sampling}
 \subsubsection{Random Uniform Sampling}\label{sec:anns:an:weights:random_uniform_sampling}
 
-\index{random uniform sampling}Random uniform sampling initialises weights uniformly in the range $[\omega_{min}, \omega_{max}]$, written as $omega_{i} \sim \textit{U} (\omega_{min}, \omega_{max})$, where the $\omega_{min}$ and $\omega_{max}$ are respectfully the lower and upper bounds of the uniform distribution. Suggested parameter values are $(-1, 1)$ or $(-0.5, 0.5)$~\cite{ref:nguyen:1990}.
+\index{random uniform sampling}Random uniform sampling initialises weights uniformly in the range $[\omega_{min}, \omega_{max}]$, written as $\omega_{i} \sim \textit{U} (\omega_{min}, \omega_{max})$, where the $\omega_{min}$ and $\omega_{max}$ are respectfully the lower and upper bounds of the uniform distribution. Suggested parameter values are $(-1, 1)$ or $(-0.5, 0.5)$~\cite{ref:nguyen:1990}.
 
 
 \index{Glorot uniform sampling}
@@ -331,7 +330,7 @@ Figure~\ref{fig:anns:activation_functions:softmax_argmax} illustrates the compar
 
 \begin{figure}[htb]
       \centering
-      \includegraphics[width=0.65\textwidth]{output_modifiers.pdf}
+      \includegraphics[width=0.75\textwidth]{output_modifiers.pdf}
       \caption[The results of \index{softmax}softmax and \index{argmax}argmax]{An illustration of \index{softmax}softmax and \index{argmax}argmax applied after the \index{sigmoid}sigmoid \index{activation function}activation function.}
       \label{fig:anns:activation_functions:softmax_argmax}
 \end{figure}

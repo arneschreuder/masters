@@ -185,20 +185,18 @@ Research shows that \acs{SGD} has difficulty navigating ravines~\cite{ref:sutton
 	\label{fig:heuristics:gd:sgd_with_and_without_momentum}
 \end{figure}
 
-The accumulation of momentum is presented in Equation~\eqref{eq:heuristics:gd:momentum_part_1}, while the update step is then amended in Equation~\eqref{eq:heuristics:gd:momentum_part_2}.
+The accumulation of momentum is given as
 
 \begin{equation}
+	\boldsymbol{v} = \alpha \boldsymbol{v} - \eta \boldsymbol{g}
 	\label{eq:heuristics:gd:momentum_part_1}
-	\begin{split}
-		\boldsymbol{v} = \alpha \boldsymbol{v} - \eta \boldsymbol{g}
-	\end{split}
 \end{equation}
 
+while the update step is then amended as
+
 \begin{equation}
+	\boldsymbol{w} = \boldsymbol{w} + \boldsymbol{v}
 	\label{eq:heuristics:gd:momentum_part_2}
-	\begin{split}
-		\boldsymbol{w} = \boldsymbol{w} + \boldsymbol{v}
-	\end{split}
 \end{equation}
 
 By redefining the \acs{SGD} update steps as shown above in Equations~\eqref{eq:heuristics:gd:momentum_part_1} and~\eqref{eq:heuristics:gd:momentum_part_2}, the \acs{Momentum} heuristic allows for the increase of momentum for dimensions whose gradients point in the same direction, while simultaneously reducing momentum for dimensions whose gradients change direction, leading to faster convergence and less oscillation. The momentum term $\alpha$ is usually set to 0.9~\cite{ref:engelbrecht:2007, ref:ruder:2016}.
@@ -424,7 +422,7 @@ In Equations~\eqref{eq:heuristics:pso:velocity} and~\eqref{eq:heuristics:pso:pos
 	\item \textbf{Social Component}: Denoted by the term $c_{2}r_{2_{j}}(t)[\hat{y}_{ij} - x_{ij}(t)]$. This component represents the particle's social experience at index j. It introduces an attractor to the swarm's best position so far. The social component is also stochastically scaled with random numbers $\boldsymbol{r}_{2} \sim U(0,1)^J$, while also introducing the social acceleration coefficient $c_{2}$ that is used to control the influence of the social attractor.
 \end{itemize}
 
-\citeauthor{ref:vanwyk:2014}~\cite{ref:vanwyk:2014} mentions that when \acp{PSO} where first developed, it was possible for particle velocities to become inappropriately large during optimisation, leading to situations where particles fly out of the feasible search space. This is known as \textit{swarm explosion} and occurs when there are frequent changes in the global best position. In order to address this issues, the concept of \textit{velocity clamping} was introduced~\cite{ref:eberhart:1996}. The idea behind velocity clamping is to restrict particle velocities to some $\boldsymbol{V_{max}{}$ threshold, modelling a form of terminal velocity. Velocity clamping is applied after the velocity update step and is given in Equation~\eqref{eq:heuristics:pso:velocity_clamping} below.
+\citeauthor{ref:vanwyk:2014}~\cite{ref:vanwyk:2014} mentions that when \acp{PSO} where first developed, it was possible for particle velocities to become inappropriately large during optimisation, leading to situations where particles fly out of the feasible search space. This is known as \textit{swarm explosion} and occurs when there are frequent changes in the global best position. In order to address this issues, the concept of \textit{velocity clamping} was introduced~\cite{ref:eberhart:1996}. The idea behind velocity clamping is to restrict particle velocities to some $\boldsymbol{V_{max}}$ threshold, modelling a form of terminal velocity. Velocity clamping is applied after the velocity update step and is given in Equation~\eqref{eq:heuristics:pso:velocity_clamping} below.
 
 \begin{equation}
 	\label{eq:heuristics:pso:velocity_clamping}
