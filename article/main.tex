@@ -1,0 +1,197 @@
+
+% \documentclass[preprint,12pt]{elsarticle}
+%% Use the option review to obtain double line spacing
+\documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+\journal{Information Sciences}
+
+\usepackage{acro}
+
+% Feedforward Neural Network
+\DeclareAcronym{FFNN}{
+      short = FFNN,
+      short-plural-form = FFNNs,
+      long = \textit{feedforward neural network},
+      long-plural-form = \textit{feedforward neural networks}
+}
+
+% Hyper-Heuristic
+\DeclareAcronym{HH}{
+      short = HH,
+      short-plural-form = HHs,
+      long = \textit{hyper-heuristic},
+      long-plural-form = \textit{hyper-heuristics}
+}
+
+% Bayesian Hyper-Heuristic
+\DeclareAcronym{BHH}{
+      short = BHH,
+      short-plural-form = BHHs,
+      long = \textit{Bayesian hyper-heuristic},
+      long-plural-form = \textit{Bayesian hyper-heuristics}
+}
+
+\begin{document}
+
+\begin{frontmatter}
+  %% Title, authors and addresses
+
+  %% use the tnoteref command within \title for footnotes;
+  %% use the tnotetext command for theassociated footnote;
+  %% use the fnref command within \author or \address for footnotes;
+  %% use the fntext command for theassociated footnote;
+  %% use the corref command within \author for corresponding author footnotes;
+  %% use the cortext command for theassociated footnote;
+  %% use the ead command for the email address,
+  %% and the form \ead[url] for the home page:
+  %% \title{Title\tnoteref{label1}}
+  %% \tnotetext[label1]{}
+  %% \author{Name\corref{cor1}\fnref{label2}}
+  %% \ead{email address}
+  %% \ead[url]{home page}
+  %% \fntext[label2]{}
+  %% \cortext[cor1]{}
+  %% \affiliation{organization={},
+  %%             addressline={},
+  %%             city={},
+  %%             postcode={},
+  %%             state={},
+  %%             country={}}
+  %% \fntext[label3]{}
+
+  \title{Bayesian Hyper-Heuristics}
+
+  %% use optional labels to link authors explicitly to addresses:
+  \author[aff:tuks]{A.N.~Schreuder}
+  \author[aff:stellenbosch]{Prof.~A.P.~Engelbrecht}
+  \author[aff:tuks]{Dr.~A.S.~Bosman}
+  \author[aff:wits]{Prof.~C.W.~Cleghorn}
+
+  \affiliation[aff:tuks]{
+    organization={University of Pretoria},
+    % addressline={Lynnwood Rd},
+    city={Pretoria},
+    postcode={0002},
+    state={Gauteng},
+    country={South Africa}
+  }
+
+  \affiliation[aff:stellenbosch]{
+    organization={Stellenbosch University},
+    % addressline={Ryneveld Street},
+    city={Stellenbosch},
+    postcode={7602},
+    state={Western Cape},
+    country={South Africa}
+  }
+
+  \affiliation[aff:wits]{
+    organization={University of the Witwatersrand},
+    % addressline={1 Jan Smuts Ave},
+    city={Johannesburg},
+    postcode={2000},
+    state={Gauteng},
+    country={South Africa}
+  }
+
+  \begin{abstract}
+
+    This work introduces a novel population-based \Acf{BHH}. An empirical study is done by using the \acs{BHH} to train \acsp{FFNN}. An in-depth behaviour analysis is done and the performance of the \acs{BHH} is compared to that of ten popular low-level heuristics, each with different search behaviours. The chosen heuristic pool consists of classic gradient-based heuristics as well as meta-heuristics. The empirical process is executed on fourteen datasets consisting of classification and regression problems with varying characteristics. The \acs{BHH} is shown to be able to train \acsp{FFNN} well and provide an automated method for finding the best heuristic to train the \acsp{FFNN} at various stages of the training process.
+
+  \end{abstract}
+
+  %%Graphical abstract
+  % \begin{graphicalabstract}
+  % \includegraphics{grabs}
+  % \end{graphicalabstract}
+
+  %%Research highlights
+  \begin{highlights}
+    \item A novel heuristic selection operator is used that focuses on using Bayesian statistics to calculate the probability that a heuristic should be selected in order to efficiently train \acp{FFNN}. The resulting \acs{HH} is referred to as the \acf{BHH}.
+
+    \item The results of the empirical study show with statistical significance and certainty that the \Acs{BHH} performs generally well on multiple problems. It is shown that, for each problem, the \Acs{BHH} performance is comparable to the best low-level heuristics included in the heuristic selection pool.
+
+    \item The results of the empirical study show that the \Acs{BHH} is able to select the best heuristic to train \acp{FFNN} in general. This relieves researchers from the burden of having to do this selection process manually through trial and error.
+
+    \item The results of the empirical study show that the \Acs{BHH}, given a diverse set of lower-level heuristics, will generally produce good results when applied to multiple problems at the same time.
+
+    \item Finally, the results of the empirical study show that the \Acs{BHH} is capable of utilising \textit{a priori} \footnote{Latin word, meaning ``from what comes before''.} knowledge in which a predefined selection bias is used for heuristics that are known to be well suited for certain problems.
+  \end{highlights}
+
+  \begin{keyword}
+
+    hyper-heuristics \sep meta-learning \sep feedforward neural networks \sep supervised learning \sep Bayesian statistics
+
+  \end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+\label{sec:introduction}
+
+\section{Artifical Neural Networks}
+\label{sec:anns}
+
+\section{Heuristics}
+\label{sec:heuristics}
+
+\section{Hyper-Heuristics}
+\label{sec:hhs}
+
+\section{Probability}
+\label{sec:probability}
+
+\section{Bayesian Hyper-Heuristics}
+\label{sec:bhh}
+
+\section{Methodology}
+\label{sec:methodology}
+
+\section{Results}
+\label{sec:results}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+\appendix
+
+\section{Appendix A}
+\label{app:appendix_a}
+
+\section{Appendix B}
+\label{app:appendix_b}
+
+%% For citations use: 
+%%       \citet{<label>} ==> Jones et al. [21]
+%%       \citep{<label>} ==> [21]
+%%
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+%%  \bibliographystyle{elsarticle-num-names} 
+%%  \bibliography{<your bibdatabase>}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+\begin{thebibliography}{00}
+
+  %% \bibitem[Author(year)]{label}
+  %% Text of bibliographic item
+
+  \bibitem[ ()]{}
+
+\end{thebibliography}
+\end{document}
+
+\endinput
