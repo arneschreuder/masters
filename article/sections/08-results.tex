@@ -1,16 +1,7 @@
 \section{Results}
 \label{sec:results}
 
-The methodology presented a number of experimental groups to conduct. The experimental groups that were identified include a case study on the behaviour of the \acs{BHH} during training, and an empirical comparison to the performance of state-of-the-art, standalone, low-level \index{heuristic}heuristics. This section provides the outcomes of the empirical processes and provides results on all the experiments that have been conducted. Detailed discussions follow on the outcomes of each experiment. Discussions are accompanied by figures and plots to help provide visual aid for discussions. The output of the statistical analysis that yielded the results is provided in Appendix \ref{app:statistical_analysis}. The remainder of the chapter is structured as follows:
-
-\begin{itemize}
-	\item \textbf{Section \ref{sec:results:overview}} provides a brief overview of the outcomes of the empirical process and highlights key aspects to observe in the results.
-
-	\item \textbf{Section \ref{sec:results:case_study}} provides detailed discussions on the outcomes of the case study on the behaviour of the \acs{BHH}. Illustrations are provided to show the change in parameter values to illustrate the outcomes of the learning process of the \acs{BHH}, while training the underlying \acf{FFNN}.
-
-	\item \textbf{Section \ref{sec:results:standalone}} provides the results of the performance of the \acs{BHH} compared to individual low-level \index{heuristic}heuristics on all datasets. Three variants of the \acs{BHH} are included in these results. These include the baseline configuration, as well as a configuration that only includes gradient-based \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and a configuration that only includes \acp{MH} in the \index{heuristic pool}heuristic pool.
-
-\end{itemize}
+This section provides the results of all the experiments that have been conducted. Detailed discussions follow on the outcomes of each experiment. Discussions are accompanied by figures and plots to help provide visual aid for discussions. The output of the statistical analysis that yielded the results is provided in Appendix \ref{app:statistical_analysis}.
 
 \subsection{Overview}\label{sec:results:overview}
 
@@ -30,23 +21,10 @@ The \textit{reanalysis interval} defines intervals at which the \acs{BHH} reanal
 
 This section provides the empirical results of the case study on the behaviour of the \acs{BHH} as it is used to train a \acs{FFNN} on the iris dataset. As a reminder, the iris dataset contains 150 records, split into a training dataset containing 120 records, and a test dataset that contains 30 records. The test dataset is treated like a validation dataset, and is evaluated at every training step to illustrate the outcomes of the \acs{BHH} throughout the training process. Mini-batch training is executed with a batch size of 30. The results that are presented are averaged over 30 independent runs.
 
-Furthermore, the case study focuses on three variants of the \acs{BHH}. These include the baseline configuration, as was provided in Chapter \ref{chap:bhh} and is denoted as bhh\_baseline (illustrated throughout in \textcolor{red}{red}). Furthermore, the case study also includes a configuration of the \acs{BHH} that has a ``long memory'' by setting the \textit{replay window size} hyper-parameter to 250, and is denoted as bhh\_replay\_250 (illustrated throughout in \textcolor{green}{green}). Finally, the case study includes a configuration that makes use of the \textit{symmetric} credit assignment strategy hyper-parameter, and is denoted as bhh\_credit\_symmetric (illustrated throughout in \textcolor{blue}{blue}).
+The case study focuses on three variants of the \acs{BHH}. These include the baseline configuration, as was provided in Section \ref{sec:bhh} and is denoted as bhh\_baseline (illustrated throughout in \textcolor{red}{red}). Furthermore, the case study also includes a configuration of the \acs{BHH} that has a ``long memory'' by setting the \textit{replay window size} hyper-parameter to 250, and is denoted as bhh\_replay\_250 (illustrated throughout in \textcolor{green}{green}). Finally, the case study includes a configuration that makes use of the \textit{symmetric} credit assignment strategy hyper-parameter, and is denoted as bhh\_credit\_symmetric (illustrated throughout in \textcolor{blue}{blue}).
 
-These configurations were specifically chosen for the following reasons: the large replay window size configuration is chosen to illustrate a case where the \acs{BHH} does not ``forget'' past performances of the low-level \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and the configuration that utilises the symmetric credit assignment strategy is chosen to illustrate a case where there \acs{BHH} does not reward good performance, and does not yield a bias towards \index{heuristic}heuristics that perform well at all. This section is structured as follows:
+These configurations were specifically chosen for the following reasons: the large replay window size configuration is chosen to illustrate a case where the \acs{BHH} does not ``forget'' past performances of the low-level \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool, and the configuration that utilises the symmetric credit assignment strategy is chosen to illustrate a case where there \acs{BHH} does not reward good performance, and does not yield a bias towards \index{heuristic}heuristics that perform well at all.
 
-\begin{itemize}
-	\item \textbf{Section \ref{sec:results:case_study:performance_metrics}} provides illustrations and discussions around the outcomes of the performance metrics as obtained by the \acs{BHH}.
-
-	\item \textbf{Section \ref{sec:results:case_study:concentration_parameters}} provides illustrations and discussions around the changes in concentration parameter values as a result of the learning mechanism implemented by the \acs{BHH}.
-
-	\item \textbf{Section \ref{sec:results:case_study:probs_of_select_probs}} provides illustrations and discussions around the changes in the \textit{probability distribution of \index{heuristic}heuristic selection probabilities} as a result of the learning mechanism implemented by the \acs{BHH}.
-
-	\item \textbf{Section \ref{sec:results:case_study:prior_selec_prob}} provides illustrations and discussions around the changes in the \textit{prior \index{heuristic}heuristic selection probabilities} as a result of the learning mechanism implemented by the \acs{BHH}.
-
-	\item \textbf{Section \ref{sec:results:case_study:posterior_selec_prob}} provides illustrations and discussions around the changes in the \textit{posterior \index{heuristic}heuristic selection probabilities} as a result of the learning mechanism implemented by the \acs{BHH}.
-
-
-\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % METRICS
@@ -140,7 +118,7 @@ The first logical observation to be made from Figures \ref{fig:results:case_stud
 
 The next observations that can be made are for the bhh\_baseline configuration, illustrated in \textcolor{red}{red}, and the bhh\_credit\_symmetric configuration in \textcolor{blue}{blue}. Both these configurations see $\boldsymbol{\alpha}$ being reset to its initial value of 1.0 as regular intervals. This interval is defined by the \textit{reanalysis interval} hyper-parameter. The reanalysis interval dictates the frequency at which Bayesian analysis is conducted on the performance log, maintained by the \acs{BHH}. Bayesian analysis is used to update $\boldsymbol{\alpha}$ only at the reanalysis interval. As a result, small plateaus appear where $\boldsymbol{\alpha}$ does not change.
 
-Notice from Figure \ref{fig:results:case_study:alphas} that $\boldsymbol{\alpha} \geq 1.0$ for multiple elements. This is due to the accumulation of pseudo counts for $\boldsymbol{\alpha}$ by the Bayesian analysis process. Furthermore, this is also because the same heuristic can be allocated to multiple entities, each contributing a minimum pseudo-count gain of 1.0 to the corresponding element in $\boldsymbol{\alpha}$ through the Bayesian analysis process. Consider a case where all five entities in the entity pool are allocated the same heuristic and that a the replay window size of 10 is used. Then for all ten samples defined in the performance log, $\alpha_{i} = 50$, where $i$ is the index of the $i$-th \index{heuristic}heuristic in the \index{heuristic pool}heuristic pool.
+Notice from Figure \ref{fig:results:case_study:alphas} that $\boldsymbol{\alpha} \geq 1.0$ for multiple elements. This is due to the accumulation of pseudo counts for $\boldsymbol{\alpha}$ by the Bayesian analysis process. Furthermore, this is also because the same heuristic can be allocated to multiple entities, each contributing a minimum pseudo-count gain of 1.0 to the corresponding element in $\boldsymbol{\alpha}$ through the Bayesian analysis process.
 
 Furthermore, it is important to mention that a change in $\boldsymbol{\alpha}$ between reanalysis windows does not yet necessarily indicate that the \acs{BHH} is learning. The concentration parameter $\boldsymbol{\alpha}$ tracks the \textit{occurrence} of the random event of observing heuristics (denoted $\boldsymbol{{H}}$). \index{heuristic}Heuristics can be observed as a result of good performance, by which the \acs{BHH} then learns to frequently reselect these \index{heuristic}heuristics again, or just by chance through the stochastic nature of probabilistic sampling as implemented by the \acs{BHH}. Further investigation is required to illustrate the learning mechanism of the \acs{BHH}.
 
@@ -290,7 +268,7 @@ Figures \ref{fig:results:case_study:p_HgEC:0:0} to \ref{fig:results:case_study:p
 	\label{fig:results:case_study:p_HgEC:0}
 \end{figure}
 
-The main observation to make from Figures \ref{fig:results:case_study:p_HgEC:0:0} to \ref{fig:results:case_study:p_HgEC:0:8} is that the implemented posterior heuristic selection distribution, defined by $P(\boldsymbol{H} \vert \boldsymbol{E}, \boldsymbol{C}; \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})$, does not yield normalised probabilities, but rather yield unnormalised \textit{logits}, which are used to parameterise a \index{Categorical probability distribution}Categorical probability distribution from which new \index{heuristic}heuristic selections are sampled. The reasons for the aforementioned is because the probabilistic model is evaluated proportionally as was discussed in Chapter \ref{chap:bhh}. As a reminder, the log-sum-exp trick is used in order to maintain numerical stability, yielding \textit{logits} instead of probabilities.
+The main observation to make from Figures \ref{fig:results:case_study:p_HgEC:0:0} to \ref{fig:results:case_study:p_HgEC:0:8} is that the implemented posterior heuristic selection distribution, defined by $P(\boldsymbol{H} \vert \boldsymbol{E}, \boldsymbol{C}; \boldsymbol{\theta}, \boldsymbol{\phi}, \boldsymbol{\psi})$, does not yield normalised probabilities, but rather yield unnormalised \textit{logits}, which are used to parameterise a \index{Categorical probability distribution}Categorical probability distribution from which new \index{heuristic}heuristic selections are sampled. The reasons for the aforementioned is because the probabilistic model is evaluated proportionally as was discussed in Section \ref{sec:bhh}. As a reminder, the log-sum-exp trick is used in order to maintain numerical stability, yielding \textit{logits} instead of probabilities.
 
 Another observation to make is for the bhh\_replay\_250 configuration $(\textcolor{green}{green})$. Figures \ref{fig:results:case_study:p_HgEC:0:0} to \ref{fig:results:case_study:p_HgEC:0:8} show that the posterior heuristic selection probabilities converge to the expected heuristic selection probabilities later in the training stages. The aforementioned suggests that the \acs{BHH} is not able to find further performance biases and cannot exploit better solutions. At this point, the \acs{BHH} starts to explore more as the concentration parameters are reanalysed more uniformly, resolving more and more to a random search in attempt to find better solutions.
 
@@ -537,12 +515,3 @@ Figures \ref{fig:results:standalone:figures:fish_toxicity} to \ref{fig:results:s
 	\caption{The train and test loss plots for the experimental group comparing the performance of the \acs{BHH} to individual, standalone, low-level \index{heuristic}heuristics on the parkinsons dataset over 30 epochs, illustrated in log scale.}
 	\label{fig:results:standalone:figures:parkinsons}
 \end{figure}
-
-
-\subsection{Summary}\label{sec:results:summary}
-
-This section provided the results of the empirical process that was described in Chapter \ref{chap:methodology}. Three experimental groups were designed. These experimental groups include a case study on the behaviour of the \acs{BHH} as it relates to an example dataset (iris). Furthermore, an experimental group that compares the performance of the \acs{BHH} to standalone, low-level \index{heuristic}heuristics was included, and finally, an experimental group that compares the effects of various hyper-parameters on the outcomes of the \acs{BHH} was also included. The empirical results for each of these experimental groups were presented in detail.
-
-In general, it was found that the \acs{BHH} is able to successfully train the underlying \acp{FFNN}. Detailed analysis and discussions of the empirical results were provided along with illustrations for visual aid. Where possible, detailed discussions were presented that explain the reasons behind the outcomes that were produced. Throughout, various suggestions were made to improve on the implementations made in this dissertation.
-
-Finally, all results that were presented were retrieved from statistical analysis which yield statistical certainty in the results and outcomes observed.

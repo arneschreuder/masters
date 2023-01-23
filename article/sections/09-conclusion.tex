@@ -1,2 +1,31 @@
 \section{Conclusion}
 \label{sec:conclusion}
+
+The main area of focus for the research done in this dissertation stems from the problem statement, which identified the difficult and tedious problem of selecting the best \index{heuristic}heuristic for training \acp{FFNN}. The research presented in this article identified the possibility of using a different approach, referred to as \acp{HH}, to automate the \index{heuristic}heuristic selection process.
+
+This research then set out to develop a novel high-level \index{heuristic}heuristic that utilises probability theory in an online learning setting to drive the automatic \index{heuristic}heuristic selection process. As such, the \acs{BHH} was conceptualised.
+
+A literature study was conducted on all related topics that are relevant to the development of the \acs{BHH}. The literature study included background information on \acs{ANN}, existing low-level \index{heuristic}heuristics, meta-learning, \acp{HH}, probability theory, and Bayesian statistics.
+
+A novel \acs{BHH} that can be used to automate the \index{heuristic}heuristic selection process was proposed in detail and was implemented. The \acs{BHH} follows an approach that includes a selective and perturbative element in an online learning setting. Bayesian statistics and \acs{MAP} is used as the optimisation technique and detailed mathematical derivations of the optimisation process was provided. Detailed discussions were provided on the mapping of proxied \index{heuristic}heuristic state update operations. Finally, a \acs{BHH} baseline configuration was defined as a cornerstone reference for empirical analysis.
+
+An empirical process was designed and the detail of the implementation for the empirical process and the \acs{BHH} was provided. An empirical study was conducted to show that the \ac{BHH} is able to train \acp{FFNN} effectively on a number of different datasets. An empirical study was conducted to study the behavioural characteristics of the \acs{BHH}. An empirical study was conducted to critically evaluate the performance of the \acs{BHH} compared to traditional, low-level, standalone \index{heuristic}heuristic when training \acp{FFNN} on a number of different datasets.
+
+Results from the empirical process were statistically analysed over multiple runs and provided statistical significance. These results were discussed in detail and was supported through visual illustrations.
+
+\subsection{Summary of Results}
+\label{sec:conclusion:results}
+
+For the behavioural case study of the \acs{BHH} it was found that the \ac{BHH} is able to train a \acf{FFNN} relatively well. It was shown that the \ac{BHH} is able to learn and that the \acs{BHH} is able to exploit small performance biases as it relates to \index{heuristic}heuristic selection. This enables the \acs{BHH} to select the correct \index{heuristic}heuristics to apply to the correct entities at the correct time in the training process.
+
+The main findings that were made for this experimental group are given as follows: Most of the training progression is made in the early stages of the training process. That leads to the conclusion that the \acs{BHH} has a small window from which it should learn and gain the most in the training process. After training has converged, the \acs{BHH} resets its concentration parameters and heuristic selection returns to the symmetric heuristic selection case. As such, the \acs{BHH} explores other heuristics in an attempt to further improve on the current best solution found. The test set was used as a validation set during training. Some overfitting can be observed as the \acs{BHH} tried finding better solutions on the train set, but at the cost of generalisation on the test set. Minor divergence of the training loss is observed as the \acs{BHH} explores other heuristics in an attempt to improve performance. Since no move-acceptance strategy, and no early stopping strategy was used, the \acs{BHH} could select heuristics that are sub-optimal. Future research opportunities should incorporate these aforementioned strategies.
+
+For the experimental group that compares the \acs{BHH} baseline with a number of  low-level heuristics, three different configurations of the \acs{BHH} baseline configuration were implemented. These configurations vary in the type of \index{heuristic}heuristics in the \index{heuristic pool}heuristic pool.
+
+Overall, the \textit{bhh\_gd} configuration performed the best out of the \acs{BHH} variants, achieving an overall rank of fourth amongst thirteen \index{heuristic}heuristics that were implemented and executed on fourteen datasets. The \textit{bhh\_gd} configuration produced performance results close to that of the best low-level \index{heuristic}heuristics and was only statistically outperformed by the top two low-level \index{heuristic}heuristics. The \textit{bhh\_all} configuration achieved an overall rank of sixth and the \textit{bhh\_mh} achieved an overall rank of eighth.
+
+Although the \textit{bhh\_gd} configuration produced performance results comparable to the best low-level heuristics, the \textit{bhh\_all} and \textit{bhh\_mh} configurations produced average results. It was found that, in general, gradient-based heuristics produced the best results, as such, it is understandable that the \textit{bhh\_gd} yielded the best performance outcomes between the different \acs{BHH} variants that were implemented. Although the \acs{BHH} variants were not able to produce better results than the top low-level \index{heuristic}heuristics, the \acs{BHH} variants still effectively trained the underlying \acp{FFNN} and produced good training outcomes overall.
+
+It was shown that the \textit{bhh\_gd} configuration produced the lowest variance in rank between datasets out of all of the \index{heuristic}heuristics implemented, giving the \acs{BHH} the ability to generalise well to other problems.
+
+Finally, it was shown that the \acs{BHH} provides a mechanism whereby prior expert knowledge can be injected, before training starts. Future research can exploit this knowledge and provide a significant bias towards \index{heuristic}heuristics that are known to perform well on particular problem types.
