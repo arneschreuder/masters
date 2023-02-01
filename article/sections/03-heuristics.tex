@@ -1,33 +1,18 @@
 \section{Heuristics}
 \label{sec:heuristics}
 
-A \index{heuristic}heuristic refers to an algorithmic search technique that serves as a guide to a search process where good solutions to a optimisation problem is being sought out. Many different techniques have been used to train \acp{FFNN} \cite{ref:kingma:2014}. At the time of writing, the majority of work that is published around the training of \acp{FFNN} involves the use of gradient-based techniques \cite{ref:nel:2021}.
+A heuristic refers to an algorithmic search technique that serves as a guide to a search process where good solutions to a optimisation problem is being sought out. Many different techniques have been used to train \acp{FFNN} \cite{ref:kingma:2014}. At the time of writing, the majority of work that is published around the training of \acp{FFNN} involves the use of gradient-based techniques \cite{ref:nel:2021}.
 
+Gradient-based heuristics are optimisation techniques that make use of derivates obtained from evaluating the \acs{ANN} being trained. In the context of supervised learning, loss functions produce a scalar value $\epsilon$, that represents the error between the output of the \acs{ANN} and the desired output. When using \acs{GD} to train \acp{ANN}, the loss function is used to adjust the weights of the \acs{ANN} in order to minimise the error \cite{ref:engelbrecht:2007}.
 
-\subsection{Gradient-Based Heuristics}\label{sec:heuristics:gd}
+There are many variants of gradient-based heuristics, however, they all fundamentally apply the same generic \acf{GD} framework that propagates the error signal backwards through the \acs{ANN}. This algorithm is known as \acf{BP}. \Acs{BP} was popularised by \citeauthor{ref:werbos:1994} \cite{ref:werbos:1994}.
 
-Gradient-based \index{heuristic}heuristics are optimisation techniques that make use of derivates obtained from evaluating the \acs{ANN} being trained. In the context of supervised learning, loss functions produce a scalar value $\epsilon$, that represents the error between the output of the \acs{ANN} and the desired output. When using \acs{GD} to train \acp{ANN}, the \index{loss function}loss function is used to adjust the weights of the \acs{ANN} in order to minimise the error \cite{ref:engelbrecht:2007}.
+The simplest type of \acs{GD} algorithm is referred to as \acs{SGD}, which implements a gradient-based weight update step for each training pattern. In the context of this research, the implementation of \acs{SGD} refers to the mini-batch training implementation of \acs{GD}, where a small batch of training patterns are fed to the \acs{FFNN} at once and the error function is aggregated across all training patterns.
 
-The simplest type of \acs{GD} algorithm is referred to as \acs{SGD}, which implements a gradient-based weight update step for each training pattern. The weight update step and is given as
-
-\begin{equation}
-	\label{eq:heuristics:gd:sgd}
-	\begin{split}
-		\boldsymbol{w} = \boldsymbol{w} - \eta \boldsymbol{g}
-	\end{split}
-\end{equation}
-
-where $\boldsymbol{w}$ refers to the weight vector, $\eta$ refers to the learning rate, which controls the step size and $\boldsymbol{g}$ refers to the gradient of the error function relative to weight vector.
-
-There are many variants of gradient-based \index{heuristic}heuristics, however, they all fundamentally apply the same generic \acf{GD} framework that propagates the error signal backwards through the \acs{ANN}. This algorithm is known as \acf{BP}. \Acs{BP} was popularised by \citeauthor{ref:werbos:1994} \cite{ref:werbos:1994}. \citeauthor{ref:engelbrecht:2007} \cite{ref:engelbrecht:2007} describes the \acs{BP} process in two steps. During the forward pass step, the output values of the \acs{FFNN} is calculated for each training pattern. Then, during the backward propogation step, the error signal is propagated backwards from the output layer, through the hidden layer, to the input layer of the \acs{FFNN}. Weights at the output and hidden layers are then adjusted as functions of the backpropagated error signal.
-
-In the context of this research, the implementation of \acs{SGD} refers to the mini-batch training implementation of \acs{GD}, where a small batch of training patterns are fed to the \acs{FFNN} at once and the error function is aggregated across all training patterns.
 
 Alternative variants have been proposed that lead to better control over the convergence characteristics caused by \acs{SGD}. This research focusses on a number of these variants that include \Acs{Momentum} \cite{ref:qian:1999}, \Acf{NAG} \cite{ref:sutskever:2013}, \Acf{Adagrad} \cite{ref:duchi:2011}, \acs{Adadelta} \cite{ref:zeiler:2012}, \Acf{RMSProp} \cite{ref:hinton:2012} and \Acf{Adam} \cite{ref:kingma:2014}.
 
-\subsection{Meta-Heuristics}\label{sec:heuristics:mh}
-
-Gradient-based heuristics are sensitive to the problem that they are applied to, with hyper-parameter selection often dominating the research focus \cite{ref:bengio:2000, ref:feurer:2019}. \citeauthor{ref:blum:2003} \cite{ref:blum:2003} mention that since the 1980's, a new kind of approximate algorithm has emerged which tries to combine basic heuristic methods in higher level frameworks aimed at efficiently and effectively exploring a search space. These methods are referred to as \index{meta-heuristic}\textit{meta-heuristics}.
+Gradient-based heuristics are sensitive to the problem that they are applied to, with hyper-parameter selection often dominating the research focus \cite{ref:bengio:2000, ref:feurer:2019}. \citeauthor{ref:blum:2003} \cite{ref:blum:2003} mention that since the 1980's, a new kind of approximate algorithm has emerged which tries to combine basic heuristic methods in higher level frameworks aimed at efficiently and effectively exploring a search space. These methods are referred to as \acp{MH}.
 
 The biggest difference between \acp{MH} and gradient-bases heuristics is that
 \acp{MH} make use of meta-information obtained as a result of evaluating the \acs{FFNN} during training and is not limited to information about the search space \cite{ref:blum:2003}. Similar to gradient-based heuristics, a number of different meta-heuristics have been used to successfully train \acp{FFNN} \cite{ref:rakitianskaia:2012, ref:vanwyk:2014, ref:espinal:2011, ref:gupta:1999}. This research takes a particular interest in population-based \acp{MH} that have been used to successfully train \acp{FFNN}. These include \acp{PSO} \cite{ref:shi:1998}, \acf{DE} \cite{ref:price:2006} and \Acp{GA} \cite{ref:fraser:1957}.

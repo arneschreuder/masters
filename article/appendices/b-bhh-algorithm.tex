@@ -1,0 +1,44 @@
+\section{BHH Algorithm}
+\label{app:appendix_bhh_algorithm}
+
+\begin{algorithm}[H]
+	\caption{The pseudo-code for the implementation of the \acf{BHH}}
+	\label{algo:bhh}
+	\begin{algorithmic}
+		\State step $\gets 0$
+
+		\State select initial heuristics
+		\State initialise population and entities
+		\State evaluate entities' initial position
+		\State update population state
+
+		\While{stopping condition not met}
+		\For{all entities in entity pool}
+		\If{selected heuristic is gradient-based}
+		\State get gradients
+		\EndIf
+
+		\State apply low-level heuristic and proxy operations
+		\State update population state
+		\State log performance metrics to performance log
+
+		\If {step < burn-in window size}
+		\State select heuristic
+		\Else
+		\If {step $\mathbin{\%}$ reanalysis interval = 0}
+		\State apply Bayesian analysis
+		\EndIf
+
+		\If {step $\mathbin{\%}$ reselection interval = 0}
+		\State select heuristic
+		\EndIf
+
+		\If {step > replay window size}
+		\State prune performance log
+		\EndIf
+		\EndIf
+		\EndFor
+		\State step $\gets$ step + $1$
+		\EndWhile
+	\end{algorithmic}
+\end{algorithm}
