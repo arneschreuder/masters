@@ -56,13 +56,13 @@ The mapping of proxied heuristic state update operations implemented by the \acs
 
 \subsection{Datasets}\label{sec:methodology:datasets}
 
-In the context of training \acp{FFNN}, the underlying models are trained across a number of datasets. All the datasets used in the empirical process originate from the UCI Machine Learning Repository~\cite{ref:uci:2022}. Datasets are grouped by problem type and include seven classification and seven regression datasets. The details around the datasets used can be found in Tables \ref{tab:methodology:datasets:classification} and \ref{tab:methodology:datasets:regression}. Each dataset is split into a training set comprising of 80\% of the data, and a test set comprising of 20\% of the data. The test set is used as a validation set during training.
+In the context of training \acp{FFNN}, the underlying models are trained across a number of datasets. All the datasets used in the empirical process originate from the UCI Machine Learning Repository \cite{ref:uci:2022}. Datasets are grouped by problem type and include seven classification and seven regression datasets. The details around the datasets used can be found in Tables \ref{tab:methodology:datasets:classification} and \ref{tab:methodology:datasets:regression}. Each dataset is split into a training set comprising of 80\% of the data, and a test set comprising of 20\% of the data. The test set is used as a validation set during training.
 
 A number of classification datasets contain an unbalanced representation of classes. This work does not apply mechanisms to cater for class balancing, in order to eliminate as many variables and factors in the empirical process as possible.
 
 \subsection{Models}\label{sec:methodology:model}
 
-All models that are trained in the empirical process follow implementations of shallow \acp{FFNN} with only one hidden layer. The number of hidden units used were determined empirically. Weights are initialised by means of Glorot uniform sampling~\cite{ref:glorot:2010}. The models and their configuration, as it is used for each dataset, are given in Table \ref{tab:methodology:models:configurations}.
+All models that are trained in the empirical process follow implementations of shallow \acp{FFNN} with only one hidden layer. The number of hidden units used were determined empirically. Weights are initialised by means of Glorot uniform sampling \cite{ref:glorot:2010}. The models and their configuration, as it is used for each dataset, are given in Table \ref{tab:methodology:models:configurations}.
 
 \subsection{Performance Measures}\label{sec:methodology:performance_measures}
 
@@ -74,7 +74,7 @@ All models that are trained in the empirical process follow implementations of s
 
 Each experiment and configuration is trained for a maximum of 30 epochs and is repeated over 30 independent runs, for each of the applicable datasets. Statistical analysis is executed on the results from the testing datasets. An average rank is calculated across all 30 runs, for both experimental groups and configurations, at each step, for every epoch of training.
 
-The Shapiro-Wilk test for normality~\cite{ref:shapiro:1965} ($\alpha$ = 0.001) is used to determine if the results are normally distributed. The Levene's test for equality of variance~\cite{ref:levene:1961} ($\alpha$ = 0.001) is used. For experiments with three or more configurations, the \acs{ANOVA} statistical test~\cite{ref:fisher:1921} ($\alpha$ = 0.001) is used. The Kruskal-Wallis ranked non-parametric test~\cite{ref:kruskal:1952} for statistical significance ($\alpha$ = 0.001) is used for cases where data is not normally distributed. Finally, a post-hoc Tukey honest significant difference test~\cite{ref:tukey:1949} ($\alpha$ = 0.001) is used from which significant ranking is retrieved. Descriptive and critical difference plots are then retrieved from these results to provide visual aid.
+The Shapiro-Wilk test for normality \cite{ref:shapiro:1965} ($\alpha$ = 0.001) is used to determine if the results are normally distributed. The Levene's test for equality of variance \cite{ref:levene:1961} ($\alpha$ = 0.001) is used. For experiments with three or more configurations, the \acs{ANOVA} statistical test \cite{ref:fisher:1921} ($\alpha$ = 0.001) is used. The Kruskal-Wallis ranked non-parametric test \cite{ref:kruskal:1952} for statistical significance ($\alpha$ = 0.001) is used for cases where data is not normally distributed. Finally, a post-hoc Tukey honest significant difference test \cite{ref:tukey:1949} ($\alpha$ = 0.001) is used from which significant ranking is retrieved. Descriptive and critical difference plots are then retrieved from these results to provide visual aid.
 
 \subsection{Implementation and Execution}\label{sec:methodology:implementation}
 
