@@ -43,7 +43,7 @@ The \acs{BHH} implements a probabilistic, predictive model based on the fundamen
 	\end{split}
 \end{equation}
 
-The predictive model thus models the \textit{proportional} probability of the event (selection of) heuristic $\boldsymbol{H}$, given allocation to entity $\boldsymbol{E}$ and credit requirement $\boldsymbol{C}$, parameterised by sampled $\boldsymbol{\theta} \vert \boldsymbol{\alpha} \sim Dir(\boldsymbol{\alpha}; K)$, $\boldsymbol{\phi} \vert \boldsymbol{\beta} \sim Dir(\boldsymbol{\beta}; K)^{J}$ and $\boldsymbol{\psi} \vert \gamma_{1}, \gamma_{0}  \sim Beta(\gamma_{1}, \gamma_{0})$. In the aforementioned, $K$ is the heuristic pool size, $J$ is the entity pool size and the indices $1$ and $0$ refers to success and failure parameters respectively. The concentration parameters $\boldsymbol{\alpha}$, $\boldsymbol{\beta}$, $\gamma_{1}$ and $\gamma_{0}$ denote the prior beliefs of the \acs{BHH}. Similar to before, the reader is referred to \cite{ref:schreuder:2022} for the mathematical derivation of the selection mechanism.
+The predictive model thus models the \textit{proportional} probability of the event (selection of) heuristic $\boldsymbol{H}$, given allocation to entity $\boldsymbol{E}$ and credit requirement $\boldsymbol{C}$, parameterised by sampled $\boldsymbol{\theta} \sim Dir(\boldsymbol{\alpha}; K)$, $\boldsymbol{\phi} \sim Dir(\boldsymbol{\beta}; K)^{J}$ and $\boldsymbol{\psi} \sim Beta(\gamma_{1}, \gamma_{0})$. In the aforementioned, $K$ is the heuristic pool size and $J$ is the entity pool size. The concentration parameters $\boldsymbol{\alpha}$, $\boldsymbol{\beta}$, $\gamma_{1}$ and $\gamma_{0}$ denote the prior beliefs of the \acs{BHH}. Similar to before, the reader is referred to \cite{ref:schreuder:2022} for the mathematical derivation of the selection mechanism.
 
 \subsection{Optimisation Step}\label{sec:bhh:optimisation_step}
 
@@ -77,10 +77,11 @@ The values for $\boldsymbol{\theta}$, $\boldsymbol{\phi}$ and $\boldsymbol{\psi}
 	\end{split}
 \end{equation}
 
+where $N_{k}$ is a summary variable denoting the count of occurrences of heuristic $k$, $N_{j}$ is a summary variable denoting the count of occurrences of entity $j$, $N_{j,k}$ is a summary variable denoting the count of occurrences of heuristic $k$ for entity $j$, and $N_{1,k}$ is a summary variable denoting the count of occurrences of heuristic $k$ that meet performance requirements (credit assignment), and $N$ is a summary variable denoting the total count of events.
 
 \subsubsection{Maximum A Posteriori Estimation}\label{sec:bhh:optimisation_step:map}
 
-Another approach to optimise the values for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and $\hat{\psi}_{k}$ is to optimise the parameters by their probability distributions' parameters. This process is referred to as \textit{Bayesian analysis}. Bayesian analysis makes use of the \textit{posterior} probability distribution. The concentration update operations yielded by \acs{MAP}, are then be given as
+Another approach to optimise the values for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and $\hat{\psi}_{k}$ is to optimise the parameters by their probability distributions' parameters. This process is referred to as \textit{Bayesian analysis}. Bayesian analysis makes use of the \textit{posterior} probability distribution. The concentration update operations yielded by \acs{MAP}, are then be given as follows:
 
 \begin{equation}
 	\label{eq:bhh:optimisation_step:map:alpha_update_operation}
@@ -115,4 +116,4 @@ It can be said that the \acs{BHH} implements a Gaussian process \cite{ref:gortle
 
 \subsection{Hyper-Parameters}\label{sec:bhh:hyper_parameters}
 
-The following hyper-parameters are implemented by the \acs{BHH}: the \textit{heuristic pool} configures the type of heuristics included in the heuristic pool as gradient-only, meta-heuristic-only or all heuristics, the \textit{population size} specifies the number of entities in the entitiy pool, the \textit{credit assignment strategy} specifies which credit assignment strategy to use, the \textit{reselection interval} determines the frequency of heuristic reselection, the \textit{replay window size} determines the maximum size of the performance log, the \textit{reanalysis interval} determines the frequency at which Bayesian analysis is applied, the \textit{burn in window size} determines the size of an initial window where experience is simply gathered without reanalysis, and finally, \textit{discounted rewards} and \textit{normalisation} flags toggle scaling modifiers on the credit assignment strategies, backwards in the performance log.
+The following hyper-parameters are implemented by the \acs{BHH}: the \textit{heuristic pool} configures the type of heuristics included in the heuristic pool as gradient-only, meta-heuristic-only or all heuristics, the \textit{population size} specifies the number of entities in the entity pool, the \textit{credit assignment strategy} specifies which credit assignment strategy to use, the \textit{reselection interval} determines the frequency of heuristic reselection, the \textit{replay window size} determines the maximum size of the performance log, the \textit{reanalysis interval} determines the frequency at which Bayesian analysis is applied, the \textit{burn in window size} determines the size of an initial window where experience is simply gathered without reanalysis, and finally, \textit{discounted rewards} and \textit{normalisation} flags toggle scaling modifiers on values assigned by the credit assignment strategies, backwards in the performance log.

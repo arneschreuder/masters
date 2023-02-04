@@ -8,3 +8,13 @@
 
 % Defines a example keyword
 \newtheorem{example}{Example}
+
+% Spacing before and after equations
+\makeatletter
+\g@addto@macro\normalsize{%
+	\setlength\abovedisplayskip{0pt}
+	\setlength\belowdisplayskip{10pt}
+	\setlength\abovedisplayshortskip{0pt}
+	\setlength\belowdisplayshortskip{10pt}
+}
+\makeatother
