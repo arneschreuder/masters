@@ -120,7 +120,7 @@ where $x_{i,p}^{'}$ is the normalised form of $x_{i,p}$, the $i$-th dimension of
 The \index{standard score scaler}standard score scaler, also known as the \index{z-score scaler}\textit{z-score scaler}, scales values by subtracting the mean and scaling to the unit variance of each dimension $i$ for all input patterns $\boldsymbol{x}_p, p \in \{1,2, \dots, P\}$. The \index{standard score scaler}standard score scaler is used as a pre-processing technique for target values when the \index{hyperbolic tangent}\textit{hyperbolic tangent} \index{activation function}activation function\index{activation function} is used. The \index{standard score scaler}standard score scaler is given as
 
 \begin{equation}
-      x_{i,p}^{'} = \frac{x_{i,p} - \mu_i}{\sigma^2_i}
+      x_{i,p}^{'} = \frac{x_{i,p} - \mu_i}{\sigma_i}
       \label{eq:standard_score_scaler}
 \end{equation}
 
@@ -147,7 +147,7 @@ Many different weight initialisation techniques have been developed~\cite{ref:er
 \index{Glorot uniform sampling}
 \subsubsection{Glorot Uniform Sampling}\label{sec:anns:an:weights:glorot_uniform_sampling}
 
-\index{Glorot uniform sampling}Glorot uniform sampling is a specialisation of \index{random uniform sampling}random uniform sampling, whereby $\omega_{i} = \sqrt{\frac{6}{fanin + fanout}}$ and $fanin$ is the number of input neurons to the weight vector and $fanout$ is the number of output neurons from the weight vector.
+\index{Glorot uniform sampling}Glorot uniform sampling is a specialisation of \index{random uniform sampling}random uniform sampling, whereby $\omega_{max} = \sqrt{\frac{6}{fanin + fanout}}$ and $fanin$ is the number of input neurons to the weight vector and $fanout$ is the number of output neurons from the weight vector.
 
 \index{Glorot normal sampling}
 \subsubsection{Glorot Normal Sampling}\label{sec:anns:an:weights:glorot_normal_sampling}

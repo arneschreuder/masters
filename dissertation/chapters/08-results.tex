@@ -131,7 +131,7 @@ Finally, it should be noted that the \acs{BHH} implements learning at every mini
 
 \subsection{Concentration Parameters}\label{sec:results:case_study:concentration_parameters}
 
-To illustrate the learning process undergone by the \acs{BHH}, further investigation is required. Consider the concentration parameter $\boldsymbol{\alpha}$ that parameterises the \index{Dirichlet probability distribution}Dirichlet probability distribution, denoted $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$. The probability distribution, $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, is used to sample prior \textit{\index{heuristic}heuristic selection probabilities}. Figures~\ref{fig:results:case_study:alphas:0} to \ref{fig:results:case_study:alphas:8} provide illustrations that show that change in values of the concentration parameter $\boldsymbol{\alpha}$, at indices 0, 6, 7, and 8 respectively. Indices 0, 6, 7, and 8 represent the concentration parameters for the \acs{SGD}, \acs{Adam}, \acs{PSO} and \acs{GA} low-level heuristics respectively, and only represent a subset of the elements in $\boldsymbol{\alpha}$ and thus, the \index{heuristic pool}heuristic pool. Similar illustrations for the other elements in $\boldsymbol{\alpha}$ are left out for brevity as they contain similar illustrations.
+To illustrate the learning process undergone by the \acs{BHH}, further investigation is required. Consider the concentration parameter $\boldsymbol{\alpha}$ that parameterises the \index{Dirichlet probability distribution}Dirichlet probability distribution, denoted $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$. The probability distribution, $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, is used to sample prior \textit{\index{heuristic}heuristic selection probabilities}. Figures~\ref{fig:results:case_study:alphas:0} to \ref{fig:results:case_study:alphas:8} provide illustrations that show that change in values of the concentration parameter $\boldsymbol{\alpha}$, are at indices 0, 6, 7, and 8 respectively. Indices 0, 6, 7, and 8 represent the concentration parameters for the \acs{SGD}, \acs{Adam}, \acs{PSO} and \acs{GA} low-level heuristics respectively, and only represent a subset of the elements in $\boldsymbol{\alpha}$ and thus, the \index{heuristic pool}heuristic pool. Similar illustrations for the other elements in $\boldsymbol{\alpha}$ are left out for brevity as they contain similar illustrations.
 
 \begin{figure}[htb]
       \begin{subfigure}{0.5\textwidth}
@@ -160,7 +160,7 @@ To illustrate the learning process undergone by the \acs{BHH}, further investiga
             \label{fig:results:case_study:alphas:8}
       \end{subfigure}
       \par\bigskip
-      \caption{The average value of the concentration parameter $\boldsymbol{\alpha}$, at indices 0, 6, 7, and 8 over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+      \caption{The average value of the concentration parameter $\boldsymbol{\alpha}$, are at indices 0, 6, 7, and 8 over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
       \label{fig:results:case_study:alphas}
 \end{figure}
 
@@ -210,7 +210,7 @@ Figures~\ref{fig:results:case_study:thetas:0} to \ref{fig:results:case_study:the
             \label{fig:results:case_study:thetas:8}
       \end{subfigure}
       \par\bigskip
-      \caption{The average sampled \index{heuristic}heuristic selection probabilities, denoted $\boldsymbol{\theta}$, at indices 0, 6, 7, and 8. The \index{heuristic}heuristic selection probabilities are sampled from the probability distribution, denoted $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+      \caption{The average sampled \index{heuristic}heuristic selection probabilities, denoted $\boldsymbol{\theta}$, are at indices 0, 6, 7, and 8. The \index{heuristic}heuristic selection probabilities are sampled from the probability distribution, denoted $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
       \label{fig:results:case_study:thetas}
 \end{figure}
 
@@ -238,7 +238,7 @@ Finally, the bhh\_baseline configuration and the bhh\_credit\_symmetric configur
 
 This section provides a brief investigation into the \textit{prior \index{heuristic}heuristic selection probabilities} that result from the probabilistic model implemented by the \acs{BHH}. The prior \index{heuristic}heuristic selection probability distribution is denoted $P(\boldsymbol{H} \vert \boldsymbol{\theta})$. As such, $P(\boldsymbol{H} \vert \boldsymbol{\theta}) = \boldsymbol{\theta}$ and heuristics are initially sampled such that $\boldsymbol{H} \sim Cat(\boldsymbol{\theta})$.
 
-Figures~\ref{fig:results:case_study:p_H:0} to \ref{fig:results:case_study:p_H:8} provide illustrations of the prior \index{heuristic}heuristic selection probabilities, denoted by $P(\boldsymbol{H} \vert \boldsymbol{\theta})$, at indices 0, 6, 7, and 8, throughout the training process, and averaged over all 30 runs. Similar to before, these illustrations are also presented in log scale.
+Figures~\ref{fig:results:case_study:p_H:0} to \ref{fig:results:case_study:p_H:8} provide illustrations of the prior \index{heuristic}heuristic selection probabilities, denoted by $P(\boldsymbol{H} \vert \boldsymbol{\theta})$, are at indices 0, 6, 7, and 8, throughout the training process, and averaged over all 30 runs. Similar to before, these illustrations are also presented in log scale.
 
 \begin{figure}[htb]
       \begin{subfigure}{0.5\textwidth}
@@ -267,7 +267,7 @@ Figures~\ref{fig:results:case_study:p_H:0} to \ref{fig:results:case_study:p_H:8}
             \label{fig:results:case_study:p_H:8}
       \end{subfigure}
       \par\bigskip
-      \caption{The average prior \index{heuristic}heuristic selection probabilities, $P(\boldsymbol{H} \vert \boldsymbol{\theta})$, at indices 0, 6, 7, and 8. The prior \index{heuristic}heuristic selection probabilities are sampled from the probability distribution of \index{heuristic}heuristic selection probabilities, denoted by $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
+      \caption{The average prior \index{heuristic}heuristic selection probabilities, $P(\boldsymbol{H} \vert \boldsymbol{\theta})$, are at indices 0, 6, 7, and 8. The prior \index{heuristic}heuristic selection probabilities are sampled from the probability distribution of \index{heuristic}heuristic selection probabilities, denoted by $P(\boldsymbol{\theta} \vert \boldsymbol{\alpha})$, over 240 steps, obtained from 30 runs of the case study on the behaviour of the \acs{BHH} on the iris dataset, illustrated in log scale.}
       \label{fig:results:case_study:p_H}
 \end{figure}
 

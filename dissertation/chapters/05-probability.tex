@@ -243,13 +243,13 @@ Finally, the mode of the distribution is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:beta:mode}
-      M[x] = E[x] - 1 = \frac{\alpha - 1}{\alpha + \beta - 1}
+      M[x] = E[x] - 1 = \frac{\alpha - 1}{\alpha + \beta - 2}
 \end{equation}
 
 
 \subsection{Dirichlet Probability Distribution}\label{sec:probability:probability_distributions:dirichlet}
 
-The \index{Dirichlet probability distribution}Dirichlet probability distribution is a family of multivariate continuous probability distributions over some $\boldsymbol{x}$ in $K$ dimensions~\cite{ref:wackerly:2014}. The \index{Dirichlet probability distribution}Dirichlet probability distribution is a multivariate generalization of the \index{Beta probability distribution}Beta probability distribution and is thus sometimes referred to by its alternative name, i.e. the multivariate Beta probability distribution. The \index{Dirichlet probability distribution}Dirichlet probability distribution is parameterised by some vector $\boldsymbol{\alpha} = (\alpha_{1}$,  $\dots, \alpha_{K}), \forall_{k=1}^{K} \alpha_{k} > 0, \alpha_{k} \in \mathbb{R}$. The parameters, $\boldsymbol{\alpha}$, are referred to as the concentration parameters. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K \geq 2$ with parameters $\boldsymbol{\alpha}$, denoted $Dir(\boldsymbol{\alpha})$, has a \acs{PDF} given as
+The \index{Dirichlet probability distribution}Dirichlet probability distribution is a family of multivariate continuous probability distributions over some $\boldsymbol{x}$ in $K$ dimensions~\cite{ref:wackerly:2014}. The \index{Dirichlet probability distribution}Dirichlet probability distribution is a multivariate generalisation of the \index{Beta probability distribution}Beta probability distribution and is thus sometimes referred to by its alternative name, i.e. the multivariate Beta probability distribution. The \index{Dirichlet probability distribution}Dirichlet probability distribution is parameterised by some vector $\boldsymbol{\alpha} = (\alpha_{1}$,  $\dots, \alpha_{K}), \forall_{k=1}^{K} \alpha_{k} > 0, \alpha_{k} \in \mathbb{R}$. The parameters, $\boldsymbol{\alpha}$, are referred to as the concentration parameters. The \index{Dirichlet probability distribution}Dirichlet probability distribution of order $K \geq 2$ with parameters $\boldsymbol{\alpha}$, denoted $Dir(\boldsymbol{\alpha})$, has a \acs{PDF} given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:dirichlet:pdf}
@@ -397,7 +397,7 @@ The mode of the distribution is given as
 
 \subsection{Categorical Probability Distribution}\label{sec:probability:probability_distributions:categorical}
 
-The \index{Categorical probability distribution}Categorical probability distribution is a discrete probability distribution over some random variable, $x$, taking on any one of $K$ possible categories~\cite{ref:wackerly:2014}. There is no ordering to these categories and therefore, for simplicity, each category is assigned a numerical representative value such that $k \in \{1, 2, \dots, K\}$. The probabilities for all outcomes is given by the probability vector $\boldsymbol{\theta} = (\theta_{1}, \dots, \theta_{K})$.  This means that the probability $P(x=k)=\theta_{k}$ has support $x \in \{1, \dots, K\}$. The \index{Categorical probability distribution}Categorical probability distribution, denoted $Cat(\boldsymbol{\theta})$, is a generalization of the \index{Bernoulli probability distribution}Bernoulli probability distribution and is sometimes referred to it by its alternative names, i.e. the generalised \index{Bernoulli probability distribution}Bernoulli probability distribution or the Multinoulli probability distribution. In probability theory, the \index{Categorical probability distribution}Categorical probability distribution is often used to explain the outcome of a single experiment with more than two possible outcomes, such as rolling a six-sided die~\cite{ref:wackerly:2014}. The \acs{PMF} of the \index{Categorical probability distribution}Categorical probability distribution is given as
+The \index{Categorical probability distribution}Categorical probability distribution is a discrete probability distribution over some random variable, $x$, taking on any one of $K$ possible categories~\cite{ref:wackerly:2014}. There is no ordering to these categories and therefore, for simplicity, each category is assigned a numerical representative value such that $k \in \{1, 2, \dots, K\}$. The probabilities for all outcomes is given by the probability vector $\boldsymbol{\theta} = (\theta_{1}, \dots, \theta_{K})$.  This means that the probability $P(x=k)=\theta_{k}$ has support $x \in \{1, \dots, K\}$. The \index{Categorical probability distribution}Categorical probability distribution, denoted $Cat(\boldsymbol{\theta})$, is a generalisation of the \index{Bernoulli probability distribution}Bernoulli probability distribution and is sometimes referred to it by its alternative names, i.e. the generalised \index{Bernoulli probability distribution}Bernoulli probability distribution or the Multinoulli probability distribution. In probability theory, the \index{Categorical probability distribution}Categorical probability distribution is often used to explain the outcome of a single experiment with more than two possible outcomes, such as rolling a six-sided die~\cite{ref:wackerly:2014}. The \acs{PMF} of the \index{Categorical probability distribution}Categorical probability distribution is given as
 
 \begin{equation}
       \label{eq:probability:probability_distributions:categorical:pmf}
@@ -431,7 +431,7 @@ Since there is no order to the underlying categories, the mean of the distributi
 \subsection{Multinomial Probability Distribution}
 \label{sec:probability:probability_distributions:multinomial}
 
-The \index{Multinomial probability distribution}Multinomial probability distribution is a discrete probability distribution over some random variable $\boldsymbol{x} = (x_{1}, \dots\, x_{K})$ that takes on the counts for each occurrence of $K$ possible classes in $N$ independent trials~\cite{ref:wackerly:2014}. The probabilities for all possible outcomes in a single trial is given by the probability vector, $\boldsymbol{\theta} = (\theta_{1}, \dots, \theta_{K})$. The \index{Multinomial probability distribution}Multinomial probability distribution, denoted $Mul(N, K, \boldsymbol{\theta})$, is thus a generalization of the \index{Binomial probability distribution}Binomial probability distribution to $K$ dimensions. Consider the following special cases:
+The \index{Multinomial probability distribution}Multinomial probability distribution is a discrete probability distribution over some random variable $\boldsymbol{x} = (x_{1}, \dots\, x_{K})$ that takes on the counts for each occurrence of $K$ possible classes in $N$ independent trials~\cite{ref:wackerly:2014}. The probabilities for all possible outcomes in a single trial is given by the probability vector, $\boldsymbol{\theta} = (\theta_{1}, \dots, \theta_{K})$. The \index{Multinomial probability distribution}Multinomial probability distribution, denoted $Mul(N, K, \boldsymbol{\theta})$, is thus a generalisation of the \index{Binomial probability distribution}Binomial probability distribution to $K$ dimensions. Consider the following special cases:
 
 \begin{itemize}
       \item When $K$ is 2 and $N = 1$, the \index{Multinomial probability distribution}Multinomial probability distribution is the \index{Bernoulli probability distribution}Bernoulli probability distribution.
@@ -592,7 +592,7 @@ The difference between the frequentist approach and the Bayesian approach can be
 \begin{figure}[htb]
       \centering
       \includegraphics[width=0.6\textwidth]{images/mouse_experiment_outcome.pdf}
-      \caption{The experimental outcomes for the mice-population experiments as was taken from~\cite{ref:hackenberger:2019} .}
+      \caption{The experimental outcomes for the mice-population experiments as were taken from~\cite{ref:hackenberger:2019} .}
       \label{fig:probability:bayesian_statistics:mouse_experiment_outcome}
 \end{figure}
 

@@ -96,7 +96,7 @@ With reference to Figure \ref{fig:bhh_architecture}, the components are briefly 
 \index{heuristic pool}
 \section{Heuristic Pool}\label{sec:bhh:heuristic_pool}
 
-Generally speaking, the \index{heuristic pool}heuristic pool is a collection of low-level heuristics under consideration by the \acs{BHH}. The \index{heuristic pool}heuristic pool contains the set of low-level \index{heuristic}heuristics that, together with their performance information, make up the \text{heuristic space}. Importantly, the \acs{BHH} searches in \index{heuristic}heuristic space. The \index{heuristic pool}heuristic pool is defined in terms of the diversity of heuristics, as well as the number of heuristics in the \index{heuristic pool}heuristic pool. Each of these are discussed in the following sections.
+Generally speaking, the \index{heuristic pool}heuristic pool is a collection of low-level heuristics under consideration by the \acs{BHH}. The \index{heuristic pool}heuristic pool contains the set of low-level \index{heuristic}heuristics that, together with their performance information, make up the \text{heuristic space}. Importantly, the \acs{BHH} searches in \index{heuristic}heuristic space. The \index{heuristic pool}heuristic pool is defined in terms of the diversity of heuristics, as well as the number of heuristics in the \index{heuristic pool}heuristic pool. Each of these is discussed in the following sections.
 
 \subsection{Heuristic Diversity}\label{sec:bhh:heuristic_pool:diversity}
 
@@ -145,11 +145,11 @@ State parameters and update operations should not be considered in isolation. An
 
 The \index{entity pool}entity pool refers to a collection of \textit{entities} that each represent a candidate solution to the underlying \acs{FFNN} being trained. The entities contain information of the solution space. A common naming convention for such a collection is a \textit{population} of entities. The \acs{BHH} is a population-based \acs{HH} and as such, the \index{entity pool}entity pool size or population size is an important design choice. The population size is defined as a hyper-parameter of the \acs{BHH} and can be empirically evaluated.
 
-The \index{entity pool}entity pool maintains two different types of state. These include entity (local) and population (global) state. Each of these are discussed in more detail next.
+The \index{entity pool}entity pool maintains two different types of state. These include entity (local) and population (global) state. Each of these is discussed in more detail next.
 
 \subsection{Entity State}\label{sec:bhh:entity_pool:entity_state}
 
-Entities represent candidate solutions to the model's trainable parameters (weights) and other \index{heuristic}heuristic-specific state parameters, as was discussed in Section \ref{sec:bhh:heuristic:proxies}. It can be said that entities implement \textit{local} state. It was mentioned that these entities can be treated as physical \textit{particles} in a hyper-dimensional search environment. Entities model concepts from physics. For example, the candidate solution is represented as the entity's position, and an entity's velocity and acceleration is analogous to the gradient and momentum of the entity respectfully. Examples of entity state parameters, as derived from various low-level \index{heuristic}heuristics, is given as follows:
+Entities represent candidate solutions to the model's trainable parameters (weights) and other \index{heuristic}heuristic-specific state parameters, as was discussed in Section \ref{sec:bhh:heuristic:proxies}. It can be said that entities implement \textit{local} state. It was mentioned that these entities can be treated as physical \textit{particles} in a hyper-dimensional search environment. Entities model concepts from physics. For example, the candidate solution is represented as the entity's position, and an entity's velocity and acceleration are analogous to the gradient and momentum of the entity respectfully. Examples of entity state parameters, as derived from various low-level \index{heuristic}heuristics, is given as follows:
 
 \begin{itemize}
       \item \textbf{position}: A general parameter that represents the actual candidate solution and is thus a primary state parameter for all \index{heuristic}heuristics.
@@ -497,7 +497,7 @@ Generally, there are two different techniques that are used to train Naïve Baye
 \index{maximum likelihood estimation}
 \subsection{Maximum Likelihood Estimation}\label{sec:bhh:optimisation_step:mle}
 
-In probability theory and statistics, \acf{MLE} is a method that estimates the parameters of a prior probability distribution given newly observed data and evidence. This section shows that the values for $\boldsymbol{\theta}$, $\boldsymbol{\phi}$ and $\boldsymbol{\psi}$ can be estimated by \acs{MLE} as follows:
+In probability theory and statistics, \acf{MLE} is a method that estimates the parameters of a prior probability distribution and is based on newly observed data and evidence. This section shows that the values for $\boldsymbol{\theta}$, $\boldsymbol{\phi}$ and $\boldsymbol{\psi}$ can be estimated by \acs{MLE} as follows:
 
 \begin{equation}
       \label{eq:bhh:optimisation_step:mle:theta}
@@ -759,7 +759,7 @@ Section \ref{sec:bhh:heuristic_pool} provided the reader with the context and de
 \begin{itemize}
       \item The type of low-level heuristics to include in the \index{heuristic pool}heuristic pool. This dissertation investigates two main groups, including gradient-based \index{heuristic}heuristics and \acp{MH}.
 
-      \item The low-level heuristics' hyper-parameters. At a lower-level, each of these heuristics have their own set of hyper-parameters.
+      \item The low-level heuristics' hyper-parameters. At a lower-level, each of these heuristics has their own set of hyper-parameters.
 
       \item The \index{heuristic pool}heuristic pool size. This refers to the number of heuristics in the \index{heuristic pool}heuristic pool.
 \end{itemize}
