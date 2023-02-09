@@ -235,6 +235,24 @@
       long-plural-form = \textit{probability mass functions}
 }
 
+% DNN
+\DeclareAcronym{DNN}{
+      short = DNN,
+      long = \textit{deep neural network}
+}
+
+
+\DeclareAcronym{AMALGAM}{
+      short = AMALGAM,
+      long = \textit{multialgorithm, genetically adaptive multiobjective}
+}
+
+\DeclareAcronym{HHBOA}{
+      short = HHBOA,
+      long = \textit{hyper-heuristic Bayesian optimisation algorithm}
+}
+
+
 
 \journal{Information Sciences}
 
@@ -356,7 +374,7 @@ The biggest difference between \acp{MH} and gradient-based heuristics is that \a
 
 \citet{ref:burke:2010} proposed a classification scheme used to classify \acp{HH}. According to the proposed classification scheme, \acp{HH} are classified in two dimensions. These include the \textit{source of feedback} used during learning and the nature of the \textit{heuristic search space}. For the dimension that involves the source of feedback, \acp{HH} can be classified as either \textit{no learning}, \textit{online learning} or \textit{offline learning}. For the dimension that involves the nature of the \textit{heuristic search space}, \acp{HH} can be classified as either \textit{heuristic selection} or \textit{heuristic generation}. Further distinction is made between \textit{construction} of heuristics and \textit{perturbation} of heuristics.
 
-In the general context of optimisation, many different types of \acp{HH} have been implemented and applied to many different problems. Some notable examples include \citep{ref:dowsland:2007, ref:burke:2010, ref:grobler:2012, ref:vanderstockt:2018}. Research on the application of \acp{HH} in the context of \acs{FFNN} training is still scarce. \citet{ref:nel:2021} provides some of the first research in this field, applying a \acs{HH} to \acs{FFNN} training.
+In the general context of optimisation, many different types of \acp{HH} have been implemented and applied to many different problems. Some notable examples include \citep{ref:dowsland:2007, ref:burke:2010, ref:grobler:2012, ref:vanderstockt:2018}. Research on the application of \acp{HH} in the context of \acs{FFNN} training is still scarce. \citet{ref:nel:2021} provides some of the first research in this field, applying an novel adaptation of an evolutionary-based \acs{HH}, known as the \acf{AMALGAM} \acs{HH} \citep{ref:vrugt:2007}, to \acs{FFNN} training. Furthermore, \citet{ref:oliva:2019} provide the \acf{HHBOA}, the first use of Bayesian optimisation in a \acs{HH} context. The method proposed by \citet{ref:oliva:2019} uses a Bayesian selection operator to evolve combinations of low-level heuristics  while looking for good problem solutions to a benchmark of optimisation functions, but does not apply a \acs{HH} to the training of \acp{FFNN}.
 
 This research takes a particular interest in a population-based, selection approach for \acp{HH}, with the particular intent of training \acp{FFNN}. In the context of population-based \acp{HH}, an entity pool exists that represents a pool of candidate solutions to the given problem. Each entity in the entity pool is assigned its own low-level heuristic from the heuristic pool. The selection of the best heuristic to apply to a candidate solution is based on the performance of the heuristic relative to that particular candidate solution at a particular point in the search process. Selection methods often make use of probabilistic approaches.
 
@@ -577,7 +595,7 @@ Additional to the \acs{BHH} baseline configuration, two more \acs{BHH} configura
 
 \subsection{Heuristics}\label{sec:methodology:heuristics}
 
-Table \ref{tab:methodology:heuristics} contains a list of all the standalone, low-level heuristics that are used as well as their hyper-parameter configurations. Note from Table \ref{tab:methodology:heuristics} that values that are configured to make use of a decay schedule are presented with the initial value first and the decay rate in brackets next to it.
+Table \ref{tab:methodology:heuristics} contains a list of all the standalone, low-level heuristics that are used as well as their hyper-parameter configurations. In some cases, parameters are changed dynamically throughout the training process using a \textit{decay schedule}. Note from Table \ref{tab:methodology:heuristics} that values that are configured to make use of a decay schedule are presented with the initial value first and the decay rate in brackets next to it.
 
 
 \begin{table}[htbp]
@@ -687,7 +705,7 @@ A number of classification datasets contain an unbalanced representation of clas
 
 \subsection{Models}\label{sec:methodology:model}
 
-All models that are trained in the empirical process follow implementations of shallow \acp{FFNN} with only one hidden layer. The number of hidden units used were determined empirically. Weights are initialised by means of \textit{Glorot uniform sampling} \citep{ref:glorot:2010}. The models and their configuration, as it is used for each dataset, are given in Table \ref{tab:methodology:models:configurations}.
+All models trained in the empirical process follow implementations of shallow \acp{FFNN} with only one hidden layer. The number of hidden units used were determined empirically. Weights are initialised by means of \textit{Glorot uniform sampling} \citep{ref:glorot:2010}. The models and their configuration, as it is used for each dataset, are given in Table \ref{tab:methodology:models:configurations}.
 
 
 \begin{table}[htb]
@@ -721,13 +739,13 @@ All models that are trained in the empirical process follow implementations of s
 
 \subsection{Performance Measures}\label{sec:methodology:performance_measures}
 
-\Acf{BinXE} is used for classification problems with two classes and \acf{SparseCatXE} is used for classification problems with more than two classes. For the classification problems, accuracy is also measured. For regression problems, the \acf{MSE} is used as a performance metric. After training has been completed, the \textit{average rank}, based on test loss, for all configurations, is calculated at each mini-batch step.
+\Acf{BinXE} is used for classification problems with two classes and \acf{SparseCatXE} is used for classification problems with more than two classes. For the classification problems, accuracy is also measured. For regression problems, the \acf{MSE} is used as a performance metric. After training has completed, the \textit{average rank}, based on test loss, for all configurations, is calculated at each mini-batch step.
 
 
 \subsection{Statistical Analysis}
 \label{sec:methodology:statistical_analysis}
 
-Each experiment and configuration is trained for a maximum of 30 epochs and is repeated over 30 independent runs, for each of the applicable datasets. No early-stopping mechanism is used. Statistical analysis is executed on the results from the test datasets. An average rank is calculated across all 30 runs, for both experimental groups and configurations, at each step, for every epoch of training.
+Each experiment and configuration is trained for a maximum of 30 epochs and is repeated over 30 independent runs, for each of the datasets. No early-stopping mechanism is used. Statistical analysis is executed on the results from the test datasets. An average rank is calculated across all 30 runs, for both experimental groups and configurations, at each step, for every epoch of training.
 
 The Shapiro-Wilk test for normality \citep{ref:shapiro:1965} ($\alpha$ = 0.001) is used to determine if the results are normally distributed. The Levene's test for equality of variance \citep{ref:levene:1961} ($\alpha$ = 0.001) is used. For experiments with three or more configurations, the \acs{ANOVA} statistical test \citep{ref:fisher:1921} ($\alpha$ = 0.001) is used. The Kruskal-Wallis ranked non-parametric test \citep{ref:kruskal:1952} for statistical significance ($\alpha$ = 0.001) is used for cases where data is not normally distributed. Finally, a post-hoc Tukey honest significant difference test \citep{ref:tukey:1949} ($\alpha$ = 0.001) is used from which significant ranking is retrieved. Descriptive and critical difference plots are then retrieved from these results to provide visual aid.
 
@@ -741,7 +759,7 @@ All implementations are done from first principles in Python 3.9 using Tensorflo
 \section{Results}
 \label{sec:results}
 
-This section provides the results of the empirical process that have been conducted. Detailed discussions follow on the outcomes of each experiment. Discussions are accompanied by figures and plots to help provide visual aid for discussions. Where possible, a number of improvements to the \acs{BHH} are identified and recommended as it relates to the outcomes of the results.
+This section provides the results of the empirical process that has been conducted. Detailed discussions follow on the outcomes of each experiment.
 
 \subsection{Overview}\label{sec:results:overview}
 
@@ -753,20 +771,18 @@ Most of the training progress is observed to occur within the first five epochs.
 
 The \acs{BHH} does not implement a type of move-acceptance strategy where the application of a heuristic to an entity is only accepted if it leads to a better solution. In some cases, the \acs{BHH} then selects heuristics that yield sub-optimal results, but is shown to mostly return to optimal solutions over a number of steps.
 
-Given the stochastic nature of the heuristic selection mechanism, sufficient samples of the performance of each heuristics-entity combination in the performance log is required for the \acs{BHH} to learn. This requirement is further strengthened by the Bayesian nature of the probabilistic model implemented by the \acs{BHH}. The probabilistic model implements \textit{probability distributions of heuristic selection probabilities} and as such, insufficient samples in the performance log could render a form of random search.
+Given the stochastic nature of the heuristic selection mechanism, sufficient samples of the performance of each heuristics-entity combination in the performance log are required for the \acs{BHH} to learn. This requirement is further strengthened by the Bayesian nature of the probabilistic model implemented by the \acs{BHH}. The probabilistic model implements \textit{probability distributions of heuristic selection probabilities} and as such, insufficient samples in the performance log could render a form of random search.
 
-By default, the \acs{BHH} baseline configuration has a reanalysis interval of 10, and a replay window size of 10, which is a small window to learn from. Despite the small reanalysis interval and the small replay window size, it should be observed that the \acs{BHH} exploits small performance biases regardless and does find small performance gains throughout.
+By default, the \acs{BHH} baseline configuration has a reanalysis interval of 10, and a replay window size of 10, which is a small window to learn from. Despite the small reanalysis interval and the small replay window size, it should be observed that the \acs{BHH} exploits small performance biases and finds small performance gains throughout.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 % BHH vs. Low-Level Heuristics
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \subsection{BHH vs. Low-Level Heuristics}\label{sec:results:standalone}
 
-This section provides the empirical results for the experimental group that compares the performance of the \acs{BHH} to the performance of the individual, standalone, low-level heuristics. Three variants of the \acs{BHH} is included in the experiment, including the \acs{BHH} baseline configuration with a heuristic pool that contains all the low-level heuristics (denoted bhh\_all), the \acs{BHH} configuration with a heuristic pool that contains only gradient-based heuristics (denoted bhh\_gd), and finally, the \acs{BHH} configuration with a heuristics pool that contains only \acp{MH} (denoted bhh\_mh).
+Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b} provide the empirical results in ranked format. The performance rank is calculated as the average rank produced by each heuristic, across all datasets, for all independent runs and all epochs. The average rank across all epochs produces a view on the performance of the heuristics as it relates to the entire training process. Finally, a normalised average rank is provided for the overall performance of all heuristics at the bottom of the table. The normalised average rank is calculated as a discrete normalisation of the average rank achieved across all datasets, for all independent runs and epochs.
 
-Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b} provides the empirical results in ranked format. The performance rank is calculated as the average rank produced by each heuristic, across all datasets, for all independent runs and all epochs. The average rank across all epochs produces a view on the performance of the heuristics as it relates to the entire training process. Finally, a normalised average rank is provided for the overall performance of all heuristics at the bottom of the table. The normalised average rank is calculated as a discrete normalisation of the average rank achieved across all datasets, for all independent runs and epochs.
-
-Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b} shows that the bhh\_gd configuration produced the best results of the \acs{BHH} variants and managed to perform well, producing generally good results across all datasets. The bhh\_gd configuration managed to produce results that are comparable to the top three heuristics for each dataset, while the bhh\_all and bhh\_mh produced average results compared to all the heuristics.
+Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b} show that the \textit{bhh\_gd} configuration produced the best results of the \acs{BHH} variants and managed to perform well, producing generally good results across all datasets. The \textit{bhh\_gd} configuration managed to produce results that are comparable to the top three heuristics for each dataset, while the \textit{bhh\_all} and \textit{bhh\_mh} produced average results compared to all the heuristics.
 
 \begin{table}[htb]
 	\centering
@@ -835,9 +851,9 @@ Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalo
 	}
 \end{table}%
 
-From the normalised average ranks provided in Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b}, it can be seen that the bhh\_gd configuration ranked fourth, while the bhh\_all and bhh\_mh configurations ranked sixth and eighth amongst all thirteen heuristic implementations respectively. These results show that the \acs{BHH} generally performs well, but is not able to outperform the best heuristic for each dataset.
+The normalised average ranks provided in Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b} show that the \textit{bhh\_gd} configuration ranked fourth, while the \textit{bhh\_al} and \textit{bhh\_mh} configurations ranked sixth and eighth amongst all thirteen heuristic implementations respectively. These results show that the \acs{BHH} generally performs well, but is not able to outperform the best heuristic for each dataset.
 
-Figure \ref{fig:results:standalone:descriptive:descriptive} provides an illustration showing a descriptive plot of the average ranks achieved over all independent runs, for each heuristic, per dataset. The heuristics are ordered according to the normalised ranks presented in Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b}.
+Figure \ref{fig:results:standalone:descriptive:descriptive} provides an illustration showing a descriptive plot of the average ranks achieved over all independent runs, for each heuristic, per dataset. The heuristics are ordered according to the normalised ranks presented in Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b}. Figure \ref{fig:results:standalone:descriptive:descriptive} shows that the \textit{bhh\_gd} heuristic achieved the lowest variance in average rank across all datasets, compared to the other heuristics. The aforementioned shows the generalisation capabilities of the \acs{BHH} to multiple problems.
 
 \begin{figure}[htb]
 	\centering
@@ -846,9 +862,9 @@ Figure \ref{fig:results:standalone:descriptive:descriptive} provides an illustra
 	\label{fig:results:standalone:descriptive:descriptive}
 \end{figure}
 
-From Figure \ref{fig:results:standalone:descriptive:descriptive} it can be seen that the bhh\_gd heuristic achieved the lowest variance in average rank across all datasets, compared to the other heuristics. The aforementioned shows the generalisation capabilities of the \acs{BHH} to multiple problems.
 
-Figure \ref{fig:results:standalone:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each heuristic as it relates to all datasets, across all independent runs and epochs.
+
+Figure \ref{fig:results:standalone:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each heuristic as it relates to all datasets, across all independent runs and epochs. Although the outcomes of the \textit{bhh\_al} and \textit{bhh\_mh} configurations seem to produce average performance results, it should be noted that the performance difference between all heuristics is very small. Furthermore, the best configuration of the \acs{BHH}, namely the \textit{bhh\_gd} configuration, is statistically outperformed overall by only \acs{Adagrad} and \acs{Adam}, yielding statistically comparable results to \acs{RMSProp} and \acs{NAG}. It should be noted that the standalone low-level heuristics already produce good results in general across all datasets. In this particular case, producing better performance outcomes can be hard to achieve. However, as mentioned previously, the \acs{BHH} provides a generalisation capability across all datasets that is advantageous to the \acs{BHH}.
 
 \begin{figure}[htb]
 	\centering
@@ -857,8 +873,6 @@ Figure \ref{fig:results:standalone:descriptive:cd} provides an illustration of t
 	\label{fig:results:standalone:descriptive:cd}
 \end{figure}
 
-Although the outcomes of the bhh\_all and bhh\_mh configurations seem to produce average performance results, it should be noted that the performance difference between all heuristics is very small. Furthermore, the best configuration of the \acs{BHH}, namely the bhh\_gd configuration, is statistically only outperformed overall by \acs{Adagrad} and \acs{Adam}, yielding statistically comparable results to \acs{RMSProp} and \acs{NAG}. It should be noted that the standalone low-level heuristics already produce good results in general across all datasets. In this particular case, producing better performance outcomes can be hard to achieve. However, as mentioned previously, the \acs{BHH} provides a generalisation capability across all datasets that is advantageous to the \acs{BHH}.
-
 Another observation that can be made is that the gradient-based heuristics generally performed much better than the \acp{MH} on all datasets. State of the art methods for training \acp{FFNN}, such as \acs{Adam}, utilise gradient-based approaches that have been proven to work well on many occasions \citep{ref:kingma:2014}. Exploration of the heuristic space leads the \acs{BHH} to consider other heuristics during the training process, which could possibly result in worse performances at times. A suggestion to improve on these results is to include a move-acceptance strategy where heuristic progressions are discarded if they fail to produce better results.
 
 
@@ -866,15 +880,15 @@ Another observation that can be made is that the gradient-based heuristics gener
 \section{Conclusion}
 \label{sec:conclusion}
 
-The main area of focus for the research done in this dissertation stems from the problem statement, which identified the difficult and tedious process of selecting the best heuristic for training \acp{FFNN}. The research presented in this article identified the possibility of using a different approach, referred to as \acp{HH}, to automate the heuristic selection process.
+The research done in this study stems from the difficult and tedious process of selecting the best heuristic for training \acp{FFNN}. The research presented in this article identified the possibility of using a different approach, referred to as \acp{HH}, to automate the heuristic selection process.
 
-This research set out to develop a novel high-level heuristic that utilises probability theory in an online learning setting to drive the automatic heuristic selection process. A literature study was conducted on all related topics. A novel \acs{BHH} was proposed in detail. An empirical process was designed and the detail of the implementation for the empirical process and the \acs{BHH} was provided. The experiments defined for the empirical study was executed and results were statistically analysed.
+This research set out to develop a novel high-level heuristic that utilises probability theory in an online learning setting to drive the automatic heuristic selection process.
 
-For the experimental group that compares the \acs{BHH} baseline with a number of low-level heuristics, it was found that the \textit{bhh\_gd} configuration performed the best out of the \acs{BHH} variants, achieving an overall rank of fourth amongst thirteen heuristics that were implemented and executed on fourteen datasets. The \textit{bhh\_gd} configuration produced performance results close to that of the best low-level heuristics and was only statistically outperformed by the top two low-level heuristics. The \textit{bhh\_all} configuration achieved an overall rank of sixth and the \textit{bhh\_mh} achieved an overall rank of eighth.
+For the experimental group that compares the \acs{BHH} baseline with a number of low-level heuristics, it was found that the \textit{bhh\_gd} configuration, which contains only gradient-based heuristics in the heuristic pool, performed the best out of the \acs{BHH} variants, achieving an overall rank of fourth amongst thirteen heuristics that were implemented and executed on fourteen datasets. The \textit{bhh\_gd} configuration produced performance results close to that of the best low-level heuristics and was statistically outperformed only by the top two low-level heuristics. The \textit{bhh\_all} configuration, which contains only gradient-based heuristics and \acp{MH} in the heuristic pool, achieved an overall rank of sixth, and the \textit{bhh\_mh} configuration, which contains only \acp{MH} in the heuristic pool, achieved an overall rank of eighth.
 
 Although the \textit{bhh\_gd} configuration produced performance results comparable to the best low-level heuristics, the \textit{bhh\_all} and \textit{bhh\_mh} configurations produced average results. It was found that, in general, gradient-based heuristics produced the best results, as such, it is understandable that the \textit{bhh\_gd} yielded the best performance outcomes between the different \acs{BHH} variants that were implemented. Although the \acs{BHH} variants were not able to produce better results than the top low-level heuristics, the \acs{BHH} variants still effectively trained the underlying \acp{FFNN} and produced good training outcomes overall. It was shown that the \textit{bhh\_gd} configuration produced the lowest variance in rank between datasets out of all of the heuristics implemented, giving the \acs{BHH} the ability to generalise well to other problems.
 
-Finally, it was shown that the \acs{BHH} provides a mechanism whereby prior expert knowledge can be injected, before training starts. Future research can exploit this knowledge and provide a significant bias towards heuristics that are known to perform well on particular problem types.
+Finally, it was shown that the \acs{BHH} provides a mechanism whereby prior expert knowledge can be injected, before training starts. Future research can exploit this knowledge and provide a significant bias towards heuristics that are known to perform well on particular problem types. Future research can also investigate the scalability and effectiveness of the \acs{BHH} on other model architectures such as \acfp{DNN}. Furthermore, the selection mechanism of the \acs{BHH} can be extended to not just select heuristics from a heuristic pool, but also different model architectures from a model architecture pool.
 
 \appendix
 
