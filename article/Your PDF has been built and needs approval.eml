@@ -1,0 +1,122 @@
+Delivered-To: an.schreuder@up.ac.za
+Received: by 2002:a05:7208:5508:b0:62:84e9:3d60 with SMTP id t8csp534738rbf;
+        Thu, 9 Feb 2023 05:51:22 -0800 (PST)
+X-Google-Smtp-Source: AK7set/M1vOLIvrN15wTj9iE4lbLBiaxE1mkBJhIFhv2OZeUnYf00ce9k9HUIV5Dqk/8TSG0eGZy
+X-Received: by 2002:a05:622a:589:b0:3bb:7c6b:9cb5 with SMTP id c9-20020a05622a058900b003bb7c6b9cb5mr7565257qtb.27.1675950682410;
+        Thu, 09 Feb 2023 05:51:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1675950682; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HOgg3Xdz/jsN4tTD8OQO5ht4bcawtUGK+I7S3etyyQ+gpT9jfZAA+qNlb86JkQrIKi
+         pbOlKBoMAtm0n7lnZPJS9hBTTlIpTSppgQjZN18jERm66OUQd8NfauT2Q+/G5iAUZgKK
+         j7bC9taawEv9WX8qTD+LPWU1qxgNXKuqWhtpdayBJ1IDDMrwUJiqP+dw5H3gkwwC7qS/
+         S0AXWnl4eRyd+8Y/v2JHZrRaSDh3sDwjnd04Y/MyoTTqXgCuHyPjExlV/GmieGyX/Vlz
+         z3HhNGUo1j+l+O3xx14Dsvmdf7o0fHOyohWRCgvtC082xpnQygW99U1AI+dX3ykV1StX
+         S4TQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:content-transfer-encoding:subject:date:reply-to:to:from
+         :sender:mime-version:dkim-signature;
+        bh=7IzWCsXzCr1tK75XW8XXGVJTTvS2UFSXLjUwL4ET62Y=;
+        b=p68Sub43kRky33CULI7TGOvt24bjYF69CNkmiWdVTh4CI3A/JSlUNDR3k7wQ9Dxj0t
+         rsFzyX+DkNq39bOWBr+8SGPWtDhdRgRpbwIeGKx7VtFgiVlhwRS645eGuzKycvpF2oL9
+         x7QBb5kve+kr5ULz3Yqf8NWQBdQfnKol8D2Fg2bOJt72cNbkCYDT36BEUpG8Xr3OH8yi
+         ibjB/R9FOzotvk0nicH6HCEdDJBslk/Itor1Jf7fL+708GgODxu8Z9pB9g8ZAXq7Szpf
+         PBBP7Rm7S0igPcIRNPZ9SmsEaiYFrcIXmvWaz6WBpIW6ZEg5YesywfWyGuuuHy5CW11j
+         Qwvg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@editorialmanager.com header.s=s1024 header.b=QlB1Bupy;
+       spf=pass (google.com: domain of em.ins.0.8143b9.0d620f7f@editorialmanager.com designates 216.205.0.78 as permitted sender) smtp.mailfrom=em.ins.0.8143b9.0d620f7f@editorialmanager.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=editorialmanager.com
+Return-Path: <em.ins.0.8143b9.0d620f7f@editorialmanager.com>
+Received: from nssmtp2.editorialmanager.com (nssmtp2.editorialmanager.com. [216.205.0.78])
+        by mx.google.com with ESMTPS id x142-20020a376394000000b007235a285c59si1478558qkb.245.2023.02.09.05.51.22
+        for <an.schreuder@up.ac.za>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 Feb 2023 05:51:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of em.ins.0.8143b9.0d620f7f@editorialmanager.com designates 216.205.0.78 as permitted sender) client-ip=216.205.0.78;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@editorialmanager.com header.s=s1024 header.b=QlB1Bupy;
+       spf=pass (google.com: domain of em.ins.0.8143b9.0d620f7f@editorialmanager.com designates 216.205.0.78 as permitted sender) smtp.mailfrom=em.ins.0.8143b9.0d620f7f@editorialmanager.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=editorialmanager.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  s=s1024; d=editorialmanager.com;
+  h=mime-version:sender:from:to:date:subject:content-type:message-id;
+  bh=7IzWCsXzCr1tK75XW8XXGVJTTvS2UFSXLjUwL4ET62Y=;
+  b=QlB1Bupyn/OoTyhd4/OkDWFEe8x0kA0kiXKkVVARZwEUhrHdHw7iN2ZYYWwDxofxB6glihJL
+    mx2cCNzLW+NDPBqyDEJXYu4vxEd1vR9TjUjC51Q2cSIl/eFNdLceO6Ve2Z67AffwT/uXPBjA
+    1tCttLAh+AmglGTOg5vAQa3y86Y=
+Received: from nsasynch7 ([10.200.69.7]) by nssmtp2.editorialmanager.com with Microsoft SMTPSVC(10.0.17763.1697);
+	 Thu, 9 Feb 2023 08:51:22 -0500
+MIME-Version: 1.0
+Sender: em.ins.0.8143b9.0d620f7f@editorialmanager.com
+From: "Information Sciences" <em@editorialmanager.com>
+To: =?utf-8?Q?Arn=C3=A9_Andries_Nicolaas_Schreuder?= <an.schreuder@up.ac.za>
+Reply-To: "Information Sciences" <support@elsevier.com>
+Date: 9 Feb 2023 08:51:21 -0500
+Subject: Your PDF has been built and needs approval
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+Return-Path: em.ins.0.8143b9.0d620f7f@editorialmanager.com
+Message-ID: <NSSMTP2y4aht7TX2jo000056a12@nssmtp2.editorialmanager.com>
+X-OriginalArrivalTime: 09 Feb 2023 13:51:22.0006 (UTC) FILETIME=[97DD5360:01D93C8D]
+
+PGh0bWw+PGJvZHk+PEhFQURFUj48aW1nIHNyYz0iaHR0cHM6Ly93d3cuRWRpdG9yaWFs
+TWFuYWdlci5jb20vSU5TL2Rvd25sb2FkLmFzcHg/c2NoZW1lPTQmaWQ9NCIvPjwvSEVB
+REVSPjxici8+SW5mb3JtYXRpb24gU2NpZW5jZXM8YnIvPlRpdGxlOiBUcmFpbmluZyBG
+ZWVkZm9yd2FyZCBOZXVyYWwgTmV0d29ya3Mgd2l0aMKgQmF5ZXNpYW4gSHlwZXItSGV1
+cmlzdGljczxici8+QXV0aG9yczogQXJuw6kgQW5kcmllcyBOaWNvbGFhcyBTY2hyZXVk
+ZXI7IEFubmEgQm9zbWFuOyBBbmRyaWVzIEVuZ2VsYnJlY2h0OyBDaHJpc3RvcGhlciBD
+bGVnaG9ybjxici8+PGJyLz5EZWFyIEFybsOpLDxici8+PGJyLz5UaGUgUERGIGZvciB5
+b3VyIHN1Ym1pc3Npb24sICJUcmFpbmluZyBGZWVkZm9yd2FyZCBOZXVyYWwgTmV0d29y
+a3Mgd2l0aMKgQmF5ZXNpYW4gSHlwZXItSGV1cmlzdGljcyIgaGFzIG5vdyBiZWVuIGJ1
+aWx0IGFuZCBpcyByZWFkeSBmb3IgeW91ciBhcHByb3ZhbC4gUGxlYXNlIHZpZXcgdGhl
+IHN1Ym1pc3Npb24gYmVmb3JlIGFwcHJvdmluZyBpdCwgdG8gYmUgY2VydGFpbiB0aGF0
+IGl0IGlzIGZyZWUgb2YgYW55IGVycm9ycy4gSWYgeW91IGhhdmUgYWxyZWFkeSBhcHBy
+b3ZlZCB0aGUgUERGIG9mIHlvdXIgc3VibWlzc2lvbiwgdGhpcyBlLW1haWwgY2FuIGJl
+IGlnbm9yZWQuPGJyLz48YnIvPlRvIGFwcHJvdmUgdGhlIFBERiBwbGVhc2UgbG9naW4g
+dG8gdGhlIEVkaXRvcmlhbCBNYW5hZ2VyIGFzIGFuIEF1dGhvcjo8YnIvPjxici8+aHR0
+cHM6Ly93d3cuZWRpdG9yaWFsbWFuYWdlci5jb20vaW5zLzxici8+WW91ciB1c2VybmFt
+ZSBpczogYXJuZXNjaHJldWRlciA8YnIvPjxici8+VGhlbiBjbGljayBvbiB0aGUgZm9s
+ZGVyICdTdWJtaXNzaW9ucyBXYWl0aW5nIGZvciBBdXRob3IncyBBcHByb3ZhbCcgdG8g
+dmlldyBhbmQgYXBwcm92ZSB0aGUgUERGIG9mIHlvdXIgc3VibWlzc2lvbi4gWW91IG1h
+eSBuZWVkIHRvIGNsaWNrIG9uDQonQWN0aW9uIExpbmtzJyB0byBleHBhbmQgeW91ciBB
+Y3Rpb24gTGlua3MgbWVudS48YnIvPjxici8+WW91IHdpbGwgYWxzbyBuZWVkIHRvIGNv
+bmZpcm0gdGhhdCB5b3UgaGF2ZSByZWFkIGFuZCBhZ3JlZSB3aXRoIHRoZSBFbHNldmll
+ciBFdGhpY3MgaW4gUHVibGlzaGluZyBzdGF0ZW1lbnQgYmVmb3JlIHRoZSBzdWJtaXNz
+aW9uIHByb2Nlc3MgY2FuIGJlIGNvbXBsZXRlZC4gT25jZSBhbGwgb2YgdGhlIGFib3Zl
+IHN0ZXBzIGFyZSBkb25lLCB5b3Ugd2lsbCByZWNlaXZlIGFuIGUtbWFpbCBjb25maXJt
+aW5nIHJlY2VpcHQgb2YgeW91ciBzdWJtaXNzaW9uIGZyb20gdGhlIEVkaXRvcmlhbCBP
+ZmZpY2UuIEZvciBmdXJ0aGVyIGluZm9ybWF0aW9uIG9yIGlmIHlvdSBoYXZlIHRyb3Vi
+bGUgY29tcGxldGluZyB0aGVzZSBzdGVwcyBwbGVhc2UgZ28gdG86IGh0dHA6Ly9oZWxw
+LmVsc2V2aWVyLmNvbS9hcHAvYW5zd2Vycy9kZXRhaWwvYV9pZC84OC9wLzc5MjMuPGJy
+Lz48YnIvPlBsZWFzZSBub3RlIHRoYXQgeW91IGFyZSByZXF1aXJlZCB0byBlbnN1cmUg
+ZXZlcnl0aGluZyBhcHBlYXJzIGFwcHJvcHJpYXRlbHkgaW4gUERGIGFuZCBubyBjaGFu
+Z2UgY2FuIGJlIG1hZGUgYWZ0ZXIgYXBwcm92aW5nIGEgc3VibWlzc2lvbi4gSWYgeW91
+IGhhdmUgYW55IHRyb3VibGUgd2l0aCB0aGUgZ2VuZXJhdGVkIFBERiBvciBjb21wbGV0
+aW5nIHRoZXNlIHN0ZXBzIHBsZWFzZSBnbyB0bzogaHR0cDovL2hlbHAuZWxzZXZpZXIu
+Y29tL2FwcC9hbnN3ZXJzL2RldGFpbC9hX2lkLzg4L3AvNzkyMy48YnIvPjxici8+WW91
+ciBzdWJtaXNzaW9uIHdpbGwgYmUgZ2l2ZW4gYSByZWZlcmVuY2UgbnVtYmVyIG9uY2Ug
+YW4gRWRpdG9yIGhhcyBiZWVuIGFzc2lnbmVkIHRvIGhhbmRsZSBpdC48YnIvPjxici8+
+VGhhbmsgeW91IGZvciB5b3VyIHRpbWUgYW5kIHBhdGllbmNlLjxici8+S2luZCByZWdh
+cmRzLDxici8+RWRpdG9yaWFsDQpPZmZpY2U8YnIvPkluZm9ybWF0aW9uIFNjaWVuY2Vz
+PGJyLz48YnIvPioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+Kjxici8+Rm9yIGZ1cnRoZXIgYXNzaXN0YW5jZSwgcGxlYXNlIHZpc2l0IG91ciBjdXN0
+b21lciBzdXBwb3J0IHNpdGUgYXQgaHR0cDovL2hlbHAuZWxzZXZpZXIuY29tL2FwcC9h
+bnN3ZXJzL2xpc3QvcC83OTIzLiBIZXJlIHlvdSBjYW4gc2VhcmNoIGZvciBzb2x1dGlv
+bnMgb24gYSByYW5nZSBvZiB0b3BpY3MsIGZpbmQgYW5zd2VycyB0byBmcmVxdWVudGx5
+IGFza2VkIHF1ZXN0aW9ucyBhbmQgbGVhcm4gbW9yZSBhYm91dCBFTSB2aWEgaW50ZXJh
+Y3RpdmUgdHV0b3JpYWxzLiBZb3Ugd2lsbCBhbHNvIGZpbmQgb3VyIDI0Lzcgc3VwcG9y
+dCBjb250YWN0IGRldGFpbHMgc2hvdWxkIHlvdSBuZWVkIGFueSBmdXJ0aGVyIGFzc2lz
+dGFuY2UgZnJvbSBvbmUgb2Ygb3VyIGN1c3RvbWVyIHN1cHBvcnQgcmVwcmVzZW50YXRp
+dmVzLjxici8+PGJyLz4jQVVfSU5TIzxici8+PGJyLz5UbyBlbnN1cmUgdGhpcyBlbWFp
+bCByZWFjaGVzIHRoZSBpbnRlbmRlZCByZWNpcGllbnQsIHBsZWFzZSBkbyBub3QgZGVs
+ZXRlIHRoZSBhYm92ZSBjb2RlPGJyLz48Rk9PVEVSPjxpbWcgc3JjPSJodHRwczovL3d3
+dy5FZGl0b3JpYWxNYW5hZ2VyLmNvbS9JTlMvZG93bmxvYWQuYXNweD9zY2hlbWU9NCZp
+ZD01Ii8+PC9GT09URVI+PGJyLz48YnIvPjxoci8+PHNwYW4gc3R5bGU9ImZvbnQtc3R5
+bGU6IGl0YWxpYzsgZm9udC1zaXplOiA5MCU7Ij5JbiBjb21wbGlhbmNlIHdpdGggZGF0
+YSBwcm90ZWN0aW9uIHJlZ3VsYXRpb25zLCB5b3UgbWF5IHJlcXVlc3QgdGhhdCB3ZSBy
+ZW1vdmUgeW91ciBwZXJzb25hbCByZWdpc3RyYXRpb24gZGV0YWlscyBhdCBhbnkgdGlt
+ZS4gIDxhIGhyZWY9Imh0dHBzOi8vd3d3LmVkaXRvcmlhbG1hbmFnZXIuY29tL2lucy9s
+b2dpbi5hc3A/YT1yIj4oUmVtb3ZlIG15DQppbmZvcm1hdGlvbi9kZXRhaWxzKTwvYT4u
+IFBsZWFzZSBjb250YWN0IHRoZSBwdWJsaWNhdGlvbiBvZmZpY2UgaWYgeW91IGhhdmUg
+YW55IHF1ZXN0aW9ucy48L3NwYW4+PC9ib2R5PjwvaHRtbD4=
+
