@@ -15,6 +15,8 @@
 \usepackage{booktabs}
 \usepackage{colortbl}
 \usepackage{multirow}
+\usepackage{lineno}
+\usepackage{xcolor}
 
 % Adam
 \DeclareAcronym{Adam}{
@@ -270,7 +272,7 @@
 		organization={University of Pretoria},
 		% addressline={Lynnwood Rd},
 		city={Pretoria},
-		postcode={0002},
+		% postcode={0002},
 		state={Gauteng},
 		country={South Africa}
 	}
@@ -279,16 +281,24 @@
 		organization={Stellenbosch University},
 		% addressline={Ryneveld Street},
 		city={Stellenbosch},
-		postcode={7602},
+		% postcode={7602},
 		state={Western Cape},
 		country={South Africa}
+	}
+
+	% Center for Applied Mathematics and Bioinformatics, Gulf University for Science and Technology, Kuwait
+	\affiliation[aff:kuwait]{
+		organization={Center for Applied Mathematics and Bioinformatics, Gulf University for Science and Technology},
+		% addressline={Ryneveld Street},
+		city={Mishref},
+		country={Kuwait}
 	}
 
 	\affiliation[aff:wits]{
 		organization={University of the Witwatersrand},
 		% addressline={1 Jan Smuts Ave},
 		city={Johannesburg},
-		postcode={2000},
+		% postcode={2000},
 		state={Gauteng},
 		country={South Africa}
 	}
@@ -297,7 +307,7 @@
 	\ead{an.schreuder@up.ac.za}
 	\author[aff:tuks]{A.S.~Bosman}
 	\ead{annar@cs.up.ac.za}
-	\author[aff:stellenbosch]{A.P.~Engelbrecht}
+	\author[aff:stellenbosch,aff:kuwait]{A.P.~Engelbrecht}
 	\ead{engel@sun.ac.za}
 	\author[aff:wits]{C.W.~Cleghorn}
 	\ead{christopher.cleghorn@wits.ac.za}
@@ -326,24 +336,32 @@
 	\end{keyword}
 \end{frontmatter}
 
+\linenumbers
+
 % INTRODUCTION
 \section{Introduction}
 \label{sec:introduction}
 
-A popular field of focus for studying \acfp{ANN} is the process by which these models are trained. \acp{ANN} are trained by optimisation algorithms known as heuristics. Many different heuristics have been developed and used to train \acp{ANN} \citep{ref:rakitianskaia:2012}. Each of these heuristics has different search behaviours, characteristics, strengths and weaknesses. It is necessary to find the best heuristic to train \acp{ANN} in order to yield optimal results. This process is often non-trivial and time-consuming. Selection of the best heuristic to train \acp{ANN} is often problem specific \citep{ref:allen:1996}.
+A popular field of focus for studying \acfp{ANN} is the process by which these models are trained. \acp{ANN} are trained by optimisation algorithms known as heuristics. Many different heuristics have been developed and used to train \acp{ANN} \citep{ref:rakitianskaia:2012}. Each heuristic has different search behaviours, characteristics, strengths and weaknesses. It is necessary to find the best heuristic to train \acp{ANN} in order to yield optimal results. This process is often non-trivial and time-consuming. Selection of the best heuristic to train \acp{ANN} is often problem specific \citep{ref:allen:1996}.
 
 A recent suggestion related to the field of \textit{meta-learning} is to dynamically select and/or adjust the heuristic used throughout the training process. This approach focuses on the hybridisation of learning paradigms. One such form of hybridisation of learning paradigms is that of hybridisation of different \textit{heuristics} as they are applied to some optimisation problem \citep{ref:burke:2013}. These methods are referred to as \acfp{HH} and focus on finding the best heuristic in \textit{heuristic space} to solve a specific problem.
 
 In the general context of optimisation, many different types of \acp{HH} have been implemented and applied to many different problems \citep{ref:burke:2013}. However, research on the application of \acp{HH} in the context of \acs{ANN} training is scarce. \citet{ref:nel:2021} provides some of the first research in this field, applying a \acs{HH} to \acf{FFNN} training.
 
-This research takes a particular interest in developing a population-based, selection \acs{HH} that makes use of probability theory and Bayesian statistical concepts to guide the heuristic selection process. This paper presents a novel \acf{BHH}, a new high-level heuristic that utilises a statistical approach, referred to as \textit{Bayesian analysis}, which combines prior information with new evidence to the parameters of a selection probability distribution. This selection probability distribution is the mechanism by which the \acs{HH} selects appropriate heuristics to train \acp{FFNN} during the training process.
+This research takes a particular interest in developing a population-based, selection \acs{HH} that makes use of probability theory and Bayesian statistical concepts to guide the heuristic selection process. This paper presents a novel \acf{BHH}, a new high-level heuristic that utilises a statistical approach, referred to as \textit{Bayesian analysis}, which combines prior information with new evidence to the parameters of a heuristic selection probability distribution.
+
+The general concept of the \acs{BHH} is summarised as follows: the \acs{BHH} implements a high-level heuristic selection mechanism that learns to select the best heuristic from a pool of low-level heuristics. These low-level heuristics are applied to a population of entities, each implementing a candidate solution to a \acs{FFNN}. The intent of the \acs{BHH} is to optimise both the underlying \acs{FFNN} and the \acs{FFNN} training process. The \acs{BHH} does so by learning the probability that a given heuristic will perform well at a given stage in the \acs{FFNN} training process. These probabilities are then used as heuristic selection probabilities in the next step of the training process.
+
+The update of selection probabilities is guided by Bayesian analysis, where prior probabilities are updated with new evidence to form posterior probabilities. The performance of each heuristic-entity combination is logged, which captures the efficacy of each heuristic applied to their respective entity, at different stages of the training process. The logged performance data acts as new evidence for the Bayesian analysis process. The \acs{BHH} also incorporates a novel proxied heuristic update step, where various components of the update step for low-level heuristics are sourced from other heuristics in the pool of heuristics, when the direct application of a heuristic is not feasible/possible.
 
 The selection mechanism implemented by the \acs{BHH} is different from the \acf{AMALGAM} and \acf{BOHTA} methods used by \citet{ref:nel:2021}, as well as the \acf{HHBOA} proposed by \citet{ref:oliva:2019}. The key differences include that the \acs{BHH} does not follow an evolutionary approach to the selected low-level heuristics. As such the population does not generate offspring, but rather reuses entities in the population. Furthermore, the \acs{BHH} implements a discrete credit assignment mechanism, not making use of pareto fronts as in the \acs{AMALGAM} and \acs{BOHTA} methods.
+
+Although this research takes a particular interest in training \acp{FFNN}, the \acs{BHH} is not limited to these types of models and can generally be applied to any \acs{ANN} as long as the \acs{ANN} can be trained by all of the low-level heuristics. Experimentation with other \acp{ANN} architectures besides \acp{FFNN} is left for future research.
 
 The remainder of this article is structured as follows: Section \ref{sec:anns} provides background information on \acp{ANN}. Section \ref{sec:heuristics} provides details on various types of heuristics that have been used to train \acp{FFNN}. Section \ref{sec:hhs} presents background information on \acp{HH} and meta-learning. Section \ref{sec:probability} presents background information on probability theory. Section \ref{sec:bhh} presents the developed \acs{BHH}. Section \ref{sec:methodology} presents a detailed description of the empirical process and the setup of each experiment. Section \ref{sec:results} provides and discusses the results of the empirical study. Section \ref{sec:conclusion} summarises the research that is done along with a brief overview of the findings.
 
 % ARTIFICIAL NEURAL NETWORKS
-\section{Artifical Neural Networks}
+\section{Artificial Neural Networks}
 \label{sec:anns}
 
 This research focuses on a particular type of \acs{ANN}, referred to as \acfp{FFNN}. \acp{FFNN} were the first and simplest type of \acp{ANN} developed \citep{ref:schmidhuber:2015} and implement an architecture consisting of input, hidden and output layers by arranging them in sequential order. Furthermore, \acp{FFNN} implement fully connected topologies, where each \acf{AN} in one layer is connected to all the \acp{AN} in the next, without any cycles \citep{ref:zell:1994}. In \acp{FFNN}, information moves forward, in one direction, from the input nodes, through the hidden nodes and finally to the output nodes.
@@ -368,7 +386,7 @@ Alternative variants have been proposed that lead to better control over the con
 
 Gradient-based heuristics are sensitive to the problem that they are applied to, with hyper-parameter selection often dominating the research focus \citep{ref:bengio:2000}. \citet{ref:blum:2003} mention that since the 1980s, a new kind of approximate algorithm has emerged which tries to combine basic heuristic methods in higher level frameworks aimed at efficiently and effectively exploring a search space. These methods are referred to as \acp{MH}.
 
-The biggest difference between \acp{MH} and gradient-based heuristics is that \acp{MH} make use of meta-information obtained as a result of evaluating the \acs{FFNN} during training and is not limited to information about the search space \citep{ref:blum:2003}. This also means that \acp{MH} do not necessarily require the error function to be differentiable. \citet{ref:blum:2003} provides advantages of \acp{MH} that include the following: they are easy to implement, they are problem independent and do not require problem-specific knowledge, and they are generally designed to find global optima, while gradient-based approaches can get stuck in local optima more often. Similar to gradient-based heuristics, a number of different meta-heuristics have been used to successfully train \acp{FFNN} \citep{ref:rakitianskaia:2012, ref:vanwyk:2014, ref:gupta:1999}. This research takes a particular interest in population-based \acp{MH} that have been used to train \acp{FFNN}. These include \acf{PSO} \citep{ref:shi:1998}, \acf{DE} \citep{ref:price:2006} and \acfp{GA} \citep{ref:fraser:1957}.
+The biggest difference between \acp{MH} and gradient-based heuristics is that \acp{MH} make use of meta-information obtained as a result of evaluating the \acs{FFNN} during training and is not limited to information about the search space \citep{ref:blum:2003}. This also means that \acp{MH} do not necessarily require the error function to be differentiable. \citet{ref:blum:2003} provide advantages of \acp{MH} that include the following: they are easy to implement, they are problem independent and do not require problem-specific knowledge, and they are generally designed to find global optima, while gradient-based approaches can get stuck in local optima more often. Similar to gradient-based heuristics, a number of different meta-heuristics have been used to successfully train \acp{FFNN} \citep{ref:rakitianskaia:2012, ref:vanwyk:2014, ref:gupta:1999}. This research takes a particular interest in population-based \acp{MH} that have been used to train \acp{FFNN}. These include \acf{PSO} \citep{ref:abdulkarim:2021}, \acf{DE} \citep{ref:xue:2022}, and \acfp{GA} \citep{ref:khan:2012}.
 
 
 % HYPER-HEURISTICS
@@ -377,7 +395,7 @@ The biggest difference between \acp{MH} and gradient-based heuristics is that \a
 
 \citet{ref:burke:2010} define \acp{HH} as search methods or learning mechanism for selecting or generating heuristics to solve computational search problems. \citet{ref:burke:2003} mention that a \acs{HH} is a high-level heuristic approach that, given a particular problem instance and a number of low-level heuristics, can select and apply an appropriate low-level heuristic at each decision point. \acp{HH} implement a form of \textit{meta-learning} that is concerned with the selection of the best heuristic from a pool of heuristics to solve a given problem. It can be said that \acp{HH} are concerned with finding the best heuristic in \textit{heuristic space}, while the underlying low-level heuristics find solutions in the feasible \textit{search/solution space}.
 
-\citet{ref:burke:2010} proposed a classification scheme used to classify \acp{HH}. According to the proposed classification scheme, \acp{HH} are classified in two dimensions. These include the \textit{source of feedback} used during learning and the nature of the \textit{heuristic search space}. For the dimension that involves the source of feedback, \acp{HH} can be classified as either \textit{no learning}, \textit{online learning} or \textit{offline learning}. For the dimension that involves the nature of the \textit{heuristic search space}, \acp{HH} can be classified as either \textit{heuristic selection} or \textit{heuristic generation}. Further distinction is made between \textit{construction} of heuristics and \textit{perturbation} of heuristics.
+\citet{ref:burke:2010} propose a classification scheme used to classify \acp{HH}. According to the proposed classification scheme, \acp{HH} are classified in two dimensions. These include the \textit{source of feedback} used during learning and the nature of the \textit{heuristic search space}. For the dimension that involves the source of feedback, \acp{HH} can be classified as either \textit{no learning}, \textit{online learning} or \textit{offline learning}. For the dimension that involves the nature of the \textit{heuristic search space}, \acp{HH} can be classified as either \textit{heuristic selection} or \textit{heuristic generation}. Further distinction is made between \textit{construction} of heuristics and \textit{perturbation} of heuristics.
 
 In the general context of optimisation, many different types of \acp{HH} have been implemented and applied to many different problems. Some notable examples include \citep{ref:burke:2010, ref:dowsland:2007, ref:grobler:2012, ref:vanderstockt:2018}. Research on the application of \acp{HH} in the context of \acs{FFNN} training is still scarce. \citet{ref:nel:2021} provides some of the first research in this field, applying \acs{BOHTA}, a novel adaptation of an evolutionary-based \acs{HH}, known as the \acs{AMALGAM} \acs{HH} \citep{ref:vrugt:2007}, to \acs{FFNN} training. Furthermore, \citet{ref:oliva:2019} provide \acs{HHBOA}, the first use of Bayesian optimisation in a \acs{HH} context. The method proposed by \citet{ref:oliva:2019} uses a Bayesian selection operator to evolve combinations of low-level heuristics  while looking for good problem solutions to a benchmark of optimisation functions, but does not apply a \acs{HH} to the training of \acp{FFNN}.
 
@@ -387,8 +405,6 @@ This research takes a particular interest in a population-based, selection appro
 % PROBABILITY
 \section{Probability}
 \label{sec:probability}
-
-In general, there are two main views to probability and statistics. These include the \textit{frequentist} and the \textit{Bayesian} view of statistics. Naturally, Bayesian statistics is based on Bayes' theorem \citep{ref:bayes:1763}.
 
 Bayesian statistics describe the probability of an event in terms of some belief, based on previous knowledge of the event and the conditions under which the event happened \citep{ref:hackenberger:2019}. Bayes' theorem expresses how a degree of belief, expressed as a probability, should rationally change to account for the availability of related evidence.
 
@@ -401,9 +417,18 @@ Bayesian analysis utilises the concept of conjugate priors. \citet{ref:wackerly:
 \section{Bayesian Hyper-Heuristics}
 \label{sec:bhh}
 
-This section presents the novel \acs{BHH}. The general concept of the \acs{BHH} is summarised as follows: the \acs{BHH} implements a high-level heuristic selection mechanism that learns to select the best heuristic from a pool of low-level heuristics. These low-level heuristics are applied to a population of entities, each implementing a candidate solution to a \acs{FFNN}. The  intent of the \acs{BHH} is to optimise both the underlying \acs{FFNN} and the \acs{FFNN} training process. The \acs{BHH} does so by learning the probability that a given heuristic will perform well at a given stage in the \acs{FFNN} training process. These probabilities are then used as heuristic selection probabilities in the next step of the training process.
+This section presents the novel \acs{BHH} and is structured as follows: Section \ref{sec:bhh:overview} presents an overview of the \acs{BHH}, Sections \ref{sec:bhh:heuristic_pool} - \ref{sec:bhh:selection_mechanism} provide details on the most important components of the \acs{BHH}, Section \ref{sec:bhh:optimisation_step} describes the optimisation step implemented by the \acs{BHH} and Section \ref{sec:bhh:hyper_parameters} discusses the hyper-parameters used by the \acs{BHH}.
 
-According to the classification scheme for \acp{HH} by \citet{ref:burke:2010}, the \acs{BHH} is a population-based, meta-hyper-heuristic that utilises selection and perturbation of low-level heuristics in an online learning fashion. Figure \ref{fig:bhh_architecture} provides an illustration of the high-level architecture of the \acs{BHH}. Algorithm \ref{algo:bhh} provides the high level pseudo-code implementation of the \acs{BHH}. Discussions follow on the most important components of the \acs{BHH}.
+
+\subsection{Overview}\label{sec:bhh:overview}
+
+According to the classification scheme for \acp{HH} by \citet{ref:burke:2010}, the \acs{BHH} is a population-based, meta-hyper-heuristic that utilises selection and perturbation of low-level heuristics in an online learning fashion.
+
+The \acs{BHH} implements a high-level heuristic selection mechanism that learns to select the best heuristic from a pool of low-level heuristics. These low-level heuristics are applied to a population of entities, each implementing a candidate solution to a \acs{FFNN}. The intent of the \acs{BHH} is to optimise both the underlying \acs{FFNN} and the \acs{FFNN} training process. The \acs{BHH} does so by learning the probability that a given heuristic will perform well at a given stage in the \acs{FFNN} training process. These probabilities are then used as heuristic selection probabilities in the next step of the training process.
+
+The update of selection probabilities is guided by Bayesian analysis, where prior probabilities are updated with new evidence to form posterior probabilities. The performance of each heuristic-entity combination is logged, which captures the efficacy of each heuristic applied to their respective entity, at different stages of the training process. The logged performance data acts as new evidence for the Bayesian analysis process. The \acs{BHH} also incorporates a novel proxied heuristic update step, where various components of the update step for low-level heuristics are sourced from other heuristics in the pool of heuristics, when the direct application of a heuristic is not feasible/possible.
+
+Figure \ref{fig:bhh_architecture} provides an illustration of the high-level architecture of the \acs{BHH}. Algorithm \ref{algo:bhh} provides the high level pseudo-code implementation of the \acs{BHH}. Discussions follow on the most important components of the \acs{BHH}.
 
 \begin{figure}[htbp]
 	\centering
@@ -523,33 +548,29 @@ Generally, there are two different techniques that are used to train Naïve Baye
 
 \Acs{MAP} is an approach to optimise the values for $\hat{\theta}_{k}$, $\hat{\phi}_{j,k}$ and $\hat{\psi}_{k}$ by optimising the parameters of their probability distributions. This process is referred to as \textit{Bayesian analysis}. Bayesian analysis makes use of the \textit{posterior} probability distribution. The concentration update operations yielded by \acs{MAP}, are given as follows:
 
+
 \begin{equation}
 	\label{eq:bhh:optimisation_step:map:alpha_update_operation}
-	\begin{split}
-		\alpha_{k}(t+1) = N_{k} + \alpha_{k}(t)
-	\end{split}
+	\alpha_{k}(t+1) = N_{k} + \alpha_{k}(t)
 \end{equation}
 
 \begin{equation}
 	\label{eq:bhh:optimisation_step:map:beta_update_operation}
-	\begin{split}
-		\beta_{j,k}(t+1) = N_{j,k} + \beta_{j,k}(t)
-	\end{split}
+	\beta_{j,k}(t+1) = N_{j,k} + \beta_{j,k}(t)
 \end{equation}
 
 \begin{equation}
 	\label{eq:bhh:optimisation_step:map:gamma1_update_operation}
-	\begin{split}
-		\gamma_{1,k}(t+1) = N_{1,k} + \gamma_{1,k}(t)
-	\end{split}
+	\gamma_{1,k}(t+1) = N_{1,k} + \gamma_{1,k}(t)
 \end{equation}
 
 \begin{equation}
 	\label{eq:bhh:optimisation_step:map:gamma2_update_operation}
-	\begin{split}
-		\gamma_{2,k}(t+1) = N_{0,k} + \gamma_{2,k}(t)
-	\end{split}
+	\gamma_{2,k}(t+1) = N_{0,k} + \gamma_{2,k}(t)
 \end{equation}
+
+\vspace{5mm}
+
 
 \noindent
 where $N_{k}$ is a summary variable denoting the count of occurrences of heuristic $k$, $N_{j}$ is a summary variable denoting the count of occurrences of entity $j$, $N_{j,k}$ is a summary variable denoting the count of occurrences of heuristic $k$ for entity $j$, $N_{1,k}$ and $N_{0,k}$ are summary variables denoting the count of occurrences where heuristic $k$ meets performance requirements and where heuristic $k$ does not not meet performance requirements.
@@ -587,6 +608,8 @@ The \acs{BHH} baseline is a name given to a specific configuration of the \acs{B
 		\end{tabular}%
 	}
 \end{table}%
+
+A population size of 5 is chosen as it empirically and consistently provides good results. The population size has a lower bound of 4, which is the highest, minimum number of entities required by any low-level heuristic used in this research. Furthermore, ablation studies \citep{ref:schreuder:2022} have shown that a smaller population size is generally better, since the Bayesian analysis process implemented by the \acs{BHH} has less, but more concentrated performance information from which it has to learn.
 
 
 \subsection{BHH vs. Low-Level Heuristics}
@@ -823,7 +846,7 @@ Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalo
 
 \begin{table}[!tb]
 	\centering
-	\caption{Empirical results showing normalised average rank and statistics for the bottom six low-level heuristics and three heuristic pool variants of the \acs{BHH} baseline configuration, across multiple datasets, for all independent runs and epochs.}
+	\caption{Empirical results showing normalised average rank and statistics for the bottom seven low-level heuristics and three heuristic pool variants of the \acs{BHH} baseline configuration, across multiple datasets, for all independent runs and epochs.}
 	\label{tab:results:standalone:metrics:rank_b}%
 	\par\bigskip
 	\resizebox{\textwidth}{!}{
@@ -856,20 +879,55 @@ Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalo
 
 The normalised average ranks provided in Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b} show that the \textit{bhh\_gd} configuration ranked fourth, while the \textit{bhh\_al} and \textit{bhh\_mh} configurations ranked sixth and eighth amongst all thirteen heuristic implementations respectively. These results show that the \acs{BHH} generally performs well, but is not able to outperform the best heuristic for each dataset.
 
-Figure \ref{fig:results:standalone:descriptive:descriptive} provides an illustration showing a descriptive plot of the average ranks achieved over all independent runs, for each heuristic, per dataset. The heuristics are ordered according to the normalised ranks presented in Tables \ref{tab:results:standalone:metrics:rank_a} and \ref{tab:results:standalone:metrics:rank_b}. Figure \ref{fig:results:standalone:descriptive:descriptive} shows that the \textit{bhh\_gd} heuristic achieved the lowest variance in average rank across all datasets, compared to the other heuristics. The aforementioned shows the generalisation capabilities of the \acs{BHH} to multiple problems.
+Tables \ref{tab:results:standalone:metrics:accuracy_a} and \ref{tab:results:standalone:metrics:accuracy_b} provide the empirical results in accuracy format for the classification datasets. The accuracy is measured at the maximum epoch (30).
 
-\begin{figure}[htb]
+\begin{table}[!tb]
 	\centering
-	\includegraphics[width=\textwidth]{standalone_descriptive.pdf}
-	\caption{Descriptive plots for the average ranks of all low-level heuristics compared to three heuristic pool variants of the \acs{BHH} baseline configuration, per dataset, across all independent runs and epochs.}
-	\label{fig:results:standalone:descriptive:descriptive}
-\end{figure}
+	\caption{Empirical results showing average accuracy at the max epoch (30) along with statistics for the top six low-level heuristics and three heuristic pool variants of the \acs{BHH} baseline configuration, across multiple datasets, for all independent runs and epochs.}
+	\label{tab:results:standalone:metrics:accuracy_a}%
+	\par\bigskip
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{r|llllll}
+			                                   & \multicolumn{6}{c}{\textbf{BHH vs. Low-Level Heuristics - Average accuracy at 30 epochs (Part A)}}                                                                                                                                                                                                                                                                                         \\
+			\cmidrule{2-7}    \textbf{dataset} & \multicolumn{1}{c}{\textbf{adagrad}}                                                               & \multicolumn{1}{c}{\textbf{adam}}                     & \multicolumn{1}{c}{\textbf{rmsprop}}                  & \multicolumn{1}{c}{\textbf{bhh\_gd}}                  & \multicolumn{1}{c}{\textbf{nag}}                      & \multicolumn{1}{c}{\textbf{bhh\_all}}                 \\
+			\midrule
+			\textbf{abalone}                   & \cellcolor[rgb]{ .412,  .753,  .486}27.66\% (+-0.014)                                              & \cellcolor[rgb]{ .545,  .792,  .494}27.17\% (+-0.013) & \cellcolor[rgb]{ .388,  .745,  .482}27.74\% (+-0.016) & \cellcolor[rgb]{ .824,  .871,  .51}26.17\% (+-0.014)  & \cellcolor[rgb]{ .557,  .796,  .494}27.14\% (+-0.014) & \cellcolor[rgb]{ 1,  .922,  .518}25.52\% (+-0.021)    \\
+			\textbf{bank}                      & \cellcolor[rgb]{ .608,  .808,  .498}90.15\% (+-0.003)                                              & \cellcolor[rgb]{ .388,  .745,  .482}90.33\% (+-0.003) & \cellcolor[rgb]{ .482,  .773,  .49}90.25\% (+-0.003)  & \cellcolor[rgb]{ .949,  .906,  .518}89.88\% (+-0.003) & \cellcolor[rgb]{ .882,  .89,  .514}89.94\% (+-0.003)  & \cellcolor[rgb]{ 1,  .922,  .518}89.84\% (+-0.003)    \\
+			\textbf{car}                       & \cellcolor[rgb]{ .71,  .839,  .502}92.24\% (+-0.013)                                               & \cellcolor[rgb]{ .388,  .745,  .482}96.64\% (+-0.011) & \cellcolor[rgb]{ .427,  .757,  .486}96.13\% (+-0.018) & \cellcolor[rgb]{ .647,  .82,  .498}93.13\% (+-0.013)  & \cellcolor[rgb]{ .918,  .898,  .514}89.39\% (+-0.019) & \cellcolor[rgb]{ .612,  .812,  .498}93.59\% (+-0.017) \\
+			\textbf{diabetic}                  & \cellcolor[rgb]{ .604,  .808,  .498}58.14\% (+-0.004)                                              & \cellcolor[rgb]{ .996,  .902,  .514}57.23\% (+-0.004) & \cellcolor[rgb]{ .769,  .855,  .506}57.85\% (+-0.004) & \cellcolor[rgb]{ .82,  .871,  .51}57.76\% (+-0.006)   & \cellcolor[rgb]{ .388,  .745,  .482}58.53\% (+-0.003) & \cellcolor[rgb]{ .988,  .757,  .482}55.42\% (+-0.024) \\
+			\textbf{iris}                      & \cellcolor[rgb]{ .996,  .902,  .514}92\% (+-0.046)                                                 & \cellcolor[rgb]{ .627,  .816,  .498}94.89\% (+-0.042) & \cellcolor[rgb]{ .408,  .753,  .486}96.33\% (+-0.035) & \cellcolor[rgb]{ 1,  .922,  .518}92.44\% (+-0.077)    & \cellcolor[rgb]{ .388,  .745,  .482}96.44\% (+-0.037) & \cellcolor[rgb]{ .902,  .894,  .514}93.11\% (+-0.056) \\
+			\textbf{mushroom}                  & \cellcolor[rgb]{ .522,  .784,  .49}99.97\% (+-0)                                                   & \cellcolor[rgb]{ .471,  .769,  .49}99.98\% (+-0.001)  & \cellcolor[rgb]{ .388,  .745,  .482}100\% (+-0)       & \cellcolor[rgb]{ .471,  .769,  .49}99.98\% (+-0)      & \cellcolor[rgb]{ 1,  .922,  .518}99.84\% (+-0.001)    & \cellcolor[rgb]{ .537,  .788,  .494}99.96\% (+-0.001) \\
+			\textbf{wine\_quality}             & \cellcolor[rgb]{ .541,  .788,  .494}55.06\% (+-0.014)                                              & \cellcolor[rgb]{ .388,  .745,  .482}55.62\% (+-0.013) & \cellcolor[rgb]{ .592,  .804,  .494}54.86\% (+-0.011) & \cellcolor[rgb]{ 1,  .922,  .518}53.35\% (+-0.017)    & \cellcolor[rgb]{ .651,  .824,  .498}54.64\% (+-0.015) & \cellcolor[rgb]{ .941,  .906,  .518}53.57\% (+-0.015) \\
+		\end{tabular}%
+	}
+\end{table}%
 
+
+\begin{table}[!tb]
+	\centering
+	\caption{Empirical results showing average accuracy at the max epoch (30) along with statistics for the bottom seven low-level heuristics and three heuristic pool variants of the \acs{BHH} baseline configuration, across multiple datasets, for all independent runs and epochs.}
+	\label{tab:results:standalone:metrics:accuracy_b}%
+	\par\bigskip
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{r|lllllll}
+			                                   & \multicolumn{7}{c}{\textbf{BHH vs. Low-Level Heuristics - Average accuracy at 30 epochs (Part B)}}                                                                                                                                                                                                                                                                                                                                                \\
+			\cmidrule{2-8}    \textbf{dataset} & \multicolumn{1}{c}{\textbf{adadelta}}                                                              & \multicolumn{1}{c}{\textbf{bhh\_mh}}                  & \multicolumn{1}{c}{\textbf{ga}}                       & \multicolumn{1}{c}{\textbf{pso}}                      & \multicolumn{1}{c}{\textbf{sgd}}                      & \multicolumn{1}{c}{\textbf{momentum}}                 & \multicolumn{1}{c}{\textbf{de}}                      \\
+			\midrule
+			\textbf{abalone}                   & \cellcolor[rgb]{ .659,  .824,  .498}26.76\% (+-0.013)                                              & \cellcolor[rgb]{ .992,  .839,  .498}23.32\% (+-0.018) & \cellcolor[rgb]{ .988,  .733,  .478}20.52\% (+-0.019) & \cellcolor[rgb]{ .984,  .651,  .463}18.31\% (+-0.029) & \cellcolor[rgb]{ .996,  .878,  .506}24.42\% (+-0.017) & \cellcolor[rgb]{ .996,  .875,  .506}24.29\% (+-0.015) & \cellcolor[rgb]{ .973,  .412,  .42}11.81\% (+-0.044) \\
+			\textbf{bank}                      & \cellcolor[rgb]{ .988,  .918,  .518}89.85\% (+-0.003)                                              & \cellcolor[rgb]{ .992,  .784,  .49}89.44\% (+-0.004)  & \cellcolor[rgb]{ .98,  .573,  .447}88.79\% (+-0.004)  & \cellcolor[rgb]{ .976,  .494,  .435}88.56\% (+-0.006) & \cellcolor[rgb]{ .98,  .596,  .455}88.86\% (+-0.004)  & \cellcolor[rgb]{ .984,  .643,  .463}89.01\% (+-0.003) & \cellcolor[rgb]{ .973,  .412,  .42}88.3\% (+-0.004)  \\
+			\textbf{car}                       & \cellcolor[rgb]{ 1,  .922,  .518}88.25\% (+-0.018)                                                 & \cellcolor[rgb]{ .988,  .714,  .475}80.74\% (+-0.034) & \cellcolor[rgb]{ .973,  .459,  .427}71.52\% (+-0.022) & \cellcolor[rgb]{ .988,  .725,  .478}81.16\% (+-0.035) & \cellcolor[rgb]{ .973,  .412,  .42}69.78\% (+-0.027)  & \cellcolor[rgb]{ .973,  .439,  .424}70.86\% (+-0.019) & \cellcolor[rgb]{ .973,  .416,  .42}69.98\% (+-0.034) \\
+			\textbf{diabetic}                  & \cellcolor[rgb]{ .482,  .773,  .49}58.36\% (+-0.003)                                               & \cellcolor[rgb]{ .992,  .847,  .502}56.53\% (+-0.006) & \cellcolor[rgb]{ .98,  .624,  .459}53.82\% (+-0.003)  & \cellcolor[rgb]{ .984,  .655,  .467}54.22\% (+-0.011) & \cellcolor[rgb]{ .992,  .922,  .518}57.45\% (+-0.004) & \cellcolor[rgb]{ 1,  .922,  .518}57.43\% (+-0.002)    & \cellcolor[rgb]{ .973,  .412,  .42}51.21\% (+-0.059) \\
+			\textbf{iris}                      & \cellcolor[rgb]{ .976,  .525,  .439}83.22\% (+-0.063)                                              & \cellcolor[rgb]{ .984,  .918,  .518}92.56\% (+-0.062) & \cellcolor[rgb]{ .988,  .757,  .486}88.67\% (+-0.091) & \cellcolor[rgb]{ .816,  .871,  .51}93.67\% (+-0.042)  & \cellcolor[rgb]{ .973,  .412,  .42}80.56\% (+-0.098)  & \cellcolor[rgb]{ .973,  .424,  .42}80.89\% (+-0.084)  & \cellcolor[rgb]{ .98,  .596,  .455}84.89\% (+-0.099) \\
+			\textbf{mushroom}                  & \cellcolor[rgb]{ .569,  .796,  .494}99.95\% (+-0.001)                                              & \cellcolor[rgb]{ .996,  .898,  .51}97.77\% (+-0.007)  & \cellcolor[rgb]{ .984,  .671,  .467}76.78\% (+-0.112) & \cellcolor[rgb]{ .996,  .906,  .514}98.67\% (+-0.009) & \cellcolor[rgb]{ .992,  .824,  .498}91.08\% (+-0.008) & \cellcolor[rgb]{ .992,  .804,  .494}89.11\% (+-0.01)  & \cellcolor[rgb]{ .973,  .412,  .42}52.58\% (+-0.028) \\
+			\textbf{wine\_quality}             & \cellcolor[rgb]{ .647,  .82,  .498}54.66\% (+-0.012)                                               & \cellcolor[rgb]{ .992,  .835,  .498}51.52\% (+-0.014) & \cellcolor[rgb]{ .988,  .733,  .478}49.26\% (+-0.017) & \cellcolor[rgb]{ .984,  .686,  .471}48.21\% (+-0.038) & \cellcolor[rgb]{ .996,  .867,  .506}52.14\% (+-0.014) & \cellcolor[rgb]{ .992,  .831,  .498}51.38\% (+-0.014) & \cellcolor[rgb]{ .973,  .412,  .42}42.1\% (+-0.042)  \\
+		\end{tabular}%
+	}
+\end{table}%
 
 
 Figure \ref{fig:results:standalone:descriptive:cd} provides an illustration of the overall critical difference plots that illustrate the statistically significant differences in ranked performance for each heuristic as it relates to all datasets, across all independent runs and epochs. Although the outcomes of the \textit{bhh\_al} and \textit{bhh\_mh} configurations seem to produce average performance results, it should be noted that the performance difference between all heuristics is very small. Furthermore, the best configuration of the \acs{BHH}, namely the \textit{bhh\_gd} configuration, is statistically outperformed overall by only \acs{Adagrad} and \acs{Adam}, yielding statistically comparable results to \acs{RMSProp} and \acs{NAG}. It should be noted that the standalone low-level heuristics already produce good results in general across all datasets. In this particular case, producing better performance outcomes can be hard to achieve. However, as mentioned previously, the \acs{BHH} provides a generalisation capability across all datasets that is advantageous to the \acs{BHH}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{standalone_cd_overall.pdf}
 	\caption{Critical difference plots for the average ranks of all low-level heuristics compared to three heuristic pool variants of the baseline \acs{BHH}, across all datasets, runs and epochs.}
@@ -878,6 +936,33 @@ Figure \ref{fig:results:standalone:descriptive:cd} provides an illustration of t
 
 Another observation that can be made is that the gradient-based heuristics generally performed much better than the \acp{MH} on all datasets. State of the art methods for training \acp{FFNN}, such as \acs{Adam}, utilise gradient-based approaches that have been proven to work well on many occasions \citep{ref:kingma:2014}. Exploration of the heuristic space leads the \acs{BHH} to consider other heuristics during the training process, which could possibly result in worse performances at times. A suggestion to improve on these results is to include a move-acceptance strategy where heuristic progressions are discarded if they fail to produce better results.
 
+Section \ref{sec:bhh:hyper_parameters} presented the \acs{BHH} hyper-parameters. A number of ablation studies were done in the interest of finding good hyper-parameters for the baseline \acs{BHH} \citep{ref:schreuder:2022}. A summary of these ablation studies on different hyper-parameter configurations is given in Table \ref{tab:methodology:experiments:bhh_variants} along with a brief conclusion of the outcomes.
+
+\begin{table}[htbp]
+	\centering
+	\caption{BHH variants and their configuration. The \index{heuristic pool}heuristic pool configuration \textit{gd} refers to the \index{heuristic pool}heuristic pool configuration where only gradient-based \index{heuristic}heuristics are included, and \textit{mh} refers to the \index{heuristic pool}heuristic pool configuration where only \acp{MH} are included.}
+	\label{tab:methodology:experiments:bhh_variants}%
+	\par\bigskip
+	\resizebox{0.9\textwidth}{!}{
+		\begin{tabular}{ccc}
+			\textbf{hyper-parameter} & \textbf{considered}                   & \textbf{conclusion}       \\
+			\midrule
+			heuristic pool           & all, gd, mh                           & gd performed best         \\
+			population               & 5, 10, 15, 20, 25                     & smaller is better         \\
+			credit                   & ibest, pbest, rbest, gbest, symmetric & problem dependent         \\
+			reselection              & 1, 5, 10, 15, 20                      & larger is better          \\
+			replay                   & 1, 5, 10, 15, 20                      & problem dependent         \\
+			reanalysis               & 1, 5, 10, 15, 20                      & problem dependent         \\
+			burn in                  & 0, 5, 10, 15, 20                      & lower is better           \\
+			normalise                & false, true                           & no significant difference \\
+			discounted rewards       & false, true                           & no significant difference \\
+		\end{tabular}%
+	}
+\end{table}%
+
+A general finding in the ablations studies revealed the inter-dependencies between the hyper-parameters. For example, there is an inter-dependency between the \textit{reselection}, \textit{replay}, and \textit{reanalysis} hyper-parameters. This can be seen in the ablation studies that focussed on the \textit{normalise} and \textit{discounted rewards} hyper-parameters. The default \textit{replay window size} (10) hyper-parameter, results in a scenario where the logged performance data is too little for the \textit{normalise} and \textit{discounted rewards} hyper-parameters to make a statistically significant impact.
+
+Furthermore, the ablation studies on the \textit{replay} and \textit{reanalysis} hyper-parameters, which resulted in problem dependent outcomes, illustrates that a dynamic, online-learning approach is required, since some problems benefit from maintaining many records in the performance log, while others do not.
 
 % CONCLUSION
 \section{Conclusion}

@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{lipsum} % to generate some filler text
+\usepackage{fullpage}
+\usepackage{mathrsfs}
+\usepackage{svg}
+\usepackage{xr}
+\usepackage{amsthm,cite,url,graphicx,booktabs,lipsum,color,bm,caption,subcaption,soul}
+\usepackage{pifont,tikz,paralist,multirow,amssymb}
+\usepackage{xifthen}
+\usepackage{enumerate}
+\usepackage{titlesec}
+\usepackage[numbers]{natbib}
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
+
+% This refines the format of how the reviewer/point reference will appear.
+%\renewcommand{\thepoint}{C\,\thereviewer.\arabic{point}}
+
+\renewcommand{\thepoint}{Comment\,\thereviewer.\arabic{point}}
+
+% command declarations for reviewer points and our responses
+
+\newenvironment{point1}
+   {\refstepcounter{point} \bigskip \noindent {\textbf{Editor Comment~}} ---\ }
+   {\par }
+
+\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule
+                  \section*{Reviewer \thereviewer}}
+
+% \newenvironment{point}
+
+%    {\refstepcounter{point} \bigskip \noindent {\textbf{Reviewer~\thepoint} } ---\ }
+%    {\par }
+
+\newenvironment{point}
+   {\refstepcounter{point} \bigskip \noindent {\textbf{Reviewer~\thepoint} } ---\ }
+   {\par }
+
+
+\newcommand{\shortpoint}[1]{\refstepcounter{point}   \bigskip \noindent 
+	{\textbf{Reviewer~Point~\thepoint} } ---~#1  }
+
+\newenvironment{reply}
+   {\medskip \noindent \color{blue} \begin{sf}\textbf{Reply}:\  }
+   {\medskip \par \end{sf}}
+
+\newcommand{\shortreply}[2][]{\medskip \noindent \begin{sf}\textbf{Reply}:\  #2
+	\ifthenelse{\equal{#1}{}}{}{ \hfill \footnotesize (#1)}%
+	\medskip \end{sf}}
+
+\makeatletter
+\newcommand*{\addFileDependency}[1]{% argument=file name and extension
+  \typeout{(#1)}
+  \@addtofilelist{#1}
+  \IfFileExists{#1}{}{\typeout{No file #1.}}
+}
+\makeatother
+
+\newcommand*{\myexternaldocument}[1]{%
+    \externaldocument{#1}%
+    \addFileDependency{#1.tex}%
+    \addFileDependency{#1.aux}%
+}
+
+\myexternaldocument{main}
+%\externaldocument[I-]{main}
+
+
+\def\thesubsubsection{\arabic{subsubsection}}
+\titleformat{\subsubsection}[runin]
+{\normalfont\bfseries}
+{\indent\thesubsubsection)}{0.5em}{}
+
+
+\begin{document}
+\section*{Response to reviewer comments for the paper:\\INS-D-23-781}
+\vspace{10pt}
+
+\textbf{Title:} Training Feedforward Neural Networks with Bayesian Hyper-Heuristics\\
+\textbf{Authors:} A.N. Schreuder, A.S. Bosman, A.P. Engelbrecht, C.W. Cleghorn\\
+\textbf{Manuscript number:} 1\\
+\textbf{Revision Version:} 1\\
+\textbf{Editor’s Decision Received Date:} 24 November 2023\\
+\textbf{Revision Submission Date:} 10 January 2024\\
+
+\vspace{10pt}
+
+\noindent
+The authors would like to thank the editor and reviewers for their constructive comments and suggestions that have helped improve the quality of this manuscript. The manuscript has undergone a thorough revision according to the editor's and reviewer's comments. Please see below our responses. For the editor's and reviewer's convenience, we have highlighted our responses to the comments and described how each comment is addressed in the revised manuscript in \textcolor{blue}{blue}.
+
+\section*{Response to the Editor}
+% General intro text goes here
+
+\begin{point1}
+	Dear authors, I want to apologize for the long process of peer review. We had severe issues to find suitable candidates. The second reviewer keeps ignoring all reminders, so that the decision of the first review round will be based on only a single reviewer. At the same time, I am pleased to inform you that R1 sees merit in your paper, along with several suggestions for further improvement. I wish you good luck in the revision!
+\end{point1}
+
+
+\begin{reply}
+	The authors would like to thank the editor and reviewer again for their comments and the time taken to read the manuscript. All the issues raised by the reviewers are addressed in the following document. For each reviewer comment, the corresponding manuscript adjustment is discussed in detail. Where possible, we have highlighted the changes in the revised manuscript in \textcolor{blue}{blue} and provided line numbers for ease of reference.
+\end{reply}
+
+\section*{Response to the Reviewers}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\reviewersection
+This paper proposes a hyper-heuristic for neural network training. The paper has potential to be accepted, while it needs revision. Some comments in detail are below:
+
+\begin{point}
+	In the introduction section, the authors should briefly explain their heuristic. Please again explain the proposed method briefly in this section
+\end{point}
+
+\begin{reply}
+	We have added a brief overview of the BHH algorithm in the introduction section. Please see the revised manuscript, page 3, lines 29-46.
+\end{reply}
+
+\begin{point}
+	``This research takes a particular interest in population
+	based MHs that have been used to train FFNNs. These include particle
+	swarm optimisation (PSO) [20], differential evolution (DE) [21] and genetic
+	algorithms (GAs) [22].''\\
+	Please add some more recent papers.
+\end{point}
+
+\begin{reply}
+	We have updated these references to reflect the latest, highly cited journal articles we could find on each of the topics. These include \cite{ref:abdulkarim:2021}, \cite{ref:khan:2012}, and \cite{ref:xue:2022} (See references at the end of this document).
+\end{reply}
+
+\begin{point}
+	Is there any reasons to select the population size as 5?
+\end{point}
+
+\begin{reply}
+	A population size of 5 was chosen as it empirically and consistently provided good results. The population size has a lower bound of 4, which is the highest, minimum number of entities required by any low-level heuristic used in this research. Furthermore, our ablation studies \cite{ref:schreuder:2022} have shown that a smaller population size is generally better, since the Bayesian analysis process implemented by the BHH has less, but more concentrated performance information from which it has to learn. We have added a brief discussion on the population size in the revised manuscript. Please see page 20, lines 337-383.
+\end{reply}
+
+\begin{point}
+	In Figure 3, the points are connected together, while I believe that using a connection between two points is not right! For instance between ``momentum'' and ``de'', there is a connected line. What does mean this connection?
+\end{point}
+
+\begin{reply}
+	We agree with the comments made and as such we have decided to remove the original Figure 3, since we felt that the figure shows redundant information which is already given in Tables 7 and 8. Furthermore, we felt that the other suggestions made by the reviewer, such as adding classification results, adds more value.
+\end{reply}
+
+\begin{point}
+	Please provide more classification results such as accuracy!
+\end{point}
+
+\begin{reply}
+	We have added Tables 9 and 10 which contain classification results as requested. Please see the revised manuscript, pages 31-32.
+\end{reply}
+
+\begin{point}
+	Please provide a sensitivity analysis on the proposed algorithm?
+\end{point}
+
+\begin{reply}
+	This is a great suggestion! We have done extensive ablation studies on the BHH algorithm, but originally left this out for brevity. These studies can be found in \cite{ref:schreuder:2022}. We have added a brief discussion and summary of the findings in the ablation studies in the revised manuscript. Please see page 33, lines 542-553.
+\end{reply}
+
+\begin{point}
+	Can the algorithm extend on other type of ANNs simply?
+\end{point}
+
+\begin{reply}
+	Yes it can! Although this research takes a particular interest in training FFNNs, the BHH is not limited to these types of models and can generally be applied to any ANN as long as the ANN can be trained by all of the low-level heuristics. Experimentation with other ANN architectures besides FFNNs was left for future research. We have added this context to the introduction section. Please see page 4, lines 57-61.
+\end{reply}
+
+\bibliographystyle{plainnat}
+\bibliography{references.bib}
+
+
+\end{document}
