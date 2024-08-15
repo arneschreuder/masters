@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{lipsum} % to generate some filler text
+\usepackage{fullpage}
+\usepackage{mathrsfs}
+\usepackage{svg}
+\usepackage{xr}
+\usepackage{amsthm,cite,url,graphicx,booktabs,lipsum,color,bm,caption,subcaption,soul}
+\usepackage{pifont,tikz,paralist,multirow,amssymb}
+\usepackage{xifthen}
+\usepackage{enumerate}
+\usepackage{titlesec}
+\usepackage[numbers]{natbib}
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
+
+% This refines the format of how the reviewer/point reference will appear.
+%\renewcommand{\thepoint}{C\,\thereviewer.\arabic{point}}
+
+\renewcommand{\thepoint}{Comment\,\thereviewer.\arabic{point}}
+
+% command declarations for reviewer points and our responses
+
+\newenvironment{point1}
+   {\refstepcounter{point} \bigskip \noindent {\textbf{Editor Comment~}} ---\ }
+   {\par }
+
+\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule
+                  \section*{Reviewer \thereviewer}}
+
+% \newenvironment{point}
+
+%    {\refstepcounter{point} \bigskip \noindent {\textbf{Reviewer~\thepoint} } ---\ }
+%    {\par }
+
+\newenvironment{point}
+   {\refstepcounter{point} \bigskip \noindent {\textbf{Reviewer~\thepoint} } ---\ }
+   {\par }
+
+
+\newcommand{\shortpoint}[1]{\refstepcounter{point}   \bigskip \noindent 
+	{\textbf{Reviewer~Point~\thepoint} } ---~#1  }
+
+\newenvironment{reply}
+   {\medskip \noindent \color{blue} \begin{sf}\textbf{Reply}:\  }
+   {\medskip \par \end{sf}}
+
+\newcommand{\shortreply}[2][]{\medskip \noindent \begin{sf}\textbf{Reply}:\  #2
+	\ifthenelse{\equal{#1}{}}{}{ \hfill \footnotesize (#1)}%
+	\medskip \end{sf}}
+
+\makeatletter
+\newcommand*{\addFileDependency}[1]{% argument=file name and extension
+  \typeout{(#1)}
+  \@addtofilelist{#1}
+  \IfFileExists{#1}{}{\typeout{No file #1.}}
+}
+\makeatother
+
+\newcommand*{\myexternaldocument}[1]{%
+    \externaldocument{#1}%
+    \addFileDependency{#1.tex}%
+    \addFileDependency{#1.aux}%
+}
+
+\myexternaldocument{main}
+%\externaldocument[I-]{main}
+
+
+\def\thesubsubsection{\arabic{subsubsection}}
+\titleformat{\subsubsection}[runin]
+{\normalfont\bfseries}
+{\indent\thesubsubsection)}{0.5em}{}
+
+
+\begin{document}
+\section*{Response to reviewer comments for the paper:\\INS-D-23-781}
+\vspace{10pt}
+
+\textbf{Title:} Training Feedforward Neural Networks with Bayesian Hyper-Heuristics\\
+\textbf{Authors:} A.N. Schreuder, A.S. Bosman, A.P. Engelbrecht, C.W. Cleghorn\\
+\textbf{Manuscript number:} 1\\
+\textbf{Revision Version:} 2\\
+\textbf{Editor’s Decision Received Date:} 7 August 2024\\
+\textbf{Revision Submission Date:} 16 Aug 2024\\
+
+\vspace{10pt}
+
+\noindent
+The authors would like to thank the editor and reviewers for their constructive comments and suggestions that have helped improve the quality of this manuscript. The manuscript has undergone a final thorough revision (version 2) according to the editor's and reviewer's comments. Please see below our responses to the latest feedback. For the editor's and reviewer's convenience, we have highlighted our responses to the comments and described how each comment is addressed in the revised manuscript in \textcolor{blue}{blue}.
+
+\section*{Response to the Editor}
+% General intro text goes here
+
+\begin{point1}
+	\begin{itemize}
+		\item A thorough editing is required; show all changes made to the revised manuscript.
+		\item References: max 50 entries. Make sure the references are recent and highly pertinent to the contents of the manuscript.
+	\end{itemize}
+\end{point1}
+
+
+\begin{reply}
+	The authors would like to thank the editor and reviewer again for their comments and the time taken to read the manuscript. All the issues raised by the editor/reviewers are addressed in the following document. A number of grammatical and language improvements have been made, and the references are updated and now capped at 49 as requested. A summary of the changes made is given as follows:
+
+	\begin{itemize}
+		\item Changed FFNNs to FFNN in the paragraph about the BHH's applicability to different ANN types.
+
+		\item Removed citation ``\citep{ref:zell:1994}'' from the sentence about FFNN topologies.
+		\item Removed ``was popularised by \citet{ref:werbos:1994}'' from the sentence about the backpropagation algorithm.
+		\item Removed citation ``\citep{ref:gupta:1999}'' from the list of references about meta-heuristics used to train FFNNs.
+		\item Changed ``dimensions'' to ``categories'' when describing the classification scheme for hyper-heuristics. Also changed subsequent uses of ``dimension'' to ``category''.
+		\item Removed citation ``\citep{ref:dowsland:2007}'' from the list of examples of hyper-heuristics in optimization.
+		\item Changed ``not individual heuristic'' to ``not the state of individual heuristics'' when describing what the population state tracks.
+		\item Removed citation ``\citep{ref:glorot:2010}'' from the sentence about Glorot uniform sampling for weight initialization.
+		\item Removed citations for various statistical tests: Shapiro-Wilk test, Levene's test, ANOVA test, Kruskal-Wallis test, and Tukey honest significant difference test.
+	\end{itemize}
+
+\end{reply}
+
+\bibliographystyle{plainnat}
+\bibliography{references.bib}
+
+\end{document}
